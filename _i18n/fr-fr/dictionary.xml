@@ -5,7 +5,6 @@
   <block id="334d532e95c8088dda41b2e55290b233" category="paragraph">Cloud Backup est un service pour les environnements de travail BlueXP (anciennement Cloud Manager). Il offre des fonctionnalités de sauvegarde et de restauration pour la protection et l'archivage à long terme de vos données. Les sauvegardes sont automatiquement générées et stockées dans un magasin d'objets de votre compte cloud public ou privé.</block>
   <block id="1619bac39deaef2fc2adb60633af222f" category="paragraph">Si nécessaire, vous pouvez restaurer un _volume_ entier à partir d'une sauvegarde vers le même environnement de travail ou vers un environnement de travail différent. Lorsque vous sauvegardez des données ONTAP, vous pouvez également choisir de restaurer un ou plusieurs _fichiers_ d'une sauvegarde vers le même environnement de travail ou vers un environnement de travail différent.</block>
   <block id="b8d82fc8540bcb0b292930e59ebdd4dd" category="inline-link">En savoir plus sur Cloud Backup</block>
-  <block id="58ba7a61ebb07a1d7ec3d3aac8a698c7" category="paragraph"><block ref="2557c337dfecad402162dac53d872fb6" category="inline-link-rx"></block>.</block>
   <block id="44eb910aad595ba9500cebcb52445bcf" category="paragraph">La fonction de sauvegarde et de restauration permet de :</block>
   <block id="02fe91ecafd3cfc37675f0776294605f" category="inline-link-macro">Voir les fonctionnalités détaillées ici</block>
   <block id="ef288ee793660dc823a897c059e4319e" category="list-text">Sauvegarde et restauration de volumes ONTAP à partir de systèmes Cloud Volumes ONTAP et ONTAP sur site <block ref="3033f928f79d30b4398dcd6d1b71f659" category="inline-link-macro-rx"></block>.</block>
@@ -142,7 +141,6 @@
   <block id="497968cf7f565b72a034d69215ab9754" category="paragraph"><block ref="497968cf7f565b72a034d69215ab9754" category="inline-image-macro-rx" type="image"></block></block>
   <block id="c7a220fc58ccea879a68f706ca98ac0c" category="list-text">Cliquez sur *Enregistrer* pour valider vos modifications.</block>
   <block id="8764d766d622ae40812776b15d742a79" category="inline-xref">supprimez les sauvegardes</block>
-  <block id="1cdf12d909faca3295263dc58dc5d4b8" category="paragraph">*Remarque :* lors de l'arrêt de la sauvegarde d'un volume, vous continuerez à être facturé par votre fournisseur de cloud pour les coûts de stockage objet pour la capacité que les sauvegardes utilisent, sauf si vous <block ref="e2e48247dd6dcee2daca407937463dc9" category="inline-xref-macro-rx"></block>.</block>
   <block id="370b82ce2e3ba80cd6ec552891697236" category="section-title">Modification d'une stratégie de sauvegarde existante</block>
   <block id="666a7dbcb8fbb40415b3646ab93b9692" category="paragraph">Vous pouvez modifier les attributs d'une stratégie de sauvegarde actuellement appliquée aux volumes d'un environnement de travail. La modification de la stratégie de sauvegarde affecte tous les volumes existants utilisant la règle.</block>
   <block id="0be2c78c9d9743f1e0ca96b2de59d98b" category="inline-image-macro">Capture d'écran affichant le bouton Backup Settings de l'onglet volumes.</block>
@@ -2492,11 +2490,6 @@
   <block id="739f8a5ac1453fdcd33ce781cd333914" category="section-title">Le nouveau moniteur de tâches permet de voir l'état en cours de traitement de toutes les tâches de sauvegarde et de restauration</block>
   <block id="7a99d9487fc9540fa7bee7c2eb717413" category="inline-link-macro">Voir comment utiliser le moniteur de tâches</block>
   <block id="9d20a5735dc25af92271eea8fa797bf7" category="paragraph">Le Job Monitor peut être très utile lorsque vous avez lancé une opération sur plusieurs volumes, comme la modification de la stratégie de sauvegarde ou la suppression de sauvegardes, de sorte que vous pouvez voir quand l'opération s'est terminée sur tous les volumes. <block ref="41d368101275ff882313a6db3fc29812" category="inline-link-macro-rx"></block>.</block>
-  <block id="586301717819197e24001cac47efdaaa" category="section-title">2 janvier 2022</block>
-  <block id="3d83253385058dc12afb77a2f730e4c2" category="section-title">Sauvegarde des volumes persistants à partir de clusters AKS Kubernetes vers un stockage Azure Blob</block>
-  <block id="8b0675f2bcc5bb7f00dbceec71509372" category="paragraph">Si votre cluster AKS est équipé de NetApp Astra Trident et qu'il utilise Cloud Volumes ONTAP pour Azure comme stockage back-end pour le cluster, vous pouvez sauvegarder et restaurer des volumes vers et à partir d'Azure Blob Storage. <block ref="dedf276821ed6d29dbf4b6c6ac7e23c3" category="inline-link-macro-rx"></block>.</block>
-  <block id="14c8359231c23d6f5c54ca5cd66b7645" category="section-title">Cette version a modifié les frais Cloud Backup Service afin de s'aligner plus étroitement sur les normes du secteur</block>
-  <block id="8f26fba202051bdab8552c6642789714" category="paragraph">Au lieu de payer les capacités NetApp en fonction de la taille des fichiers de sauvegarde, vous payez uniquement pour les données que vous protégez, calculé par la capacité logique utilisée (avant l'efficacité ONTAP) des volumes ONTAP source qui sont sauvegardés. Cette capacité est également connue sous le nom de téraoctets frontaux (FETB).</block>
   <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">Mentions légales</block>
   <block id="e9c44bbfd795a5d63d74c6a77afee70d" category="paragraph">Les mentions légales donnent accès aux déclarations de copyright, aux marques, aux brevets, etc.</block>
   <block id="6016a2b341113bf496b719905398ecd2" category="section-title">Droits d'auteur</block>
@@ -3444,4 +3437,7 @@
   <block id="b1e78dfdd8adc3005cff56ffd24b2af1" category="inline-xref">Découvrez comment configurer vos systèmes pour cette fonctionnalité</block>
   <block id="57e477fd9dd6f84cb8ac24711869c4f5" category="list-text">Si votre cluster utilise ONTAP 9.12.1 ou version ultérieure et que vous utilisez StorageGRID 11.3 ou version ultérieure, vous pouvez choisir de transférer les anciennes sauvegardes vers AWS S3 Glacier ou vers le stockage d'archivage profond S3 Glacier au bout d'un certain nombre de jours pour optimiser les coûts. <block ref="c2797d22435b48dabeada89d48523cd9" category="inline-xref-macro-rx"></block>.</block>
   <block id="8b1fecd8a08d1d10ad201653d8d4088f" category="sidebar">Sauvegardez la base de données Cloud Backup sur un site sombre</block>
+  <block id="fe3f1bd257c4451d8f8bcbf9a1a58d34" category="paragraph"><block ref="1247b899b5e6800d8fd9e850903ad55a" category="inline-link-rx"></block>.</block>
+  <block id="275b9b785d71f45bb8f134005ece056a" category="paragraph">*Remarque :* lorsque vous interrompez la sauvegarde d'un volume, votre fournisseur de cloud continuera à payer les coûts de stockage objet pour la capacité que les sauvegardes utilisent, sauf si vous <block ref="e2e48247dd6dcee2daca407937463dc9" category="inline-xref-macro-rx"></block>.</block>
+  <block id="46fb0ddeabbcb2b9784add28928cfe7a" category="paragraph">Notez que la règle que vous souhaitez appliquer aux volumes doit déjà exister.</block>
 </blocks>

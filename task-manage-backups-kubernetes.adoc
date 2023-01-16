@@ -57,7 +57,7 @@ image:screenshot_backup_manage_volumes_page_k8s.png["La page gérer les volumes 
 . Cliquez sur *Enregistrer* pour valider vos modifications.
 
 
-*Remarque :* lors de l'arrêt de la sauvegarde d'un volume, vous continuerez à être facturé par votre fournisseur de cloud pour les coûts de stockage objet pour la capacité que les sauvegardes utilisent, sauf si vous <<Suppression de sauvegardes,supprimez les sauvegardes>>.
+*Remarque :* lorsque vous interrompez la sauvegarde d'un volume, votre fournisseur de cloud continuera à payer les coûts de stockage objet pour la capacité que les sauvegardes utilisent, sauf si vous <<Suppression de sauvegardes,supprimez les sauvegardes>>.
 
 
 
@@ -90,7 +90,7 @@ image:screenshot_backup_edit_policy_k8s.png["Capture d'écran présentant les pa
 
 Si vous n'avez pas sélectionné l'option permettant d'attribuer automatiquement une stratégie de sauvegarde aux volumes nouvellement créés lorsque vous avez activé Cloud Backup pour la première fois sur votre cluster Kubernetes, vous pouvez choisir cette option ultérieurement dans la page _Backup Settings_. L'affectation d'une règle de sauvegarde aux nouveaux volumes permet de garantir la protection de toutes vos données.
 
-Notez que la règle que vous souhaitez appliquer aux volumes doit déjà exister. <<Ajout d'une nouvelle politique de sauvegarde,Découvrez comment ajouter une nouvelle stratégie de sauvegarde pour un environnement de travail>>.
+Notez que la règle que vous souhaitez appliquer aux volumes doit déjà exister.
 
 Vous pouvez également désactiver ce paramètre afin que les volumes nouvellement créés ne soient pas sauvegardés automatiquement. Dans ce cas, vous devrez activer manuellement les sauvegardes pour tous les volumes que vous souhaitez effectuer ultérieurement.
 

@@ -18,7 +18,7 @@ Cloud Backup est un service pour les environnements de travail BlueXP (anciennem
 
 Si nécessaire, vous pouvez restaurer un _volume_ entier à partir d'une sauvegarde vers le même environnement de travail ou vers un environnement de travail différent. Lorsque vous sauvegardez des données ONTAP, vous pouvez également choisir de restaurer un ou plusieurs _fichiers_ d'une sauvegarde vers le même environnement de travail ou vers un environnement de travail différent.
 
-https://cloud.netapp.com/cloud-backup-service["En savoir plus sur Cloud Backup"^].
+https://bluexp.netapp.com/cloud-backup["En savoir plus sur Cloud Backup"^].
 
 La fonction de sauvegarde et de restauration permet de :
 
