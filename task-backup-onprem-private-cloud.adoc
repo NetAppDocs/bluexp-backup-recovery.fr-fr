@@ -216,7 +216,7 @@ De formation::
 * Votre StorageGRID doit utiliser 11.3 ou plus
 * Votre StorageGRID doit être https://docs.netapp.com/us-en/cloud-manager-storagegrid/task-discover-storagegrid.html["Découvert et disponible dans BlueXP Canvas"^]
 * Le stockage d'archivage est actuellement pris en charge uniquement pour les classes de stockage AWS S3. Vous pouvez choisir de transférer les sauvegardes vers un stockage AWS S3 Glacier ou S3 Glacier Deep Archive. link:reference-aws-backup-tiers.html["En savoir plus sur les niveaux d'archivage AWS"^].
-* Vous devez vous inscrire à un abonnement AWS S3 pour l'espace de stockage où se trouvent vos sauvegardes.
+* Vous devez vous inscrire à un compte Amazon S3 pour l'espace de stockage où se trouvent vos sauvegardes.
 
 
 --

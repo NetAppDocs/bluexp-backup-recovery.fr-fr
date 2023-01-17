@@ -56,7 +56,7 @@ Ce tableau permet de comparer les deux méthodes.
 | La restauration de volumes et de fichiers fonctionne avec les fichiers de sauvegarde stockés dans Amazon S3, Azure Blob, Google Cloud et NetApp StorageGRID | La restauration de volumes et de fichiers fonctionne avec les fichiers de sauvegarde stockés dans Amazon S3, Azure Blob, Google Cloud et NetApp StorageGRID 
 
 
-| Restaurez des volumes, des dossiers et des fichiers depuis StorageGRID sur des sites sans accès à Internet | Non pris en charge sur les sites sombres 
+| Restaurez des volumes, des dossiers et des fichiers depuis StorageGRID sur des sites sans accès à Internet | Restaurez des volumes, des dossiers et des fichiers depuis StorageGRID sur des sites sans accès à Internet 
 
 
 | Ne gère pas les fichiers qui ont été renommés ou supprimés | Gère les répertoires nouvellement créés/supprimés/renommés et les fichiers nouvellement créés/supprimés/renommés 
@@ -150,7 +150,7 @@ ifdef::gcp[]
 
 endif::gcp[]
 
-* Pour StorageGRID, le connecteur doit être déployé sur site
+* Pour StorageGRID, le connecteur doit être déployé sur site, avec ou sans accès à Internet
 
 
 Notez que les références aux « systèmes ONTAP sur site » incluent les systèmes FAS, AFF et ONTAP Select.
@@ -505,7 +505,7 @@ ifdef::gcp[]
 
 endif::gcp[]
 
-* Pour StorageGRID, le connecteur doit être déployé dans vos locaux avec une connexion Internet
+* Pour StorageGRID, le connecteur doit être déployé sur site, avec ou sans accès à Internet
 
 
 Notez que les références aux « systèmes ONTAP sur site » incluent les systèmes FAS, AFF et ONTAP Select.
@@ -574,6 +574,7 @@ En fonction de votre configuration, la recherche et la restauration peuvent êtr
 
 +
 ** S'il n'y a pas d'identifiants de fournisseur de cloud dans votre compte, les informations de catalogue indexées sont stockées sur le connecteur.
+** Si vous utilisez un connecteur sur un site sombre, les informations de catalogue indexé sont stockées sur le connecteur (nécessite la version 3.9.25 ou supérieure du connecteur).
 ** Si vous l'avez https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-accounts-aws.html["Identifiants AWS"^] ou https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-accounts-azure.html["Identifiants Azure"^] Dans le compte, le catalogue indexé est stocké sur le fournisseur cloud, comme avec un connecteur déployé dans le cloud. (Si vous disposez des deux identifiants, AWS est sélectionné par défaut.)
 +
 Même si vous utilisez un connecteur sur site, les exigences du fournisseur cloud doivent être respectées tant pour les autorisations de connecteur que pour les ressources du fournisseur cloud. Consultez les exigences AWS et Azure ci-dessus lors de l'utilisation de cette implémentation.
