@@ -24,7 +24,7 @@ Il existe neuf catégories de terminaux définis dans Cloud Backup :
 * Jobs : gère les entrées de détail de travail dans la base de données BlueXP
 * Licence - récupère la validité de la licence des environnements de travail à partir de BlueXP
 * analyse par ransomware : démarre une analyse par ransomware sur un fichier de sauvegarde spécifique
-* restaurer : permet d'effectuer des opérations de restauration au niveau du volume et du fichier
+* restaurer : permet d'effectuer des opérations de restauration au niveau du volume, du fichier et du dossier
 * sfr - récupère les fichiers d'un fichier de sauvegarde pour des opérations de restauration uniques au niveau des fichiers (Browse & Restore)
 * environnement de travail : gère les stratégies de sauvegarde et configure le magasin d'objets de destination associé à un environnement de travail
 
@@ -71,10 +71,7 @@ Header:
 Cette API renvoie une réponse comme suit. Vous pouvez récupérer l'ID de compte en analysant la sortie à partir de *[0].[ accountPublicId]*.
 
 +
-[source, text]
-----
-[{"accountPublicId":"account-i6vJXvZW","accountName":"rashidn","isSaas":true,"isGov":false,"isPrivatePreviewEnabled":false,"is3rdPartyServicesEnabled":false,"accountSerial":"96064469711530003565","userRole":"Role-1"}………
-----
+ [{"accountPublicId":"account-i6vJXvZW","accountName":"rashidn","isSaas":true,"isGov":false,"isPrivatePreviewEnabled":false,"is3rdPartyServicesEnabled":false,"accountSerial":"96064469711530003565","userRole":"Role-1"}………
 . Procurez-vous l'ID-agent-x qui contient l'ID du connecteur BlueXP.
 +
 [source, http]
@@ -90,10 +87,7 @@ Header:
 Cette API renvoie une réponse comme suit. Vous pouvez récupérer l'ID de l'agent en analysant la sortie à partir de *ocm.[0].[agent].[agentID]*.
 
 +
-[source, text]
-----
-{"occms":[{"account":"account-OOnAR4ZS","accountName":"cbs","occm":"imEdsEW4HyYTFbt8ZcNKTKDF05jMIe6Z","agentId":"imEdsEW4HyYTFbt8ZcNKTKDF05jMIe6Z","status":"ready","occmName":"cbsgcpdevcntsg-asia","primaryCallbackUri":"http://34.93.197.21","manualOverrideUris":[],"automaticCallbackUris":["http://34.93.197.21","http://34.93.197.21/occmui","https://34.93.197.21","https://34.93.197.21/occmui","http://10.138.0.16","http://10.138.0.16/occmui","https://10.138.0.16","https://10.138.0.16/occmui","http://localhost","http://localhost/occmui","http://localhost:1337","http://localhost:1337/occmui","https://localhost","https://localhost/occmui","https://localhost:1337","https://localhost:1337/occmui"],"createDate":"1652120369286","agent":{"useDockerInfra":true,"network":"default","name":"cbsgcpdevcntsg-asia","agentId":"imEdsEW4HyYTFbt8ZcNKTKDF05jMIe6Zclients","provider":"gcp","systemId":"a3aa3578-bfee-4d16-9e10-
-----
+ {"occms":[{"account":"account-OOnAR4ZS","accountName":"cbs","occm":"imEdsEW4HyYTFbt8ZcNKTKDF05jMIe6Z","agentId":"imEdsEW4HyYTFbt8ZcNKTKDF05jMIe6Z","status":"ready","occmName":"cbsgcpdevcntsg-asia","primaryCallbackUri":"http://34.93.197.21","manualOverrideUris":[],"automaticCallbackUris":["http://34.93.197.21","http://34.93.197.21/occmui","https://34.93.197.21","https://34.93.197.21/occmui","http://10.138.0.16","http://10.138.0.16/occmui","https://10.138.0.16","https://10.138.0.16/occmui","http://localhost","http://localhost/occmui","http://localhost:1337","http://localhost:1337/occmui","https://localhost","https://localhost/occmui","https://localhost:1337","https://localhost:1337/occmui"],"createDate":"1652120369286","agent":{"useDockerInfra":true,"network":"default","name":"cbsgcpdevcntsg-asia","agentId":"imEdsEW4HyYTFbt8ZcNKTKDF05jMIe6Zclients","provider":"gcp","systemId":"a3aa3578-bfee-4d16-9e10-
 
 
 
@@ -145,7 +139,7 @@ curl --location --request POST 'https://api.bluexp.netapp.com/account/account-Dp
 [source, text]
 ----
 {
-    "job-id": "1b34b6f6-8f43-40fb-9a52-485b0dfe893a"
+ "job-id": "1b34b6f6-8f43-40fb-9a52-485b0dfe893a"
 }
 ----
 .Surveiller la réponse.

@@ -26,13 +26,13 @@ Découvrez les nouveautés de Cloud Backup.
 
 Vous pouvez désormais transférer d'anciens fichiers de sauvegarde des systèmes StorageGRID vers le stockage d'archivage dans AWS S3. Cela vous permet de libérer de l'espace sur vos systèmes StorageGRID et de réaliser des économies en utilisant une solution de stockage bon marché pour les anciens fichiers de sauvegarde. Vous pouvez choisir de transférer les sauvegardes vers un stockage AWS S3 Glacier ou S3 Glacier Deep Archive.
 
-Cette fonctionnalité est disponible si votre cluster utilise ONTAP 9.12.1 ou version ultérieure et si votre système StorageGRID utilise 11.3 ou version ultérieure. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-private-cloud.html#preparing-to-archive-older-backup-files-to-public-cloud-storage["En savoir plus"].
+Cette fonctionnalité est disponible si votre cluster sur site utilise ONTAP 9.12.1 ou version ultérieure et que votre système StorageGRID utilise 11.3 ou version ultérieure. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-private-cloud.html#preparing-to-archive-older-backup-files-to-public-cloud-storage["En savoir plus"].
 
 
 
 === Possibilité de sélectionner vos propres clés gérées par le client pour le chiffrement des données sur Google Cloud
 
-Lorsque vous sauvegardez les données de vos systèmes ONTAP dans Google Cloud Storage, vous pouvez maintenant sélectionner vos propres clés gérées par le client pour le chiffrement des données dans l'assistant d'activation au lieu d'utiliser les clés de chiffrement gérées par Google par défaut. Il vous suffit de configurer d'abord vos clés de chiffrement gérées par le client, puis de saisir les informations lors de l'activation de Cloud Backup.
+Lorsque vous sauvegardez les données de vos systèmes ONTAP dans Google Cloud Storage, vous pouvez maintenant sélectionner vos propres clés gérées par le client pour le chiffrement des données dans l'assistant d'activation au lieu d'utiliser les clés de chiffrement gérées par Google par défaut. Il vous suffit de configurer d'abord vos clés de chiffrement gérées par le client dans Google, puis de saisir les informations lors de l'activation de Cloud Backup.
 
 
 
@@ -44,7 +44,7 @@ Dans les versions antérieures, le rôle d'administrateur du stockage était req
 
 === L'assistance a été ajoutée pour restaurer des données à l'aide de la fonction de recherche et de restauration sur des sites sans accès à Internet
 
-Si vous sauvegardez des données à partir d'un cluster ONTAP sur site vers StorageGRID sur un site sans accès Internet, également appelé site sombre ou hors ligne, vous pouvez maintenant utiliser l'option de restauration pour restaurer les données si nécessaire. Cette fonctionnalité requiert le déploiement du connecteur BlueXP (version 3.9.25 ou ultérieure) sur le site hors ligne.
+Si vous sauvegardez des données à partir d'un cluster ONTAP sur site vers StorageGRID sur un site sans accès Internet, également connu sous le nom de site sombre ou hors ligne, vous pouvez maintenant utiliser l'option de recherche et de restauration pour restaurer les données si nécessaire. Cette fonctionnalité requiert le déploiement du connecteur BlueXP (version 3.9.25 ou ultérieure) sur le site hors ligne.
 
 https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html#restoring-ontap-data-using-search-restore["Voir comment restaurer les données ONTAP à l'aide de la fonction Rechercher et AMP ; Restaurer"].https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-install-connector-onprem-no-internet.html["Découvrez comment installer le connecteur dans votre site hors ligne"].
 

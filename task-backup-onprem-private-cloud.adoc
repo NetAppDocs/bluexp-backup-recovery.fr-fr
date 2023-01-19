@@ -207,7 +207,7 @@ Assurez-vous que le connecteur dispose des connexions réseau requises.
 
 === Préparation à l'archivage d'anciens fichiers de sauvegarde dans le cloud public
 
-Le Tiering des anciens fichiers de sauvegarde vers le stockage d'archivage permet de réaliser des économies grâce à une classe de stockage moins chère pour les sauvegardes dont vous n'avez peut-être pas besoin. StorageGRID est une solution sur site (cloud privé) qui ne propose pas de stockage d'archivage, mais vous pouvez transférer des fichiers de sauvegarde d'ancienne génération vers un stockage d'archivage dans le cloud public.
+Le Tiering des anciens fichiers de sauvegarde vers le stockage d'archivage permet de réaliser des économies grâce à une classe de stockage moins chère pour les sauvegardes dont vous n'avez peut-être pas besoin. StorageGRID est une solution sur site (cloud privé) qui ne propose pas de stockage d'archivage, mais vous pouvez transférer les fichiers de sauvegarde d'ancienne génération vers un stockage d'archivage dans le cloud public. Lorsqu'elles sont utilisées de cette façon, les données sont envoyées vers le stockage cloud ou restaurées depuis le stockage cloud, elles passent entre StorageGRID et le stockage cloud. BlueXP n'est pas impliqué dans ce transfert de données.
 
 De formation::
 +
@@ -217,6 +217,18 @@ De formation::
 * Votre StorageGRID doit être https://docs.netapp.com/us-en/cloud-manager-storagegrid/task-discover-storagegrid.html["Découvert et disponible dans BlueXP Canvas"^]
 * Le stockage d'archivage est actuellement pris en charge uniquement pour les classes de stockage AWS S3. Vous pouvez choisir de transférer les sauvegardes vers un stockage AWS S3 Glacier ou S3 Glacier Deep Archive. link:reference-aws-backup-tiers.html["En savoir plus sur les niveaux d'archivage AWS"^].
 * Vous devez vous inscrire à un compte Amazon S3 pour l'espace de stockage où se trouvent vos sauvegardes.
+* Le StorageGRID doit disposer d'un accès total au godet (`s3:*`) ; Cependant, si ce n'est pas possible, la politique de compartiment doit accorder les autorisations S3 suivantes à StorageGRID :
++
+** `s3:AbortMultipartUpload`
+** `s3:DeleteObject`
+** `s3:GetObject`
+** `s3:ListBucket`
+** `s3:ListBucketMultipartUploads`
+** `s3:ListMultipartUploadParts`
+** `s3:PutObject`
+** `s3:RestoreObject`
+
+
 
 
 --
