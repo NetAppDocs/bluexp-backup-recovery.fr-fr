@@ -268,8 +268,8 @@ Pour le moment, vous ne pouvez sélectionner et restaurer qu'un seul dossier. Et
 
 [NOTE]
 ====
-* Vous ne pouvez pas restaurer des dossiers ou des fichiers si le fichier de sauvegarde a été configuré avec DataLock & ransomware. Dans ce cas, vous pouvez restaurer tout le volume à partir du fichier de sauvegarde, puis accéder aux fichiers dont vous avez besoin.
-* La restauration au niveau des dossiers n'est actuellement pas prise en charge lorsque le fichier de sauvegarde se trouve dans le stockage d'archivage. Dans ce cas, vous pouvez restaurer le dossier à partir d'un fichier de sauvegarde plus récent qui n'a pas été archivé, ou vous pouvez restaurer le volume entier à partir de la sauvegarde archivée, puis accéder au dossier et aux fichiers dont vous avez besoin.
+* La restauration au niveau des dossiers n'est pas prise en charge actuellement si le fichier de sauvegarde a été configuré avec DataLock & ransomware. Dans ce cas, vous pouvez restaurer tout le volume à partir du fichier de sauvegarde, puis accéder au dossier et aux fichiers dont vous avez besoin.
+* La restauration au niveau des dossiers n'est actuellement pas prise en charge si le fichier de sauvegarde réside dans le stockage d'archives. Dans ce cas, vous pouvez restaurer le dossier à partir d'un fichier de sauvegarde plus récent qui n'a pas été archivé, ou vous pouvez restaurer le volume entier à partir de la sauvegarde archivée, puis accéder au dossier et aux fichiers dont vous avez besoin.
 
 
 ====
@@ -450,8 +450,8 @@ endif::gcp[]
 
 [NOTE]
 ====
-* Vous ne pouvez pas restaurer des dossiers ou des fichiers si le fichier de sauvegarde a été configuré avec DataLock & ransomware. Dans ce cas, vous pouvez restaurer tout le volume à partir du fichier de sauvegarde, puis accéder aux fichiers dont vous avez besoin.
-* La restauration au niveau des dossiers n'est actuellement pas prise en charge lorsque le fichier de sauvegarde se trouve dans le stockage d'archivage. Dans ce cas, vous pouvez restaurer le dossier à partir d'un fichier de sauvegarde plus récent qui n'a pas été archivé, ou vous pouvez restaurer le volume entier à partir de la sauvegarde archivée, puis accéder au dossier et aux fichiers dont vous avez besoin.
+* La restauration au niveau des dossiers n'est pas prise en charge actuellement si le fichier de sauvegarde a été configuré avec DataLock & ransomware. Dans ce cas, vous pouvez restaurer tout le volume à partir du fichier de sauvegarde, puis accéder au dossier et aux fichiers dont vous avez besoin.
+* La restauration au niveau des dossiers n'est actuellement pas prise en charge si le fichier de sauvegarde réside dans le stockage d'archives. Dans ce cas, vous pouvez restaurer le dossier à partir d'un fichier de sauvegarde plus récent qui n'a pas été archivé, ou vous pouvez restaurer le volume entier à partir de la sauvegarde archivée, puis accéder au dossier et aux fichiers dont vous avez besoin.
 
 
 ====
