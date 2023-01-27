@@ -1030,7 +1030,6 @@
   <block id="7a035a915239cf76211880a31a8e3764" category="cell">Recherchez un volume, un dossier ou un fichier dans *tous les fichiers de sauvegarde* par nom de volume partiel ou complet, nom de dossier/fichier partiel ou complet, plage de tailles et filtres de recherche supplémentaires</block>
   <block id="c97292ed2a85b61c46eda83c997f6a9a" category="cell">La restauration de volumes et de fichiers fonctionne avec les fichiers de sauvegarde stockés dans Amazon S3, Azure Blob, Google Cloud et NetApp StorageGRID</block>
   <block id="4b41d0742a9aae0ba9c0d4a963b3f0d8" category="cell">Restaurez des volumes, des dossiers et des fichiers depuis StorageGRID sur des sites sans accès à Internet</block>
-  <block id="fa6009564cbbb803ab9e939ec7396236" category="cell">Ne gère pas les fichiers qui ont été renommés ou supprimés</block>
   <block id="609c9e9bd29468f2ba84839f3741b886" category="cell">Gère les répertoires nouvellement créés/supprimés/renommés et les fichiers nouvellement créés/supprimés/renommés</block>
   <block id="7676f4eb0750d027aaf39357e74a6f0a" category="cell">Parcourez les résultats sur les clouds publics et privés</block>
   <block id="5559993f6f3050a853326203c63f7ed0" category="cell">Parcourez les résultats dans les clouds publics et les copies Snapshot locales</block>
@@ -3452,4 +3451,13 @@
   <block id="7eca941847083ddad64a04d3dca6b3b8" category="sidebar">Utilisations de Cloud Backup</block>
   <block id="66d2847cfd42bf73060fb82fb4345a9a" category="list-text">La restauration au niveau des dossiers n'est pas prise en charge actuellement si le fichier de sauvegarde a été configuré avec DataLock &amp; ransomware. Dans ce cas, vous pouvez restaurer tout le volume à partir du fichier de sauvegarde, puis accéder au dossier et aux fichiers dont vous avez besoin.</block>
   <block id="5571d67bc301ab9246278c7b368f2013" category="list-text">La restauration au niveau des dossiers n'est actuellement pas prise en charge si le fichier de sauvegarde réside dans le stockage d'archives. Dans ce cas, vous pouvez restaurer le dossier à partir d'un fichier de sauvegarde plus récent qui n'a pas été archivé, ou vous pouvez restaurer le volume entier à partir de la sauvegarde archivée, puis accéder au dossier et aux fichiers dont vous avez besoin.</block>
+  <block id="0375f4855be072c7d856a0233cc21de9" category="section-title">Prise en charge des solutions des fournisseurs cloud</block>
+  <block id="be845c219bb74b14349ffa6e27e7aef3" category="paragraph">Pour obtenir une assistance technique sur les solutions de fournisseurs de services cloud suivantes que vous avez intégrées à BlueXP, reportez-vous à la section « obtention d'aide » de la documentation BlueXP de ce produit.</block>
+  <block id="5bf5309465f91318228a7f956b826348" category="list-text"><block ref="5bf5309465f91318228a7f956b826348" category="inline-link-macro-rx"></block></block>
+  <block id="7450cfde7058dc5e1f7909d0280fd7ae" category="inline-link-macro">Azure NetApp Files</block>
+  <block id="0e2bc9c853e0af52ead12823c025e58b" category="list-text"><block ref="0e2bc9c853e0af52ead12823c025e58b" category="inline-link-macro-rx"></block></block>
+  <block id="b0cee72642f5457a71ddd0b49efb6d93" category="inline-link-macro">Cloud Volumes Service pour Google Cloud</block>
+  <block id="02efcbea18b9485a78a41871dce1e64d" category="list-text"><block ref="02efcbea18b9485a78a41871dce1e64d" category="inline-link-macro-rx"></block></block>
+  <block id="67b74e19355f9340daf7f62ceb8233d5" category="list-text">Le port 1433 doit être ouvert pour la communication entre le connecteur et les services SQL d'Azure Synapse.</block>
+  <block id="8042f6982b79849d158e3d7ac9190cc2" category="cell">Ne gère pas la restauration de fichier si le fichier a été supprimé ou renommé et si l'utilisateur ne connaît pas le nom du fichier d'origine</block>
 </blocks>

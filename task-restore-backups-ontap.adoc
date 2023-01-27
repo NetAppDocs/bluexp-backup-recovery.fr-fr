@@ -59,7 +59,7 @@ Ce tableau permet de comparer les deux méthodes.
 | Restaurez des volumes, des dossiers et des fichiers depuis StorageGRID sur des sites sans accès à Internet | Restaurez des volumes, des dossiers et des fichiers depuis StorageGRID sur des sites sans accès à Internet 
 
 
-| Ne gère pas les fichiers qui ont été renommés ou supprimés | Gère les répertoires nouvellement créés/supprimés/renommés et les fichiers nouvellement créés/supprimés/renommés 
+| Ne gère pas la restauration de fichier si le fichier a été supprimé ou renommé et si l'utilisateur ne connaît pas le nom du fichier d'origine | Gère les répertoires nouvellement créés/supprimés/renommés et les fichiers nouvellement créés/supprimés/renommés 
 
 
 | Parcourez les résultats sur les clouds publics et privés | Parcourez les résultats dans les clouds publics et les copies Snapshot locales 

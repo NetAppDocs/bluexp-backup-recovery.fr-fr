@@ -240,13 +240,6 @@ La colonne État de la sauvegarde de ce volume affiche « en cours » jusqu'à c
 
 Vous pouvez afficher la liste de tous les fichiers de sauvegarde existants pour chaque volume. Cette page affiche des informations détaillées sur le volume source, l'emplacement de destination et les détails de la sauvegarde, tels que la dernière sauvegarde effectuée, la stratégie de sauvegarde actuelle, la taille du fichier de sauvegarde, etc.
 
-Cette page permet également d'effectuer les tâches suivantes :
-
-* Supprimez tous les fichiers de sauvegarde du volume
-* Supprimez les fichiers de sauvegarde individuels du volume
-* Téléchargez un rapport de sauvegarde pour le volume
-
-
 .Étapes
 . Dans l'onglet *volumes*, cliquez sur image:screenshot_horizontal_more_button.gif["Plus d'icône"] Pour le volume source et sélectionnez *Détails et liste de sauvegarde*.
 +
