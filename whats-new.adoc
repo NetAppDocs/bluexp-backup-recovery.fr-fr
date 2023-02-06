@@ -18,6 +18,52 @@ Découvrez les nouveautés de Cloud Backup.
 
 
 
+== 6 février 2023
+
+
+
+=== La possibilité de déplacer d'anciens fichiers de sauvegarde vers le stockage d'archivage Azure à partir des systèmes StorageGRID
+
+Vous pouvez désormais transférer les anciens fichiers de sauvegarde des systèmes StorageGRID vers le stockage d'archivage dans Azure. Cela vous permet de libérer de l'espace sur vos systèmes StorageGRID et de réaliser des économies en utilisant une solution de stockage bon marché pour les anciens fichiers de sauvegarde.
+
+Cette fonctionnalité est disponible si votre cluster sur site utilise ONTAP 9.12.1 ou version ultérieure et que votre système StorageGRID utilise 11.4 ou version ultérieure. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-private-cloud.html#preparing-to-archive-older-backup-files-to-public-cloud-storage["En savoir plus"^].
+
+
+
+=== Il est possible de configurer le verrouillage des données et la protection contre les attaques par ransomware pour les fichiers de sauvegarde dans Azure Blob
+
+DataLock et ransomware protection sont désormais pris en charge pour les fichiers de sauvegarde stockés dans Azure Blob. Si votre système Cloud Volumes ONTAP ou ONTAP sur site exécute ONTAP 9.12.1 ou une version ultérieure, vous pouvez maintenant verrouiller vos fichiers de sauvegarde et les analyser pour détecter un éventuel ransomware. https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-cloud-backup-policies.html#datalock-and-ransomware-protection["Découvrez comment protéger vos sauvegardes avec DataLock et protection contre les attaques par ransomware"^].
+
+
+
+=== Amélioration de la sauvegarde et de la restauration d'un volume FlexGroup
+
+* Vous pouvez désormais choisir plusieurs agrégats lors de la restauration d'un volume FlexGroup. Dans la dernière version, vous ne pouvez sélectionner qu'un seul agrégat.
+* La restauration de volume FlexGroup est désormais prise en charge sur les systèmes Cloud Volumes ONTAP. Dans la dernière version, vous pouviez uniquement restaurer vos données vers des systèmes ONTAP sur site.
+
+
+
+
+=== Les systèmes Cloud Volumes ONTAP peuvent transférer d'anciennes sauvegardes vers le stockage d'archivage Google
+
+Les fichiers de sauvegarde sont initialement créés dans la classe de stockage Google Standard. Vous pouvez désormais utiliser Cloud Backup pour transférer les anciennes sauvegardes vers le stockage Google Archive afin de réaliser une optimisation des coûts. La dernière version ne prend en charge que cette fonctionnalité avec des clusters ONTAP sur site. Désormais, les systèmes Cloud Volumes ONTAP déployés dans Google Cloud sont pris en charge.
+
+
+
+=== Les opérations de restauration de volume permettent désormais de sélectionner la SVM où vous souhaitez restaurer les données de volume
+
+Désormais, vous restaurez des données de volume sur d'autres machines virtuelles de stockage dans vos clusters ONTAP. Auparavant, il n'était pas possible de choisir la machine virtuelle de stockage.
+
+
+
+=== Prise en charge améliorée des volumes dans les configurations MetroCluster
+
+Avec ONTAP 9.12.1 GA ou supérieur, la sauvegarde est désormais prise en charge lorsqu'elle est connectée au système primaire dans une configuration MetroCluster. L'intégralité de la configuration de sauvegarde est transférée vers le système secondaire pour que les sauvegardes vers le cloud puissent se poursuivre automatiquement après le basculement.
+
+https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-ontap-backup-to-cloud.html#backup-limitations["Voir limites de sauvegarde pour plus d'informations"].
+
+
+
 == 9 janvier 2023
 
 
@@ -292,7 +338,7 @@ Notez que des autorisations supplémentaires sont nécessaires dans le rôle con
 
 Cloud Backup dispose désormais de la prise en charge du verrouillage des objets pour les sauvegardes sécurisées par ransomware. Si votre cluster utilise ONTAP 9.11.1 ou version ultérieure et que votre destination de sauvegarde est Amazon S3, une nouvelle option de stratégie de sauvegarde appelée _DataLock et protection contre les attaques par ransomware_ est maintenant disponible. DataLock protège vos fichiers de sauvegarde contre la modification ou la suppression, et la protection contre les ransomwares analyse vos fichiers de sauvegarde pour rechercher des signes d'attaque par ransomware sur vos fichiers de sauvegarde. https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-cloud-backup-policies.html#datalock-and-ransomware-protection["Découvrez comment protéger vos sauvegardes avec DataLock et des attaques par ransomware"^].
 
-Notez que des autorisations supplémentaires sont nécessaires dans le rôle connecteur pour utiliser cette fonctionnalité. Un connecteur déployé à l'aide du logiciel version 3.9.21 inclut ces autorisations. Vous devrez ajouter manuellement les autorisations si vous avez déployé le connecteur à l'aide d'une version antérieure. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-to-aws.html#set-up-s3-permissions["Voir comment ajouter ces autorisations, si nécessaire"^].
+Notez que des autorisations supplémentaires sont nécessaires dans le rôle connecteur pour utiliser cette fonctionnalité. Un connecteur déployé à l'aide du logiciel version 3.9.21 inclut ces autorisations. Vous devrez ajouter manuellement les autorisations si vous avez déployé le connecteur à l'aide d'une version antérieure. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-to-aws.html#set-up-s3-permissions["Découvrez comment ajouter ces autorisations si nécessaire"^].
 
 
 

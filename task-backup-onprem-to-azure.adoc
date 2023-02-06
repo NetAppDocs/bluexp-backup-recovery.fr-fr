@@ -63,6 +63,9 @@ image:screenshot_backup_onprem_azure_networking.png["Copie d'écran affichant le
 La règle par défaut sauvegarde les volumes tous les jours et conserve les 30 copies de sauvegarde les plus récentes de chaque volume. Passage à des sauvegardes toutes les heures, tous les jours, toutes les semaines, tous les mois ou tous les ans vous pouvez également sélectionner l'une des règles définies par le système qui offrent plus d'options. Vous pouvez également modifier le nombre de copies de sauvegarde à conserver.
 
 [role="quick-margin-para"]
+Si vous utilisez ONTAP 9.12.1 ou version ultérieure, vous pouvez choisir de protéger vos sauvegardes contre les suppressions et les attaques par ransomware en configurant l'un des paramètres _DataLock et ransomware protection_. link:concept-cloud-backup-policies.html["En savoir plus sur les paramètres de configuration des règles de sauvegarde dans le cloud"^].
+
+[role="quick-margin-para"]
 Par défaut, les sauvegardes sont stockées dans le niveau d'accès Cool. Si votre cluster utilise ONTAP 9.10.1 ou version supérieure, vous pouvez transférer les sauvegardes vers le stockage Azure Archive après un certain nombre de jours afin d'optimiser les coûts. link:concept-cloud-backup-policies.html["En savoir plus sur les paramètres de configuration des règles de sauvegarde dans le cloud"^].
 
 [role="quick-margin-para"]
@@ -167,7 +170,7 @@ Assurez-vous que le connecteur dispose des connexions réseau requises.
 ** Une connexion Internet sortante vers le Cloud Backup Service over port 443 (HTTPS)
 ** Une connexion HTTPS via le port 443 vers votre stockage objet Blob
 ** Une connexion HTTPS via le port 443 vers votre LIF de gestion de cluster ONTAP
-** Pour que la fonctionnalité de recherche et de restauration de sauvegarde dans le Cloud fonctionne, le port 1433 doit être ouvert pour la communication entre le connecteur et les services SQL d'Azure Synapse.
+** Pour que la fonctionnalité de recherche et de restauration de Cloud Backup fonctionne, le port 1433 doit être ouvert pour la communication entre le connecteur et les services SQL d'Azure Synapse.
 ** Des règles de groupes de sécurité entrants supplémentaires sont requises pour les déploiements d'Azure et d'Azure Government. Voir https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-ports-azure.html["Règles pour le connecteur dans Azure"^] pour plus d'informations.
 
 
@@ -181,7 +184,7 @@ Assurez-vous que le connecteur dispose des connexions réseau requises.
 Pour utiliser la fonctionnalité recherche et restauration de Cloud Backup, vous devez disposer d'autorisations spécifiques dans le rôle du connecteur afin qu'il puisse accéder à l'espace de travail Azure Synapse et au compte de stockage Data Lake. Reportez-vous aux autorisations ci-dessous et suivez les étapes si vous devez modifier la stratégie.
 
 .Avant de commencer
-Vous devez enregistrer le fournisseur de ressources Azure Synapse Analytics auprès de votre abonnement. https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider["Découvrez comment enregistrer ce fournisseur de ressources pour votre abonnement"^]. Vous devez être l'abonnement *propriétaire* ou *Contributeur* pour enregistrer le fournisseur de ressources.
+Vous devez enregistrer le fournisseur de ressources d'analyse d'Azure Synapse (appelé « Microsoft.Synapse ») auprès de votre abonnement. https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider["Découvrez comment enregistrer ce fournisseur de ressources pour votre abonnement"^]. Vous devez être l'abonnement *propriétaire* ou *Contributeur* pour enregistrer le fournisseur de ressources.
 
 .Étapes
 . Identifier le rôle attribué à la machine virtuelle Connector :
@@ -298,6 +301,7 @@ image:screenshot_backup_onprem_azure_networking.png["Copie d'écran affichant le
 +
 .. Entrez le nom de la stratégie par défaut. Il n'est pas nécessaire de modifier le nom.
 .. Définissez le programme de sauvegarde et choisissez le nombre de sauvegardes à conserver. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings["Consultez la liste des règles que vous pouvez choisir"^].
+.. Si vous utilisez ONTAP 9.12.1 ou version ultérieure, vous pouvez choisir de protéger vos sauvegardes contre les suppressions et les attaques par ransomware en configurant l'un des paramètres _DataLock et ransomware protection_. _DataLock_ protège vos fichiers de sauvegarde contre la modification ou la suppression, et _Attack protection_ analyse vos fichiers de sauvegarde pour rechercher la preuve d'une attaque par ransomware dans vos fichiers de sauvegarde. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["En savoir plus sur les paramètres DataLock disponibles"^].
 .. Si vous utilisez ONTAP 9.10.1 ou version ultérieure, vous pouvez choisir de transférer les sauvegardes vers le stockage Azure Archive après un certain nombre de jours pour optimiser les coûts. link:reference-azure-backup-tiers.html["En savoir plus sur l'utilisation des niveaux d'archivage"].
 +
 image:screenshot_backup_policy_azure.png["Capture d'écran indiquant les paramètres de Cloud Backup dans lesquels vous pouvez choisir la planification et la conservation des sauvegardes."]

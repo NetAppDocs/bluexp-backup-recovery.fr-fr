@@ -27,7 +27,7 @@ Fonctionnalités de sauvegarde :
 * Sauvegardez des copies indépendantes de vos volumes de données dans un stockage objet à faible coût.
 * Appliquer une seule stratégie de sauvegarde à tous les volumes d'un cluster, ou attribuer différentes règles de sauvegarde aux volumes ayant des objectifs de point de restauration uniques.
 * Créer une policy de sauvegarde à appliquer à tous les futurs volumes créés dans le cluster.
-* Créez des fichiers de sauvegarde immuables afin qu'ils soient verrouillés pour la période de conservation.
+* Créez des fichiers de sauvegarde immuables afin qu'ils soient verrouillés et protégés pendant la période de conservation.
 * Analysez les fichiers de sauvegarde afin d'obtenir un risque d'attaque par ransomware. Enfin, supprimez/remplacez automatiquement les sauvegardes infectées.
 * Transférez les anciens fichiers de sauvegarde vers le stockage d'archivage pour réduire les coûts.
 * Supprimez la relation de sauvegarde afin d'archiver les volumes source inutiles tout en conservant les sauvegardes de volume.
@@ -44,7 +44,7 @@ Fonctions de restauration :
 * Restaurez un volume, un dossier ou des fichiers individuels vers le système source ou vers un autre système.
 * Restaurez les données dans un environnement de travail à l'aide d'un autre abonnement/compte ou dans une autre région.
 * Les données sont restaurées au niveau bloc, en plaçant les données directement à l'emplacement que vous spécifiez, tout en préservant les ACL d'origine.
-* Catalogues de fichiers consultables pour la sélection de dossiers et de fichiers individuels pour la restauration de fichiers uniques.
+* Catalogues de fichiers accessibles et consultables pour une sélection simplifiée de dossiers et de fichiers individuels pour la restauration de fichiers uniques.
 
 
 
@@ -111,17 +111,8 @@ Cloud Backup prend en charge plusieurs types de volumes :
 * Volumes FlexGroup (requiert ONTAP 9.12.1 ou version ultérieure)
 
 
-[NOTE]
-====
-*Limitations de restauration de volume FlexGroup* :
+Reportez-vous aux sections de la section <<Limites,Limites de la sauvegarde et de la restauration>> pour des exigences et restrictions supplémentaires.
 
-* La restauration de volume complet est prise en charge uniquement sur les systèmes ONTAP sur site (les systèmes Cloud Volumes ONTAP ne sont pas pris en charge actuellement).
-* La restauration au niveau fichier est prise en charge à la fois pour les systèmes ONTAP et Cloud Volumes ONTAP sur site.
-* La restauration des répertoires/dossiers n'est pas prise en charge actuellement.
-* Actuellement, les volumes peuvent être restaurés sur un seul agrégat.
-
-
-====
 
 
 == Le coût
@@ -335,7 +326,7 @@ Si votre cluster utilise ONTAP 9.11.1 ou supérieur, vous pouvez protéger vos s
 
 La période de conservation des sauvegardes est identique à la période de conservation du programme de sauvegarde, plus 14 jours. Par exemple, les _sauvegardes hebdomadaires_ avec _5_ copies conservées verrouillent chaque fichier de sauvegarde pendant 5 semaines. _Monthly_ backups avec _6_ copies conservées verrouilleront chaque fichier de sauvegarde pendant 6 mois.
 
-Le support est actuellement disponible lorsque votre destination de sauvegarde est Amazon S3 ou NetApp StorageGRID. D'autres destinations de fournisseurs de stockage seront ajoutées dans les prochaines versions.
+Le support est actuellement disponible lorsque votre destination de sauvegarde est Amazon S3, Azure Blob ou NetApp StorageGRID. D'autres destinations de fournisseurs de stockage seront ajoutées dans les prochaines versions.
 
 Voir link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["Protection des données par verrouillage et protection contre les ransomwares"^] Pour plus d'informations sur le fonctionnement des fonctionnalités DataLock et de protection contre les attaques par ransomware.
 
@@ -372,7 +363,7 @@ ifdef::gcp[]
 
 * Dans GCP, les sauvegardes sont associées à la classe de stockage _Standard_.
 +
-Si votre cluster sur site utilise ONTAP 9.12.1 ou version ultérieure, vous pouvez choisir de transférer d'anciennes sauvegardes vers le stockage _Archive_ dans l'interface utilisateur de sauvegarde dans le cloud au bout d'un certain nombre de jours afin d'optimiser les coûts. (Cette fonctionnalité n'est pas disponible actuellement pour les systèmes Cloud Volumes ONTAP.) link:reference-google-backup-tiers.html["En savoir plus sur le stockage des archives Google"^].
+Si votre cluster utilise ONTAP 9.12.1 ou version ultérieure, vous pouvez choisir de classer les anciennes sauvegardes vers _Archive_ le stockage dans l'interface utilisateur de sauvegarde dans le cloud, après un certain nombre de jours, pour optimiser les coûts. link:reference-google-backup-tiers.html["En savoir plus sur le stockage des archives Google"^].
 
 
 
@@ -380,7 +371,7 @@ endif::gcp[]
 
 * Dans StorageGRID, les sauvegardes sont associées à la classe de stockage _Standard_.
 +
-Si votre cluster sur site utilise ONTAP 9.12.1 ou version ultérieure et que votre système StorageGRID utilise 11.3 ou version ultérieure, vous pouvez archiver les fichiers de sauvegarde les plus anciens dans un stockage d'archivage dans le cloud public. Le stockage d'archivage est actuellement pris en charge uniquement pour les classes de stockage AWS S3. Vous pouvez choisir de hiérarchiser les sauvegardes dans AWS _S3 Glacier_ ou _S3 Glacier Deep Archive_ stockage après un certain nombre de jours. link:task-backup-onprem-private-cloud.html#preparing-to-archive-older-backup-files-to-public-cloud-storage["En savoir plus sur l'archivage des fichiers de sauvegarde StorageGRID"^].
+Si votre cluster sur site utilise ONTAP 9.12.1 ou version ultérieure et que votre système StorageGRID utilise 11.4 ou version ultérieure, vous pouvez archiver les fichiers de sauvegarde d'ancienne génération dans un stockage d'archivage dans le cloud public après un certain nombre de jours. La prise en charge est pour les tiers de stockage AWS S3 Glacier/S3 Glacier Deep Archive ou Azure Archive. link:task-backup-onprem-private-cloud.html#preparing-to-archive-older-backup-files-to-public-cloud-storage["En savoir plus sur l'archivage des fichiers de sauvegarde StorageGRID"^].
 
 
 
@@ -427,7 +418,15 @@ La lecture des données de votre fournisseur de cloud peut s'accélérer et gén
 ** La règle Snapshot appliquée au volume doit être l'une des règles reconnues par Cloud Backup, y compris les règles quotidiennes, hebdomadaires, mensuelles, etc. La stratégie par défaut « sm_create » (utilisée pour *Mirror All snapshots*) N'est pas reconnu et le volume DP n'apparaît pas dans la liste des volumes pouvant être sauvegardés.
 
 
-* La sauvegarde MetroCluster (MCC) est prise en charge à partir d'un système secondaire ONTAP uniquement : MCC > SnapMirror > ONTAP > sauvegarde dans le cloud > stockage objet.
+
+
+* Support MetroCluster :
++
+** Si vous utilisez ONTAP 9.12.1 GA ou supérieur, la sauvegarde est prise en charge lorsqu'elle est connectée au système primaire. L'intégralité de la configuration de sauvegarde est transférée vers le système secondaire pour que les sauvegardes vers le cloud puissent se poursuivre automatiquement après le basculement. Vous n'avez pas besoin de configurer la sauvegarde sur le système secondaire (en fait, vous êtes limité à ce faire).
+** Avec ONTAP 9.12.0 et les versions antérieures, la sauvegarde est prise en charge uniquement à partir du système secondaire ONTAP.
+** Les sauvegardes de volumes FlexGroup ne sont pas prises en charge pour le moment.
+
+
 * La sauvegarde de volume ad-hoc à l'aide du bouton *Backup Now* n'est pas prise en charge sur les volumes de protection des données.
 * Les configurations SM-BC ne sont pas prises en charge.
 * ONTAP ne prend pas en charge la « fan-out » des relations SnapMirror depuis un volume unique vers plusieurs magasins d'objets. Par conséquent, cette configuration n'est pas prise en charge par Cloud Backup.
@@ -436,16 +435,16 @@ La lecture des données de votre fournisseur de cloud peut s'accélérer et gén
 
 
 
-=== Limites de restauration des fichiers et des dossiers
+=== Limites de restauration
 
 Ces limitations s'appliquent à la fois aux méthodes de recherche et de restauration et de navigation pour restaurer des fichiers et des dossiers, sauf indication contraire.
 
 * Parcourir et restaurer peut restaurer jusqu'à 100 fichiers individuels à la fois.
 * La fonction de recherche et de restauration permet de restaurer 1 fichier à la fois.
 * Parcourir et restaurer et Rechercher et restaurer peut restaurer 1 dossier à la fois.
+* La restauration des répertoires/dossiers n'est actuellement pas prise en charge sur les volumes FlexGroup.
 * La restauration des volumes FlexGroup vers des volumes FlexVol, ou des volumes FlexVol vers des volumes FlexGroup n'est pas prise en charge.
-
-
 * Vous ne pouvez pas restaurer des dossiers individuels si le fichier de sauvegarde réside dans le stockage d'archivage.
 * Le fichier en cours de restauration doit être dans la même langue que celle du volume de destination. Vous recevrez un message d'erreur si les langues ne sont pas les mêmes.
+* La priorité de restauration _High_ n'est pas prise en charge lors de la restauration des données depuis Azure vers les systèmes StorageGRID.
 

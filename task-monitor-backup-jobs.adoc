@@ -29,7 +29,8 @@ Vous pouvez afficher la liste de toutes les opérations de sauvegarde et de rest
 * Échec
 
 
-Notez que les tâches lancées par le système, telles que les opérations de sauvegarde en cours, ne sont pas reflétées dans l'onglet *surveillance des tâches* -- seules les tâches exécutées par l'utilisateur sont affichées.
+
+NOTE: Les tâches lancées par le système, telles que les opérations de sauvegarde en cours, ne sont pas reflétées dans l'onglet *surveillance des tâches* -- seules les tâches exécutées par l'utilisateur sont affichées.
 
 .Étapes
 . Dans le menu BlueXP, sélectionnez *protection > sauvegarde et récupération*.
@@ -39,7 +40,7 @@ image:screenshot_backup_job_monitor.png["Capture d'écran affichant les tâches 
 
 
 
-Cette capture d'écran affiche les en-têtes de colonne/champ par défaut. Vous pouvez cliquer sur image:button_plus_sign_round.png[""] Pour afficher et masquer les en-têtes de colonne, ou pour ajouter 2 en-têtes supplémentaires pour « Nom d'utilisateur » et « Type ».
+Cette capture d'écran affiche les en-têtes de colonne/champ par défaut. Vous pouvez cliquer sur image:button_plus_sign_round.png["le bouton signe plus"] Pour afficher et masquer les en-têtes de colonne, ou pour ajouter 2 en-têtes supplémentaires pour « Nom d'utilisateur » et « Type ».
 
 Si vous recherchez des emplois spécifiques, vous pouvez :
 
@@ -56,13 +57,13 @@ Si vous recherchez des emplois spécifiques, vous pouvez :
 
 
 
-Notez que cette page est automatiquement actualisée toutes les 15 minutes afin que vous puissiez toujours voir les résultats d'état des travaux les plus récents. Vous pouvez cliquer sur image:button_refresh.png["Bouton Rafraîchir"] pour mettre immédiatement à jour la page.
+Notez que cette page est automatiquement actualisée toutes les 15 minutes afin que vous puissiez toujours voir les résultats d'état des travaux les plus récents. Vous pouvez cliquer sur image:button_refresh.png["Actualisez"] pour mettre immédiatement à jour la page.
 
 
 
 === Téléchargez les résultats de la surveillance des travaux sous forme de rapport
 
-Si vous voulez télécharger le contenu de la page principale de surveillance des travaux sous forme de rapport après l'avoir raffiné, cliquez sur le bouton image:button_download.png["Bouton Télécharger"] bouton. Cloud Backup génère un fichier .CSV que vous pouvez consulter et envoyer à d'autres groupes si nécessaire. Le fichier .CSV contient jusqu'à 10,000 lignes de données.
+Si vous voulez télécharger le contenu de la page principale de surveillance des travaux sous forme de rapport après l'avoir raffiné, cliquez sur le bouton image:button_download.png["Télécharger"] bouton. Cloud Backup génère un fichier .CSV que vous pouvez consulter et envoyer à d'autres groupes si nécessaire. Le fichier .CSV contient jusqu'à 10,000 lignes de données.
 
 
 

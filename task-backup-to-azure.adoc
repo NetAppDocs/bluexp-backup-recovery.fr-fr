@@ -50,6 +50,9 @@ image:screenshot_backup_provider_settings_azure.png["Une copie d'écran présent
 La règle par défaut sauvegarde les volumes tous les jours et conserve les 30 copies de sauvegarde les plus récentes de chaque volume. Passage à des sauvegardes toutes les heures, tous les jours, toutes les semaines, tous les mois ou tous les ans vous pouvez également sélectionner l'une des règles définies par le système qui offrent plus d'options. Vous pouvez également modifier le nombre de copies de sauvegarde à conserver.
 
 [role="quick-margin-para"]
+Si vous utilisez ONTAP 9.12.1 ou version ultérieure, vous pouvez choisir de protéger vos sauvegardes contre les suppressions et les attaques par ransomware en configurant l'un des paramètres _DataLock et ransomware protection_. link:concept-cloud-backup-policies.html["En savoir plus sur les paramètres de configuration des règles de sauvegarde dans le cloud"^].
+
+[role="quick-margin-para"]
 Les sauvegardes sont stockées dans le niveau d'accès Cool par défaut. Si votre cluster utilise ONTAP 9.10.1 ou version supérieure, vous pouvez transférer les sauvegardes vers le stockage Azure Archive après un certain nombre de jours afin d'optimiser les coûts. link:concept-cloud-backup-policies.html["En savoir plus sur les paramètres de configuration des règles de sauvegarde dans le cloud"^].
 
 [role="quick-margin-para"]
@@ -82,7 +85,7 @@ Vérifiez ou ajoutez des autorisations au connecteur:: Pour utiliser la fonction
 +
 --
 .Avant de commencer
-* Vous devez enregistrer le fournisseur de ressources Azure Synapse Analytics auprès de votre abonnement. https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider["Découvrez comment enregistrer ce fournisseur de ressources pour votre abonnement"^]. Vous devez être l'abonnement *propriétaire* ou *Contributeur* pour enregistrer le fournisseur de ressources.
+* Vous devez enregistrer le fournisseur de ressources d'analyse d'Azure Synapse (appelé « Microsoft.Synapse ») auprès de votre abonnement. https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider["Découvrez comment enregistrer ce fournisseur de ressources pour votre abonnement"^]. Vous devez être l'abonnement *propriétaire* ou *Contributeur* pour enregistrer le fournisseur de ressources.
 * Le port 1433 doit être ouvert pour la communication entre le connecteur et les services SQL d'Azure Synapse.
 +
 .Étapes
@@ -197,6 +200,7 @@ image:screenshot_backup_provider_settings_azure.png["Une copie d'écran présent
 +
 .. Entrez le nom de la stratégie par défaut. Il n'est pas nécessaire de modifier le nom.
 .. Définissez le programme de sauvegarde et choisissez le nombre de sauvegardes à conserver. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings["Consultez la liste des règles que vous pouvez choisir"^].
+.. Si vous utilisez ONTAP 9.12.1 ou version ultérieure, vous pouvez choisir de protéger vos sauvegardes contre les suppressions et les attaques par ransomware en configurant l'un des paramètres _DataLock et ransomware protection_. _DataLock_ protège vos fichiers de sauvegarde contre la modification ou la suppression, et _Attack protection_ analyse vos fichiers de sauvegarde pour rechercher la preuve d'une attaque par ransomware dans vos fichiers de sauvegarde. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["En savoir plus sur les paramètres DataLock disponibles"^].
 .. Si vous utilisez ONTAP 9.10.1 ou version ultérieure, vous pouvez choisir de transférer les sauvegardes vers le stockage Azure Archive après un certain nombre de jours pour optimiser les coûts. link:reference-azure-backup-tiers.html["En savoir plus sur l'utilisation des niveaux d'archivage"].
 +
 image:screenshot_backup_policy_azure.png["Capture d'écran indiquant les paramètres de Cloud Backup dans lesquels vous pouvez choisir la planification et la conservation des sauvegardes."]

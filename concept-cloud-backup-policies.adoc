@@ -51,9 +51,11 @@ Notez que les sauvegardes annuelles sont automatiquement supprimées du système
 
 == Protection des données par verrouillage et protection contre les ransomwares
 
-Cloud Backup prend en charge le verrouillage des données et la protection contre les attaques par ransomware pour vos sauvegardes de volumes. Ces fonctionnalités vous permettent de verrouiller vos fichiers de sauvegarde et de les analyser afin de détecter un ransomware possible dans les fichiers de sauvegarde. Il s'agit d'un paramètre facultatif que vous pouvez définir dans vos stratégies de sauvegarde lorsque vous souhaitez bénéficier d'une protection supplémentaire pour vos sauvegardes de volume d'un cluster.
+Cloud Backup prend en charge le verrouillage des données et la protection contre les attaques par ransomware pour vos sauvegardes de volumes. Ces fonctionnalités vous permettent de verrouiller vos fichiers de sauvegarde et de les analyser afin de détecter un ransomware possible sur les fichiers de sauvegarde. Il s'agit d'un paramètre facultatif que vous pouvez définir dans vos stratégies de sauvegarde lorsque vous souhaitez bénéficier d'une protection supplémentaire pour vos sauvegardes de volume d'un cluster.
 
 Ces deux fonctionnalités protègent vos fichiers de sauvegarde, afin que vous puissiez toujours disposer d'un fichier de sauvegarde valide à même de récupérer vos données en cas d'attaque par ransomware lorsqu'elles sont présentes sur vos données source. Il est également utile de respecter certaines exigences réglementaires dans lesquelles les sauvegardes doivent être verrouillées et conservées pendant un certain temps. Lorsque le verrouillage des données et la protection contre les attaques par ransomware sont activés, le compartiment cloud provisionné dans le cadre de l'activation de Cloud Backup active le verrouillage des objets et le contrôle des versions des objets.
+
+https://bluexp.netapp.com/blog/cbs-blg-the-bluexp-feature-that-protects-backups-from-ransomware["Consultez le blog sur la protection contre les attaques par ransomware et les attaques par ransomware pour en savoir plus"^].
 
 Cette fonction n'assure pas la protection de vos volumes source, uniquement pour les sauvegardes de ces volumes source. Faites confiance à NetApp https://cloud.netapp.com/ci-sde-plp-cloud-secure-info-trial?hsCtaTracking=fefadff4-c195-4b6a-95e3-265d8ce7c0cd%7Cb696fdde-c026-4007-a39e-5e986c4d27c6["Cloud Insights et Cloud Secure"^], ou une partie du https://docs.netapp.com/us-en/ontap/anti-ransomware/index.html["Protections contre les ransomwares fournies par ONTAP"^] pour protéger vos volumes source.
 
@@ -110,48 +112,84 @@ Vous pouvez à tout moment exécuter une analyse de protection par ransomware à
 
 Chaque stratégie de sauvegarde fournit une section pour _DataLock et protection contre les attaques par ransomware_ que vous pouvez appliquer à vos fichiers de sauvegarde.
 
-image:screenshot_datalock_ransomware_settings.png["Capture d'écran des paramètres DataLock et protection contre les attaques par ransomware lors de la création d'une stratégie de sauvegarde."]
+image:screenshot_datalock_ransomware_settings.png["Capture d'écran des paramètres DataLock et protection contre les attaques par ransomware pour AWS, Azure et StorageGRID lors de la création d'une stratégie de sauvegarde."]
 
 Vous pouvez choisir parmi les paramètres suivants pour chaque stratégie de sauvegarde :
 
-* Aucun (par défaut)
+[role="tabbed-block"]
+====
+.AWS
+--
+* *Aucun* (par défaut)
 +
 La protection contre les verrous et les attaques par ransomware sont désactivées.
 
-* Gouvernance (non disponible avec StorageGRID)
+* *Gouvernance*
 +
-DataLock est défini sur _Governance_ mode où les utilisateurs avec des autorisations spécifiques (link:concept-cloud-backup-policies.html#requirements["voir ci-dessous"]) peut écraser ou supprimer des fichiers de sauvegarde pendant la période de rétention. La protection contre les ransomwares est activée.
+DataLock est défini sur le mode _Governance_ où les utilisateurs utilisent `s3:BypassGovernanceRetention` autorisation (link:concept-cloud-backup-policies.html#requirements["voir ci-dessous"]) peut écraser ou supprimer des fichiers de sauvegarde pendant la période de rétention. La protection contre les ransomwares est activée.
 
-* La conformité
+* * Conformité*
 +
 DataLock est défini sur le mode _Compliance_, où aucun utilisateur ne peut écraser ou supprimer des fichiers de sauvegarde pendant la période de rétention. La protection contre les ransomwares est activée.
 
 
 
+--
+.Azure
+--
+* *Aucun* (par défaut)
++
+La protection contre les verrous et les attaques par ransomware sont désactivées.
 
-NOTE: La fonction de verrouillage d'objet StorageGRID S3 fournit un mode de verrouillage de données unique équivalent au mode de conformité. Un mode de gouvernance équivalent n'est pas pris en charge. Par conséquent, aucun utilisateur n'a la possibilité de contourner les paramètres de rétention, d'écraser les sauvegardes protégées ou de supprimer les sauvegardes verrouillées.
+* *Déverrouillé*
++
+Les fichiers de sauvegarde sont protégés pendant la période de conservation. La période de rétention peut être augmentée ou diminuée. Utilisé généralement pendant 24 heures pour tester le système. La protection contre les ransomwares est activée.
 
+* *Verrouillé*
++
+Les fichiers de sauvegarde sont protégés pendant la période de conservation. La période de rétention peut être augmentée, mais elle ne peut pas être réduite. Respecte les normes en vigueur. La protection contre les ransomwares est activée.
+
+
+
+--
+.StorageGRID
+--
+* *Aucun* (par défaut)
++
+La protection contre les verrous et les attaques par ransomware sont désactivées.
+
+* * Conformité*
++
+DataLock est défini sur le mode _Compliance_, où aucun utilisateur ne peut écraser ou supprimer des fichiers de sauvegarde pendant la période de rétention. La protection contre les ransomwares est activée.
+
+
+
+--
+====
 
 
 === Environnements de travail et fournisseurs de stockage objet pris en charge
 
 Vous pouvez activer la protection des données et des attaques par ransomware sur les volumes ONTAP à partir de plusieurs environnements de travail lorsque vous utilisez le stockage objet dans plusieurs fournisseurs de cloud public et privé. D'autres fournisseurs de cloud seront ajoutés dans les prochaines versions.
 
-[cols="50,50"]
+[cols="55,45"]
 |===
 | Environnement de travail source | Destination du fichier de sauvegarde ifdef::aws[] 
 
 
-| Cloud Volumes ONTAP dans AWS | Amazon S3 endif::aws[] ifdef::Azure[] endif::Azure[] ifdef::gcp[] endif::gcp[] 
+| Cloud Volumes ONTAP dans AWS | Amazon S3 endif::aws[] ifdef::Azure[] 
 
 
-| Système ONTAP sur site | Ifdef::aws[] Amazon S3 endif::aws[] ifdef::Azure[] endif::Azure[] ifdef::gcp[] fdef::gcp[] dnif::gcp[] NetApp StorageGRID 
+| Cloud Volumes ONTAP dans Azure | Azure Blob endif::Azure[] ifdef::gcp[] endif::gcp[] 
+
+
+| Système ONTAP sur site | Ifdef::aws[] Amazon S3 endif::aws[] ifdef::Azure[] Azure Blob endif::Azure[] ifdef::gcp[] endif::gcp[] fdef::gcp[] NetApp StorageGRID 
 |===
 
 
 === De formation
 
-* Vos clusters doivent exécuter ONTAP 9.11.1 ou version supérieure
+* Vos clusters doivent exécuter ONTAP 9.11.1 ou version ultérieure (9.12.1 dans le cas d'Azure)
 * Vous devez utiliser BlueXP 3.9.21 ou supérieur
 
 
@@ -200,6 +238,17 @@ https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-permissions-aw
 
 endif::aws[]
 
+ifdef::azure[]
+
+* Pour Azure :
++
+** Ce connecteur peut être déployé dans le cloud ou sur site
+
+
+
+
+endif::azure[]
+
 * Pour StorageGRID :
 +
 ** Le connecteur doit être déployé sur votre site (il peut être installé sur un site avec ou sans accès Internet)
@@ -213,7 +262,8 @@ endif::aws[]
 === Restrictions
 
 * Data Lock et protection contre les attaques par ransomware n'est pas disponible si vous avez configuré le stockage d'archivage dans la stratégie de sauvegarde.
-* L'option DataLock que vous sélectionnez lors de l'activation de Cloud Backup (gouvernance ou conformité) doit être utilisée pour toutes les stratégies de sauvegarde de ce cluster. Vous ne pouvez pas utiliser le verrouillage des modes gouvernance et conformité sur un seul cluster.
+* L'option DataLock que vous sélectionnez lors de l'activation de Cloud Backup doit être utilisée pour toutes les stratégies de sauvegarde pour ce cluster.
+* Vous ne pouvez pas utiliser les deux modes DataLock sur un seul cluster.
 * Si vous activez DataLock, toutes les sauvegardes de volume seront verrouillées. Vous ne pouvez pas combiner des sauvegardes de volume verrouillées et non verrouillées pour un même cluster.
 * La protection des données et des attaques par ransomware est applicable pour les nouvelles sauvegardes de volumes grâce à une stratégie de sauvegarde avec DataLock et protection contre les attaques par ransomware activées. Vous ne pouvez pas activer cette fonctionnalité après l'activation de Cloud Backup.
 
@@ -234,7 +284,7 @@ ifdef::aws[]
 
 * Dans AWS, les sauvegardes commencent dans la classe de stockage _Standard_ et la transition vers la classe de stockage _Standard-Infrequent Access_ après 30 jours.
 +
-Si votre cluster utilise ONTAP 9.10.1 ou version ultérieure, vous pouvez choisir de hiérarchiser les anciennes sauvegardes vers _S3 Glacier_ ou le stockage _S3 Glacier Deep Archive_ après un certain nombre de jours pour optimiser les coûts. link:reference-aws-backup-tiers.html["En savoir plus sur le stockage d'archives AWS"^].
+Si votre cluster utilise ONTAP 9.10.1 ou version ultérieure, vous pouvez hiérarchiser les anciennes sauvegardes sur le stockage _S3 Glacier_ ou _S3 Glacier Deep Archive_. link:reference-aws-backup-tiers.html["En savoir plus sur le stockage d'archives AWS"^].
 
 +
 Notez que si vous choisissez _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans votre première stratégie de sauvegarde lors de l'activation de Cloud Backup, ce Tier sera le seul niveau d'archivage disponible pour les futures stratégies de sauvegarde de ce cluster. Si vous sélectionnez aucun niveau d'archivage dans votre première stratégie de sauvegarde, alors _S3 Glacier_ sera votre seule option d'archivage pour les futures stratégies.
@@ -247,7 +297,7 @@ ifdef::azure[]
 
 * Dans Azure, les sauvegardes sont associées au niveau d'accès _Cool_.
 +
-Si votre cluster utilise ONTAP 9.10.1 ou version ultérieure, vous pouvez choisir de classer les anciennes sauvegardes vers _Azure Archive_ Storage au bout d'un certain nombre de jours afin d'optimiser les coûts. link:reference-azure-backup-tiers.html["En savoir plus sur le stockage des archives Azure"^].
+Si votre cluster utilise ONTAP 9.10.1 ou version ultérieure, vous pouvez classer les anciennes sauvegardes vers _Azure Archive_ Storage. link:reference-azure-backup-tiers.html["En savoir plus sur le stockage des archives Azure"^].
 
 
 
@@ -257,7 +307,7 @@ ifdef::gcp[]
 
 * Dans GCP, les sauvegardes sont associées à la classe de stockage _Standard_.
 +
-Si votre cluster sur site utilise ONTAP 9.12.1 ou version ultérieure, vous pouvez choisir de transférer d'anciennes sauvegardes vers le stockage _Archive_ dans l'interface utilisateur de sauvegarde dans le cloud au bout d'un certain nombre de jours afin d'optimiser les coûts. (Cette fonctionnalité n'est pas disponible actuellement pour les systèmes Cloud Volumes ONTAP.) link:reference-google-backup-tiers.html["En savoir plus sur le stockage des archives Google"^].
+Si votre cluster sur site utilise ONTAP 9.12.1 ou version ultérieure, vous pouvez choisir de transférer d'anciennes sauvegardes vers le stockage _Archive_ dans l'interface utilisateur de sauvegarde dans le cloud au bout d'un certain nombre de jours afin d'optimiser les coûts. link:reference-google-backup-tiers.html["En savoir plus sur le stockage des archives Google"^].
 
 
 
@@ -265,6 +315,20 @@ endif::gcp[]
 
 * Dans StorageGRID, les sauvegardes sont associées à la classe de stockage _Standard_.
 +
-Si votre cluster sur site utilise ONTAP 9.12.1 ou version ultérieure et que votre système StorageGRID utilise 11.3 ou version ultérieure, vous pouvez archiver les fichiers de sauvegarde les plus anciens dans un stockage d'archivage dans le cloud public. Le stockage d'archivage est actuellement pris en charge uniquement pour les classes de stockage AWS S3. Vous pouvez choisir de hiérarchiser les sauvegardes dans AWS _S3 Glacier_ ou _S3 Glacier Deep Archive_ stockage après un certain nombre de jours. link:task-backup-onprem-private-cloud.html#preparing-to-archive-older-backup-files-to-public-cloud-storage["En savoir plus sur l'archivage des fichiers de sauvegarde StorageGRID"^].
+Si votre cluster sur site utilise ONTAP 9.12.1 ou version ultérieure et que votre système StorageGRID utilise 11.4 ou version ultérieure, vous pouvez archiver les fichiers de sauvegarde les plus anciens dans un stockage d'archivage dans le cloud public.
 
 
+
+ifdef::aws[]
+
++ ** pour AWS, vous pouvez hiérarchiser les sauvegardes dans le stockage AWS _S3 Glacier_ ou _S3 Glacier Deep Archive_. link:reference-aws-backup-tiers.html["En savoir plus sur le stockage d'archives AWS"^].
+
+endif::aws[]
+
+ifdef::azure[]
+
++ ** pour Azure, vous pouvez transférer les anciennes sauvegardes vers _Azure Archive_ Storage. link:reference-azure-backup-tiers.html["En savoir plus sur le stockage des archives Azure"^].
+
+endif::azure[]
+
++link:task-backup-onprem-private-cloud.html#preparing-to-archive-older-backup-files-to-public-cloud-storage["En savoir plus sur l'archivage des fichiers de sauvegarde StorageGRID"^].

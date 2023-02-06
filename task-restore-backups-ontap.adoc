@@ -83,7 +83,7 @@ Reportez-vous aux étapes de configuration requise et de restauration pour le ty
 
 == Restauration de données ONTAP à l'aide de Browse & Restore
 
-Avant de commencer la restauration d'un volume, d'un dossier ou d'un fichier, vous devez connaître le nom du volume à partir duquel vous souhaitez restaurer, le nom de l'environnement de travail où réside le volume et la date approximative du fichier de sauvegarde à partir duquel vous souhaitez restaurer.
+Avant de commencer à restaurer un volume, un dossier ou un fichier, vous devez connaître le nom du volume à partir duquel vous souhaitez restaurer, le nom de l'environnement de travail et le SVM où réside le volume, ainsi que la date approximative du fichier de sauvegarde à restaurer.
 
 *Remarque :* si le fichier de sauvegarde contenant les données que vous souhaitez restaurer réside dans le stockage d'archives (à partir de ONTAP 9.10.1), l'opération de restauration prendra plus de temps et entraînera un coût. En outre, le cluster de destination doit également exécuter ONTAP 9.10.1 ou version ultérieure pour la restauration du volume, 9.11.1 pour la restauration des fichiers et 9.12.1 pour Google Archive et StorageGRID.
 
@@ -104,6 +104,9 @@ ifdef::gcp[]
 link:reference-google-backup-tiers.html["En savoir plus sur la restauration à partir du stockage d'archivage Google"].
 
 endif::gcp[]
+
+
+NOTE: La priorité élevée n'est pas prise en charge lors de la restauration des données depuis Azure vers les systèmes StorageGRID.
 
 
 
@@ -166,7 +169,7 @@ Lorsque vous restaurez un volume à partir d'un fichier de sauvegarde, Cloud Bac
 
 image:diagram_browse_restore_volume.png["Schéma illustrant le flux d'exécution d'une opération de restauration de volume à l'aide de Browse  ; Restore."]
 
-Comme vous pouvez le voir, vous devez connaître le nom de l'environnement de travail, le nom du volume et la date du fichier de sauvegarde pour pouvoir restaurer un volume.
+Comme vous pouvez le voir, vous devez connaître le nom de l'environnement de travail, la machine virtuelle de stockage, le nom du volume et la date du fichier de sauvegarde pour effectuer la restauration d'un volume.
 
 La vidéo suivante montre une présentation rapide de la restauration d'un volume :
 
@@ -218,7 +221,7 @@ endif::gcp[]
 
 * Lors de la restauration à partir de StorageGRID, entrez le FQDN du serveur StorageGRID et le port que ONTAP doit utiliser pour la communication HTTPS avec StorageGRID, sélectionnez la clé d'accès et la clé secrète nécessaires pour accéder au stockage objet, et l'IPspace dans le cluster ONTAP où le volume de destination résidera.
 +
-.. Entrez le nom à utiliser pour le volume restauré, puis sélectionnez le VM de stockage et l'agrégat dans lequel le volume sera stocké. Par défaut, *<source_volume_name>_restore* est utilisé comme nom de volume.
+.. Entrez le nom à utiliser pour le volume restauré, puis sélectionnez le VM de stockage et l'agrégat dans lequel le volume sera stocké. Lors de la restauration d'un volume FlexGroup, vous pouvez choisir plusieurs agrégats. Par défaut, *<source_volume_name>_restore* est utilisé comme nom de volume.
 +
 image:screenshot_restore_new_vol_name.png["Capture d'écran indiquant le nom du nouveau volume à restaurer."]
 
@@ -422,7 +425,7 @@ Vous disposez de quelques options pour l'emplacement de restauration des dossier
 
 Vous pouvez restaurer un volume, un dossier ou des fichiers à partir d'un fichier de sauvegarde ONTAP à l'aide de la fonction Rechercher et restaurer. La fonction de recherche et restauration vous permet de rechercher un volume, un dossier ou un fichier spécifique à partir de toutes les sauvegardes stockées dans le stockage cloud pour un fournisseur spécifique, puis d'effectuer une restauration. Il n'est pas nécessaire de connaître le nom exact de l'environnement de travail ou le nom du volume ; la recherche s'effectue via tous les fichiers de sauvegarde de volume.
 
-L'opération de recherche examine également toutes les copies Snapshot locales existant pour vos volumes ONTAP. Étant donné que la restauration des données à partir d'une copie Snapshot locale peut être plus rapide et moins coûteuse que la restauration à partir d'un fichier de sauvegarde, il est possible de restaurer les données à partir d'une copie Snapshot. Vous pouvez restaurer l'instantané en tant que nouveau volume à partir de la page Volume Details (Détails du volume) de la toile (pas à partir de Cloud Backup).
+L'opération de recherche examine également toutes les copies Snapshot locales existant pour vos volumes ONTAP. Étant donné que la restauration des données à partir d'une copie Snapshot locale peut être plus rapide et moins coûteuse que la restauration à partir d'un fichier de sauvegarde, il est possible de restaurer les données à partir d'une copie Snapshot. Vous pouvez restaurer la copie Snapshot en tant que nouveau volume https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes["À partir de la page Détails du volume de la zone de travail"^] (Pas depuis Cloud Backup).
 
 Lorsque vous restaurez un volume à partir d'un fichier de sauvegarde, Cloud Backup crée un _nouveau_ volume en utilisant les données de la sauvegarde. Vous pouvez restaurer les données en tant que volume dans l'environnement de travail d'origine ou vers un autre environnement de travail situé dans le même compte cloud que l'environnement de travail source. Vous pouvez également restaurer des volumes sur un système ONTAP sur site.
 
@@ -452,6 +455,7 @@ endif::gcp[]
 ====
 * La restauration au niveau des dossiers n'est pas prise en charge actuellement si le fichier de sauvegarde a été configuré avec DataLock & ransomware. Dans ce cas, vous pouvez restaurer tout le volume à partir du fichier de sauvegarde, puis accéder au dossier et aux fichiers dont vous avez besoin.
 * La restauration au niveau des dossiers n'est actuellement pas prise en charge si le fichier de sauvegarde réside dans le stockage d'archives. Dans ce cas, vous pouvez restaurer le dossier à partir d'un fichier de sauvegarde plus récent qui n'a pas été archivé, ou vous pouvez restaurer le volume entier à partir de la sauvegarde archivée, puis accéder au dossier et aux fichiers dont vous avez besoin.
+* La priorité de restauration élevée n'est pas prise en charge lors de la restauration des données depuis Azure vers les systèmes StorageGRID.
 
 
 ====
@@ -542,7 +546,7 @@ ifdef::azure[]
 
 * Configuration d'Azure :
 +
-** Vous devez enregistrer le fournisseur de ressources Azure Synapse Analytics auprès de votre abonnement. https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider["Découvrez comment enregistrer ce fournisseur de ressources pour votre abonnement"^]. Vous devez être l'abonnement *propriétaire* ou *Contributeur* pour enregistrer le fournisseur de ressources.
+** Vous devez enregistrer le fournisseur de ressources d'analyse d'Azure Synapse (appelé « Microsoft.Synapse ») auprès de votre abonnement. https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider["Découvrez comment enregistrer ce fournisseur de ressources pour votre abonnement"^]. Vous devez être l'abonnement *propriétaire* ou *Contributeur* pour enregistrer le fournisseur de ressources.
 ** Des autorisations spécifiques pour Azure Synapse Workspace et Data Lake Storage Account doivent être ajoutées au rôle utilisateur qui fournit à BlueXP des autorisations. link:task-backup-onprem-to-azure.html#verify-or-add-permissions-to-the-connector["Assurez-vous que toutes les autorisations sont correctement configurées"].
 +
 Notez que si vous utilisiez déjà Cloud Backup avec un connecteur que vous avez configuré auparavant, vous devrez désormais ajouter les autorisations pour les comptes de stockage Azure Synapse Workspace et Data Lake au rôle utilisateur BlueXP. Ils sont nouveaux et sont requis pour la recherche et la restauration.
@@ -684,7 +688,7 @@ Notez que les résultats identifient également les copies Snapshot de volume lo
 
 . Sélectionnez l'emplacement de destination où vous souhaitez restaurer le volume, le dossier ou le(s) fichier(s) et cliquez sur *Restaurer*.
 +
-** Pour les volumes, vous pouvez sélectionner l'environnement de travail de destination d'origine ou sélectionner un autre environnement de travail.
+** Pour les volumes, vous pouvez sélectionner l'environnement de travail de destination d'origine ou sélectionner un autre environnement de travail. Lors de la restauration d'un volume FlexGroup, vous pouvez choisir plusieurs agrégats.
 ** Pour les dossiers, vous pouvez restaurer l'emplacement d'origine ou sélectionner un autre emplacement, y compris l'environnement de travail, le volume et le dossier.
 ** Pour les fichiers, vous pouvez restaurer l'emplacement d'origine ou sélectionner un autre emplacement, y compris l'environnement de travail, le volume et le dossier. Lorsque vous sélectionnez l'emplacement d'origine, vous pouvez choisir d'écraser le ou les fichiers source ou de créer de nouveaux fichiers.
 +

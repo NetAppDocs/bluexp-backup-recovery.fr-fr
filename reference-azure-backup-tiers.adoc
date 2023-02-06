@@ -44,6 +44,11 @@ Combien coûte la restauration des données à partir d'Azure Archive ?:: Vous p
 Chaque méthode propose des frais de récupération différents par Go et par demande. Pour en savoir plus sur la tarification d'Azure Archive par région Azure, rendez-vous sur la https://azure.microsoft.com/en-us/pricing/details/storage/blobs/["Page tarifaire d'Azure"^].
 
 --
+
+
+
+NOTE: La priorité élevée n'est pas prise en charge lors de la restauration des données depuis Azure vers les systèmes StorageGRID.
+
 Quel est le délai de restauration des données archivées dans Azure Archive ?:: La durée de restauration est fonction de deux parties :
 +
 --

@@ -51,7 +51,10 @@ image:screenshot_backup_provider_settings_gcp.png["Une copie d'écran présente 
 La règle par défaut sauvegarde les volumes tous les jours et conserve les 30 copies de sauvegarde les plus récentes de chaque volume. Passage à des sauvegardes toutes les heures, tous les jours, toutes les semaines, tous les mois ou tous les ans vous pouvez également sélectionner l'une des règles définies par le système qui offrent plus d'options. Vous pouvez également modifier le nombre de copies de sauvegarde à conserver.
 
 [role="quick-margin-para"]
-image:screenshot_backup_policy_gcp_no_archive.png["Une capture d'écran montre les paramètres de Cloud Backup dans lesquels vous pouvez activer ou désactiver la fonctionnalité, puis choisir la conservation de votre sauvegarde."]
+Les sauvegardes sont stockées dans le stockage standard par défaut. Si votre cluster utilise ONTAP 9.12.1 ou version supérieure, vous pouvez transférer les sauvegardes vers le stockage d'archivage après un certain nombre de jours, afin d'optimiser les coûts. link:concept-cloud-backup-policies.html["En savoir plus sur les paramètres de configuration des règles de sauvegarde dans le cloud"^].
+
+[role="quick-margin-para"]
+image:screenshot_backup_policy_gcp.png["Une capture d'écran montre les paramètres de Cloud Backup dans lesquels vous pouvez activer ou désactiver la fonctionnalité, puis choisir la conservation de votre sauvegarde."]
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinq"] Sélectionnez les volumes à sauvegarder
 [role="quick-margin-para"]
@@ -200,8 +203,9 @@ Notez que le projet doit disposer d'un compte de service avec le rôle d'adminis
 +
 .. Entrez le nom de la stratégie par défaut. Il n'est pas nécessaire de modifier le nom.
 .. Définissez le programme de sauvegarde et choisissez le nombre de sauvegardes à conserver. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings["Consultez la liste des règles que vous pouvez choisir"^].
+.. Si vous utilisez ONTAP 9.12.1 ou version ultérieure, vous pouvez choisir de transférer les sauvegardes vers le stockage d'archivage après un certain nombre de jours afin d'optimiser les coûts. link:concept-cloud-backup-policies.html["En savoir plus sur les paramètres de configuration des règles de sauvegarde dans le cloud"^].
 +
-image:screenshot_backup_policy_gcp_no_archive.png["Une capture d'écran montre les paramètres de Cloud Backup dans lesquels vous pouvez activer ou désactiver la fonctionnalité, puis choisir la conservation de votre sauvegarde."]
+image:screenshot_backup_policy_gcp.png["Une capture d'écran montre les paramètres de Cloud Backup dans lesquels vous pouvez activer ou désactiver la fonctionnalité, puis choisir la conservation de votre sauvegarde."]
 
 
 
