@@ -38,6 +38,11 @@ Les datastores et les machines virtuelles protégés à l'aide du plug-in SnapCe
 *À propos de cette tâche*
 
 * Seuls les datastores NFS sont affichés.
+
+
+
+NOTE: Les datastores VMFS basés sur iSCSI/FC/NVMe et vVOls ne sont pas pris en charge.
+
 * Seuls les datastores pour lesquels au moins une sauvegarde réussie a été effectuée dans le plug-in SnapCenter pour VMware vSphere sont affichés.
 
 

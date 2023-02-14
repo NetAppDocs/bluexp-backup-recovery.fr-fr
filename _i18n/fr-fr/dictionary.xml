@@ -3511,4 +3511,5 @@
   <block id="92a755b6d9fa88006d2c9e3907a504a5" category="list-text">Pour les volumes, vous pouvez sélectionner l'environnement de travail de destination d'origine ou sélectionner un autre environnement de travail. Lors de la restauration d'un volume FlexGroup, vous pouvez choisir plusieurs agrégats.</block>
   <block id="de0ace3ca6a340bec96b9fe94ee00c37" category="paragraph">Les sauvegardes sont stockées dans le stockage standard par défaut. Si votre cluster utilise ONTAP 9.12.1 ou version supérieure, vous pouvez transférer les sauvegardes vers le stockage d'archivage après un certain nombre de jours, afin d'optimiser les coûts. <block ref="87ffafedb97d3b50ea58ef296117bbac" category="inline-link-macro-rx"></block>.</block>
   <block id="0a0a678be4028579aac1f022ed126971" category="paragraph"><block ref="0a0a678be4028579aac1f022ed126971" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3ff977a010b4bffe09adf01a3ba75903" category="admonition">Les datastores VMFS basés sur iSCSI/FC/NVMe et vVOls ne sont pas pris en charge.</block>
 </blocks>
