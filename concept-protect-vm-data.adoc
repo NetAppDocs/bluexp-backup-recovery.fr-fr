@@ -31,6 +31,7 @@ Avant de commencer à sauvegarder des datastores et des machines virtuelles sur 
 
 * ONTAP 9.8 ou version ultérieure
 * BlueXP 3.9 ou version ultérieure
+* Seuls les datastores NFS sont pris en charge. Les datastores VMFS basés sur iSCSI/FC/NVMe et vvols ne sont pas pris en charge.
 * Au moins une sauvegarde doit avoir été incluse dans le plug-in SnapCenter pour VMware vSphere 4.6P1.
 * Au moins une règle quotidienne, hebdomadaire ou mensuelle du plug-in SnapCenter pour VMware vSphere sans étiquette ni même étiquette que celle de la politique relative aux machines virtuelles dans BlueXP.
 * Dans le cas d'une règle prédéfinie, le niveau de planification doit être le même pour le datastore dans le plug-in SnapCenter pour VMware vSphere et dans le cloud.

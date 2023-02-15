@@ -1813,8 +1813,6 @@
   <block id="c592537d7c4342754740fa8b36640686" category="section-title">Afficher les datastores et les machines virtuelles</block>
   <block id="3fad99d665e8244fc38412e798c501af" category="paragraph">Les datastores et les machines virtuelles protégés à l'aide du plug-in SnapCenter enregistré pour VMware vSphere sont affichés.</block>
   <block id="78166ce4ccceeedfbf6aeb8682851072" category="paragraph">*À propos de cette tâche*</block>
-  <block id="6b0050118b87748ccc2e6422181d4463" category="list-text">Seuls les datastores NFS sont affichés.</block>
-  <block id="4a60f4a892ee2b36c77a92d2aa8f7a15" category="list-text">Seuls les datastores pour lesquels au moins une sauvegarde réussie a été effectuée dans le plug-in SnapCenter pour VMware vSphere sont affichés.</block>
   <block id="9330e7377c5511f70bfc35493714892a" category="list-text">Dans l'interface utilisateur BlueXP, cliquez sur *protection* &gt; *sauvegarde et récupération* &gt; *machines virtuelles* &gt; *Paramètres* &gt; *SnapCenter Plug-in pour VMware vSphere*.</block>
   <block id="21d67fc25940b8b3b749e37ad8e29e79" category="list-text">Cliquez sur le plug-in SnapCenter pour VMware vSphere pour lequel vous souhaitez voir les datastores et les machines virtuelles.</block>
   <block id="b4aa547260f4fe266f03ec3a845576a5" category="section-title">Modifiez le plug-in SnapCenter pour l'instance VMware vSphere</block>
@@ -3511,5 +3509,5 @@
   <block id="92a755b6d9fa88006d2c9e3907a504a5" category="list-text">Pour les volumes, vous pouvez sélectionner l'environnement de travail de destination d'origine ou sélectionner un autre environnement de travail. Lors de la restauration d'un volume FlexGroup, vous pouvez choisir plusieurs agrégats.</block>
   <block id="de0ace3ca6a340bec96b9fe94ee00c37" category="paragraph">Les sauvegardes sont stockées dans le stockage standard par défaut. Si votre cluster utilise ONTAP 9.12.1 ou version supérieure, vous pouvez transférer les sauvegardes vers le stockage d'archivage après un certain nombre de jours, afin d'optimiser les coûts. <block ref="87ffafedb97d3b50ea58ef296117bbac" category="inline-link-macro-rx"></block>.</block>
   <block id="0a0a678be4028579aac1f022ed126971" category="paragraph"><block ref="0a0a678be4028579aac1f022ed126971" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="3ff977a010b4bffe09adf01a3ba75903" category="admonition">Les datastores VMFS basés sur iSCSI/FC/NVMe et vVOls ne sont pas pris en charge.</block>
+  <block id="8453fab1acf37cb3dad50bd528b75148" category="list-text">Seuls les datastores NFS sont pris en charge. Les datastores VMFS basés sur iSCSI/FC/NVMe et vvols ne sont pas pris en charge.</block>
 </blocks>
