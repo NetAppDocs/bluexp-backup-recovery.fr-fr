@@ -18,26 +18,23 @@ En cas de perte de données, vous pouvez restaurer les fichiers de données et n
 
 
 
-== Préscripts et postscripts
+== Restaurez la base de données SAP HANA cloud native
 
-Vous pouvez fournir des scripts prescripteurs, des scripts postaux et des scripts d'exit pendant la création d'une stratégie. Ces scripts sont exécutés sur l'hôte HANA pendant l'opération de restauration.
+*Ce dont vous avez besoin*
 
-Le format pris en charge pour les scripts est .sh, le script python, le script perl, etc.
-
-Le prescripteur et le PostScript devraient être enregistrés par l'administrateur hôte dans `/opt/NetApp/snapcenter/scc/etc/allowed_commands.config file``
-
-`[root@scspa2622265001 etc]# cat allowed_commands.config
-command: mount
-command: umount
-command: /mnt/scripts/pre_script.sh
-command: /mnt/scripts/post_script.sh`
+. Le système SAP HANA doit être dans un état arrêté.
+. Vous pouvez fournir un prescripteur pour arrêter le système SAP HANA.
 
 
+*Étapes*
 
-== Variables environnementales
-
+. Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à la base de données à restaurer et cliquer sur *Afficher les détails*.
+. Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à la sauvegarde de données à utiliser pour la restauration et cliquer sur *Restaurer*.
+. Dans la page *Restore System*, entrez les scripts. link:task-backup-cloud-native-sap-hana-data.html#prescripts-and-postscripts["En savoir plus ."]
++
 Pour le workflow de restauration, les variables d'environnement suivantes sont disponibles dans le cadre du programme prescripteur et PostScript.
 
++
 |===
 | Variable d'environnement | Description 
 
@@ -69,21 +66,6 @@ OSDBUser
 OSDBUser configuré pour la base de données HANA
 
 |===
-
-
-== Restaurez la base de données SAP HANA cloud native
-
-*Ce dont vous avez besoin*
-
-. Le système SAP HANA doit être dans un état arrêté.
-. Vous pouvez fournir un prescripteur pour arrêter le système SAP HANA.
-
-
-*Étapes*
-
-. Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à la base de données à restaurer et cliquer sur *Afficher les détails*.
-. Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à la sauvegarde de données à utiliser pour la restauration et cliquer sur *Restaurer*.
-. Dans la page *Restore System*, entrez les scripts.
 . Cliquez sur *Restaurer*.
 
 

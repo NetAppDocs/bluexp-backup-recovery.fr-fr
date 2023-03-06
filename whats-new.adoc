@@ -110,7 +110,7 @@ Après avoir filtré la page surveillance des travaux pour afficher les travaux 
 
 * Les bases de données SAP HANA
 +
-** Prise en charge de la sauvegarde et de la restauration basées sur des règles des bases de données SAP HANA résidant sur Azure NetApp Files (ANF)
+** Prise en charge de la sauvegarde et de la restauration basées sur des règles des bases de données SAP HANA résidant sur Azure NetApp Files
 ** Prend en charge les règles personnalisées
 
 
