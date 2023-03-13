@@ -21,7 +21,7 @@ Il existe neuf catégories de terminaux définis dans Cloud Backup :
 * backup : gère les opérations de sauvegarde des ressources cloud et sur site et récupère les détails des données de sauvegarde
 * Catalogue : gère la recherche de fichiers dans le catalogue indexé en fonction d'une requête (recherche et restauration)
 * Cloud - récupère des informations sur les différentes ressources du fournisseur de cloud à partir de BlueXP
-* Jobs : gère les entrées de détail de travail dans la base de données BlueXP
+* Tâche : gère les entrées détaillées des tâches dans la base de données BlueXP
 * Licence - récupère la validité de la licence des environnements de travail à partir de BlueXP
 * analyse par ransomware : démarre une analyse par ransomware sur un fichier de sauvegarde spécifique
 * restaurer : permet d'effectuer des opérations de restauration au niveau du volume, du fichier et du dossier

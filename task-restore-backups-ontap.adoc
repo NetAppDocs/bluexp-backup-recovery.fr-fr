@@ -106,7 +106,7 @@ link:reference-google-backup-tiers.html["En savoir plus sur la restauration à p
 endif::gcp[]
 
 
-NOTE: La priorité élevée n'est pas prise en charge lors de la restauration des données depuis Azure vers les systèmes StorageGRID.
+NOTE: La priorité élevée n'est pas prise en charge lors de la restauration de données à partir du stockage d'archives Azure vers les systèmes StorageGRID.
 
 
 
@@ -267,7 +267,7 @@ Si vous n'avez besoin de restaurer que quelques fichiers depuis la sauvegarde d'
 
 Si vous sélectionnez plusieurs fichiers, tous les fichiers sont restaurés sur le même volume de destination que vous choisissez. Si vous souhaitez restaurer des fichiers sur différents volumes, vous devez exécuter le processus de restauration plusieurs fois.
 
-Pour le moment, vous ne pouvez sélectionner et restaurer qu'un seul dossier. Et seuls les fichiers de ce dossier sont restaurés - aucun sous-dossier, ni aucun fichier dans des sous-dossiers, n'est restauré.
+Si vous utilisez ONTAP 9.13.0 ou une version ultérieure, vous pouvez restaurer un dossier avec tous les fichiers et sous-dossiers qu'il contient. Lorsque vous utilisez une version de ONTAP antérieure à 9.13.0, seuls les fichiers de ce dossier sont restaurés - aucun sous-dossier, ni fichier dans des sous-dossiers, ne sont restaurés.
 
 [NOTE]
 ====
@@ -431,6 +431,8 @@ Lorsque vous restaurez un volume à partir d'un fichier de sauvegarde, Cloud Bac
 
 Vous pouvez restaurer des dossiers ou des fichiers vers l'emplacement du volume d'origine, vers un autre volume dans le même environnement de travail ou vers un autre environnement de travail qui utilise le même compte cloud. Vous pouvez également restaurer des dossiers et des fichiers vers un volume situé sur un système ONTAP sur site.
 
+Si vous utilisez ONTAP 9.13.0 ou une version ultérieure, vous pouvez restaurer un dossier avec tous les fichiers et sous-dossiers qu'il contient. Lorsque vous utilisez une version de ONTAP antérieure à 9.13.0, seuls les fichiers de ce dossier sont restaurés - aucun sous-dossier, ni fichier dans des sous-dossiers, ne sont restaurés.
+
 Si le fichier de sauvegarde du volume que vous souhaitez restaurer se trouve dans le stockage d'archives (disponible à partir de ONTAP 9.10.1), l'opération de restauration prend plus de temps et entraînera des coûts supplémentaires. Notez que le cluster de destination doit également exécuter ONTAP 9.10.1 ou version ultérieure pour la restauration de volume, 9.11.1 pour la restauration de fichiers et 9.12.1 pour Google Archive et StorageGRID.
 
 ifdef::aws[]
@@ -455,7 +457,7 @@ endif::gcp[]
 ====
 * La restauration au niveau des dossiers n'est pas prise en charge actuellement si le fichier de sauvegarde a été configuré avec DataLock & ransomware. Dans ce cas, vous pouvez restaurer tout le volume à partir du fichier de sauvegarde, puis accéder au dossier et aux fichiers dont vous avez besoin.
 * La restauration au niveau des dossiers n'est actuellement pas prise en charge si le fichier de sauvegarde réside dans le stockage d'archives. Dans ce cas, vous pouvez restaurer le dossier à partir d'un fichier de sauvegarde plus récent qui n'a pas été archivé, ou vous pouvez restaurer le volume entier à partir de la sauvegarde archivée, puis accéder au dossier et aux fichiers dont vous avez besoin.
-* La priorité de restauration élevée n'est pas prise en charge lors de la restauration des données depuis Azure vers les systèmes StorageGRID.
+* La priorité de restauration élevée n'est pas prise en charge lors de la restauration de données à partir du stockage d'archives Azure vers les systèmes StorageGRID.
 
 
 ====

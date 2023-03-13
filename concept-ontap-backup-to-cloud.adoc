@@ -93,7 +93,11 @@ Notez que les références aux « systèmes ONTAP sur site » incluent les syst�
 
 === Assistance pour les sites sans connexion Internet
 
-Cloud Backup peut être utilisé sur un site sans connectivité Internet (également appelée site « hors ligne » ou « sombre ») pour sauvegarder les données en volume des systèmes ONTAP locaux sur site vers des systèmes StorageGRID NetApp locaux. La restauration de volumes et de fichiers est également prise en charge dans cette configuration. Dans ce cas, vous devrez déployer le connecteur BlueXP (version minimale 3.9.20) sur le site sombre. Voir link:task-backup-onprem-private-cloud.html["La sauvegarde des données ONTAP sur site dans StorageGRID"] pour plus d'informations.
+Cloud Backup peut être utilisé dans un site sans connexion Internet (également appelé site « hors ligne » ou « invisible ») pour la sauvegarde des données de volume. La restauration de volumes et de fichiers est également prise en charge dans cette configuration. Dans ce cas, vous devez déployer le connecteur BlueXP dans le site invisible.
+
+* Vous pouvez sauvegarder les données à partir de systèmes ONTAP locaux sur site vers des systèmes NetApp StorageGRID locaux. Voir link:task-backup-onprem-private-cloud.html["La sauvegarde des données ONTAP sur site dans StorageGRID"] pour plus d'informations.
+* Vous pouvez sauvegarder les données à partir de systèmes Cloud Volumes ONTAP installés dans les régions commerciales AWS et Azure vers Amazon S3 ou Azure Blob. Voir link:task-backup-to-s3.html["Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3"] et link:task-backup-to-azure.html["Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob"].
+
 
 
 
@@ -430,7 +434,7 @@ La lecture des données de votre fournisseur de cloud peut s'accélérer et gén
 * La sauvegarde de volume ad-hoc à l'aide du bouton *Backup Now* n'est pas prise en charge sur les volumes de protection des données.
 * Les configurations SM-BC ne sont pas prises en charge.
 * ONTAP ne prend pas en charge la « fan-out » des relations SnapMirror depuis un volume unique vers plusieurs magasins d'objets. Par conséquent, cette configuration n'est pas prise en charge par Cloud Backup.
-* Le mode WORM/Compliance d'un magasin d'objets est actuellement pris en charge uniquement sur Amazon S3 et StorageGRID. Il s'agit de la fonctionnalité DataLock, qui doit être gérée à l'aide des paramètres Cloud Backup, et non à l'aide de l'interface du fournisseur cloud.
+* Le mode WORM/Compliance sur un magasin d'objets est actuellement pris en charge sur Amazon S3, Azure et StorageGRID. Il s'agit de la fonctionnalité DataLock, qui doit être gérée à l'aide des paramètres Cloud Backup, et non à l'aide de l'interface du fournisseur cloud.
 
 
 
@@ -441,10 +445,16 @@ Ces limitations s'appliquent à la fois aux méthodes de recherche et de restaur
 
 * Parcourir et restaurer peut restaurer jusqu'à 100 fichiers individuels à la fois.
 * La fonction de recherche et de restauration permet de restaurer 1 fichier à la fois.
-* Parcourir et restaurer et Rechercher et restaurer peut restaurer 1 dossier à la fois.
+* Si vous utilisez ONTAP 9.13.0 ou une version ultérieure, Parcourir et restaurer et Rechercher et restaurer peuvent restaurer un dossier avec tous les fichiers et sous-dossiers qu'il contient.
++
+Lorsque vous utilisez une version de ONTAP supérieure à 9.11.1 mais antérieure à 9.13.0, l'opération de restauration peut uniquement restaurer le dossier sélectionné et les fichiers de ce dossier - aucun sous-dossier, ou fichiers dans des sous-dossiers, ne sont restaurés.
+
++
+Si vous utilisez une version de ONTAP antérieure à 9.11.1, la restauration de dossiers n'est pas prise en charge.
+
 * La restauration des répertoires/dossiers n'est actuellement pas prise en charge sur les volumes FlexGroup.
-* La restauration des volumes FlexGroup vers des volumes FlexVol, ou des volumes FlexVol vers des volumes FlexGroup n'est pas prise en charge.
 * Vous ne pouvez pas restaurer des dossiers individuels si le fichier de sauvegarde réside dans le stockage d'archivage.
+* La restauration des volumes FlexGroup vers des volumes FlexVol, ou des volumes FlexVol vers des volumes FlexGroup n'est pas prise en charge.
 * Le fichier en cours de restauration doit être dans la même langue que celle du volume de destination. Vous recevrez un message d'erreur si les langues ne sont pas les mêmes.
-* La priorité de restauration _High_ n'est pas prise en charge lors de la restauration des données depuis Azure vers les systèmes StorageGRID.
+* La priorité de restauration _élevée_ n'est pas prise en charge lors de la restauration de données à partir du stockage d'archives Azure vers les systèmes StorageGRID.
 

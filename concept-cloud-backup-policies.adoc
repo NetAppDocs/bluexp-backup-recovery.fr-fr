@@ -251,8 +251,38 @@ endif::azure[]
 
 * Pour StorageGRID :
 +
-** Le connecteur doit être déployé sur votre site (il peut être installé sur un site avec ou sans accès Internet)
 ** StorageGRID 11.6.0.3 et supérieur sont requis pour la prise en charge complète des capacités de verrouillage de données
+** Le connecteur doit être déployé sur votre site (il peut être installé sur un site avec ou sans accès Internet)
+** Les autorisations S3 suivantes doivent faire partie du rôle IAM qui fournit au connecteur des autorisations :
++
+*** s3:GetObjectVersionTagging
+*** s3:GetBuckeObjectLockConfiguration
+*** s3:GetObjectVersionAcl
+*** s3:PutObjectTagging
+*** s3:DeleteObject
+*** s3:DeleteObjectTagging
+*** s3:GetObjectRetention
+*** s3:DeleteObjectVersionTagging
+*** s3:PutObject
+*** s3:GetObject
+*** s3:PutBuckObjectLockConfiguration
+*** s3:GetLifecyclConfiguration
+*** s3:ListBuckeByTags
+*** s3:GetBucketTagging
+*** s3:DeleteObjectVersion
+*** s3:ListBuckeVersions
+*** s3:ListBucket
+*** s3:PutBuckeTagging
+*** s3:GetObjectTagging
+*** s3:PutBuckeVersioning
+*** s3:PutObjectVersionTagging
+*** s3:GetBucketVersioning
+*** s3:GetBucketAcl
+*** s3:PutObjectRetention
+*** s3:GetBucketLocation
+*** s3:GetObjectVersion
+
+
 
 
 

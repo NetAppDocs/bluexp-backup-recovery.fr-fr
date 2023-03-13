@@ -27,6 +27,7 @@ Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu'aux secti
 * Vous exécutez Cloud Volumes ONTAP 9.7P5 ou une version ultérieure dans Azure (ONTAP 9.8P13 et une version ultérieure est recommandée).
 * Vous disposez d'un abonnement valide au fournisseur cloud pour l'espace de stockage où vos sauvegardes seront stockées.
 * Vous avez souscrit au https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview["Offre de sauvegarde BlueXP Marketplace"^], ou vous avez acheté link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license["et activé"^] Licence Cloud Backup BYOL de NetApp.
+* Un connecteur est installé dans Azure. Le connecteur peut être installé sur un site avec ou sans accès à Internet.
 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"] Activation de Cloud Backup sur votre système nouveau ou existant
@@ -76,11 +77,27 @@ Versions de ONTAP prises en charge:: Minimum de ONTAP 9.7P5 ; ONTAP 9.8P13 et ve
 Conditions de licence:: Pour le modèle de licence Cloud Backup PAYGO, un abonnement via Azure Marketplace est requis avant d'activer Cloud Backup. La facturation pour Cloud Backup s'effectue via cet abonnement. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html["Vous pouvez vous abonner à la page Détails et amp ; informations d'identification de l'assistant de l'environnement de travail"^].
 +
 --
-Pour les licences BYOL, vous avez besoin du numéro de série NetApp qui permet d'utiliser le service pendant la durée et la capacité du contrat. link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license["Découvrez comment gérer vos licences BYOL"].
+Pour les licences BYOL, vous avez besoin du numéro de série NetApp qui permet d'utiliser le service pendant la durée et la capacité du contrat. link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license["Découvrez comment gérer vos licences BYOL"]. Une licence BYOL doit être utilisée lorsque le connecteur et le système Cloud Volumes ONTAP sont déployés dans un site invisible.
 
 Vous devez également disposer d'un abonnement Microsoft Azure pour l'espace de stockage où vos sauvegardes seront stockées.
 
 --
+Exigences relatives au connecteur:: Le connecteur peut être installé dans une région Azure avec ou sans accès à Internet. À l'heure actuelle, seuls les sites commerciaux Azure sont pris en charge pour les sites sans accès à Internet.
++
+--
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-azure.html["Déployez un connecteur dans Azure"^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-install-connector-onprem-no-internet.html["Installation du connecteur sur un hôte Linux dans une région Azure sans accès à Internet"^]
+
+
+--
+
+
+
+NOTE: La fonctionnalité Cloud Backup est intégrée dans le connecteur BlueXP. Lorsqu'il est installé sur un site sans connexion Internet, vous devez mettre à jour régulièrement le logiciel Connector pour accéder aux nouvelles fonctionnalités. Vérifier le link:whats-new.html["Nouveautés de Cloud Backup"] Pour découvrir les nouvelles fonctionnalités de chaque version de Cloud Backup, puis suivez les étapes à https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html#upgrade-the-connector-on-prem-without-internet-access["Mettez à niveau le logiciel du connecteur"^] lorsque vous voulez utiliser de nouvelles fonctions.
+
+Nous vous recommandons vivement de créer régulièrement des sauvegardes locales des données de configuration de Cloud Backup lorsque le connecteur est installé sur un site sans connexion Internet. link:reference-backup-cbs-db-in-dark-site.html["Découvrez comment sauvegarder les données Cloud Backup dans un site sombre"^].
+
 Vérifiez ou ajoutez des autorisations au connecteur:: Pour utiliser la fonctionnalité recherche et restauration de Cloud Backup, vous devez disposer d'autorisations spécifiques dans le rôle du connecteur afin qu'il puisse accéder à l'espace de travail Azure Synapse et au compte de stockage Data Lake. Reportez-vous aux autorisations ci-dessous et suivez les étapes si vous devez modifier la stratégie.
 +
 --
@@ -201,7 +218,7 @@ image:screenshot_backup_provider_settings_azure.png["Une copie d'écran présent
 .. Entrez le nom de la stratégie par défaut. Il n'est pas nécessaire de modifier le nom.
 .. Définissez le programme de sauvegarde et choisissez le nombre de sauvegardes à conserver. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings["Consultez la liste des règles que vous pouvez choisir"^].
 .. Si vous utilisez ONTAP 9.12.1 ou version ultérieure, vous pouvez choisir de protéger vos sauvegardes contre les suppressions et les attaques par ransomware en configurant l'un des paramètres _DataLock et ransomware protection_. _DataLock_ protège vos fichiers de sauvegarde contre la modification ou la suppression, et _Attack protection_ analyse vos fichiers de sauvegarde pour rechercher la preuve d'une attaque par ransomware dans vos fichiers de sauvegarde. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["En savoir plus sur les paramètres DataLock disponibles"^].
-.. Si vous utilisez ONTAP 9.10.1 ou version ultérieure, vous pouvez choisir de transférer les sauvegardes vers le stockage Azure Archive après un certain nombre de jours pour optimiser les coûts. link:reference-azure-backup-tiers.html["En savoir plus sur l'utilisation des niveaux d'archivage"].
+.. Si vous utilisez ONTAP 9.10.1 ou version ultérieure, vous pouvez choisir de transférer les sauvegardes vers le stockage Azure Archive après un certain nombre de jours pour optimiser les coûts. Cette fonction n'est pas disponible lorsqu'elle est déployée dans des sites sombres. link:reference-azure-backup-tiers.html["En savoir plus sur l'utilisation des niveaux d'archivage"].
 +
 image:screenshot_backup_policy_azure.png["Capture d'écran indiquant les paramètres de Cloud Backup dans lesquels vous pouvez choisir la planification et la conservation des sauvegardes."]
 
