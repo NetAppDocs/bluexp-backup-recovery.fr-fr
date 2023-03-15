@@ -34,9 +34,11 @@ Vous pouvez désormais sauvegarder les données à partir de systèmes Cloud Vol
 
 
 
-=== Job Monitor offre un filtrage avancé pour rechercher des tâches de sauvegarde ou de restauration spécifiques
+=== Plusieurs améliorations apportées au moniteur de tâches
 
-La page surveillance des tâches a ajouté un filtrage avancé pour vous permettre de rechercher des tâches de sauvegarde et de restauration par temps, workload (volumes, applications, machines virtuelles ou Kubernetes), Type de tâche, état, environnement de travail et machine virtuelle de stockage. Vous pouvez également entrer du texte libre pour rechercher n'importe quelle ressource, par exemple, "application_3".  https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-monitor-backup-jobs.html#searching-and-filtering-the-list-of-jobs["Voir comment utiliser les filtres avancés"].
+* La page surveillance des tâches a ajouté un filtrage avancé pour vous permettre de rechercher des tâches de sauvegarde et de restauration par temps, workload (volumes, applications, machines virtuelles ou Kubernetes), Type de tâche, état, environnement de travail et machine virtuelle de stockage. Vous pouvez également entrer du texte libre pour rechercher n'importe quelle ressource, par exemple, "application_3".  https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-monitor-backup-jobs.html#searching-and-filtering-the-list-of-jobs["Voir comment utiliser les filtres avancés"].
+* Les opérations de sauvegarde et de restauration initiées par l'utilisateur à partir de l'interface utilisateur et de l'API de Cloud Backup, ainsi que les tâches initiées par le système, telles que les opérations de sauvegarde en continu, sont désormais disponibles dans l'onglet *contrôle des tâches* pour les systèmes Cloud Volumes ONTAP exécutant ONTAP 9.13.0 ou version ultérieure. Les versions antérieures des systèmes Cloud Volumes ONTAP et les systèmes ONTAP sur site n'affichent actuellement que les tâches initiées par l'utilisateur.
+
 
 
 

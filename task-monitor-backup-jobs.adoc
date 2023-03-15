@@ -29,8 +29,10 @@ Vous pouvez afficher la liste de toutes les opérations de sauvegarde et de rest
 * Échec
 
 
+Les opérations de sauvegarde et de restauration initiées par l'utilisateur à partir de l'interface utilisateur et de l'API de Cloud Backup, ainsi que les tâches initiées par le système, telles que les opérations de sauvegarde en continu, sont disponibles dans l'onglet *contrôle des tâches* pour les systèmes Cloud Volumes ONTAP exécutant ONTAP 9.13.0 ou version ultérieure.
 
-NOTE: Les tâches lancées par le système, telles que les opérations de sauvegarde en cours, ne sont pas reflétées dans l'onglet *Job Monitoring* pour le moment -- seuls les travaux initiés par l'utilisateur sont affichés.
+
+TIP: Lors de l'exécution d'une version antérieure de ONTAP sur des systèmes Cloud Volumes ONTAP ou sur des systèmes ONTAP sur site, seules les tâches initiées par l'utilisateur sont affichées à l'heure actuelle.
 
 .Étapes
 . Dans le menu BlueXP, sélectionnez *protection > sauvegarde et récupération*.
