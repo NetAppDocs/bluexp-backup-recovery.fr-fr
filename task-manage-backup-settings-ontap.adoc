@@ -155,8 +155,8 @@ Il vous suffit d'indiquer si vous souhaitez exporter les copies Snapshot existan
 
 == Modifier si les snapshots « annuels » sont supprimés du système source
 
-Lorsque vous sélectionnez l'étiquette de sauvegarde « annuelle » pour une règle de sauvegarde pour l'un de vos volumes, la copie Snapshot créée est extrêmement volumineuse. Par défaut, ces snapshots annuels sont supprimés automatiquement du système source après leur transfert vers le stockage objet. Vous pouvez modifier ce comportement par défaut à partir de la section Suppression annuelle de l'instantané.
+Lorsque vous sélectionnez l'étiquette de sauvegarde « annuelle » pour une règle de sauvegarde pour l'un de vos volumes, la copie Snapshot créée est très volumineuse. Par défaut, ces snapshots annuels sont supprimés automatiquement du système source après leur transfert vers le stockage objet. Vous pouvez modifier ce comportement par défaut à partir de la section Suppression annuelle de l'instantané.
 
-image:screenshot_backup_edit_yearly_snap_delete.png["Capture d'écran de l'entrée IPspace dans la page Advanced Settings."]
+image:screenshot_backup_edit_yearly_snap_delete.png["Capture d'écran de l'entrée instantanés annuels dans la page Paramètres avancés."]
 
 Sélectionnez *Disabled* et cliquez sur *Apply* si vous souhaitez conserver les instantanés annuels sur le système source.

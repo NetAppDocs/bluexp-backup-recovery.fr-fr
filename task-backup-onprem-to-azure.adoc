@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-backup-onprem-to-azure.html 
 keywords: backing up, back up, backup, backup on-prem ontap, on-premises, back up volumes, cloud backup, azure, azure blob, government 
-summary: Suivez quelques étapes pour commencer à sauvegarder les données à partir de vos systèmes ONTAP sur site vers le stockage Azure Blob. 
+summary: Commencez à sauvegarder les données de volume à partir de vos systèmes ONTAP sur site vers Azure Blob Storage en quelques étapes. 
 ---
 = La sauvegarde des données ONTAP sur site dans un stockage Azure Blob
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Suivez quelques étapes pour commencer à sauvegarder les données à p
 
 
 [role="lead"]
-Suivez quelques étapes pour commencer à sauvegarder les données à partir de vos systèmes ONTAP sur site vers le stockage Azure Blob.
+Commencez à sauvegarder les données de volume à partir de vos systèmes ONTAP sur site vers Azure Blob Storage en quelques étapes.
 
 Notez que les « systèmes ONTAP sur site » comprennent les systèmes FAS, AFF et ONTAP Select.
 
@@ -154,7 +154,7 @@ Si vous avez déjà déployé un connecteur dans votre Azure VNet ou sur votre s
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-installing-linux.html["Installation d'un connecteur dans vos locaux"^]
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-launching-azure-mktp.html["Installation d'un connecteur dans une région Azure Government"^]
 +
-Cloud Backup est pris en charge dans les régions du secteur public Azure lorsque le connecteur est déployé dans le cloud, et non lorsqu'il est installé sur site. Vous devez également déployer le connecteur depuis Azure Marketplace. Vous ne pouvez pas déployer le connecteur dans une région du gouvernement à partir du site Web BlueXP SaaS.
+Cloud Backup est pris en charge dans les régions du secteur public Azure lorsque le connecteur est déployé dans le cloud, et non lorsqu'il est installé sur site. Vous devez également déployer le connecteur depuis Azure Marketplace. Vous ne pouvez pas déployer le connecteur dans une région gouvernementale à partir du site web SaaS de BlueXP.
 
 
 

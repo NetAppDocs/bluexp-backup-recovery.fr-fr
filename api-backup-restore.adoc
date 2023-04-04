@@ -26,6 +26,7 @@ Il existe neuf catégories de terminaux définis dans Cloud Backup :
 * analyse par ransomware : démarre une analyse par ransomware sur un fichier de sauvegarde spécifique
 * restaurer : permet d'effectuer des opérations de restauration au niveau du volume, du fichier et du dossier
 * sfr - récupère les fichiers d'un fichier de sauvegarde pour des opérations de restauration uniques au niveau des fichiers (Browse & Restore)
+* StorageGRID : permet de récupérer des détails sur un serveur StorageGRID et de découvrir un serveur StorageGRID
 * environnement de travail : gère les stratégies de sauvegarde et configure le magasin d'objets de destination associé à un environnement de travail
 
 

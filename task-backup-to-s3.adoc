@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-backup-to-s3.html 
 keywords: backing up, back up, backup, backup cloud volumes ontap, back up cloud volumes ontap, cloud volumes ontap, aws, aws s3, amazon s3, s3 bucket, back up volumes, cloud backup 
-summary: 'Commencez à sauvegarder des données d"Cloud Volumes ONTAP vers Amazon S3 en quelques étapes.' 
+summary: Procédez en quelques étapes pour commencer à sauvegarder des données de volume de vos systèmes Cloud Volumes ONTAP vers Amazon S3. 
 ---
 = Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: 'Commencez à sauvegarder des données d"Cloud Volumes ONTAP vers Amazo
 
 
 [role="lead"]
-Commencez à sauvegarder des données d'Cloud Volumes ONTAP vers Amazon S3 en quelques étapes.
+Procédez en quelques étapes pour commencer à sauvegarder des données de volume de vos systèmes Cloud Volumes ONTAP vers Amazon S3.
 
 
 
@@ -27,9 +27,9 @@ Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu'aux secti
 * Vous exécutez Cloud Volumes ONTAP 9.7P5 ou une version ultérieure dans AWS (ONTAP 9.8P13 et une version ultérieure est recommandée).
 * Vous disposez d'un abonnement valide au fournisseur cloud pour l'espace de stockage où vos sauvegardes seront stockées.
 * Vous avez souscrit au https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa["Offre de sauvegarde BlueXP Marketplace"], un https://aws.amazon.com/marketplace/pp/B086PDWSS8["Contrat annuel AWS"], ou vous avez acheté link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license["et activé"] Licence Cloud Backup BYOL de NetApp.
-* Un connecteur est installé dans AWS.
+* Un connecteur est installé dans AWS :
 +
-** Le connecteur peut être installé sur un site avec ou sans accès à Internet.
+** Le connecteur peut être installé sur un site avec un accès Internet complet (« mode standard ») ou avec une connectivité Internet limitée (« mode restreint »).
 ** Le rôle IAM qui fournit le connecteur BlueXP avec des autorisations inclut des autorisations S3 à partir de la dernière version https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-permissions.html["Politique BlueXP"^].
 
 
@@ -88,28 +88,22 @@ Pour bénéficier d'un contrat annuel qui vous permet de sauvegarder à la fois 
 
 Pour un contrat annuel qui vous permet de regrouper Cloud Volumes ONTAP et Cloud Backup, vous devez définir le contrat annuel lors de la création d'un environnement de travail Cloud Volumes ONTAP. Avec cette option, vous ne pouvez pas sauvegarder les données sur site.
 
-Pour les licences BYOL, vous avez besoin du numéro de série NetApp qui permet d'utiliser le service pendant la durée et la capacité du contrat. link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license["Découvrez comment gérer vos licences BYOL"]. Une licence BYOL doit être utilisée lorsque le connecteur et le système Cloud Volumes ONTAP sont déployés dans un site invisible.
+Pour les licences BYOL, vous avez besoin du numéro de série NetApp qui permet d'utiliser le service pendant la durée et la capacité du contrat. link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license["Découvrez comment gérer vos licences BYOL"]. Vous devez utiliser une licence BYOL lorsque le connecteur et le système Cloud Volumes ONTAP sont déployés dans un site invisible.
 
 Vous devez également disposer d'un compte AWS pour l'espace de stockage où vos sauvegardes seront stockées.
 
 --
-Régions AWS prises en charge:: Cloud Backup est pris en charge dans toutes les régions AWS https://cloud.netapp.com/cloud-volumes-global-regions["Dans ce cas, Cloud Volumes ONTAP est pris en charge"^]; Y compris les régions AWS GovCloud.
 Informations requises pour l'utilisation des clés gérées par le client pour le chiffrement des données:: Vous pouvez choisir vos propres clés gérées par le client pour le chiffrement des données dans l'assistant d'activation au lieu d'utiliser les clés de chiffrement Amazon S3 par défaut. Dans ce cas, vous devrez déjà configurer les clés de cryptage gérées. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-setting-up-kms.html["Découvrez comment utiliser vos propres touches"^].
-Exigences relatives au connecteur:: Le connecteur peut être installé dans une région AWS avec ou sans accès à Internet. À l'heure actuelle, seuls les sites commerciaux AWS sont pris en charge pour les sites sans accès à Internet.
+Exigences relatives au connecteur:: Le connecteur peut être installé dans une région AWS avec un accès Internet complet ou limité (mode « Standard » ou « restreint »).
 +
 --
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-aws.html["Déployez un connecteur dans AWS"^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-install-connector-onprem-no-internet.html["Installation du connecteur sur un hôte Linux dans une région AWS sans accès à Internet"^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-install-connector-onprem-no-internet.html["Installation manuelle du connecteur sur un hôte Linux d'une région AWS"^]
 
 
 --
 
-
-
-NOTE: La fonctionnalité Cloud Backup est intégrée dans le connecteur BlueXP. Lorsqu'il est installé sur un site sans connexion Internet, vous devez mettre à jour régulièrement le logiciel Connector pour accéder aux nouvelles fonctionnalités. Vérifier le link:whats-new.html["Nouveautés de Cloud Backup"] Pour découvrir les nouvelles fonctionnalités de chaque version de Cloud Backup, puis suivez les étapes à https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html#upgrade-the-connector-on-prem-without-internet-access["Mettez à niveau le logiciel du connecteur"^] lorsque vous voulez utiliser de nouvelles fonctions.
-
-Nous vous recommandons vivement de créer régulièrement des sauvegardes locales des données de configuration de Cloud Backup lorsque le connecteur est installé sur un site sans connexion Internet. link:reference-backup-cbs-db-in-dark-site.html["Découvrez comment sauvegarder les données Cloud Backup dans un site sombre"^].
 
 Autorisations de connecteur AWS requises:: Le rôle IAM qui fournit à BlueXP des autorisations doit inclure des autorisations S3 à partir des dernières https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-permissions-aws.html["Politique BlueXP"^].
 +
@@ -186,6 +180,7 @@ Autorisations d'accès Cloud Volumes ONTAP AWS requises:: Lorsque votre système
 Si vous avez créé l'environnement de travail Cloud Volumes ONTAP à l'aide de BlueXP version 3.9.23 ou supérieure, ces autorisations doivent déjà faire partie du rôle IAM. Sinon, vous devrez ajouter les autorisations manquantes.
 
 --
+Régions AWS prises en charge:: Cloud Backup est pris en charge dans toutes les régions AWS https://cloud.netapp.com/cloud-volumes-global-regions["Dans ce cas, Cloud Volumes ONTAP est pris en charge"^]; Y compris les régions AWS GovCloud.
 Configuration requise pour la création des sauvegardes sur un autre compte AWS:: Par défaut, les sauvegardes sont créées à l'aide du même compte que celui utilisé pour votre système Cloud Volumes ONTAP. Si vous souhaitez utiliser un autre compte AWS pour vos sauvegardes, vous devez :
 +
 --
