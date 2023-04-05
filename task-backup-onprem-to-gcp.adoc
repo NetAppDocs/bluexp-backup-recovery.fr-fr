@@ -143,8 +143,7 @@ Si vous utilisez Private Google Access ou Private Service Connect, assurez-vous 
 Si un connecteur est déjà déployé dans votre VPC Google Cloud Platform, vous devez le configurer. Dans le cas contraire, créez un connecteur sur cet emplacement pour sauvegarder les données ONTAP dans un stockage Google Cloud. Vous ne pouvez pas utiliser un connecteur déployé dans un autre fournisseur cloud ou sur site.
 
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html["Mise en route des connecteurs"^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-gcp.html["Installation d'un connecteur dans GCP"^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-quick-start-connector-google.html["Installation d'un connecteur dans GCP"^]
 
 
 

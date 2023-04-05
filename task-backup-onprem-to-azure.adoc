@@ -149,10 +149,9 @@ Lors de la configuration de Cloud Backup, vous êtes invité à utiliser l'IPspa
 Si vous avez déjà déployé un connecteur dans votre Azure VNet ou sur votre site, alors vous êtes paré. Si ce n'est pas le cas, vous devez créer un connecteur dans l'un de ces emplacements pour sauvegarder les données ONTAP dans le stockage Azure Blob. Vous ne pouvez pas utiliser un connecteur déployé dans un autre fournisseur de cloud.
 
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html["Mise en route des connecteurs"^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-azure.html["Installation d'un connecteur dans Azure"^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-installing-linux.html["Installation d'un connecteur dans vos locaux"^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-launching-azure-mktp.html["Installation d'un connecteur dans une région Azure Government"^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-quick-start-connector-azure.html["Installation d'un connecteur dans Azure"^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-quick-start-connector-on-prem.html["Installation d'un connecteur dans vos locaux"^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-install-restricted-mode.html["Installation d'un connecteur dans une région Azure Government"^]
 +
 Cloud Backup est pris en charge dans les régions du secteur public Azure lorsque le connecteur est déployé dans le cloud, et non lorsqu'il est installé sur site. Vous devez également déployer le connecteur depuis Azure Marketplace. Vous ne pouvez pas déployer le connecteur dans une région gouvernementale à partir du site web SaaS de BlueXP.
 
