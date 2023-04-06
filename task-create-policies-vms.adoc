@@ -16,12 +16,21 @@ summary: Créez une règle pour sauvegarder des machines virtuelles
 [role="lead"]
 Vous pouvez créer une stratégie ou utiliser l'une des stratégies prédéfinies suivantes disponibles dans BlueXP.
 
+.Avant de commencer
+* Vous devez créer des stratégies si vous ne souhaitez pas modifier les stratégies prédéfinies.
+* Pour transférer les sauvegardes du magasin d'objets vers le stockage d'archives, vous devez exécuter ONTAP 9.10.1 ou une version ultérieure et Amazon Web Services ou Azure doit être le fournisseur cloud.
+* Vous devez configurer le niveau d'accès d'archivage pour chaque fournisseur de cloud.
+
+
+.Description de la tâche
+BlueXP dispose de règles prédéfinies suivantes :
+
 |===
 | Nom de la règle | Étiquette | Valeur de conservation 
 
 
  a| 
-1 an de LTR quotidien
+LTR quotidien de 1 an (conservation à long terme)
  a| 
 Tous les jours
  a| 
@@ -55,8 +64,6 @@ Tous les mois
 120
 
 |===
-Vous devez créer des stratégies si vous ne souhaitez pas modifier les stratégies prédéfinies.
-
 .Étapes
 . Sur la page machines virtuelles, dans la liste déroulante Paramètres, sélectionnez *stratégies*.
 . Cliquez sur *Créer une stratégie*.
@@ -64,13 +71,7 @@ Vous devez créer des stratégies si vous ne souhaitez pas modifier les stratég
 . Dans la section Retention, sélectionnez l'un des types de rétention et indiquez le nombre de sauvegardes à conserver.
 . Sélectionnez primaire ou secondaire comme source de stockage de sauvegarde.
 . (Facultatif) si vous souhaitez transférer des sauvegardes du magasin d'objets vers le stockage d'archives après un certain nombre de jours pour l'optimisation des coûts, cochez la case *Tier backups to Archival* et entrez le nombre de jours après lequel la sauvegarde doit être archivée.
-+
-Vous pouvez déplacer les sauvegardes d'un magasin d'objets vers le stockage d'archivage uniquement si vous utilisez ONTAP 9.10.1 ou version ultérieure et Amazon Web Services ou Azure comme fournisseur cloud. Vous devez configurer le niveau d'accès d'archivage pour chaque fournisseur de cloud.
-
 . Cliquez sur *Créer*.
-+
-Vous pouvez modifier, copier et supprimer les stratégies personnalisées.
-
 +
 
 NOTE: Vous ne pouvez pas modifier ou supprimer une stratégie associée à une machine virtuelle.

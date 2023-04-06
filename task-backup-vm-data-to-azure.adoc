@@ -14,12 +14,12 @@ summary: Sauvegardez vos datastores ONTAP sur site dans Azure.
 
 
 [role="lead"]
-Vous pouvez sauvegarder un ou plusieurs datastores dans Microsoft Azure en intégrant le plug-in SnapCenter pour VMware vSphere avec BlueXP. Ils peuvent ainsi sauvegarder et archiver des données facilement et rapidement à des fins d'efficacité du stockage et d'accélération de la transition vers le cloud.
+Vous pouvez sauvegarder un ou plusieurs datastores dans Microsoft Azure en intégrant le plug-in SnapCenter pour l'hôte VMware vSphere avec BlueXP. Ils peuvent ainsi sauvegarder et archiver des données facilement et rapidement à des fins d'efficacité du stockage et d'accélération de la transition vers le cloud.
 
 Si le datastore est associé à une stratégie d'archivage, vous aurez la possibilité de sélectionner le niveau d'archivage. Le Tier d'archivage pris en charge est le stockage Azure Archive Blob Storage.
 
-
-NOTE: Assurez-vous que vous avez rempli toutes les link:concept-protect-vm-data.html#Requirements["de formation"] avant de sauvegarder des datastores dans le cloud.
+.Avant de commencer
+Assurez-vous que vous avez rempli toutes les link:concept-protect-vm-data.html#Requirements["de formation"] avant de sauvegarder des datastores dans le cloud.
 
 .Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *machines virtuelles*.
@@ -27,13 +27,13 @@ NOTE: Assurez-vous que vous avez rempli toutes les link:concept-protect-vm-data.
 . Dans la page attribuer une stratégie, sélectionnez la stratégie et cliquez sur *Suivant*.
 . Ajouter l'environnement de travail.
 +
-Configurez les clusters ONTAP que vous souhaitez que BlueXP découvre pour sauvegarder vos datastores. Une fois l'environnement de travail ajouté pour l'un des datastores, il peut être réutilisé pour tous les autres datastores qui résident sur le même cluster ONTAP.
+Configurez la LIF de gestion de cluster à détecter par BlueXP. Une fois l'environnement de travail ajouté pour l'un des datastores, il peut être réutilisé pour tous les autres datastores qui résident sur le même cluster ONTAP.
 
 +
 .. Cliquer sur *Ajouter un environnement de travail* correspondant à la SVM.
 .. Dans l'assistant Ajouter un environnement de travail :
 +
-... Spécifier l'adresse IP du cluster ONTAP
+... Préciser l'adresse IP de la LIF de cluster management.
 ... Spécifier les identifiants de l'utilisateur du cluster ONTAP
 
 
@@ -45,7 +45,7 @@ Configurez les clusters ONTAP que vous souhaitez que BlueXP découvre pour sauve
 .. Spécifiez l'ID d'abonnement Azure.
 .. Sélectionnez la région dans laquelle vous souhaitez créer les sauvegardes.
 .. Créez un nouveau groupe de ressources ou utilisez un groupe de ressources existant.
-.. Spécifiez les adresses IP des clusters ONTAP qui ont été ajoutés en tant qu'environnements de travail.
+.. Préciser les adresses IP de la LIF de cluster management qui ont été ajoutées comme environnements de travail.
 .. Sélectionnez le niveau d'archivage.
 +
 Il est recommandé de définir le niveau d'archivage car il s'agit d'une activité unique et vous ne serez pas autorisé à le configurer ultérieurement.
