@@ -38,7 +38,7 @@ sidebar:
       url: "/task-monitor-backup-jobs.html"
   - title: Sauvegarde et restauration des données ONTAP
     entries:
-    - title: Protéger vos données ONTAP
+    - title: Protégez les données de vos volumes ONTAP
       url: "/concept-ontap-backup-to-cloud.html"
     - title: Sauvegarde d'Cloud Volumes ONTAP dans Amazon S3
       flavor: aws
@@ -317,8 +317,8 @@ homepage:
     links:
     - title: Communauté NetApp
       url: https://community.netapp.com/t5/Public-Cloud-Services/ct-p/CDS
-    - title: Blog BlueXP
-      url: https://bluexp.netapp.com/blog
+    - title: Blogs Cloud Backup
+      url: https://bluexp.netapp.com/blog/topic/cloud-backup
     - title: Utilisations de Cloud Backup
       url: https://bluexp.netapp.com/cloud-backup
     - title: Webinaires sur le cloud
