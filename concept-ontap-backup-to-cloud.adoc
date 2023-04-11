@@ -91,23 +91,21 @@ Notez que les références aux « systèmes ONTAP sur site » incluent les syst�
 
 
 
-=== Assistance pour les sites sans connexion Internet
-
-Cloud Backup peut être utilisé dans un site sans connexion Internet (également appelé « mode privé » ou « sites invisibles ») pour sauvegarder des données de volume. La restauration de volumes et de fichiers est également prise en charge dans cette configuration. Dans ce cas, vous devez déployer le connecteur BlueXP dans le site invisible.
-
-* Vous pouvez sauvegarder les données à partir de systèmes ONTAP locaux sur site vers des systèmes NetApp StorageGRID locaux. Voir link:task-backup-onprem-private-cloud.html["La sauvegarde des données ONTAP sur site dans StorageGRID"] pour plus d'informations.
-* Vous pouvez sauvegarder les données à partir de systèmes Cloud Volumes ONTAP installés dans les régions commerciales AWS et de régions sécurisées AWS C2S/SC2S vers Amazon S3. Voir link:task-backup-to-s3.html["Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3"].
-* Vous pouvez sauvegarder les données à partir de systèmes Cloud Volumes ONTAP installés dans les régions commerciales Azure et de régions sécurisées Azure IL6 vers Azure Blob. Voir link:task-backup-to-azure.html["Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob"].
-
-
-
-
 === Prise en charge des sites avec une connectivité limitée
 
-Cloud Backup peut être utilisé dans un site dont la connectivité Internet est limitée (également appelé « mode restreint ») pour la sauvegarde des données de volume. La restauration de volumes et de fichiers est également prise en charge dans cette configuration. Dans ce cas, vous devez déployer le connecteur BlueXP dans la région réservée.
+Cloud Backup peut être utilisé dans un site dont la connectivité Internet est limitée (également appelé « mode restreint ») pour sauvegarder et restaurer les données de volume. Dans ce cas, vous devez déployer le connecteur BlueXP dans la région réservée.
 
 * Vous pouvez sauvegarder les données à partir de systèmes Cloud Volumes ONTAP installés dans des régions commerciales AWS vers Amazon S3. Voir link:task-backup-to-s3.html["Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3"].
 * Vous pouvez sauvegarder les données à partir de systèmes Cloud Volumes ONTAP installés dans les régions commerciales Azure vers Azure Blob. Voir link:task-backup-to-azure.html["Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob"].
+
+
+
+
+=== Assistance pour les sites sans connexion Internet
+
+Cloud Backup peut être utilisé dans un site sans connexion Internet (également appelé « mode privé » ou « sites invisibles ») pour sauvegarder des données de volume. Dans ce cas, vous devez déployer le connecteur BlueXP dans le site invisible.
+
+* Vous pouvez sauvegarder les données à partir de systèmes ONTAP locaux sur site vers des systèmes NetApp StorageGRID locaux. Voir link:task-backup-onprem-private-cloud.html["La sauvegarde des données ONTAP sur site dans StorageGRID"] pour plus d'informations.
 
 
 
@@ -304,7 +302,7 @@ Pour modifier ultérieurement le magasin d'objets de destination d'un cluster, v
 
 Lorsque vous activez Cloud Backup pour un environnement de travail, tous les volumes que vous sélectionnez initialement sont sauvegardés à l'aide de la stratégie de sauvegarde par défaut que vous définissez. Si vous souhaitez attribuer différentes règles de sauvegarde à certains volumes ayant des objectifs de point de récupération différents, vous pouvez créer des règles supplémentaires pour ce cluster et les attribuer aux autres volumes une fois que Cloud Backup est activé.
 
-Vous pouvez choisir une combinaison de sauvegardes toutes les heures, tous les jours, toutes les semaines, tous les mois et tous les ans pour tous les volumes. La politique Snapshot appliquée au volume doit correspondre à l'une des politiques reconnues par Cloud Backup. Vous pouvez également sélectionner l'une des stratégies définies par le système qui assure les sauvegardes et la conservation pendant 3 mois, 1 an et 7 ans. Ces règles sont les suivantes :
+Vous pouvez choisir une combinaison de sauvegardes toutes les heures, tous les jours, toutes les semaines, tous les mois et tous les ans pour tous les volumes. La règle Snapshot appliquée au volume doit correspondre à une des règles reconnues par Cloud Backup, sinon les fichiers de sauvegarde ne seront pas créés. Vous pouvez également sélectionner l'une des stratégies définies par le système qui assure les sauvegardes et la conservation pendant 3 mois, 1 an et 7 ans. Ces règles sont les suivantes :
 
 [cols="35,16,16,16,26"]
 |===
