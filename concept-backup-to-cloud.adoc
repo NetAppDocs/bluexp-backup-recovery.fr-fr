@@ -14,15 +14,15 @@ summary: 'BlueXP Backup and Recovery assure une protection des données efficace
 
 
 [role="lead"]
-La sauvegarde et la restauration BlueXP (sauvegarde cloud) offre une protection des données efficace, sécurisée et économique pour les données NetApp ONTAP, les bases de données et les machines virtuelles, à la fois sur site et dans le cloud. Les sauvegardes sont automatiquement générées et stockées dans un magasin d'objets de votre compte cloud public ou privé.
+La sauvegarde et la restauration BlueXP (Cloud Backup) assurent une protection des données efficace, sécurisée et économique pour les données NetApp ONTAP, les volumes persistants Kubernetes, les bases de données et les machines virtuelles, à la fois sur site et dans le cloud. Les sauvegardes sont automatiquement générées et stockées dans un magasin d'objets de votre compte cloud public ou privé.
 
-Ce service effectue une réplication incrémentielle persistante au niveau des blocs et préserve toutes les fonctionnalités d'efficacité du stockage, ce qui réduit considérablement le volume des données répliquées et stockées. En outre, vous ne payez que pour ce qui est protégé et utilisez les tiers de stockage les plus économiques du marché, ce qui rend Cloud Backup très économique.
+Ce service effectue une réplication incrémentielle persistante au niveau des blocs et préserve toutes les fonctionnalités d'efficacité du stockage, ce qui réduit considérablement le volume des données répliquées et stockées. De plus, vous ne payez que pour ce qui est protégé et utilisez les tiers de stockage les plus économiques du marché, ce qui rend Cloud Backup très économique.
 
 Si nécessaire, vous pouvez restaurer un _volume_ entier à partir d'une sauvegarde vers le même environnement de travail ou vers un environnement de travail différent. Lorsque vous sauvegardez des données ONTAP, vous pouvez également choisir de restaurer un ou plusieurs _fichiers_ d'une sauvegarde vers le même environnement de travail ou vers un environnement de travail différent.
 
 https://bluexp.netapp.com/cloud-backup["En savoir plus sur Cloud Backup"^].
 
-La fonction de sauvegarde et de restauration permet de :
+La sauvegarde et la restauration peuvent être utilisées pour :
 
 * Sauvegardez et restaurez les données de volume ONTAP à partir des systèmes Cloud Volumes ONTAP et ONTAP sur site. link:concept-ontap-backup-to-cloud.html["Voir les fonctionnalités détaillées ici"].
 * Sauvegardez et restaurez des volumes persistants Kubernetes. link:concept-kubernetes-backup-to-cloud.html["Voir les fonctionnalités détaillées ici"].
@@ -33,7 +33,7 @@ La fonction de sauvegarde et de restauration permet de :
 https://www.youtube.com/watch?v=DF0knrH2a80["Regarder une démonstration rapide"^]
 
 
-TIP: Lorsque BlueXP Connector est déployé dans une région gouvernementale dans le cloud ou dans un site sans accès à Internet (site sombre), Cloud Backup prend uniquement en charge les opérations de sauvegarde et de restauration à partir des systèmes ONTAP. Lorsque vous utilisez ces types de méthodes de déploiement, Cloud Backup ne prend pas en charge les opérations de sauvegarde et de restauration à partir des clusters Kubernetes, des applications ou des machines virtuelles.
+TIP: Lorsque le connecteur BlueXP est déployé dans une région gouvernementale dans le cloud ou dans un site sans accès Internet (un site invisible), Cloud Backup prend uniquement en charge les opérations de sauvegarde et de restauration à partir des systèmes ONTAP. Lorsque vous utilisez ces types de méthodes de déploiement, Cloud Backup ne prend pas en charge les opérations de sauvegarde et de restauration à partir des clusters Kubernetes, des applications ou des machines virtuelles.
 
 
 
@@ -43,7 +43,7 @@ Lorsque vous activez Cloud Backup sur un système ONTAP Cloud Volumes ONTAP ou s
 
 Dans la plupart des cas, vous utiliserez l'interface utilisateur BlueXP pour toutes les opérations de sauvegarde. Depuis ONTAP 9.9.1, vous pouvez toutefois lancer des opérations de sauvegarde volume de vos clusters ONTAP sur site à l'aide de ONTAP System Manager. https://docs.netapp.com/us-en/ontap/task_cloud_backup_data_using_cbs.html["Découvrez comment utiliser System Manager pour sauvegarder vos volumes dans le cloud à l'aide de Cloud Backup."^]
 
-L'image suivante montre la relation entre chaque composant :
+L'image suivante montre la relation entre les composants :
 
 image:diagram_cloud_backup_general.png["Un diagramme montrant comment Cloud Backup communique avec les volumes des systèmes source et le stockage objet de destination où sont situés les fichiers de sauvegarde."]
 
@@ -51,7 +51,7 @@ image:diagram_cloud_backup_general.png["Un diagramme montrant comment Cloud Back
 
 === L'emplacement des sauvegardes
 
-Les copies de sauvegarde sont stockées dans un magasin d'objets créé par BlueXP dans votre compte cloud. Il y a un magasin d'objets par cluster/environnement de travail, et BlueXP nomme le magasin d'objets comme suit : « netapp-backup-clusterUUID ». Veillez à ne pas supprimer ce magasin d'objets.
+Les copies de sauvegarde sont stockées dans un magasin d'objets créé par BlueXP dans votre compte cloud. Il existe un magasin d'objets par cluster/environnement de travail. BlueXP nomme le magasin d'objets comme suit : `netapp-backup-clusteruuid`. Veillez à ne pas supprimer ce magasin d'objets.
 
 ifdef::aws[]
 
@@ -94,6 +94,6 @@ L'heure de début est basée sur le fuseau horaire défini sur chaque système O
 
 === Les copies de sauvegarde sont associées à votre compte NetApp
 
-Les copies de sauvegarde sont associées à l' https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-netapp-accounts.html["Compte NetApp"^] Dans lequel réside le connecteur.
+Les copies de sauvegarde sont associées à l' https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-netapp-accounts.html["Compte NetApp"^] Dans lequel réside le connecteur BlueXP.
 
 Si vous avez plusieurs connecteurs dans le même compte NetApp, chaque connecteur affiche la même liste de sauvegardes. Cela inclut les sauvegardes associées à Cloud Volumes ONTAP et aux instances ONTAP sur site à partir d'autres connecteurs.
