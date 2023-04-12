@@ -95,9 +95,19 @@ Notez que les références aux « systèmes ONTAP sur site » incluent les syst�
 
 Cloud Backup peut être utilisé dans un site dont la connectivité Internet est limitée (également appelé « mode restreint ») pour sauvegarder et restaurer les données de volume. Dans ce cas, vous devez déployer le connecteur BlueXP dans la région réservée.
 
+ifdef::aws[]
+
 * Vous pouvez sauvegarder les données à partir de systèmes Cloud Volumes ONTAP installés dans des régions commerciales AWS vers Amazon S3. Voir link:task-backup-to-s3.html["Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3"].
+
+
+endif::aws[]
+
+ifdef::azure[]
+
 * Vous pouvez sauvegarder les données à partir de systèmes Cloud Volumes ONTAP installés dans les régions commerciales Azure vers Azure Blob. Voir link:task-backup-to-azure.html["Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob"].
 
+
+endif::azure[]
 
 
 
@@ -105,8 +115,14 @@ Cloud Backup peut être utilisé dans un site dont la connectivité Internet est
 
 Cloud Backup peut être utilisé dans un site sans connexion Internet (également appelé « mode privé » ou « sites invisibles ») pour sauvegarder des données de volume. Dans ce cas, vous devez déployer le connecteur BlueXP dans le site invisible.
 
-* Vous pouvez sauvegarder les données à partir de systèmes ONTAP locaux sur site vers des systèmes NetApp StorageGRID locaux. Voir link:task-backup-onprem-private-cloud.html["La sauvegarde des données ONTAP sur site dans StorageGRID"] pour plus d'informations.
+* Vous pouvez sauvegarder les données à partir de systèmes ONTAP locaux sur site vers des systèmes NetApp StorageGRID locaux. Voir link:task-backup-onprem-private-cloud.html["La sauvegarde des données ONTAP sur site dans StorageGRID"] pour plus d'informations. ifdef::aws[]
 
+
+endif::aws[]
+
+ifdef::azure[]
+
+endif::azure[]
 
 
 
@@ -416,8 +432,7 @@ La lecture des données de votre fournisseur de cloud peut s'accélérer et gén
 
 === Limites des sauvegardes
 
-* Pour effectuer le Tiering des anciens fichiers de sauvegarde dans un stockage d'archivage, le cluster exécute ONTAP 9.10.1 ou une version ultérieure. La restauration de volumes à partir de fichiers de sauvegarde qui résident dans un stockage d'archivage nécessite également que le cluster de destination exécute ONTAP 9.10.1+.
-* Lors de la création ou de la modification d'une stratégie de sauvegarde lorsqu'aucun volume n'est affecté à la stratégie, le nombre de sauvegardes conservées peut atteindre un maximum de 1018. Pour contourner ce problème, vous pouvez réduire le nombre de sauvegardes pour créer la stratégie. Vous pouvez ensuite modifier la stratégie pour créer jusqu'à 4000 sauvegardes après avoir affecté des volumes à la stratégie.
+* Lors de la création ou de la modification d'une stratégie de sauvegarde lorsqu'aucun volume n'est affecté à la stratégie, le nombre de sauvegardes conservées peut atteindre un maximum de 1018. Une fois que vous avez affecté des volumes à la règle, vous pouvez la modifier pour créer jusqu'à 4000 sauvegardes.
 * Lors de la sauvegarde de volumes de protection des données (DP) :
 +
 ** Relations avec les libellés SnapMirror `app_consistent` et `all_source_snapshot` elles ne seront pas sauvegardées dans le cloud.

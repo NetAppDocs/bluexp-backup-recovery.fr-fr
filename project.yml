@@ -195,14 +195,18 @@ sidebar:
     - title: Paramètres des règles de Cloud Backup
       url: "/concept-cloud-backup-policies.html"
     - title: Tiers de stockage d'archivage AWS pris en charge
+      flavor: aws
       url: "/reference-aws-backup-tiers.html"
     - title: Tiers d'accès d'archivage Azure pris en charge
+      flavor: azure
       url: "/reference-azure-backup-tiers.html"
     - title: Tiers de stockage d'archivage Google pris en charge
+      flavor: gcp
       url: "/reference-google-backup-tiers.html"
     - title: Sauvegardez la base de données Cloud Backup sur un site sombre
       url: "/reference-backup-cbs-db-in-dark-site.html"
     - title: Configurez la sauvegarde pour l'accès à plusieurs comptes dans Azure
+      flavor: azure
       url: "/reference-backup-multi-account-azure.html"
   - title: Connaissances et support
     entries:
