@@ -17,14 +17,7 @@ summary: Vous pouvez restaurer la base de données SQL Server depuis le cloud ve
 Vous pouvez restaurer la base de données SQL Server sur le même hôte ou sur l'autre hôte. La restauration des sauvegardes de journaux et du réamorçage des groupes de disponibilité ne sont pas prises en charge.
 
 
-NOTE: IMPORTANT : la restauration de sauvegardes secondaires via le stockage primaire est prise en charge.
-
-
 IMPORTANT: La restauration de fichiers uniques (SFR) n'est pas prise en charge.
-
-*Ce dont vous aurez besoin*
-
-Si vous souhaitez restaurer une sauvegarde déplacée vers un magasin d'objets à partir d'un stockage secondaire, vous devez ajouter les informations relatives à l'environnement de travail principal et définir l'espace IP. Pour plus d'informations, voir link:task-manage-app-backups.html#set-ip-space-of-the-primary-working-environment["Définissez l'espace IP de l'environnement de travail principal"].
 
 *Étapes*
 
@@ -35,20 +28,20 @@ Si vous souhaitez restaurer une sauvegarde déplacée vers un magasin d'objets �
 . Sélectionnez l'emplacement où vous souhaitez restaurer les fichiers de base de données.
 +
 |===
-| Option | Description 
+| Si... | Procédez comme ça... 
 
 
  a| 
-Restaurez la base de données sur le même hôte où la sauvegarde a été créée
+Souhaitez restaurer la base de données sur le même hôte SQL Server que celui sur lequel les sauvegardes ont été créées
  a| 
-Sélectionnez cette option si vous souhaitez restaurer la base de données sur le même serveur SQL où les sauvegardes sont effectuées.
+Sélectionnez *Restaurer la base de données sur le même hôte que celui sur lequel la sauvegarde a été créée*.
 
 
 
  a| 
-Restaurez la base de données sur un autre hôte
+Vous souhaitez restaurer la base de données sur un serveur SQL différent sur le même hôte ou sur un autre hôte sur lequel des sauvegardes ont été créées
  a| 
-Sélectionnez cette option si vous souhaitez que la base de données soit restaurée sur un autre serveur SQL dans le même hôte ou sur un hôte différent où des sauvegardes sont effectuées.
+Sélectionnez *Restaurer la base de données sur un autre hôte*.
 
 Sélectionnez un nom d'hôte, indiquez un nom de base de données (facultatif), sélectionnez une instance et spécifiez les chemins de restauration.
 

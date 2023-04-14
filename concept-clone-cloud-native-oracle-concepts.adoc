@@ -25,10 +25,17 @@ Avant de cloner la base de données, vous devez comprendre les concepts de clona
 Avant de cloner une base de données Oracle, vous devez vous assurer que les prérequis sont terminés.
 
 * Vous devriez avoir créé une sauvegarde de la base de données. Vous devez avoir créé une sauvegarde des journaux et des données en ligne pour que l'opération de clonage réussisse.
-* Dans le paramètre asm_diskstring, vous devez configurer AFD:* si vous utilisez ASMFD ou ORCL:* si vous utilisez ASMLIB.
+* Dans le paramètre asm_diskstring, vous devez configurer :
++
+** AFD:* si vous utilisez ASMFD
+** ORCL:* si vous utilisez ASMLIB
+** /Dev/<exact_device_location> si vous utilisez ASMUDEV
+
+
 * Si vous créez le clone sur un autre hôte, celui-ci doit répondre aux exigences suivantes :
 +
 ** Le plug-in doit être installé sur l'autre hôte.
+** Le logiciel Oracle doit être installé sur l'autre hôte.
 ** L'hôte clone doit être en mesure de détecter les LUN à partir du stockage si vous clonez une base de données résidant sur le stockage SAN iSCSI. Si vous effectuez un clonage vers un autre hôte, assurez-vous qu'une session iSCSI est établie entre le stockage et l'hôte secondaire.
 ** Si la base de données source est une base de données ASM :
 +
@@ -44,12 +51,9 @@ Avant de cloner une base de données Oracle, vous devez vous assurer que les pr�
 
 
 
-== Limites des clones
+== Limites
 
-* Les clones programmés (gestion du cycle de vie des clones) ne sont pas pris en charge.
-* Le clonage d'une base de données clonée n'est pas pris en charge.
 * Le clonage des bases de données résidant sur qtree n'est pas pris en charge.
-* Le clonage des sauvegardes du journal d'archivage n'est pas pris en charge.
 * La sauvegarde d'une base de données clonée n'est pas prise en charge.
 
 
@@ -343,7 +347,7 @@ Vous pouvez utiliser les variables d'environnement prédéfinies prises en charg
 * SC_ORIGINAL_SID spécifie le SID de la base de données source. Ce paramètre sera renseigné pour les volumes d'application. Exemple : NFSB32
 * SC_ORIGINAL_HOST spécifie le nom de l'hôte source. Ce paramètre sera renseigné pour les volumes d'application. Exemple : asmrac1.gdl.englab.netapp.com
 * SC_ORACLE_HOME indique le chemin du répertoire racine Oracle de la base de données cible. Exemple : /ora01/app/oracle/product/18.1.0/db_1
-* SC_BACKUP_NAME » indique le nom de la sauvegarde. Ce paramètre sera renseigné pour les volumes d'application. Exemples :
+* SC_BACKUP_NAME spécifie le nom de la sauvegarde. Ce paramètre sera renseigné pour les volumes d'application. Exemples :
 +
 ** Si la base de données n'est pas exécutée en mode ARCHIVELOG : DATA@RG2_scspr2417819002_07-20- 2021_12.16.48.9267_0|LOG@RG2_scspr2417819002_07-20-2021_12.16.48.9267_1
 ** Si la base de données est exécutée en mode ARCHIVELOG : DATA@RG2_SCspr24819002_07-20- 2021_12.16.48.9267_0|LOG@RG2_scro2417819002_07-20- 2021_1,RG2_scspr24819002_07-21- 2021_12.16.48.9267_spri1_07_22_2021_12.16.48.9267_12.16.48.9267_1__1_spri1
@@ -351,7 +355,7 @@ Vous pouvez utiliser les variables d'environnement prédéfinies prises en charg
 
 * SC_ORIGINAL_OS_USER indique le propriétaire du système d'exploitation de la base de données source. Exemple : oracle
 * SC_ORIGINAL_OS_GROUP spécifie le groupe du système d'exploitation de la base de données source. Exemple : oinstall
-* SC_TARGET_SID » spécifie le SID de la base de données clonée. Pour le workflow de clonage PDB, la valeur de ce paramètre n'est pas prédéfinie. Ce paramètre sera renseigné pour les volumes d'application. Exemple : clonedb
+* SC_TARGET_SID spécifie le SID de la base de données clonée. Pour le workflow de clonage PDB, la valeur de ce paramètre n'est pas prédéfinie. Ce paramètre sera renseigné pour les volumes d'application. Exemple : clonedb
 * SC_TARGET_HOST spécifie le nom de l'hôte sur lequel la base de données sera clonée. Ce paramètre sera renseigné pour les volumes d'application. Exemple : asmrac1.gdl.englab.netapp.com
 * SC_TARGET_OS_USER indique le propriétaire du système d'exploitation de la base de données clonée. Pour le workflow de clonage PDB, la valeur de ce paramètre n'est pas prédéfinie. Exemple : oracle
 * SC_TARGET_OS_GROUP spécifie le groupe de systèmes d'exploitation de la base de données clonée. Pour le workflow de clonage PDB, la valeur de ce paramètre n'est pas prédéfinie. Exemple : oinstall

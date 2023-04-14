@@ -14,33 +14,33 @@ summary: 'Créer l"environnement de travail FSX pour ONTAP et le connecteur'
 
 
 [role="lead"]
-Vous devez créer l'environnement de travail FSX pour ONTAP et le connecteur.
+Avec BlueXP, vous devez créer un environnement de travail FSX pour ONTAP afin d'ajouter et de gérer des volumes et des services de données supplémentaires. Vous devez également créer un connecteur dans AWS permettant à BlueXP de gérer les ressources et les processus dans votre environnement de cloud public.
 
 
 
 == Créer un environnement de travail FSX pour ONTAP
 
-Vous devez créer les environnements de travail Amazon FSX pour ONTAP dans lesquels vos bases de données sont hébergées. Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/start/task-getting-started-fsx.html["Commencez avec Amazon FSX pour ONTAP"] et link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/use/task-creating-fsx-working-environment.html["Créer et gérer un environnement de travail Amazon FSX pour ONTAP"].
+Vous devez créer les environnements de travail FSX pour ONTAP dans lesquels vos bases de données sont hébergées. Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/start/task-getting-started-fsx.html["Commencez avec Amazon FSX pour ONTAP"] et link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/use/task-creating-fsx-working-environment.html["Créer et gérer un environnement de travail Amazon FSX pour ONTAP"].
 
-Vous pouvez créer NetApp FSX à l'aide de BlueXP ou d'AWS. Si vous avez créé à l'aide d'AWS, vous devriez découvrir FSX pour les systèmes ONTAP dans BlueXP.
+Vous pouvez créer l'environnement de travail FSX pour ONTAP à l'aide de BlueXP ou d'AWS. Si vous avez créé à l'aide d'AWS, vous devriez découvrir FSX pour les systèmes ONTAP dans BlueXP.
 
 
 
 == Créer un connecteur
 
-Un administrateur de comptes doit déployer un connecteur dans AWS qui permet à BlueXP de gérer les ressources et les processus au sein de votre environnement de cloud public.
+Un administrateur de compte doit créer un connecteur dans AWS permettant à BlueXP de gérer les ressources et les processus dans votre environnement de cloud public.
 
 Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-quick-start-connector-aws.html["Création d'un connecteur dans AWS à partir de BlueXP"].
 
-* Vous devez utiliser le même connecteur pour gérer à la fois l'environnement de travail FSX et les bases de données Oracle.
-* Si vous disposez de l'environnement de travail FSX et des bases de données Oracle dans le même VPC, vous pouvez déployer le connecteur dans le même VPC.
-* Si vous disposez de l'environnement de travail FSX et des bases de données Oracle dans différents VPC :
+* Vous devez utiliser le même connecteur pour gérer à la fois l'environnement de travail et les bases de données FSX pour ONTAP.
+* Si vous disposez de l'environnement de travail FSX pour ONTAP et des bases de données dans le même cloud privé virtuel (VPC), vous pouvez déployer le connecteur dans le même VPC.
+* Si vous disposez de l'environnement de travail FSX pour ONTAP et de bases de données dans différents VPC :
 +
-** Si des charges de travail NAS (NFS) sont configurées sur FSX, vous pouvez créer le connecteur sur l'un des VPC.
-** Si seules des charges de travail SAN sont configurées et que vous ne prévoyez pas d'utiliser des charges de travail NAS (NFS), vous devez créer le connecteur dans le VPC où le système FSX est créé.
+** Si des workloads NAS (NFS) sont configurés sur FSX for ONTAP, vous pouvez créer le connecteur sur l'un des VPC.
+** Si seules des charges de travail SAN sont configurées et que vous n'envisagez pas d'utiliser de charges de travail NAS (NFS), créez le connecteur dans le VPC où le système FSX pour ONTAP est créé.
 +
 
-NOTE: Pour utiliser des charges de travail NAS (NFS), vous devez disposer d'une passerelle de transit entre le VPC de la base de données Oracle et le VPC FSX. L'adresse IP NFS qui est une adresse IP flottante est accessible depuis un autre VPC uniquement via la passerelle de transit. Nous ne pouvons pas accéder aux adresses IP flottantes en peering des VPC.
+NOTE: Pour l'utilisation de workloads NAS (NFS), vous devez disposer d'une passerelle de transit entre le VPC de la base de données et Amazon VPC. L'adresse IP NFS qui est une adresse IP flottante est accessible depuis un autre VPC uniquement via la passerelle de transit. Nous ne pouvons pas accéder aux adresses IP flottantes en peering des VPC.
 
 
 
@@ -48,5 +48,9 @@ NOTE: Pour utiliser des charges de travail NAS (NFS), vous devez disposer d'une 
 
 Après avoir créé le connecteur, cliquez sur *Storage* > *Canvas* > *My Working Environments* > *Add Working Environment* et suivez les invites pour ajouter l'environnement de travail. Assurez-vous qu'il existe une connectivité entre le connecteur et les hôtes de base de données Oracle et l'environnement de travail FSX. Le connecteur doit pouvoir se connecter à l'adresse IP de gestion du cluster de l'environnement de travail FSX.
 
+* Ajoutez l'environnement de travail en cliquant sur *Storage* > *Canvas* > *My Working Environments* > *Add Working Environment*.
++
+Assurez-vous qu'il y a une connectivité entre le connecteur et les hôtes de base de données et l'environnement de travail FSX pour ONTAP. Le connecteur doit se connecter à l'adresse IP de gestion du cluster de l'environnement de travail FSX pour ONTAP.
 
-IMPORTANT: Après avoir créé le connecteur, cliquez sur *Connector > Manage Connectors*, sélectionnez le nom du connecteur et copiez l'ID du connecteur.
+* Copiez l'ID du connecteur en cliquant sur *connecteur > gérer les connecteurs* et en sélectionnant le nom du connecteur.
+

@@ -23,9 +23,9 @@ Il est possible de cloner des bases de données pour les raisons suivantes :
 * Pour récupérer les données qui ont été supprimées ou modifiées par erreur.
 
 
-*Ce dont vous aurez besoin*
+*Avant de commencer*
 
-Avant de cloner la base de données, vous devez comprendre les concepts de clonage et vous assurer que toutes les exigences sont respectées. link:concept-clone-cloud-native-oracle-concepts.html["En savoir plus >>"].
+Vous devez comprendre les concepts de clonage et vous assurer que toutes les conditions sont remplies. link:concept-clone-cloud-native-oracle-concepts.html["En savoir plus >>"].
 
 *Étapes*
 
@@ -53,8 +53,12 @@ Si la base de données est clonée sur l'hôte source, le schéma de nommage des
 .. Spécifiez le chemin d'accès à Oracle Home.
 .. (Facultatif) spécifiez les informations d'identification de la base de données.
 +
-*** Informations d'identification de la base de données : si l'authentification de l'utilisateur OS est désactivée, vous devez fournir un mot de passe à l'utilisateur sys pour le définir sur l'hôte cible.
+*** Informations d'identification de la base de données : si l'authentification utilisateur du système d'exploitation est désactivée, vous devez fournir un mot de passe pour que l'utilisateur sys puisse se connecter à la base de données clonée sur le même hôte ou sur l'hôte cible.
 *** Informations d'identification ASM : si l'authentification de l'utilisateur OS est désactivée sur l'hôte cible, vous devez fournir les informations d'identification de l'utilisateur privilégié sysasm pour vous connecter à l'instance ASM sur l'hôte cible.
++
+
+NOTE: Assurez-vous que l'écouteur est actif et fonctionne sur l'hôte cible.
+
 
 
 .. Cliquez sur *Suivant*.
@@ -79,8 +83,12 @@ Si vous souhaitez créer le clone sur un autre hôte, sélectionnez l'hôte ayan
 .. Spécifiez la SID du clone.
 .. (Facultatif) spécifiez les informations d'identification de la base de données.
 +
-*** Informations d'identification de la base de données : si l'authentification de l'utilisateur OS est désactivée, vous devez fournir un mot de passe à l'utilisateur sys pour le définir sur l'hôte cible.
+*** Informations d'identification de la base de données : si l'authentification utilisateur du système d'exploitation est désactivée, vous devez fournir un mot de passe pour que l'utilisateur sys puisse se connecter à la base de données clonée sur le même hôte ou sur l'hôte cible.
 *** Informations d'identification ASM : si l'authentification de l'utilisateur OS est désactivée sur l'hôte cible, vous devez fournir les informations d'identification de l'utilisateur privilégié sysasm pour vous connecter à l'instance ASM sur l'hôte cible.
++
+
+NOTE: Assurez-vous que l'écouteur est actif et fonctionne sur l'hôte cible.
+
 
 
 .. Cliquez sur *Suivant*.

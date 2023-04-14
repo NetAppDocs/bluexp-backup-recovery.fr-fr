@@ -18,6 +18,40 @@ Découvrez les nouveautés de Cloud Backup.
 
 
 
+== 14 avril 2023
+
+
+
+=== Améliorations apportées à la sauvegarde et à la restauration BlueXP pour les applications (cloud natif)
+
+* Les bases de données SAP HANA
++
+** Prend en charge l'actualisation du système basée sur des scripts
+** Prend en charge la restauration de fichiers uniques Snapshot si la sauvegarde Azure NetApp Files est configurée
+** Prend en charge la mise à niveau du plug-in
+
+
+* Les bases de données Oracle
++
+** Améliorations apportées au déploiement des plug-ins en simplifiant la configuration utilisateur sudo non-root
+** Prend en charge la mise à niveau du plug-in
+** Prend en charge la détection automatique et la protection pilotée par des règles des bases de données Oracle sur Azure NetApp Files
+** Prend en charge la restauration de la base de données Oracle à l'emplacement d'origine avec récupération granulaire
+
+
+
+
+
+
+=== Améliorations apportées à la sauvegarde et à la restauration BlueXP pour les applications (hybride)
+
+* La sauvegarde et la restauration BlueXP pour les applications (hybrides) sont pilotées par le plan de contrôle SaaS.
+* API REST hybrides modifiées pour l'alignement avec les API cloud natives - effectué.
+* Prend en charge la notification par e-mail
+
+
+
+
 == 4 avril 2023
 
 

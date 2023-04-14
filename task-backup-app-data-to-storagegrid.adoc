@@ -14,12 +14,7 @@ summary: 'Réalisez quelques étapes de sauvegarde des données d"applications d
 
 
 [role="lead"]
-Vous pouvez sauvegarder les données applicatives de ONTAP vers StorageGRID en intégrant Cloud Backup pour les applications avec BlueXP et SnapCenter sur site.
-
-Vous pouvez protéger une ou plusieurs applications simultanément vers StorageGRID à l'aide d'une seule règle.
-
-
-IMPORTANT: Vous ne pouvez protéger qu'une seule application à la fois si vous utilisez l'interface graphique BlueXP. Toutefois, si vous utilisez des API REST, vous pouvez protéger plusieurs applications simultanément.
+Effectuez quelques étapes pour sauvegarder les données d'applications de ONTAP vers StorageGRID.
 
 *Ce dont vous aurez besoin*
 
@@ -34,16 +29,16 @@ Pour plus d'informations, reportez-vous à la section link:task-backup-onprem-pr
 . Dans la page attribuer une stratégie, sélectionnez la stratégie et cliquez sur *Suivant*.
 . Ajouter l'environnement de travail.
 +
-Configurer le cluster ONTAP qui héberge le SVM sur lequel l'application est en cours d'exécution. Une fois l'environnement de travail ajouté pour l'une des applications, il peut être réutilisé pour toutes les autres applications qui résident sur le même cluster ONTAP.
+Configurez la LIF de gestion de cluster à détecter par BlueXP. Une fois l'environnement de travail ajouté pour l'une des applications, il peut être réutilisé pour toutes les autres applications qui résident sur le même cluster ONTAP.
 
 +
 .. Sélectionner le SVM et cliquer sur *Ajouter un environnement de travail*.
 .. Dans l'assistant Ajouter un environnement de travail :
 +
-... Spécifier l'adresse IP du cluster ONTAP
-... Spécifiez les informations d'identification admin.
+... Préciser l'adresse IP du LIF de cluster Management.
+... Spécifier les identifiants de l'utilisateur du cluster ONTAP
 +
-Cloud Backup pour applications ne prend en charge que les administrateurs de cluster.
+La sauvegarde et la restauration BlueXP pour les applications ne prennent en charge que les administrateurs du cluster.
 
 
 
@@ -56,8 +51,8 @@ Cloud Backup pour applications ne prend en charge que les administrateurs de clu
 +
 Entrez les détails au format FQDN:PORT.
 
-.. Dans le champ clé d'accès, spécifiez la clé.
-.. Dans le champ clé secrète, spécifiez le mot de passe.
+.. Dans le champ clé d'accès, spécifiez la clé de chiffrement des données.
+.. Dans le champ clé secrète, spécifiez le mot de passe pour le cryptage des données.
 .. Spécifiez l'espace IP.
 
 

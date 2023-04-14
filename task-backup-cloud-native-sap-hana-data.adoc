@@ -14,7 +14,7 @@ summary: 'Création de sauvegardes planifiées ou à la demande d"une base de do
 
 
 [role="lead"]
-Avant de créer une sauvegarde de la base de données SAP HANA, vous devez ajouter les hôtes de la base de données SAP HANA et affecter une règle prédéfinie ou la règle que vous avez créée.
+Vous pouvez créer une sauvegarde en attribuant une règle prédéfinie ou la règle que vous avez créée.
 
 
 
@@ -28,7 +28,7 @@ Vous pouvez créer des stratégies si vous ne voulez pas utiliser ou modifier le
 . (Facultatif) modifiez le format du nom de la copie Snapshot.
 . Sélectionnez le type de stratégie.
 . Spécifiez la planification et les informations de conservation.
-. (Facultatif) spécifiez les scripts. link:task-backup-cloud-native-sap-hana-data.html#prescripts-and-postscripts["En savoir plus ."]
+. (Facultatif) spécifiez les scripts. link:task-backup-cloud-native-sap-hana-data.html#prescripts-and-postscripts["Scripts d'examen préliminaire et de post-script."]
 . Cliquez sur *Créer*.
 
 
@@ -105,25 +105,29 @@ Uniquement pour sauvegarde planifiée
 
 Vous pouvez soit affecter une stratégie pré-prédéfinie, soit créer une stratégie, puis l'affecter à la base de données. Une fois la stratégie attribuée, les sauvegardes sont créées conformément au planning défini dans la stratégie.
 
+*Avant de commencer*
+
+Vous devez avoir ajouté les hôtes de base de données SAP HANA.link:task-deploy-snapcenter-plugin-for-sap-hana.html#add-sap-hana-database-hosts["Ajouter des hôtes de base de données SAP HANA"]
+
 *À propos de cette tâche*
 
-Pour la réplication système HANA (HSR), la tâche de sauvegarde planifiée se déclenchera uniquement pour le système HANA principal et si le système bascule vers le système HANA secondaire, les planifications existantes déclenchent une sauvegarde sur le système HANA principal actuel. Si la règle n'est pas attribuée au système HANA, après le basculement, les planifications échouent.
+Pour la réplication système HANA (HSR), la tâche de sauvegarde planifiée ne se déclenche que pour le système HANA principal. Si le système bascule vers le système HANA secondaire, les planifications existantes déclenchent une sauvegarde sur le système HANA principal actuel. Si la règle n'est pas affectée au système HANA principal et secondaire, la planification échoue après le basculement.
 
-Si différentes politiques sont attribuées aux systèmes HSR, la sauvegarde planifiée sera déclenchée pour les systèmes et la sauvegarde échouera pour le système HANA secondaire.
+Si des règles différentes sont attribuées aux systèmes HSR, la sauvegarde planifiée déclenche à la fois pour les systèmes HANA principaux et secondaires et la sauvegarde échoue pour le système HANA secondaire.
 
 *Étapes*
 
 . Dans la page applications, si la base de données n'est pas protégée à l'aide d'aucune stratégie, cliquez sur *affecter stratégie*.
 +
-Si la base de données est protégée à l'aide d'une ou de plusieurs stratégies, vous pouvez attribuer davantage de stratégies en cliquant sur image:icon-action.png["pour sélectionner l'action"] > *affecter stratégie*.
+Bien que la base de données soit protégée à l'aide d'une ou de plusieurs stratégies, vous pouvez, si nécessaire, continuer à affecter d'autres stratégies en cliquant sur image:icon-action.png["pour sélectionner l'action"] > *affecter stratégie*.
 
 . Sélectionnez la stratégie et cliquez sur *affecter*.
 +
-Les sauvegardes seront créées conformément à la planification définie dans la stratégie.
+Les sauvegardes sont créées conformément au calendrier défini dans la règle.
 
 +
 
-NOTE: Le compte de service (_SnapCenter-account-<Account_ID>_) est utilisé pour l'exécution des opérations de sauvegarde planifiées.
+NOTE: Le compte de service (_SnapCenter-account-<account_id>_) est utilisé pour exécuter les opérations de sauvegarde planifiées.
 
 
 

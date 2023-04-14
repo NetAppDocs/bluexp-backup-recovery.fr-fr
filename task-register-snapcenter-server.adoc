@@ -14,7 +14,7 @@ summary: Procédez comme suit pour enregistrer le serveur SnapCenter.
 
 
 [role="lead"]
-Seul un utilisateur doté du rôle SnapCenterAdmin peut enregistrer l'hôte sur lequel SnapCenter Server 4.6 ou version ultérieure est exécuté. Vous pouvez enregistrer plusieurs hôtes SnapCenter Server.
+Seul un utilisateur doté du rôle SnapCenterAdmin peut enregistrer l'hôte sur lequel SnapCenter Server 4.6 ou version ultérieure est exécuté. Vous pouvez enregistrer plusieurs hôtes de serveur SnapCenter dans BlueXP.
 
 *Étapes*
 
@@ -24,9 +24,9 @@ Seul un utilisateur doté du rôle SnapCenterAdmin peut enregistrer l'hôte sur 
 . Spécifiez les informations suivantes :
 +
 .. Dans le champ serveur SnapCenter, spécifiez le FQDN ou l'adresse IP de l'hôte du serveur SnapCenter.
-.. Dans le champ Port, spécifiez le numéro de port sur lequel le serveur SnapCenter s'exécute.
+.. Dans le champ Port, spécifiez le numéro de port sur lequel l'hôte du serveur SnapCenter est en cours d'exécution.
 +
-Assurez-vous que le port est ouvert pour la communication entre le serveur SnapCenter et la sauvegarde dans le cloud pour les applications.
+Assurez-vous que le port est ouvert pour que la communication ait lieu entre le serveur SnapCenter et BlueXP.
 
 .. Dans le champ balises, spécifiez un nom de site, un nom de ville ou tout nom personnalisé avec lequel vous souhaitez marquer le serveur SnapCenter.
 +
@@ -35,17 +35,16 @@ Les balises sont séparées par une virgule.
 .. Dans le champ Nom d'utilisateur et Mot de passe, spécifiez les informations d'identification de l'utilisateur avec le rôle SnapCenterAdmin.
 
 
+. Sélectionnez le connecteur dans la liste déroulante *Connector*.
 . Cliquez sur *Enregistrer*.
 
 
 *Après la fin*
 
-Cliquez sur *Backup & Restore* > *applications* pour afficher toutes les applications protégées à l'aide de l'hôte serveur SnapCenter enregistré.
-
-Par défaut, les applications sont automatiquement découvertes tous les jours à minuit. Vous pouvez configurer le planning pour détecter les applications.
+Cliquez sur *Backup & Restore* > *applications* pour afficher toutes les applications protégées à l'aide de l'hôte serveur SnapCenter enregistré. Par défaut, les applications sont automatiquement découvertes tous les jours à minuit.
 
 
-NOTE: Pour les bases de données SQL Server, la colonne Nom de l'application affiche le nom au format _nom_de_l'application (nom de l'instance)_.
+IMPORTANT: Si des SVM sont ajoutés à SnapCenter à l'aide d'un nom de domaine complet ou d'une adresse IP, les applications s'exécutant sur ces SVM ne peuvent pas être protégées. La sauvegarde et la restauration BlueXP pour les applications reconnaissent uniquement les SVM ajoutés par leur nom ou les SVM détectés par SnapCenter qui ont été ajoutés au cluster ONTAP.
 
 Les applications prises en charge et leurs configurations sont les suivantes :
 
@@ -75,7 +74,7 @@ Vous devez sauvegarder au moins une sauvegarde sur le site principal et sur les 
 
 
 
-Les bases de données suivantes ne s'affichent pas :
+Les bases de données suivantes ne sont pas affichées :
 
 * Bases de données qui n'ont pas de sauvegarde
 * Les bases de données avec des règles à la demande ou à l'heure

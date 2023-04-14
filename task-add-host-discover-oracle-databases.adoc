@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: task-add-host-discover-oracle-databases.html 
-keywords: Cloud Manager, BlueXP, SnapCenter Plug-in for Oracle, Oracle, database, host, deploy, add host, discover 
-summary: Déployez le plug-in SnapCenter pour Oracle sur chacun des hôtes de base de données Oracle. 
+keywords: Cloud Manager, BlueXP, SnapCenter Plug-in for Oracle, Oracle, database, host, install, add host, discover 
+summary: Installez le plug-in SnapCenter pour Oracle sur chacun des hôtes de base de données Oracle. 
 ---
-= Déployez le plug-in SnapCenter pour Oracle et ajoutez des hôtes de base de données
+= Installez le plug-in SnapCenter pour Oracle et ajoutez des hôtes de base de données
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,15 +14,15 @@ summary: Déployez le plug-in SnapCenter pour Oracle sur chacun des hôtes de ba
 
 
 [role="lead"]
-Vous devez déployer le plug-in SnapCenter pour Oracle sur chacun des hôtes de base de données Oracle, ajouter les hôtes de base de données et découvrir les bases de données sur l'hôte pour attribuer des règles et créer des sauvegardes.
+Vous devez installer le plug-in SnapCenter pour Oracle sur chacun des hôtes de base de données Oracle, ajouter les hôtes de base de données et découvrir les bases de données sur l'hôte pour attribuer des règles et créer des sauvegardes.
 
-* Si SSH est activé pour l'hôte de base de données, vous pouvez déployer le plug-in à l'aide de l'une des méthodes suivantes :
+* Si SSH est activé pour l'hôte de base de données, vous pouvez installer le plug-in à l'aide de l'une des méthodes suivantes :
 +
-** Déployez le plug-in et ajoutez l'hôte à l'interface utilisateur à l'aide de l'option SSH. <<Déployez le plug-in et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option SSH,En savoir plus >>>>.
-** Déployez le plug-in à l'aide du script et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle. <<Déployez le plug-in à l'aide du script et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle,En savoir plus >>>>.
+** Installez le plug-in et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option SSH. <<Ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option SSH,En savoir plus >>>>.
+** Installez le plug-in à l'aide du script et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle. <<Installez le plug-in à l'aide du script et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle,En savoir plus >>>>.
 
 
-* Si SSH est désactivé, déployez le plug-in manuellement et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option Manual. <<Déployez le plug-in manuellement et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle,En savoir plus >>>>.
+* Si SSH est désactivé, installez le plug-in manuellement et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option Manual. <<Installez le plug-in manuellement et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle,En savoir plus >>>>.
 
 
 
@@ -33,44 +33,29 @@ Avant d'ajouter l'hôte, vous devez vous assurer que les prérequis sont respect
 
 * Vous devriez avoir créé l'environnement de travail et le connecteur.
 * Assurez-vous que le connecteur est connecté à l'environnement de travail et aux hôtes de la base de données Oracle.
++
+Pour plus d'informations sur la résolution du problème de connectivité, reportez-vous à la section link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapCenter/Cloud_Backup_Application_Failed_to_validate_connectivity_from_BlueXP_connector_host_to_application_database_host["Échec de validation de la connectivité entre l'hôte du connecteur BlueXP et l'hôte de la base de données d'applications"].
+
++
+Lorsque le connecteur est perdu ou si vous avez créé un nouveau connecteur, vous devez associer le connecteur aux ressources d'application existantes. Pour obtenir des instructions sur la mise à jour du connecteur, reportez-vous à la section link:task-manage-cloud-native-app-data.html#update-the-connector-details["Mettre à jour les détails du connecteur"].
+
 * Assurez-vous que l'utilisateur BlueXP a le rôle "Admin compte".
 * Assurez-vous que Java 11 (64 bits) Oracle Java ou OpenJDK est installé sur chacun des hôtes de base de données Oracle et QUE LA variable JAVA_HOME est correctement définie.
-* Vous devez avoir créé l'utilisateur SnapCenter et configuré sudo pour l'utilisateur SnapCenter. Pour plus d'informations, reportez-vous à la section <<Configurez sudo pour l'utilisateur SnapCenter>>.
-* Vérifiez que la communication du connecteur est activée sur le port SSH (par défaut : 22) si un déploiement SSH est utilisé.
-* Assurez-vous que la communication du connecteur est activée sur le port plug-in (par défaut : 8145) pour que les opérations fonctionnent.
+* Assurez-vous que la communication du connecteur est activée sur le port SSH (par défaut : 22) si l'installation basée sur SSH est effectuée.
+* Assurez-vous que la communication du connecteur est activée sur le port enfichable (par défaut : 8145) pour que les opérations de protection des données fonctionnent.
+* Assurez-vous que la dernière version du plug-in est installée. Pour mettre à niveau le plug-in, reportez-vous à la section <<Mettez à niveau le plug-in SnapCenter pour bases de données Oracle>>.
+* Créez un compte non racine (sudo) sur l'hôte d'application.
 
 
 
 
-=== Configurez sudo pour l'utilisateur SnapCenter
-
-Vous devez créer un utilisateur SnapCenter et configurer sudo pour l'utilisateur.
-
-*Étapes*
-
-. Connectez-vous à la machine virtuelle du connecteur.
-. Téléchargez le binaire du plug-in hôte SnapCenter Linux.
-`sudo docker exec -it cloudmanager_scs_cloud curl -X GET 'http://127.0.0.1/deploy/downloadLinuxPlugin'`
-. Obtenez le chemin de montage de base.
-`sudo docker volume ls | grep scs_cloud_volume | awk {'print $2'} | xargs sudo docker volume inspect | grep Mountpoint`
-. Copiez les lignes 1 à 16 à partir du fichier *oracle_checksum_scs.txt* situé à *_base_mount_path_/_version_/sc-linux-host-plugin/*.
-. Connectez-vous à l'hôte de la base de données Oracle et effectuez les opérations suivantes :
-+
-.. Créez le compte utilisateur SnapCenter, la paire de clés privées et attribuez les autorisations. Pour plus d'informations, reportez-vous à la section https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/managing-users.html#create-user-account["Créez un compte utilisateur"^].
-.. Collez les lignes que vous avez copiées à l'étape 4 dans le fichier _/etc/sudoers_ à l'aide de l'utilitaire visudo Linux.
-+
-Dans les lignes ci-dessus, remplacez <LINUXUSER> par l'utilisateur SnapCenter que vous avez créé et enregistrez le fichier dans l'utilitaire visudo.
-
-
-
-
-
-
-
-== Déployez le plug-in et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option SSH
+== Ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option SSH
 
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.
-. Cliquez sur découvrir les applications.
++
+Si vous avez déjà ajouté un hôte et souhaitez en ajouter un autre, cliquez sur *applications* > *gérer les bases de données* > *Ajouter*, puis passez à l'étape 5.
+
+. Cliquez sur *découvrir les applications*.
 . Sélectionnez *Cloud Native* et cliquez sur *Next*.
 +
 Un compte de service avec le rôle _SnapCenter System_ est créé pour exécuter des opérations de protection des données planifiées pour tous les utilisateurs de ce compte.
@@ -79,71 +64,69 @@ Un compte de service avec le rôle _SnapCenter System_ est créé pour exécuter
 ** Cliquez sur *compte* > *gérer compte* > *membres* pour afficher le compte de service.
 +
 
-NOTE: Le compte de service (_SnapCenter-account-<accountid>_) est utilisé pour l'exécution des opérations de sauvegarde planifiées. Vous ne devez jamais supprimer le compte de service.
+NOTE: Le compte de service (_SnapCenter-account-<accountid>_) est utilisé pour exécuter les opérations de sauvegarde planifiées. Vous ne devez jamais supprimer le compte de service.
 
 
 
-. Dans la page Ajouter un hôte, effectuez les opérations suivantes :
+. Sélectionnez Oracle comme type d'application.
+. Dans la page Détails de l'hôte, effectuez les opérations suivantes :
 +
 .. Sélectionnez *utilisant SSH*.
 .. Spécifiez le FQDN ou l'adresse IP de l'hôte où vous souhaitez installer le plug-in.
-.. Spécifiez le nom d'utilisateur (<<Configure a sudo for SnapCenter user,Utilisateur sudo SnapCenter>>) à l'aide de laquelle le module du plug-in sera copié sur l'hôte.
+.. Spécifiez l'utilisateur non-root(sudo) utilisant lequel le module de plug-in sera copié sur l'hôte.
++
+L'utilisateur root n'est pas pris en charge.
+
 .. Spécifiez le port SSH et le port du plug-in.
 +
 Le port SSH par défaut est 22 et le port du plug-in est 8145.
 
 +
-Vous pouvez fermer le port SSH sur l'hôte de l'application après avoir installé le plug-in. Le port SSH n'est requis pour aucune autre opération de plug-in.
+Vous pouvez fermer le port SSH sur l'hôte de l'application après avoir installé le plug-in. Le port SSH n'est pas requis pour des opérations de protection des données.
 
 .. Sélectionnez le connecteur.
 .. (Facultatif) si l'authentification sans clé n'est pas activée entre le connecteur et l'hôte, vous devez spécifier la clé privée SSH qui sera utilisée pour communiquer avec l'hôte.
 +
 
-NOTE: La clé privée SSH n'est pas stockée n'importe où dans l'application et ne sera pas utilisée pour d'autres opérations.
+NOTE: La clé privée SSH n'est stockée nulle part dans l'application et n'est utilisée pour aucune autre opération.
 
 .. Cliquez sur *Suivant*.
+
+
+. Dans la page Configuration, effectuez les opérations suivantes :
 +
-*** Affiche toutes les bases de données sur l'hôte. Si l'authentification OS est désactivée pour la base de données, vous devez configurer l'authentification de la base de données en cliquant sur *configurer*. Pour plus d'informations, reportez-vous à la section <<Configurer les informations d'identification de la base de données Oracle>>.
-*** Cliquez sur *Paramètres* et sélectionnez *hôtes* pour afficher tous les hôtes. Cliquez sur *Supprimer* pour supprimer un hôte de base de données.
+.. Configurez l'accès sudo pour l'utilisateur non-root (sudo) en copiant le texte dans _/etc/sudoers.d/snapcenter_ file.
+.. Cochez la case et cliquez sur *Suivant*.
+
+
+. Passez en revue les détails et cliquez sur *découvrir les applications*.
++
+** Une fois le plug-in installé, l'opération de découverte démarre. Vous pouvez contrôler le travail d'installation à partir de la page *surveillance des travaux*.
+** Affiche toutes les bases de données sur l'hôte. Si l'authentification du système d'exploitation est désactivée pour la base de données, cliquez sur *configurer* pour activer l'authentification de la base de données. Pour plus d'informations, reportez-vous à la section <<Configurer les informations d'identification de la base de données Oracle>>.
+** Cliquez sur *Paramètres* et sélectionnez *hôtes* pour afficher tous les hôtes.
 +
 
 NOTE: Le filtre permettant d'afficher un hôte spécifique ne fonctionne pas. Lorsque vous spécifiez un nom d'hôte dans le filtre, tous les hôtes sont affichés.
 
-*** Cliquez sur *Paramètres* et sélectionnez *stratégies* pour afficher les stratégies prédéfinies. Passez en revue les stratégies pré-prédéfinies et, si vous le souhaitez, vous pouvez les modifier pour répondre à vos exigences ou créer une nouvelle stratégie.
+** Cliquez sur *Paramètres* et sélectionnez *stratégies* pour afficher les stratégies prédéfinies. Examinez les règles prédéfinies et vous pouvez les modifier pour répondre à vos besoins ou créer une nouvelle police.
 
 
 
 
 
 
+== Installez le plug-in à l'aide du script et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle
 
+Configurez l'authentification basée sur une clé SSH pour le compte utilisateur non-root de l'hôte Oracle et effectuez les étapes suivantes pour installer le plug-in.
 
-== Déployez le plug-in à l'aide du script et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle
+*Avant de commencer*
 
-Si l'authentification basée sur une clé SSH est activée sur l'hôte Oracle pour l'utilisateur SnapCenter, vous pouvez effectuer les étapes suivantes pour déployer le plug-in. Avant d'effectuer les étapes, assurez-vous que la connexion SSH au connecteur est activée.
+Assurez-vous que la connexion SSH au connecteur est activée.
 
 *Étapes*
 
-. Connectez-vous à la machine virtuelle du connecteur.
-. Obtenez le chemin de montage de base.
-`sudo docker volume ls | grep scs_cloud_volume | awk {'print $2'} | xargs sudo docker volume inspect | grep Mountpoint`
-. Déployez le plug-in à l'aide du script d'assistance fourni dans le connecteur.
-`sudo <base_mount_path>/scripts/oracle_plugin_copy_and_install.sh --host <host_name> --sshkey <ssh_key_file> --username <user_name> --port <ssh_port> --pluginport <plugin_port> --installdir <install_dir>`
-+
-** Host_name est le nom de l'hôte Oracle et il s'agit d'un paramètre obligatoire.
-** ssh_Key_file est la clé SSH de l'utilisateur SnapCenter et utilisée pour se connecter à l'hôte Oracle. Ce paramètre est obligatoire.
-** User_NAME : utilisateur SnapCenter disposant de privilèges SSH sur l'hôte Oracle et ceci est un paramètre facultatif. La valeur par défaut est EC2-user.
-** ssh_port : port SSH sur l'hôte Oracle et il s'agit d'un paramètre facultatif. La valeur par défaut est 22
-** Plugin_port : port utilisé par le plug-in et il s'agit d'un paramètre facultatif. La valeur par défaut est 8145
-** Dossier_installation : répertoire dans lequel le plug-in sera déployé et il s'agit d'un paramètre facultatif. La valeur par défaut est /opt.
-+
-Par exemple :
-`sudo /var/lib/docker/volumes/service-manager-2_cloudmanager_scs_cloud_volume/_data/scripts/oracle_plugin_copy_and_install.sh --host xxx.xx.x.x --sshkey /keys/netapp-ssh.ppk`
-
-
-
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.
-. Cliquez sur découvrir les applications.
+. Cliquez sur *découvrir les applications*.
 . Sélectionnez *Cloud Native* et cliquez sur *Next*.
 +
 Un compte de service avec le rôle _SnapCenter System_ est créé pour exécuter des opérations de protection des données planifiées pour tous les utilisateurs de ce compte.
@@ -152,14 +135,15 @@ Un compte de service avec le rôle _SnapCenter System_ est créé pour exécuter
 ** Cliquez sur *compte* > *gérer compte* > *membres* pour afficher le compte de service.
 +
 
-NOTE: Le compte de service (_SnapCenter-account-<accountid>_) est utilisé pour l'exécution des opérations de sauvegarde planifiées. Vous ne devez jamais supprimer le compte de service.
+NOTE: Le compte de service (_SnapCenter-account-<accountid>_) est utilisé pour exécuter les opérations de sauvegarde planifiées. Vous ne devez jamais supprimer le compte de service.
 
 
 
-. Dans la page Ajouter un hôte, effectuez les opérations suivantes :
+. Sélectionnez Oracle comme type d'application.
+. Dans la page Détails de l'hôte, effectuez les opérations suivantes :
 +
 .. Sélectionnez *Manuel*.
-.. Spécifiez le FQDN ou l'adresse IP de l'hôte où le plug-in est déployé.
+.. Spécifiez le nom de domaine complet ou l'adresse IP de l'hôte sur lequel le plug-in est installé.
 +
 Assurez-vous que le connecteur peut communiquer avec l'hôte de base de données à l'aide du FQDN ou de l'adresse IP.
 
@@ -167,89 +151,121 @@ Assurez-vous que le connecteur peut communiquer avec l'hôte de base de données
 +
 Le port par défaut est 8145.
 
+.. Spécifiez l'utilisateur non-root (sudo) qui utilisera le package de plug-in pour le copier sur l'hôte.
 .. Sélectionnez le connecteur.
-.. Cochez la case pour confirmer que le plug-in est installé sur l'hôte
-.. Cliquez sur *découvrir les applications*.
+.. Cochez la case pour confirmer que le plug-in est installé sur l'hôte.
+.. Cliquez sur *Suivant*.
+
+
+. Dans la page Configuration, effectuez les opérations suivantes :
 +
-*** Affiche toutes les bases de données sur l'hôte. Si l'authentification OS est désactivée pour la base de données, vous devez configurer l'authentification de la base de données en cliquant sur *configurer*. Pour plus d'informations, reportez-vous à la section <<Configurer les informations d'identification de la base de données Oracle>>.
-*** Cliquez sur *Paramètres* et sélectionnez *hôtes* pour afficher tous les hôtes. Cliquez sur *Supprimer* pour supprimer un hôte de base de données.
+.. Configurez l'accès sudo pour l'utilisateur SnapCenter en copiant le texte vers `/etc/sudoers.d/snapcenter` fichier.
+.. Cochez la case et cliquez sur *Suivant*.
+
+
+. Connectez-vous à la machine virtuelle du connecteur.
+. Installez le plug-in à l'aide du script fourni dans le connecteur.
+`sudo bash  /var/lib/docker/volumes/service-manager-2_cloudmanager_scs_cloud_volume/_data/scripts/linux_plugin_copy_and_install.sh --host <plugin_host> --username <host_user_name> --sshkey <host_ssh_key> --pluginport <plugin_port> --sshport <host_ssh_port>`
++
+** Plugin_host est le nom de l'hôte Oracle et il s'agit d'un paramètre obligatoire.
+** Host_User_NAME est l'utilisateur SnapCenter disposant de privilèges SSH sur l'hôte Oracle et il s'agit d'un paramètre obligatoire.
+** Host_ssh_Key est la clé SSH de l'utilisateur SnapCenter et utilisée pour se connecter à l'hôte Oracle. Ce paramètre est obligatoire.
+** plugin_port est le port utilisé par le plug-in et il s'agit d'un paramètre facultatif. La valeur par défaut est 8145
+** Host_ssh_port est le port SSH de l'hôte Oracle et il s'agit d'un paramètre facultatif. La valeur par défaut est 22
++
+Par exemple :
+`sudo bash  /var/lib/docker/volumes/service-manager-2_cloudmanager_scs_cloud_volume/_data/scripts/linux_plugin_copy_and_install.sh --host 10.0.1.1 --username snapcenter --sshkey /keys/netapp-ssh.ppk`
+
+
+
+. Passez en revue les détails et cliquez sur *découvrir les applications*.
++
+** Affiche toutes les bases de données sur l'hôte. Si l'authentification du système d'exploitation est désactivée pour la base de données, cliquez sur *configurer* pour activer l'authentification de la base de données. Pour plus d'informations, reportez-vous à la section <<Configurer les informations d'identification de la base de données Oracle>>.
+** Cliquez sur *Paramètres* et sélectionnez *hôtes* pour afficher tous les hôtes.
 +
 
 NOTE: Le filtre permettant d'afficher un hôte spécifique ne fonctionne pas. Lorsque vous spécifiez un nom d'hôte dans le filtre, tous les hôtes sont affichés.
 
-*** Cliquez sur *Paramètres* et sélectionnez *stratégies* pour afficher les stratégies prédéfinies. Passez en revue les stratégies pré-prédéfinies et, si vous le souhaitez, vous pouvez les modifier pour répondre à vos exigences ou créer une nouvelle stratégie.
+** Cliquez sur *Paramètres* et sélectionnez *stratégies* pour afficher les stratégies prédéfinies. Examinez les règles prédéfinies et vous pouvez les modifier pour répondre à vos besoins ou créer une nouvelle police.
 
 
 
 
 
 
+== Installez le plug-in manuellement et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle
 
-
-== Déployez le plug-in manuellement et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle
-
-Si l'authentification basée sur une clé SSH n'est pas activée sur l'hôte de base de données Oracle, vous devez effectuer les étapes manuelles suivantes pour déployer le plug-in, puis ajouter l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle.
+Si l'authentification basée sur une clé SSH n'est pas activée sur l'hôte de base de données Oracle, vous devez effectuer les étapes manuelles suivantes pour installer le plug-in, puis ajouter l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle.
 
 *Étapes*
+
+. Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.
+. Cliquez sur *découvrir les applications*.
+. Sélectionnez *Cloud Native* et cliquez sur *Next*.
++
+Un compte de service avec le rôle _SnapCenter System_ est créé pour exécuter des opérations de protection des données planifiées pour tous les utilisateurs de ce compte.
+
++
+** Cliquez sur *compte* > *gérer compte* > *membres* pour afficher le compte de service.
++
+
+NOTE: Le compte de service (_SnapCenter-account-<accountid>_) est utilisé pour exécuter les opérations de sauvegarde planifiées. Vous ne devez jamais supprimer le compte de service.
+
+
+
+. Sélectionnez Oracle comme type d'application.
+. Dans la page *Détails de l'hôte*, effectuez les opérations suivantes :
++
+.. Sélectionnez *Manuel*.
+.. Spécifiez le nom de domaine complet ou l'adresse IP de l'hôte sur lequel le plug-in est installé.
++
+Assurez-vous que le connecteur peut communiquer avec l'hôte de base de données à l'aide du FQDN ou de l'adresse IP.
+
+.. Spécifiez le port du plug-in.
++
+Le port par défaut est 8145.
+
+.. Spécifiez l'utilisateur sudo non-root (sudo) qui utilisera le package de plug-in pour le copier sur l'hôte.
+.. Sélectionnez le connecteur.
+.. Cochez la case pour confirmer que le plug-in est installé sur l'hôte.
+.. Cliquez sur *Suivant*.
+
+
+. Dans la page *Configuration*, effectuez les opérations suivantes :
++
+.. Configurez l'accès sudo pour l'utilisateur SnapCenter en copiant le texte vers `/etc/sudoers.d/snapcenter` fichier.
+.. Cochez la case et cliquez sur *Suivant*.
+
 
 . Connectez-vous à la machine virtuelle du connecteur.
 . Téléchargez le binaire du plug-in hôte SnapCenter Linux.
 `sudo docker exec -it cloudmanager_scs_cloud curl -X GET 'http://127.0.0.1/deploy/downloadLinuxPlugin'`
-. Obtenez le chemin de montage de base.
-`sudo docker volume ls | grep scs_cloud_volume | awk {'print $2'} | xargs sudo docker volume inspect | grep Mountpoint`
-. Obtenez le chemin binaire du plug-in téléchargé.
-`sudo ls <base_mount_path> $(sudo docker ps|grep -Po "cloudmanager_scs_cloud:.*? "|sed -e 's/ *$//'|cut -f2 -d":")/sc-linux-host-plugin/snapcenter_linux_host_plugin_scs.bin`
-. Copiez _snapcenter_linux_host_plugin_scs.bin_ vers chacun des hôtes de base de données Oracle à l'aide de scp ou d'autres méthodes alternatives.
 +
-Le _snapcenter_linux_host_plugin_scs.bin_ doit être copié dans un emplacement accessible par l'utilisateur SnapCenter.
+Le fichier binaire du plug-in est disponible à l'adresse suivante : _cd /var/lib/docker/volumes/service-Manager-2_cloudmanager_scs_cloud_volume/_data/$(sudo docker ps|grep -po « cloudmanager_scs_cloud:.*? "|sed -e's/ *$/'|cut -f2 -d":")/sc-linux-host-plugin_
 
-. Connectez-vous à l'hôte de base de données Oracle à l'aide du compte utilisateur SnapCenter et exécutez la commande suivante pour activer les autorisations d'exécution pour le binaire.
+. Copiez _snapcenter_linux_host_plugin_scs.bin_ depuis le chemin ci-dessus vers _/home/<non root user (sudo)>/.sc_netapp_ path pour chacun des hôtes de base de données Oracle à l'aide de scp ou d'autres méthodes alternatives.
+. Connectez-vous à l'hôte de base de données Oracle à l'aide du compte non-root (sudo).
+. Remplacez le répertoire par _/home/<non root user>/.sc_netapp/_ et exécutez la commande suivante pour activer les autorisations d'exécution pour le binaire.
 `chmod +x snapcenter_linux_host_plugin_scs.bin`
-. Déployez le plug-in Oracle en tant qu'utilisateur sudo SnapCenter.
-`./snapcenter_linux_host_plugin_scs.bin -i silent -DSPL_USER=<snapcenter-user>`
+. Installez le plug-in Oracle en tant qu'utilisateur sudo SnapCenter.
+`./snapcenter_linux_host_plugin_scs.bin -i silent -DSPL_USER=<non-root>`
 . Copiez _certificate.p12_ de _<base_mount_path>/client/certificat/_ chemin de la machine virtuelle du connecteur vers _/var/opt/snapcenter/spl/etc/_ sur l'hôte du plug-in.
 . Accédez à _/var/opt/snapcenter/spl/etc_ et exécutez la commande keytool pour importer le certificat.
 `keytool -v -importkeystore -srckeystore certificate.p12 -srcstoretype PKCS12 -destkeystore keystore.jks -deststoretype JKS -srcstorepass snapcenter -deststorepass snapcenter -srcalias agentcert -destalias agentcert -noprompt`
 . Redémarrer SPL : `systemctl restart spl`
 . Vérifier que le plug-in est accessible depuis le connecteur en exécutant la commande ci-dessous à partir du connecteur.
-`docker exec -it cloudmanager_scs_cloud curl -ik \https://<FQDN or IP of the plug-in host>:<plug-in port>/getVersion --cert /config/client/certificate/certificate.pem --key /config/client/certificate/key.pem`
-. Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.
-. Cliquez sur découvrir les applications.
-. Sélectionnez *Cloud Native* et cliquez sur *Next*.
+`docker exec -it cloudmanager_scs_cloud curl -ik \https://<FQDN or IP of the plug-in host>:<plug-in port>/PluginService/Version --cert /config/client/certificate/certificate.pem --key /config/client/certificate/key.pem`
+. Passez en revue les détails et cliquez sur *découvrir les applications*.
 +
-Un compte de service avec le rôle _SnapCenter System_ est créé pour exécuter des opérations de protection des données planifiées pour tous les utilisateurs de ce compte.
-
-+
-** Cliquez sur *compte* > *gérer compte* > *membres* pour afficher le compte de service.
-+
-
-NOTE: Le compte de service (_SnapCenter-account-<accountid>_) est utilisé pour l'exécution des opérations de sauvegarde planifiées. Vous ne devez jamais supprimer le compte de service.
-
-
-
-. Dans la page Ajouter un hôte, effectuez les opérations suivantes :
-+
-.. Sélectionnez *Manuel*.
-.. Spécifiez le FQDN ou l'adresse IP de l'hôte où le plug-in est déployé.
-+
-Assurez-vous que le connecteur peut communiquer avec l'hôte de base de données à l'aide du FQDN ou de l'adresse IP.
-
-.. Spécifiez le port du plug-in.
-+
-Le port par défaut est 8145.
-
-.. Sélectionnez le connecteur.
-.. Cochez la case pour confirmer que le plug-in est installé sur l'hôte
-.. Cliquez sur *découvrir les applications*.
-+
-*** Affiche toutes les bases de données sur l'hôte. Si l'authentification OS est désactivée pour la base de données, vous devez configurer l'authentification de la base de données en cliquant sur *configurer*. Pour plus d'informations, reportez-vous à la section <<Configurer les informations d'identification de la base de données Oracle>>.
-*** Cliquez sur *Paramètres* et sélectionnez *hôtes* pour afficher tous les hôtes. Cliquez sur *Supprimer* pour supprimer un hôte de base de données.
+** Affiche toutes les bases de données sur l'hôte. Si l'authentification du système d'exploitation est désactivée pour la base de données, cliquez sur *configurer* pour activer l'authentification de la base de données. Pour plus d'informations, reportez-vous à la section <<Configurer les informations d'identification de la base de données Oracle>>.
+** Cliquez sur *Paramètres* et sélectionnez *hôtes* pour afficher tous les hôtes.
 +
 
 NOTE: Le filtre permettant d'afficher un hôte spécifique ne fonctionne pas. Lorsque vous spécifiez un nom d'hôte dans le filtre, tous les hôtes sont affichés.
 
-*** Cliquez sur *Paramètres* et sélectionnez *stratégies* pour afficher les stratégies prédéfinies. Passez en revue les stratégies pré-prédéfinies et, si vous le souhaitez, vous pouvez les modifier pour répondre à vos exigences ou créer une nouvelle stratégie.
-
+** Cliquez sur *Paramètres* et sélectionnez *stratégies* pour afficher les stratégies prédéfinies. Examinez les règles prédéfinies et vous pouvez les modifier pour répondre à vos besoins ou créer une nouvelle police.
++
+Accédez à l'interface utilisateur BlueXP.
 
 
 
@@ -259,11 +275,11 @@ NOTE: Le filtre permettant d'afficher un hôte spécifique ne fonctionne pas. Lo
 
 == Configurer les informations d'identification de la base de données Oracle
 
-Vous devez configurer les informations d'identification utilisées pour effectuer des opérations de protection des données sur les bases de données Oracle.
+Vous devez configurer les informations d'identification de la base de données utilisées pour effectuer des opérations de protection des données sur les bases de données Oracle.
 
 *Étapes*
 
-. Si l'authentification OS est désactivée pour la base de données, vous devez configurer l'authentification de la base de données en cliquant sur *configurer*.
+. Si l'authentification du système d'exploitation est désactivée pour la base de données, cliquez sur *configurer* pour modifier l'authentification de la base de données.
 . Spécifiez le nom d'utilisateur, le mot de passe et les détails du port.
 +
 Si la base de données réside dans ASM, vous devez également configurer les paramètres ASM.
@@ -272,4 +288,38 @@ Si la base de données réside dans ASM, vous devez également configurer les pa
 L'utilisateur Oracle doit disposer des privilèges sysdba et l'utilisateur ASM doit disposer des privilèges sysasm.
 
 . Cliquez sur *configurer*.
+
+
+
+
+== Mettez à niveau le plug-in SnapCenter pour bases de données Oracle
+
+Il est conseillé de mettre à niveau le plug-in SnapCenter pour Oracle pour accéder aux nouvelles fonctionnalités et améliorations les plus récentes. Vous pouvez effectuer une mise à niveau à partir de l'interface utilisateur BlueXP ou à l'aide de la ligne de commande.
+
+*Avant de commencer*
+
+* Assurez-vous qu'aucune opération n'est en cours d'exécution sur l'hôte.
+
+
+*Étapes*
+
+. Cliquez sur *sauvegarde et récupération* > *applications* > *hôtes*.
+. Vérifiez si la mise à niveau du plug-in est disponible pour l'un des hôtes en cochant la colonne État global.
+. Mettez à niveau le plug-in à partir de l'interface utilisateur ou à l'aide de la ligne de commande.
++
+|===
+| Mise à niveau avec l'interface utilisateur | Mise à niveau à l'aide de la ligne de commande 
+
+
+ a| 
+.. Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à l'hôte et cliquez sur *Upgrade Plug-in*.
+.. Cochez la case et cliquez sur *mettre à niveau*.
+
+ a| 
+.. Connectez-vous à Connector VM.
+.. Exécutez le script suivant.
+`sudo bash /var/lib/docker/volumes/service-manager-2_cloudmanager_scs_cloud_volume/_data/scripts/linux_plugin_copy_and_install.sh --host <plugin_host> --username <host_user_name> --sshkey <host_ssh_key> --pluginport <plugin_port> --sshport <host_ssh_port> --upgrade`
+
+
+|===
 

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-mount-app-backup.html 
 keywords: mount, mount application backups, Oracle database, SAP HANA database 
-summary: Vous pouvez monter les sauvegardes SAP HANA et Oracle dans la base de données donnée 
+summary: 'Vous pouvez monter les sauvegardes SAP HANA et Oracle sur l"hôte spécifié.' 
 ---
 = Montage des sauvegardes d'applications
 :hardbreaks:
@@ -14,11 +14,9 @@ summary: Vous pouvez monter les sauvegardes SAP HANA et Oracle dans la base de d
 
 
 [role="lead"]
-SnapCenter ne prend pas en charge la restauration des sauvegardes Oracle et HANA sur l'hôte secondaire. Ainsi, Cloud Backup pour les applications vous permet de monter les sauvegardes Oracle et HANA sur l'hôte donné.
+Avec les fonctionnalités de sauvegarde et de restauration BlueXP pour les applications, vous pouvez monter les sauvegardes Oracle et HANA sur un autre hôte.
 
-*Ce dont vous aurez besoin*
-
-Si vous souhaitez monter une sauvegarde qui a été déplacée vers le magasin d'objets à partir d'un stockage secondaire, ajoutez les détails de l'environnement de travail principal et définissez l'espace IP. Pour plus d'informations, voir link:task-manage-app-backups.html#set-ip-space-of-the-primary-working-environment["Définissez l'espace IP de l'environnement de travail principal"].
+SnapCenter ne prend pas en charge la restauration des sauvegardes Oracle et HANA sur l'hôte secondaire. L'option de montage vous permet donc de monter les sauvegardes Oracle et HANA sur l'autre hôte.
 
 *Étapes*
 
@@ -29,17 +27,19 @@ Si vous souhaitez monter une sauvegarde qui a été déplacée vers le magasin d
 +
 .. Spécifiez l'une des options suivantes :
 +
-... Pour l'environnement NAS, spécifiez le FQDN ou l'adresse IP de l'hôte vers lequel les autres volumes restaurés à partir du magasin d'objets doivent être exportés.
-... Pour l'environnement SAN, spécifiez les initiateurs de l'hôte vers lequel les LUN du volume secondaire restauré à partir du magasin d'objets doivent être mappées.
+... Pour l'environnement NAS, spécifiez le nom de domaine complet ou l'adresse IP de l'hôte vers lequel les volumes restaurés à partir du magasin d'objets doivent être exportés.
+... Pour l'environnement SAN, spécifiez les initiateurs de l'hôte sur lesquels les LUN des volumes restaurés à partir du magasin d'objets doivent être mappées.
 
 
-.. Spécifiez le suffixe à ajouter au nom du volume secondaire.
+.. Indiquez le suffixe à ajouter au nom du volume.
 .. Si le snapshot est en stockage d'archivage, spécifiez la priorité de récupération de vos données à partir du stockage d'archivage.
 .. Cliquez sur *Mount*.
 
 
 
 
-Cette opération ne monte que le stockage sur l'hôte donné. Vous devez monter manuellement le système de fichiers et faire apparaître la base de données. Après avoir utilisé le autre volume, l'administrateur du stockage peut supprimer le volume du cluster ONTAP.
+Cette opération ne monte que le stockage sur l'hôte donné. Vous devez monter manuellement le système de fichiers et faire apparaître la base de données. Après avoir utilisé le volume, l'administrateur du stockage peut le supprimer du cluster ONTAP.
 
-Pour plus d'informations sur l'accès à la base de données SAP HANA, reportez-vous à la section, https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["Tr-4667 : automatisation des opérations de copie système et de clonage SAP HANA avec SnapCenter"^].
+* Pour plus d'informations sur l'affichage de la base de données Oracle, reportez-vous à la section https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Manager/How_to_bring_up_Oracle_Database_in_another_NFS_host_after_mounting_storage_from_backup_in_Cloud_Backup_for_Applications["Article de la base de connaissances"].
+* Pour plus d'informations sur l'accès à la base de données SAP HANA, reportez-vous à la section, https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-overview-of-sap-system-copy-workflow-with-snapcenter.html["Tr-4667 : présentation du workflow de copie de système SAP avec SnapCenter"^] et https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-overview-of-sap-system-clone-workflow-with-snapcenter.html["Tr-4667 : présentation du workflow de clonage de systèmes SAP avec SnapCenter"^].
+

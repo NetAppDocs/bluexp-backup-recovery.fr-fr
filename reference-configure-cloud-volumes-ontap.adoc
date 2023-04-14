@@ -14,7 +14,7 @@ summary: 'Créer l"environnement de travail Cloud Volumes ONTAP et le connecteur
 
 
 [role="lead"]
-Vous devez créer l'environnement de travail Cloud Volumes ONTAP et le connecteur.
+Avec BlueXP, vous devez créer un environnement de travail Cloud Volumes ONTAP pour ajouter et gérer des volumes et des services de données supplémentaires. Vous devez également créer un connecteur pour votre environnement cloud permettant à BlueXP de gérer les ressources et les processus au sein de votre environnement de cloud public.
 
 
 
@@ -26,15 +26,15 @@ Vous pouvez découvrir et ajouter des systèmes Cloud Volumes ONTAP existants à
 
 == Créer un connecteur
 
-Vous pouvez commencer à utiliser Cloud Volumes ONTAP pour votre environnement cloud en quelques étapes. Pour plus d'informations, reportez-vous à l'une des méthodes suivantes :
+Vous pouvez commencer à utiliser Cloud Volumes ONTAP pour votre environnement cloud en quelques étapes. Pour plus d'informations, reportez-vous à l'une des sections suivantes :
 
 * link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-aws.html["Démarrage rapide de Cloud Volumes ONTAP dans AWS"]
 * link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-azure.html["Démarrage rapide de Cloud Volumes ONTAP dans Azure"]
 * link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-gcp.html["Démarrage rapide pour Cloud Volumes ONTAP dans Google Cloud"]
 
 
-Vous devez utiliser le même connecteur pour gérer à la fois l'environnement de travail CVO et les bases de données Oracle.
+Vous devez utiliser le même connecteur pour gérer à la fois l'environnement de travail Cloud Volumes ONTAP et les bases de données.
 
-* Si vous disposez de l'environnement de travail CVO et des bases de données Oracle dans le même VPC ou VNet, vous pouvez déployer le connecteur dans le même VPC ou vNet.
-* Si vous disposez de l'environnement de travail CVO et des bases de données Oracle dans différents VPC ou VNets, assurez-vous que les VPC ou VNets sont associés.
+* Si votre environnement de travail Cloud Volumes ONTAP et vos bases de données se trouvent dans le même cloud privé virtuel (VPC) ou vnet, vous pouvez déployer le connecteur sur le même VPC ou vnet.
+* Si vous disposez de l'environnement de travail Cloud Volumes ONTAP et des bases de données dans différents VPC ou réseaux virtuels, assurez-vous que les VPC ou les réseaux sont associés.
 

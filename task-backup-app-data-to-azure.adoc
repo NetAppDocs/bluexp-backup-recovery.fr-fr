@@ -14,12 +14,7 @@ summary: 'Réalisez quelques étapes pour sauvegarder des données d"application
 
 
 [role="lead"]
-Vous pouvez sauvegarder les données applicatives de ONTAP vers Microsoft Azure en intégrant Cloud Backup pour les applications avec BlueXP et SnapCenter sur site.
-
-Vous pouvez protéger une ou plusieurs applications simultanément dans le cloud à l'aide d'une seule règle.
-
-
-IMPORTANT: Vous ne pouvez protéger qu'une seule application à la fois si vous utilisez l'interface graphique BlueXP. Toutefois, si vous utilisez des API REST, vous pouvez protéger plusieurs applications simultanément.
+Procédez en quelques étapes pour sauvegarder les données d'applications de ONTAP vers Microsoft Azure.
 
 *Étapes*
 
@@ -28,16 +23,16 @@ IMPORTANT: Vous ne pouvez protéger qu'une seule application à la fois si vous 
 . Dans la page attribuer une stratégie, sélectionnez la stratégie et cliquez sur *Suivant*.
 . Ajouter l'environnement de travail.
 +
-Configurer le cluster ONTAP qui héberge le SVM sur lequel l'application est en cours d'exécution. Une fois l'environnement de travail ajouté pour l'une des applications, il peut être réutilisé pour toutes les autres applications qui résident sur le même cluster ONTAP.
+Configurez la LIF de gestion de cluster à détecter par BlueXP. Une fois l'environnement de travail ajouté pour l'une des applications, il peut être réutilisé pour toutes les autres applications qui résident sur le même cluster ONTAP.
 
 +
 .. Sélectionner le SVM et cliquer sur *Ajouter un environnement de travail*.
 .. Dans l'assistant Ajouter un environnement de travail :
 +
-... Spécifier l'adresse IP du cluster ONTAP
-... Spécifiez les informations d'identification admin.
+... Préciser l'adresse IP de la LIF de cluster management.
+... Spécifier les identifiants de l'utilisateur du cluster ONTAP
 +
-Cloud Backup pour applications ne prend en charge que les administrateurs de cluster.
+La sauvegarde et la restauration BlueXP pour les applications ne prennent en charge que les administrateurs du cluster.
 
 
 

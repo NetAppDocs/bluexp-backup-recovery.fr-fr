@@ -14,7 +14,7 @@ summary: 'Vous pouvez afficher les stratégies et les sauvegardes. En fonction d
 
 
 [role="lead"]
-Vous pouvez gérer la protection des applications en effectuant différentes opérations à partir de l'interface utilisateur BlueXP.
+Vous pouvez gérer la protection des applications en visualisant les règles, en visualisant les sauvegardes, en visualisant les modifications de la disposition, des règles et du groupe de ressources de la base de données, et en surveillant toutes les opérations à partir de l'interface utilisateur BlueXP.
 
 
 
@@ -34,7 +34,7 @@ NOTE: Vous ne pouvez pas modifier ou supprimer une stratégie associée à une a
 
 
 
-Vous pouvez également afficher les règles de SnapCenter étendues au cloud en exécutant la `Get-SmResources` Cmdlet SnapCenter. Les informations concernant les paramètres pouvant être utilisés avec la cmdlet et leurs descriptions peuvent être obtenues en exécutant Get-Help nom_commande. Vous pouvez également consulter le https://library.netapp.com/ecm/ecm_download_file/ECMLP2880726["Guide de référence de l'applet de commande du logiciel SnapCenter"].
+Vous pouvez également afficher les règles de SnapCenter étendues au cloud en exécutant la `Get-SmResources` Cmdlet dans SnapCenter. Les informations concernant les paramètres pouvant être utilisés avec la cmdlet et leurs descriptions peuvent être obtenues en exécutant Get-Help nom_commande.
 
 
 
@@ -47,24 +47,24 @@ Vous pouvez afficher les sauvegardes dans le cloud dans l'interface utilisateur 
 
 
 
-IMPORTANT: Le temps nécessaire pour figurer les sauvegardes dépend de la planification de réplication par défaut d'ONTAP (1 heure maximum) et de BlueXP (6 heures maximum).
+IMPORTANT: Le temps nécessaire à l'affichage des sauvegardes dépend de la planification de réplication par défaut d'ONTAP.
 
-* Pour les bases de données Oracle, les sauvegardes de données et de journaux, le numéro SCN pour chaque sauvegarde, la date de fin de chaque sauvegarde sont répertoriées. Vous pouvez uniquement sélectionner la sauvegarde des données et restaurer la base de données sur le serveur SnapCenter sur site.
+* Pour les bases de données Oracle, les sauvegardes de données et de journaux, le numéro de modification système (SCN) pour chaque sauvegarde et la date de fin pour chaque sauvegarde sont indiqués. Vous pouvez uniquement sélectionner la sauvegarde des données et restaurer la base de données sur le serveur SnapCenter sur site.
 * Pour les bases de données Microsoft SQL Server, seules les sauvegardes complètes et la date de fin de chaque sauvegarde sont répertoriées. Vous pouvez sélectionner la sauvegarde et restaurer la base de données sur le serveur SnapCenter sur site.
-* Pour l'instance de Microsoft SQL Server, les sauvegardes ne sont pas répertoriées à la place uniquement les bases de données sous cette instance sont répertoriées.
+* Pour l'instance Microsoft SQL Server, les sauvegardes des bases de données sous cette instance sont répertoriées.
 * Pour les bases de données SAP HANA, seules les sauvegardes de données et la date de fin de chaque sauvegarde sont répertoriées. Vous pouvez sélectionner la sauvegarde et effectuer une opération de montage.
 
 
 
 NOTE: Les sauvegardes créées avant d'activer la protection dans le cloud ne sont pas répertoriées pour la restauration.
 
-Vous pouvez également afficher ces sauvegardes en exécutant le `Get-SmBackup` Cmdlet SnapCenter. Les informations concernant les paramètres pouvant être utilisés avec la cmdlet et leurs descriptions peuvent être obtenues en exécutant Get-Help nom_commande. Vous pouvez également consulter le https://library.netapp.com/ecm/ecm_download_file/ECMLP2880726["Guide de référence de l'applet de commande du logiciel SnapCenter"].
+Vous pouvez également afficher ces sauvegardes en exécutant le `Get-SmBackup` Cmdlet dans SnapCenter. Les informations concernant les paramètres pouvant être utilisés avec la cmdlet et leurs descriptions peuvent être obtenues en exécutant Get-Help nom_commande.
 
 
 
 == Changement de disposition de la base de données
 
-Lorsque des volumes sont ajoutés à la base de données, le serveur SnapCenter étiquette automatiquement les snapshots sur les nouveaux volumes conformément à la règle et à la planification. Ces nouveaux volumes ne possèdent pas le point de terminaison du magasin d'objets et vous devez procéder à une actualisation en exécutant les étapes suivantes :
+Lorsque des volumes sont ajoutés à la base de données, le serveur SnapCenter étiquette automatiquement les snapshots sur les nouveaux volumes conformément à la règle et à la planification. Ces nouveaux volumes ne disposent pas du terminal de magasin d'objets et vous devez actualiser les volumes en effectuant les étapes suivantes :
 
 . Cliquez sur *sauvegarde et restauration* > *applications*.
 . Dans la liste déroulante *Paramètres*, cliquez sur *serveurs SnapCenter*.
@@ -73,15 +73,19 @@ Lorsque des volumes sont ajoutés à la base de données, le serveur SnapCenter 
 Les nouveaux volumes sont détectés.
 
 . Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à l'application et cliquez sur *Actualiser la protection* pour activer la protection du Cloud pour le nouveau volume.
++
+** Si un volume de stockage est supprimé de l'application après la configuration du fournisseur cloud, pour les nouvelles sauvegardes, le serveur SnapCenter étiquette les snapshots sur lesquels l'application réside.
+** Vous devez supprimer manuellement la relation de magasin d'objets si le volume supprimé n'est utilisé par aucune autre application.
+** Si vous mettez à jour l'inventaire des applications, il contiendra la disposition du stockage actuelle de l'application.
 
 
-Si un volume de stockage est retiré de l'application après la configuration du service cloud, le serveur SnapCenter étiquette uniquement les snapshots sur lesquels l'application réside. Si le volume supprimé n'est pas utilisé par d'autres applications, vous devez supprimer manuellement la relation de magasin d'objets. Si vous mettez à jour l'inventaire des applications, il contiendra la disposition du stockage actuelle de l'application.
+
 
 
 
 == Modification de règle ou de groupe de ressources
 
-En cas de modification de la règle ou du groupe de ressources SnapCenter, vous devez actualiser la protection.
+En cas de modification de la règle SnapCenter ou du groupe de ressources, vous devez actualiser la relation de protection.
 
 . Cliquez sur *sauvegarde et restauration* > *applications*.
 . Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à l'application et cliquez sur *Actualiser la protection*.
@@ -111,28 +115,9 @@ Lorsque vous lancez une opération, une fenêtre s'affiche indiquant que le trav
 
 
 
-== Définissez l'espace IP de l'environnement de travail principal
-
-Si vous souhaitez restaurer ou monter une sauvegarde qui a été déplacée vers un magasin d'objets à partir d'un stockage secondaire, vous devez ajouter les détails de l'environnement de travail principal et définir l'espace IP.
-
-*Étapes*
-
-. Dans l'interface utilisateur BlueXP, cliquez sur *Storage* > *Canvas* > *Mes environnements de travail* > *Ajouter un environnement de travail*.
-. Spécifiez les détails de l'environnement de travail principal et cliquez sur *Ajouter*.
-. Cliquez sur *sauvegarde et restauration* > *volumes*.
-. Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à l'un des volumes et cliquer sur *Détails*.
-. Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à la sauvegarde et cliquez sur *Restaurer*.
-. Dans l'assistant, sélectionnez l'environnement de travail principal nouvellement ajouté comme destination.
-. Spécifiez l'espace IP.
-
-
-
-
 == Configurer les certificats CA
 
 Si vous disposez de certificats CA, vous devez copier manuellement les certificats CA racine sur la machine de connecteur.
-
-Toutefois, si vous ne disposez pas de certificats CA, vous pouvez continuer sans configurer les certificats CA.
 
 *Étapes*
 

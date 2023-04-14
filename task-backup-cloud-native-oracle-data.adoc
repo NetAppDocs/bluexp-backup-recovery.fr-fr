@@ -14,11 +14,11 @@ summary: 'Créer des sauvegardes planifiées ou à la demande d"une base de donn
 
 
 [role="lead"]
-Vous devez affecter une stratégie pré-prédéfinie ou la stratégie que vous avez créée, puis effectuer une sauvegarde.
+Vous pouvez créer une sauvegarde en attribuant une règle prédéfinie ou la règle que vous avez créée.
 
 
 
-== Créez une règle pour protéger les bases de données Oracle
+== Créez une règle pour protéger la base de données Oracle
 
 Vous pouvez créer des stratégies si vous ne souhaitez pas modifier les stratégies prédéfinies.
 
@@ -29,6 +29,62 @@ Vous pouvez créer des stratégies si vous ne souhaitez pas modifier les straté
 . Spécifiez un nom de stratégie.
 . (Facultatif) modifiez le format du nom de la sauvegarde.
 . Spécifiez la planification et les informations de conservation.
+. (Facultatif) Entrez le chemin d'accès et le délai d'expiration du post-script qui seront exécutés après la sauvegarde réussie pour copier le snapshot sur le stockage secondaire.
++
+Vous pouvez également spécifier les arguments.
+
++
+Vous devez conserver les post-scripts dans le chemin _/var/opt/snapcenter/spl/scripts_.
+
++
+Les variables d'environnement prises en charge sont les suivantes :
+
++
+|===
+| Variable d'environnement | Description 
+
+
+ a| 
+SC_ORACLE_SID
+ a| 
+Spécifie le SID de la base de données Oracle.
+
+
+
+ a| 
+SC_HÔTE
+ a| 
+Spécifie le nom d'hôte de la base de données
+
+
+
+ a| 
+SC_BACKUP_NAME
+ a| 
+Spécifie le nom de la sauvegarde. Le nom de la sauvegarde des données et le nom de la sauvegarde du journal sont concaténés à l'aide de délimiteurs.
+
+
+
+ a| 
+SC_BACKUP_POLICY_NAME
+ a| 
+Spécifie le nom de la stratégie utilisée pour créer la sauvegarde.
+
+
+
+ a| 
+SC_PRIMARY_DATA_VOLUME_FULL_PATH
+ a| 
+Spécifie les chemins de volume de données concaténés avec "," comme délimiteur. Pour les volumes ANF, les informations sont concaténées avec "/" _/{anfaccount}/{subscription_ID}/{Resource_group}/{Capacity_pool}/{volumname}_
+
+
+
+ a| 
+SC_PRIMARY_ARCHIVELOGS_VOLUME_FULL_PATH
+ a| 
+Spécifie les chemins du volume du journal d'archives concaténés avec "," comme délimiteur. Pour les volumes ANF, les informations concaténées avec « / » _/{anfaccount}/{subscription_ID}/{Resource_group}/{Capacity_pool}/{volumname}_
+
+|===
 . Cliquez sur *Créer*.
 
 
@@ -36,10 +92,10 @@ Vous pouvez créer des stratégies si vous ne souhaitez pas modifier les straté
 
 == Créez une sauvegarde de la base de données Oracle
 
-Vous pouvez soit affecter une stratégie pré-prédéfinie, soit créer une stratégie, puis l'affecter à la base de données. Une fois la stratégie attribuée, les sauvegardes sont créées conformément au planning défini dans la stratégie.
+Vous pouvez affecter une règle prédéfinie ou créer une règle, puis l'affecter à la base de données. Une fois la stratégie attribuée, les sauvegardes sont créées conformément au planning défini dans la stratégie.
 
 
-NOTE: Pour Oracle, lors de la création de groupes de disques ASM, assurez-vous qu'il n'y a pas de volumes communs entre les groupes de disques. Chaque groupe de disques doit disposer de volumes dédiés.
+NOTE: Pour Oracle, lors de la création de groupes de disques ASM, assurez-vous qu'il n'y a pas de volumes communs entre les groupes de disques. Chaque groupe de disques doit avoir des volumes dédiés.
 
 *Étapes*
 
@@ -53,7 +109,7 @@ Les sauvegardes seront créées conformément à la planification définie dans 
 
 +
 
-NOTE: Le compte de service (_SnapCenter-account-<Account_ID>_) est utilisé pour l'exécution des opérations de sauvegarde planifiées.
+NOTE: Le compte de service (_SnapCenter-account-<account_id>_) est utilisé pour exécuter les opérations de sauvegarde planifiées.
 
 
 
@@ -69,21 +125,15 @@ Après avoir affecté la stratégie, vous pouvez créer une sauvegarde à la dem
 . Si plusieurs stratégies sont affectées à l'application, sélectionnez la stratégie, la valeur de conservation, puis cliquez sur *Créer une sauvegarde*.
 
 
-*Plus d'informations*
-
-Après la restauration d'une base de données volumineuse (250 Go ou plus), si vous effectuez une sauvegarde en ligne complète sur la même base de données, l'opération risque d'échouer avec l'erreur suivante :
-
-`failed with status code 500, error {\"error\":{\"code\":\"app_internal_error\",\"message\":\"Failed to create snapshot. Reason: Snapshot operation not allowed due to clones backed by snapshots. Try again after sometime.`
-
-Pour plus d'informations sur la façon de résoudre ce problème, reportez-vous à : https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/Snapshot_operation_not_allowed_due_to_clones_backed_by_snapshots["Opération de snapshot non autorisée en raison de clones sauvegardés par des snapshots"].
-
 
 
 == Limites
 
-* Ne prend pas en charge les sauvegardes de données en ligne ou de journaux uniquement
-* Ne prend pas en charge les sauvegardes hors ligne
-* Ne prend pas en charge la sauvegarde de la base de données Oracle résidant sur des points de montage récursifs
 * Ne prend pas en charge les snapshots de groupes de cohérence pour les bases de données Oracle résidant sur plusieurs groupes de disques ASM avec chevauchement des volumes FSX
 * Si vos bases de données Oracle sont configurées sur ASM, assurez-vous que les noms de vos SVM sont uniques sur les systèmes FSX. Si vous disposez du même nom de SVM sur les systèmes FSX, la sauvegarde des bases de données Oracle résidant sur ces SVM ne est pas prise en charge.
+* Après la restauration d'une base de données volumineuse (250 Go ou plus), si vous effectuez une sauvegarde en ligne complète sur la même base de données, l'opération risque d'échouer avec l'erreur suivante :
+`failed with status code 500, error {\"error\":{\"code\":\"app_internal_error\",\"message\":\"Failed to create snapshot. Reason: Snapshot operation not allowed due to clones backed by snapshots. Try again after sometime.`
++
+Pour plus d'informations sur la façon de résoudre ce problème, reportez-vous à : https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/Snapshot_operation_not_allowed_due_to_clones_backed_by_snapshots["Opération de snapshot non autorisée en raison de clones sauvegardés par des snapshots"].
+
 

@@ -14,19 +14,12 @@ summary: Vous pouvez restaurer la base de données Oracle du cloud vers le serve
 
 
 [role="lead"]
-Vous pouvez uniquement restaurer la base de données Oracle sur le même hôte SnapCenter Server, le même SVM ou sur le même hôte de base de données. Pour une base de données RAC, les données sont restaurées vers le nœud sur site sur lequel la sauvegarde a été créée.
-
-
-NOTE: La restauration des sauvegardes secondaires via le stockage primaire est prise en charge.
+Vous pouvez uniquement restaurer la base de données Oracle sur le même hôte que celui sur lequel la sauvegarde a été créée. Dans le cas d'une base de données RAC, les données sont restaurées vers le nœud sur site sur lequel la sauvegarde a été créée.
 
 Seule la base de données complète avec restauration du fichier de contrôle est prise en charge. Si les journaux d'archive ne sont pas présents dans l'AFS, vous devez spécifier l'emplacement qui contient les journaux d'archive requis pour la récupération.
 
 
 IMPORTANT: La restauration de fichiers uniques (SFR) n'est pas prise en charge.
-
-*Ce dont vous aurez besoin*
-
-Si vous souhaitez restaurer une sauvegarde déplacée vers un magasin d'objets à partir d'un stockage secondaire, vous devez ajouter les informations relatives à l'environnement de travail principal et définir l'espace IP. Pour plus d'informations, voir link:task-manage-app-backups.html#set-ip-space-of-the-primary-working-environment["Définissez l'espace IP de l'environnement de travail principal"].
 
 *Étapes*
 
@@ -37,10 +30,13 @@ Si vous souhaitez restaurer une sauvegarde déplacée vers un magasin d'objets �
 +
 .. Sélectionnez *Etat de la base de données* si vous souhaitez modifier l'état de la base de données à l'état requis pour effectuer les opérations de restauration et de récupération.
 +
-Les différents États d'une base de données de niveau supérieur à inférieur sont ouverts, montés, démarrés et shutdown. Vous devez cocher cette case si la base de données est dans un état plus élevé mais que l'état doit être inférieur pour effectuer une opération de restauration. Si la base de données est dans un état inférieur mais que l'état doit être supérieur pour effectuer l'opération de restauration, l'état de la base de données est automatiquement modifié, même si vous ne cochez pas la case.
+Les différents États d'une base de données de niveau supérieur à inférieur sont ouverts, montés, démarrés et shutdown.
 
 +
-Si une base de données est à l'état ouvert et que pour restaurer la base de données doit être à l'état monté, l'état de la base de données n'est modifié que si vous cochez cette case.
+*** Si la base de données est dans un état supérieur mais que l'état doit être modifié en état inférieur pour effectuer une opération de restauration, vous devez cocher cette case.
+*** Si la base de données est dans un état inférieur mais que l'état doit être supérieur pour effectuer l'opération de restauration, l'état de la base de données est automatiquement modifié, même si vous ne cochez pas la case.
+*** Si une base de données est à l'état ouvert et que pour restaurer la base de données doit être à l'état monté, l'état de la base de données n'est modifié que si vous cochez cette case.
+
 
 .. Sélectionnez *fichiers de contrôle* si vous souhaitez restaurer le fichier de contrôle avec la base de données complète.
 .. Si le snapshot est en stockage d'archivage, spécifiez la priorité de restauration des données à partir du stockage d'archivage.
@@ -87,7 +83,7 @@ Sélectionnez *pas de récupération*.
  a| 
 Vous souhaitez spécifier les emplacements de journaux d'archives externes
  a| 
-Si les journaux d'archive ne sont pas présents dans l'AFS, vous devez spécifier l'emplacement qui contient les journaux d'archive requis pour la récupération.
+Si les journaux d'archivage ne sont pas présents dans le système de fichiers actif, vous devez spécifier l'emplacement qui contient les journaux d'archivage requis pour la restauration.
 
 |===
 .. Cochez la case si vous souhaitez ouvrir la base de données après la récupération.
