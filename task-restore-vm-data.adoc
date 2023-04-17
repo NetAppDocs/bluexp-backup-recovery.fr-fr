@@ -20,7 +20,7 @@ Vous pouvez restaurer des machines virtuelles à partir du cloud vers vCenter su
 NOTE: Vous ne pouvez pas restaurer des machines virtuelles qui s'étendent sur plusieurs datastores.
 
 .Avant de commencer
-Assurez-vous que vous avez rempli toutes les link:concept-protect-vm-data.html#Requirements["de formation"] avant de restaurer des machines virtuelles à partir du cloud.
+Assurez-vous que vous avez rempli toutes les link:concept-protect-vm-data.html["de formation"] avant de restaurer des machines virtuelles à partir du cloud.
 
 .Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et restauration* > *machines virtuelles* > *Plug-in SnapCenter pour VMware vSphere* et sélectionnez le plug-in SnapCenter pour l'hôte VMware vSphere.

@@ -17,7 +17,7 @@ summary: Sauvegardez vos datastores ONTAP sur site dans Google Cloud Platform.
 Vous pouvez sauvegarder un ou plusieurs datastores dans Google Cloud Platform en intégrant le plug-in SnapCenter pour l'hôte VMware vSphere avec BlueXP. Ils peuvent ainsi sauvegarder et archiver des données facilement et rapidement à des fins d'efficacité du stockage et d'accélération de la transition vers le cloud.
 
 .Avant de commencer
-Assurez-vous que vous avez rempli toutes les link:concept-protect-vm-data.html#Requirements["de formation"] avant de sauvegarder des datastores dans le cloud.
+Assurez-vous que vous avez rempli toutes les link:concept-protect-vm-data.html["de formation"] avant de sauvegarder des datastores dans le cloud.
 
 .Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *machines virtuelles*.

@@ -626,7 +626,6 @@
   <block id="0ec24d208e5df8843f6524b944c450f6" category="summary">Sauvegardez vos datastores ONTAP sur site dans AWS.</block>
   <block id="1d5ad62b9217b4a3f085f517534f40bb" category="doc">Sauvegarde des datastores dans Amazon Web Services</block>
   <block id="b4851e92b19af0c5c82447fc0937709d" category="inline-link-macro">de formation</block>
-  <block id="9a0c42190771559c2a8da5fac845d24d" category="admonition">Assurez-vous que vous avez rempli toutes les <block ref="a5bf58fdc6833048fad2d714a6e89f9c" category="inline-link-macro-rx"></block> avant de sauvegarder des datastores dans le cloud.</block>
   <block id="a9bb4a4ebd2695e50a673d0b706564b1" category="list-text">Dans l'interface utilisateur BlueXP, cliquez sur *protection* &gt; *sauvegarde et récupération* &gt; *machines virtuelles*.</block>
   <block id="418c5509e2171d55b0aee5c2ea4442b5" category="inline-image-macro">action</block>
   <block id="1d419e3005bf4974f6070bbb53e5816f" category="list-text">Cliquez sur <block ref="1d94ccc08c31bc8efbc06bfabc6854b6" category="inline-image-macro-rx" type="image"></block> Correspondant au datastore à sauvegarder et cliquer sur *Activer la sauvegarde*.</block>
@@ -1137,7 +1136,6 @@
   <block id="22dfbb640fee5a33dc6e592f121a4423" category="list-text">Redémarrer SPL :<block ref="71198797ebafeed74a5891400987351c" prefix=" " category="inline-code"></block></block>
   <block id="529795f55723488071425500df0ff5d6" category="summary">Vous pouvez restaurer des machines virtuelles depuis le cloud vers SnapCenter sur site.</block>
   <block id="70861b61c8a43f84ddd14a22316ee5af" category="doc">Restaurer des machines virtuelles à partir du cloud</block>
-  <block id="1344fa03cfc0e1e9c9a94eebf3e3c1a9" category="paragraph">Assurez-vous que vous avez rempli toutes les <block ref="a5bf58fdc6833048fad2d714a6e89f9c" category="inline-link-macro-rx"></block> avant de restaurer des machines virtuelles à partir du cloud.</block>
   <block id="ceb4a235a226f19c172c9cf7c46d00dc" category="list-text">Cliquez sur <block ref="1d94ccc08c31bc8efbc06bfabc6854b6" category="inline-image-macro-rx" type="image"></block> Correspondant au datastore que vous souhaitez restaurer et cliquer sur *Afficher les détails*.</block>
   <block id="a03a09176193c264d8dcbdcb8f2f9043" category="list-text">Cliquez sur *Restaurer* correspondant à la sauvegarde que vous souhaitez restaurer.</block>
   <block id="edf569ed393967b7a0079a7341765e10" category="list-text">Vérifiez les détails et cliquez sur *Restaurer*.</block>
@@ -3739,4 +3737,6 @@
   <block id="a46033978f070978d19c56a083f9252f" category="sidebar">Sauvegarde et restauration des données des applications sur site</block>
   <block id="084829803f52f86aee9d787cb2c3581d" category="sidebar">Sauvegarde et restauration des données d'applications cloud natives</block>
   <block id="691b857c2ea9a46d47730b371ae5ac4d" category="sidebar">Sauvegardez les données d'applications dans le cloud</block>
+  <block id="5019db204cdfcff4225102866ab1c6bb" category="paragraph">Assurez-vous que vous avez rempli toutes les <block ref="c22fa2c0fe9f65f9b0ae3d1833efe89e" category="inline-link-macro-rx"></block> avant de sauvegarder des datastores dans le cloud.</block>
+  <block id="23b39cc9d92424089210492c9ae6a9dd" category="paragraph">Assurez-vous que vous avez rempli toutes les <block ref="c22fa2c0fe9f65f9b0ae3d1833efe89e" category="inline-link-macro-rx"></block> avant de restaurer des machines virtuelles à partir du cloud.</block>
 </blocks>

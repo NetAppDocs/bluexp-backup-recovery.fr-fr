@@ -19,7 +19,7 @@ Vous pouvez sauvegarder et archiver un ou plusieurs datastores dans Amazon Web S
 Si le datastore est associé à une règle d'archivage, vous pouvez sélectionner le niveau d'archivage. Les tiers d'archivage pris en charge sont Glacier et Glacier Deep.
 
 .Avant de commencer
-Assurez-vous que vous avez rempli toutes les link:concept-protect-vm-data.html#Requirements["de formation"] avant de sauvegarder des datastores dans le cloud.
+Assurez-vous que vous avez rempli toutes les link:concept-protect-vm-data.html["de formation"] avant de sauvegarder des datastores dans le cloud.
 
 .Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *machines virtuelles*.

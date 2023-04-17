@@ -19,7 +19,7 @@ Vous pouvez sauvegarder un ou plusieurs datastores dans Microsoft Azure en inté
 Si le datastore est associé à une stratégie d'archivage, vous aurez la possibilité de sélectionner le niveau d'archivage. Le Tier d'archivage pris en charge est le stockage Azure Archive Blob Storage.
 
 .Avant de commencer
-Assurez-vous que vous avez rempli toutes les link:concept-protect-vm-data.html#Requirements["de formation"] avant de sauvegarder des datastores dans le cloud.
+Assurez-vous que vous avez rempli toutes les link:concept-protect-vm-data.html["de formation"] avant de sauvegarder des datastores dans le cloud.
 
 .Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *machines virtuelles*.
