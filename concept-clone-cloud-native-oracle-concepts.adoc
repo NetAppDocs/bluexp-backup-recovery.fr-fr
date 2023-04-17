@@ -293,7 +293,11 @@ NOTE: Le _CurrentTimeStampNumber_ fournit l'unicité du nom du volume.
 
 === Schéma de nommage généré automatiquement
 
-Si vous sélectionnez le schéma de clonage comme *généré automatiquement*, l'emplacement des points de montage et le nom des groupes de disques de la base de données clonée sont ajoutés avec un suffixe. * Si vous avez sélectionné la méthode de clonage de base, le suffixe sera le *Clone SID*. * Si vous avez sélectionné la méthode du fichier de spécifications, le suffixe sera le *suffixe* spécifié lors du téléchargement du fichier de spécifications clone.
+Si vous sélectionnez le schéma de clonage comme *généré automatiquement*, l'emplacement des points de montage et le nom des groupes de disques de la base de données clonée sont ajoutés avec un suffixe.
+
+* Si vous avez sélectionné la méthode de clonage de base, le suffixe sera *Clone SID*.
+* Si vous avez sélectionné la méthode du fichier de spécifications, le suffixe sera le suffixe *Suffix* spécifié lors du téléchargement du fichier de spécifications clone.
+
 
 Par exemple, si le point de montage de la base de données source est _/netapp_source/data_1_ et le *Clone SID* ou le *suffixe* est _HR_, alors le point de montage de la base de données clonée sera _/netapp_source/data_1_HR_.
 

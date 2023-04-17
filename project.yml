@@ -272,9 +272,10 @@ homepage:
     - title: Sauvegardez les données applicatives sur site dans StorageGRID
       url: "/task-backup-app-data-to-storagegrid.html"
     - title: Sauvegardez les bases de données Oracle cloud natives
-      url: task-backup-cloud-native-oracle-data.html
+      url: "/task-backup-cloud-native-oracle-data.html"
     - title: Sauvegardez les bases de données SAP HANA cloud natives
-      url: task-backup-cloud-native-sap-hana-data.html
+      flavor: azure
+      url: "/task-backup-cloud-native-sap-hana-data.html"
   - title: Sauvegarde et restauration des données des machines virtuelles
     links:
     - title: Sauvegarde des datastores dans Amazon Web Services
@@ -289,7 +290,7 @@ homepage:
     - title: Sauvegarde des datastores sur StorageGRID
       url: "/task-backup-vm-data-to-storagegrid.html"
     - title: Restaurer des machines virtuelles à partir du cloud
-      url: task-restore-vm-data.html
+      url: "/task-restore-vm-data.html"
   - title: Restaurez les données à partir des fichiers de sauvegarde ONTAP
     links:
     - title: Restaurez des volumes ONTAP

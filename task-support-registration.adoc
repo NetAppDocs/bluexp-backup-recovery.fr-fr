@@ -10,6 +10,7 @@ summary: 'Avant d"ouvrir un dossier de demande de support auprès du support tec
 :imagesdir: ../media/
 
 
+[role="lead"]
 Avant d'ouvrir un dossier de demande de support auprès du support technique NetApp, vous devez ajouter un compte sur le site du support NetApp (NSS) à BlueXP, puis vous inscrire pour obtenir du support.
 
 
