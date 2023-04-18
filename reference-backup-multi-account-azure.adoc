@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: reference-backup-multi-account-azure.html 
 keywords: microsoft azure, azure, regions, blob, multiple accounts, multiple regions, backup 
-summary: 'Cloud Backup vous permet de créer des fichiers de sauvegarde dans un compte Azure différents de l"emplacement de vos volumes Cloud Volumes ONTAP source et différents du compte où réside BlueXP Connector.' 
+summary: 'Avec la sauvegarde et la restauration BlueXP, vous pouvez créer des fichiers de sauvegarde sur un compte Azure différent de l"emplacement de vos volumes Cloud Volumes ONTAP source, et ce qui est différent du compte sur lequel réside le connecteur BlueXP.' 
 ---
 = Configurer la sauvegarde pour l'accès à plusieurs comptes dans Azure
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: 'Cloud Backup vous permet de créer des fichiers de sauvegarde dans un 
 
 
 [role="lead"]
-Avec Cloud Backup, vous pouvez créer des fichiers de sauvegarde dans un compte Azure différents de l'emplacement de vos volumes Cloud Volumes ONTAP source. Et ces deux comptes peuvent être différents du compte où réside le connecteur BlueXP.
+Avec la sauvegarde et la restauration BlueXP, vous pouvez créer des fichiers de sauvegarde sur un compte Azure différent de l'emplacement de vos volumes Cloud Volumes ONTAP source. Et ces deux comptes peuvent être différents du compte où réside le connecteur BlueXP.
 
 Ces étapes sont requises uniquement lorsque vous l'êtes https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-to-azure.html["Sauvegarde des données Cloud Volumes ONTAP dans le stockage Azure Blob"^].
 
@@ -131,5 +131,5 @@ image:screenshot_azure_networking5.png[""]
 +
 Désormais, le compte de stockage (dans l'abonnement 1) a accès au système Cloud Volumes ONTAP exécuté dans l'abonnement 2.
 
-. Réessayez d'activer la sauvegarde dans le cloud sur le système Cloud Volumes ONTAP. Cette fois-ci, vous devriez réussir.
+. Réessayez d'activer la sauvegarde et la restauration BlueXP sur le système Cloud Volumes ONTAP. Cette fois, vous devriez réussir.
 

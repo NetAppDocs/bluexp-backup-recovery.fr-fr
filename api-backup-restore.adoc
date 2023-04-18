@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: api-backup-restore.html 
 keywords: api, apis, rest, restful, authorization, getting started, body, header, token, reference, expired token, expires, expired, token expired, list apis 
-summary: 'Les fonctionnalités Cloud Backup disponibles via l"interface utilisateur Web sont également disponibles via les API RESTful.' 
+summary: 'Les fonctionnalités de sauvegarde et de restauration de BlueXP disponibles via l"interface utilisateur web sont également disponibles via les API RESTful.' 
 ---
-= API Cloud Backup
+= API de sauvegarde et de restauration BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,9 +14,9 @@ summary: 'Les fonctionnalités Cloud Backup disponibles via l"interface utilisat
 
 
 [role="lead"]
-Les fonctionnalités Cloud Backup disponibles via l'interface utilisateur web sont également disponibles via l'API RESTful.
+Les fonctionnalités de sauvegarde et de restauration de BlueXP disponibles via l'interface utilisateur web sont également disponibles via l'API RESTful.
 
-Il existe neuf catégories de terminaux définis dans Cloud Backup :
+Il existe neuf catégories de terminaux définis dans la sauvegarde et la restauration BlueXP :
 
 * backup : gère les opérations de sauvegarde des ressources cloud et sur site et récupère les détails des données de sauvegarde
 * Catalogue : gère la recherche de fichiers dans le catalogue indexé en fonction d'une requête (recherche et restauration)
@@ -34,7 +34,7 @@ Il existe neuf catégories de terminaux définis dans Cloud Backup :
 
 == Pour commencer
 
-Pour commencer à utiliser les API Cloud Backup, vous devez obtenir un jeton utilisateur, votre identifiant de compte BlueXP et l'ID connecteur BlueXP.
+Pour commencer à utiliser les API de sauvegarde et de restauration BlueXP, vous devez obtenir un jeton utilisateur, votre ID de compte BlueXP et l'identifiant du connecteur BlueXP.
 
 Lorsque vous passez des appels API, vous ajoutez le jeton utilisateur dans l'en-tête autorisation et l'ID connecteur BlueXP dans l'en-tête x-agent-ID. Vous devez utiliser l'ID de compte BlueXP dans les API.
 
@@ -95,7 +95,7 @@ Cette API renvoie une réponse comme suit. Vous pouvez récupérer l'ID de l'age
 
 == Exemple d'utilisation des API
 
-L'exemple suivant montre un appel d'API pour activer Cloud Backup dans un environnement de travail avec une nouvelle règle dont les libellés sont quotidiens, horaires et hebdomadaires, archivés après les jours définis sur 180 jours, dans la région est-US-2 dans le cloud Azure. Notez que cela n'active que la sauvegarde de l'environnement de travail, mais qu'aucun volume n'est sauvegardé.
+L'exemple suivant montre un appel d'API pour activer la sauvegarde et la restauration BlueXP dans un environnement de travail. Dans cette nouvelle règle, les libellés sont définis quotidiennement, à l'heure et à la semaine. Après les jours, l'archive est-180 américaine-2 est définie dans le cloud Azure. Notez que cela n'active que la sauvegarde de l'environnement de travail, mais qu'aucun volume n'est sauvegardé.
 
 Si vous choisissez « auto-backup-enabled » : « true », tous les volumes déjà existants du système seront sauvegardés, de plus tous les volumes futurs seront également sauvegardés.
 
@@ -186,4 +186,4 @@ curl --location --request GET 'https://api.bluexp.netapp.com/account/account-DpT
 
 == Référence API
 
-La documentation de chaque API Cloud Backup est disponible à partir de https://docs.netapp.com/us-en/cloud-manager-automation/cbs/overview.html[].
+Vous trouverez la documentation de chaque API de sauvegarde et de restauration BlueXP sur le site https://docs.netapp.com/us-en/cloud-manager-automation/cbs/overview.html[].

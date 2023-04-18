@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: concept-cloud-backup-policies.html 
 keywords: backing up, back up, backup, back up volumes, cloud backup, backup policies, policies, schedules 
-summary: Ce document décrit les paramètres de configuration de la stratégie de sauvegarde pour Cloud Backup. 
+summary: Avec la sauvegarde et la restauration BlueXP, vous pouvez créer des règles de sauvegarde avec plusieurs paramètres de configuration pour vos systèmes ONTAP et Cloud Volumes ONTAP sur site. 
 ---
-= Paramètres de configuration de la politique de Cloud Backup
+= Paramètres de configuration des règles de sauvegarde et de restauration BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,13 +14,13 @@ summary: Ce document décrit les paramètres de configuration de la stratégie d
 
 
 [role="lead"]
-Ce document décrit les paramètres de configuration de la stratégie de sauvegarde des systèmes ONTAP sur site et Cloud Volumes ONTAP utilisés avec Cloud Backup Service.
+Avec la sauvegarde et la restauration BlueXP, vous pouvez créer des règles de sauvegarde avec plusieurs paramètres de configuration pour vos systèmes ONTAP et Cloud Volumes ONTAP sur site.
 
 
 
 == Planifications de sauvegarde
 
-Cloud Backup vous permet de créer plusieurs règles de sauvegarde avec des planifications uniques pour chaque environnement de travail (cluster). Vous pouvez attribuer différentes stratégies de sauvegarde à des volumes ayant différents objectifs de point de récupération (RPO).
+La sauvegarde et la restauration BlueXP vous permettent de créer plusieurs règles de sauvegarde avec des calendriers uniques pour chaque environnement de travail (cluster). Vous pouvez attribuer différentes stratégies de sauvegarde à des volumes ayant différents objectifs de point de récupération (RPO).
 
 Chaque stratégie de sauvegarde fournit une section pour _Labels & Retention_ que vous pouvez appliquer à vos fichiers de sauvegarde.
 
@@ -51,9 +51,9 @@ Notez que les sauvegardes annuelles sont automatiquement supprimées du système
 
 == Protection des données par verrouillage et protection contre les ransomwares
 
-Cloud Backup prend en charge le verrouillage des données et la protection contre les attaques par ransomware pour vos sauvegardes de volumes. Ces fonctionnalités vous permettent de verrouiller vos fichiers de sauvegarde et de les analyser afin de détecter un ransomware possible sur les fichiers de sauvegarde. Il s'agit d'un paramètre facultatif que vous pouvez définir dans vos stratégies de sauvegarde lorsque vous souhaitez bénéficier d'une protection supplémentaire pour vos sauvegardes de volume d'un cluster.
+La sauvegarde et la restauration BlueXP prennent en charge DataLock et la protection contre les ransomwares pour vos sauvegardes de volume. Ces fonctionnalités vous permettent de verrouiller vos fichiers de sauvegarde et de les analyser afin de détecter un ransomware possible sur les fichiers de sauvegarde. Il s'agit d'un paramètre facultatif que vous pouvez définir dans vos stratégies de sauvegarde lorsque vous souhaitez bénéficier d'une protection supplémentaire pour vos sauvegardes de volume d'un cluster.
 
-Ces deux fonctionnalités protègent vos fichiers de sauvegarde, afin que vous puissiez toujours disposer d'un fichier de sauvegarde valide à même de récupérer vos données en cas d'attaque par ransomware lorsqu'elles sont présentes sur vos données source. Il est également utile de respecter certaines exigences réglementaires dans lesquelles les sauvegardes doivent être verrouillées et conservées pendant un certain temps. Lorsque le verrouillage des données et la protection contre les attaques par ransomware sont activés, le compartiment cloud provisionné dans le cadre de l'activation de Cloud Backup active le verrouillage des objets et le contrôle des versions des objets.
+Ces deux fonctionnalités protègent vos fichiers de sauvegarde, afin que vous puissiez toujours disposer d'un fichier de sauvegarde valide à même de récupérer vos données en cas d'attaque par ransomware lorsqu'elles sont présentes sur vos données source. Il est également utile de respecter certaines exigences réglementaires dans lesquelles les sauvegardes doivent être verrouillées et conservées pendant un certain temps. Lorsque DataLock et la protection contre les ransomware sont activés, le verrouillage des objets et la gestion des versions d'objets sont activés dans le compartiment cloud provisionné dans le cadre de l'activation de la sauvegarde et de la restauration BlueXP.
 
 https://bluexp.netapp.com/blog/cbs-blg-the-bluexp-feature-that-protects-backups-from-ransomware["Consultez le blog sur la protection contre les attaques par ransomware et les attaques par ransomware pour en savoir plus"^].
 
@@ -61,7 +61,7 @@ Cette fonction n'assure pas la protection de vos volumes source, uniquement pour
 
 [CAUTION]
 ====
-* Si vous prévoyez d'utiliser DataLock et protection contre les attaques par ransomware, vous devez l'activer lors de la création de votre première stratégie de sauvegarde et de l'activation de Cloud Backup pour ce cluster.
+* Si vous prévoyez d'utiliser DataLock et une protection contre les ransomware, vous devez l'activer lors de la création de votre première stratégie de sauvegarde et de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster.
 * Il est impossible de désactiver le verrouillage des données et la protection contre les attaques par ransomware pour un cluster après sa configuration. N'activez pas cette fonctionnalité sur un cluster pour l'essayer.
 
 
@@ -80,7 +80,7 @@ Voyons quelques exemples de fonctionnement de cette méthode :
 * Si vous créez une stratégie de sauvegarde qui crée 30 sauvegardes quotidiennes, 7 sauvegardes hebdomadaires et 12 sauvegardes mensuelles, trois périodes de conservation seront verrouillées. Les 30 sauvegardes quotidiennes seront conservées pendant 44 jours (30 jours plus 14 jours de mémoire tampon), les 7 sauvegardes hebdomadaires seraient conservées pendant 9 semaines (7 semaines plus 14 jours) et les 12 sauvegardes mensuelles seront conservées pendant 12 mois (plus 14 jours).
 * Si vous créez un programme de sauvegarde horaire avec 24 rétentions, vous pensez peut-être que les sauvegardes sont verrouillées pendant 24 heures. Cependant, étant donné qu'elle est inférieure au minimum de 30 jours, chaque sauvegarde est verrouillée et conservée pendant 44 jours (30 jours plus 14 jours de mémoire tampon).
 +
-Dans ce dernier cas, si chaque fichier de sauvegarde est verrouillé pendant 44 jours, vous obtenez beaucoup plus de fichiers de sauvegarde qu'avec une stratégie de rétention horaire/24. En règle générale, lorsque Cloud Backup crée le 25e fichier de sauvegarde, il supprime la sauvegarde la plus ancienne pour conserver le maximum de retentions à 24 (selon la règle). Dans ce cas, le paramètre de rétention DataLock remplace le paramètre de conservation de la stratégie de sauvegarde de votre stratégie de sauvegarde. Cela peut affecter vos coûts de stockage car vos fichiers de sauvegarde seront enregistrés dans le magasin d'objets pendant une période plus longue.
+Dans ce dernier cas, si chaque fichier de sauvegarde est verrouillé pendant 44 jours, vous obtenez beaucoup plus de fichiers de sauvegarde qu'avec une stratégie de rétention horaire/24. En règle générale, lorsque la sauvegarde et la restauration BlueXP créent le 25e fichier de sauvegarde, il supprime la sauvegarde la plus ancienne pour maintenir le taux de rétention maximal à 24 (en fonction de la règle). Dans ce cas, le paramètre de rétention DataLock remplace le paramètre de conservation de la stratégie de sauvegarde de votre stratégie de sauvegarde. Cela peut affecter vos coûts de stockage car vos fichiers de sauvegarde seront enregistrés dans le magasin d'objets pendant une période plus longue.
 
 
 
@@ -292,10 +292,10 @@ endif::azure[]
 === Restrictions
 
 * Data Lock et protection contre les attaques par ransomware n'est pas disponible si vous avez configuré le stockage d'archivage dans la stratégie de sauvegarde.
-* L'option DataLock que vous sélectionnez lors de l'activation de Cloud Backup doit être utilisée pour toutes les stratégies de sauvegarde pour ce cluster.
+* L'option DataLock que vous sélectionnez lors de l'activation de la sauvegarde et de la restauration BlueXP doit être utilisée pour toutes les stratégies de sauvegarde de ce cluster.
 * Vous ne pouvez pas utiliser les deux modes DataLock sur un seul cluster.
 * Si vous activez DataLock, toutes les sauvegardes de volume seront verrouillées. Vous ne pouvez pas combiner des sauvegardes de volume verrouillées et non verrouillées pour un même cluster.
-* La protection des données et des attaques par ransomware est applicable pour les nouvelles sauvegardes de volumes grâce à une stratégie de sauvegarde avec DataLock et protection contre les attaques par ransomware activées. Vous ne pouvez pas activer cette fonctionnalité après l'activation de Cloud Backup.
+* La protection des données et des attaques par ransomware est applicable pour les nouvelles sauvegardes de volumes grâce à une stratégie de sauvegarde avec DataLock et protection contre les attaques par ransomware activées. Vous ne pouvez pas activer cette fonctionnalité après l'activation de la sauvegarde et de la restauration BlueXP.
 
 
 
@@ -317,7 +317,7 @@ ifdef::aws[]
 Si votre cluster utilise ONTAP 9.10.1 ou version ultérieure, vous pouvez hiérarchiser les anciennes sauvegardes sur le stockage _S3 Glacier_ ou _S3 Glacier Deep Archive_. link:reference-aws-backup-tiers.html["En savoir plus sur le stockage d'archives AWS"^].
 
 +
-Notez que si vous choisissez _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans votre première stratégie de sauvegarde lors de l'activation de Cloud Backup, ce Tier sera le seul niveau d'archivage disponible pour les futures stratégies de sauvegarde de ce cluster. Si vous sélectionnez aucun niveau d'archivage dans votre première stratégie de sauvegarde, alors _S3 Glacier_ sera votre seule option d'archivage pour les futures stratégies.
+Notez que si vous choisissez _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans votre première règle de sauvegarde lors de l'activation de la sauvegarde et de la restauration BlueXP, ce niveau sera le seul Tier d'archivage disponible pour les futures politiques de sauvegarde de ce cluster. Si vous sélectionnez aucun niveau d'archivage dans votre première stratégie de sauvegarde, alors _S3 Glacier_ sera votre seule option d'archivage pour les futures stratégies.
 
 
 
@@ -337,7 +337,7 @@ ifdef::gcp[]
 
 * Dans GCP, les sauvegardes sont associées à la classe de stockage _Standard_.
 +
-Si votre cluster sur site utilise ONTAP 9.12.1 ou version ultérieure, vous pouvez choisir de transférer d'anciennes sauvegardes vers le stockage _Archive_ dans l'interface utilisateur de sauvegarde dans le cloud au bout d'un certain nombre de jours afin d'optimiser les coûts. link:reference-google-backup-tiers.html["En savoir plus sur le stockage des archives Google"^].
+Si votre cluster sur site utilise ONTAP 9.12.1 ou une version ultérieure, vous pouvez choisir de transférer les sauvegardes plus anciennes vers un stockage _Archive_ dans l'interface utilisateur de sauvegarde et de restauration BlueXP après un certain nombre de jours pour optimiser les coûts. link:reference-google-backup-tiers.html["En savoir plus sur le stockage des archives Google"^].
 
 
 

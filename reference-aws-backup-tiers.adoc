@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: reference-aws-backup-tiers.html 
 keywords: aws, amazon, s3, storage classes, archive 
-summary: 'Cloud Backup prend en charge deux classes de stockage d"archivage S3 ainsi que la plupart des régions.' 
+summary: 'La sauvegarde et la restauration BlueXP prennent en charge deux classes de stockage d"archives S3 et la plupart des régions.' 
 ---
 = Classes de stockage d'archivage AWS S3 et délais de récupération des données
 :hardbreaks:
@@ -14,19 +14,19 @@ summary: 'Cloud Backup prend en charge deux classes de stockage d"archivage S3 a
 
 
 [role="lead"]
-Cloud Backup prend en charge deux classes de stockage d'archivage S3 ainsi que la plupart des régions.
+La sauvegarde et la restauration BlueXP prennent en charge deux classes de stockage d'archives S3 et la plupart des régions.
 
 
 
-== Classes de stockage d'archivage S3 prises en charge pour Cloud Backup
+== Classes de stockage d'archivage S3 prises en charge pour la sauvegarde et la restauration BlueXP
 
 Lorsque des fichiers de sauvegarde sont créés initialement, ils sont stockés dans le stockage S3 _Standard_. Il est optimisé pour stocker les données peu utilisées, mais vous pouvez également y accéder immédiatement. Après 30 jours, les sauvegardes passent à la classe de stockage S3 _Standard-Infrequent Access_ pour réduire les coûts.
 
 Si vos clusters source exécutent ONTAP 9.10.1 ou version ultérieure, vous pouvez choisir de classer les sauvegardes vers un stockage _S3 Glacier_ ou _S3 Glacier Deep Archive_ après un certain nombre de jours (généralement plus de 30 jours) pour optimiser les coûts. Les données de ces niveaux ne sont pas accessibles immédiatement lorsque cela s'avère nécessaire. Par conséquent, les coûts de récupération sont plus élevés, vous devez déterminer la fréquence à laquelle vous devrez peut-être restaurer les données à partir de ces fichiers de sauvegarde archivés. Reportez-vous à la section à propos de <<Restauration des données à partir du stockage d'archivage,restauration des données à partir du stockage d'archivage>>.
 
-Si vous choisissez _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans votre première stratégie de sauvegarde lors de l'activation de Cloud Backup, ce Tier sera le seul niveau d'archivage disponible pour les futures stratégies de sauvegarde de ce cluster. Si vous sélectionnez aucun niveau d'archivage dans votre première stratégie de sauvegarde, alors _S3 Glacier_ sera votre seule option d'archivage pour les futures stratégies.
+Si vous choisissez _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans votre première règle de sauvegarde lors de l'activation de la sauvegarde et de la restauration BlueXP, ce Tier sera le seul Tier d'archivage disponible pour les futures politiques de sauvegarde de ce cluster. Si vous sélectionnez aucun niveau d'archivage dans votre première stratégie de sauvegarde, alors _S3 Glacier_ sera votre seule option d'archivage pour les futures stratégies.
 
-Notez que, lorsque vous configurez Cloud Backup avec ce type de règle de cycle de vie, vous ne devez pas configurer de règles de cycle de vie lors de la configuration du compartiment dans votre compte AWS.
+Notez que lorsque vous configurez la sauvegarde et la restauration BlueXP avec ce type de règle de cycle de vie, vous ne devez pas configurer de règles de cycle de vie lors de la configuration du compartiment dans votre compte AWS.
 
 https://aws.amazon.com/s3/storage-classes/["Découvrez les classes de stockage S3"^].
 

@@ -22,7 +22,7 @@ Vous pouvez restaurer un *dossier* sur un volume de l'environnement de travail d
 
 Vous pouvez restaurer *les fichiers* sur un volume de l'environnement de travail d'origine, sur un volume dans un autre environnement de travail qui utilise le même compte cloud ou sur un volume d'un système ONTAP sur site.
 
-Une licence Cloud Backup valide est requise pour restaurer les données à partir des fichiers de sauvegarde vers un système de production.
+Une licence de sauvegarde et de restauration BlueXP valide est requise pour restaurer les données à partir de fichiers de sauvegarde vers un système de production.
 
 
 
@@ -31,7 +31,7 @@ Une licence Cloud Backup valide est requise pour restaurer les données à parti
 Le tableau de bord de restauration permet d'effectuer des opérations de restauration de volumes, de dossiers et de fichiers. Pour accéder au Tableau de bord de restauration, cliquez sur *Backup and Recovery* dans le menu BlueXP, puis cliquez sur l'onglet *Restore*. Vous pouvez également cliquer sur image:screenshot_gallery_options.gif["Bouton plus"] > *Afficher le tableau de bord de restauration* à partir du service de sauvegarde et de récupération du panneau Services.
 
 
-NOTE: Cloud Backup doit déjà être activé pour au moins un environnement de travail et les fichiers de sauvegarde initiaux doivent exister.
+NOTE: La sauvegarde et la restauration BlueXP doivent déjà être activées pour au moins un environnement de travail, et les fichiers de sauvegarde initiaux doivent exister.
 
 image:screenshot_restore_dashboard.png["Le tableau de bord de restauration affiche les options permettant d'utiliser la fonction Parcourir et AMP ; Restaurer ou Rechercher et amp ; Restaurer."]
 
@@ -165,7 +165,7 @@ NOTE: Vous ne pouvez pas restaurer des dossiers ou des fichiers si le fichier de
 
 === Restauration de volumes à l'aide de Browse & Restore
 
-Lorsque vous restaurez un volume à partir d'un fichier de sauvegarde, Cloud Backup crée un _nouveau_ volume en utilisant les données de la sauvegarde. Vous pouvez restaurer les données sur un volume de l'environnement de travail d'origine ou sur un autre environnement de travail situé dans le même compte cloud que l'environnement de travail source. Vous pouvez également restaurer des volumes sur un système ONTAP sur site.
+Lorsque vous restaurez un volume à partir d'un fichier de sauvegarde, la sauvegarde et la restauration BlueXP créent un _nouveau_ volume en utilisant les données de la sauvegarde. Vous pouvez restaurer les données sur un volume de l'environnement de travail d'origine ou sur un autre environnement de travail situé dans le même compte cloud que l'environnement de travail source. Vous pouvez également restaurer des volumes sur un système ONTAP sur site.
 
 image:diagram_browse_restore_volume.png["Schéma illustrant le flux d'exécution d'une opération de restauration de volume à l'aide de Browse  ; Restore."]
 
@@ -255,7 +255,7 @@ endif::gcp[]
 
 
 .Résultat
-Cloud Backup crée un nouveau volume en fonction de la sauvegarde que vous avez sélectionnée. C'est possible link:task-manage-backups-ontap.html["gérez les paramètres de sauvegarde de ce nouveau volume"] selon les besoins.
+BlueXP Backup and Recovery crée un volume basé sur la sauvegarde que vous avez sélectionnée. C'est possible link:task-manage-backups-ontap.html["gérez les paramètres de sauvegarde de ce nouveau volume"] selon les besoins.
 
 Notez que la restauration d'un volume à partir d'un fichier de sauvegarde qui réside dans le stockage d'archivage peut prendre plusieurs minutes ou heures, selon le niveau d'archivage et la priorité de restauration. Vous pouvez cliquer sur l'onglet *surveillance des travaux* pour voir la progression de la restauration.
 
@@ -294,7 +294,7 @@ Le processus se présente comme suit :
 
 . Lorsque vous souhaitez restaurer un dossier ou un ou plusieurs fichiers à partir d'une sauvegarde de volume, cliquez sur l'onglet *Restaurer*, puis sur *Restaurer les fichiers ou le dossier* sous _Parcourir et Restaurer_.
 . Sélectionnez l'environnement de travail source, le volume et le fichier de sauvegarde dans lequel le dossier ou le fichier(s) résident(s).
-. Cloud Backup affiche les dossiers et les fichiers qui existent dans le fichier de sauvegarde sélectionné.
+. La sauvegarde et la restauration BlueXP affiche les dossiers et les fichiers qui existent dans le fichier de sauvegarde sélectionné.
 . Sélectionnez le ou les fichiers que vous souhaitez restaurer à partir de cette sauvegarde.
 . Sélectionnez l'emplacement de destination où vous souhaitez restaurer le dossier ou le fichier(s) (l'environnement de travail, le volume et le dossier), puis cliquez sur *Restaurer*.
 . Les fichiers sont restaurés.
@@ -425,9 +425,9 @@ Vous disposez de quelques options pour l'emplacement de restauration des dossier
 
 Vous pouvez restaurer un volume, un dossier ou des fichiers à partir d'un fichier de sauvegarde ONTAP à l'aide de la fonction Rechercher et restaurer. La fonction de recherche et restauration vous permet de rechercher un volume, un dossier ou un fichier spécifique à partir de toutes les sauvegardes stockées dans le stockage cloud pour un fournisseur spécifique, puis d'effectuer une restauration. Il n'est pas nécessaire de connaître le nom exact de l'environnement de travail ou le nom du volume ; la recherche s'effectue via tous les fichiers de sauvegarde de volume.
 
-L'opération de recherche examine également toutes les copies Snapshot locales existant pour vos volumes ONTAP. Étant donné que la restauration des données à partir d'une copie Snapshot locale peut être plus rapide et moins coûteuse que la restauration à partir d'un fichier de sauvegarde, il est possible de restaurer les données à partir d'une copie Snapshot. Vous pouvez restaurer la copie Snapshot en tant que nouveau volume https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes["À partir de la page Détails du volume de la zone de travail"^] (Pas depuis Cloud Backup).
+L'opération de recherche examine également toutes les copies Snapshot locales existant pour vos volumes ONTAP. Étant donné que la restauration des données à partir d'une copie Snapshot locale peut être plus rapide et moins coûteuse que la restauration à partir d'un fichier de sauvegarde, il est possible de restaurer les données à partir d'une copie Snapshot. Vous pouvez restaurer la copie Snapshot en tant que nouveau volume https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes["À partir de la page Détails du volume de la zone de travail"^] (Pas à partir de la sauvegarde et de la restauration BlueXP).
 
-Lorsque vous restaurez un volume à partir d'un fichier de sauvegarde, Cloud Backup crée un _nouveau_ volume en utilisant les données de la sauvegarde. Vous pouvez restaurer les données en tant que volume dans l'environnement de travail d'origine ou vers un autre environnement de travail situé dans le même compte cloud que l'environnement de travail source. Vous pouvez également restaurer des volumes sur un système ONTAP sur site.
+Lorsque vous restaurez un volume à partir d'un fichier de sauvegarde, la sauvegarde et la restauration BlueXP créent un _nouveau_ volume en utilisant les données de la sauvegarde. Vous pouvez restaurer les données en tant que volume dans l'environnement de travail d'origine ou vers un autre environnement de travail situé dans le même compte cloud que l'environnement de travail source. Vous pouvez également restaurer des volumes sur un système ONTAP sur site.
 
 Vous pouvez restaurer des dossiers ou des fichiers vers l'emplacement du volume d'origine, vers un autre volume dans le même environnement de travail ou vers un autre environnement de travail qui utilise le même compte cloud. Vous pouvez également restaurer des dossiers et des fichiers vers un volume situé sur un système ONTAP sur site.
 
@@ -536,7 +536,7 @@ ifdef::aws[]
 +
 ** Des autorisations spécifiques pour Amazon Athena, AWS Glue et AWS S3 doivent être ajoutées au rôle utilisateur qui fournit les autorisations BlueXP. link:task-backup-onprem-to-aws.html#set-up-s3-permissions["Assurez-vous que toutes les autorisations sont correctement configurées"].
 +
-Notez que si vous utilisiez déjà Cloud Backup avec un connecteur que vous avez configuré dans le passé, vous devrez ajouter maintenant les autorisations Athena et Glue au rôle utilisateur BlueXP. Ils sont nouveaux et sont requis pour la recherche et la restauration.
+Notez que si vous utilisiez déjà la sauvegarde et la restauration BlueXP avec un connecteur que vous avez configuré auparavant, vous devez ajouter les autorisations Athena et Glue au rôle utilisateur BlueXP dès maintenant. Ils sont nouveaux et sont requis pour la recherche et la restauration.
 
 
 
@@ -551,7 +551,7 @@ ifdef::azure[]
 ** Vous devez enregistrer le fournisseur de ressources d'analyse d'Azure Synapse (appelé « Microsoft.Synapse ») auprès de votre abonnement. https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider["Découvrez comment enregistrer ce fournisseur de ressources pour votre abonnement"^]. Vous devez être l'abonnement *propriétaire* ou *Contributeur* pour enregistrer le fournisseur de ressources.
 ** Des autorisations spécifiques pour Azure Synapse Workspace et Data Lake Storage Account doivent être ajoutées au rôle utilisateur qui fournit à BlueXP des autorisations. link:task-backup-onprem-to-azure.html#verify-or-add-permissions-to-the-connector["Assurez-vous que toutes les autorisations sont correctement configurées"].
 +
-Notez que si vous utilisiez déjà Cloud Backup avec un connecteur que vous avez configuré auparavant, vous devrez désormais ajouter les autorisations pour les comptes de stockage Azure Synapse Workspace et Data Lake au rôle utilisateur BlueXP. Ils sont nouveaux et sont requis pour la recherche et la restauration.
+Notez que si vous utilisiez déjà la sauvegarde et la restauration BlueXP avec un connecteur que vous avez configuré auparavant, vous devrez ajouter les autorisations Azure Synapse Workspace et Data Lake Storage Account au rôle d'utilisateur BlueXP maintenant. Ils sont nouveaux et sont requis pour la recherche et la restauration.
 
 ** Le connecteur doit être configuré *sans* serveur proxy pour la communication HTTP vers Internet. Si vous avez configuré un serveur proxy HTTP pour votre connecteur, vous ne pouvez pas utiliser la fonctionnalité Rechercher et remplacer.
 
@@ -566,7 +566,7 @@ ifdef::gcp[]
 +
 ** Des autorisations Google BigQuery spécifiques doivent être ajoutées au rôle utilisateur qui fournit des autorisations BlueXP. link:task-backup-onprem-to-gcp.html#verify-or-add-permissions-to-the-connector["Assurez-vous que toutes les autorisations sont correctement configurées"].
 +
-Notez que si vous utilisiez déjà Cloud Backup avec un connecteur que vous avez configuré auparavant, vous devrez ajouter maintenant les autorisations BigQuery au rôle utilisateur BlueXP. Ils sont nouveaux et sont requis pour la recherche et la restauration.
+Notez que si vous utilisiez déjà la sauvegarde et la restauration BlueXP avec un connecteur que vous avez configuré auparavant, vous devrez ajouter les autorisations BigQuery au rôle d'utilisateur BlueXP dès maintenant. Ils sont nouveaux et sont requis pour la recherche et la restauration.
 
 
 
@@ -608,7 +608,7 @@ La page Résultats de la recherche affiche tous les emplacements qui ont un fich
 
 image:diagram_search_restore_vol_file.png["Schéma illustrant le flux d'exécution d'une opération de restauration de volume, de dossier ou de fichier à l'aide de la fonction Rechercher et amp ; Restaurer."]
 
-Comme vous pouvez le voir, vous n'avez besoin que d'un nom partiel et de recherches sur Cloud Backup dans tous les fichiers de sauvegarde qui correspondent à votre recherche.
+Comme vous pouvez le voir, il vous suffit de connaître un nom partiel et de rechercher des sauvegardes et des restaurations BlueXP dans tous les fichiers de sauvegarde correspondant à votre recherche.
 
 
 
@@ -616,7 +616,7 @@ Comme vous pouvez le voir, vous n'avez besoin que d'un nom partiel et de recherc
 
 Avant de pouvoir utiliser la fonction de recherche et de restauration, vous devez activer l'indexation sur chaque environnement de travail source à partir duquel vous prévoyez de restaurer des volumes ou des fichiers. Cela permet au catalogue indexé de suivre chaque volume et chaque fichier de sauvegarde, ce qui rend vos recherches très rapides et efficaces.
 
-Lorsque vous activez cette fonctionnalité, Cloud Backup permet à SnapDiff v3 sur le SVM pour vos volumes, et effectue les actions suivantes :
+Lorsque vous activez cette fonctionnalité, BlueXP Backup and Recovery active SnapDiff v3 sur le SVM pour vos volumes et il effectue les actions suivantes :
 
 ifdef::aws[]
 

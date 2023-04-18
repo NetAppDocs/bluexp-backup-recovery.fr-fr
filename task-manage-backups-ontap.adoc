@@ -67,8 +67,8 @@ Vous pouvez modifier les attributs d'une stratégie de sauvegarde actuellement a
 
 [NOTE]
 ====
-* Si vous avez activé _DataLock et protection contre les attaques par ransomware_ dans la stratégie initiale lors de l'activation de Cloud Backup pour ce cluster, toutes les stratégies que vous modifiez doivent être configurées avec le même paramètre DataLock (gouvernance ou conformité). Et si vous n'avez pas activé _DataLock et protection contre les attaques par ransomware_ lors de l'activation de Cloud Backup, vous ne pouvez pas activer DataLock maintenant.
-* Lors de la création de sauvegardes sur AWS, si vous choisissez _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans votre première stratégie de sauvegarde lors de l'activation de Cloud Backup, ce Tier sera le seul niveau d'archivage disponible lors de l'édition de stratégies de sauvegarde. Si vous avez sélectionné aucun niveau d'archivage dans votre première stratégie de sauvegarde, alors _S3 Glacier_ sera votre seule option d'archivage lors de la modification d'une stratégie.
+* Si vous avez activé _DataLock et protection contre les ransomware_ dans la stratégie initiale lors de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster, toutes les stratégies que vous modifiez doivent être configurées avec le même paramètre DataLock (gouvernance ou conformité). Et si vous n'avez pas activé _DataLock et protection contre les ransomware_ lors de l'activation de la sauvegarde et de la restauration BlueXP, vous ne pouvez pas activer DataLock maintenant.
+* Lorsque vous créez des sauvegardes sur AWS, si vous avez choisi _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans votre première stratégie de sauvegarde lors de l'activation de la sauvegarde et de la restauration BlueXP, ce Tier sera le seul Tier d'archivage disponible lors de l'édition de stratégies de sauvegarde. Si vous avez sélectionné aucun niveau d'archivage dans votre première stratégie de sauvegarde, alors _S3 Glacier_ sera votre seule option d'archivage lors de la modification d'une stratégie.
 
 
 ====
@@ -116,7 +116,7 @@ link:reference-google-backup-tiers.html["En savoir plus sur l'utilisation du sto
 
 endif::gcp[]
 
-+image:screenshot_backup_modify_policy_page2.png["Copie d'écran montrant les paramètres de Tiering d'archivage pour Cloud Backup."]
++image:screenshot_backup_modify_policy_page2.png["Copie d'écran montrant le Tiering vers les paramètres de stockage d'archivage pour la sauvegarde et la restauration BlueXP."]
 
 + Notez que tous les fichiers de sauvegarde qui ont été hiérarchisés vers le stockage d'archivage sont conservés dans ce niveau si vous arrêtez le Tiering des sauvegardes vers l'archivage - ils ne sont pas automatiquement déplacés vers le niveau standard. Seules les sauvegardes de volume nouveaux résident dans le niveau standard.
 
@@ -124,14 +124,14 @@ endif::gcp[]
 
 == Ajout d'une nouvelle politique de sauvegarde
 
-Lorsque vous activez Cloud Backup pour un environnement de travail, tous les volumes que vous sélectionnez initialement sont sauvegardés à l'aide de la stratégie de sauvegarde par défaut que vous avez définie. Si vous souhaitez attribuer différentes stratégies de sauvegarde à certains volumes ayant des objectifs de point de récupération différents, vous pouvez créer des règles supplémentaires pour ce cluster et les affecter à d'autres volumes.
+Lorsque vous activez la sauvegarde et la restauration BlueXP pour un environnement de travail, tous les volumes que vous sélectionnez initialement sont sauvegardés à l'aide de la règle de sauvegarde par défaut que vous avez définie. Si vous souhaitez attribuer différentes stratégies de sauvegarde à certains volumes ayant des objectifs de point de récupération différents, vous pouvez créer des règles supplémentaires pour ce cluster et les affecter à d'autres volumes.
 
 Si vous souhaitez appliquer une nouvelle stratégie de sauvegarde à certains volumes d'un environnement de travail, vous devez d'abord ajouter la stratégie de sauvegarde à l'environnement de travail. C'est alors possible <<Modification de la règle attribuée aux volumes existants,appliquer la policy aux volumes de cet environnement de travail>>.
 
 [NOTE]
 ====
-* Si vous avez activé _DataLock et protection contre les attaques par ransomware_ dans la stratégie initiale lors de l'activation de Cloud Backup pour ce cluster, toutes les stratégies supplémentaires que vous créez doivent être configurées avec le même paramètre DataLock (gouvernance ou conformité). Et si vous n'avez pas activé _DataLock et protection contre les attaques par ransomware_ lors de l'activation de Cloud Backup, vous ne pouvez pas créer de nouvelles stratégies qui utilisent DataLock.
-* Lors de la création de sauvegardes sur AWS, si vous choisissez _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans votre première stratégie de sauvegarde lors de l'activation de Cloud Backup, ce Tier sera le seul niveau d'archivage disponible pour les futures stratégies de sauvegarde pour ce cluster. Si vous avez sélectionné aucun niveau d'archivage dans votre première stratégie de sauvegarde, alors _S3 Glacier_ sera votre seule option d'archivage pour les stratégies futures.
+* Si vous avez activé _DataLock et protection contre les ransomware_ dans la stratégie initiale lors de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster, toutes les stratégies supplémentaires que vous créez doivent être configurées avec le même paramètre DataLock (gouvernance ou conformité). Et si vous n'avez pas activé _DataLock et protection contre les ransomware_ lors de l'activation de la sauvegarde et de la restauration BlueXP, vous ne pouvez pas créer de nouvelles stratégies utilisant DataLock.
+* Lorsque vous créez des sauvegardes sur AWS, si vous avez choisi _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans votre première stratégie de sauvegarde lors de l'activation de la sauvegarde et de la restauration BlueXP, ce niveau sera le seul Tier d'archivage disponible pour les futures politiques de sauvegarde de ce cluster. Si vous avez sélectionné aucun niveau d'archivage dans votre première stratégie de sauvegarde, alors _S3 Glacier_ sera votre seule option d'archivage pour les stratégies futures.
 
 
 ====
@@ -176,7 +176,7 @@ link:reference-google-backup-tiers.html["En savoir plus sur l'utilisation du sto
 
 endif::gcp[]
 
-+image:screenshot_backup_modify_policy_page2.png["Copie d'écran montrant les paramètres de Tiering d'archivage pour Cloud Backup."]
++image:screenshot_backup_modify_policy_page2.png["Copie d'écran montrant le Tiering vers les paramètres de stockage d'archivage pour la sauvegarde et la restauration BlueXP."]
 
 
 
@@ -205,7 +205,7 @@ image:screenshot_backup_change_policy.png["Capture d'écran montrant comment sé
 
 +
 
-NOTE: Si vous avez activé _DataLock et protection contre les attaques par ransomware_ dans la stratégie initiale lors de l'activation de Cloud Backup pour ce cluster, vous ne verrez que les autres stratégies qui ont été configurées avec DataLock. Et si vous n'avez pas activé _DataLock et protection contre les attaques par ransomware_ lors de l'activation de Cloud Backup, vous ne verrez que d'autres stratégies qui n'ont pas configuré DataLock.
+NOTE: Si vous avez activé _DataLock et protection contre les ransomware_ dans la stratégie initiale lors de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster, vous ne verrez que les autres stratégies configurées avec DataLock. Et si vous n'avez pas activé _DataLock et protection contre les ransomware_ lors de l'activation de la sauvegarde et de la restauration BlueXP, vous ne verrez que les autres stratégies qui n'ont pas configuré DataLock.
 
 . Cliquez sur *Enregistrer* pour valider vos modifications.
 
@@ -218,7 +218,7 @@ Vous pouvez créer une sauvegarde à la demande à tout moment pour capturer l'�
 
 Le nom de la sauvegarde inclut l'horodatage afin que vous puissiez identifier votre sauvegarde à la demande à partir d'autres sauvegardes planifiées.
 
-Si vous avez activé _DataLock et protection contre les attaques par ransomware_ lors de l'activation de Cloud Backup pour ce cluster, la sauvegarde à la demande sera également configurée avec DataLock, et la période de conservation sera de 30 jours. Les analyses par ransomware ne sont pas prises en charge pour les sauvegardes ad hoc. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["En savoir plus sur le verrouillage des données et la protection contre les attaques par ransomware"^].
+Si vous avez activé _DataLock et protection contre les ransomware_ lors de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster, la sauvegarde à la demande sera également configurée avec DataLock et la période de conservation sera de 30 jours. Les analyses par ransomware ne sont pas prises en charge pour les sauvegardes ad hoc. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["En savoir plus sur le verrouillage des données et la protection contre les attaques par ransomware"^].
 
 Notez que lors de la création d'une sauvegarde ad hoc, un Snapshot est créé sur le volume source. Cet instantané ne faisant pas partie d'une planification Snapshot normale, il ne sera pas désactivé. Vous pouvez supprimer manuellement cet instantané du volume source une fois la sauvegarde terminée. Ainsi, les blocs liés à cette copie Snapshot peuvent être libérés. Le nom de l'instantané commence par `cbs-snapshot-adhoc-`. https://docs.netapp.com/us-en/ontap/san-admin/delete-all-existing-snapshot-copies-volume-task.html["Reportez-vous à la section mode de suppression d'une copie Snapshot à l'aide ONTAP de l'interface de ligne de commandes de"^].
 
@@ -282,18 +282,18 @@ La colonne analyse des attaques par ransomware indique que l'analyse est en cour
 
 == Suppression de sauvegardes
 
-Cloud Backup vous permet de supprimer un seul fichier de sauvegarde, de supprimer toutes les sauvegardes d'un volume ou de supprimer toutes les sauvegardes de tous les volumes d'un environnement de travail. Vous pouvez supprimer toutes les sauvegardes si vous n'avez plus besoin des sauvegardes, ou si vous avez supprimé le volume source et que vous souhaitez supprimer toutes les sauvegardes.
+La sauvegarde et la restauration BlueXP vous permettent de supprimer un seul fichier de sauvegarde, de supprimer toutes les sauvegardes d'un volume ou de supprimer toutes les sauvegardes de tous les volumes d'un environnement de travail. Vous pouvez supprimer toutes les sauvegardes si vous n'avez plus besoin des sauvegardes, ou si vous avez supprimé le volume source et que vous souhaitez supprimer toutes les sauvegardes.
 
 Notez que vous ne pouvez pas supprimer les fichiers de sauvegarde que vous avez verrouillés à l'aide de DataLock et de la protection contre les attaques par ransomware. L'option « Supprimer » n'est pas disponible dans l'interface utilisateur si vous avez sélectionné un ou plusieurs fichiers de sauvegarde verrouillés.
 
 
-CAUTION: Si vous prévoyez de supprimer un environnement ou un cluster de travail qui dispose de sauvegardes, vous devez supprimer les sauvegardes *avant* de supprimer le système. Cloud Backup ne supprime pas automatiquement les sauvegardes lorsque vous supprimez un système et l'interface utilisateur ne prend pas en charge la suppression des sauvegardes après la suppression du système. Vous continuerez d'être facturé pour les coûts de stockage objet pour les sauvegardes restantes.
+CAUTION: Si vous prévoyez de supprimer un environnement ou un cluster de travail qui dispose de sauvegardes, vous devez supprimer les sauvegardes *avant* de supprimer le système. La sauvegarde et la restauration BlueXP ne suppriment pas automatiquement les sauvegardes lorsque vous supprimez un système, et il n'existe pas de prise en charge à jour dans l'interface utilisateur pour supprimer les sauvegardes une fois le système supprimé. Vous continuerez d'être facturé pour les coûts de stockage objet pour les sauvegardes restantes.
 
 
 
 === Suppression de tous les fichiers de sauvegarde d'un environnement de travail
 
-La suppression de toutes les sauvegardes d'un environnement de travail ne désactive pas les futures sauvegardes des volumes de cet environnement de travail. Si vous souhaitez arrêter la création de sauvegardes de tous les volumes d'un environnement de travail, vous pouvez désactiver les sauvegardes <<Désactivation de Cloud Backup pour un environnement de travail,comme décrit ici>>.
+La suppression de toutes les sauvegardes d'un environnement de travail ne désactive pas les futures sauvegardes des volumes de cet environnement de travail. Si vous souhaitez arrêter la création de sauvegardes de tous les volumes d'un environnement de travail, vous pouvez désactiver les sauvegardes <<Désactivation de la sauvegarde et de la restauration BlueXP pour un environnement de travail,comme décrit ici>>.
 
 .Étapes
 . Dans l'onglet *volumes*, sélectionnez *Paramètres de sauvegarde*.
@@ -367,7 +367,7 @@ Vous n'avez pas nécessairement besoin de supprimer le volume source. Vous pouve
 
 Cette fonction n'est disponible que si votre système exécute ONTAP 9.12.1 ou une version ultérieure.
 
-Vous ne pouvez pas supprimer le volume source de l'interface utilisateur de Cloud Backup. Cependant, vous pouvez ouvrir la page Détails du volume sur la toile, et https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes["supprimez le volume de ce site"].
+Vous ne pouvez pas supprimer le volume source de l'interface utilisateur de sauvegarde et de restauration BlueXP. Cependant, vous pouvez ouvrir la page Détails du volume sur la toile, et https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes["supprimez le volume de ce site"].
 
 
 NOTE: Une fois la relation supprimée, vous ne pouvez pas supprimer des fichiers de sauvegarde de volume individuels. Vous pouvez cependant link:task-manage-backups-ontap.html#deleting-all-backup-files-for-a-volume["supprimez toutes les sauvegardes du volume"] si vous souhaitez supprimer tous les fichiers de sauvegarde.
@@ -398,9 +398,9 @@ image:screenshot_backup_view_no_relationship.png["Capture d'écran affichant le 
 
 
 
-== Désactivation de Cloud Backup pour un environnement de travail
+== Désactivation de la sauvegarde et de la restauration BlueXP pour un environnement de travail
 
-La désactivation de Cloud Backup pour un environnement de travail désactive les sauvegardes de chaque volume du système et désactive également la restauration d'un volume. Les sauvegardes existantes ne seront pas supprimées. Cela ne désinscrit pas le service de sauvegarde de cet environnement de travail, car il vous permet de suspendre l'ensemble de l'activité de sauvegarde et de restauration pendant une période donnée.
+La désactivation de la sauvegarde et de la restauration BlueXP pour un environnement de travail désactive les sauvegardes de chaque volume du système, et désactive également la restauration d'un volume. Les sauvegardes existantes ne seront pas supprimées. Cela ne désinscrit pas le service de sauvegarde de cet environnement de travail, car il vous permet de suspendre l'ensemble de l'activité de sauvegarde et de restauration pendant une période donnée.
 
 Notez que vous continuerez d'être facturé par votre fournisseur cloud pour les coûts de stockage objet correspondant à la capacité que vos sauvegardes utilisent, sauf si vous <<Suppression de tous les fichiers de sauvegarde d'un environnement de travail,supprimez les sauvegardes>>.
 
@@ -421,15 +421,15 @@ NOTE: Un bouton *Activer la sauvegarde* apparaît pour cet environnement de trav
 
 
 
-== Annulation de l'enregistrement de Cloud Backup pour un environnement de travail
+== Annulation de l'enregistrement de la sauvegarde et de la restauration BlueXP pour un environnement de travail
 
-Vous pouvez annuler l'enregistrement de Cloud Backup pour un environnement de travail si vous ne souhaitez plus utiliser la fonctionnalité de sauvegarde et que vous souhaitez interrompre la facturation des sauvegardes dans cet environnement de travail. Cette fonction est généralement utilisée lorsque vous prévoyez de supprimer un environnement de travail et que vous souhaitez annuler le service de sauvegarde.
+Vous pouvez annuler l'enregistrement des sauvegardes BlueXP dans un environnement de travail si vous ne souhaitez plus utiliser les fonctionnalités de sauvegarde et si vous souhaitez arrêter de payer les sauvegardes de cet environnement de travail. Cette fonction est généralement utilisée lorsque vous prévoyez de supprimer un environnement de travail et que vous souhaitez annuler le service de sauvegarde.
 
-Vous pouvez également utiliser cette fonction si vous souhaitez modifier le magasin d'objets de destination dans lequel vos sauvegardes de cluster sont stockées. Une fois que vous désenregistrez Cloud Backup pour l'environnement de travail, vous pouvez activer Cloud Backup pour ce cluster en utilisant les informations du nouveau fournisseur cloud.
+Vous pouvez également utiliser cette fonction si vous souhaitez modifier le magasin d'objets de destination dans lequel vos sauvegardes de cluster sont stockées. Une fois que vous avez désenregistré la sauvegarde et la restauration BlueXP pour l'environnement de travail, vous pouvez activer la sauvegarde et la restauration BlueXP pour ce cluster en utilisant les nouvelles informations de votre fournisseur cloud.
 
-Avant de pouvoir annuler l'enregistrement de Cloud Backup, vous devez effectuer les opérations suivantes dans cet ordre :
+Avant de pouvoir annuler l'enregistrement de la sauvegarde et de la restauration BlueXP, vous devez effectuer les étapes suivantes, dans l'ordre suivant :
 
-* Désactivez Cloud Backup pour l'environnement de travail
+* Désactivez la sauvegarde et la restauration BlueXP pour l'environnement de travail
 * Supprimer toutes les sauvegardes de cet environnement de travail
 
 

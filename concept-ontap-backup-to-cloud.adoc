@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: concept-ontap-backup-to-cloud.html 
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, billing, cost, on-premises ontap, onprem 
-summary: 'Cloud Backup inclut des fonctionnalités de sauvegarde et de restauration pour une protection et un archivage à long terme des données de votre cluster ONTAP. Les sauvegardes sont automatiquement générées et stockées dans un magasin d"objets de votre compte cloud public ou privé, indépendamment des copies Snapshot de volume utilisées pour la restauration ou le clonage à court terme.' 
+summary: 'La sauvegarde et la restauration BlueXP fournit des fonctionnalités de sauvegarde et de restauration pour la protection et l"archivage à long terme de vos données de cluster ONTAP. Les sauvegardes sont automatiquement générées et stockées dans un magasin d"objets de votre compte cloud public ou privé, indépendamment des copies Snapshot de volume utilisées pour la restauration ou le clonage à court terme.' 
 ---
-= Protection des données du cluster ONTAP à l'aide de Cloud Backup
+= Protégez les données de votre cluster ONTAP à l'aide de la sauvegarde et de la restauration BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 'Cloud Backup inclut des fonctionnalités de sauvegarde et de restaurat
 
 
 [role="lead"]
-Cloud Backup inclut des fonctionnalités de sauvegarde et de restauration pour une protection et un archivage à long terme des données de votre cluster ONTAP. Les sauvegardes sont automatiquement générées et stockées dans un magasin d'objets de votre compte cloud public ou privé, indépendamment des copies Snapshot de volume utilisées pour la restauration ou le clonage à court terme.
+La sauvegarde et la restauration BlueXP fournit des fonctionnalités de sauvegarde et de restauration pour la protection et l'archivage à long terme de vos données de cluster ONTAP. Les sauvegardes sont automatiquement générées et stockées dans un magasin d'objets de votre compte cloud public ou privé, indépendamment des copies Snapshot de volume utilisées pour la restauration ou le clonage à court terme.
 
 Si nécessaire, vous pouvez restaurer tout un _volume_, un _dossier_, ou un ou plusieurs _fichiers_, d'une sauvegarde vers le même environnement de travail ou vers un environnement de travail différent.
 
@@ -51,7 +51,7 @@ Fonctions de restauration :
 
 == Environnements de travail ONTAP pris en charge et fournisseurs de stockage objet
 
-Cloud Backup vous permet de sauvegarder des volumes ONTAP à partir de ces environnements de travail vers un stockage objet dans plusieurs fournisseurs de cloud public et privé :
+La sauvegarde et la restauration BlueXP vous permettent de sauvegarder des volumes ONTAP à partir des environnements de travail suivants vers un stockage objet dans les clouds publics et privés des fournisseurs suivants :
 
 [cols="50,50"]
 |===
@@ -93,7 +93,7 @@ Notez que les références aux « systèmes ONTAP sur site » incluent les syst�
 
 === Prise en charge des sites avec une connectivité limitée
 
-Cloud Backup peut être utilisé dans un site dont la connectivité Internet est limitée (également appelé « mode restreint ») pour sauvegarder et restaurer les données de volume. Dans ce cas, vous devez déployer le connecteur BlueXP dans la région réservée.
+La sauvegarde et la restauration BlueXP peuvent être utilisées dans un site doté d'une connectivité Internet limitée (également appelé « mode restreint ») pour sauvegarder et restaurer des données de volume. Dans ce cas, vous devez déployer le connecteur BlueXP dans la région réservée.
 
 ifdef::aws[]
 
@@ -113,7 +113,7 @@ endif::azure[]
 
 === Assistance pour les sites sans connexion Internet
 
-Cloud Backup peut être utilisé dans un site sans connexion Internet (également appelé « mode privé » ou « sites invisibles ») pour sauvegarder des données de volume. Dans ce cas, vous devez déployer le connecteur BlueXP dans le site invisible.
+Les fonctionnalités de sauvegarde et de restauration BlueXP peuvent être utilisées dans un site sans connexion Internet (également appelé « mode privé » ou « sites invisibles ») pour sauvegarder des données de volume. Dans ce cas, vous devez déployer le connecteur BlueXP dans le site invisible.
 
 * Vous pouvez sauvegarder les données à partir de systèmes ONTAP locaux sur site vers des systèmes NetApp StorageGRID locaux. Voir link:task-backup-onprem-private-cloud.html["La sauvegarde des données ONTAP sur site dans StorageGRID"] pour plus d'informations. ifdef::aws[]
 
@@ -128,7 +128,7 @@ endif::azure[]
 
 == Volumes pris en charge
 
-Cloud Backup prend en charge plusieurs types de volumes :
+La sauvegarde et la restauration BlueXP prennent en charge les types de volumes suivants :
 
 * Volumes FlexVol de lecture/écriture
 * Volumes de destination SnapMirror avec protection des données (DP)
@@ -146,7 +146,7 @@ Reportez-vous aux sections de la section <<Limites,Limites de la sauvegarde et d
 
 == Le coût
 
-Deux types de coûts sont associés à l'utilisation de Cloud Backup avec les systèmes ONTAP : les frais en ressources et les frais de service.
+L'utilisation de la sauvegarde et de la restauration BlueXP avec les systèmes ONTAP implique deux types de coûts : les frais de ressources et les frais de service.
 
 *Frais de ressources*
 
@@ -154,7 +154,7 @@ Les frais en ressources sont facturés au fournisseur cloud pour la capacité de
 
 * En matière de sauvegarde, vous payez votre fournisseur cloud pour les coûts de stockage objet.
 +
-Étant donné que Cloud Backup préserve l'efficacité du stockage du volume source, vous payez les coûts de stockage objet du fournisseur cloud pour les données _après_ efficacité ONTAP (pour la quantité de données plus faible après l'application de la déduplication et de la compression).
+Puisque la sauvegarde et la restauration BlueXP préservent l'efficacité du stockage du volume source, vous payez les coûts de stockage objet du fournisseur cloud pour l'efficacité du stockage des données _after_ ONTAP (pour la quantité de données réduite après la déduplication et la compression).
 
 * Pour la restauration des données à l'aide de Search & Restore, certaines ressources sont provisionnées par votre fournisseur de cloud. Le coût par Tio est associé à la quantité de données analysées par vos requêtes de recherche. (Ces ressources ne sont pas nécessaires pour la fonction Parcourir et restaurer.)
 +
@@ -199,7 +199,7 @@ Vous pouvez payer le service de sauvegarde de trois façons. La première option
 
 == Licences
 
-Cloud Backup est disponible avec les modèles de consommation suivants :
+BlueXP Backup and Recovery est disponible avec les modèles de consommation suivants :
 
 * *BYOL* : licence achetée auprès de NetApp et utilisable avec n'importe quel fournisseur cloud.
 * *PAYGO* : un abonnement à l'heure sur le marché de votre fournisseur de services cloud.
@@ -214,7 +214,7 @@ Si vous achetez une licence BYOL auprès de NetApp, vous devez également vous a
 * Si la durée de votre licence expire
 
 
-Si vous disposez d'un contrat annuel sur un marché, l'ensemble de la consommation de Cloud Backup est facturée sur votre contrat. Vous ne pouvez pas combiner un contrat annuel de vente avec un contrat BYOL.
+Si vous avez un contrat annuel depuis un marché, toute la consommation de sauvegarde et de restauration BlueXP est facturée sur ce contrat. Vous ne pouvez pas combiner un contrat annuel de vente avec un contrat BYOL.
 
 ====
 
@@ -225,15 +225,15 @@ BYOL est basé sur la durée (12, 24 ou 36 mois) _et_ sur la capacité par incr�
 
 Vous recevrez un numéro de série que vous entrez dans la page BlueXP Digital Wallet pour activer le service. Lorsque l'une ou l'autre limite est atteinte, vous devez renouveler la licence. La licence de sauvegarde BYOL s'applique à tous les systèmes source associés à votre https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-netapp-accounts.html["Compte BlueXP"^].
 
-link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license["Découvrez comment gérer vos licences BYOL"].
+link:task-licensing-cloud-backup.html#use-a-bluexp-backup-and-recovery-byol-license["Découvrez comment gérer vos licences BYOL"].
 
 
 
 === Abonnement avec paiement à l'utilisation
 
-Cloud Backup propose un modèle de paiement à l'utilisation avec des licences basées sur la consommation. Après votre abonnement sur le marché de votre fournisseur cloud, vous payez par Gio pour les données sauvegardées, sans paiement initial. Votre fournisseur cloud vous facturé mensuellement.
+Avec la sauvegarde et la restauration BlueXP, vous bénéficiez d'une licence basée sur la consommation dans un modèle de paiement à l'utilisation. Après votre abonnement sur le marché de votre fournisseur cloud, vous payez par Gio pour les données sauvegardées, sans paiement initial. Votre fournisseur cloud vous facturé mensuellement.
 
-link:task-licensing-cloud-backup.html#use-a-cloud-backup-paygo-subscription["Découvrez comment configurer un abonnement avec paiement à l'utilisation"].
+link:task-licensing-cloud-backup.html#use-a-bluexp-backup-and-recovery-paygo-subscription["Découvrez comment configurer un abonnement avec paiement à l'utilisation"].
 
 Notez qu'une version d'essai gratuite de 30 jours est disponible lorsque vous vous abonnez initialement à un abonnement PAYGO.
 
@@ -245,22 +245,22 @@ ifdef::aws[]
 
 Avec AWS, deux contrats annuels sont disponibles pour une durée de 12, 24 ou 36 mois :
 
-* Un plan de « sauvegarde dans le cloud » vous permet de sauvegarder les données Cloud Volumes ONTAP et les données ONTAP sur site.
-* Ce plan vous permet de regrouper Cloud Volumes ONTAP et Cloud Backup. Cela inclut le nombre illimité de sauvegardes pour les volumes Cloud Volumes ONTAP facturés pour cette licence (la capacité de sauvegarde n'est pas prise en compte avec la licence).
+* Plan de sauvegarde et de restauration BlueXP pour la sauvegarde des données Cloud Volumes ONTAP et des données ONTAP sur site.
+* Un plan « CVO Professional » qui vous permet de regrouper les fonctionnalités de sauvegarde et de restauration Cloud Volumes ONTAP et BlueXP. Cela inclut le nombre illimité de sauvegardes pour les volumes Cloud Volumes ONTAP facturés pour cette licence (la capacité de sauvegarde n'est pas prise en compte avec la licence).
 
 
 endif::aws[]
 
 ifdef::azure[]
 
-* Si vous utilisez Azure, vous pouvez demander une offre privée auprès de NetApp, puis sélectionner le plan lorsque vous vous abonnez à Azure Marketplace au moment de l'activation de Cloud Backup.
+* Lorsque vous utilisez Azure, vous pouvez demander une offre privée auprès de NetApp, puis sélectionner le plan lorsque vous vous abonnez à partir d'Azure Marketplace lors de l'activation de la sauvegarde et de la restauration BlueXP.
 
 
 endif::azure[]
 
 ifdef::gcp[]
 
-* Lorsque vous utilisez GCP, vous pouvez demander une offre privée auprès de NetApp, puis sélectionner le plan lorsque vous vous abonnez à Google Cloud Marketplace au moment de l'activation de Cloud Backup.
+* Lorsque vous utilisez GCP, vous pouvez demander une offre privée auprès de NetApp, puis sélectionner le plan lorsque vous vous abonnez à partir de Google Cloud Marketplace lors de l'activation de la sauvegarde et de la restauration BlueXP.
 
 
 endif::gcp[]
@@ -269,16 +269,16 @@ link:task-licensing-cloud-backup.html#use-an-annual-contract["Découvrez comment
 
 
 
-== Fonctionnement de Cloud Backup
+== Fonctionnement de la sauvegarde et de la restauration BlueXP
 
-Lorsque vous activez Cloud Backup sur un système ONTAP Cloud Volumes ONTAP ou sur site, le service effectue une sauvegarde complète de vos données. Les instantanés de volume ne sont pas inclus dans l'image de sauvegarde. Après la sauvegarde initiale, toutes les sauvegardes supplémentaires sont incrémentielles, ce qui signifie que seuls les blocs modifiés et les nouveaux blocs sont sauvegardés. Le trafic réseau est ainsi réduit au minimum. Cloud Backup repose sur le https://docs.netapp.com/us-en/ontap/concepts/snapmirror-cloud-backups-object-store-concept.html["Technologie NetApp SnapMirror Cloud"^].
+Lorsque vous activez la sauvegarde et la restauration BlueXP sur un système Cloud Volumes ONTAP ou ONTAP sur site, le service effectue une sauvegarde complète de vos données. Les instantanés de volume ne sont pas inclus dans l'image de sauvegarde. Après la sauvegarde initiale, toutes les sauvegardes supplémentaires sont incrémentielles, ce qui signifie que seuls les blocs modifiés et les nouveaux blocs sont sauvegardés. Le trafic réseau est ainsi réduit au minimum. La sauvegarde et la restauration BlueXP reposent sur le https://docs.netapp.com/us-en/ontap/concepts/snapmirror-cloud-backups-object-store-concept.html["Technologie NetApp SnapMirror Cloud"^].
 
 
 CAUTION: Toute action effectuée directement depuis votre environnement de fournisseur cloud pour gérer ou modifier des fichiers de sauvegarde peut corrompre les fichiers et entraîner une configuration non prise en charge.
 
 L'image suivante montre la relation entre chaque composant :
 
-image:diagram_cloud_backup_general.png["Un diagramme montrant comment Cloud Backup communique avec les volumes des systèmes source et le stockage objet de destination où sont situés les fichiers de sauvegarde."]
+image:diagram_cloud_backup_general.png["Un diagramme illustrant la façon dont BlueXP Backup and Recovery communique avec les volumes des systèmes source et le stockage objet de destination où se trouvent les fichiers de sauvegarde."]
 
 
 
@@ -310,15 +310,15 @@ endif::gcp[]
 * Dans StorageGRID, BlueXP utilise un compte de stockage existant pour le compartiment de magasin d'objets.
 
 
-Pour modifier ultérieurement le magasin d'objets de destination d'un cluster, vous devez link:task-manage-backups-ontap.html#unregistering-cloud-backup-for-a-working-environment["Annuler l'inscription de Cloud Backup pour l'environnement de travail"^], Puis activez Cloud Backup à l'aide des informations du nouveau fournisseur cloud.
+Pour modifier ultérieurement le magasin d'objets de destination d'un cluster, vous devez link:task-manage-backups-ontap.html#unregistering-bluexp-backup-and-recovery-for-a-working-environment["Annulez l'enregistrement de la sauvegarde et de la restauration BlueXP pour l'environnement de travail"^], Puis activez la sauvegarde et la restauration BlueXP à l'aide des informations du nouveau fournisseur cloud.
 
 
 
 === Programme de sauvegarde et paramètres de conservation personnalisables
 
-Lorsque vous activez Cloud Backup pour un environnement de travail, tous les volumes que vous sélectionnez initialement sont sauvegardés à l'aide de la stratégie de sauvegarde par défaut que vous définissez. Si vous souhaitez attribuer différentes règles de sauvegarde à certains volumes ayant des objectifs de point de récupération différents, vous pouvez créer des règles supplémentaires pour ce cluster et les attribuer aux autres volumes une fois que Cloud Backup est activé.
+Lorsque vous activez la sauvegarde et la restauration BlueXP pour un environnement de travail, tous les volumes que vous sélectionnez initialement sont sauvegardés à l'aide de la règle de sauvegarde par défaut que vous définissez. Si vous souhaitez attribuer différentes règles de sauvegarde à certains volumes pour lesquels les objectifs de point de restauration (RPO) sont différents, vous pouvez créer des règles supplémentaires pour ce cluster et les attribuer aux autres volumes après l'activation de la sauvegarde et de la restauration BlueXP.
 
-Vous pouvez choisir une combinaison de sauvegardes toutes les heures, tous les jours, toutes les semaines, tous les mois et tous les ans pour tous les volumes. La règle Snapshot appliquée au volume doit correspondre à une des règles reconnues par Cloud Backup, sinon les fichiers de sauvegarde ne seront pas créés. Vous pouvez également sélectionner l'une des stratégies définies par le système qui assure les sauvegardes et la conservation pendant 3 mois, 1 an et 7 ans. Ces règles sont les suivantes :
+Vous pouvez choisir une combinaison de sauvegardes toutes les heures, tous les jours, toutes les semaines, tous les mois et tous les ans pour tous les volumes. La règle Snapshot appliquée au volume doit correspondre à une des règles reconnues par BlueXP Backup and Recovery, sinon les fichiers de sauvegarde ne seront pas créés. Vous pouvez également sélectionner l'une des stratégies définies par le système qui assure les sauvegardes et la conservation pendant 3 mois, 1 an et 7 ans. Ces règles sont les suivantes :
 
 [cols="35,16,16,16,26"]
 |===
@@ -372,7 +372,7 @@ ifdef::aws[]
 
 * Dans AWS, les sauvegardes commencent dans la classe de stockage _Standard_ et la transition vers la classe de stockage _Standard-Infrequent Access_ après 30 jours.
 +
-Si votre cluster utilise ONTAP 9.10.1 ou version ultérieure, vous pouvez choisir de hiérarchiser les anciennes sauvegardes vers le stockage _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans l'interface de sauvegarde dans le cloud après un certain nombre de jours pour optimiser les coûts. link:reference-aws-backup-tiers.html["En savoir plus sur le stockage d'archives AWS"^].
+Si votre cluster utilise ONTAP 9.10.1 ou une version ultérieure, vous pouvez choisir de transférer les sauvegardes plus anciennes vers le stockage _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans l'interface de sauvegarde et de restauration BlueXP après un certain nombre de jours pour optimiser les coûts. link:reference-aws-backup-tiers.html["En savoir plus sur le stockage d'archives AWS"^].
 
 
 
@@ -382,7 +382,7 @@ ifdef::azure[]
 
 * Dans Azure, les sauvegardes sont associées au niveau d'accès _Cool_.
 +
-Si votre cluster utilise ONTAP 9.10.1 ou version supérieure, vous pouvez choisir de hiérarchiser les anciennes sauvegardes dans le stockage _Azure Archive_ dans l'interface utilisateur de sauvegarde dans le cloud, au bout d'un certain nombre de jours, afin d'optimiser les coûts. link:reference-azure-backup-tiers.html["En savoir plus sur le stockage des archives Azure"^].
+Si votre cluster utilise ONTAP 9.10.1 ou une version ultérieure, vous pouvez choisir de transférer les sauvegardes plus anciennes vers le stockage _Azure Archive_ dans l'interface utilisateur de sauvegarde et de restauration BlueXP après un certain nombre de jours pour optimiser les coûts. link:reference-azure-backup-tiers.html["En savoir plus sur le stockage des archives Azure"^].
 
 
 
@@ -392,7 +392,7 @@ ifdef::gcp[]
 
 * Dans GCP, les sauvegardes sont associées à la classe de stockage _Standard_.
 +
-Si votre cluster utilise ONTAP 9.12.1 ou version ultérieure, vous pouvez choisir de classer les anciennes sauvegardes vers _Archive_ le stockage dans l'interface utilisateur de sauvegarde dans le cloud, après un certain nombre de jours, pour optimiser les coûts. link:reference-google-backup-tiers.html["En savoir plus sur le stockage des archives Google"^].
+Si votre cluster utilise ONTAP 9.12.1 ou une version ultérieure, vous pouvez choisir de transférer les sauvegardes plus anciennes vers un stockage _Archive_ dans l'interface utilisateur de sauvegarde et de restauration BlueXP après un certain nombre de jours pour optimiser les coûts. link:reference-google-backup-tiers.html["En savoir plus sur le stockage des archives Google"^].
 
 
 
@@ -421,7 +421,7 @@ La lecture des données de votre fournisseur de cloud peut s'accélérer et gén
 ** Si la règle de hiérarchisation est attribuée au volume lors de sa création initiale, ce problème ne s'affiche pas.
 
 
-* Tenez compte de l'impact des sauvegardes avant d'affecter le `all` tiering des règles sur les volumes. Les données étant hiérarchisées immédiatement, Cloud Backup les lit dans le Tier cloud plutôt que dans le Tier local. Étant donné que les opérations de sauvegarde simultanées partagent la liaison réseau avec le magasin d'objets cloud, les performances peuvent être affectées si les ressources réseau deviennent saturées. Dans ce cas, il peut être nécessaire de configurer de manière proactive plusieurs interfaces réseau (LIF) afin de réduire ce type de saturation réseau.
+* Tenez compte de l'impact des sauvegardes avant d'affecter le `all` tiering des règles sur les volumes. Comme les données sont immédiatement hiérarchisées, BlueXP Backup and Recovery lit les données depuis le Tier cloud plutôt que depuis le Tier local. Étant donné que les opérations de sauvegarde simultanées partagent la liaison réseau avec le magasin d'objets cloud, les performances peuvent être affectées si les ressources réseau deviennent saturées. Dans ce cas, il peut être nécessaire de configurer de manière proactive plusieurs interfaces réseau (LIF) afin de réduire ce type de saturation réseau.
 
 
 
@@ -436,14 +436,14 @@ La lecture des données de votre fournisseur de cloud peut s'accélérer et gén
 * Lors de la sauvegarde de volumes de protection des données (DP) :
 +
 ** Relations avec les libellés SnapMirror `app_consistent` et `all_source_snapshot` elles ne seront pas sauvegardées dans le cloud.
-** Si vous créez des copies Snapshot locales sur le volume de destination SnapMirror (indépendamment des étiquettes SnapMirror utilisées), ces snapshots ne seront pas déplacés vers le cloud en tant que sauvegardes. Pour le moment, vous devrez créer une règle Snapshot avec les étiquettes souhaitées pour le volume DP source afin que Cloud Backup puisse les sauvegarder.
+** Si vous créez des copies Snapshot locales sur le volume de destination SnapMirror (indépendamment des étiquettes SnapMirror utilisées), ces snapshots ne seront pas déplacés vers le cloud en tant que sauvegardes. À ce stade, vous devrez créer une règle Snapshot portant les étiquettes souhaitées sur le volume DP source pour que la sauvegarde et la restauration BlueXP puissent les sauvegarder.
 
 
 * Les sauvegardes de volumes FlexGroup ne peuvent pas être déplacées vers le stockage d'archivage. Elles ne peuvent pas non plus utiliser le verrouillage des données et la protection par ransomware.
 * La sauvegarde du volume SVM-DR est prise en charge avec les restrictions suivantes :
 +
 ** Seules les sauvegardes sont prises en charge à partir du système secondaire ONTAP.
-** La règle Snapshot appliquée au volume doit être l'une des règles reconnues par Cloud Backup, y compris les règles quotidiennes, hebdomadaires, mensuelles, etc. La stratégie par défaut « sm_create » (utilisée pour *Mirror All snapshots*) N'est pas reconnu et le volume DP n'apparaît pas dans la liste des volumes pouvant être sauvegardés.
+** La règle Snapshot appliquée au volume doit faire partie des règles reconnues par la sauvegarde et la restauration BlueXP, y compris quotidienne, hebdomadaire, mensuelle, etc La règle par défaut « sm_created » (utilisée pour *Mirror All snapshots*) n'est pas reconnue et le volume DP ne sera pas affiché dans la liste des volumes pouvant être sauvegardés.
 
 
 
@@ -457,8 +457,8 @@ La lecture des données de votre fournisseur de cloud peut s'accélérer et gén
 
 * La sauvegarde de volume ad-hoc à l'aide du bouton *Backup Now* n'est pas prise en charge sur les volumes de protection des données.
 * Les configurations SM-BC ne sont pas prises en charge.
-* ONTAP ne prend pas en charge la « fan-out » des relations SnapMirror depuis un volume unique vers plusieurs magasins d'objets. Par conséquent, cette configuration n'est pas prise en charge par Cloud Backup.
-* Le mode WORM/Compliance sur un magasin d'objets est actuellement pris en charge sur Amazon S3, Azure et StorageGRID. Il s'agit de la fonctionnalité DataLock, qui doit être gérée à l'aide des paramètres Cloud Backup, et non à l'aide de l'interface du fournisseur cloud.
+* ONTAP ne prend pas en charge la réplication « Fan-Out » des relations SnapMirror depuis un seul volume vers plusieurs magasins d'objets. Par conséquent, cette configuration n'est pas prise en charge par la sauvegarde et la restauration BlueXP.
+* Le mode WORM/Compliance sur un magasin d'objets est actuellement pris en charge sur Amazon S3, Azure et StorageGRID. Cette fonctionnalité, appelée fonctionnalité DataLock, doit être gérée à l'aide des paramètres de sauvegarde et de restauration BlueXP, et non via l'interface du fournisseur cloud.
 
 
 

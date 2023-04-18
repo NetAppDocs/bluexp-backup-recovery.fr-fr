@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-manage-backup-settings-ontap.html 
 keywords: cloud backup, cloud backup service, storage keys, network bandwidth, auto backup, delete yearly snapshot, export snapshots 
-summary: 'Vous pouvez modifier de nombreux paramètres de sauvegarde au niveau du cluster que vous définissez lors de l"activation de Cloud Backup pour chaque système ONTAP. Vous pouvez également modifier certains paramètres appliqués comme paramètres de sauvegarde par défaut. Cela vous permet notamment de modifier les clés de stockage, le taux de transfert des sauvegardes vers le stockage objet ou non, l"exportation des copies Snapshot historiques sous forme de fichiers de sauvegarde, etc.' 
+summary: 'Vous pouvez modifier de nombreux paramètres de sauvegarde au niveau du cluster que vous avez définis lors de l"activation de la sauvegarde et de la restauration BlueXP pour chaque système ONTAP. Vous pouvez également modifier certains paramètres appliqués comme paramètres de sauvegarde par défaut. Cela vous permet notamment de modifier les clés de stockage, le taux de transfert des sauvegardes vers le stockage objet ou non, l"exportation des copies Snapshot historiques sous forme de fichiers de sauvegarde, etc.' 
 ---
 = Gestion des paramètres de sauvegarde au niveau du cluster
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: 'Vous pouvez modifier de nombreux paramètres de sauvegarde au niveau d
 
 
 [role="lead"]
-Vous pouvez modifier de nombreux paramètres de sauvegarde au niveau du cluster que vous définissez lors de l'activation de Cloud Backup pour chaque système ONTAP. Vous pouvez également modifier certains paramètres appliqués comme paramètres de sauvegarde par défaut. Cela vous permet notamment de modifier les clés de stockage, le taux de transfert des sauvegardes vers le stockage objet ou non, l'exportation des copies Snapshot historiques sous forme de fichiers de sauvegarde, etc.
+Vous pouvez modifier de nombreux paramètres de sauvegarde au niveau du cluster que vous avez définis lors de l'activation de la sauvegarde et de la restauration BlueXP pour chaque système ONTAP. Vous pouvez également modifier certains paramètres appliqués comme paramètres de sauvegarde par défaut. Cela vous permet notamment de modifier les clés de stockage, le taux de transfert des sauvegardes vers le stockage objet ou non, l'exportation des copies Snapshot historiques sous forme de fichiers de sauvegarde, etc.
 
 Les paramètres de sauvegarde au niveau du cluster sont disponibles dans la page _Advanced Settings_.
 
@@ -101,7 +101,7 @@ Il vous suffit de sélectionner le nouvel IPspace et de cliquer sur *appliquer*.
 
 == Modifiez la bande passante réseau disponible pour charger les sauvegardes dans le stockage objet
 
-Lorsque vous activez Cloud Backup pour un environnement de travail, par défaut, ONTAP peut utiliser une quantité illimitée de bande passante pour transférer les données de sauvegarde depuis les volumes de l'environnement de travail vers le stockage objet. Si vous remarquez que le trafic de sauvegarde affecte les charges de travail normales des utilisateurs, vous pouvez limiter la quantité de bande passante réseau utilisée pendant le transfert. Vous pouvez choisir une valeur comprise entre 1 et 1,000 Mbit/s comme vitesse de transfert maximale.
+Lorsque vous activez la sauvegarde et la restauration BlueXP pour un environnement de travail, ONTAP peut utiliser par défaut une quantité illimitée de bande passante pour transférer les données de sauvegarde des volumes de l'environnement de travail vers le stockage objet. Si vous remarquez que le trafic de sauvegarde affecte les charges de travail normales des utilisateurs, vous pouvez limiter la quantité de bande passante réseau utilisée pendant le transfert. Vous pouvez choisir une valeur comprise entre 1 et 1,000 Mbit/s comme vitesse de transfert maximale.
 
 image:screenshot_backup_edit_transfer_rate.png["Capture d'écran de l'entrée de taux de transfert maximum dans la page Paramètres avancés."]
 
@@ -129,9 +129,9 @@ endif::aws[]
 
 == Modifier le paramètre de sauvegarde automatique pour les volumes futurs
 
-Si vous n'avez pas activé la sauvegarde automatique des futurs volumes lorsque vous avez activé Cloud Backup, vous pouvez commencer à effectuer des sauvegardes automatiques de nouveaux volumes dans la section sauvegarde automatique. Vous pouvez également sélectionner la stratégie de sauvegarde qui sera appliquée à ces nouveaux volumes. L'affectation d'une règle de sauvegarde aux nouveaux volumes permet de garantir la protection de toutes vos données.
+Si vous n'avez pas activé la sauvegarde automatique de nouveaux volumes lorsque vous avez activé la sauvegarde et la restauration BlueXP, vous pouvez commencer à effectuer des sauvegardes automatiques de nouveaux volumes dans la section sauvegarde automatique. Vous pouvez également sélectionner la stratégie de sauvegarde qui sera appliquée à ces nouveaux volumes. L'affectation d'une règle de sauvegarde aux nouveaux volumes permet de garantir la protection de toutes vos données.
 
-Si vous avez activé la sauvegarde automatique des futurs volumes lorsque vous avez activé Cloud Backup, vous pouvez modifier la règle de sauvegarde qui sera utilisée pour les nouveaux volumes créés dans la section sauvegarde automatique.
+Si vous avez activé la sauvegarde automatique de nouveaux volumes lorsque vous avez activé la sauvegarde et la restauration BlueXP, vous pouvez modifier la règle de sauvegarde qui sera utilisée pour les nouveaux volumes dans la section sauvegarde automatique.
 
 Notez que la règle que vous souhaitez appliquer aux nouveaux volumes doit déjà exister. link:task-manage-backups-ontap.html#adding-a-new-backup-policy["Découvrez comment créer une nouvelle stratégie de sauvegarde pour un environnement de travail"].
 

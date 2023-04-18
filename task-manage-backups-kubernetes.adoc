@@ -23,7 +23,7 @@ CAUTION: Ne gérez ni ne modifiez pas de fichiers de sauvegarde directement depu
 
 == Affichage des volumes en cours de sauvegarde
 
-Vous pouvez afficher la liste de tous les volumes actuellement sauvegardés par Cloud Backup.
+Vous pouvez afficher la liste de tous les volumes actuellement sauvegardés par la sauvegarde et la restauration BlueXP.
 
 .Étapes
 . Dans le menu BlueXP, sélectionnez *protection > sauvegarde et récupération*.
@@ -88,7 +88,7 @@ image:screenshot_backup_edit_policy_k8s.png["Capture d'écran présentant les pa
 
 == Définition d'une stratégie de sauvegarde à attribuer aux nouveaux volumes
 
-Si vous n'avez pas sélectionné l'option permettant d'attribuer automatiquement une stratégie de sauvegarde aux volumes nouvellement créés lorsque vous avez activé Cloud Backup pour la première fois sur votre cluster Kubernetes, vous pouvez choisir cette option ultérieurement dans la page _Backup Settings_. L'affectation d'une règle de sauvegarde aux nouveaux volumes permet de garantir la protection de toutes vos données.
+Si vous n'avez pas sélectionné l'option permettant d'attribuer automatiquement une règle de sauvegarde aux volumes nouvellement créés lors de la première activation de la sauvegarde et de la restauration BlueXP sur votre cluster Kubernetes, vous pouvez choisir cette option plus tard dans la page _Backup Settings_. L'affectation d'une règle de sauvegarde aux nouveaux volumes permet de garantir la protection de toutes vos données.
 
 Notez que la règle que vous souhaitez appliquer aux volumes doit déjà exister.
 
@@ -142,16 +142,16 @@ image:screenshot_backup_view_k8s_backups.png["Capture d'écran affichant la list
 
 == Suppression de sauvegardes
 
-Cloud Backup vous permet de supprimer un seul fichier de sauvegarde, de supprimer toutes les sauvegardes d'un volume ou de supprimer toutes les sauvegardes de tous les volumes d'un cluster Kubernetes. Vous pouvez supprimer toutes les sauvegardes si vous n'avez plus besoin des sauvegardes ou si vous avez supprimé le volume source et que vous souhaitez supprimer toutes les sauvegardes.
+Avec la sauvegarde et la restauration BlueXP, vous pouvez supprimer un seul fichier de sauvegarde, supprimer toutes les sauvegardes d'un volume ou supprimer toutes les sauvegardes de tous les volumes d'un cluster Kubernetes. Vous pouvez supprimer toutes les sauvegardes si vous n'avez plus besoin des sauvegardes ou si vous avez supprimé le volume source et que vous souhaitez supprimer toutes les sauvegardes.
 
 
-CAUTION: Si vous prévoyez de supprimer un environnement ou un cluster de travail qui dispose de sauvegardes, vous devez supprimer les sauvegardes *avant* de supprimer le système. Cloud Backup ne supprime pas automatiquement les sauvegardes lorsque vous supprimez un système et l'interface utilisateur ne prend pas en charge la suppression des sauvegardes après la suppression du système. Vous continuerez d'être facturé pour les coûts de stockage objet pour les sauvegardes restantes.
+CAUTION: Si vous prévoyez de supprimer un environnement ou un cluster de travail qui dispose de sauvegardes, vous devez supprimer les sauvegardes *avant* de supprimer le système. La sauvegarde et la restauration BlueXP ne suppriment pas automatiquement les sauvegardes lorsque vous supprimez un système, et il n'existe pas de prise en charge à jour dans l'interface utilisateur pour supprimer les sauvegardes une fois le système supprimé. Vous continuerez d'être facturé pour les coûts de stockage objet pour les sauvegardes restantes.
 
 
 
 === Suppression de tous les fichiers de sauvegarde d'un environnement de travail
 
-La suppression de toutes les sauvegardes d'un environnement de travail ne désactive pas les futures sauvegardes des volumes de cet environnement de travail. Si vous souhaitez arrêter la création de sauvegardes de tous les volumes d'un environnement de travail, vous pouvez désactiver les sauvegardes <<Désactivation de Cloud Backup pour un environnement de travail,comme décrit ici>>.
+La suppression de toutes les sauvegardes d'un environnement de travail ne désactive pas les futures sauvegardes des volumes de cet environnement de travail. Si vous souhaitez arrêter la création de sauvegardes de tous les volumes d'un environnement de travail, vous pouvez désactiver les sauvegardes <<Désactivation de la sauvegarde et de la restauration BlueXP dans un environnement de travail,comme décrit ici>>.
 
 .Étapes
 . Dans l'onglet *Kubernetes*, sélectionnez *Paramètres de sauvegarde*.
@@ -217,9 +217,9 @@ image:screenshot_delete_one_backup_k8s.png["Capture d'écran indiquant comment s
 
 
 
-== Désactivation de Cloud Backup pour un environnement de travail
+== Désactivation de la sauvegarde et de la restauration BlueXP dans un environnement de travail
 
-La désactivation de Cloud Backup pour un environnement de travail désactive les sauvegardes de chaque volume du système. Elle désactive également la restauration d'un volume. Les sauvegardes existantes ne seront pas supprimées. Cela ne désinscrit pas le service de sauvegarde de cet environnement de travail, car il vous permet de suspendre l'ensemble de l'activité de sauvegarde et de restauration pendant une période donnée.
+La désactivation de la sauvegarde et de la restauration BlueXP dans un environnement de travail désactive les sauvegardes de chaque volume du système, et désactive également la restauration d'un volume. Les sauvegardes existantes ne seront pas supprimées. Cela ne désinscrit pas le service de sauvegarde de cet environnement de travail, car il vous permet de suspendre l'ensemble de l'activité de sauvegarde et de restauration pendant une période donnée.
 
 Notez que vous continuerez d'être facturé par votre fournisseur cloud pour les coûts de stockage objet correspondant à la capacité que vos sauvegardes utilisent, sauf si vous <<Suppression de tous les fichiers de sauvegarde d'un environnement de travail,supprimez les sauvegardes>>.
 
@@ -240,15 +240,15 @@ NOTE: Un bouton *Activer la sauvegarde* apparaît pour cet environnement de trav
 
 
 
-== Annulation de l'enregistrement de Cloud Backup pour un environnement de travail
+== Annulation de l'enregistrement de la sauvegarde et de la restauration BlueXP pour un environnement de travail
 
-Vous pouvez annuler l'enregistrement de Cloud Backup pour un environnement de travail si vous ne souhaitez plus utiliser la fonctionnalité de sauvegarde et que vous souhaitez interrompre la facturation des sauvegardes dans cet environnement de travail. Cette fonctionnalité est généralement utilisée lorsque vous prévoyez de supprimer un cluster Kubernetes et que vous souhaitez annuler le service de sauvegarde.
+Vous pouvez annuler l'enregistrement des sauvegardes BlueXP dans un environnement de travail si vous ne souhaitez plus utiliser les fonctionnalités de sauvegarde et si vous souhaitez arrêter de payer les sauvegardes de cet environnement de travail. Cette fonctionnalité est généralement utilisée lorsque vous prévoyez de supprimer un cluster Kubernetes et que vous souhaitez annuler le service de sauvegarde.
 
-Vous pouvez également utiliser cette fonction si vous souhaitez modifier le magasin d'objets de destination dans lequel vos sauvegardes de cluster sont stockées. Une fois que vous désenregistrez Cloud Backup pour l'environnement de travail, vous pouvez activer Cloud Backup pour ce cluster en utilisant les informations du nouveau fournisseur cloud.
+Vous pouvez également utiliser cette fonction si vous souhaitez modifier le magasin d'objets de destination dans lequel vos sauvegardes de cluster sont stockées. Une fois que vous avez désenregistré la sauvegarde et la restauration BlueXP pour l'environnement de travail, vous pouvez activer la sauvegarde et la restauration BlueXP pour ce cluster en utilisant les nouvelles informations de votre fournisseur cloud.
 
-Avant de pouvoir annuler l'enregistrement de Cloud Backup, vous devez effectuer les opérations suivantes dans cet ordre :
+Avant de pouvoir annuler l'enregistrement de la sauvegarde et de la restauration BlueXP, vous devez effectuer les étapes suivantes, dans l'ordre suivant :
 
-* Désactivez Cloud Backup pour l'environnement de travail
+* Désactivez la sauvegarde et la restauration BlueXP pour l'environnement de travail
 * Supprimer toutes les sauvegardes de cet environnement de travail
 
 

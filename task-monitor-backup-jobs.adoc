@@ -31,7 +31,7 @@ L'état de la sauvegarde et de la restauration peut être :
 * Échec
 
 
-Les opérations de sauvegarde et de restauration initiées par l'utilisateur à partir de l'interface utilisateur et de l'API de Cloud Backup, ainsi que les tâches initiées par le système, telles que les opérations de sauvegarde planifiées en cours, sont disponibles dans l'onglet *contrôle des tâches* pour les systèmes Cloud Volumes ONTAP exécutant ONTAP 9.13.0 ou version ultérieure.
+Les opérations de sauvegarde et de restauration initiées par l'utilisateur à partir de l'interface utilisateur et de l'API de sauvegarde et de restauration BlueXP, ainsi que les tâches lancées par le système, telles que les opérations de sauvegarde planifiées en cours, sont disponibles dans l'onglet *Job Monitoring* pour les systèmes Cloud Volumes ONTAP exécutant ONTAP 9.13.0 ou version ultérieure.
 
 
 TIP: Lors de l'exécution d'une version antérieure de ONTAP sur des systèmes Cloud Volumes ONTAP ou sur des systèmes ONTAP sur site, seules les tâches initiées par l'utilisateur sont affichées.
@@ -111,7 +111,7 @@ image:screenshot_backup_job_monitor_details2.png["Capture d'écran montrant les 
 
 === Téléchargez les résultats de la surveillance des travaux sous forme de rapport
 
-Vous pouvez télécharger le contenu de la page principale de surveillance des travaux sous forme de rapport après l'avoir affiné. Cloud Backup génère et télécharge un fichier .CSV que vous pouvez consulter et envoyer à d'autres groupes si nécessaire. Le fichier .CSV contient jusqu'à 10,000 lignes de données.
+Vous pouvez télécharger le contenu de la page principale de surveillance des travaux sous forme de rapport après l'avoir affiné. La sauvegarde et la restauration BlueXP génèrent et télécharge un fichier .CSV que vous pouvez consulter et envoyer à d'autres groupes si nécessaire. Le fichier .CSV contient jusqu'à 10,000 lignes de données.
 
 À partir des informations Détails de la surveillance des travaux, vous pouvez télécharger un fichier JSON contenant les détails d'un travail unique.
 
@@ -142,12 +142,12 @@ Les événements suivants déclenchent des alertes par e-mail :
 
 
  a| 
-L'activation de Cloud Backup a échoué sur l'environnement de travail
+L'activation de la sauvegarde et de la restauration BlueXP a échoué dans l'environnement de travail
 | Primordial 
 
 
  a| 
-Échec de l'opération de restauration de Cloud Backup
+Échec de l'opération de sauvegarde et de restauration BlueXP
 | Primordial 
 
 
@@ -170,7 +170,7 @@ NOTE: Depuis Cloud Volumes ONTAP 9.13.0, toutes les alertes s'affichent. Pour le
 
 Par défaut, les administrateurs de compte BlueXP reçoivent des e-mails pour toutes les alertes « critiques » et « recommandations ». Par défaut, tous les autres utilisateurs et destinataires sont configurés pour ne pas recevoir d'e-mails de notification. Il est possible d'envoyer des e-mails aux utilisateurs BlueXP qui font partie de votre compte Cloud NetApp, ou à tous les destinataires qui doivent avoir connaissance des activités de sauvegarde et de restauration.
 
-Pour recevoir les alertes par e-mail de Cloud Backup, vous devez sélectionner les types de sévérité des notifications « critique » et « erreur ».
+Pour recevoir les alertes par e-mail de sauvegarde et de restauration BlueXP, vous devez sélectionner les types de sévérité des notifications « critique » et « erreur ».
 
 https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-monitor-cm-operations.html["En savoir plus sur le Centre de notification et sur la manière d'envoyer des e-mails d'alerte pour les tâches de sauvegarde et de restauration"^].
 

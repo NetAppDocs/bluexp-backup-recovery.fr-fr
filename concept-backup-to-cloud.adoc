@@ -4,7 +4,7 @@ permalink: concept-backup-to-cloud.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, kubernetes, applications, virtual machines, backup and recovery 
 summary: 'BlueXP Backup and Recovery assure une protection des données efficace, sécurisée et économique pour les données, bases de données et machines virtuelles NetApp ONTAP, sur site et dans le cloud. Les sauvegardes sont automatiquement générées et stockées dans un magasin d"objets de votre compte cloud public ou privé.' 
 ---
-= Découvrir Cloud Backup
+= Découvrez la sauvegarde et la restauration BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,38 +14,36 @@ summary: 'BlueXP Backup and Recovery assure une protection des données efficace
 
 
 [role="lead"]
-La sauvegarde et la restauration BlueXP (Cloud Backup) assurent une protection des données efficace, sécurisée et économique pour les données NetApp ONTAP, les volumes persistants Kubernetes, les bases de données et les machines virtuelles, à la fois sur site et dans le cloud. Les sauvegardes sont automatiquement générées et stockées dans un magasin d'objets de votre compte cloud public ou privé.
+La sauvegarde et la restauration BlueXP assurent une protection des données efficace, sécurisée et économique pour les données NetApp ONTAP, les volumes persistants Kubernetes, les bases de données et les machines virtuelles, à la fois sur site et dans le cloud. Les sauvegardes sont automatiquement générées et stockées dans un magasin d'objets de votre compte cloud public ou privé.
 
-Ce service effectue une réplication incrémentielle persistante au niveau des blocs et préserve toutes les fonctionnalités d'efficacité du stockage, ce qui réduit considérablement le volume des données répliquées et stockées. De plus, vous ne payez que pour ce qui est protégé et utilisez les tiers de stockage les plus économiques du marché, ce qui rend Cloud Backup très économique.
+Ce service effectue une réplication incrémentielle persistante au niveau des blocs et préserve toutes les fonctionnalités d'efficacité du stockage, ce qui réduit considérablement le volume des données répliquées et stockées. En outre, vous ne payez que pour ce qui est protégé et utilisez les tiers de stockage les plus économiques du marché, ce qui rend la sauvegarde et la restauration BlueXP très économique.
 
 Si nécessaire, vous pouvez restaurer un _volume_ entier à partir d'une sauvegarde vers le même environnement de travail ou vers un environnement de travail différent. Lorsque vous sauvegardez des données ONTAP, vous pouvez également choisir de restaurer un ou plusieurs _fichiers_ d'une sauvegarde vers le même environnement de travail ou vers un environnement de travail différent.
 
-https://bluexp.netapp.com/cloud-backup["En savoir plus sur Cloud Backup"^].
+https://bluexp.netapp.com/cloud-backup["En savoir plus sur la sauvegarde et la restauration BlueXP"^].
 
 La sauvegarde et la restauration peuvent être utilisées pour :
 
 * Sauvegardez et restaurez les données de volume ONTAP à partir des systèmes Cloud Volumes ONTAP et ONTAP sur site. link:concept-ontap-backup-to-cloud.html["Voir les fonctionnalités détaillées ici"].
 * Sauvegardez et restaurez des volumes persistants Kubernetes. link:concept-kubernetes-backup-to-cloud.html["Voir les fonctionnalités détaillées ici"].
-* Sauvegardez les copies Snapshot cohérentes au niveau des applications à partir de systèmes ONTAP sur site à l'aide de Cloud Backup pour applications. link:concept-protect-app-data-to-cloud.html["Voir les fonctionnalités détaillées ici"].
-* Sauvegardez des datastores dans le cloud et restaurez des machines virtuelles dans vCenter sur site à l'aide de Cloud Backup pour VMware. link:concept-protect-vm-data.html["Voir les fonctionnalités détaillées ici"].
+* Sauvegardez les copies Snapshot cohérentes au niveau des applications à partir de systèmes ONTAP sur site à l'aide de la sauvegarde et de la restauration BlueXP pour les applications. link:concept-protect-app-data-to-cloud.html["Voir les fonctionnalités détaillées ici"].
+* Sauvegardez les datastores dans le cloud et restaurez les machines virtuelles dans le vCenter sur site à l'aide de BlueXP pour la sauvegarde et la restauration de VMware. link:concept-protect-vm-data.html["Voir les fonctionnalités détaillées ici"].
 
 
 https://www.youtube.com/watch?v=DF0knrH2a80["Regarder une démonstration rapide"^]
 
 
-TIP: Lorsque le connecteur BlueXP est déployé dans une région gouvernementale dans le cloud ou dans un site sans accès Internet (un site invisible), Cloud Backup prend uniquement en charge les opérations de sauvegarde et de restauration à partir des systèmes ONTAP. Lorsque vous utilisez ces types de méthodes de déploiement, Cloud Backup ne prend pas en charge les opérations de sauvegarde et de restauration à partir des clusters Kubernetes, des applications ou des machines virtuelles.
+TIP: Lorsque le connecteur BlueXP est déployé dans une région gouvernementale dans le cloud ou dans un site sans accès Internet (un site invisible), la sauvegarde et la restauration BlueXP ne prennent en charge que les opérations de sauvegarde et de restauration à partir des systèmes ONTAP. Lorsque vous utilisez ces types de méthodes de déploiement, la sauvegarde et la restauration BlueXP ne prennent pas en charge les opérations de sauvegarde et de restauration à partir de clusters Kubernetes, d'applications ou de machines virtuelles.
 
 
 
-== Fonctionnement de Cloud Backup
+== Fonctionnement de la sauvegarde et de la restauration BlueXP
 
-Lorsque vous activez Cloud Backup sur un système ONTAP Cloud Volumes ONTAP ou sur site, le service effectue une sauvegarde complète de vos données. Les instantanés de volume ne sont pas inclus dans l'image de sauvegarde. Après la sauvegarde initiale, toutes les sauvegardes supplémentaires sont incrémentielles, ce qui signifie que seuls les blocs modifiés et les nouveaux blocs sont sauvegardés. Le trafic réseau est ainsi réduit au minimum.
-
-Dans la plupart des cas, vous utiliserez l'interface utilisateur BlueXP pour toutes les opérations de sauvegarde. Depuis ONTAP 9.9.1, vous pouvez toutefois lancer des opérations de sauvegarde volume de vos clusters ONTAP sur site à l'aide de ONTAP System Manager. https://docs.netapp.com/us-en/ontap/task_cloud_backup_data_using_cbs.html["Découvrez comment utiliser System Manager pour sauvegarder vos volumes dans le cloud à l'aide de Cloud Backup."^]
+Lorsque vous activez la sauvegarde et la restauration BlueXP sur un système Cloud Volumes ONTAP ou ONTAP sur site, le service effectue une sauvegarde complète de vos données. Les instantanés de volume ne sont pas inclus dans l'image de sauvegarde. Après la sauvegarde initiale, toutes les sauvegardes supplémentaires sont incrémentielles, ce qui signifie que seuls les blocs modifiés et les nouveaux blocs sont sauvegardés. Le trafic réseau est ainsi réduit au minimum.
 
 L'image suivante montre la relation entre les composants :
 
-image:diagram_cloud_backup_general.png["Un diagramme montrant comment Cloud Backup communique avec les volumes des systèmes source et le stockage objet de destination où sont situés les fichiers de sauvegarde."]
+image:diagram_cloud_backup_general.png["Un diagramme illustrant la façon dont BlueXP Backup and Recovery communique avec les volumes des systèmes source et le stockage objet de destination où se trouvent les fichiers de sauvegarde."]
 
 
 
