@@ -260,42 +260,48 @@ homepage:
     links:
     - title: Sauvegardez les données des applications sur site dans Amazon Web Services
       flavor: aws
-      url: "/task-backup-app-data-to-aws.html"
+      url: task-backup-app-data-to-aws.html
     - title: Sauvegardez les données applicatives sur site dans Microsoft Azure
       flavor: azure
-      url: "/task-backup-app-data-to-azure.html"
+      url: task-backup-app-data-to-azure.html
     - title: Sauvegardez les données des applications sur site dans Google Cloud
       flavor: gcp
-      url: "/task-backup-app-data-to-gcp.html"
+      url: task-backup-app-data-to-gcp.html
     - title: Sauvegardez les données applicatives sur site dans StorageGRID
-      url: "/task-backup-app-data-to-storagegrid.html"
+      url: task-backup-app-data-to-storagegrid.html
     - title: Sauvegardez les bases de données Oracle cloud natives
-      url: "/task-backup-cloud-native-oracle-data.html"
+      url: task-backup-cloud-native-oracle-data.html
     - title: Sauvegardez les bases de données SAP HANA cloud natives
       flavor: azure
-      url: "/task-backup-cloud-native-sap-hana-data.html"
-  - title: Sauvegarde et restauration des données des machines virtuelles
+      url: task-backup-cloud-native-sap-hana-data.html
+  - title: Sauvegarde des données des machines virtuelles dans le cloud
     links:
     - title: Sauvegarde des datastores dans Amazon Web Services
       flavor: aws
-      url: "/task-backup-vm-data-to-aws.html"
+      url: task-backup-vm-data-to-aws.html
     - title: Sauvegarde des datastores dans Microsoft Azure
       flavor: azure
-      url: "/task-backup-vm-data-to-azure.html"
+      url: task-backup-vm-data-to-azure.html
     - title: Sauvegarde des datastores dans Google Cloud Platform
       flavor: gcp
-      url: "/task-backup-vm-data-to-gcp.html"
+      url: task-backup-vm-data-to-gcp.html
     - title: Sauvegarde des datastores sur StorageGRID
-      url: "/task-backup-vm-data-to-storagegrid.html"
-    - title: Restaurer des machines virtuelles à partir du cloud
-      url: "/task-restore-vm-data.html"
-  - title: Restaurez les données à partir des fichiers de sauvegarde ONTAP
+      url: task-backup-vm-data-to-storagegrid.html
+  - title: Restaurez les données depuis le cloud
     links:
-    - title: Restaurez des volumes ONTAP
+    - title: Restaurez les données du volume ONTAP
       url: task-restore-backups-ontap.html
-    - title: Restaurez les fichiers et les dossiers à partir de volumes ONTAP
-      url: task-restore-backups-ontap.html
-    - title: Restaurez des volumes Kubernetes
+    - title: Restaurez les données des applications Oracle sur site
+      url: task-restore-oracle-data.html
+    - title: Restaurez les données d'applications SQL Server sur site
+      url: task-restore-sql-data.html
+    - title: Restaurez les données des applications Oracle cloud natives
+      url: task-restore-cloud-native-oracle-data.html
+    - title: Restaurez les données des applications SAP HANA cloud natives
+      url: task-restore-cloud-native-sap-hana-data.html
+    - title: Restaurer les données des machines virtuelles
+      url: task-restore-vm-data.html
+    - title: Restaurez les données de volume Kubernetes
       url: task-restore-backups-kubernetes.html
   - title: Gérer les fichiers de sauvegarde ONTAP
     links:

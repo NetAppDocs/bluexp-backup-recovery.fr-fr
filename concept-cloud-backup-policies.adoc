@@ -118,6 +118,8 @@ Vous pouvez choisir parmi les paramètres suivants pour chaque stratégie de sau
 
 [role="tabbed-block"]
 ====
+ifdef::aws[]
+
 .AWS
 --
 * *Aucun* (par défaut)
@@ -135,6 +137,10 @@ DataLock est défini sur le mode _Compliance_, où aucun utilisateur ne peut éc
 
 
 --
+endif::aws[]
+
+ifdef::azure[]
+
 .Azure
 --
 * *Aucun* (par défaut)
@@ -152,6 +158,8 @@ Les fichiers de sauvegarde sont protégés pendant la période de conservation. 
 
 
 --
+endif::azure[]
+
 .StorageGRID
 --
 * *Aucun* (par défaut)
