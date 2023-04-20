@@ -14,16 +14,16 @@ summary: Apprenez-en plus sur la protection des données sur vos machines virtue
 
 
 [role="lead"]
-Vous pouvez protéger les données de vos machines virtuelles en sauvegardant dans le cloud des datastores issus du stockage primaire et secondaire sur site. Si nécessaire, vous pouvez restaurer à nouveau les machines virtuelles sur le plug-in SnapCenter sur site pour l'hôte VMware vSphere.
+La sauvegarde et la restauration BlueXP pour les machines virtuelles fournissent des fonctionnalités de protection des données en sauvegardant des datastores en restaurant des machines virtuelles.
 
-Vous pouvez sauvegarder des datastores dans Amazon Web Services S3, Microsoft Azure Blob, Google Cloud Platform et StorageGRID.
+Vous pouvez sauvegarder des datastores dans Amazon Web Services S3, Microsoft Azure Blob, Google Cloud Platform et StorageGRID, et restaurer des machines virtuelles dans le plug-in SnapCenter sur site pour l'hôte VMware vSphere.
 
 .Avant de commencer
 Lisez les conditions suivantes pour vous assurer que votre configuration est prise en charge avant de commencer à sauvegarder des datastores et des machines virtuelles auprès d'un fournisseur cloud.
 
 * Plug-in SnapCenter pour VMware vSphere 4.6P1 ou version ultérieure
 +
-** Nous vous recommandons d'utiliser le plug-in SnapCenter pour VMware vSphere 4.7P1 ou une version ultérieure pour sauvegarder les machines virtuelles sur le stockage secondaire sur site.
+** Vous devez utiliser le plug-in SnapCenter pour VMware vSphere 4.7P1 ou une version ultérieure pour sauvegarder des datastores depuis le stockage secondaire sur site.
 
 
 * ONTAP 9.8 ou version ultérieure

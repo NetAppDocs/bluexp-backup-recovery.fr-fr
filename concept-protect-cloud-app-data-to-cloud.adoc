@@ -51,7 +51,7 @@ IMPORTANT: L'infrastructure SaaS de Cloud Backup est résiliente aux défaillanc
 
 
 
-== Protéger la base de données Oracle
+== Protection des bases de données Oracle
 
 
 
@@ -107,7 +107,7 @@ Vous pouvez spécifier différentes fréquences d'horaires, telles que les heure
 
 
 
-== Protégez la base de données SAP HANA
+== Protection des bases de données SAP HANA
 
 
 

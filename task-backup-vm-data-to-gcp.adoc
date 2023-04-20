@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: task-backup-vm-data-to-gcp.html 
-keywords: back up, backup, backup virtual machine data, gcp, google cloud platform, cloud backup, backup datastores 
+keywords: back up, backup, backup datastore, gcp, google cloud platform, cloud backup, backup datastores 
 summary: Sauvegardez vos datastores ONTAP sur site dans Google Cloud Platform. 
 ---
 = Sauvegarde des datastores dans Google Cloud Platform

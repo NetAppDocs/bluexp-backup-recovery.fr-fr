@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: task-create-policies-vms.html 
 keywords: create policy, protection policies, predefined policies, custom policies 
-summary: Créez une règle pour sauvegarder des machines virtuelles 
+summary: Créer une stratégie pour sauvegarder les datastores 
 ---
-= Créez une règle pour sauvegarder des machines virtuelles
+= Créer une stratégie pour sauvegarder les datastores
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -18,7 +18,7 @@ Vous pouvez créer une stratégie ou utiliser l'une des stratégies prédéfinie
 
 .Avant de commencer
 * Vous devez créer des stratégies si vous ne souhaitez pas modifier les stratégies prédéfinies.
-* Pour transférer les sauvegardes du magasin d'objets vers le stockage d'archives, vous devez exécuter ONTAP 9.10.1 ou une version ultérieure et Amazon Web Services ou Azure doit être le fournisseur cloud.
+* Pour transférer les sauvegardes du magasin d'objets vers le stockage d'archives, vous devez exécuter ONTAP 9.10.1 ou une version ultérieure et Amazon Web Services ou Microsoft Azure doit être le fournisseur cloud.
 * Vous devez configurer le niveau d'accès d'archivage pour chaque fournisseur de cloud.
 
 
@@ -74,6 +74,6 @@ Tous les mois
 . Cliquez sur *Créer*.
 +
 
-NOTE: Vous ne pouvez pas modifier ou supprimer une stratégie associée à une machine virtuelle.
+NOTE: Vous ne pouvez ni modifier ni supprimer une règle associée à un datastore.
 
 

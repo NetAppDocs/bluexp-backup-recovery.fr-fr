@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: task-backup-vm-data-to-aws.html 
-keywords: back up, backup, backup virtual machine data, aws, Amazon Web Services, cloud backup, backup datastores 
+keywords: back up, backup, backup datastore, aws, Amazon Web Services, cloud backup, backup datastores 
 summary: Sauvegardez vos datastores ONTAP sur site dans AWS. 
 ---
 = Sauvegarde des datastores dans Amazon Web Services

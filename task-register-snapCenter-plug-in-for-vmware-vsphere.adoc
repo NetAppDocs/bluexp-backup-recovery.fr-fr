@@ -28,7 +28,7 @@ NOTE: Vous pouvez enregistrer plusieurs plug-in SnapCenter pour les hôtes VMwar
 .. Dans le champ plug-in SnapCenter pour VMware vSphere, spécifiez le nom de domaine complet ou l'adresse IP du plug-in SnapCenter pour l'hôte VMware vSphere.
 .. Dans le champ Port, spécifiez le numéro de port sur lequel le plug-in SnapCenter pour l'hôte VMware vSphere est exécuté.
 +
-Assurez-vous que le port est ouvert pour la communication entre le plug-in SnapCenter pour l'hôte VMware vSphere et BlueXP.
+Vous devez vous assurer que la communication est ouverte entre le plug-in SnapCenter sur site pour l'hôte VMware vSphere qui s'exécute sur le port 8144 par défaut et l'instance de connecteur BlueXP qui peut être exécutée sur n'importe quel fournisseur cloud (Amazon Web Services, Microsoft Azure, Google Cloud Platform) ou sur site.
 
 .. Dans le champ Nom d'utilisateur et Mot de passe, indiquez les informations d'identification de l'utilisateur ayant le rôle d'administrateur.
 

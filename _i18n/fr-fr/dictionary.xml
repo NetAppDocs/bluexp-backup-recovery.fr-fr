@@ -708,7 +708,6 @@
   <block id="a398d70f425729872aae3dc2d3e8feb1" category="doc">Sauvegardez les données des applications sur site dans Amazon Web Services</block>
   <block id="e101aace9ab89472a4fdfde41fce9f4e" category="list-text">Sélectionnez *Amazon Web Services* comme fournisseur de services clouds.</block>
   <block id="e710c6d8124609e30a4a7712947c1e16" category="paragraph">Il est recommandé de définir le niveau d'archivage car il s'agit d'une activité unique et vous ne serez pas autorisé à le configurer ultérieurement.</block>
-  <block id="8f2653c5938080ffdd57904f850bc430" category="doc">Enregistrez le plug-in SnapCenter pour VMware vSphere</block>
   <block id="2ffa396b01e2ea9f2f8a8e7307a1e28e" category="list-text">Dans la liste déroulante *Paramètres*, cliquez sur *Plug-in SnapCenter pour VMware vSphere*.</block>
   <block id="4e5b953e1349e67f48dba9317bba75d3" category="list-text">Cliquez sur *Enregistrer le plug-in SnapCenter pour VMware vSphere*.</block>
   <block id="12f2045076b291561318e5d9855f26de" category="list-text">Spécifiez les informations suivantes :</block>
@@ -990,7 +989,6 @@
   <block id="7550e76395e0f500b3d970b6fa0ec73f" category="list-text">Accédez à _/var/opt/snapcenter/spl/etc_ et exécutez la commande keytool pour importer le certificat.<block ref="0d48a0d1a6daee261d59f76e1ce65f98" prefix=" " category="inline-code"></block></block>
   <block id="22dfbb640fee5a33dc6e592f121a4423" category="list-text">Redémarrer SPL :<block ref="71198797ebafeed74a5891400987351c" prefix=" " category="inline-code"></block></block>
   <block id="529795f55723488071425500df0ff5d6" category="summary">Vous pouvez restaurer des machines virtuelles depuis le cloud vers SnapCenter sur site.</block>
-  <block id="70861b61c8a43f84ddd14a22316ee5af" category="doc">Restaurer des machines virtuelles à partir du cloud</block>
   <block id="ceb4a235a226f19c172c9cf7c46d00dc" category="list-text">Cliquez sur <block ref="1d94ccc08c31bc8efbc06bfabc6854b6" category="inline-image-macro-rx" type="image"></block> Correspondant au datastore que vous souhaitez restaurer et cliquer sur *Afficher les détails*.</block>
   <block id="a03a09176193c264d8dcbdcb8f2f9043" category="list-text">Cliquez sur *Restaurer* correspondant à la sauvegarde que vous souhaitez restaurer.</block>
   <block id="edf569ed393967b7a0079a7341765e10" category="list-text">Vérifiez les détails et cliquez sur *Restaurer*.</block>
@@ -1435,7 +1433,6 @@
   <block id="81fedcf72bda3098b5ab523c2f40b979" category="list-text">(Facultatif) si vous souhaitez transférer des sauvegardes du magasin d'objets vers le stockage d'archives après un certain nombre de jours pour l'optimisation des coûts, cochez la case *Tier backups to Archival*.</block>
   <block id="f2a42a68e067e481d094b018459ef895" category="list-text">Cliquez sur *Créer*.</block>
   <block id="db46ba2f888d41e44da25c2d8c1f406d" category="summary">Vous pouvez afficher les datastores et les machines virtuelles et modifier le plug-in SnapCenter pour les instances VMware vSphere.</block>
-  <block id="880521c077c3d9130e51f737ddd86b15" category="doc">Gérer la protection des machines virtuelles</block>
   <block id="78166ce4ccceeedfbf6aeb8682851072" category="paragraph">*À propos de cette tâche*</block>
   <block id="9330e7377c5511f70bfc35493714892a" category="list-text">Dans l'interface utilisateur BlueXP, cliquez sur *protection* &gt; *sauvegarde et récupération* &gt; *machines virtuelles* &gt; *Paramètres* &gt; *SnapCenter Plug-in pour VMware vSphere*.</block>
   <block id="b4aa547260f4fe266f03ec3a845576a5" category="section-title">Modifiez le plug-in SnapCenter pour l'instance VMware vSphere</block>
@@ -1505,7 +1502,6 @@
   <block id="ba7b66b996d8928df996e4fd4fffa4a4" category="doc">Sauvegarde des datastores sur StorageGRID</block>
   <block id="cf4e6e70123f43cdec5ffd93f792c083" category="list-text">Spécifiez l'adresse IP du serveur de stockage.</block>
   <block id="10303a499a9e21a77e6dad69618c622b" category="list-text">Sélectionnez la clé d'accès et la clé secrète.</block>
-  <block id="fe8f95b60b7c4092ce03adfbb31e89b4" category="doc">Créez une règle pour sauvegarder des machines virtuelles</block>
   <block id="b4866a33463f80d02c65e0910ff4b146" category="paragraph">Vous pouvez créer une stratégie ou utiliser l'une des stratégies prédéfinies suivantes disponibles dans BlueXP.</block>
   <block id="43852dc1e0c3229284688eb4c01dfef0" category="paragraph">Vous devez créer des stratégies si vous ne souhaitez pas modifier les stratégies prédéfinies.</block>
   <block id="0ef51421739da7017b4d3decc1813f4a" category="list-text">Sur la page machines virtuelles, dans la liste déroulante Paramètres, sélectionnez *stratégies*.</block>
@@ -1967,10 +1963,6 @@
   <block id="0db08849969b0dfb5d043b27de16d4d9" category="sidebar">Gérer les sauvegardes Kubernetes</block>
   <block id="17e5b396f3c069ca62608e4b9e3c1767" category="sidebar">Restaurez vos données à partir de sauvegardes Kubernetes</block>
   <block id="cba6a24686804eb1d7fea3608588a013" category="sidebar">Sauvegardez les données des applications sur site dans Google Cloud</block>
-  <block id="7c8db0bef9b3c6a1335fe8f0a09bfdef" category="sidebar">Sauvegarde et restauration des données des ordinateurs virtuels</block>
-  <block id="4cfbdcb9aba741b123b3c46a8341bf59" category="sidebar">Protection des données des ordinateurs virtuels</block>
-  <block id="b2736084b30c35472d74c3c29a818a95" category="sidebar">Gérer la protection des ordinateurs virtuels</block>
-  <block id="c2c86860cad5cd95ae9ef9c003e01d57" category="sidebar">Restaurez les données de machines virtuelles</block>
   <block id="68b1e52936c426875b2780e91e195546" category="sidebar">Automatisez avec l'API REST</block>
   <block id="63d5049791d9d79d86e9a108b0a999ca" category="sidebar">Référence</block>
   <block id="0253148ca606e51aa3fdb4d9f8b84f32" category="sidebar">Tiers de stockage d'archivage AWS pris en charge</block>
@@ -2143,7 +2135,6 @@
   <block id="244bf1b38515bb301b6d835e3906b9a1" category="paragraph">Vous n'avez pas accès immédiatement aux données des niveaux d'archivage quand vous en avez besoin. Par conséquent, vos coûts de récupération sont plus élevés, vous devez déterminer la fréquence à laquelle restaurer les données à partir des fichiers de sauvegarde archivés.</block>
   <block id="373e31603b5a78ab3bc84cbe57c892b5" category="paragraph">Chaque politique de sauvegarde fournit une section pour _Archival_ que vous pouvez appliquer à vos fichiers de sauvegarde.</block>
   <block id="0776412162b9ad0d387bbf818146d659" category="sidebar">Tiers de stockage d'archivage Google pris en charge</block>
-  <block id="91770f038cd944a1d3b9b347edeb2b10" category="sidebar">Nouveautés</block>
   <block id="b2ff0fb046b03e40e599f1561ed5ebd3" category="list-text">La restauration des volumes FlexGroup vers des volumes FlexVol, ou des volumes FlexVol vers des volumes FlexGroup n'est pas prise en charge.</block>
   <block id="30bc6b6cbbb254a1299f2544d8a09731" category="paragraph">Lorsque vous passez des appels API, vous ajoutez le jeton utilisateur dans l'en-tête autorisation et l'ID connecteur BlueXP dans l'en-tête x-agent-ID. Vous devez utiliser l'ID de compte BlueXP dans les API.</block>
   <block id="710f97f519c3a0c08777096972387f3c" category="list-text">Procurez-vous un jeton utilisateur sur le site Web NetApp BlueXP.</block>
@@ -2196,7 +2187,6 @@
   <block id="c816d65f45a034b0842bc039567fcb6b" category="inline-link-macro">Démarrage rapide pour Cloud Volumes ONTAP dans Google Cloud</block>
   <block id="d6758ec75f0ff2bab6d8a4d6b6f79cf1" category="list-text"><block ref="d6758ec75f0ff2bab6d8a4d6b6f79cf1" category="inline-link-macro-rx"></block></block>
   <block id="2a60e5494e07cff54330378780f8e2a4" category="list-text">(Facultatif) si vous souhaitez transférer des sauvegardes du magasin d'objets vers le stockage d'archives après un certain nombre de jours pour l'optimisation des coûts, cochez la case *Tier backups to Archival* et entrez le nombre de jours après lequel la sauvegarde doit être archivée.</block>
-  <block id="2918bd1eb41f17cc6bbd51b50460f7dc" category="admonition">Vous ne pouvez pas modifier ou supprimer une stratégie associée à une machine virtuelle.</block>
   <block id="d5b842bb75f6d0fd358e7a35f06b5354" category="summary">Créer des sauvegardes planifiées ou à la demande d'une base de données Oracle.</block>
   <block id="b83d0a6a6920d792bf1e5421f574e4d8" category="doc">Sauvegardez les bases de données Oracle cloud natives</block>
   <block id="436faef9b95757e54b257ab16a914324" category="section-title">Créez une sauvegarde de la base de données Oracle</block>
@@ -2381,7 +2371,6 @@
   <block id="9bc04b83e994e96133d24116c5a25bf5" category="list-text">@ est utilisé pour séparer les données de son nom de base de données et pour séparer la valeur de sa clé. Exemple : DATA@RG2_SCspr24819002_07-20- 2021_12.16.48.9267_0|LOG@RG2_scspr2417819002_07-20-2021_12.16.48.9267_1</block>
   <block id="08d3131fcf6d963372785be681e343e9" category="list-text">| est utilisé pour séparer les données entre deux entités différentes pour le paramètre SC_BACKUP_NAME. Exemple : DATA@RG2_scspr2417819002_07-20-2021_12.16.48.9267_0|LOG@RG2_scspr2417819002_07-20-2021_12.16.48.9267_1</block>
   <block id="1dc2b43d41c36670d82fe3076115def6" category="list-text">, est utilisé pour séparer un ensemble de variables pour la même clé. Exemple : DATA@RG2_SCspr24819002_07-20- 2021_12.16.48.9267_0|LOG@RG2_SCvspr24819002_07-20- 2021_12.16.48.9267_1,RG2_SCspr24819002_07-21- 2021_12.16.48.9267_1,RG2_SCspr24819002_07_22_2021_12.16.48.9267______________1</block>
-  <block id="9506c95f9ad8061d2b32d45700688c83" category="paragraph">Vous pouvez restaurer des machines virtuelles à partir du cloud vers vCenter sur site. La sauvegarde sera restaurée au même emplacement que celui où elle a été effectuée. Si la machine virtuelle a été sauvegardée à l'aide de la stratégie d'archivage, vous pouvez définir la priorité de restauration d'archivage.</block>
   <block id="5183d16b45269aeda8f220ef35e5327c" category="list-text">Sélectionnez la machine virtuelle à restaurer à partir de la sauvegarde.</block>
   <block id="0b204b102ed08f6af904a33d81026023" category="list-text">Sélectionnez *Archive Restore Priority* et cliquez sur *Next*.</block>
   <block id="071df86763e0e93af80e50596aa0710c" category="list-text">Sélectionnez la sauvegarde par laquelle vous souhaitez restaurer la machine virtuelle.</block>
@@ -2471,7 +2460,6 @@
   <block id="e3b72f702a3b0c42e864fe0ad9eb9453" category="paragraph"><block ref="e3b72f702a3b0c42e864fe0ad9eb9453" category="inline-image-macro-rx" type="image"></block></block>
   <block id="2c9139d12cc7ddacb93c941d4bf412a2" category="paragraph">Le connecteur peut être déployé dans le même VPC ou dans le même vnet que celui des applications, ou dans un autre. Si le connecteur et les applications se trouvent sur un autre réseau, vous devez établir une connectivité réseau entre eux.</block>
   <block id="e3a2981d750d1d4a623860068a07cc70" category="admonition">Un connecteur BlueXP unique peut communiquer avec plusieurs systèmes de stockage et plusieurs plug-ins d'applications. Vous aurez besoin d'un connecteur unique pour gérer vos applications tant que la connectivité entre le connecteur et les hôtes d'application est disponible.</block>
-  <block id="11db7b880ef2ebba3ee0a02b685e8da0" category="section-title">Protéger la base de données Oracle</block>
   <block id="18cf072964a583150dd247485ba75b92" category="list-text">Amazon FSX pour ONTAP</block>
   <block id="117bdbda976fe8b3212bc3b6327a0a1b" category="list-text">Cloud Volumes ONTAP</block>
   <block id="09417dd7907c94abc22203ab06dade6c" category="list-text">Disposition du stockage :</block>
@@ -2488,7 +2476,6 @@
   <block id="5669d4dde41a20620530fdebbd1d9492" category="list-text">Surveillance des sauvegardes, de la restauration, du clonage et d'autres tâches</block>
   <block id="9518d577aae2b3d43b6dd0f41fb999e1" category="list-text">Ne prend pas en charge Oracle 11g</block>
   <block id="d67615cd9765a283fd8a9d06cd5d44a1" category="list-text">Ne prend pas en charge les opérations de montage, de catalogue et de vérification sur les sauvegardes</block>
-  <block id="9317a56cfedd80231a539c42f44d9c8d" category="section-title">Protégez la base de données SAP HANA</block>
   <block id="494c3084e3990387ac3b46cb5749bb65" category="list-text">RHEL 7.5 ou version ultérieure, 8.x plates-formes certifiées par SAP HANA</block>
   <block id="504d22b0e020e0b365851eef08a1e4ca" category="list-text">SLES 12 SP5 ou version ultérieure et plates-formes SPX 15 certifiées par SAP HANA</block>
   <block id="c7325743e6b1be5853672e4ed19d279b" category="list-text">Dispositions de la base de données :</block>
@@ -2533,7 +2520,6 @@
   <block id="0939e02b7faf70738951c4d3dac49c2d" category="list-text">Cliquez sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> Correspondant au clone que vous souhaitez supprimer, puis cliquez sur *Supprimer*.</block>
   <block id="6c2d45f01ff62f51f26b2e2555360189" category="list-text">(Facultatif) cochez la case *forcer la suppression*.</block>
   <block id="d13044a4ef6b89541aeb5868baab390c" category="paragraph">Les détails du connecteur seront mis à jour avec succès si le plug-in SnapCenter pour le service SAP HANA est installé et exécuté, mais aussi si tous sont accessibles depuis le nouveau connecteur.</block>
-  <block id="0fbf3afea399595219e31836afabacc9" category="list-text">Nous vous recommandons d'utiliser le plug-in SnapCenter pour VMware vSphere 4.7P1 ou une version ultérieure pour sauvegarder les machines virtuelles sur le stockage secondaire sur site.</block>
   <block id="9a3ae5d8e3738351dd9a586e8215632a" category="list-text">Au moins une règle quotidienne, hebdomadaire ou mensuelle du plug-in SnapCenter pour VMware vSphere sans étiquette ni même étiquette que celle de la politique relative aux machines virtuelles dans BlueXP.</block>
   <block id="add26d38486fad5ca461f986832fa6c3" category="inline-image-macro">diagramme d'architecture</block>
   <block id="955c6f1851b4039bd20ae31d5f14d338" category="paragraph"><block ref="955c6f1851b4039bd20ae31d5f14d338" category="inline-image-macro-rx" type="image"></block></block>
@@ -2924,8 +2910,6 @@
   <block id="51c1a6c1e7497769792664cc458e4b3b" category="list-text"><block ref="51c1a6c1e7497769792664cc458e4b3b" category="inline-link-rx"></block></block>
   <block id="3b3fe44fb52240d2bf1cecd954ba8f31" category="list-text"><block ref="3b3fe44fb52240d2bf1cecd954ba8f31" category="inline-link-rx"></block></block>
   <block id="b08b0a6b8389d8eb21b696d8750a42c7" category="list-text"><block ref="b08b0a6b8389d8eb21b696d8750a42c7" category="inline-link-rx"></block></block>
-  <block id="ceb0e703e6fc4ff33d792e51790261e4" category="paragraph">Vous pouvez protéger les données de vos machines virtuelles en sauvegardant dans le cloud des datastores issus du stockage primaire et secondaire sur site. Si nécessaire, vous pouvez restaurer à nouveau les machines virtuelles sur le plug-in SnapCenter sur site pour l'hôte VMware vSphere.</block>
-  <block id="21d7ed1a0ed596af2b79f06576c84ca9" category="paragraph">Vous pouvez sauvegarder des datastores dans Amazon Web Services S3, Microsoft Azure Blob, Google Cloud Platform et StorageGRID.</block>
   <block id="135b308ed83c53f1516b7c754566d1c4" category="paragraph-title">Avant de commencer</block>
   <block id="949ad3136d64be33cc1a6a67e3add3d1" category="paragraph">Lisez les conditions suivantes pour vous assurer que votre configuration est prise en charge avant de commencer à sauvegarder des datastores et des machines virtuelles auprès d'un fournisseur cloud.</block>
   <block id="9b9477e579c3b44dd623d5a6e1ea8d78" category="list-text">BlueXP</block>
@@ -2939,12 +2923,10 @@
   <block id="b9f7c26581cad3cbd789c6d293692814" category="admonition">Vous ne pouvez pas restaurer des machines virtuelles qui s'étendent sur plusieurs datastores.</block>
   <block id="76edd5381919de6c1c9b123a884984f8" category="list-text">Dans l'interface utilisateur BlueXP, cliquez sur *protection* &gt; *sauvegarde et restauration* &gt; *machines virtuelles* &gt; *Plug-in SnapCenter pour VMware vSphere* et sélectionnez le plug-in SnapCenter pour l'hôte VMware vSphere.</block>
   <block id="873069930fc1357e9cd4216822243f14" category="admonition">Si la machine virtuelle source est déplacée vers un autre emplacement (vMotion) et si l'utilisateur déclenche une restauration de cette machine virtuelle à partir de BlueXP, la machine virtuelle est restaurée vers l'emplacement source à partir duquel la sauvegarde a été effectuée.</block>
-  <block id="73bc14a460209f6fd497aa9bd91fbaa6" category="list-text">Vous pouvez effectuer une restauration à partir du datastore ou de machines virtuelles :</block>
   <block id="5d920b501536441ea32ecc24679c72a2" category="cell">Les fonctions que vous recherchez...</block>
   <block id="df2d87dc916178a7076837c06010ded0" category="paragraph">Restauration à partir du datastore</block>
   <block id="4569e5f9f0309302f499c21fc4cb8ee6" category="paragraph">Cette option n'est disponible que si la machine virtuelle est protégée à l'aide d'une stratégie dans laquelle les paramètres d'archivage sont configurés. Pour Amazon Web Services, la priorité de restauration d'archivage est élevée, standard ou faible. Pour Microsoft Azure, la priorité de restauration d'archivage est élevée et standard.</block>
   <block id="2a8a756e65415cefaa2a8f2d963e01be" category="paragraph">Restauration à partir de machines virtuelles</block>
-  <block id="4eb58c4143c6b0e5561211f7a2425377" category="list-text">Pour transférer les sauvegardes du magasin d'objets vers le stockage d'archives, vous devez exécuter ONTAP 9.10.1 ou une version ultérieure et Amazon Web Services ou Azure doit être le fournisseur cloud.</block>
   <block id="5d0ad01dbdb8717fbebf1cb44a3c10cd" category="list-text">Vous devez configurer le niveau d'accès d'archivage pour chaque fournisseur de cloud.</block>
   <block id="bbe48fb854ea022537208eeeff822f91" category="paragraph-title">Description de la tâche</block>
   <block id="ca69b8ee34e44ac66b7f0dfd3b786e9c" category="paragraph">BlueXP dispose de règles prédéfinies suivantes :</block>
@@ -2956,7 +2938,6 @@
   <block id="f352f7544724f99ab1b27e3e40291b49" category="admonition">Vous pouvez enregistrer plusieurs plug-in SnapCenter pour les hôtes VMware vSphere dans BlueXP. Cependant, une fois enregistré, vous ne pouvez pas supprimer le plug-in SnapCenter pour l'hôte VMware vSphere.</block>
   <block id="ebeea6bd6cc46b0c9f463f2b01659606" category="list-text">Dans le champ plug-in SnapCenter pour VMware vSphere, spécifiez le nom de domaine complet ou l'adresse IP du plug-in SnapCenter pour l'hôte VMware vSphere.</block>
   <block id="463d350eb6c9887e5addb9a6561a47ad" category="list-text">Dans le champ Port, spécifiez le numéro de port sur lequel le plug-in SnapCenter pour l'hôte VMware vSphere est exécuté.</block>
-  <block id="a3640e12809bb0c58c14ed0dc2515991" category="paragraph">Assurez-vous que le port est ouvert pour la communication entre le plug-in SnapCenter pour l'hôte VMware vSphere et BlueXP.</block>
   <block id="1e88a362bd23950ee5a102f645348ac8" category="paragraph">Cliquez sur *sauvegarde et restauration* &gt; *machines virtuelles* pour afficher tous les datastores et machines virtuelles protégés à l'aide du plug-in SnapCenter pour l'hôte VMware vSphere enregistré.</block>
   <block id="942c9249796cf6b78c981ebf15195809" category="list-text"><block ref="942c9249796cf6b78c981ebf15195809" category="inline-link-rx"></block></block>
   <block id="26000c50c37289d13041f03c670085a3" category="paragraph">Vous pouvez sauvegarder un ou plusieurs datastores dans Microsoft Azure en intégrant le plug-in SnapCenter pour l'hôte VMware vSphere avec BlueXP. Ils peuvent ainsi sauvegarder et archiver des données facilement et rapidement à des fins d'efficacité du stockage et d'accélération de la transition vers le cloud.</block>
@@ -3490,7 +3471,6 @@
   <block id="5c92c4685a32fe7d41d3f537c7f5116b" category="paragraph">*Important:* si vous prévoyez d'utiliser DataLock, vous devez l'activer dans votre première stratégie lors de l'activation de la sauvegarde et de la restauration BlueXP.</block>
   <block id="0331809832826b1a244aca026a9b2d64" category="list-text">Cliquez sur *Activer la sauvegarde*. La sauvegarde et la restauration BlueXP commencent à prendre les sauvegardes initiales de chaque volume sélectionné.</block>
   <block id="ba48140a3394818b661e6fd497e203a7" category="doc">Découvrez la sauvegarde et la restauration BlueXP</block>
-  <block id="fa3178fc47dcb8e792e863ce59dac949" category="paragraph">La sauvegarde et la restauration BlueXP assurent une protection des données efficace, sécurisée et économique pour les données NetApp ONTAP, les volumes persistants Kubernetes, les bases de données et les machines virtuelles, à la fois sur site et dans le cloud. Les sauvegardes sont automatiquement générées et stockées dans un magasin d'objets de votre compte cloud public ou privé.</block>
   <block id="af4d8d7b56820e969dfbdcfe2654b5b3" category="paragraph">Ce service effectue une réplication incrémentielle persistante au niveau des blocs et préserve toutes les fonctionnalités d'efficacité du stockage, ce qui réduit considérablement le volume des données répliquées et stockées. En outre, vous ne payez que pour ce qui est protégé et utilisez les tiers de stockage les plus économiques du marché, ce qui rend la sauvegarde et la restauration BlueXP très économique.</block>
   <block id="723a81a7ee0b42134a46c1aaa0d99371" category="inline-link">En savoir plus sur la sauvegarde et la restauration BlueXP</block>
   <block id="9eb420abad7616344371178eb6cfb9a7" category="paragraph"><block ref="63f4276e2fdf1ca315cba1b1fcff7250" category="inline-link-rx"></block>.</block>
@@ -3735,7 +3715,6 @@
   <block id="2e5d6ff9bc4d6b4194df020bde3f3dca" category="sidebar">Sauvegardez la base de données de sauvegarde et de restauration BlueXP dans un site invisible</block>
   <block id="54153028a776309bcfbdd3b7b8285463" category="sidebar">Blogs sur la sauvegarde et la restauration BlueXP</block>
   <block id="960dd4200d015a0a12dfd299c1348c9c" category="sidebar">Utilisations de la sauvegarde et de la restauration BlueXP</block>
-  <block id="ceffaf94354645ad26052bbc53604f5d" category="sidebar">Sauvegarde des données des machines virtuelles dans le cloud</block>
   <block id="a1c18d7af73fa7e0ef0013130f15b257" category="sidebar">Restaurez les données depuis le cloud</block>
   <block id="6edd76ff9d03a833a8a254cc8af745d0" category="sidebar">Restaurez les données du volume ONTAP</block>
   <block id="10b8a325c32b95729e9b37864d6a110a" category="sidebar">Restaurez les données des applications Oracle sur site</block>
@@ -3744,4 +3723,21 @@
   <block id="5fd9bba0b0a00c42d3baab299425c076" category="sidebar">Restaurez les données des applications SAP HANA cloud natives</block>
   <block id="18de97333e5776e0c135dd87c10b965c" category="sidebar">Restaurer les données des machines virtuelles</block>
   <block id="16cc11572a7582fe5007212d56145dc8" category="sidebar">Restaurez les données de volume Kubernetes</block>
+  <block id="70dfad9357f3b3b710b73d8eb3666851" category="paragraph">Le service de sauvegarde et de restauration BlueXP assure une protection des données efficace, sécurisée et économique pour les données NetApp ONTAP, les volumes persistants Kubernetes, les bases de données et les machines virtuelles, sur site et dans le cloud. Les sauvegardes sont automatiquement générées et stockées dans un magasin d'objets de votre compte cloud public ou privé.</block>
+  <block id="9a3f2e7eb30992bb084418711e5093f2" category="doc">Gestion de la protection des données des datastores et des machines virtuelles</block>
+  <block id="2131f85f2f51908e5c573c231b274f4c" category="paragraph">Vous devez vous assurer que la communication est ouverte entre le plug-in SnapCenter sur site pour l'hôte VMware vSphere qui s'exécute sur le port 8144 par défaut et l'instance de connecteur BlueXP qui peut être exécutée sur n'importe quel fournisseur cloud (Amazon Web Services, Microsoft Azure, Google Cloud Platform) ou sur site.</block>
+  <block id="de437d1f424b507f3d7be645ac0952c2" category="paragraph">La sauvegarde et la restauration BlueXP pour les machines virtuelles fournissent des fonctionnalités de protection des données en sauvegardant des datastores en restaurant des machines virtuelles.</block>
+  <block id="40c5998ccd6f421d1eaa29ece0c36b59" category="paragraph">Vous pouvez sauvegarder des datastores dans Amazon Web Services S3, Microsoft Azure Blob, Google Cloud Platform et StorageGRID, et restaurer des machines virtuelles dans le plug-in SnapCenter sur site pour l'hôte VMware vSphere.</block>
+  <block id="2a18af02b6c0b7e92a17df9509574f26" category="list-text">Vous devez utiliser le plug-in SnapCenter pour VMware vSphere 4.7P1 ou une version ultérieure pour sauvegarder des datastores depuis le stockage secondaire sur site.</block>
+  <block id="9fe2f95002b4b4815d52173b68bf9862" category="summary">Créer une stratégie pour sauvegarder les datastores</block>
+  <block id="38fb3153d6139974d24ba11e28a0718d" category="list-text">Pour transférer les sauvegardes du magasin d'objets vers le stockage d'archives, vous devez exécuter ONTAP 9.10.1 ou une version ultérieure et Amazon Web Services ou Microsoft Azure doit être le fournisseur cloud.</block>
+  <block id="44dae527927c9be3aabaf37ba09b9068" category="admonition">Vous ne pouvez ni modifier ni supprimer une règle associée à un datastore.</block>
+  <block id="ffa1e37a2c6478ff157a0a7d25a607e9" category="doc">Restaurez des données de machines virtuelles à partir du cloud</block>
+  <block id="95513dac8a621e64dcee2a0f311b0e66" category="paragraph">Vous pouvez restaurer les données des machines virtuelles depuis le cloud vers vCenter sur site. La sauvegarde sera restaurée au même emplacement que celui où elle a été effectuée. Si la machine virtuelle a été sauvegardée à l'aide de la stratégie d'archivage, vous pouvez définir la priorité de restauration d'archivage.</block>
+  <block id="6c0dd80335ed3d649017aa79a23eddae" category="list-text">Vous pouvez effectuer des restaurations à partir du datastore ou de machines virtuelles :</block>
+  <block id="54a98d3cca3d552c2562869bfcebf735" category="section-title">Protection des bases de données Oracle</block>
+  <block id="b45eb079efd4b3748b1efc669c02c01c" category="section-title">Protection des bases de données SAP HANA</block>
+  <block id="3eb97a71011fe0dae37080fd785e4db5" category="sidebar">Sauvegarde et restauration des données des machines virtuelles</block>
+  <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">Quoi de neuf</block>
+  <block id="7048662b75c8f210e59f898d992521cc" category="sidebar">Sauvegardez les datastores dans le cloud</block>
 </blocks>
