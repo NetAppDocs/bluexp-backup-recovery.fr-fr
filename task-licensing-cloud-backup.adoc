@@ -50,7 +50,7 @@ PAYGO propose plusieurs plans pour la sauvegarde et la restauration BlueXP :
 
 * Un pack « Cloud Backup » vous permet de sauvegarder les données Cloud Volumes ONTAP et ONTAP sur site.
 * Pack « CVO Professional » pour regrouper les fonctionnalités de sauvegarde et de restauration Cloud Volumes ONTAP et BlueXP. Cela inclut un nombre illimité de sauvegardes pour le système Cloud Volumes ONTAP utilisant la licence (la capacité de sauvegarde n'est pas comptée par rapport à la capacité sous licence). Cette option ne permet pas de sauvegarder les données ONTAP sur site.
-* Un package « CVO Edge cache » inclut les mêmes fonctionnalités que le package « CVO Professional », mais il inclut également la prise en charge de https://docs.netapp.com/us-en/cloud-manager-file-cache/concept-gfc.html["Cache global de fichiers"^]. Vous êtes autorisé à déployer un système Global File cache Edge pour chaque 3 To de capacité provisionnée sur le système Cloud Volumes ONTAP. Cette option est disponible via Azure et Google Marketplaces, et ne vous permet pas de sauvegarder les données ONTAP sur site.
+* Un package « CVO Edge cache » offre les mêmes fonctionnalités que le package « CVO Professional », mais il inclut également la prise en charge du https://docs.netapp.com/us-en/cloud-manager-file-cache/concept-gfc.html["La mise en cache BlueXP Edge"^] services. Vous êtes autorisé à déployer un système Global File cache Edge pour chaque 3 To de capacité provisionnée sur le système Cloud Volumes ONTAP. Cette option est disponible via Azure et Google Marketplaces, et ne vous permet pas de sauvegarder les données ONTAP sur site.
 
 
 https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-licensing.html#capacity-based-licensing["En savoir plus sur ces packs de licence basés sur la capacité"].
@@ -127,7 +127,7 @@ Si vous ne disposez pas d'une licence BYOL pour la sauvegarde et la restauration
 
 Si vous ne souhaitez pas utiliser de licence basée sur des nœuds non attribuée à Cloud Volumes ONTAP, vous pouvez la convertir en licence de sauvegarde et de restauration BlueXP avec la même équivalence en dollar et la même date d'expiration. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-manage-node-licenses.html#exchange-unassigned-node-based-licenses["Cliquez ici pour plus d'informations"^].
 
-Utilisez la page porte-monnaie numérique de BlueXP pour gérer les licences BYOL. Vous pouvez ajouter de nouvelles licences, mettre à jour des licences existantes et afficher l'état de la licence à partir du porte-monnaie numérique.
+Vous utilisez le portefeuille digital BlueXP pour gérer les licences BYOL. Vous pouvez ajouter de nouvelles licences, mettre à jour les licences existantes et afficher l'état des licences depuis le portefeuille digital BlueXP.
 
 
 
@@ -183,21 +183,21 @@ BlueXP ajoute la licence pour que la sauvegarde et la restauration BlueXP soient
 
 === Mettez à jour une licence BYOL de sauvegarde et de restauration BlueXP
 
-Si la durée de votre licence approche de la date d'expiration ou si votre capacité sous licence atteint la limite, vous serez informé dans l'interface utilisateur de la sauvegarde. Cet état apparaît également dans la page Portefeuille numérique et dans https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-monitor-cm-operations.html#monitoring-operations-status-using-the-notification-center["Notifications"].
+Si la durée de votre licence approche de la date d'expiration ou si votre capacité sous licence atteint la limite, vous serez informé dans l'interface utilisateur de la sauvegarde. Cet état apparaît également sur la page du portefeuille digital BlueXP et dans https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-monitor-cm-operations.html#monitoring-operations-status-using-the-notification-center["Notifications"].
 
-image:screenshot_services_license_expire.png["Capture d'écran qui montre une licence arrivant à expiration dans la page du porte-monnaie numérique."]
+image:screenshot_services_license_expire.png["Copie d'écran montrant une licence arrivant à expiration sur la page de portefeuille digital BlueXP."]
 
 Vous pouvez mettre à jour votre licence de sauvegarde et de restauration BlueXP avant son expiration afin que votre capacité à sauvegarder et à restaurer vos données ne soit pas interrompue.
 
 .Étapes
 . Cliquez sur l'icône de chat en bas à droite de BlueXP, ou contactez le support pour demander une extension de votre période ou de la capacité supplémentaire de votre licence de sauvegarde et de restauration BlueXP pour le numéro de série spécifique.
 +
-Une fois que vous avez payé la licence et qu'elle est enregistrée sur le site de support NetApp, BlueXP met automatiquement à jour la licence dans Digital Wallet et et la page des licences des services de données reflétera la modification dans 5 à 10 minutes.
+Une fois que vous avez payé la licence et qu'elle est enregistrée sur le site de support NetApp, BlueXP met automatiquement à jour la licence dans le portefeuille digital BlueXP. La page des licences des services de données reflète le changement en 5 à 10 minutes.
 
 . Si BlueXP ne peut pas mettre à jour automatiquement la licence (par exemple, lorsqu'elle est installée sur un site sombre), vous devrez charger manuellement le fichier de licence.
 +
 .. C'est possible <<Obtenez votre fichier de licence de sauvegarde et de restauration BlueXP,Procurez-vous le fichier de licence sur le site de support NetApp>>.
-.. Sur la page Portefeuille numérique _licences de services de données_, cliquez sur image:screenshot_horizontal_more_button.gif["Plus d'icône"] Pour le numéro de série de service que vous mettez à jour, cliquez sur *mettre à jour la licence*.
+.. Dans l'onglet _Data Services Licenses_ de la page du portefeuille digital BlueXP, cliquez sur image:screenshot_horizontal_more_button.gif["Plus d'icône"] Pour le numéro de série de service que vous mettez à jour, cliquez sur *mettre à jour la licence*.
 +
 image:screenshot_services_license_update1.png["Capture d'écran de la sélection du bouton mettre à jour la licence pour un service particulier."]
 

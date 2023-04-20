@@ -16,7 +16,7 @@ summary: 'Les fonctionnalités de sauvegarde et de restauration de BlueXP dispon
 [role="lead"]
 Les fonctionnalités de sauvegarde et de restauration de BlueXP disponibles via l'interface utilisateur web sont également disponibles via l'API RESTful.
 
-Il existe neuf catégories de terminaux définis dans la sauvegarde et la restauration BlueXP :
+Il existe dix catégories de terminaux définis dans la sauvegarde et la restauration BlueXP :
 
 * backup : gère les opérations de sauvegarde des ressources cloud et sur site et récupère les détails des données de sauvegarde
 * Catalogue : gère la recherche de fichiers dans le catalogue indexé en fonction d'une requête (recherche et restauration)
