@@ -74,6 +74,8 @@ Hôte de base de données Oracle
 . Modifier *ID connecteur*.
 
 
+ifdef::azure[]
+
 
 
  a| 
@@ -95,7 +97,9 @@ curl --location --request PATCH
 "new_connector_id": "New connector Id"
 }
 ----
-Les détails du connecteur seront mis à jour avec succès si le plug-in SnapCenter pour le service SAP HANA est installé et exécuté, mais aussi si tous sont accessibles depuis le nouveau connecteur.
+Les détails des connecteurs seront mis à jour avec succès si le plug-in SnapCenter pour le service SAP HANA est installé et en cours d'exécution sur tous les hôtes, et également si tous sont accessibles depuis le nouveau connecteur.
+
+endif::azure[]
 
 |===
 Après avoir mis à jour les détails du connecteur pour les hôtes Oracle ou SAP HANA, procédez comme suit pour vérifier que les détails du connecteur ont été correctement mis à jour.
@@ -109,7 +113,7 @@ Après avoir mis à jour les détails du connecteur pour les hôtes Oracle ou SA
 .. Copiez Certificate.p12 de _<base_mount_path>/client/certificate/_ path de la machine virtuelle du connecteur vers _/var/opt/snapcenter/spl/etc/_ sur l'hôte du plug-in.
 
 
-. Connectez-vous à l'hôte du plug-in et effectuez les étapes suivantes :
+. Connectez-vous à l'hôte du plug-in et effectuez les opérations suivantes :
 +
 .. Accédez à _/var/opt/snapcenter/spl/etc_ et exécutez la commande keytool pour importer le fichier Certificate.p12.
 `keytool -v -importkeystore -srckeystore certificate.p12 -srcstoretype PKCS12 -destkeystore keystore.jks -deststoretype JKS -srcstorepass snapcenter -deststorepass snapcenter -srcalias agentcert -destalias agentcert -noprompt`

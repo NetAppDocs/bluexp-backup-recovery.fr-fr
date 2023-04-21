@@ -66,23 +66,6 @@ sidebar:
       url: "/task-manage-backup-settings-ontap.html"
     - title: Restaurez vos données à partir de sauvegardes ONTAP
       url: "/task-restore-backups-ontap.html"
-  - title: Sauvegarde et restauration des données Kubernetes
-    entries:
-    - title: Protéger vos données Kubernetes
-      url: "/concept-kubernetes-backup-to-cloud.html"
-    - title: Sauvegarde dans Amazon S3
-      flavor: aws
-      url: "/task-backup-kubernetes-to-s3.html"
-    - title: Sauvegarde dans Azure Blob
-      flavor: azure
-      url: "/task-backup-kubernetes-to-azure.html"
-    - title: Sauvegarde dans Google Cloud
-      flavor: gcp
-      url: "/task-backup-kubernetes-to-gcp.html"
-    - title: Gérer les sauvegardes Kubernetes
-      url: "/task-manage-backups-kubernetes.html"
-    - title: Restaurez vos données à partir de sauvegardes Kubernetes
-      url: "/task-restore-backups-kubernetes.html"
   - title: Sauvegarde et restauration des données des applications sur site
     entries:
     - title: Protection des données applicatives sur site
@@ -153,6 +136,7 @@ sidebar:
       flavor: azure
       url: "/task-restore-cloud-native-sap-hana-data.html"
     - title: Actualisez le système cible SAP HANA
+      flavor: azure
       url: "/task-refresh-sap-hana-target-system.html"
     - title: Clonez des bases de données Oracle cloud natives
       entries:
@@ -185,6 +169,23 @@ sidebar:
       url: "/task-manage-vm-data-in-cloud.html"
     - title: Restaurer les données des machines virtuelles
       url: "/task-restore-vm-data.html"
+  - title: Sauvegarde et restauration des données Kubernetes
+    entries:
+    - title: Protéger vos données Kubernetes
+      url: "/concept-kubernetes-backup-to-cloud.html"
+    - title: Sauvegarde dans Amazon S3
+      flavor: aws
+      url: "/task-backup-kubernetes-to-s3.html"
+    - title: Sauvegarde dans Azure Blob
+      flavor: azure
+      url: "/task-backup-kubernetes-to-azure.html"
+    - title: Sauvegarde dans Google Cloud
+      flavor: gcp
+      url: "/task-backup-kubernetes-to-gcp.html"
+    - title: Gérer les sauvegardes Kubernetes
+      url: "/task-manage-backups-kubernetes.html"
+    - title: Restaurez vos données à partir de sauvegardes Kubernetes
+      url: "/task-restore-backups-kubernetes.html"
   - title: Automatisez avec l'API REST
     url: "/api-backup-restore.html"
   - title: Référence
@@ -197,12 +198,14 @@ sidebar:
       url: "/reference-azure-backup-tiers.html"
     - title: Tiers de stockage d'archivage Google pris en charge
       url: "/reference-google-backup-tiers.html"
+    - title: Configurer la sauvegarde pour l'accès à plusieurs comptes dans Azure
+      flavor: azure
+      url: "/reference-backup-multi-account-azure.html"
     - title: Sauvegardez la base de données de sauvegarde et de restauration BlueXP
         dans un site invisible
       url: "/reference-backup-cbs-db-in-dark-site.html"
-    - title: Configurez la sauvegarde pour l'accès à plusieurs comptes dans Azure
-      flavor: azure
-      url: "/reference-backup-multi-account-azure.html"
+    - title: Redémarrez la sauvegarde et la restauration BlueXP
+      url: "/reference-restart-backup.html"
   - title: Connaissances et support
     entries:
     - title: S'inscrire pour obtenir de l'aide
@@ -245,17 +248,22 @@ homepage:
       flavor: gcp
     - title: Du ONTAP au StorageGRID sur site
       url: task-backup-onprem-private-cloud.html
-  - title: Sauvegardez les données Kubernetes dans le cloud
+  - title: Gérer les fichiers de sauvegarde ONTAP
     links:
-    - title: Cluster Kubernetes vers Amazon S3
-      url: task-backup-kubernetes-to-s3.html
-      flavor: aws
-    - title: Cluster Kubernetes vers Azure Blob
-      url: task-backup-kubernetes-to-azure.html
-      flavor: azure
-    - title: Cluster Kubernetes vers Google Cloud
-      url: task-backup-kubernetes-to-gcp.html
-      flavor: gcp
+    - title: Activer et désactiver les sauvegardes de volume
+      url: task-manage-backups-ontap.html#enabling-and-disabling-backups-of-volumes
+    - title: Modifiez une stratégie de sauvegarde existante
+      url: task-manage-backups-ontap.html#editing-an-existing-backup-policy
+    - title: Ajoutez une nouvelle stratégie de sauvegarde
+      url: task-manage-backups-ontap.html#adding-a-new-backup-policy
+    - title: Modifier la stratégie attribuée aux volumes existants
+      url: task-manage-backups-ontap.html#changing-the-policy-assigned-to-existing-volumes
+    - title: Créer une sauvegarde de volume manuelle
+      url: task-manage-backups-ontap.html#creating-a-manual-volume-backup-at-any-time
+    - title: Afficher la liste des sauvegardes pour chaque volume
+      url: task-manage-backups-ontap.html#viewing-the-list-of-backups-for-each-volume
+    - title: Supprimer les sauvegardes
+      url: task-manage-backups-ontap.html#deleting-backups
   - title: Sauvegardez les données d'applications dans le cloud
     links:
     - title: Sauvegardez les données des applications sur site dans Amazon Web Services
@@ -269,9 +277,9 @@ homepage:
       url: task-backup-app-data-to-gcp.html
     - title: Sauvegardez les données applicatives sur site dans StorageGRID
       url: task-backup-app-data-to-storagegrid.html
-    - title: Sauvegardez les bases de données Oracle cloud natives
+    - title: Sauvegardez une base de données Oracle cloud native
       url: task-backup-cloud-native-oracle-data.html
-    - title: Sauvegardez les bases de données SAP HANA cloud natives
+    - title: Sauvegarde de la base de données SAP HANA cloud native
       flavor: azure
       url: task-backup-cloud-native-sap-hana-data.html
   - title: Sauvegardez les datastores dans le cloud
@@ -304,22 +312,17 @@ homepage:
       url: task-restore-vm-data.html
     - title: Restaurez les données de volume Kubernetes
       url: task-restore-backups-kubernetes.html
-  - title: Gérer les fichiers de sauvegarde ONTAP
+  - title: Sauvegardez les données Kubernetes dans le cloud
     links:
-    - title: Activer et désactiver les sauvegardes de volume
-      url: task-manage-backups-ontap.html#enabling-and-disabling-backups-of-volumes
-    - title: Modifiez une stratégie de sauvegarde existante
-      url: task-manage-backups-ontap.html#editing-an-existing-backup-policy
-    - title: Ajoutez une nouvelle stratégie de sauvegarde
-      url: task-manage-backups-ontap.html#adding-a-new-backup-policy
-    - title: Modifier la stratégie attribuée aux volumes existants
-      url: task-manage-backups-ontap.html#changing-the-policy-assigned-to-existing-volumes
-    - title: Créer une sauvegarde de volume manuelle
-      url: task-manage-backups-ontap.html#creating-a-manual-volume-backup-at-any-time
-    - title: Afficher la liste des sauvegardes pour chaque volume
-      url: task-manage-backups-ontap.html#viewing-the-list-of-backups-for-each-volume
-    - title: Supprimer les sauvegardes
-      url: task-manage-backups-ontap.html#deleting-backups
+    - title: Cluster Kubernetes vers Amazon S3
+      url: task-backup-kubernetes-to-s3.html
+      flavor: aws
+    - title: Cluster Kubernetes vers Azure Blob
+      url: task-backup-kubernetes-to-azure.html
+      flavor: azure
+    - title: Cluster Kubernetes vers Google Cloud
+      url: task-backup-kubernetes-to-gcp.html
+      flavor: gcp
   - title: Communauté sur les blogs
     links:
     - title: Communauté NetApp
@@ -328,7 +331,7 @@ homepage:
       url: https://bluexp.netapp.com/blog/topic/cloud-backup
     - title: Utilisations de la sauvegarde et de la restauration BlueXP
       url: https://bluexp.netapp.com/cloud-backup
-    - title: Webinaires sur le cloud
+    - title: Webinaires BlueXP
       url: https://bluexp.netapp.com/events
 product-family:
   name: BlueXP

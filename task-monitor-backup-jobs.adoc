@@ -33,9 +33,13 @@ L'état de la sauvegarde et de la restauration peut être :
 
 Les opérations de sauvegarde et de restauration initiées par l'utilisateur à partir de l'interface utilisateur et de l'API de sauvegarde et de restauration BlueXP, ainsi que les tâches lancées par le système, telles que les opérations de sauvegarde planifiées en cours, sont disponibles dans l'onglet *Job Monitoring* pour les systèmes Cloud Volumes ONTAP exécutant ONTAP 9.13.0 ou version ultérieure.
 
+[TIP]
+====
+* Lors de l'exécution d'une version antérieure de ONTAP sur des systèmes Cloud Volumes ONTAP ou sur des systèmes ONTAP sur site, seules les tâches initiées par l'utilisateur sont affichées.
+* Si vous avez mis à niveau vos systèmes Cloud Volumes ONTAP vers la version 9.13.x et que vous ne voyez pas les opérations de sauvegarde planifiées en cours dans le moniteur de tâches, vous devez redémarrer le service de sauvegarde et de restauration BlueXP. link:reference-restart-backup.html["Découvrez comment redémarrer la sauvegarde et la restauration BlueXP"^].
 
-TIP: Lors de l'exécution d'une version antérieure de ONTAP sur des systèmes Cloud Volumes ONTAP ou sur des systèmes ONTAP sur site, seules les tâches initiées par l'utilisateur sont affichées.
 
+====
 .Étapes
 . Dans le menu BlueXP, sélectionnez *protection > sauvegarde et récupération*.
 . Sélectionnez l'onglet *surveillance des travaux*.
