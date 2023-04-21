@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-create-policies-apps.html 
 keywords: policy, create, pre-canned polices, custom policies, protection policies 
-summary: 'Utilisez les stratégies prédéfinies ou créez vos propres stratégies pour protéger l"application.' 
+summary: 'Créez vos propres règles pour protéger l"application.' 
 ---
 = Créez une règle pour sauvegarder les applications
 :hardbreaks:

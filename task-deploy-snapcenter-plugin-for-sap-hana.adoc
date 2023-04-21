@@ -251,12 +251,9 @@ NOTE: Le filtre permettant d'afficher un hôte spécifique ne fonctionne pas. Lo
 
 *Quoi de neuf*
 
-* Vous pouvez modifier ou supprimer les systèmes SAP HANA de l'interface et également à l'aide de l'API REST.
-+
+Vous pouvez modifier ou supprimer les systèmes SAP HANA de l'interface et également à l'aide de l'API REST.
+
 Avant de supprimer le système SAP HANA, vous devez supprimer toutes les sauvegardes associées et supprimer la protection.
-
-* Vous pouvez modifier ou supprimer les hôtes SAP HANA à l'aide de l'API REST.
-
 
 
 

@@ -112,11 +112,11 @@ sidebar:
         url: "/task-restore-sql-data.html"
     - title: Montage des sauvegardes d'applications
       url: "/task-mount-app-backup.html"
-  - title: Sauvegarde et restauration des données d'applications cloud natives
+  - title: Sauvegarde et restauration des données applicatives cloud
     entries:
-    - title: Protégez vos données applicatives cloud natives
+    - title: Protégez vos données d'applications cloud natives
       url: "/concept-protect-cloud-app-data-to-cloud.html"
-    - title: Sauvegardez les bases de données Oracle cloud natives
+    - title: Sauvegarde des bases de données Oracle cloud natives
       entries:
       - title: Démarrage rapide
         url: "/task-quick-start-oracle.html"
@@ -127,12 +127,12 @@ sidebar:
       - title: Configurez Azure NetApp Files
         flavor: azure
         url: "/reference-configure-azure-netapp-files.html"
-      - title: Déployez le plug-in SnapCenter pour Oracle et ajoutez des hôtes de
+      - title: Installez le plug-in SnapCenter pour Oracle et ajoutez des hôtes de
           base de données
         url: "/task-add-host-discover-oracle-databases.html"
-      - title: Sauvegardez la base de données Oracle
+      - title: Sauvegarde des bases de données Oracle
         url: "/task-backup-cloud-native-oracle-data.html"
-    - title: Sauvegardez les bases de données SAP HANA cloud natives
+    - title: Sauvegarde des bases de données SAP HANA cloud natives
       entries:
       - title: Démarrage rapide
         flavor: azure
@@ -140,27 +140,27 @@ sidebar:
       - title: Configurez Azure NetApp Files
         flavor: azure
         url: "/reference-configure-azure-netapp-files.html"
-      - title: Déployez le plug-in SnapCenter pour SAP HANA et ajoutez des hôtes de
-          base de données
+      - title: Installez le plug-in SnapCenter pour SAP HANA et ajoutez des hôtes
+          de base de données
         flavor: azure
         url: "/task-deploy-snapcenter-plugin-for-sap-hana.html"
-      - title: Sauvegardez la base de données SAP HANA
+      - title: Sauvegarde des bases de données SAP HANA
         flavor: azure
         url: "/task-backup-cloud-native-sap-hana-data.html"
-    - title: Restaurez les bases de données Oracle cloud natives
+    - title: Restaurez des bases de données Oracle cloud natives
       url: "/task-restore-cloud-native-oracle-data.html"
-    - title: Restaurez la base de données SAP HANA cloud native
+    - title: Restaurez des bases de données SAP HANA cloud natives
       flavor: azure
       url: "/task-restore-cloud-native-sap-hana-data.html"
     - title: Actualisez le système cible SAP HANA
       url: "/task-refresh-sap-hana-target-system.html"
-    - title: Clonez des bases de données Oracle natives du cloud
+    - title: Clonez des bases de données Oracle cloud natives
       entries:
       - title: Concepts et conditions de clonage
         url: "/concept-clone-cloud-native-oracle-concepts.html"
-      - title: Clonez des bases de données Oracle natives du cloud
+      - title: Clonez des bases de données Oracle cloud natives
         url: "/task-clone-cloud-native-oracle-data.html"
-    - title: Gérez la protection des données applicatives cloud natives
+    - title: Gérez la protection des données applicatives cloud
       url: "/task-manage-cloud-native-app-data.html"
   - title: Sauvegarde et restauration des données des machines virtuelles
     entries:

@@ -458,8 +458,6 @@
   <block id="528441340754fa21a4883d97b6fcd1aa" category="paragraph">Identifiez les volumes que vous souhaitez sauvegarder à l'aide de la stratégie de sauvegarde par défaut dans la page Sélectionner les volumes. Si vous souhaitez attribuer différentes stratégies de sauvegarde à certains volumes, vous pouvez créer des règles supplémentaires et les appliquer ultérieurement aux volumes.</block>
   <block id="5a2ebfb8baa378cfcfcba58bbb1380c2" category="section-title">De formation</block>
   <block id="da95680877c2d8ff430e738df948144e" category="paragraph">Avant de commencer à sauvegarder des volumes sur site vers StorageGRID, lisez les informations suivantes pour vous assurer que votre configuration est prise en charge.</block>
-  <block id="362e1fd025fbc54170675a786630faff" category="inline-image-macro">Un diagramme montrant comment Cloud Backup communique avec les volumes des systèmes source et le stockage de destination où sont situés les fichiers de sauvegarde.</block>
-  <block id="7c9c2c9135c9dd5b2198f3d2e909e271" category="paragraph"><block ref="7c9c2c9135c9dd5b2198f3d2e909e271" category="inline-image-macro-rx" type="image"></block></block>
   <block id="5c611511bb6c7851d2e8d2dda1c92506" category="section-title">Préparation des clusters ONTAP</block>
   <block id="f14bda54277879b5d5f51fa405834285" category="paragraph">Vous devez découvrir vos clusters ONTAP sur site dans BlueXP avant de pouvoir commencer à sauvegarder des données de volumes.</block>
   <block id="9aa87cabc3c16ccfd72ed13e9e2a189c" category="list-text">Le cluster ONTAP établit une connexion HTTPS via un port spécifié par l'utilisateur depuis le LIF intercluster vers le nœud de passerelle StorageGRID pour les opérations de sauvegarde et de restauration. Le port est configurable lors de la configuration de la sauvegarde.</block>
@@ -986,7 +984,6 @@
   <block id="edf569ed393967b7a0079a7341765e10" category="list-text">Vérifiez les détails et cliquez sur *Restaurer*.</block>
   <block id="0291e73f7c30c841795ff165a80bdc0e" category="list-text">Cliquez sur <block ref="1d94ccc08c31bc8efbc06bfabc6854b6" category="inline-image-macro-rx" type="image"></block> Correspondant à la machine virtuelle que vous souhaitez restaurer et cliquer sur *Restaurer*.</block>
   <block id="42387e1cb260fd1fb8624acde3767841" category="paragraph">La machine virtuelle est restaurée au même emplacement depuis lequel la sauvegarde a été effectuée.</block>
-  <block id="eb5668f5c3459c84cc715cf197e7c91a" category="doc">Protégez vos données applicatives cloud natives</block>
   <block id="2d242bb36ec91b32005f9296ff03a912" category="section-title">Architecture</block>
   <block id="5aa6aa9ade143b785fa0243d0138a6b5" category="paragraph">Il orchestre les workflows de protection des données pour les applications qui résident sur NetApp Cloud Storage.</block>
   <block id="0f0f84cb9775a6f4ad6b4796bfcedfe9" category="list-text">Système d'exploitation :</block>
@@ -1403,7 +1400,6 @@
   <block id="7fd7a0a5300dbc1f2454a34738c54d80" category="list-text">Si plusieurs stratégies sont affectées à l'application, sélectionnez la stratégie, la valeur de conservation, puis cliquez sur *Créer une sauvegarde*.</block>
   <block id="fe0a0332700b9a067272058245b48946" category="inline-link">Opération de snapshot non autorisée en raison de clones sauvegardés par des snapshots</block>
   <block id="d78d082537913dac6697dabddff374dc" category="paragraph">Pour plus d'informations sur la façon de résoudre ce problème, reportez-vous à :<block ref="66c6329b50c8e15e4ce55612532f0653" category="inline-link-rx"></block>.</block>
-  <block id="5f1ca0dc5a7a1c5b872ab6837d27232f" category="summary">Utilisez les stratégies prédéfinies ou créez vos propres stratégies pour protéger l'application.</block>
   <block id="8a4528cef726e4e36a30d918236162fc" category="doc">Créez une règle pour sauvegarder les applications</block>
   <block id="002f7378a5fcfc2f66cfea851a7fd5f4" category="cell">Nom de la règle</block>
   <block id="b021df6aac4654c454f46c77646e745f" category="cell">Étiquette</block>
@@ -1482,14 +1478,9 @@
   <block id="8ece1a3075cf82b4a6288d5a36855ff2" category="list-text">Cliquez sur *Mount*.</block>
   <block id="18a6c204240510c87aba39d6d8b5d26b" category="doc">Protection des données applicatives sur site</block>
   <block id="ded90f27fe65ac910c74189d47b689e7" category="paragraph">Vous pouvez sauvegarder les données des applications Oracle, Microsoft SQL et SAP HANA depuis les systèmes ONTAP sur site vers Amazon Web Services, Microsoft Azure, Google Cloud Platform et StorageGRID.</block>
-  <block id="ca6aeed84517a7133f1abaebed19854e" category="inline-link">Sauvegarde intégrant la cohérence applicative avec Cloud Backup et SnapCenter</block>
-  <block id="ef3b2f715336b2a637c8e6704ee4bf21" category="list-text"><block ref="ef3b2f715336b2a637c8e6704ee4bf21" category="inline-link-rx"></block></block>
   <block id="351f25e3e7fc628f73a433013b9820a6" category="list-text">SnapCenter Server 4.6 ou version ultérieure vous devez utiliser SnapCenter Server 4.7 si vous souhaitez utiliser les fonctions suivantes :</block>
   <block id="f3753469514d2cda99cee390aa2bf172" category="list-text">Au moins une sauvegarde par application doit être disponible dans SnapCenter Server</block>
   <block id="29d7639a0c7b9ce1eeb1a132409265c0" category="paragraph">L'image suivante montre chaque composant lors de la sauvegarde dans le cloud et les connexions que vous devez préparer de l'un à l'autre :</block>
-  <block id="c895d0010b397b55778718d6ccc26b78" category="inline-image-macro">Un diagramme montrant comment Cloud Backup communique avec les applications sur site et le système de stockage de destination où sont situés les fichiers de sauvegarde.</block>
-  <block id="bc983d441473b5c9a47c39b5fb57e53f" category="paragraph"><block ref="bc983d441473b5c9a47c39b5fb57e53f" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="908a0e47cd03ccd04955cb93b0d41ef4" category="paragraph">L'image suivante montre chaque composant lors de la sauvegarde sur StorageGRID et les connexions dont vous avez besoin pour les préparer :</block>
   <block id="cf12172bd966bafd91b1daeef9357fe8" category="summary">Sauvegardez vos datastores sur site ONTAP dans StorageGRID.</block>
   <block id="ba7b66b996d8928df996e4fd4fffa4a4" category="doc">Sauvegarde des datastores sur StorageGRID</block>
   <block id="cf4e6e70123f43cdec5ffd93f792c083" category="list-text">Spécifiez l'adresse IP du serveur de stockage.</block>
@@ -1628,7 +1619,6 @@
   <block id="5b5efc09105794c60a1df368de3f2626" category="list-text">Cochez la case si vous souhaitez ouvrir la base de données après la récupération.</block>
   <block id="f6926e5d6abfa62c5d6ac4b2502f34a0" category="paragraph">Dans une configuration RAC, seule l'instance RAC utilisée pour la restauration s'ouvre après une restauration.</block>
   <block id="d1e18cf16b83a90a2911458097d3358c" category="summary">Afficher les détails de la sauvegarde et surveiller l'état de toutes les tâches.</block>
-  <block id="a0535e3da7a79865ac35aff6cbcd9919" category="doc">Gérez la protection des données applicatives cloud natives</block>
   <block id="4639d0e2e2909a747265c2f704128bca" category="section-title">Surveiller les tâches</block>
   <block id="a5cae278ab84c15ead127cbc4d6b2fc5" category="paragraph">Vous pouvez surveiller l'état des travaux lancés dans vos environnements de travail. Cela vous permet de voir les travaux qui ont réussi, ceux qui sont en cours et ceux qui ont échoué afin de diagnostiquer et de résoudre tout problème.</block>
   <block id="e645e09bf2ae6466ce5a92513bf9c99b" category="section-title">Afficher les détails de la sauvegarde</block>
@@ -1845,7 +1835,6 @@
   <block id="392d70ca39f31f10bd637936769788df" category="inline-link">StorageGRID</block>
   <block id="01fa460d0b4e6c77f9b145e51a76fbd6" category="paragraph">Si le<block ref="81ffc4823c79c3e10cfa644aead6e93c" category="inline-link-rx"></block> Destination de vos sauvegardes existe en tant qu'environnement de travail sur la toile. Vous pouvez faire glisser votre environnement de travail ONTAP sur site vers la destination pour lancer l'assistant de configuration de Cloud Backup.</block>
   <block id="15471566ffb385e256937957990dd60d" category="section-title">18 août 2022</block>
-  <block id="d583f1393e45db7abf2dbb15da48eaad" category="section-title">Des fonctionnalités de prise en charge ont été ajoutées pour protéger les données d'applications cloud natives</block>
   <block id="3f3ac5f6857788bfe6b27f406afcffa5" category="paragraph">Cloud Backup pour applications est un service SaaS qui fournit des fonctionnalités de protection des données pour les applications exécutées sur NetApp Cloud Storage. Cloud Backup pour les applications activées dans BlueXP offre des sauvegardes et des restaurations efficaces et cohérentes avec les applications, basées sur des règles, de bases de données Oracle résidant sur Amazon FSX pour NetApp ONTAP.<block ref="5774010e75c0af5301ef0cfe74198590" category="inline-link-rx"></block>.</block>
   <block id="5f98181f93bdb66aed67b6ec6ca0e6a1" category="section-title">La fonction de recherche et de restauration est désormais prise en charge avec les fichiers de sauvegarde dans Azure Blob</block>
   <block id="a2824b49f1c7526bf0e925b86c7b293c" category="inline-link">Découvrez comment restaurer vos volumes et fichiers à l'aide de Search &amp;amp; Restore</block>
@@ -2199,13 +2188,11 @@
   <block id="2c35eeb424b768876f1774567e7bf2f5" category="list-text">Prend en charge la sauvegarde et la restauration basées sur des règles des bases de données Oracle résidant sur Amazon FSX pour NetApp ONTAP</block>
   <block id="88094c6c8ad963e6131e3c23988917d4" category="list-text">Prend en charge la restauration des bases de données Oracle à l'aide de la méthode de connexion et de copie</block>
   <block id="7d6f6d1efeae8c573a74a091cc119cb9" category="list-text">Prend en charge Oracle 21c</block>
-  <block id="35d9afe1e1e85a29b0de625fd2a9a44a" category="list-text">Prend en charge le clonage de bases de données Oracle cloud natives</block>
   <block id="137f19e6e2dc1219f33553b812627bc2" category="list-text">Ordinateurs virtuels</block>
   <block id="c2452add37f94598e06d237edc68078b" category="list-text">Sauvegarder des machines virtuelles à partir d'un stockage secondaire sur site</block>
   <block id="8e21c62b69b7c01b40ec93ceb9c4b5cd" category="list-text">Prise en charge de Google Cloud Platform (GCP) pour sauvegarder un ou plusieurs datastores</block>
   <block id="6480beff3c438303fc8c6d8b4009f381" category="list-text">Prise en charge d'un stockage cloud à faible coût comme Glacier, Deep Glacier et Azure Archive</block>
   <block id="4dbebe33c4927d0c2034e3f9d520ba42" category="summary">Cloner la base de données sur l'hôte source ou un autre hôte.</block>
-  <block id="027ad436d33a0bd111ed11873f94c74b" category="doc">Clonez des bases de données Oracle natives du cloud</block>
   <block id="0b5992955627a4d221dfaf4d434b9596" category="paragraph">Vous pouvez cloner une base de données Oracle à l'aide de la sauvegarde de la base de données sur l'hôte de la base de données source ou sur un autre hôte.</block>
   <block id="91af1a160d0e82dc6915ed84b13cb026" category="paragraph">Il est possible de cloner des bases de données pour les raisons suivantes :</block>
   <block id="f808e6b1f9f18d3401fa365d39ab80f4" category="list-text">Afin de tester les fonctionnalités qui doivent être implémentées à l'aide de la structure et du contenu de la base de données en cours au cours des cycles de développement d'applications.</block>
@@ -2231,7 +2218,6 @@
   <block id="b44a2ec7d100bd7fbbcef764a835ae72" category="paragraph">Si vous sélectionnez *généré automatiquement*, vous devez spécifier le suffixe.</block>
   <block id="01fc6bc870eb60d107c41c724b7c0f61" category="list-text">Modifiez le fichier de spécifications selon les besoins et téléchargez-le en cliquant sur le bouton *Parcourir*.</block>
   <block id="46630b95005d23b3ccd9d9af01eed5bc" category="list-text">Cliquez sur <block ref="b7288b7453abfa8f93e33ab940aa7109" category="inline-image-macro-rx" type="image"></block> À côté de *Filter by* et sélectionnez *Clone options* &gt; *clones* pour afficher les clones.</block>
-  <block id="3d580f21069642f6846c9301b0b69c5a" category="doc">Restaurez les bases de données Oracle cloud natives</block>
   <block id="72ec364974b7acfa78aac57b443cca2c" category="paragraph">Dans la disposition SAN, si le plug-in SnapCenter pour Oracle trouve des fichiers étrangers autres que les fichiers de données Oracle sur le groupe de disques ASM, la méthode de restauration de connexion et de copie est exécutée. Les fichiers étrangers peuvent être de type un ou plusieurs des types suivants :</block>
   <block id="69eb10e6fd10e7913d2a8eeccd333a93" category="paragraph">L'option *forcer la restauration sur place* remplace le paramètre de type, le mot de passe et le journal d'archivage des fichiers étrangers. Vous devez utiliser la dernière sauvegarde lorsque l'option * forcer la restauration sur place* est sélectionnée.</block>
   <block id="09685971b3e1f16bca6b8635b76dffd8" category="summary">Description des concepts liés au clonage avant de cloner la base de données</block>
@@ -2486,7 +2472,6 @@
   <block id="85b4745a4d1440f87a65d816457ed9c6" category="list-text">Pour la configuration HSR, seul le HSR 2 nœuds est pris en charge (1 principal et 1 secondaire)</block>
   <block id="277fd7b361991606890ebf27911b589f" category="list-text">La rétention ne sera pas déclenchée si le script PostScript échoue pendant l'opération de restauration</block>
   <block id="5cca45bd52ac035de73ec0e76f0e5043" category="summary">Restaurez les fichiers de données, puis récupérez la base de données.</block>
-  <block id="e648f70e1fb5d17870bf65097e43c5a6" category="doc">Restaurez la base de données SAP HANA cloud native</block>
   <block id="26661dc24144ed594be15c07b300db39" category="paragraph">En cas de perte de données, vous pouvez restaurer les fichiers de données et non de données, puis récupérer la base de données.</block>
   <block id="8f0f4ecd6bb49079fb488435d58bf611" category="list-text">Après une restauration, restaurez manuellement le système SAP HANA ou fournissez un script final qui exécute la restauration du système SAP HANA.</block>
   <block id="aafa017aee26c3860dee1aac06cc22e5" category="section-title">Restaurez un volume sans données</block>
@@ -2516,8 +2501,6 @@
   <block id="add26d38486fad5ca461f986832fa6c3" category="inline-image-macro">diagramme d'architecture</block>
   <block id="955c6f1851b4039bd20ae31d5f14d338" category="paragraph"><block ref="955c6f1851b4039bd20ae31d5f14d338" category="inline-image-macro-rx" type="image"></block></block>
   <block id="d1444f985888131065bf58d488e5a34f" category="sidebar">Restaurez les données des applications sur site</block>
-  <block id="1c157808ae21e883235bd19d5c13f45e" category="sidebar">Sauvegardez la base de données Oracle</block>
-  <block id="b0c92f6f27a434824e7723b42147cce3" category="sidebar">Sauvegardez la base de données SAP HANA</block>
   <block id="fd9064c3951e4ceddd0e2ae6bf2708e5" category="paragraph">*Remarque :* si le fichier de sauvegarde contenant les données que vous souhaitez restaurer réside dans le stockage d'archives (à partir de ONTAP 9.10.1), l'opération de restauration prendra plus de temps et entraînera un coût. En outre, le cluster de destination doit également exécuter ONTAP 9.10.1 ou version ultérieure pour la restauration du volume, 9.11.1 pour la restauration des fichiers et 9.12.1 pour Google Archive et StorageGRID.</block>
   <block id="c003f27675e7048b4dd9d00ba4f2f343" category="paragraph">Si le fichier de sauvegarde du volume que vous souhaitez restaurer se trouve dans le stockage d'archives (disponible à partir de ONTAP 9.10.1), l'opération de restauration prend plus de temps et entraînera des coûts supplémentaires. Notez que le cluster de destination doit également exécuter ONTAP 9.10.1 ou version ultérieure pour la restauration de volume, 9.11.1 pour la restauration de fichiers et 9.12.1 pour Google Archive et StorageGRID.</block>
   <block id="aba6991b1b269dad52e52cd4c3998779" category="list-text">NFS doit être activé sur le volume (les volumes NFS et SMB/CIFS sont pris en charge).</block>
@@ -2733,12 +2716,10 @@
   <block id="08d96fdd1a845d80db99e6e1dffb8bc7" category="list-text">Sur la page *Ressources*, choisissez l'une des options disponibles sous support technique :</block>
   <block id="5be2e1dfe4bf215289731df45ec8157b" category="list-text">Cliquez sur *Créer un dossier* pour ouvrir un dossier auprès d'un spécialiste du support NetApp :</block>
   <block id="32ecc38b872b5f889b952ca26b4c9e01" category="list-text">Systèmes SAP HANA résidant sur Azure NetApp Files</block>
-  <block id="2aebd4a586327a155f5ad3b448f755af" category="doc">Déployez le plug-in SnapCenter pour SAP HANA et ajoutez des hôtes de base de données</block>
   <block id="269c48e37c80fdf85eed155628bc58de" category="inline-link-macro">Configurez sudo pour l'utilisateur SnapCenter.</block>
   <block id="b010a3fdc0e4a30de49959a04a4e75e0" category="section-title">Configurez sudo pour l'utilisateur SnapCenter</block>
   <block id="ed4c596de80903a7b24e5ada4ad1cb18" category="section-title">Ajouter des volumes globaux non-données</block>
   <block id="fcdf1a1b46f3b7e8ad6ff82010438a90" category="list-text">Prise en charge de la sauvegarde et de la restauration basées sur des règles des bases de données SAP HANA résidant sur Azure NetApp Files</block>
-  <block id="626a739569b9dd0c59a5743d227d6123" category="doc">Déployez le plug-in SnapCenter pour Oracle et ajoutez des hôtes de base de données</block>
   <block id="d2b32f39697a5b013948d2ec66933921" category="list-text">Tâche : gère les entrées détaillées des tâches dans la base de données BlueXP</block>
   <block id="608448c2576128ccc8c2f959d59e20b4" category="list-text">Exigences relatives au connecteur</block>
   <block id="c9069f67c447a0a15bda0467230c3148" category="inline-link">Déployez un connecteur dans AWS</block>
@@ -3086,8 +3067,6 @@
   <block id="c79eb0bf5a61fc9579b3f63e3958e469" category="paragraph">Vous devez créer des environnements de travail Azure NetApp Files dans lesquels vos bases de données sont hébergées. Pour plus d'informations, reportez-vous à la section <block ref="e42252aa263ed60f84feb7fdedc741c2" category="inline-link-macro-rx"></block> et <block ref="08189a1662d35a0f6c5c7b20dd7f30c3" category="inline-link-macro-rx"></block>.</block>
   <block id="0496db92b8208ffdfc7b84a2c4d6cbbb" category="paragraph">Un administrateur de compte BlueXP doit déployer un connecteur dans Azure qui permet à BlueXP de gérer les ressources et les processus dans votre environnement de cloud public.</block>
   <block id="c12c07c58c5db36f5c4864f275d4c11f" category="list-text">Vous devez utiliser le même connecteur pour gérer à la fois l'environnement de travail Azure NetApp Files et les bases de données.</block>
-  <block id="92d58d2bf7a748ab0734161ced9285dc" category="list-text">Si votre environnement de travail Azure NetApp Files et vos bases de données se trouvent dans le même cloud privé virtuel (VPC), vous pouvez déployer le connecteur dans le même VPC.</block>
-  <block id="d74e17272bd25e73d7a1c8a126a3744a" category="list-text">Si l'environnement de travail Azure NetApp Files et les bases de données se trouvent dans différents VPC et que les charges de travail NAS (NFS) sont configurées sur Azure NetApp Files, vous pouvez créer le connecteur sur l'un des VPC.</block>
   <block id="4e5ad280767f2ab5aa5de64be61d55d5" category="paragraph">Après avoir créé le connecteur, procédez comme suit :</block>
   <block id="c3b81703083be6a60b46bc530dce3152" category="paragraph">Vérifiez que le connecteur est connecté aux hôtes de base de données et à l'environnement de travail Azure NetApp Files. Le connecteur doit se connecter à l'environnement de travail Azure NetApp Files.</block>
   <block id="f20cd1b900b89f55ebfb06447e182090" category="summary">Installez le plug-in SnapCenter pour Oracle sur chacun des hôtes de base de données Oracle.</block>
@@ -3172,7 +3151,6 @@
   <block id="35d45d5c5ce076e306b520a11aca5200" category="list-text">Dans le champ clé d'accès, spécifiez la clé de chiffrement des données.</block>
   <block id="f42df8d50c905dc42d79abceb255aab1" category="list-text">Dans le champ clé secrète, spécifiez le mot de passe pour le cryptage des données.</block>
   <block id="256c6643ca1c733f72685d5a161161f5" category="section-title">14 avril 2023</block>
-  <block id="490df703588f640c6679be6bc3bfb6a8" category="section-title">Améliorations apportées à la sauvegarde et à la restauration BlueXP pour les applications (cloud natif)</block>
   <block id="c0c906f83c940d4d16ffb433d7a368ca" category="list-text">Prend en charge l'actualisation du système basée sur des scripts</block>
   <block id="b53bbb0902c6b7a25e7c1ac484d9fec2" category="list-text">Prend en charge la restauration de fichiers uniques Snapshot si la sauvegarde Azure NetApp Files est configurée</block>
   <block id="14860ef57cb4190ea449b13f7f0c8ea1" category="list-text">Prend en charge la mise à niveau du plug-in</block>
@@ -3181,7 +3159,6 @@
   <block id="d21798a5d9e370e5fbb0150023dfaa38" category="list-text">Prend en charge la restauration de la base de données Oracle à l'emplacement d'origine avec récupération granulaire</block>
   <block id="a1501619265b99c9d02aefcdb1128d6d" category="section-title">Améliorations apportées à la sauvegarde et à la restauration BlueXP pour les applications (hybride)</block>
   <block id="61d664f90cea3bf652d380cd39162905" category="list-text">La sauvegarde et la restauration BlueXP pour les applications (hybrides) sont pilotées par le plan de contrôle SaaS.</block>
-  <block id="c91aa555304f2dfcde890c20b48de4d1" category="list-text">API REST hybrides modifiées pour l'alignement avec les API cloud natives - effectué.</block>
   <block id="91dd9ae8b3342cf7e40f497897ce70d7" category="list-text">Prend en charge la notification par e-mail</block>
   <block id="b1ff80e0381bc83ddd14f54747d1f9ab" category="summary">Installez le plug-in SnapCenter pour SAP HANA sur chacun des hôtes de base de données SAP HANA.</block>
   <block id="71a4cab5aa6b73aefb296b68bc2acb46" category="doc">Installez le plug-in SnapCenter pour SAP HANA et ajoutez des hôtes de base de données</block>
@@ -3236,7 +3213,6 @@
   <block id="82079d60037e9d0df21acad72b86e52d" category="list-text">(Facultatif) Modifier l'utilisateur HDBSQL OS.</block>
   <block id="bf5b83e4fce51c42d6592beefd18ac45" category="list-text">Vous pouvez modifier ou supprimer les systèmes SAP HANA de l'interface et également à l'aide de l'API REST.</block>
   <block id="1cb5dc89376339563335539bf6e6b34f" category="paragraph">Avant de supprimer le système SAP HANA, vous devez supprimer toutes les sauvegardes associées et supprimer la protection.</block>
-  <block id="c844eed2ba93cf171bd3a9e1ed93bb68" category="list-text">Vous pouvez modifier ou supprimer les hôtes SAP HANA à l'aide de l'API REST.</block>
   <block id="ed610882a056fb1f63c13e2a503a9aad" category="paragraph">Après avoir ajouté le conteneur de base de données mutualisé ou le système SAP HANA de type conteneur unique, vous pouvez ajouter les volumes non-données du système HANA.</block>
   <block id="d9242f06d616d0d0d92448044927a033" category="paragraph">Vous pouvez ajouter ces ressources aux groupes de ressources pour effectuer des opérations de protection des données après avoir découvert les bases de données SAP HANA disponibles.</block>
   <block id="ae2f6000d9cdad6b8f7e1ca8fca0b847" category="paragraph">Après avoir ajouté le conteneur de base de données mutualisé ou le système SAP HANA de type conteneur unique, vous pouvez ajouter les volumes mondiaux non-données du système HANA.</block>
@@ -3279,7 +3255,6 @@
   <block id="d1855d4cda620fe92adb2f981fed02d4" category="list-text">Effectuez les étapes suivantes sur le connecteur pour que le connecteur puisse vérifier le certificat du plug-in.</block>
   <block id="baa45a9561ae264c9c17bfc76784fe10" category="list-text">Copiez les fichiers de l'autorité de certification racine et de l'autorité de certification intermédiaire dans le répertoire du serveur.<block ref="3a2959e990df17f13fc29e6af626f37d" prefix=" " category="inline-code"></block><block ref="568c59dff00aad73acfc6a0bba0e73f1" prefix=" " category="inline-code"></block></block>
   <block id="68553a1f6aeafb6e270057c83458f0ea" category="paragraph">Les fichiers CA doivent être au format pem.</block>
-  <block id="14343ef6b7a9ffecc00e523d714c022f" category="paragraph">Si la base de données Oracle 21c est à l'état DÉMARRÉ, l'opération de restauration échoue. Vous devez exécuter les étapes suivantes pour restaurer la base de données avec succès.<block ref="160ee41b32c5f5be43397b4b028828c5" prefix=" " category="inline-code"></block></block>
   <block id="f2a41ed5adc439ab3b0dc591d647b2c9" category="list-text">Cliquez sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> Correspondant à la base de données à restaurer et cliquez sur *Restaurer*.</block>
   <block id="9a746f42430ce856d696ca2d13f1b5f4" category="list-text">Sélectionnez le point de restauration vers lequel la base de données doit être restaurée et cliquez sur *Restaurer à l'emplacement d'origine*.</block>
   <block id="a7e4f5d7b5114b57c09100d5e6f4adbf" category="admonition">La restauration des fichiers de données avec des fichiers de contrôle ou uniquement des fichiers de contrôle pour iSCSI sur la configuration ASM et la restauration des tablespaces et des PDB ne sont pas prises en charge.</block>
@@ -3325,7 +3300,6 @@
   <block id="caf3f609386a7e9cbf196c14d7c951ff" category="list-text">Le logiciel Oracle doit être installé sur l'autre hôte.</block>
   <block id="6303e0e569ab48a5e97ac5729b7354b5" category="list-text">SC_BACKUP_NAME spécifie le nom de la sauvegarde. Ce paramètre sera renseigné pour les volumes d'application. Exemples :</block>
   <block id="fcf3dae76ca88120872e44d0e2a8632a" category="list-text">SC_TARGET_SID spécifie le SID de la base de données clonée. Pour le workflow de clonage PDB, la valeur de ce paramètre n'est pas prédéfinie. Ce paramètre sera renseigné pour les volumes d'application. Exemple : clonedb</block>
-  <block id="711a474ead316224d3300e00a237829f" category="paragraph">La sauvegarde et la restauration BlueXP pour les applications sont des services SaaS qui offrent des fonctionnalités de protection des données cohérentes au niveau des applications pour les applications qui s'exécutent sur le stockage cloud NetApp. La sauvegarde et la restauration BlueXP pour les applications assurent une protection efficace, cohérente au niveau des applications et basée sur des règles des applications suivantes :</block>
   <block id="77488205944ea72e9e23e95280d03937" category="list-text">Bases de données Oracle hébergées sur Amazon FSX pour NetApp ONTAP, Cloud Volumes ONTAP et Azure NetApp Files</block>
   <block id="19c84e82fa4984f5df63ce4f98f092e3" category="paragraph">L'architecture de Cloud Backup comprend les composants suivants :</block>
   <block id="c172c6b44294844886abdf85bca67551" category="list-text">Cloud Backup est un ensemble de services de protection des données hébergés en tant que service SaaS par NetApp et basé sur la plateforme SaaS BlueXP.</block>
@@ -3342,7 +3316,6 @@
   <block id="20d112bbc5f1942b3e0e448e4e89747a" category="list-text">Pour la haute disponibilité Cloud Volumes ONTAP, seule une des adresses IP de l'interface réseau est utilisée. Si la connectivité de l'IP est en panne ou si vous ne pouvez pas accéder à l'IP, les opérations de protection des données échouent.</block>
   <block id="7c47521b95a312ac4eb933479f7a14a8" category="list-text">Les adresses IP de l'interface réseau d'Amazon FSX pour NetApp ONTAP ou Cloud Volumes ONTAP doivent être uniques dans le compte et la région BlueXP.</block>
   <block id="a46033978f070978d19c56a083f9252f" category="sidebar">Sauvegarde et restauration des données des applications sur site</block>
-  <block id="084829803f52f86aee9d787cb2c3581d" category="sidebar">Sauvegarde et restauration des données d'applications cloud natives</block>
   <block id="691b857c2ea9a46d47730b371ae5ac4d" category="sidebar">Sauvegardez les données d'applications dans le cloud</block>
   <block id="5019db204cdfcff4225102866ab1c6bb" category="paragraph">Assurez-vous que vous avez rempli toutes les <block ref="c22fa2c0fe9f65f9b0ae3d1833efe89e" category="inline-link-macro-rx"></block> avant de sauvegarder des datastores dans le cloud.</block>
   <block id="23b39cc9d92424089210492c9ae6a9dd" category="paragraph">Assurez-vous que vous avez rempli toutes les <block ref="c22fa2c0fe9f65f9b0ae3d1833efe89e" category="inline-link-macro-rx"></block> avant de restaurer des machines virtuelles à partir du cloud.</block>
@@ -3713,7 +3686,6 @@
   <block id="70dfad9357f3b3b710b73d8eb3666851" category="paragraph">Le service de sauvegarde et de restauration BlueXP assure une protection des données efficace, sécurisée et économique pour les données NetApp ONTAP, les volumes persistants Kubernetes, les bases de données et les machines virtuelles, sur site et dans le cloud. Les sauvegardes sont automatiquement générées et stockées dans un magasin d'objets de votre compte cloud public ou privé.</block>
   <block id="9a3f2e7eb30992bb084418711e5093f2" category="doc">Gestion de la protection des données des datastores et des machines virtuelles</block>
   <block id="2131f85f2f51908e5c573c231b274f4c" category="paragraph">Vous devez vous assurer que la communication est ouverte entre le plug-in SnapCenter sur site pour l'hôte VMware vSphere qui s'exécute sur le port 8144 par défaut et l'instance de connecteur BlueXP qui peut être exécutée sur n'importe quel fournisseur cloud (Amazon Web Services, Microsoft Azure, Google Cloud Platform) ou sur site.</block>
-  <block id="de437d1f424b507f3d7be645ac0952c2" category="paragraph">La sauvegarde et la restauration BlueXP pour les machines virtuelles fournissent des fonctionnalités de protection des données en sauvegardant des datastores en restaurant des machines virtuelles.</block>
   <block id="40c5998ccd6f421d1eaa29ece0c36b59" category="paragraph">Vous pouvez sauvegarder des datastores dans Amazon Web Services S3, Microsoft Azure Blob, Google Cloud Platform et StorageGRID, et restaurer des machines virtuelles dans le plug-in SnapCenter sur site pour l'hôte VMware vSphere.</block>
   <block id="2a18af02b6c0b7e92a17df9509574f26" category="list-text">Vous devez utiliser le plug-in SnapCenter pour VMware vSphere 4.7P1 ou une version ultérieure pour sauvegarder des datastores depuis le stockage secondaire sur site.</block>
   <block id="9fe2f95002b4b4815d52173b68bf9862" category="summary">Créer une stratégie pour sauvegarder les datastores</block>
@@ -3740,4 +3712,28 @@
   <block id="b23b97d3c26b0f7e2265329756cea9ca" category="paragraph">Une fois que vous avez payé la licence et qu'elle est enregistrée sur le site de support NetApp, BlueXP met automatiquement à jour la licence dans le portefeuille digital BlueXP. La page des licences des services de données reflète le changement en 5 à 10 minutes.</block>
   <block id="858d57a70137ab2d1ecb54acde00b982" category="list-text">Dans l'onglet _Data Services Licenses_ de la page du portefeuille digital BlueXP, cliquez sur <block ref="50acd719b1954eb4890c002b3b5e71a6" category="inline-image-macro-rx" type="image"></block> Pour le numéro de série de service que vous mettez à jour, cliquez sur *mettre à jour la licence*.</block>
   <block id="59c9e6a866010a647915edad57105749" category="paragraph">Il existe dix catégories de terminaux définis dans la sauvegarde et la restauration BlueXP :</block>
+  <block id="ed9447a1f476cad2b945e6cd0c6af9f8" category="doc">Restaurez des bases de données SAP HANA cloud natives</block>
+  <block id="272ea43c17bb748acf948f028cd26513" category="summary">Créez vos propres règles pour protéger l'application.</block>
+  <block id="df0c923800c467f891c33cea961511ff" category="doc">Sauvegarde des bases de données Oracle cloud natives</block>
+  <block id="9647181c2307f39ebfee949998c189db" category="paragraph">La sauvegarde et la restauration BlueXP pour les machines virtuelles assurent la protection des données en sauvegardant les datastores et en restaurant les machines virtuelles.</block>
+  <block id="e048aa26e0a328ac61083504bfb7933c" category="doc">Clonez des bases de données Oracle cloud natives</block>
+  <block id="931e4fe861e71fa09533d16b71275f23" category="list-text">Si vous disposez de l'environnement de travail Azure NetApp Files et des bases de données sur le même réseau virtuel (vnet), vous pouvez déployer le connecteur dans le même vnet.</block>
+  <block id="31e91372a63a60de9acc2a68995fa974" category="list-text">Si l'environnement de travail Azure NetApp Files et les bases de données se trouvent dans différents réseaux virtuels et que les charges de travail NAS (NFS) sont configurées sur Azure NetApp Files, vous pouvez créer le connecteur sur l'un des réseaux virtuels.</block>
+  <block id="197747cde80c31576877de78be696240" category="section-title">Améliorations apportées à la sauvegarde et à la restauration BlueXP pour les applications (cloud natif)</block>
+  <block id="abfdb85669faee0a0fe78a3ddd25158b" category="list-text">API REST hybrides modifiées pour l'alignement avec les API cloud natives - effectué.</block>
+  <block id="6aed75aba7c0fd43b22d758888e056e5" category="list-text">Prend en charge le clonage d'une base de données Oracle cloud native</block>
+  <block id="7f7d1a32b5fedca3a771d2900e5395cd" category="section-title">La protection des données des applications cloud natives a été prise en charge</block>
+  <block id="dc553b3a8ff149a0efb878a07b9d8ec0" category="doc">Gérez la protection des données applicatives cloud</block>
+  <block id="f48626282fa7688ef2e0f91ee72f0675" category="doc">Restaurez des bases de données Oracle cloud natives</block>
+  <block id="634e2ab135fc91c3a377e944e4ac17ef" category="paragraph">Si la base de données Oracle 21c est à l'état DÉMARRÉ, l'opération de restauration échoue. Vous devez exécuter la commande suivante pour restaurer la base de données avec succès.<block ref="160ee41b32c5f5be43397b4b028828c5" prefix=" " category="inline-code"></block></block>
+  <block id="1d9ea4875c4899d53fe18b313e3814a8" category="doc">Sauvegarde des bases de données SAP HANA cloud natives</block>
+  <block id="3a462fe0425c18b634a1f644c1b6e5b0" category="inline-link">Sauvegarde intégrant la cohérence applicative avec la sauvegarde et la restauration BlueXP et SnapCenter</block>
+  <block id="d924f26cc49b9ff35abdb19f684eccab" category="list-text"><block ref="d924f26cc49b9ff35abdb19f684eccab" category="inline-link-rx"></block></block>
+  <block id="ddc4eff2345788fc606fb71155e77e08" category="inline-image-macro">Diagramme illustrant la manière dont la sauvegarde et la restauration BlueXP communiquent avec les applications sur site et le stockage de destination où se trouvent les fichiers de sauvegarde.</block>
+  <block id="5900ca7e734dbd4ebfc5c92beb6901ad" category="paragraph"><block ref="5900ca7e734dbd4ebfc5c92beb6901ad" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e2b884e233698d79dba9ae1a61ec9653" category="doc">Protégez vos données d'applications cloud natives</block>
+  <block id="eef768141b9dd395f1e8b3aeeac1b961" category="paragraph">La sauvegarde et la restauration BlueXP pour les applications sont des services SaaS qui offrent des fonctionnalités de protection des données cohérentes au niveau des applications pour les applications qui s'exécutent sur le stockage cloud NetApp. La sauvegarde et la restauration BlueXP assurent une protection efficace, cohérente au niveau des applications et basée sur des règles des applications suivantes :</block>
+  <block id="8c7c81dd2ca4a5ab651c1cfb30a19c0e" category="sidebar">Sauvegarde et restauration des données applicatives cloud</block>
+  <block id="1aac38ab9167eb6ae3a199d0a8bc7915" category="sidebar">Sauvegarde des bases de données Oracle</block>
+  <block id="7394e84832837e7d0dc503d85eb3f36c" category="sidebar">Sauvegarde des bases de données SAP HANA</block>
 </blocks>

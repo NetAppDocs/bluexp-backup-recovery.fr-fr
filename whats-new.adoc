@@ -211,7 +211,7 @@ Après avoir filtré la page surveillance des travaux pour afficher les travaux 
 ** Prend en charge la sauvegarde et la restauration basées sur des règles des bases de données Oracle résidant sur Amazon FSX pour NetApp ONTAP
 ** Prend en charge la restauration des bases de données Oracle à l'aide de la méthode de connexion et de copie
 ** Prend en charge Oracle 21c
-** Prend en charge le clonage de bases de données Oracle cloud natives
+** Prend en charge le clonage d'une base de données Oracle cloud native
 
 
 
@@ -409,7 +409,7 @@ Si le https://docs.netapp.com/us-en/cloud-manager-storagegrid/task-discover-stor
 
 
 
-=== Des fonctionnalités de prise en charge ont été ajoutées pour protéger les données d'applications cloud natives
+=== La protection des données des applications cloud natives a été prise en charge
 
 Cloud Backup pour applications est un service SaaS qui fournit des fonctionnalités de protection des données pour les applications exécutées sur NetApp Cloud Storage. Cloud Backup pour les applications activées dans BlueXP offre des sauvegardes et des restaurations efficaces et cohérentes avec les applications, basées sur des règles, de bases de données Oracle résidant sur Amazon FSX pour NetApp ONTAP.https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-protect-cloud-app-data-to-cloud.html["En savoir plus >>"^].
 

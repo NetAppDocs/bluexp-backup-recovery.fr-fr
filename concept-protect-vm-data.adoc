@@ -14,7 +14,7 @@ summary: Apprenez-en plus sur la protection des données sur vos machines virtue
 
 
 [role="lead"]
-La sauvegarde et la restauration BlueXP pour les machines virtuelles fournissent des fonctionnalités de protection des données en sauvegardant des datastores en restaurant des machines virtuelles.
+La sauvegarde et la restauration BlueXP pour les machines virtuelles assurent la protection des données en sauvegardant les datastores et en restaurant les machines virtuelles.
 
 Vous pouvez sauvegarder des datastores dans Amazon Web Services S3, Microsoft Azure Blob, Google Cloud Platform et StorageGRID, et restaurer des machines virtuelles dans le plug-in SnapCenter sur site pour l'hôte VMware vSphere.
 
