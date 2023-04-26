@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: concept-protect-cloud-app-data-to-cloud.html 
-keywords: backing up, back up, backup, backup application data, Amazon EC2, Amazon Web services, Amazon FSx, Cloud Backup, Oracle database, requirements, prerequisites, Cloud Volumes ONTAP, Cloud Manager, BlueXP, cloud backup 
+keywords: backing up, back up, backup, backup application data, Amazon EC2, Amazon Web services, Amazon FSx, Oracle database, requirements, prerequisites, Cloud Volumes ONTAP, Cloud Manager, BlueXP 
 summary: BlueXP offre des sauvegardes, des sauvegardes et des restaurations efficaces et cohérentes avec les applications, basées sur des règles, et des restaurations de bases de données Oracle® résidant sur Amazon FSX pour NetApp ONTAP ou Cloud Volumes ONTAP. 
 ---
 = Protégez vos données d'applications cloud natives
@@ -24,13 +24,13 @@ La sauvegarde et la restauration BlueXP pour les applications sont des services 
 
 == Architecture
 
-L'architecture de Cloud Backup comprend les composants suivants :
+L'architecture de sauvegarde et de restauration BlueXP pour les applications inclut les composants suivants.
 
-* Cloud Backup est un ensemble de services de protection des données hébergés en tant que service SaaS par NetApp et basé sur la plateforme SaaS BlueXP.
+* La sauvegarde et la restauration BlueXP sont un ensemble de services de protection des données hébergés en tant que service SaaS par NetApp et basés sur la plateforme SaaS BlueXP.
 +
 Il orchestre les workflows de protection des données pour les applications qui résident sur NetApp Cloud Storage.
 
-* L'interface utilisateur de Cloud Backup offre des fonctionnalités de protection des données pour les applications. Elle est accessible depuis l'interface utilisateur BlueXP.
+* L'interface utilisateur BlueXP offre des fonctionnalités de protection des données pour les applications. Elle est accessible depuis l'interface utilisateur BlueXP.
 * BlueXP Connector est un composant qui s'exécute dans votre réseau cloud et interagit avec les systèmes de stockage et les plug-ins spécifiques aux applications.
 * Le plug-in spécifique aux applications est un composant qui s'exécute sur chaque hôte d'application. Il interagit avec les bases de données exécutées sur l'hôte tout en exécutant les opérations de protection des données.
 
@@ -39,7 +39,7 @@ L'image suivante montre chaque composant et les connexions que vous devez prépa
 
 image:diagram_nativecloud_backup_app.png["Un diagramme montrant comment chaque composant et les connexions doivent être préparés."]
 
-Pour toute demande initiée par l'utilisateur, l'interface utilisateur de Cloud Backup communique avec le service SaaS BlueXP qui, lors de la validation, traite la demande de la même manière. Si la demande consiste à exécuter un workflow tel qu'une sauvegarde, une restauration ou un clone, le service SaaS lance le workflow et, le cas échéant, transmet l'appel au connecteur BlueXP. Le connecteur communique ensuite avec le système de stockage et le plug-in spécifique à l'application dans le cadre de l'exécution des tâches du flux de travail.
+Pour toute demande initiée par l'utilisateur, l'interface utilisateur BlueXP communique avec le service SaaS BlueXP qui, lors de la validation, traite la demande de la même manière. Si la demande consiste à exécuter un workflow tel qu'une sauvegarde, une restauration ou un clone, le service SaaS lance le workflow et, le cas échéant, transmet l'appel au connecteur BlueXP. Le connecteur communique ensuite avec le système de stockage et le plug-in spécifique à l'application dans le cadre de l'exécution des tâches du flux de travail.
 
 Le connecteur peut être déployé dans le même VPC ou dans le même vnet que celui des applications, ou dans un autre. Si le connecteur et les applications se trouvent sur un autre réseau, vous devez établir une connectivité réseau entre eux.
 
@@ -47,7 +47,7 @@ Le connecteur peut être déployé dans le même VPC ou dans le même vnet que c
 NOTE: Un connecteur BlueXP unique peut communiquer avec plusieurs systèmes de stockage et plusieurs plug-ins d'applications. Vous aurez besoin d'un connecteur unique pour gérer vos applications tant que la connectivité entre le connecteur et les hôtes d'application est disponible.
 
 
-IMPORTANT: L'infrastructure SaaS de Cloud Backup est résiliente aux défaillances des zones de disponibilité dans une région. Il prend en charge les défaillances régionales en effectuant le basculement vers une nouvelle région et ce basculement implique une interruption de l'activité d'environ 2 heures.
+IMPORTANT: L'infrastructure SaaS BlueXP est résiliente aux défaillances des zones de disponibilité dans une région. Il prend en charge les défaillances régionales en effectuant le basculement vers une nouvelle région et ce basculement implique une interruption de l'activité d'environ 2 heures.
 
 
 
