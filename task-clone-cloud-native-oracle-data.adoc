@@ -14,7 +14,7 @@ summary: 'Cloner la base de données sur l"hôte source ou un autre hôte.'
 
 
 [role="lead"]
-Vous pouvez cloner une base de données Oracle à l'aide de la sauvegarde de la base de données sur l'hôte de la base de données source ou sur un autre hôte.
+Vous pouvez cloner une base de données Oracle résidant sur Amazon FSX pour NetApp ONTAP ou Cloud Volumes ONTAP en utilisant la sauvegarde de la base de données soit sur l'hôte de base de données source, soit sur un autre hôte.
 
 Il est possible de cloner des bases de données pour les raisons suivantes :
 

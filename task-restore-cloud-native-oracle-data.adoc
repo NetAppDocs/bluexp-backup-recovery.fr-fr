@@ -55,7 +55,7 @@ Sélectionnez *tous les fichiers de données* et *fichiers de contrôle*.
 Vous pouvez également sélectionner la case à cocher *forcer la restauration sur place*.
 
 +
-Dans la disposition SAN, si le plug-in SnapCenter pour Oracle trouve des fichiers étrangers autres que les fichiers de données Oracle sur le groupe de disques ASM, la méthode de restauration de connexion et de copie est exécutée. Les fichiers étrangers peuvent être de type un ou plusieurs des types suivants :
+Dans l'infrastructure SAN d'Amazon FSX pour NetApp ONTAP ou de Cloud Volumes ONTAP, si le plug-in SnapCenter pour Oracle trouve des fichiers étrangers autres que les fichiers de données Oracle sur le groupe de disques ASM, la méthode de connexion et de restauration des copies est exécutée. Les fichiers étrangers peuvent être de type un ou plusieurs des types suivants :
 
 +
 ** Paramètre

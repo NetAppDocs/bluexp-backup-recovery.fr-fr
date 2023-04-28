@@ -14,7 +14,7 @@ summary: Description des concepts liés au clonage avant de cloner la base de do
 
 
 [role="lead"]
-Vous pouvez cloner une base de données Oracle à l'aide de la sauvegarde de la base de données sur l'hôte de la base de données source ou sur un autre hôte. Vous pouvez cloner la sauvegarde à partir de systèmes de stockage primaires.
+Vous pouvez cloner une base de données Oracle résidant sur Amazon FSX pour NetApp ONTAP ou Cloud Volumes ONTAP en utilisant la sauvegarde de la base de données soit sur l'hôte de base de données source, soit sur un autre hôte. Vous pouvez cloner la sauvegarde à partir de systèmes de stockage primaires.
 
 Avant de cloner la base de données, vous devez comprendre les concepts de clonage et vous assurer que toutes les exigences sont respectées.
 
@@ -53,6 +53,7 @@ Avant de cloner une base de données Oracle, vous devez vous assurer que les pr�
 
 == Limites
 
+* Le clonage des bases de données résidant sur Azure NetApp Files n'est pas pris en charge.
 * Le clonage des bases de données résidant sur qtree n'est pas pris en charge.
 * La sauvegarde d'une base de données clonée n'est pas prise en charge.
 

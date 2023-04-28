@@ -172,18 +172,9 @@ Le fichier binaire du plug-in est disponible à l'adresse suivante : _cd /var/li
 . Redémarrer SPL : `systemctl restart spl`
 . Vérifier que le plug-in est accessible depuis le connecteur en exécutant la commande ci-dessous à partir du connecteur.
 `docker exec -it cloudmanager_scs_cloud curl -ik \https://<FQDN or IP of the plug-in host>:<plug-in port>/PluginService/Version --cert  config/client/certificate/certificate.pem --key /config/client/certificate/key.pem`
-. Passez en revue les détails et cliquez sur *découvrir les applications*.
-+
-** Affiche toutes les bases de données sur l'hôte.
-** Cliquez sur *Paramètres* et sélectionnez *hôtes* pour afficher tous les hôtes.
-+
-
-NOTE: Le filtre permettant d'afficher un hôte spécifique ne fonctionne pas. Lorsque vous spécifiez un nom d'hôte dans le filtre, tous les hôtes sont affichés.
-
-** Cliquez sur *Paramètres* et sélectionnez *stratégies* pour afficher les stratégies prédéfinies. Examinez les règles prédéfinies et vous pouvez les modifier pour répondre à vos besoins ou créer une nouvelle police.
 
 
-
+Après avoir installé le plug-in, vous devez <<Ajouter des hôtes de base de données SAP HANA>>.
 
 
 
@@ -248,8 +239,6 @@ Accédez à la page *Canvas* pour ajouter un nouvel environnement de travail
 
 
 NOTE: Le filtre permettant d'afficher un hôte spécifique ne fonctionne pas. Lorsque vous spécifiez un nom d'hôte dans le filtre, tous les hôtes sont affichés.
-
-*Quoi de neuf*
 
 Vous pouvez modifier ou supprimer les systèmes SAP HANA de l'interface et également à l'aide de l'API REST.
 

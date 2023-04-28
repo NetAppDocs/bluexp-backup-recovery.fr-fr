@@ -59,7 +59,7 @@ IMPORTANT: L'infrastructure SaaS BlueXP est résiliente aux défaillances des zo
 
 * Ajoutez de l'hôte et déployez le plug-in
 +
-Vous pouvez déployer le plug-in manuellement, à l'aide d'un script ou automatiquement.
+Vous pouvez déployer le plug-in à l'aide de l'interface utilisateur, du script ou manuellement.
 
 * Découverte automatique des bases de données Oracle
 * Sauvegarde des bases de données Oracle hébergées sur Amazon FSX pour NetApp ONTAP, Cloud Volumes ONTAP et Azure NetApp Files

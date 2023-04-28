@@ -998,7 +998,6 @@
   <block id="2dbc045edb5a2f6faf0c411d7f5f750f" category="list-text">Envoi d'alertes par e-mail</block>
   <block id="9c1f3568b85ef3ac4da7fc528340d6ba" category="list-text">Ne prend pas en charge Oracle sur RAC et Data Guard</block>
   <block id="5a9da4bd1ffdd301898f827c866a6242" category="list-text">Ne prend pas en charge les snapshots de groupes de cohérence pour les bases de données Oracle résidant sur plusieurs groupes de disques ASM avec chevauchement des volumes FSX</block>
-  <block id="ce28a32d76b140c048ecb6813395af67" category="list-text">Si vos bases de données Oracle sont configurées sur ASM, assurez-vous que les noms de vos SVM sont uniques sur les systèmes FSX. Si vous disposez du même nom de SVM sur les systèmes FSX, la sauvegarde des bases de données Oracle résidant sur ces SVM ne est pas prise en charge.</block>
   <block id="83f499a540b1323009c200d6f8cc9396" category="list-text">Paramètre</block>
   <block id="dc647eb65e6711e155375218212b3964" category="list-text">Mot de passe</block>
   <block id="9358ddcf018549ad07e3696f1dff8b4c" category="list-text">journal d'archivage</block>
@@ -1394,7 +1393,6 @@
   <block id="098e4b45417a1ec0fafb90bed28e6424" category="paragraph">Les sauvegardes seront créées conformément à la planification définie dans la stratégie.</block>
   <block id="556daa2892e6c333b040f2f9ed98a222" category="paragraph">Après avoir affecté la stratégie, vous pouvez créer une sauvegarde à la demande de l'application.</block>
   <block id="ca46a9979585fdf43309efe203535615" category="list-text">Dans la page applications, cliquez sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> Correspondant à l'application et cliquer sur *On-Demand Backup*.</block>
-  <block id="7fd7a0a5300dbc1f2454a34738c54d80" category="list-text">Si plusieurs stratégies sont affectées à l'application, sélectionnez la stratégie, la valeur de conservation, puis cliquez sur *Créer une sauvegarde*.</block>
   <block id="fe0a0332700b9a067272058245b48946" category="inline-link">Opération de snapshot non autorisée en raison de clones sauvegardés par des snapshots</block>
   <block id="d78d082537913dac6697dabddff374dc" category="paragraph">Pour plus d'informations sur la façon de résoudre ce problème, reportez-vous à :<block ref="66c6329b50c8e15e4ce55612532f0653" category="inline-link-rx"></block>.</block>
   <block id="8a4528cef726e4e36a30d918236162fc" category="doc">Créez une règle pour sauvegarder les applications</block>
@@ -1558,8 +1556,6 @@
   <block id="ca8f6fdf6612f39d01c4ba19ddfa9742" category="list-text">Assurez-vous que l'utilisateur BlueXP a le rôle "Admin compte".</block>
   <block id="d59048f21fd887ad520398ce677be586" category="inline-link-macro">En savoir plus &gt;&gt;</block>
   <block id="d20aa4d7347d2818451332f0d49b2253" category="list-text">Sélectionnez *Cloud Native* et cliquez sur *Next*.</block>
-  <block id="63000a0fa2dbdc9bced04917b9fb5014" category="paragraph">Un compte de service avec le rôle _SnapCenter System_ est créé pour exécuter des opérations de protection des données planifiées pour tous les utilisateurs de ce compte.</block>
-  <block id="2f1527fabf6b15b2c246b08aca9ef8a4" category="list-text">Cliquez sur *compte* &gt; *gérer compte* &gt; *membres* pour afficher le compte de service.</block>
   <block id="fd9cc0fdcc5cde5efec19c54d871da3a" category="section-title">Configurer les informations d'identification de la base de données Oracle</block>
   <block id="8c204149f6ffccc490e6b851431463a6" category="paragraph">L'utilisateur Oracle doit disposer des privilèges sysdba et l'utilisateur ASM doit disposer des privilèges sysasm.</block>
   <block id="3b5c5ae54533da138be94559c533a510" category="list-text">Cliquez sur *configurer*.</block>
@@ -2187,7 +2183,6 @@
   <block id="8e21c62b69b7c01b40ec93ceb9c4b5cd" category="list-text">Prise en charge de Google Cloud Platform (GCP) pour sauvegarder un ou plusieurs datastores</block>
   <block id="6480beff3c438303fc8c6d8b4009f381" category="list-text">Prise en charge d'un stockage cloud à faible coût comme Glacier, Deep Glacier et Azure Archive</block>
   <block id="4dbebe33c4927d0c2034e3f9d520ba42" category="summary">Cloner la base de données sur l'hôte source ou un autre hôte.</block>
-  <block id="0b5992955627a4d221dfaf4d434b9596" category="paragraph">Vous pouvez cloner une base de données Oracle à l'aide de la sauvegarde de la base de données sur l'hôte de la base de données source ou sur un autre hôte.</block>
   <block id="91af1a160d0e82dc6915ed84b13cb026" category="paragraph">Il est possible de cloner des bases de données pour les raisons suivantes :</block>
   <block id="f808e6b1f9f18d3401fa365d39ab80f4" category="list-text">Afin de tester les fonctionnalités qui doivent être implémentées à l'aide de la structure et du contenu de la base de données en cours au cours des cycles de développement d'applications.</block>
   <block id="13cbbb0028f34d717a11d65823bd8d4e" category="list-text">Pour renseigner les data warehouses à l'aide d'outils d'extraction et de manipulation de données.</block>
@@ -2212,11 +2207,9 @@
   <block id="b44a2ec7d100bd7fbbcef764a835ae72" category="paragraph">Si vous sélectionnez *généré automatiquement*, vous devez spécifier le suffixe.</block>
   <block id="01fc6bc870eb60d107c41c724b7c0f61" category="list-text">Modifiez le fichier de spécifications selon les besoins et téléchargez-le en cliquant sur le bouton *Parcourir*.</block>
   <block id="46630b95005d23b3ccd9d9af01eed5bc" category="list-text">Cliquez sur <block ref="b7288b7453abfa8f93e33ab940aa7109" category="inline-image-macro-rx" type="image"></block> À côté de *Filter by* et sélectionnez *Clone options* &gt; *clones* pour afficher les clones.</block>
-  <block id="72ec364974b7acfa78aac57b443cca2c" category="paragraph">Dans la disposition SAN, si le plug-in SnapCenter pour Oracle trouve des fichiers étrangers autres que les fichiers de données Oracle sur le groupe de disques ASM, la méthode de restauration de connexion et de copie est exécutée. Les fichiers étrangers peuvent être de type un ou plusieurs des types suivants :</block>
   <block id="69eb10e6fd10e7913d2a8eeccd333a93" category="paragraph">L'option *forcer la restauration sur place* remplace le paramètre de type, le mot de passe et le journal d'archivage des fichiers étrangers. Vous devez utiliser la dernière sauvegarde lorsque l'option * forcer la restauration sur place* est sélectionnée.</block>
   <block id="09685971b3e1f16bca6b8635b76dffd8" category="summary">Description des concepts liés au clonage avant de cloner la base de données</block>
   <block id="a8f2e4a80d44f8a4e219ce28808a0be5" category="doc">Concepts et conditions de clonage</block>
-  <block id="c1dadedda11f09139fb7ac18e939f6bf" category="paragraph">Vous pouvez cloner une base de données Oracle à l'aide de la sauvegarde de la base de données sur l'hôte de la base de données source ou sur un autre hôte. Vous pouvez cloner la sauvegarde à partir de systèmes de stockage primaires.</block>
   <block id="e92f2ac4c03e2f08faf6ebb74ac92b92" category="paragraph">Avant de cloner la base de données, vous devez comprendre les concepts de clonage et vous assurer que toutes les exigences sont respectées.</block>
   <block id="c3f3510a6fc8f24504e19e3fa075dcd8" category="section-title">Conditions requises pour le clonage d'une base de données Oracle</block>
   <block id="23257e3404df9a371ee4e65b5f6db441" category="paragraph">Avant de cloner une base de données Oracle, vous devez vous assurer que les prérequis sont terminés.</block>
@@ -2409,7 +2402,6 @@
   <block id="3c384d2eeea22869be9b66e36dec9d6e" category="list-text">Cliquez sur *Créer une sauvegarde*.</block>
   <block id="031ed57adfb7acf180fc66b9bac25dcf" category="paragraph">Avant d'ajouter l'hôte, vous devez vous assurer que les prérequis sont respectés.</block>
   <block id="00346be4bfc4c310cf2dbead933dff7c" category="list-text">Vous devriez avoir créé l'environnement de travail et le connecteur.</block>
-  <block id="150cd80aa8da7e8a0e1532db17acbab2" category="list-text">Assurez-vous que le connecteur est connecté à l'environnement de travail et aux hôtes de la base de données Oracle.</block>
   <block id="b3a8552d8ed438ec3ca2f066908ea2d4" category="list-text">Assurez-vous que Java 11 (64 bits) Oracle Java ou OpenJDK est installé sur chacun des hôtes de base de données Oracle et QUE LA variable JAVA_HOME est correctement définie.</block>
   <block id="e4bed981c8dc4fe15a706f0b93160836" category="list-text">Dans l'interface utilisateur BlueXP, cliquez sur *protection* &gt; *sauvegarde et récupération* &gt; *applications*.</block>
   <block id="f56876c150285cea7b724cbb95594046" category="list-text">Sélectionnez *Manuel*.</block>
@@ -2479,7 +2471,6 @@
   <block id="8b53faee27870b72e0be69261d54a7ee" category="inline-link-macro">Découvrez Azure NetApp Files</block>
   <block id="c5c12e22be965b4ae0e9fc5e1618bdbe" category="inline-link-macro">Créer un environnement de travail Azure NetApp Files</block>
   <block id="e7a9cd1dc4bf0c230d0684e18369d70d" category="section-title">Créer un connecteur</block>
-  <block id="bca25b5056d8715db55e6e28a72ddea0" category="admonition">Vous ne pouvez pas mettre à jour le nouvel ID_connecteur à partir de l'interface utilisateur.</block>
   <block id="e12fb4f30abef516bf6f5e0e9a5b72b7" category="inline-link-macro">Créez un connecteur dans Azure à partir de BlueXP</block>
   <block id="3717a56f9d9c162dfd0127cd325c0a2f" category="paragraph">Pour plus d'informations, reportez-vous à la section <block ref="88ddfb8e0cf0e729a2d90f978111b93e" category="inline-link-macro-rx"></block>.</block>
   <block id="ecada0c15940b97b88394b4302d947ef" category="section-title">Données d'audit</block>
@@ -3022,7 +3013,6 @@
   <block id="bd6b9b974238317f7f6890d2738ba393" category="list-text">(Facultatif) Entrez le chemin d'accès et le délai d'expiration du post-script qui seront exécutés après la sauvegarde réussie pour copier le snapshot sur le stockage secondaire.</block>
   <block id="48b220d743ecd4aed0830258fdd63841" category="paragraph">Vous pouvez également spécifier les arguments.</block>
   <block id="0087a5b2d25d52f6c7c03528cde33505" category="paragraph">Vous devez conserver les post-scripts dans le chemin _/var/opt/snapcenter/spl/scripts_.</block>
-  <block id="23860f3af5566cf82b45a68730c646e8" category="paragraph">Les variables d'environnement prises en charge sont les suivantes :</block>
   <block id="796c6a969f63d0d2aa5f429cbcc0c0c2" category="paragraph">SC_ORACLE_SID</block>
   <block id="e6847fe2e52a74d36f59cd45957ecc67" category="paragraph">Spécifie le SID de la base de données Oracle.</block>
   <block id="b836a82d48f59d563db93d0e85da779f" category="paragraph">SC_HÔTE</block>
@@ -3036,7 +3026,6 @@
   <block id="6e794ea51a25be446f20e9a702898008" category="paragraph">SC_PRIMARY_ARCHIVELOGS_VOLUME_FULL_PATH</block>
   <block id="b6413db558b7e51cd7ad505a279d46a4" category="paragraph">Spécifie les chemins du volume du journal d'archives concaténés avec "," comme délimiteur. Pour les volumes ANF, les informations concaténées avec « / » _/{anfaccount}/{subscription_ID}/{Resource_group}/{Capacity_pool}/{volumname}_</block>
   <block id="282c0097d05b4ae7f669fd32d1e62f62" category="paragraph">Vous pouvez affecter une règle prédéfinie ou créer une règle, puis l'affecter à la base de données. Une fois la stratégie attribuée, les sauvegardes sont créées conformément au planning défini dans la stratégie.</block>
-  <block id="fd555d425dfd5a31e3196f51ea2a48f7" category="admonition">Pour Oracle, lors de la création de groupes de disques ASM, assurez-vous qu'il n'y a pas de volumes communs entre les groupes de disques. Chaque groupe de disques doit avoir des volumes dédiés.</block>
   <block id="73eca09a61282d51974dd261aba5d480" category="admonition">Le compte de service (_SnapCenter-account-&lt;account_id&gt;_) est utilisé pour exécuter les opérations de sauvegarde planifiées.</block>
   <block id="40b3d494e45d44ea05a121d23431903f" category="list-text">Après la restauration d'une base de données volumineuse (250 Go ou plus), si vous effectuez une sauvegarde en ligne complète sur la même base de données, l'opération risque d'échouer avec l'erreur suivante :<block ref="2cdd9c86da283a1b59e3d14b0893d8e8" prefix=" " category="inline-code"></block></block>
   <block id="ac8c3a3255453cd8c7fd18de87c8ff71" category="paragraph">Vous devez comprendre les concepts de clonage et vous assurer que toutes les conditions sont remplies. <block ref="a2073481d9155048f35e591f7a25e6c2" category="inline-link-macro-rx"></block>.</block>
@@ -3056,9 +3045,6 @@
   <block id="bfc753d118aff511e46dfe2d0d56a3d2" category="paragraph">Avec BlueXP, vous devez créer un environnement de travail Azure NetApp Files pour ajouter et gérer des volumes et des services de données supplémentaires. Vous devez également créer un connecteur dans Azure permettant à BlueXP de gérer les ressources et les processus dans votre environnement de cloud public.</block>
   <block id="c79eb0bf5a61fc9579b3f63e3958e469" category="paragraph">Vous devez créer des environnements de travail Azure NetApp Files dans lesquels vos bases de données sont hébergées. Pour plus d'informations, reportez-vous à la section <block ref="e42252aa263ed60f84feb7fdedc741c2" category="inline-link-macro-rx"></block> et <block ref="08189a1662d35a0f6c5c7b20dd7f30c3" category="inline-link-macro-rx"></block>.</block>
   <block id="0496db92b8208ffdfc7b84a2c4d6cbbb" category="paragraph">Un administrateur de compte BlueXP doit déployer un connecteur dans Azure qui permet à BlueXP de gérer les ressources et les processus dans votre environnement de cloud public.</block>
-  <block id="c12c07c58c5db36f5c4864f275d4c11f" category="list-text">Vous devez utiliser le même connecteur pour gérer à la fois l'environnement de travail Azure NetApp Files et les bases de données.</block>
-  <block id="4e5ad280767f2ab5aa5de64be61d55d5" category="paragraph">Après avoir créé le connecteur, procédez comme suit :</block>
-  <block id="c3b81703083be6a60b46bc530dce3152" category="paragraph">Vérifiez que le connecteur est connecté aux hôtes de base de données et à l'environnement de travail Azure NetApp Files. Le connecteur doit se connecter à l'environnement de travail Azure NetApp Files.</block>
   <block id="f20cd1b900b89f55ebfb06447e182090" category="summary">Installez le plug-in SnapCenter pour Oracle sur chacun des hôtes de base de données Oracle.</block>
   <block id="26e69212cf0e8683966f91f304e90a98" category="doc">Installez le plug-in SnapCenter pour Oracle et ajoutez des hôtes de base de données</block>
   <block id="b3bc75275539de4c7c9d62e8364e4698" category="paragraph">Vous devez installer le plug-in SnapCenter pour Oracle sur chacun des hôtes de base de données Oracle, ajouter les hôtes de base de données et découvrir les bases de données sur l'hôte pour attribuer des règles et créer des sauvegardes.</block>
@@ -3073,10 +3059,8 @@
   <block id="507e787ab87729c96069cca23ba24e92" category="list-text">Assurez-vous que la communication du connecteur est activée sur le port SSH (par défaut : 22) si l'installation basée sur SSH est effectuée.</block>
   <block id="80183b0faac90d1603b69ce622639607" category="list-text">Assurez-vous que la communication du connecteur est activée sur le port enfichable (par défaut : 8145) pour que les opérations de protection des données fonctionnent.</block>
   <block id="7511aa13d7d189dddc8a55106006eb81" category="list-text">Assurez-vous que la dernière version du plug-in est installée. Pour mettre à niveau le plug-in, reportez-vous à la section <block ref="f4801fc9ac5cef6e84f5ccd941a446f5" category="inline-xref-macro-rx"></block>.</block>
-  <block id="c94b040585a0fd09dcf4ba562ae9a451" category="list-text">Créez un compte non racine (sudo) sur l'hôte d'application.</block>
   <block id="8d712ae59e7b52313405b12d4ac747e6" category="section-title">Ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option SSH</block>
   <block id="f871153c2705cc6ed8b2445320a7f421" category="paragraph">Si vous avez déjà ajouté un hôte et souhaitez en ajouter un autre, cliquez sur *applications* &gt; *gérer les bases de données* &gt; *Ajouter*, puis passez à l'étape 5.</block>
-  <block id="812ba7d6c9b47612a180dd7c3e3cee5d" category="admonition">Le compte de service (_SnapCenter-account-&lt;accountid&gt;_) est utilisé pour exécuter les opérations de sauvegarde planifiées. Vous ne devez jamais supprimer le compte de service.</block>
   <block id="8ce23831d777bcd15c476479cb76ef5a" category="list-text">Sélectionnez Oracle comme type d'application.</block>
   <block id="d547b4e7fc3ca031faa176c2cbc960d7" category="list-text">Dans la page Détails de l'hôte, effectuez les opérations suivantes :</block>
   <block id="dd6c5d008ff8b633cdaa9ce237fb10c0" category="list-text">Spécifiez l'utilisateur non-root(sudo) utilisant lequel le module de plug-in sera copié sur l'hôte.</block>
@@ -3087,8 +3071,6 @@
   <block id="9d678ee764b7490535279d100a47d199" category="list-text">Configurez l'accès sudo pour l'utilisateur non-root (sudo) en copiant le texte dans _/etc/sudoers.d/snapcenter_ file.</block>
   <block id="84c043b7279ff048da6eac17746b54d4" category="list-text">Cochez la case et cliquez sur *Suivant*.</block>
   <block id="4e97b087f72ed090d712d63c6464209a" category="list-text">Passez en revue les détails et cliquez sur *découvrir les applications*.</block>
-  <block id="25cf278376db2327da12f70ef0107fd6" category="list-text">Une fois le plug-in installé, l'opération de découverte démarre. Vous pouvez contrôler le travail d'installation à partir de la page *surveillance des travaux*.</block>
-  <block id="b2f3faca8e09846774279c1744792a8e" category="list-text">Affiche toutes les bases de données sur l'hôte. Si l'authentification du système d'exploitation est désactivée pour la base de données, cliquez sur *configurer* pour activer l'authentification de la base de données. Pour plus d'informations, reportez-vous à la section <block ref="eb69440615f98753d53a91f4eeab39c2" category="inline-xref-macro-rx"></block>.</block>
   <block id="3ab2f91e027d82cf137fafc5ba1fad46" category="list-text">Cliquez sur *Paramètres* et sélectionnez *hôtes* pour afficher tous les hôtes.</block>
   <block id="3861ca484ceba1ec4fe010195ae2a99f" category="list-text">Cliquez sur *Paramètres* et sélectionnez *stratégies* pour afficher les stratégies prédéfinies. Examinez les règles prédéfinies et vous pouvez les modifier pour répondre à vos besoins ou créer une nouvelle police.</block>
   <block id="f76505761d1d589d9c44949c0e7cf701" category="section-title">Installez le plug-in à l'aide du script et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle</block>
@@ -3099,11 +3081,6 @@
   <block id="fa431b57e169cccce6b5507d5005b77b" category="list-text">Cochez la case pour confirmer que le plug-in est installé sur l'hôte.</block>
   <block id="ad4653d249b9408ab0eaa97a7af2527e" category="list-text">Configurez l'accès sudo pour l'utilisateur SnapCenter en copiant le texte vers<block ref="3b1b032b2f0ec7f73656946ca555b180" prefix=" " category="inline-code"></block> fichier.</block>
   <block id="f37865521ab3241e236d5e5588a5f489" category="list-text">Installez le plug-in à l'aide du script fourni dans le connecteur.<block ref="ec229264169d10e0e522b26e5b6bac24" prefix=" " category="inline-code"></block></block>
-  <block id="9b1fd3f185c7ac3bb3e56edb0165c2ab" category="list-text">Plugin_host est le nom de l'hôte Oracle et il s'agit d'un paramètre obligatoire.</block>
-  <block id="a477ca24ed05f1b396469208312acba0" category="list-text">Host_User_NAME est l'utilisateur SnapCenter disposant de privilèges SSH sur l'hôte Oracle et il s'agit d'un paramètre obligatoire.</block>
-  <block id="e8c1b5122acc511a29d37bca512e3abe" category="list-text">Host_ssh_Key est la clé SSH de l'utilisateur SnapCenter et utilisée pour se connecter à l'hôte Oracle. Ce paramètre est obligatoire.</block>
-  <block id="a0339f317407dd9857ff7244f010da2d" category="list-text">plugin_port est le port utilisé par le plug-in et il s'agit d'un paramètre facultatif. La valeur par défaut est 8145</block>
-  <block id="956569d2aaba82775e19519768e064d0" category="list-text">Host_ssh_port est le port SSH de l'hôte Oracle et il s'agit d'un paramètre facultatif. La valeur par défaut est 22</block>
   <block id="f6118d5df254d948596a2eecbde7e309" category="paragraph">Par exemple :<block ref="7b32029ad907f40b39cdf7478e332d44" prefix=" " category="inline-code"></block></block>
   <block id="d39ba700b9d69e7870b27c911202c044" category="section-title">Installez le plug-in manuellement et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle</block>
   <block id="1959cd86803d27b479ab4dc0fdcc5d6f" category="paragraph">Si l'authentification basée sur une clé SSH n'est pas activée sur l'hôte de base de données Oracle, vous devez effectuer les étapes manuelles suivantes pour installer le plug-in, puis ajouter l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle.</block>
@@ -3196,7 +3173,6 @@
   <block id="d9131e642bd13895061267ad9fffc9a5" category="list-text">Connectez-vous à l'hôte de base de données SAP HANA à l'aide du compte non-root (sudo).</block>
   <block id="51b1fb7b1bdae329f09c9b8792885b98" category="list-text">Installez le plug-in SAP HANA en tant qu'utilisateur sudo SnapCenter.<block ref="f11871e64bd259821edac15d21de1875" prefix=" " category="inline-code"></block></block>
   <block id="068cd4e748a79c660306283ed1aed4cc" category="list-text">Vérifier que le plug-in est accessible depuis le connecteur en exécutant la commande ci-dessous à partir du connecteur.<block ref="24a2bd3e35bb25d97efe8045b984e5a8" prefix=" " category="inline-code"></block></block>
-  <block id="e89f98c04aaa04f0ae4d5a01094a4be3" category="list-text">Affiche toutes les bases de données sur l'hôte.</block>
   <block id="822058ba42fc85efab976ebaa9802beb" category="section-title">Mettez à niveau le plug-in SnapCenter pour les bases de données SAP HANA</block>
   <block id="f35f5a5ebccba047b1925b74505fdfbe" category="paragraph">Vous devez mettre à niveau le plug-in SnapCenter pour la base de données SAP HANA pour accéder aux nouvelles fonctionnalités et améliorations les plus récentes.</block>
   <block id="6c2313e6302e3ddccaf89724b45a5b06" category="list-text">Exécutez le script suivant.<block ref="9a9e1cb603fe75305e4d36be20ae9261" prefix=" " category="inline-code"></block></block>
@@ -3291,7 +3267,6 @@
   <block id="fcf3dae76ca88120872e44d0e2a8632a" category="list-text">SC_TARGET_SID spécifie le SID de la base de données clonée. Pour le workflow de clonage PDB, la valeur de ce paramètre n'est pas prédéfinie. Ce paramètre sera renseigné pour les volumes d'application. Exemple : clonedb</block>
   <block id="77488205944ea72e9e23e95280d03937" category="list-text">Bases de données Oracle hébergées sur Amazon FSX pour NetApp ONTAP, Cloud Volumes ONTAP et Azure NetApp Files</block>
   <block id="ca8bb01c601877e87fd9c90bc1063d4e" category="list-text">BlueXP Connector est un composant qui s'exécute dans votre réseau cloud et interagit avec les systèmes de stockage et les plug-ins spécifiques aux applications.</block>
-  <block id="16c125a4350a830ef25b444e7c8e77ae" category="paragraph">Vous pouvez déployer le plug-in manuellement, à l'aide d'un script ou automatiquement.</block>
   <block id="2883368889244856ee2153e7da94f334" category="list-text">Sauvegarde des bases de données Oracle hébergées sur Amazon FSX pour NetApp ONTAP, Cloud Volumes ONTAP et Azure NetApp Files</block>
   <block id="d8d6e412c9a8b94c54f1f0b85341ce79" category="paragraph">Vous pouvez spécifier différentes fréquences d'horaires, telles que les heures, les jours, les semaines et les mois dans la police. Vous pouvez également spécifier les post-scripts qui seront exécutés après la sauvegarde réussie pour copier le snapshot sur le stockage secondaire.</block>
   <block id="ba49984198500251f07f0dc44320e9f7" category="list-text">Restauration de bases de données Oracle résidant sur Amazon FSX pour NetApp ONTAP, Cloud Volumes ONTAP et Azure NetApp Files</block>
@@ -3756,4 +3731,25 @@
   <block id="9bc4ac9aec3ce95487de5999da3a7e13" category="list-text">L'interface utilisateur BlueXP offre des fonctionnalités de protection des données pour les applications. Elle est accessible depuis l'interface utilisateur BlueXP.</block>
   <block id="5f6363d5a5bf731c42038bd14750276a" category="paragraph">Pour toute demande initiée par l'utilisateur, l'interface utilisateur BlueXP communique avec le service SaaS BlueXP qui, lors de la validation, traite la demande de la même manière. Si la demande consiste à exécuter un workflow tel qu'une sauvegarde, une restauration ou un clone, le service SaaS lance le workflow et, le cas échéant, transmet l'appel au connecteur BlueXP. Le connecteur communique ensuite avec le système de stockage et le plug-in spécifique à l'application dans le cadre de l'exécution des tâches du flux de travail.</block>
   <block id="49e77e013cd6e44ddab4df1881f2dd91" category="admonition">L'infrastructure SaaS BlueXP est résiliente aux défaillances des zones de disponibilité dans une région. Il prend en charge les défaillances régionales en effectuant le basculement vers une nouvelle région et ce basculement implique une interruption de l'activité d'environ 2 heures.</block>
+  <block id="cb42a167949742d78d62bf5d5b010ede" category="list-text">Assurez-vous qu'il y a une connectivité entre le connecteur et les hôtes de la base de données.</block>
+  <block id="3288084c43caab0aee7f8e3c166d04e2" category="paragraph">Après avoir créé le connecteur, ajoutez l'environnement de travail en cliquant sur *Storage* &gt; *Canvas* &gt; *Mes environnements de travail* &gt; *Ajouter un environnement de travail*.</block>
+  <block id="80b0692a3a686eb89f9b678a24ea9aae" category="paragraph">Vous pouvez cloner une base de données Oracle résidant sur Amazon FSX pour NetApp ONTAP ou Cloud Volumes ONTAP en utilisant la sauvegarde de la base de données soit sur l'hôte de base de données source, soit sur un autre hôte.</block>
+  <block id="513394674a73a0db659bc29e8dbd568e" category="list-text">Vérifiez que le connecteur est connecté aux hôtes de base de données Oracle.</block>
+  <block id="322ab258ca9672995a0fa0734c392bce" category="list-text">Assurez-vous que le compte non racine (sudo) est présent sur l'hôte d'application pour les opérations de protection des données.</block>
+  <block id="1e2b31d7b268c1222ce8da8e747b03dc" category="paragraph">Un compte de service (_SnapCenter-account-&lt;accountid&gt;_) associé au rôle _SnapCenter System_ est créé pour effectuer des opérations de protection des données planifiées pour tous les utilisateurs de ce compte. Le compte de service (_SnapCenter-account-&lt;accountid&gt;_) est utilisé pour exécuter les opérations de sauvegarde planifiées. Vous ne devez jamais supprimer le compte de service. Vous pouvez afficher le compte de service en cliquant sur *compte* &gt; *gérer compte* &gt; *membres*.</block>
+  <block id="f607c10287411a02a7188774935ff6a2" category="paragraph">Assurez-vous que le connecteur peut communiquer avec l'hôte de la base de données à l'aide du nom de domaine complet ou de l'adresse IP.</block>
+  <block id="04135f37f3a0219f15f70072ca13b3c6" category="list-text">Une fois le plug-in installé, l'opération de découverte démarre.</block>
+  <block id="f7b9a85c0ee5ada84ab39df4f1bbac45" category="list-text">Une fois l'opération de découverte terminée, toutes les bases de données de l'hôte s'affichent. Si l'authentification du système d'exploitation est désactivée pour la base de données, cliquez sur *configurer* pour activer l'authentification de la base de données. Pour plus d'informations, reportez-vous à la section <block ref="eb69440615f98753d53a91f4eeab39c2" category="inline-xref-macro-rx"></block>.</block>
+  <block id="18992fcedd3ab36bc11b1aa6557be8bd" category="paragraph">Spécifie l'hôte Oracle</block>
+  <block id="cf4d42a2342dcef0cd3003beef5edde4" category="paragraph">Spécifie l'utilisateur SnapCenter avec des privilèges SSH sur l'hôte Oracle</block>
+  <block id="5b9cc1623e2e8bd08b958a265d3d1139" category="paragraph">Spécifie la clé SSH de l'utilisateur SnapCenter et est utilisée pour se connecter à l'hôte Oracle</block>
+  <block id="66310ef8a39f9e0e45833f07266a0b67" category="paragraph">Spécifie le port SSH sur l'hôte Oracle</block>
+  <block id="43c9b4e02ef657b40473a65f3f0af729" category="paragraph">Vous pouvez cloner une base de données Oracle résidant sur Amazon FSX pour NetApp ONTAP ou Cloud Volumes ONTAP en utilisant la sauvegarde de la base de données soit sur l'hôte de base de données source, soit sur un autre hôte. Vous pouvez cloner la sauvegarde à partir de systèmes de stockage primaires.</block>
+  <block id="e1df4a6bd07c19f8ea4b12bd3763f8ba" category="list-text">Le clonage des bases de données résidant sur Azure NetApp Files n'est pas pris en charge.</block>
+  <block id="43ee894f0437aa47002ad7d59dee24d4" category="paragraph">Le script post prend en charge un ensemble de variables d'environnement.</block>
+  <block id="4d7749ad74fdaf180280a4d9de405d0f" category="admonition">Lors de la création de groupes de disques ASM sur Amazon FSX pour NetApp ONTAP ou Cloud Volumes ONTAP, assurez-vous qu'il n'y a pas de volumes communs à tous les groupes de disques. Chaque groupe de disques doit avoir des volumes dédiés.</block>
+  <block id="70287d0adea45dd7179d2728f13dc483" category="list-text">Si plusieurs stratégies sont attribuées à l'application, sélectionnez la stratégie, le niveau de rétention, puis cliquez sur *Créer une sauvegarde*.</block>
+  <block id="716be8b0e2c921f95612011ecc633df8" category="list-text">Si vos bases de données Oracle sont sur Amazon FSX pour NetApp ONTAP ou Cloud Volumes ONTAP et configurées sur ASM, assurez-vous que vos noms de SVM sont uniques entre les systèmes FSX. Si vous disposez du même nom de SVM sur les systèmes FSX, la sauvegarde des bases de données Oracle résidant sur ces SVM ne est pas prise en charge.</block>
+  <block id="10db664972ef4288920326f44f4f3a44" category="paragraph">Dans l'infrastructure SAN d'Amazon FSX pour NetApp ONTAP ou de Cloud Volumes ONTAP, si le plug-in SnapCenter pour Oracle trouve des fichiers étrangers autres que les fichiers de données Oracle sur le groupe de disques ASM, la méthode de connexion et de restauration des copies est exécutée. Les fichiers étrangers peuvent être de type un ou plusieurs des types suivants :</block>
+  <block id="fa1ec4e51afd35e28a50d8d0539c45d1" category="paragraph">Vous pouvez déployer le plug-in à l'aide de l'interface utilisateur, du script ou manuellement.</block>
 </blocks>

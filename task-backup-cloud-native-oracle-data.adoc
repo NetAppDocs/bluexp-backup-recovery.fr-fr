@@ -37,7 +37,7 @@ Vous pouvez également spécifier les arguments.
 Vous devez conserver les post-scripts dans le chemin _/var/opt/snapcenter/spl/scripts_.
 
 +
-Les variables d'environnement prises en charge sont les suivantes :
+Le script post prend en charge un ensemble de variables d'environnement.
 
 +
 |===
@@ -95,7 +95,7 @@ Spécifie les chemins du volume du journal d'archives concaténés avec "," comm
 Vous pouvez affecter une règle prédéfinie ou créer une règle, puis l'affecter à la base de données. Une fois la stratégie attribuée, les sauvegardes sont créées conformément au planning défini dans la stratégie.
 
 
-NOTE: Pour Oracle, lors de la création de groupes de disques ASM, assurez-vous qu'il n'y a pas de volumes communs entre les groupes de disques. Chaque groupe de disques doit avoir des volumes dédiés.
+NOTE: Lors de la création de groupes de disques ASM sur Amazon FSX pour NetApp ONTAP ou Cloud Volumes ONTAP, assurez-vous qu'il n'y a pas de volumes communs à tous les groupes de disques. Chaque groupe de disques doit avoir des volumes dédiés.
 
 *Étapes*
 
@@ -122,7 +122,7 @@ Après avoir affecté la stratégie, vous pouvez créer une sauvegarde à la dem
 *Étapes*
 
 . Dans la page applications, cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à l'application et cliquer sur *On-Demand Backup*.
-. Si plusieurs stratégies sont affectées à l'application, sélectionnez la stratégie, la valeur de conservation, puis cliquez sur *Créer une sauvegarde*.
+. Si plusieurs stratégies sont attribuées à l'application, sélectionnez la stratégie, le niveau de rétention, puis cliquez sur *Créer une sauvegarde*.
 
 
 
@@ -130,7 +130,7 @@ Après avoir affecté la stratégie, vous pouvez créer une sauvegarde à la dem
 == Limites
 
 * Ne prend pas en charge les snapshots de groupes de cohérence pour les bases de données Oracle résidant sur plusieurs groupes de disques ASM avec chevauchement des volumes FSX
-* Si vos bases de données Oracle sont configurées sur ASM, assurez-vous que les noms de vos SVM sont uniques sur les systèmes FSX. Si vous disposez du même nom de SVM sur les systèmes FSX, la sauvegarde des bases de données Oracle résidant sur ces SVM ne est pas prise en charge.
+* Si vos bases de données Oracle sont sur Amazon FSX pour NetApp ONTAP ou Cloud Volumes ONTAP et configurées sur ASM, assurez-vous que vos noms de SVM sont uniques entre les systèmes FSX. Si vous disposez du même nom de SVM sur les systèmes FSX, la sauvegarde des bases de données Oracle résidant sur ces SVM ne est pas prise en charge.
 * Après la restauration d'une base de données volumineuse (250 Go ou plus), si vous effectuez une sauvegarde en ligne complète sur la même base de données, l'opération risque d'échouer avec l'erreur suivante :
 `failed with status code 500, error {\"error\":{\"code\":\"app_internal_error\",\"message\":\"Failed to create snapshot. Reason: Snapshot operation not allowed due to clones backed by snapshots. Try again after sometime.`
 +
