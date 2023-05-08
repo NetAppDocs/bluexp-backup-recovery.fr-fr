@@ -94,18 +94,16 @@ Vous devez également disposer d'un compte AWS pour l'espace de stockage où vos
 
 --
 Informations requises pour l'utilisation des clés gérées par le client pour le chiffrement des données:: Vous pouvez choisir vos propres clés gérées par le client pour le chiffrement des données dans l'assistant d'activation au lieu d'utiliser les clés de chiffrement Amazon S3 par défaut. Dans ce cas, vous devrez déjà configurer les clés de cryptage gérées. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-setting-up-kms.html["Découvrez comment utiliser vos propres touches"^].
-Exigences relatives au connecteur:: Le connecteur peut être installé dans une région AWS avec un accès Internet complet ou limité (mode « Standard » ou « restreint »).
+Exigences relatives au connecteur:: Le connecteur peut être installé dans une région AWS avec un accès Internet complet ou limité (mode « standard » ou « restreint »). https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-modes.html["Consultez les modes de déploiement BlueXP pour plus de détails"^].
 +
 --
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-quick-start-connector-aws.html["Déployez un connecteur dans AWS"^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-install-restricted-mode.html["Installation manuelle du connecteur sur un hôte Linux d'une région AWS"^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-quick-start-connector-aws.html["Déployez un connecteur dans AWS en mode standard (accès Internet complet)"^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-quick-start-restricted-mode.html["Installer le connecteur en mode restreint (accès sortant limité)"^]
 
 
 --
-
-
-Autorisations de connecteur AWS requises:: Le rôle IAM qui fournit à BlueXP des autorisations doit inclure des autorisations S3 à partir des dernières https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-permissions-aws.html["Politique BlueXP"^].
+Autorisations de connecteur AWS requises:: Le rôle IAM qui fournit à BlueXP des autorisations doit inclure des autorisations S3 à partir des dernières https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-permissions-aws.html["Politique BlueXP"^]. Si la stratégie ne contient pas toutes ces autorisations, reportez-vous au https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html["Documentation AWS : modification des règles IAM"].
 +
 --
 Voici les autorisations spécifiques de la stratégie :
@@ -172,7 +170,8 @@ Voici les autorisations spécifiques de la stratégie :
 --
 
 
-Si vous avez déployé le connecteur à l'aide de la version 3.9.21 ou ultérieure, ces autorisations doivent déjà faire partie du rôle IAM. Sinon, vous devrez ajouter les autorisations manquantes. En particulier les autorisations « athena » et « colle », car elles sont requises pour la recherche et la restauration.
+
+NOTE: Lorsque vous créez des sauvegardes dans des régions AWS Chine, vous devez modifier le nom de ressource AWS « arn » sous toutes les sections _Resource_ des stratégies IAM de « aws » à « aws-cn », par exemple `arn:aws-cn:s3:::netapp-backup-*`.
 
 Autorisations d'accès Cloud Volumes ONTAP AWS requises:: Lorsque votre système Cloud Volumes ONTAP exécute ONTAP 9.12.1 ou une version ultérieure, le rôle IAM qui fournit cet environnement de travail avec autorisations doit inclure un nouvel ensemble d'autorisations S3 spécifiquement pour la sauvegarde et la restauration BlueXP depuis les dernières versions https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-set-up-iam-roles.html["Politique de Cloud Volumes ONTAP"^].
 +

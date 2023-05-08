@@ -16,9 +16,9 @@ summary: Lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un s
 [role="lead"]
 Lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un site sans accès à Internet, vous devez sauvegarder régulièrement les fichiers de sauvegarde et de restauration BlueXP stratégiques en cas de problème avec le système hôte du connecteur BlueXP. Vous pourrez ainsi déployer un nouveau connecteur et restaurer les données de sauvegarde et de restauration BlueXP stratégiques.
 
-Lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un environnement SaaS où le connecteur BlueXP est déployé dans votre fournisseur cloud ou sur votre propre système hôte disposant d'un accès Internet, toutes les données importantes de configuration de la sauvegarde et de la restauration BlueXP sont sauvegardées et stockées dans le cloud. Lorsque vous utilisez la sauvegarde et la restauration BlueXP sur un site sans accès à Internet, également appelé « site invisible », ces informations de sauvegarde et de restauration BlueXP sont stockées uniquement sur le système de connecteur local.
+Lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un environnement SaaS où le connecteur BlueXP est déployé dans votre fournisseur cloud ou sur votre propre système hôte disposant d'un accès Internet, toutes les données importantes de configuration de la sauvegarde et de la restauration BlueXP sont sauvegardées et stockées dans le cloud. Lorsque vous utilisez la sauvegarde et la restauration BlueXP sur un site sans accès à Internet, connu sous le nom de « mode restreint » ou de « site invisible », ces informations de sauvegarde et de restauration BlueXP sont stockées uniquement sur le système de connecteur local.
 
-Cette section décrit comment sauvegarder les données stratégiques de sauvegarde et de restauration BlueXP sur votre système StorageGRID connecté. Il décrit également comment restaurer les données sur un nouveau connecteur si nécessaire.
+Nous décrirons comment sauvegarder les données stratégiques de sauvegarde et de restauration BlueXP sur votre système StorageGRID connecté et comment restaurer les données sur un nouveau connecteur si nécessaire.
 
 
 

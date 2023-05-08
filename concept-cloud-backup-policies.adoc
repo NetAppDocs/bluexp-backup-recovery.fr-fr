@@ -22,7 +22,7 @@ Avec la sauvegarde et la restauration BlueXP, vous pouvez créer des règles de 
 
 La sauvegarde et la restauration BlueXP vous permettent de créer plusieurs règles de sauvegarde avec des calendriers uniques pour chaque environnement de travail (cluster). Vous pouvez attribuer différentes stratégies de sauvegarde à des volumes ayant différents objectifs de point de récupération (RPO).
 
-Chaque stratégie de sauvegarde fournit une section pour _Labels & Retention_ que vous pouvez appliquer à vos fichiers de sauvegarde.
+Chaque stratégie de sauvegarde fournit une section pour _Labels & Retention_ que vous pouvez appliquer à vos fichiers de sauvegarde. Notez que la règle Snapshot appliquée au volume doit correspondre à l'une des règles reconnues par les fichiers de sauvegarde et de restauration BlueXP, ou les fichiers de sauvegarde ne seront pas créés.
 
 image:screenshot_backup_schedule_settings.png["Capture d'écran des paramètres de planification de sauvegarde lors de la création d'une stratégie de sauvegarde."]
 
@@ -53,7 +53,7 @@ Notez que les sauvegardes annuelles sont automatiquement supprimées du système
 
 La sauvegarde et la restauration BlueXP prennent en charge DataLock et la protection contre les ransomwares pour vos sauvegardes de volume. Ces fonctionnalités vous permettent de verrouiller vos fichiers de sauvegarde et de les analyser afin de détecter un ransomware possible sur les fichiers de sauvegarde. Il s'agit d'un paramètre facultatif que vous pouvez définir dans vos stratégies de sauvegarde lorsque vous souhaitez bénéficier d'une protection supplémentaire pour vos sauvegardes de volume d'un cluster.
 
-Ces deux fonctionnalités protègent vos fichiers de sauvegarde, afin que vous puissiez toujours disposer d'un fichier de sauvegarde valide à même de récupérer vos données en cas d'attaque par ransomware lorsqu'elles sont présentes sur vos données source. Il est également utile de respecter certaines exigences réglementaires dans lesquelles les sauvegardes doivent être verrouillées et conservées pendant un certain temps. Lorsque DataLock et la protection contre les ransomware sont activés, le verrouillage des objets et la gestion des versions d'objets sont activés dans le compartiment cloud provisionné dans le cadre de l'activation de la sauvegarde et de la restauration BlueXP.
+Ces deux fonctionnalités protègent vos fichiers de sauvegarde. Ainsi, vous disposez toujours d'un fichier de sauvegarde valide permettant de restaurer vos données en cas d'attaque par ransomware sur vos sauvegardes. Il est également utile de respecter certaines exigences réglementaires dans lesquelles les sauvegardes doivent être verrouillées et conservées pendant un certain temps. Lorsque DataLock et la protection contre les ransomware sont activés, le verrouillage des objets et la gestion des versions d'objets sont activés dans le compartiment cloud provisionné dans le cadre de l'activation de la sauvegarde et de la restauration BlueXP.
 
 https://bluexp.netapp.com/blog/cbs-blg-the-bluexp-feature-that-protects-backups-from-ransomware["Consultez le blog sur la protection contre les attaques par ransomware et les attaques par ransomware pour en savoir plus"^].
 
@@ -197,14 +197,11 @@ Vous pouvez activer la protection des données et des attaques par ransomware su
 
 === De formation
 
-* Vos clusters doivent exécuter ONTAP 9.11.1 ou version ultérieure (9.12.1 dans le cas d'Azure)
-* Vous devez utiliser BlueXP 3.9.21 ou supérieur
-
-
 ifdef::aws[]
 
 * Pour AWS :
 +
+** Vos clusters doivent exécuter ONTAP 9.11.1 ou version supérieure
 ** Ce connecteur peut être déployé dans le cloud ou sur site
 ** Les autorisations S3 suivantes doivent faire partie du rôle IAM qui fournit au connecteur les autorisations. Ils résident dans la section « backupS3Policy » pour la ressource « arn:aws:s3::NetApp-backup-* » :
 +
@@ -250,6 +247,7 @@ ifdef::azure[]
 
 * Pour Azure :
 +
+** Vos clusters doivent exécuter ONTAP 9.12.1 ou une version ultérieure
 ** Ce connecteur peut être déployé dans le cloud ou sur site
 
 
@@ -259,7 +257,8 @@ endif::azure[]
 
 * Pour StorageGRID :
 +
-** StorageGRID 11.6.0.3 et supérieur sont requis pour la prise en charge complète des capacités de verrouillage de données
+** Vos clusters doivent exécuter ONTAP 9.11.1 ou version supérieure
+** Vos systèmes StorageGRID doivent exécuter la version 11.6.0.3 ou ultérieure
 ** Le connecteur doit être déployé sur votre site (il peut être installé sur un site avec ou sans accès Internet)
 ** Les autorisations S3 suivantes doivent faire partie du rôle IAM qui fournit au connecteur des autorisations :
 +

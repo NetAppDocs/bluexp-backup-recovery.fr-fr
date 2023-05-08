@@ -18,6 +18,36 @@ Découvrez les nouveautés de la sauvegarde et de la restauration BlueXP.
 
 
 
+== 8 mai 2023
+
+
+
+=== Les opérations de restauration au niveau des dossiers sont désormais prises en charge à partir du stockage d'archives et des sauvegardes verrouillées
+
+Si un fichier de sauvegarde a été configuré avec la protection DataLock & ransomware, ou si le fichier de sauvegarde réside dans un stockage d'archivage, les opérations de restauration au niveau des dossiers sont prises en charge si le cluster exécute ONTAP 9.13.1 ou une version ultérieure.
+
+
+
+=== Les clés gérées par le client entre régions et projets sont prises en charge lors de la sauvegarde de volumes dans Google Cloud
+
+Vous pouvez désormais choisir un compartiment qui se trouve dans un projet différent de celui des clés de chiffrement gérées par le client (CMEK).
+
+
+
+=== Les régions AWS Chine sont désormais prises en charge pour les fichiers de sauvegarde
+
+Les régions AWS China Beijing (cn-North-1) et Ningxia (cn-Northwest-1) sont désormais prises en charge en tant que destinations pour vos fichiers de sauvegarde si le cluster exécute ONTAP 9.12.1 ou une version ultérieure.
+
+Notez que les règles IAM attribuées à BlueXP Connector doivent modifier le nom de ressource AWS « arn » sous toutes les sections _Resource_ de « aws » à « aws-cn », par exemple « arn:aws-cn:s3:::netapp-backup-* ». Voir https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-to-s3.html["Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3"] et https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-to-aws.html["Sauvegarde des données ONTAP sur site dans Amazon S3"] pour plus d'informations.
+
+
+
+=== Améliorations apportées au moniteur de tâches
+
+Les tâches lancées par le système, telles que les opérations de sauvegarde en cours, sont désormais disponibles dans l'onglet *surveillance des tâches* pour les systèmes ONTAP sur site exécutant ONTAP 9.13.1 ou version ultérieure. Les versions précédentes de ONTAP affichent uniquement les travaux initiés par l'utilisateur.
+
+
+
 == 14 avril 2023
 
 
@@ -45,7 +75,7 @@ Découvrez les nouveautés de la sauvegarde et de la restauration BlueXP.
 
 === Améliorations apportées à la sauvegarde et à la restauration BlueXP pour les applications (hybride)
 
-* La sauvegarde et la restauration BlueXP pour les applications (hybrides) sont pilotées par le plan de contrôle SaaS.
+* La sauvegarde et la restauration BlueXP pour les applications (hybrides) sont pilotées par le plan de contrôle SaaS
 * API REST hybrides modifiées pour l'alignement avec les API cloud natives - effectué.
 * Prend en charge la notification par e-mail
 
@@ -58,7 +88,7 @@ Découvrez les nouveautés de la sauvegarde et de la restauration BlueXP.
 
 === Possibilité de sauvegarder des données dans le cloud à partir des systèmes Cloud Volumes ONTAP en mode « restreint »
 
-Vous pouvez désormais sauvegarder les données à partir des systèmes Cloud Volumes ONTAP installés dans les régions commerciales AWS, Azure et GCP en mode « restreint ». Pour cela, vous devez d'abord installer le connecteur dans la région commerciale « restreinte ». https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-modes.html["En savoir plus sur les modes de déploiement BlueXP"^]. Voir https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-to-s3.html["Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3"] et https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-to-azure.html["Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob"].
+Vous pouvez désormais sauvegarder les données à partir de systèmes Cloud Volumes ONTAP installés dans les régions commerciales AWS, Azure et GCP en « mode restreint ». Pour cela, vous devez d'abord installer le connecteur dans la région commerciale « restreinte ». https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-modes.html["En savoir plus sur les modes de déploiement BlueXP"^]. Voir https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-to-s3.html["Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3"] et https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-to-azure.html["Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob"].
 
 
 
@@ -76,7 +106,7 @@ Lors de la création de sauvegardes à partir de systèmes Cloud Volumes ONTAP v
 
 === Améliorations apportées au moniteur de tâches
 
-* Les opérations de sauvegarde et de restauration initiées par l'utilisateur à partir de l'interface et de l'API de sauvegarde et de restauration BlueXP, ainsi que les tâches lancées par le système, telles que les opérations de sauvegarde en continu, sont désormais disponibles dans l'onglet *surveillance des tâches* pour les systèmes ONTAP sur site exécutant ONTAP 9.13.1 ou version ultérieure. Les versions précédentes de ONTAP affichent uniquement les travaux initiés par l'utilisateur.
+* Les opérations de sauvegarde et de restauration initiées par l'utilisateur à partir de l'interface utilisateur et de l'API de sauvegarde et de restauration BlueXP, ainsi que les tâches initiées par le système, telles que les opérations de sauvegarde en continu, sont désormais disponibles dans l'onglet *surveillance des tâches* pour les systèmes Cloud Volumes ONTAP exécutant ONTAP 9.13.0 ou version ultérieure. Les versions précédentes de ONTAP affichent uniquement les travaux initiés par l'utilisateur.
 * En plus de pouvoir télécharger un fichier CSV pour créer des rapports sur tous les travaux, vous pouvez désormais télécharger un fichier JSON pour un seul travail et voir ses détails. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-monitor-backup-jobs.html#download-job-monitoring-results-as-a-report["En savoir plus >>"].
 * Deux nouvelles alertes de tâche de sauvegarde ont été ajoutées : « échec de tâche planifiée » et « la tâche de restauration est terminée mais avec des avertissements ». https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-monitor-backup-jobs.html#review-backup-and-restore-alerts-in-the-bluexp-notification-center["Examinez toutes les alertes que les solutions de sauvegarde et de restauration BlueXP peuvent envoyer"].
 
@@ -558,23 +588,3 @@ La mise en œuvre des licences avec Cloud Backup modifie quelques-unes des modif
 
 
 https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-licensing-cloud-backup.html["En savoir plus sur les modèles de licence disponibles"].
-
-
-
-== 4 avril 2022
-
-
-
-=== Cloud Backup pour les applications 1.1.0 (optimisée par SnapCenter) est désormais GA
-
-La nouvelle fonctionnalité de sauvegarde dans le cloud pour les applications vous permet de décharger des snapshots cohérents avec les applications (sauvegardes) pour Oracle et Microsoft SQL du stockage primaire sur site vers le stockage objet dans le cloud dans Amazon S3 ou Azure Blob.
-
-Lorsque cela est nécessaire, les données peuvent être restaurées depuis le cloud vers une infrastructure sur site.
-
-link:concept-protect-app-data-to-cloud.html["En savoir plus sur la protection des données des applications sur site vers le cloud"].
-
-
-
-=== Nouvelle fonction de recherche et de restauration permettant de rechercher des volumes ou des fichiers sur tous les fichiers de sauvegarde ONTAP
-
-Vous pouvez maintenant rechercher un volume ou un fichier sur *tous les fichiers de sauvegarde ONTAP* par nom de volume partiel ou complet, nom de fichier partiel ou complet, plage de tailles et filtres de recherche supplémentaires. C'est une excellente nouvelle façon de trouver les données à restaurer si vous n'êtes pas sûr de savoir quel cluster ou volume était la source des données. link:task-restore-backups-ontap.html#restoring-ontap-data-using-search-restore["Découvrez comment utiliser la fonction Rechercher et restaurer"].

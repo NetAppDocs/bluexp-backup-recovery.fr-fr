@@ -31,15 +31,11 @@ L'état de la sauvegarde et de la restauration peut être :
 * Échec
 
 
-Les opérations de sauvegarde et de restauration initiées par l'utilisateur à partir de l'interface utilisateur et de l'API de sauvegarde et de restauration BlueXP, ainsi que les tâches lancées par le système, telles que les opérations de sauvegarde planifiées en cours, sont disponibles dans l'onglet *Job Monitoring* pour les systèmes Cloud Volumes ONTAP exécutant ONTAP 9.13.0 ou version ultérieure.
-
-[TIP]
-====
-* Lors de l'exécution d'une version antérieure de ONTAP sur des systèmes Cloud Volumes ONTAP ou sur des systèmes ONTAP sur site, seules les tâches initiées par l'utilisateur sont affichées.
-* Si vous avez mis à niveau vos systèmes Cloud Volumes ONTAP vers la version 9.13.x et que vous ne voyez pas les opérations de sauvegarde planifiées en cours dans le moniteur de tâches, vous devez redémarrer le service de sauvegarde et de restauration BlueXP. link:reference-restart-backup.html["Découvrez comment redémarrer la sauvegarde et la restauration BlueXP"^].
+Les opérations de sauvegarde et de restauration initiées par l'utilisateur à partir de l'interface utilisateur et de l'API de Cloud Backup, ainsi que les tâches lancées par le système, telles que les opérations de sauvegarde planifiées en cours, sont disponibles dans l'onglet surveillance des tâches. Toutefois, cela est vrai uniquement pour les systèmes Cloud Volumes ONTAP exécutant ONTAP 9.13.0 ou version ultérieure et les systèmes ONTAP sur site exécutant ONTAP 9.13.1 ou version ultérieure. Lors de l'exécution de versions antérieures de ONTAP, seuls les travaux initiés par l'utilisateur sont affichés.
 
 
-====
+NOTE: Si vous avez mis à niveau vos systèmes ONTAP vers la version 9.13.x et que vous ne voyez pas les opérations de sauvegarde planifiées en cours dans le moniteur de tâches, vous devez redémarrer le service de sauvegarde et de restauration BlueXP. link:reference-restart-backup.html["Découvrez comment redémarrer la sauvegarde et la restauration BlueXP"].
+
 .Étapes
 . Dans le menu BlueXP, sélectionnez *protection > sauvegarde et récupération*.
 . Sélectionnez l'onglet *surveillance des travaux*.
@@ -141,17 +137,17 @@ Les événements suivants déclenchent des alertes par e-mail :
 
 
  a| 
-Échec de la sauvegarde du volume ad hoc (à la demande)
+Échec de la sauvegarde du volume ad hoc
 | Erreur 
 
 
  a| 
-L'activation de la sauvegarde et de la restauration BlueXP a échoué dans l'environnement de travail
+Échec de l'activation de la sauvegarde dans l'environnement de travail
 | Primordial 
 
 
  a| 
-Échec de l'opération de sauvegarde et de restauration BlueXP
+Échec de l'opération de restauration
 | Primordial 
 
 
@@ -161,7 +157,7 @@ Attaque potentielle par ransomware détectée sur votre système
 
 
  a| 
-La tâche de restauration se termine mais comporte des avertissements
+Tâche de restauration terminée, mais avec des avertissements
 | Avertissement 
 
 
@@ -174,7 +170,7 @@ NOTE: Depuis Cloud Volumes ONTAP 9.13.0, toutes les alertes s'affichent. Pour le
 
 Par défaut, les administrateurs de compte BlueXP reçoivent des e-mails pour toutes les alertes « critiques » et « recommandations ». Par défaut, tous les autres utilisateurs et destinataires sont configurés pour ne pas recevoir d'e-mails de notification. Il est possible d'envoyer des e-mails aux utilisateurs BlueXP qui font partie de votre compte Cloud NetApp, ou à tous les destinataires qui doivent avoir connaissance des activités de sauvegarde et de restauration.
 
-Pour recevoir les alertes par e-mail de sauvegarde et de restauration BlueXP, vous devez sélectionner les types de sévérité des notifications « critique » et « erreur ».
+Pour recevoir les alertes par e-mail de sauvegarde et de restauration BlueXP, vous devez sélectionner les types de sévérité des notifications « critique », « Avertissement » et « erreur ».
 
 https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-monitor-cm-operations.html["En savoir plus sur le Centre de notification et sur la manière d'envoyer des e-mails d'alerte pour les tâches de sauvegarde et de restauration"^].
 

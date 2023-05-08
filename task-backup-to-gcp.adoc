@@ -116,11 +116,12 @@ bigquery.tables.create
 
 
 --
-Informations requises pour l'utilisation de clés de chiffrement gérées par le client (CMEK):: Vous pouvez utiliser vos propres clés gérées par le client pour le chiffrement des données au lieu d'utiliser les clés de chiffrement gérées par Google par défaut. Dans ce cas, vous devez disposer du porte-clés et du nom de la clé pour pouvoir ajouter ces informations dans l'assistant d'activation. https://cloud.google.com/kms/docs/cmek["En savoir plus sur les clés de chiffrement gérées par les clients"^].
+Informations requises pour l'utilisation de clés de chiffrement gérées par le client (CMEK):: Vous pouvez utiliser vos propres clés gérées par le client pour le chiffrement des données au lieu d'utiliser les clés de chiffrement gérées par Google par défaut. Les clés inter-régions et inter-projets sont prises en charge. Vous pouvez donc choisir un projet pour un compartiment différent du projet de la clé CMEK. Si vous prévoyez d'utiliser vos propres clés gérées par le client :
 +
 --
-Vous devrez également ajouter ces autorisations requises dans le rôle pour que le connecteur pour CMEK fonctionne :
-
+* Vous devez disposer du porte-clés et du nom de la clé pour pouvoir ajouter ces informations dans l'assistant d'activation. https://cloud.google.com/kms/docs/cmek["En savoir plus sur les clés de chiffrement gérées par les clients"^].
+* Vous devez vérifier que les autorisations requises sont incluses dans le rôle du connecteur :
++
 [source, json]
 ----
 cloudkms.cryptoKeys.get
@@ -132,13 +133,16 @@ cloudkms.keyRings.getIamPolicy
 cloudkms.keyRings.list
 cloudkms.keyRings.setIamPolicy
 ----
-*Considérations de CMEK:*
+* Vous devez vérifier que l'API Google « Cloud Key Management Service (KMS) » est activée dans votre projet. Voir la https://cloud.google.com/apis/docs/getting-started#enabling_apis["Documentation Google Cloud : activation des API"] pour plus d'informations.
+* *Considérations de CMEK:*
++
+** Les clés HSM (avec support matériel) et générées par logiciel sont prises en charge.
+** Les clés KMS créées ou importées Cloud sont toutes les deux prises en charge.
+** Seules les clés régionales sont prises en charge, et les clés globales ne sont pas prises en charge.
+** Actuellement, seul l'objectif "chiffrement/déchiffrement symétrique" est pris en charge.
+** L'agent de service associé au compte de stockage se voit attribuer le rôle IAM « CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter) » par la sauvegarde et la restauration BlueXP.
 
-* Les clés HSM (sauvegarde matérielle) et Software Generated sont prises en charge.
-* Les clés KMS créées ou importées Cloud sont toutes les deux prises en charge.
-* Seules les clés régionales sont prises en charge, et les clés globales ne sont pas prises en charge.
-* Actuellement, seul l'objectif "chiffrement/déchiffrement symétrique" est pris en charge.
-* L'agent de service associé au compte de stockage se voit attribuer le rôle IAM « CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter) » par la sauvegarde et la restauration BlueXP.
+
 
 
 --

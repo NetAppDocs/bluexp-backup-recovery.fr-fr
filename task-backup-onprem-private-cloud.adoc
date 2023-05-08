@@ -179,6 +179,7 @@ Lorsque vous sauvegardez des données dans StorageGRID, un connecteur doit être
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-quick-start-connector-on-prem.html["Installation du connecteur sur un hôte Linux avec accès à Internet"^]
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-quick-start-private-mode.html["Installation du connecteur sur un hôte Linux sans accès à Internet"^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html["Basculement entre les connecteurs"^]
 
 
 

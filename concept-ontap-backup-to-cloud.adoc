@@ -113,7 +113,7 @@ endif::azure[]
 
 === Assistance pour les sites sans connexion Internet
 
-Les fonctionnalités de sauvegarde et de restauration BlueXP peuvent être utilisées dans un site sans connexion Internet (également appelé « mode privé » ou « sites invisibles ») pour sauvegarder des données de volume. Dans ce cas, vous devez déployer le connecteur BlueXP dans le site invisible.
+Les fonctionnalités de sauvegarde et de restauration BlueXP peuvent être utilisées dans un site sans connexion Internet (également appelé « mode privé » ou « sites invisibles ») pour sauvegarder des données de volume. Dans ce cas, vous devez déployer le connecteur BlueXP en mode privé.
 
 * Vous pouvez sauvegarder les données à partir de systèmes ONTAP locaux sur site vers des systèmes NetApp StorageGRID locaux. Voir link:task-backup-onprem-private-cloud.html["La sauvegarde des données ONTAP sur site dans StorageGRID"] pour plus d'informations. ifdef::aws[]
 
@@ -245,7 +245,7 @@ ifdef::aws[]
 
 Avec AWS, deux contrats annuels sont disponibles pour une durée de 12, 24 ou 36 mois :
 
-* Plan de sauvegarde et de restauration BlueXP pour la sauvegarde des données Cloud Volumes ONTAP et des données ONTAP sur site.
+* Un plan de « sauvegarde dans le cloud » vous permet de sauvegarder les données Cloud Volumes ONTAP et les données ONTAP sur site.
 * Un plan « CVO Professional » qui vous permet de regrouper les fonctionnalités de sauvegarde et de restauration Cloud Volumes ONTAP et BlueXP. Cela inclut le nombre illimité de sauvegardes pour les volumes Cloud Volumes ONTAP facturés pour cette licence (la capacité de sauvegarde n'est pas prise en compte avec la licence).
 
 
@@ -439,7 +439,8 @@ La lecture des données de votre fournisseur de cloud peut s'accélérer et gén
 ** Si vous créez des copies Snapshot locales sur le volume de destination SnapMirror (indépendamment des étiquettes SnapMirror utilisées), ces snapshots ne seront pas déplacés vers le cloud en tant que sauvegardes. À ce stade, vous devrez créer une règle Snapshot portant les étiquettes souhaitées sur le volume DP source pour que la sauvegarde et la restauration BlueXP puissent les sauvegarder.
 
 
-* Les sauvegardes de volumes FlexGroup ne peuvent pas être déplacées vers le stockage d'archivage. Elles ne peuvent pas non plus utiliser le verrouillage des données et la protection par ransomware.
+* Les sauvegardes de volume FlexGroup ne peuvent pas être transférées vers le stockage d'archivage.
+* Les sauvegardes de volume FlexGroup ne peuvent pas utiliser DataLock et la protection contre les ransomware.
 * La sauvegarde du volume SVM-DR est prise en charge avec les restrictions suivantes :
 +
 ** Seules les sauvegardes sont prises en charge à partir du système secondaire ONTAP.
@@ -458,7 +459,7 @@ La lecture des données de votre fournisseur de cloud peut s'accélérer et gén
 * La sauvegarde de volume ad-hoc à l'aide du bouton *Backup Now* n'est pas prise en charge sur les volumes de protection des données.
 * Les configurations SM-BC ne sont pas prises en charge.
 * ONTAP ne prend pas en charge la réplication « Fan-Out » des relations SnapMirror depuis un seul volume vers plusieurs magasins d'objets. Par conséquent, cette configuration n'est pas prise en charge par la sauvegarde et la restauration BlueXP.
-* Le mode WORM/Compliance sur un magasin d'objets est actuellement pris en charge sur Amazon S3, Azure et StorageGRID. Cette fonctionnalité, appelée fonctionnalité DataLock, doit être gérée à l'aide des paramètres de sauvegarde et de restauration BlueXP, et non via l'interface du fournisseur cloud.
+* Le mode WORM/Compliance sur un magasin d'objets est actuellement pris en charge sur Amazon S3, Azure et StorageGRID. Appelée fonctionnalité DataLock, elle doit être gérée à l'aide des paramètres de sauvegarde et de restauration BlueXP, et non via l'interface du fournisseur cloud.
 
 
 
@@ -476,8 +477,9 @@ Lorsque vous utilisez une version de ONTAP supérieure à 9.11.1 mais antérieur
 +
 Si vous utilisez une version de ONTAP antérieure à 9.11.1, la restauration de dossiers n'est pas prise en charge.
 
-* La restauration des répertoires/dossiers n'est actuellement pas prise en charge sur les volumes FlexGroup.
-* Vous ne pouvez pas restaurer des dossiers individuels si le fichier de sauvegarde réside dans le stockage d'archivage.
+* La restauration de répertoires/dossiers est prise en charge pour les données qui résident dans le stockage d'archives uniquement lorsque le cluster exécute ONTAP 9.13.1 ou une version ultérieure.
+* La restauration de répertoire/dossier est prise en charge pour les données protégées à l'aide de DataLock uniquement lorsque le cluster exécute ONTAP 9.13.1 ou une version ultérieure.
+* La restauration de répertoires/dossiers n'est actuellement pas prise en charge sur les sauvegardes de volume FlexGroup.
 * La restauration des volumes FlexGroup vers des volumes FlexVol, ou des volumes FlexVol vers des volumes FlexGroup n'est pas prise en charge.
 * Le fichier en cours de restauration doit être dans la même langue que celle du volume de destination. Vous recevrez un message d'erreur si les langues ne sont pas les mêmes.
 * La priorité de restauration _élevée_ n'est pas prise en charge lors de la restauration de données à partir du stockage d'archives Azure vers les systèmes StorageGRID.

@@ -190,7 +190,7 @@ sidebar:
     url: "/api-backup-restore.html"
   - title: Référence
     entries:
-    - title: Paramètres des règles de sauvegarde et de restauration BlueXP
+    - title: Paramètres de stratégie de sauvegarde
       url: "/concept-cloud-backup-policies.html"
     - title: Tiers de stockage d'archivage AWS pris en charge
       url: "/reference-aws-backup-tiers.html"

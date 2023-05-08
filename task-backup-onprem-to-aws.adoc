@@ -199,7 +199,7 @@ Vous devez configurer deux ensembles d'autorisations :
 
 
 .Étapes
-. Vérifiez que les autorisations S3 suivantes (à partir des dernières https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-permissions-aws.html["Politique BlueXP"^]) Font partie du rôle IAM qui fournit au connecteur des autorisations.
+. Vérifiez que les autorisations S3 suivantes (à partir des dernières https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-permissions-aws.html["Politique BlueXP"^]) Font partie du rôle IAM qui fournit au connecteur des autorisations. Si ce n'est pas le cas, consultez le https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html["Documentation AWS : modification des règles IAM"].
 +
 [source, json]
 ----
@@ -261,7 +261,8 @@ Vous devez configurer deux ensembles d'autorisations :
       },
 ----
 +
-Si vous avez déployé le connecteur à l'aide de la version 3.9.21 ou ultérieure, ces autorisations doivent déjà faire partie du rôle IAM. Sinon, vous devrez ajouter les autorisations manquantes. En particulier les autorisations « athena » et « colle », car elles sont nécessaires pour la recherche et la restauration. Voir la https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html["Documentation AWS : modification des règles IAM"].
+
+NOTE: Lorsque vous créez des sauvegardes dans des régions AWS Chine, vous devez modifier le nom de ressource AWS « arn » sous toutes les sections _Resource_ des stratégies IAM de « aws » à « aws-cn », par exemple `arn:aws-cn:s3:::netapp-backup-*`.
 
 . Lors de l'activation du service, l'assistant de sauvegarde vous invite à entrer une clé d'accès et une clé secrète. Ces identifiants sont ensuite transmis au cluster ONTAP afin que ONTAP puisse sauvegarder et restaurer les données dans le compartiment S3. Pour cela, vous devrez créer un utilisateur IAM avec les autorisations suivantes :
 +

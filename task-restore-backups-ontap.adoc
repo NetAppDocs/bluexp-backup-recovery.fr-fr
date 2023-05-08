@@ -85,7 +85,7 @@ Reportez-vous aux étapes de configuration requise et de restauration pour le ty
 
 Avant de commencer à restaurer un volume, un dossier ou un fichier, vous devez connaître le nom du volume à partir duquel vous souhaitez restaurer, le nom de l'environnement de travail et le SVM où réside le volume, ainsi que la date approximative du fichier de sauvegarde à restaurer.
 
-*Remarque :* si le fichier de sauvegarde contenant les données que vous souhaitez restaurer réside dans le stockage d'archives (à partir de ONTAP 9.10.1), l'opération de restauration prendra plus de temps et entraînera un coût. En outre, le cluster de destination doit également exécuter ONTAP 9.10.1 ou version ultérieure pour la restauration du volume, 9.11.1 pour la restauration des fichiers et 9.12.1 pour Google Archive et StorageGRID.
+*Remarque :* si le fichier de sauvegarde contenant les données que vous souhaitez restaurer réside dans le stockage d'archives (à partir de ONTAP 9.10.1), l'opération de restauration prendra plus de temps et entraînera un coût. De plus, le cluster de destination doit également exécuter ONTAP 9.10.1 ou une version ultérieure pour la restauration des volumes, 9.11.1 pour la restauration des fichiers, 9.12.1 pour les archives Google et StorageGRID et 9.13.1 pour la restauration des dossiers.
 
 ifdef::aws[]
 
@@ -114,7 +114,7 @@ NOTE: La priorité élevée n'est pas prise en charge lors de la restauration de
 
 Vous pouvez restaurer un volume, un dossier ou des fichiers individuels depuis un fichier de sauvegarde ONTAP vers les environnements de travail suivants :
 
-[cols="50,50"]
+[cols="35,50"]
 |===
 | Emplacement du fichier de sauvegarde | Destination Environnement de travail ifdef::aws[] 
 
@@ -159,7 +159,7 @@ endif::gcp[]
 Notez que les références aux « systèmes ONTAP sur site » incluent les systèmes FAS, AFF et ONTAP Select.
 
 
-NOTE: Vous ne pouvez pas restaurer des dossiers ou des fichiers si le fichier de sauvegarde a été configuré avec DataLock & ransomware. Dans ce cas, vous pouvez restaurer tout le volume à partir du fichier de sauvegarde, puis accéder aux fichiers dont vous avez besoin.
+NOTE: Si la version ONTAP de votre système est inférieure à 9.13.1, vous ne pouvez pas restaurer de dossiers ou de fichiers si le fichier de sauvegarde a été configuré avec DataLock & ransomware. Dans ce cas, vous pouvez restaurer tout le volume à partir du fichier de sauvegarde, puis accéder aux fichiers dont vous avez besoin.
 
 
 
@@ -271,8 +271,8 @@ Si vous utilisez ONTAP 9.13.0 ou une version ultérieure, vous pouvez restaurer 
 
 [NOTE]
 ====
-* La restauration au niveau des dossiers n'est pas prise en charge actuellement si le fichier de sauvegarde a été configuré avec DataLock & ransomware. Dans ce cas, vous pouvez restaurer tout le volume à partir du fichier de sauvegarde, puis accéder au dossier et aux fichiers dont vous avez besoin.
-* La restauration au niveau des dossiers n'est actuellement pas prise en charge si le fichier de sauvegarde réside dans le stockage d'archives. Dans ce cas, vous pouvez restaurer le dossier à partir d'un fichier de sauvegarde plus récent qui n'a pas été archivé, ou vous pouvez restaurer le volume entier à partir de la sauvegarde archivée, puis accéder au dossier et aux fichiers dont vous avez besoin.
+* Si le fichier de sauvegarde a été configuré avec la protection DataLock & ransomware, la restauration au niveau des dossiers est prise en charge uniquement si la version de ONTAP est 9.13.1 ou supérieure. Si vous utilisez une version antérieure de ONTAP, vous pouvez restaurer l'intégralité du volume à partir du fichier de sauvegarde, puis accéder au dossier et aux fichiers dont vous avez besoin.
+* Si le fichier de sauvegarde réside dans le stockage d'archives, la restauration au niveau du dossier est prise en charge uniquement si la version de ONTAP est 9.13.1 ou supérieure. Si vous utilisez une version antérieure de ONTAP, vous pouvez restaurer le dossier à partir d'un fichier de sauvegarde plus récent qui n'a pas été archivé, ou vous pouvez restaurer le volume entier à partir de la sauvegarde archivée, puis accéder au dossier et aux fichiers dont vous avez besoin.
 
 
 ====
@@ -281,10 +281,8 @@ Si vous utilisez ONTAP 9.13.0 ou une version ultérieure, vous pouvez restaurer 
 ==== Prérequis
 
 * La version ONTAP doit être 9.6 ou supérieure pour effectuer des opérations _file_ restore.
-* La version ONTAP doit être 9.11.1 ou supérieure pour effectuer des opérations _folder_ restore. ifdef::aws[]
+* La version ONTAP doit être 9.11.1 ou supérieure pour effectuer des opérations _folder_ restore. ONTAP version 9.13.1 est requis si les données se trouvent dans un stockage d'archivage ou si le fichier de sauvegarde utilise DataLock et la protection contre les ransomware.
 
-
-endif::aws[]
 
 
 
@@ -326,7 +324,7 @@ image:screenshot_restore_select_source.png["Capture d'écran de sélection du vo
 
 . Cliquez sur *Suivant* et la liste des dossiers et fichiers de la sauvegarde de volume s'affiche.
 +
-Si vous restaurez des dossiers ou des fichiers à partir d'un fichier de sauvegarde résidant sur un niveau de stockage d'archives (disponible à partir de ONTAP 9.10.1), vous pouvez sélectionner la priorité de restauration.
+Si vous restaurez des dossiers ou des fichiers à partir d'un fichier de sauvegarde qui réside dans un niveau de stockage d'archives, vous pouvez sélectionner la priorité de restauration.
 
 +
 ifdef::aws[]
@@ -433,7 +431,7 @@ Vous pouvez restaurer des dossiers ou des fichiers vers l'emplacement du volume 
 
 Si vous utilisez ONTAP 9.13.0 ou une version ultérieure, vous pouvez restaurer un dossier avec tous les fichiers et sous-dossiers qu'il contient. Lorsque vous utilisez une version de ONTAP antérieure à 9.13.0, seuls les fichiers de ce dossier sont restaurés - aucun sous-dossier, ni fichier dans des sous-dossiers, ne sont restaurés.
 
-Si le fichier de sauvegarde du volume que vous souhaitez restaurer se trouve dans le stockage d'archives (disponible à partir de ONTAP 9.10.1), l'opération de restauration prend plus de temps et entraînera des coûts supplémentaires. Notez que le cluster de destination doit également exécuter ONTAP 9.10.1 ou version ultérieure pour la restauration de volume, 9.11.1 pour la restauration de fichiers et 9.12.1 pour Google Archive et StorageGRID.
+Si le fichier de sauvegarde du volume que vous souhaitez restaurer se trouve dans le stockage d'archives (disponible à partir de ONTAP 9.10.1), l'opération de restauration prend plus de temps et entraînera des coûts supplémentaires. Notez que le cluster de destination doit également exécuter ONTAP 9.10.1 ou une version ultérieure pour la restauration des volumes, 9.11.1 pour la restauration des fichiers, 9.12.1 pour les archives Google et StorageGRID et 9.13.1 pour la restauration des dossiers.
 
 ifdef::aws[]
 
@@ -455,9 +453,9 @@ endif::gcp[]
 
 [NOTE]
 ====
-* La restauration au niveau des dossiers n'est pas prise en charge actuellement si le fichier de sauvegarde a été configuré avec DataLock & ransomware. Dans ce cas, vous pouvez restaurer tout le volume à partir du fichier de sauvegarde, puis accéder au dossier et aux fichiers dont vous avez besoin.
-* La restauration au niveau des dossiers n'est actuellement pas prise en charge si le fichier de sauvegarde réside dans le stockage d'archives. Dans ce cas, vous pouvez restaurer le dossier à partir d'un fichier de sauvegarde plus récent qui n'a pas été archivé, ou vous pouvez restaurer le volume entier à partir de la sauvegarde archivée, puis accéder au dossier et aux fichiers dont vous avez besoin.
-* La priorité de restauration élevée n'est pas prise en charge lors de la restauration de données à partir du stockage d'archives Azure vers les systèmes StorageGRID.
+* Si le fichier de sauvegarde a été configuré avec la protection DataLock & ransomware, la restauration au niveau des dossiers est prise en charge uniquement si la version de ONTAP est 9.13.1 ou supérieure. Si vous utilisez une version antérieure de ONTAP, vous pouvez restaurer l'intégralité du volume à partir du fichier de sauvegarde, puis accéder au dossier et aux fichiers dont vous avez besoin.
+* Si le fichier de sauvegarde réside dans le stockage d'archives, la restauration au niveau du dossier est prise en charge uniquement si la version de ONTAP est 9.13.1 ou supérieure. Si vous utilisez une version antérieure de ONTAP, vous pouvez restaurer le dossier à partir d'un fichier de sauvegarde plus récent qui n'a pas été archivé, ou vous pouvez restaurer le volume entier à partir de la sauvegarde archivée, puis accéder au dossier et aux fichiers dont vous avez besoin.
+* La priorité de restauration « élevée » n'est pas prise en charge lors de la restauration de données à partir d'un stockage d'archivage Azure vers des systèmes StorageGRID.
 
 
 ====
@@ -472,7 +470,7 @@ video::RZktLe32hhQ[youtube,width=848,height=480]
 
 Vous pouvez restaurer un volume, un dossier ou des fichiers individuels depuis un fichier de sauvegarde ONTAP vers les environnements de travail suivants :
 
-[cols="35,45"]
+[cols="35,50"]
 |===
 | Emplacement du fichier de sauvegarde | Destination Environnement de travail ifdef::aws[] 
 
