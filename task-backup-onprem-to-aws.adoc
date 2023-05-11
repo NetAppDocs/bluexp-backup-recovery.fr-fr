@@ -89,10 +89,10 @@ Le connecteur BlueXP est le logiciel principal pour la fonctionnalité BlueXP. U
 
 Si votre connecteur est déjà déployé dans votre VPC AWS ou sur votre site, cela vous permettra d'être configuré. Si ce n'est pas le cas, vous devrez créer un connecteur dans l'un de ces emplacements pour sauvegarder les données ONTAP sur un stockage AWS S3. Vous ne pouvez pas utiliser un connecteur déployé dans un autre fournisseur de cloud.
 
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-quick-start-connector-aws.html["Installation d'un connecteur dans AWS"^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-quick-start-connector-on-prem.html["Installation d'un connecteur dans vos locaux"^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-install-restricted-mode.html["Installation d'un connecteur dans une région AWS GovCloud"^]
+* https://["En savoir plus sur les connecteurs"^]
+* https://["Installation d'un connecteur dans AWS"^]
+* https://["Installation d'un connecteur dans vos locaux"^]
+* https://["Installation d'un connecteur dans une région AWS GovCloud"^]
 +
 La sauvegarde et la restauration BlueXP sont prises en charge dans les régions GovCloud lorsque le connecteur est déployé dans le cloud, et non lorsque celui-ci est installé sur site. Vous devez également déployer le connecteur à partir d'AWS Marketplace. Vous ne pouvez pas déployer le connecteur dans une région gouvernementale à partir du site web SaaS de BlueXP.
 
@@ -104,9 +104,9 @@ La sauvegarde et la restauration BlueXP sont prises en charge dans les régions 
 
 * Assurez-vous que le réseau sur lequel le connecteur est installé active les connexions suivantes :
 +
-** Connexion HTTPS sur le port 443 vers le service de sauvegarde et de restauration BlueXP et vers votre stockage objet S3 (https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-set-up-networking-aws.html#endpoints-contacted-for-day-to-day-operations["voir la liste des noeuds finaux"^])
+** Connexion HTTPS sur le port 443 vers le service de sauvegarde et de restauration BlueXP et vers votre stockage objet S3 (https://["voir la liste des noeuds finaux"^])
 ** Une connexion HTTPS via le port 443 vers votre LIF de gestion de cluster ONTAP
-** Des règles de groupes de sécurité supplémentaires sont nécessaires pour les déploiements AWS et AWS GovCloud. Voir https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-ports-aws.html["Règles pour le connecteur dans AWS"^] pour plus d'informations.
+** Des règles de groupes de sécurité supplémentaires sont nécessaires pour les déploiements AWS et AWS GovCloud. Voir https://["Règles pour le connecteur dans AWS"^] pour plus d'informations.
 
 
 * link:task-backup-onprem-to-aws.html#set-up-s3-permissions["Assurez-vous que le connecteur dispose des autorisations nécessaires pour gérer le compartiment S3"].
@@ -123,7 +123,7 @@ La sauvegarde et la restauration BlueXP sont prises en charge dans les régions 
 
 Vous devez découvrir votre cluster ONTAP sur site dans BlueXP avant de pouvoir commencer à sauvegarder des données de volume. Vous devez connaître l'adresse IP de gestion du cluster et le mot de passe permettant au compte utilisateur admin d'ajouter le cluster.
 
-https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html["Découvrez comment détecter un cluster"^].
+https://["Découvrez comment détecter un cluster"^].
 
 
 
@@ -135,11 +135,11 @@ https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.
 *Remarque :* le « bundle de cloud hybride » n'est pas requis lors de l'utilisation de la sauvegarde et de la restauration BlueXP.
 
 +
-Découvrez comment https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["gérez les licences du cluster"^].
+Découvrez comment https://["gérez les licences du cluster"^].
 
 * L'heure et le fuseau horaire sont correctement réglés.
 +
-Découvrez comment https://docs.netapp.com/us-en/ontap/system-admin/manage-cluster-time-concept.html["configurez l'heure du cluster"^].
+Découvrez comment https://["configurez l'heure du cluster"^].
 
 
 
@@ -152,7 +152,7 @@ Découvrez comment https://docs.netapp.com/us-en/ontap/system-admin/manage-clust
 +
 Le cluster initie une connexion HTTPS sortante via le port 443 entre les LIFs intercluster et le stockage Amazon S3 pour les opérations de sauvegarde et de restauration. ONTAP lit et écrit les données depuis et vers le stockage objet.- le système de stockage objet n'démarre jamais, il répond simplement.
 
-* Les LIFs intercluster doivent être associées au _IPspace_ que ONTAP doit utiliser pour se connecter au stockage objet. https://docs.netapp.com/us-en/ontap/networking/standard_properties_of_ipspaces.html["En savoir plus sur les IPspaces"^].
+* Les LIFs intercluster doivent être associées au _IPspace_ que ONTAP doit utiliser pour se connecter au stockage objet. https://["En savoir plus sur les IPspaces"^].
 +
 Lorsque vous configurez la sauvegarde et la restauration BlueXP, vous êtes invité à utiliser l'IPspace. Vous devez choisir l'IPspace auquel ces LIF sont associées. Il peut s'agir de l'IPspace par défaut ou d'un IPspace personnalisé que vous avez créé.
 
@@ -162,7 +162,7 @@ Si vous utilisez un IPspace différent de celui de « par défaut », vous devre
 +
 Toutes les LIF intercluster au sein de l'IPspace doivent avoir accès au magasin d'objets. Si vous ne pouvez pas configurer cela pour l'IPspace actuel, vous devrez créer un IPspace dédié où toutes les LIF intercluster ont accès au magasin d'objets.
 
-* Les serveurs DNS doivent avoir été configurés pour le VM de stockage sur lequel les volumes sont situés. Découvrez comment https://docs.netapp.com/us-en/ontap/networking/configure_dns_services_auto.html["Configuration des services DNS pour le SVM"^].
+* Les serveurs DNS doivent avoir été configurés pour le VM de stockage sur lequel les volumes sont situés. Découvrez comment https://["Configuration des services DNS pour le SVM"^].
 * Si nécessaire, mettez à jour les règles de pare-feu pour permettre les connexions de sauvegarde et de restauration BlueXP entre ONTAP et le stockage objet via le port 443 et le trafic de résolution de noms entre la machine virtuelle de stockage et le serveur DNS via le port 53 (TCP/UDP).
 * Si vous utilisez un terminal VPC privé dans AWS pour la connexion S3, vous devez charger le certificat de terminal S3 dans le cluster ONTAP pour pouvoir utiliser HTTPS/443. <<Configurez votre système pour une connexion privée à l'aide d'une interface de terminal VPC,Découvrez comment configurer une interface de terminal VPC et charger le certificat S3.>>
 * link:task-backup-onprem-to-aws.html#set-up-s3-permissions["Assurez-vous que votre cluster ONTAP possède des autorisations d'accès au compartiment S3"].
@@ -174,13 +174,13 @@ Toutes les LIF intercluster au sein de l'IPspace doivent avoir accès au magasin
 
 * Avant de pouvoir activer la sauvegarde et la restauration BlueXP pour votre cluster, vous devez soit souscrire à une offre BlueXP Marketplace de paiement basé sur l'utilisation (PAYGO), soit acheter et activer une licence BYOL de sauvegarde et de restauration BlueXP auprès de NetApp. Ces licences sont destinées à votre compte et peuvent être utilisées sur plusieurs systèmes.
 +
-** Pour obtenir une licence PAYGO de sauvegarde et de restauration de BlueXP, vous devez être abonné à https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa["Offre AWS BlueXP Marketplace"^] Pour utiliser la sauvegarde et la restauration BlueXP. La facturation de la sauvegarde et de la restauration BlueXP s'effectue via cet abonnement.
+** Pour obtenir une licence PAYGO de sauvegarde et de restauration de BlueXP, vous devez être abonné à https://["L'offre NetApp BlueXP sur AWS Marketplace"^]. La facturation de la sauvegarde et de la restauration BlueXP s'effectue via cet abonnement.
 ** Pour les licences BYOL de sauvegarde et de restauration BlueXP, vous devez disposer du numéro de série de NetApp qui vous permet d'utiliser le service pour la durée et la capacité de la licence. link:task-licensing-cloud-backup.html#use-a-bluexp-backup-and-recovery-byol-license["Découvrez comment gérer vos licences BYOL"].
 
 
 * Vous devez disposer d'un abonnement AWS pour l'espace de stockage objet dans lequel vos sauvegardes seront stockées.
 +
-Vous pouvez créer des sauvegardes à partir de systèmes sur site vers Amazon S3 dans toutes les régions https://cloud.netapp.com/cloud-volumes-global-regions["Dans ce cas, Cloud Volumes ONTAP est pris en charge"^]; Y compris les régions AWS GovCloud. Vous spécifiez la région dans laquelle les sauvegardes seront stockées lors de la configuration du service.
+Vous pouvez créer des sauvegardes à partir de systèmes sur site vers Amazon S3 dans toutes les régions https://["Dans ce cas, Cloud Volumes ONTAP est pris en charge"^]; Y compris les régions AWS GovCloud. Vous spécifiez la région dans laquelle les sauvegardes seront stockées lors de la configuration du service.
 
 
 
@@ -199,7 +199,7 @@ Vous devez configurer deux ensembles d'autorisations :
 
 
 .Étapes
-. Vérifiez que les autorisations S3 suivantes (à partir des dernières https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-permissions-aws.html["Politique BlueXP"^]) Font partie du rôle IAM qui fournit au connecteur des autorisations. Si ce n'est pas le cas, consultez le https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html["Documentation AWS : modification des règles IAM"].
+. Vérifiez que les autorisations S3 suivantes (à partir des dernières https://["Politique BlueXP"^]) Font partie du rôle IAM qui fournit au connecteur des autorisations. Si ce n'est pas le cas, consultez le https://["Documentation AWS : modification des règles IAM"].
 +
 [source, json]
 ----
@@ -319,7 +319,7 @@ NOTE: Lorsque vous créez des sauvegardes dans des régions AWS Chine, vous deve
 }
 ----
 +
-Voir la https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html["Documentation AWS : création d'un rôle pour déléguer des autorisations à un utilisateur IAM"^] pour plus d'informations.
+Voir la https://["Documentation AWS : création d'un rôle pour déléguer des autorisations à un utilisateur IAM"^] pour plus d'informations.
 
 
 
@@ -329,7 +329,7 @@ Voir la https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-use
 
 Si vous souhaitez utiliser les clés de chiffrement Amazon S3 par défaut pour chiffrer les données transférées entre votre cluster sur site et le compartiment S3, toutes sont définies, car l'installation par défaut utilise ce type de cryptage.
 
-Si vous souhaitez utiliser vos propres clés gérées par le client pour le chiffrement des données au lieu d'utiliser les clés par défaut, vous devez disposer des clés gérées par le chiffrement déjà configurées avant de démarrer l'assistant de sauvegarde et de restauration BlueXP. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-setting-up-kms.html["Découvrez comment utiliser vos propres touches"^].
+Si vous souhaitez utiliser vos propres clés gérées par le client pour le chiffrement des données au lieu d'utiliser les clés par défaut, vous devez disposer des clés gérées par le chiffrement déjà configurées avant de démarrer l'assistant de sauvegarde et de restauration BlueXP. https://["Découvrez comment utiliser vos propres touches"^].
 
 
 
@@ -339,7 +339,7 @@ Si vous voulez utiliser une connexion Internet publique standard, alors toutes l
 
 Si vous souhaitez bénéficier d'une connexion plus sécurisée via Internet entre votre data Center sur site et le VPC, vous pouvez sélectionner une connexion AWS PrivateLink dans l'assistant d'activation de la sauvegarde. Elle est indispensable pour connecter votre système sur site à l'aide d'un VPN ou d'AWS Direct Connect via une interface de terminal VPC qui utilise une adresse IP privée. Ce type de connexion est indiqué dans le link:task-backup-onprem-to-aws.html#network-diagrams-for-connection-options["deuxième diagramme"].
 
-. Créez une configuration de point final de l'interface à l'aide de la console Amazon VPC ou de la ligne de commande. https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html["Pour plus d'informations sur l'utilisation d'AWS PrivateLink pour Amazon S3, reportez-vous à la section"^].
+. Créez une configuration de point final de l'interface à l'aide de la console Amazon VPC ou de la ligne de commande. https://["Pour plus d'informations sur l'utilisation d'AWS PrivateLink pour Amazon S3, reportez-vous à la section"^].
 . Modifiez la configuration du groupe de sécurité associée au connecteur BlueXP. Vous devez modifier la règle en « personnalisé » (à partir de « accès complet ») et vous devez <<Configurez les autorisations S3,Ajoutez les autorisations S3 à partir de la règle de sauvegarde>> comme indiqué précédemment.
 +
 image:screenshot_backup_aws_sec_group.png["Copie d'écran du groupe de sécurité AWS associé au connecteur."]
@@ -354,7 +354,7 @@ Si vous utilisez le port 443 (HTTPS) pour la communication avec le terminal priv
 +
 image:screenshot_endpoint_dns_aws_console.png["Capture d'écran du nom DNS du terminal VPC depuis la console AWS."]
 
-. Obtenir le certificat à partir du terminal VPC S3 Vous faites ceci par https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html#connect-to-the-linux-vm["Se connecter à la machine virtuelle qui héberge le connecteur BlueXP"^] et exécutant la commande suivante. Lors de la saisie du nom DNS du noeud final, ajoutez "compartiment" au début, en remplaçant le "*" :
+. Obtenir le certificat à partir du terminal VPC S3 Vous faites ceci par https://["Se connecter à la machine virtuelle qui héberge le connecteur BlueXP"^] et exécutant la commande suivante. Lors de la saisie du nom DNS du noeud final, ajoutez "compartiment" au début, en remplaçant le "*" :
 +
 [source, text]
 ----
@@ -405,7 +405,7 @@ image:screenshot_backup_onprem_enable.png["Capture d'écran présentant le bouto
 La clé d'accès et la clé secrète sont destinées à l'utilisateur IAM que vous avez créé pour donner à l'utilisateur ONTAP l'accès au compartiment S3.
 
 .. Région AWS dans laquelle les sauvegardes seront stockées.
-.. Que vous utilisiez les clés de chiffrement Amazon S3 par défaut ou que vous choisissiez vos propres clés gérées par le client depuis votre compte AWS, pour gérer le chiffrement de vos données. (https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-setting-up-kms.html["Découvrez comment utiliser vos propres touches"]).
+.. Que vous utilisiez les clés de chiffrement Amazon S3 par défaut ou que vous choisissiez vos propres clés gérées par le client depuis votre compte AWS, pour gérer le chiffrement de vos données. (https://["Découvrez comment utiliser vos propres touches"]).
 +
 image:screenshot_backup_provider_settings_aws.png["Capture d'écran présentant les informations détaillées du fournisseur cloud lors de la sauvegarde de volumes à partir d'un système ONTAP vers AWS S3."]
 
@@ -415,7 +415,7 @@ image:screenshot_backup_provider_settings_aws.png["Capture d'écran présentant 
 . Entrez les détails de la mise en réseau et cliquez sur *Suivant*.
 +
 .. L'IPspace dans le cluster ONTAP où les volumes à sauvegarder résident. Les LIF intercluster pour cet IPspace doivent avoir un accès Internet sortant.
-.. Vous pouvez également choisir d'utiliser AWS PrivateLink que vous avez configuré précédemment. https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html["Pour plus d'informations sur l'utilisation d'AWS PrivateLink pour Amazon S3, reportez-vous à la section"^].
+.. Vous pouvez également choisir d'utiliser AWS PrivateLink que vous avez configuré précédemment. https://["Pour plus d'informations sur l'utilisation d'AWS PrivateLink pour Amazon S3, reportez-vous à la section"^].
 +
 image:screenshot_backup_onprem_aws_networking.png["Cette capture d'écran présente les informations de mise en réseau lors de la sauvegarde des volumes d'un système ONTAP vers AWS S3."]
 
