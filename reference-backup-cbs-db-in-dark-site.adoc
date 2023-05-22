@@ -72,7 +72,7 @@ docker cp ds_mysql_1:/mysql.dump.cloud_backup.sql .
 
 Le catalogue indexé est utilisé pour la fonctionnalité de recherche et de restauration. Il contient des informations sur chaque volume et chaque fichier de sauvegarde, ce qui permet de rechercher des recherches très rapides et efficaces, lorsque vous recherchez des données de volume à restaurer.
 
-. Sur le système hôte Connector, remplacez le répertoire par "/tmp".
+. Sur le système hôte Connector, remplacez le répertoire par « /opt/application/netapp/cbs ».
 . Localisez le dossier Catalogue d'index. Il commence par la chaîne *catalogue*.
 . Compressez le dossier « catalog<_xxxxxx_> » en entrant la commande suivante :
 +
@@ -158,7 +158,7 @@ Vérifiez si les volumes affichés sont identiques à ceux qui existaient dans v
 
 === Restaurez les fichiers de catalogue indexés
 
-. Copiez le fichier zip de sauvegarde de catalogue indexé de l'emplacement sécurisé vers le nouvel hôte de connecteur dans le dossier "/tmp".
+. Copiez le fichier zip de sauvegarde du catalogue indexé de l'emplacement sécurisé vers le nouvel hôte de connecteur dans le dossier « /opt/application/netapp/cbs ».
 . Décompressez le fichier « cataloguxxxxxx.zip » à l'aide de la commande suivante :
 +
 [source, cli]
