@@ -220,7 +220,7 @@ Le nom de la sauvegarde inclut l'horodatage afin que vous puissiez identifier vo
 
 Si vous avez activé _DataLock et protection contre les ransomware_ lors de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster, la sauvegarde à la demande sera également configurée avec DataLock et la période de conservation sera de 30 jours. Les analyses par ransomware ne sont pas prises en charge pour les sauvegardes ad hoc. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["En savoir plus sur le verrouillage des données et la protection contre les attaques par ransomware"^].
 
-Notez que lors de la création d'une sauvegarde ad hoc, un Snapshot est créé sur le volume source. Cet instantané ne faisant pas partie d'une planification Snapshot normale, il ne sera pas désactivé. Vous pouvez supprimer manuellement cet instantané du volume source une fois la sauvegarde terminée. Ainsi, les blocs liés à cette copie Snapshot peuvent être libérés. Le nom de l'instantané commence par `cbs-snapshot-adhoc-`. https://["Reportez-vous à la section mode de suppression d'une copie Snapshot à l'aide ONTAP de l'interface de ligne de commandes de"^].
+Notez que lors de la création d'une sauvegarde ad hoc, un Snapshot est créé sur le volume source. Cet instantané ne faisant pas partie d'une planification Snapshot normale, il ne sera pas désactivé. Vous pouvez supprimer manuellement cet instantané du volume source une fois la sauvegarde terminée. Ainsi, les blocs liés à cette copie Snapshot peuvent être libérés. Le nom de l'instantané commence par `cbs-snapshot-adhoc-`. https://docs.netapp.com/us-en/ontap/san-admin/delete-all-existing-snapshot-copies-volume-task.html["Reportez-vous à la section mode de suppression d'une copie Snapshot à l'aide ONTAP de l'interface de ligne de commandes de"^].
 
 
 NOTE: La sauvegarde de volumes à la demande n'est pas prise en charge sur les volumes de protection des données.
@@ -367,7 +367,7 @@ Vous n'avez pas nécessairement besoin de supprimer le volume source. Vous pouve
 
 Cette fonction n'est disponible que si votre système exécute ONTAP 9.12.1 ou une version ultérieure.
 
-Vous ne pouvez pas supprimer le volume source de l'interface utilisateur de sauvegarde et de restauration BlueXP. Cependant, vous pouvez ouvrir la page Détails du volume sur la toile, et https://["supprimez le volume de ce site"].
+Vous ne pouvez pas supprimer le volume source de l'interface utilisateur de sauvegarde et de restauration BlueXP. Cependant, vous pouvez ouvrir la page Détails du volume sur la toile, et https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes["supprimez le volume de ce site"].
 
 
 NOTE: Une fois la relation supprimée, vous ne pouvez pas supprimer des fichiers de sauvegarde de volume individuels. Vous pouvez cependant link:task-manage-backups-ontap.html#deleting-all-backup-files-for-a-volume["supprimez toutes les sauvegardes du volume"] si vous souhaitez supprimer tous les fichiers de sauvegarde.

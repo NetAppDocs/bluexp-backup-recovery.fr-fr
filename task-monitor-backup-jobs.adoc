@@ -127,7 +127,7 @@ Vous pouvez télécharger le contenu de la page principale de surveillance des t
 
 Le centre de notification BlueXP assure le suivi de la progression des tâches de sauvegarde et de restauration que vous avez lancées afin de vérifier que l'opération a réussi ou non.
 
-Outre l'affichage des alertes dans la liste de notifications BlueXP, vous pouvez configurer BlueXP pour envoyer des notifications par e-mail en tant qu'alertes afin que vous puissiez être informé de l'activité système importante, même si vous n'êtes pas connecté au système. https://["En savoir plus sur le Centre de notification et sur la manière d'envoyer des e-mails d'alerte pour les tâches de sauvegarde et de restauration"^].
+Outre l'affichage des alertes dans la liste de notifications BlueXP, vous pouvez configurer BlueXP pour envoyer des notifications par e-mail en tant qu'alertes afin que vous puissiez être informé de l'activité système importante, même si vous n'êtes pas connecté au système. https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-monitor-cm-operations.html["En savoir plus sur le Centre de notification et sur la manière d'envoyer des e-mails d'alerte pour les tâches de sauvegarde et de restauration"^].
 
 Les événements suivants déclenchent des alertes par e-mail :
 
@@ -172,7 +172,7 @@ Par défaut, les administrateurs de compte BlueXP reçoivent des e-mails pour to
 
 Pour recevoir les alertes par e-mail de sauvegarde et de restauration BlueXP, vous devez sélectionner les types de sévérité des notifications « critique », « Avertissement » et « erreur ».
 
-https://["En savoir plus sur le Centre de notification et sur la manière d'envoyer des e-mails d'alerte pour les tâches de sauvegarde et de restauration"^].
+https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-monitor-cm-operations.html["En savoir plus sur le Centre de notification et sur la manière d'envoyer des e-mails d'alerte pour les tâches de sauvegarde et de restauration"^].
 
 .Étapes
 . Sélectionnez l'onglet *surveillance des travaux*.

@@ -28,7 +28,7 @@ Si vous choisissez _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans votre premièr
 
 Notez que lorsque vous configurez la sauvegarde et la restauration BlueXP avec ce type de règle de cycle de vie, vous ne devez pas configurer de règles de cycle de vie lors de la configuration du compartiment dans votre compte AWS.
 
-https://["Découvrez les classes de stockage S3"^].
+https://aws.amazon.com/s3/storage-classes/["Découvrez les classes de stockage S3"^].
 
 
 
@@ -52,7 +52,7 @@ Combien coûte la restauration des données à partir d'Amazon S3 Glacier et d'A
 
 | *Archive en profondeur du glacier S3* |  | Récupération plus rapide, coûts supérieurs | Récupération plus lente, coûts réduits 
 |===
-Chaque méthode propose des frais de récupération différents par Go et par demande. Pour en savoir plus sur la tarification S3 Glacier par région AWS, rendez-vous sur le https://["Page tarifaire d'Amazon S3"^].
+Chaque méthode propose des frais de récupération différents par Go et par demande. Pour en savoir plus sur la tarification S3 Glacier par région AWS, rendez-vous sur le https://aws.amazon.com/s3/pricing/["Page tarifaire d'Amazon S3"^].
 
 --
 Combien de temps faut-il pour restaurer mes objets archivés dans Amazon S3 Glacier ?:: Deux parties composent la durée totale de restauration :
@@ -76,7 +76,7 @@ Combien de temps faut-il pour restaurer mes objets archivés dans Amazon S3 Glac
 * *Temps de restauration* : temps de restauration des données à partir du fichier de sauvegarde dans le stockage standard. Ce temps n'est pas différent de l'opération de restauration standard directement depuis le stockage standard - lorsque vous n'utilisez pas de niveau d'archivage.
 
 
-Pour plus d'informations sur les options de récupération d'Amazon S3 Glacier et S3 Glacier Deep Archive, consultez https://["Forum aux questions d'Amazon sur ces classes de stockage"^].
+Pour plus d'informations sur les options de récupération d'Amazon S3 Glacier et S3 Glacier Deep Archive, consultez https://aws.amazon.com/s3/faqs/#Amazon_S3_Glacier["Forum aux questions d'Amazon sur ces classes de stockage"^].
 
 --
 

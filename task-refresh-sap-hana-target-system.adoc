@@ -23,7 +23,7 @@ Vous pouvez actualiser un système cible SAP HANA avec les données d'un systèm
 * Vérifiez que la version de la base de données SAP HANA est identique sur le système source et le système cible.
 * Vous devez avoir décidé des scripts d'actualisation à utiliser. Les scripts d'actualisation sont disponibles dans le rapport technique de la solution.
 +
-https://["Scripts d'exemple d'automatisation"]
+https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-automation-example-scripts.html#script-sc-system-refresh-sh["Scripts d'exemple d'automatisation"]
 
 +
 Vous pouvez personnaliser les scripts d'actualisation.

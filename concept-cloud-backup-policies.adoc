@@ -55,9 +55,9 @@ La sauvegarde et la restauration BlueXP prennent en charge DataLock et la protec
 
 Ces deux fonctionnalités protègent vos fichiers de sauvegarde. Ainsi, vous disposez toujours d'un fichier de sauvegarde valide permettant de restaurer vos données en cas d'attaque par ransomware sur vos sauvegardes. Il est également utile de respecter certaines exigences réglementaires dans lesquelles les sauvegardes doivent être verrouillées et conservées pendant un certain temps. Lorsque DataLock et la protection contre les ransomware sont activés, le verrouillage des objets et la gestion des versions d'objets sont activés dans le compartiment cloud provisionné dans le cadre de l'activation de la sauvegarde et de la restauration BlueXP.
 
-https://["Consultez le blog sur la protection contre les attaques par ransomware et les attaques par ransomware pour en savoir plus"^].
+https://bluexp.netapp.com/blog/cbs-blg-the-bluexp-feature-that-protects-backups-from-ransomware["Consultez le blog sur la protection contre les attaques par ransomware et les attaques par ransomware pour en savoir plus"^].
 
-Cette fonction n'assure pas la protection de vos volumes source, uniquement pour les sauvegardes de ces volumes source. Faites confiance à NetApp https://["Cloud Insights et Cloud Secure"^], ou une partie du https://["Protections contre les ransomwares fournies par ONTAP"^] pour protéger vos volumes source.
+Cette fonction n'assure pas la protection de vos volumes source, uniquement pour les sauvegardes de ces volumes source. Faites confiance à NetApp https://cloud.netapp.com/ci-sde-plp-cloud-secure-info-trial?hsCtaTracking=fefadff4-c195-4b6a-95e3-265d8ce7c0cd%7Cb696fdde-c026-4007-a39e-5e986c4d27c6["Cloud Insights et Cloud Secure"^], ou une partie du https://docs.netapp.com/us-en/ontap/anti-ransomware/index.html["Protections contre les ransomwares fournies par ONTAP"^] pour protéger vos volumes source.
 
 [CAUTION]
 ====
@@ -233,7 +233,7 @@ ifdef::aws[]
 *** s3:GetBucketLocation
 *** s3:GetObjectVersion
 +
-https://["Affichez le format JSON complet de la règle dans laquelle vous pouvez copier et coller les autorisations requises"^].
+https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-permissions-aws.html["Affichez le format JSON complet de la règle dans laquelle vous pouvez copier et coller les autorisations requises"^].
 
 
 

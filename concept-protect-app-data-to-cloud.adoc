@@ -20,8 +20,8 @@ Vous pouvez sauvegarder les données des applications Oracle, Microsoft SQL et S
 
 Pour plus d'informations sur la sauvegarde et la restauration BlueXP pour les applications, consultez :
 
-* https://["Sauvegarde intégrant la cohérence applicative avec la sauvegarde et la restauration BlueXP et SnapCenter"^]
-* https://["Podcast sur la sauvegarde et la restauration BlueXP pour les applications"^]
+* https://cloud.netapp.com/blog/cbs-cloud-backup-and-snapcenter-integration["Sauvegarde intégrant la cohérence applicative avec la sauvegarde et la restauration BlueXP et SnapCenter"^]
+* https://soundcloud.com/techontap_podcast/episode-322-cloud-backup-for-applications["Podcast sur la sauvegarde et la restauration BlueXP pour les applications"^]
 
 
 

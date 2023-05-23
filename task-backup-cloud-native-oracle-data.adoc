@@ -134,6 +134,6 @@ Après avoir affecté la stratégie, vous pouvez créer une sauvegarde à la dem
 * Après la restauration d'une base de données volumineuse (250 Go ou plus), si vous effectuez une sauvegarde en ligne complète sur la même base de données, l'opération risque d'échouer avec l'erreur suivante :
 `failed with status code 500, error {\"error\":{\"code\":\"app_internal_error\",\"message\":\"Failed to create snapshot. Reason: Snapshot operation not allowed due to clones backed by snapshots. Try again after sometime.`
 +
-Pour plus d'informations sur la façon de résoudre ce problème, reportez-vous à : https://["Opération de snapshot non autorisée en raison de clones sauvegardés par des snapshots"].
+Pour plus d'informations sur la façon de résoudre ce problème, reportez-vous à : https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/Snapshot_operation_not_allowed_due_to_clones_backed_by_snapshots["Opération de snapshot non autorisée en raison de clones sauvegardés par des snapshots"].
 
 

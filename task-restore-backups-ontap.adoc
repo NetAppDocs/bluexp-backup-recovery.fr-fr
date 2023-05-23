@@ -423,7 +423,7 @@ Vous disposez de quelques options pour l'emplacement de restauration des dossier
 
 Vous pouvez restaurer un volume, un dossier ou des fichiers à partir d'un fichier de sauvegarde ONTAP à l'aide de la fonction Rechercher et restaurer. La fonction de recherche et restauration vous permet de rechercher un volume, un dossier ou un fichier spécifique à partir de toutes les sauvegardes stockées dans le stockage cloud pour un fournisseur spécifique, puis d'effectuer une restauration. Il n'est pas nécessaire de connaître le nom exact de l'environnement de travail ou le nom du volume ; la recherche s'effectue via tous les fichiers de sauvegarde de volume.
 
-L'opération de recherche examine également toutes les copies Snapshot locales existant pour vos volumes ONTAP. Étant donné que la restauration des données à partir d'une copie Snapshot locale peut être plus rapide et moins coûteuse que la restauration à partir d'un fichier de sauvegarde, il est possible de restaurer les données à partir d'une copie Snapshot. Vous pouvez restaurer la copie Snapshot en tant que nouveau volume https://["À partir de la page Détails du volume de la zone de travail"^] (Pas à partir de la sauvegarde et de la restauration BlueXP).
+L'opération de recherche examine également toutes les copies Snapshot locales existant pour vos volumes ONTAP. Étant donné que la restauration des données à partir d'une copie Snapshot locale peut être plus rapide et moins coûteuse que la restauration à partir d'un fichier de sauvegarde, il est possible de restaurer les données à partir d'une copie Snapshot. Vous pouvez restaurer la copie Snapshot en tant que nouveau volume https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes["À partir de la page Détails du volume de la zone de travail"^] (Pas à partir de la sauvegarde et de la restauration BlueXP).
 
 Lorsque vous restaurez un volume à partir d'un fichier de sauvegarde, la sauvegarde et la restauration BlueXP créent un _nouveau_ volume en utilisant les données de la sauvegarde. Vous pouvez restaurer les données en tant que volume dans l'environnement de travail d'origine ou vers un autre environnement de travail situé dans le même compte cloud que l'environnement de travail source. Vous pouvez également restaurer des volumes sur un système ONTAP sur site.
 
@@ -546,7 +546,7 @@ ifdef::azure[]
 
 * Configuration d'Azure :
 +
-** Vous devez enregistrer le fournisseur de ressources d'analyse d'Azure Synapse (appelé « Microsoft.Synapse ») auprès de votre abonnement. https://["Découvrez comment enregistrer ce fournisseur de ressources pour votre abonnement"^]. Vous devez être l'abonnement *propriétaire* ou *Contributeur* pour enregistrer le fournisseur de ressources.
+** Vous devez enregistrer le fournisseur de ressources d'analyse d'Azure Synapse (appelé « Microsoft.Synapse ») auprès de votre abonnement. https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider["Découvrez comment enregistrer ce fournisseur de ressources pour votre abonnement"^]. Vous devez être l'abonnement *propriétaire* ou *Contributeur* pour enregistrer le fournisseur de ressources.
 ** Des autorisations spécifiques pour Azure Synapse Workspace et Data Lake Storage Account doivent être ajoutées au rôle utilisateur qui fournit à BlueXP des autorisations. link:task-backup-onprem-to-azure.html#verify-or-add-permissions-to-the-connector["Assurez-vous que toutes les autorisations sont correctement configurées"].
 +
 Notez que si vous utilisiez déjà la sauvegarde et la restauration BlueXP avec un connecteur que vous avez configuré auparavant, vous devrez ajouter les autorisations Azure Synapse Workspace et Data Lake Storage Account au rôle d'utilisateur BlueXP maintenant. Ils sont nouveaux et sont requis pour la recherche et la restauration.
@@ -579,7 +579,7 @@ En fonction de votre configuration, la recherche et la restauration peuvent êtr
 +
 ** S'il n'y a pas d'identifiants de fournisseur de cloud dans votre compte, les informations de catalogue indexées sont stockées sur le connecteur.
 ** Si vous utilisez un connecteur sur un site sombre, les informations de catalogue indexé sont stockées sur le connecteur (nécessite la version 3.9.25 ou supérieure du connecteur).
-** Si vous l'avez https://["Identifiants AWS"^] ou https://["Identifiants Azure"^] Dans le compte, le catalogue indexé est stocké sur le fournisseur cloud, comme avec un connecteur déployé dans le cloud. (Si vous disposez des deux identifiants, AWS est sélectionné par défaut.)
+** Si vous l'avez https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-accounts-aws.html["Identifiants AWS"^] ou https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-accounts-azure.html["Identifiants Azure"^] Dans le compte, le catalogue indexé est stocké sur le fournisseur cloud, comme avec un connecteur déployé dans le cloud. (Si vous disposez des deux identifiants, AWS est sélectionné par défaut.)
 +
 Même si vous utilisez un connecteur sur site, les exigences du fournisseur cloud doivent être respectées tant pour les autorisations de connecteur que pour les ressources du fournisseur cloud. Consultez les exigences AWS et Azure ci-dessus lors de l'utilisation de cette implémentation.
 
@@ -618,7 +618,7 @@ Lorsque vous activez cette fonctionnalité, BlueXP Backup and Recovery active Sn
 
 ifdef::aws[]
 
-* Pour les sauvegardes stockées dans AWS, un nouveau compartiment S3 est provisionné et le https://["Service de requête interactive Amazon Athena"^] et https://["Service d'intégration de données sans serveur AWS Glue"^].
+* Pour les sauvegardes stockées dans AWS, un nouveau compartiment S3 est provisionné et le https://aws.amazon.com/athena/faqs/["Service de requête interactive Amazon Athena"^] et https://aws.amazon.com/glue/faqs/["Service d'intégration de données sans serveur AWS Glue"^].
 
 
 endif::aws[]
@@ -632,7 +632,7 @@ endif::azure[]
 
 ifdef::gcp[]
 
-* Pour les sauvegardes stockées dans Google Cloud, un nouveau compartiment est provisionné, et le https://["Services Google Cloud BigQuery"^] sont provisionnées au niveau compte/projet.
+* Pour les sauvegardes stockées dans Google Cloud, un nouveau compartiment est provisionné, et le https://cloud.google.com/bigquery["Services Google Cloud BigQuery"^] sont provisionnées au niveau compte/projet.
 
 
 endif::gcp[]

@@ -161,7 +161,7 @@ Puisque la sauvegarde et la restauration BlueXP préservent l'efficacité du sto
 ifdef::aws[]
 
 +
-** Dans AWS, https://["Amazon Athena"^] et https://["AWS Glue"^] Les ressources sont déployées dans un nouveau compartiment S3.
+** Dans AWS, https://aws.amazon.com/athena/faqs/["Amazon Athena"^] et https://aws.amazon.com/glue/faqs/["AWS Glue"^] Les ressources sont déployées dans un nouveau compartiment S3.
 +
 endif::aws[]
 
@@ -171,7 +171,7 @@ endif::aws[]
 ifdef::azure[]
 
 +
-** Dans Azure, un https://["Espace de travail Azure Synapse"^] et https://["Stockage en data Lake Azure"^] sont provisionnées dans votre compte de stockage pour stocker et analyser vos données.
+** Dans Azure, un https://azure.microsoft.com/en-us/services/synapse-analytics/?&ef_id=EAIaIQobChMI46_bxcWZ-QIVjtiGCh2CfwCsEAAYASAAEgKwjvD_BwE:G:s&OCID=AIDcmm5edswduu_SEM_EAIaIQobChMI46_bxcWZ-QIVjtiGCh2CfwCsEAAYASAAEgKwjvD_BwE:G:s&gclid=EAIaIQobChMI46_bxcWZ-QIVjtiGCh2CfwCsEAAYASAAEgKwjvD_BwE["Espace de travail Azure Synapse"^] et https://azure.microsoft.com/en-us/services/storage/data-lake-storage/?&ef_id=EAIaIQobChMIuYz0qsaZ-QIVUDizAB1EmACvEAAYASAAEgJH5fD_BwE:G:s&OCID=AIDcmm5edswduu_SEM_EAIaIQobChMIuYz0qsaZ-QIVUDizAB1EmACvEAAYASAAEgJH5fD_BwE:G:s&gclid=EAIaIQobChMIuYz0qsaZ-QIVUDizAB1EmACvEAAYASAAEgJH5fD_BwE["Stockage en data Lake Azure"^] sont provisionnées dans votre compte de stockage pour stocker et analyser vos données.
 +
 endif::azure[]
 
@@ -181,7 +181,7 @@ endif::azure[]
 
 ifdef::gcp[]
 
-* Dans Google, un nouveau compartiment est déployé, et le https://["Services Google Cloud BigQuery"^] sont provisionnées au niveau compte/projet.
+* Dans Google, un nouveau compartiment est déployé, et le https://cloud.google.com/bigquery["Services Google Cloud BigQuery"^] sont provisionnées au niveau compte/projet.
 
 
 endif::gcp[]
@@ -223,7 +223,7 @@ Si vous avez un contrat annuel depuis un marché, toute la consommation de sauve
 
 BYOL est basé sur la durée (12, 24 ou 36 mois) _et_ sur la capacité par incréments de 1 Tio. Vous payez NetApp pour utiliser le service pendant une période, disons 1 an, et pour une capacité maximale, dites 10 Tio.
 
-Vous recevrez un numéro de série que vous entrez sur la page du portefeuille digital BlueXP pour activer le service. Lorsque l'une ou l'autre limite est atteinte, vous devez renouveler la licence. La licence de sauvegarde BYOL s'applique à tous les systèmes source associés à votre https://["Compte BlueXP"^].
+Vous recevrez un numéro de série que vous entrez sur la page du portefeuille digital BlueXP pour activer le service. Lorsque l'une ou l'autre limite est atteinte, vous devez renouveler la licence. La licence de sauvegarde BYOL s'applique à tous les systèmes source associés à votre https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-netapp-accounts.html["Compte BlueXP"^].
 
 link:task-licensing-cloud-backup.html#use-a-bluexp-backup-and-recovery-byol-license["Découvrez comment gérer vos licences BYOL"].
 
@@ -271,7 +271,7 @@ link:task-licensing-cloud-backup.html#use-an-annual-contract["Découvrez comment
 
 == Fonctionnement de la sauvegarde et de la restauration BlueXP
 
-Lorsque vous activez la sauvegarde et la restauration BlueXP sur un système Cloud Volumes ONTAP ou ONTAP sur site, le service effectue une sauvegarde complète de vos données. Les instantanés de volume ne sont pas inclus dans l'image de sauvegarde. Après la sauvegarde initiale, toutes les sauvegardes supplémentaires sont incrémentielles, ce qui signifie que seuls les blocs modifiés et les nouveaux blocs sont sauvegardés. Le trafic réseau est ainsi réduit au minimum. La sauvegarde et la restauration BlueXP reposent sur le https://["Technologie NetApp SnapMirror Cloud"^].
+Lorsque vous activez la sauvegarde et la restauration BlueXP sur un système Cloud Volumes ONTAP ou ONTAP sur site, le service effectue une sauvegarde complète de vos données. Les instantanés de volume ne sont pas inclus dans l'image de sauvegarde. Après la sauvegarde initiale, toutes les sauvegardes supplémentaires sont incrémentielles, ce qui signifie que seuls les blocs modifiés et les nouveaux blocs sont sauvegardés. Le trafic réseau est ainsi réduit au minimum. La sauvegarde et la restauration BlueXP reposent sur le https://docs.netapp.com/us-en/ontap/concepts/snapmirror-cloud-backups-object-store-concept.html["Technologie NetApp SnapMirror Cloud"^].
 
 
 CAUTION: Toute action effectuée directement depuis votre environnement de fournisseur cloud pour gérer ou modifier des fichiers de sauvegarde peut corrompre les fichiers et entraîner une configuration non prise en charge.
@@ -288,14 +288,14 @@ Les copies de sauvegarde sont stockées dans un magasin d'objets créé par Blue
 
 ifdef::aws[]
 
-* Dans AWS, BlueXP permet https://["Fonctionnalité d'accès public aux blocs Amazon S3"^] Sur le compartiment S3.
+* Dans AWS, BlueXP permet https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html["Fonctionnalité d'accès public aux blocs Amazon S3"^] Sur le compartiment S3.
 
 
 endif::aws[]
 
 ifdef::azure[]
 
-* Dans Azure, BlueXP utilise un groupe de ressources nouveau ou existant avec un compte de stockage pour le conteneur Blob. BlueXP https://["bloque l'accès public à vos données d'objets blob"] par défaut.
+* Dans Azure, BlueXP utilise un groupe de ressources nouveau ou existant avec un compte de stockage pour le conteneur Blob. BlueXP https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent["bloque l'accès public à vos données d'objets blob"] par défaut.
 
 
 endif::azure[]

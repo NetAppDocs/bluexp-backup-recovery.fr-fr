@@ -26,7 +26,7 @@ Si vos clusters source exécutent ONTAP 9.10.1 ou version ultérieure, vous pouv
 
 Notez que lorsque vous configurez la sauvegarde et la restauration BlueXP avec ce type de règle de cycle de vie, vous ne devez pas configurer de règles de cycle de vie lors de la configuration du conteneur dans votre compte Azure.
 
-https://["Découvrez les niveaux d'accès d'Azure Blob"^].
+https://docs.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview["Découvrez les niveaux d'accès d'Azure Blob"^].
 
 
 
@@ -41,7 +41,7 @@ Combien coûte la restauration des données à partir d'Azure Archive ?:: Vous p
 * *Standard* : récupération plus lente, coût moindre
 
 
-Chaque méthode propose des frais de récupération différents par Go et par demande. Pour en savoir plus sur la tarification d'Azure Archive par région Azure, rendez-vous sur la https://["Page tarifaire d'Azure"^].
+Chaque méthode propose des frais de récupération différents par Go et par demande. Pour en savoir plus sur la tarification d'Azure Archive par région Azure, rendez-vous sur la https://azure.microsoft.com/en-us/pricing/details/storage/blobs/["Page tarifaire d'Azure"^].
 
 --
 
@@ -61,7 +61,7 @@ Quel est le délai de restauration des données archivées dans Azure Archive ?:
 * *Restore Time* : le temps de restauration des données à partir du fichier de sauvegarde dans Cool Storage. Ce temps n'est pas différent de l'opération de restauration typique directement depuis Cool Storage - lorsque vous n'utilisez pas un niveau d'archivage.
 
 
-Pour plus d'informations sur les options de récupération d'Azure Archive, reportez-vous à https://["Forum aux questions sur Azure"^].
+Pour plus d'informations sur les options de récupération d'Azure Archive, reportez-vous à https://azure.microsoft.com/en-us/pricing/details/storage/blobs/#faq["Forum aux questions sur Azure"^].
 
 --
 

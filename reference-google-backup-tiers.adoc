@@ -26,7 +26,7 @@ Si votre cluster sur site utilise ONTAP 9.12.1 ou une version ultérieure, vous 
 
 Notez que lorsque vous configurez la sauvegarde et la restauration BlueXP avec ce type de règle de cycle de vie, vous ne devez pas configurer de règles de cycle de vie lors de la configuration du compartiment dans votre compte Google.
 
-https://["En savoir plus sur les classes de stockage Google"^].
+https://cloud.google.com/storage/docs/storage-classes["En savoir plus sur les classes de stockage Google"^].
 
 
 
@@ -34,7 +34,7 @@ https://["En savoir plus sur les classes de stockage Google"^].
 
 Le stockage d'anciens fichiers de sauvegarde dans un stockage d'archivage est bien moins coûteux que le stockage standard. En revanche, l'accès aux données à partir d'un fichier de sauvegarde dans le stockage d'archivage à des fins de restauration prendra un peu plus de temps et coûtera plus d'argent.
 
-Combien coûte la restauration des données à partir de Google Archive ?:: Pour obtenir des informations détaillées sur la tarification de Google Cloud Storage par région, rendez-vous sur le https://["Page de tarification de Google Cloud Storage"^].
+Combien coûte la restauration des données à partir de Google Archive ?:: Pour obtenir des informations détaillées sur la tarification de Google Cloud Storage par région, rendez-vous sur le https://cloud.google.com/storage/pricing["Page de tarification de Google Cloud Storage"^].
 Combien de temps faut-il pour restaurer mes objets archivés dans Google Archive ?:: Deux parties composent la durée totale de restauration :
 +
 --
