@@ -367,7 +367,7 @@ Vous n'avez pas nécessairement besoin de supprimer le volume source. Vous pouve
 
 Cette fonction n'est disponible que si votre système exécute ONTAP 9.12.1 ou une version ultérieure.
 
-Vous ne pouvez pas supprimer le volume source de l'interface utilisateur de sauvegarde et de restauration BlueXP. Cependant, vous pouvez ouvrir la page Détails du volume sur la toile, et https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes["supprimez le volume de ce site"].
+Vous ne pouvez pas supprimer le volume source de l'interface utilisateur de sauvegarde et de restauration BlueXP. Cependant, vous pouvez ouvrir la page Détails du volume sur la toile, et https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes["supprimez le volume de ce site"].
 
 
 NOTE: Une fois la relation supprimée, vous ne pouvez pas supprimer des fichiers de sauvegarde de volume individuels. Vous pouvez cependant link:task-manage-backups-ontap.html#deleting-all-backup-files-for-a-volume["supprimez toutes les sauvegardes du volume"] si vous souhaitez supprimer tous les fichiers de sauvegarde.

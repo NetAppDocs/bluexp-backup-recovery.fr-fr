@@ -47,7 +47,7 @@ https://www.netapp.com/us/legal/privacypolicy/index.aspx[]
 
 Les fichiers de notification fournissent des informations sur les droits d'auteur et les licences de tiers utilisés dans le logiciel NetApp.
 
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/media/notice.pdf["Note pour BlueXP"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/media/notice.pdf["Note pour BlueXP"^]
 * link:media/notice_cloud_backup_service.pdf["Notez la sauvegarde et la restauration BlueXP"^]
 * link:media/notice_single_file_restore.pdf["Remarque concernant la restauration de fichiers uniques"^]
 

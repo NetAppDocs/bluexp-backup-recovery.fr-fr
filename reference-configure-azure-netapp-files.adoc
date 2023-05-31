@@ -20,7 +20,7 @@ Avec BlueXP, vous devez créer un environnement de travail Azure NetApp Files po
 
 == Créer un environnement de travail Azure NetApp Files
 
-Vous devez créer des environnements de travail Azure NetApp Files dans lesquels vos bases de données sont hébergées. Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/us-en/cloud-manager-azure-netapp-files/concept-azure-netapp-files.html["Découvrez Azure NetApp Files"] et link:https://docs.netapp.com/us-en/cloud-manager-azure-netapp-files/task-create-working-env.html["Créer un environnement de travail Azure NetApp Files"].
+Vous devez créer des environnements de travail Azure NetApp Files dans lesquels vos bases de données sont hébergées. Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/us-en/bluexp-azure-netapp-files/concept-azure-netapp-files.html["Découvrez Azure NetApp Files"] et link:https://docs.netapp.com/us-en/bluexp-azure-netapp-files/task-create-working-env.html["Créer un environnement de travail Azure NetApp Files"].
 
 
 
@@ -28,7 +28,7 @@ Vous devez créer des environnements de travail Azure NetApp Files dans lesquels
 
 Un administrateur de compte BlueXP doit déployer un connecteur dans Azure qui permet à BlueXP de gérer les ressources et les processus dans votre environnement de cloud public.
 
-Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-azure.html["Créez un connecteur dans Azure à partir de BlueXP"].
+Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/us-en/bluexp-setup-admin/task-creating-connectors-azure.html["Créez un connecteur dans Azure à partir de BlueXP"].
 
 * Assurez-vous qu'il y a une connectivité entre le connecteur et les hôtes de la base de données.
 * Si vous disposez de l'environnement de travail Azure NetApp Files et des bases de données sur le même réseau virtuel (vnet), vous pouvez déployer le connecteur dans le même vnet.

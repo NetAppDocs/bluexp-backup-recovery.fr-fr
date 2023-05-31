@@ -72,7 +72,7 @@ L'image suivante montre chaque composant et les connexions que vous devez prépa
 image:diagram_cloud_backup_cvo_google.png["Un diagramme illustrant la façon dont BlueXP Backup and Recovery communique avec les volumes du système source et le stockage de destination où se trouvent les fichiers de sauvegarde."]
 
 Versions de ONTAP prises en charge:: Minimum de ONTAP 9.7P5 ; ONTAP 9.8P13 et version ultérieure est recommandé.
-Conditions de licence:: Pour la sauvegarde et la restauration BlueXP, une licence PAYGO est disponible dans Google Marketplace et permet de déployer des solutions de sauvegarde et de restauration Cloud Volumes ONTAP et BlueXP. Vous devez le faire https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project["Abonnez-vous à cet abonnement BlueXP"^] Avant d'activer la sauvegarde et la restauration BlueXP. La facturation de la sauvegarde et de la restauration BlueXP s'effectue via cet abonnement. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-gcp.html["Vous pouvez vous abonner à la page Détails et amp ; informations d'identification de l'assistant de l'environnement de travail"^].
+Conditions de licence:: Pour la sauvegarde et la restauration BlueXP, une licence PAYGO est disponible dans Google Marketplace et permet de déployer des solutions de sauvegarde et de restauration Cloud Volumes ONTAP et BlueXP. Vous devez le faire https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project["Abonnez-vous à cet abonnement BlueXP"^] Avant d'activer la sauvegarde et la restauration BlueXP. La facturation de la sauvegarde et de la restauration BlueXP s'effectue via cet abonnement. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-gcp.html["Vous pouvez vous abonner à la page Détails et amp ; informations d'identification de l'assistant de l'environnement de travail"^].
 +
 --
 Pour les licences BYOL de sauvegarde et de restauration BlueXP, vous devez disposer du numéro de série de NetApp qui vous permet d'utiliser le service pendant la durée et la capacité de la licence. link:task-licensing-cloud-backup.html#use-a-bluexp-backup-and-recovery-byol-license["Découvrez comment gérer vos licences BYOL"^].
@@ -81,12 +81,12 @@ Vous devez également disposer d'un abonnement Google pour l'espace de stockage 
 
 --
 Régions GCP prises en charge:: La sauvegarde et la restauration BlueXP sont prises en charge dans toutes les régions GCP https://cloud.netapp.com/cloud-volumes-global-regions["Dans ce cas, Cloud Volumes ONTAP est pris en charge"^].
-Compte de services GCP:: Vous devez disposer d'un compte de service dans votre projet Google Cloud avec le rôle d'administrateur de stockage prédéfini. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-creating-gcp-service-account.html["Découvrez comment créer un compte de service"^].
+Compte de services GCP:: Vous devez disposer d'un compte de service dans votre projet Google Cloud avec le rôle d'administrateur de stockage prédéfini. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-creating-gcp-service-account.html["Découvrez comment créer un compte de service"^].
 Exigences relatives au connecteur:: Le connecteur doit être installé dans une région Google avec accès à Internet.
 +
 --
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-quick-start-connector-google.html["Déployez un connecteur dans Google Cloud"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["Déployez un connecteur dans Google Cloud"^]
 
 
 --
@@ -156,7 +156,7 @@ La sauvegarde et la restauration BlueXP peuvent être activées lorsque vous cr�
 
 Un compte de service doit déjà être configuré. Si vous ne sélectionnez pas de compte de service lors de la création du système Cloud Volumes ONTAP, vous devrez désactiver le système et ajouter le compte de service à Cloud Volumes ONTAP depuis la console GCP.
 
-Voir https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-gcp.html["Lancement d'Cloud Volumes ONTAP dans GCP"^] Pour connaître les conditions requises et les détails relatifs à la création du système Cloud Volumes ONTAP.
+Voir https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-gcp.html["Lancement d'Cloud Volumes ONTAP dans GCP"^] Pour connaître les conditions requises et les détails relatifs à la création du système Cloud Volumes ONTAP.
 
 .Étapes
 . Sur la page environnements de travail, cliquez sur *Ajouter un environnement de travail* et suivez les invites.
@@ -180,7 +180,7 @@ image:screenshot_backup_to_gcp_new_env.png["Capture d'écran indiquant comment a
 +
 image:screenshot_backup_to_gcp.png["La montre l'option de sauvegarde et de restauration BlueXP dans l'assistant de l'environnement de travail."]
 
-. Complétez les pages de l'assistant pour déployer le système comme décrit à la section https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-gcp.html["Lancement d'Cloud Volumes ONTAP dans GCP"^].
+. Complétez les pages de l'assistant pour déployer le système comme décrit à la section https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-gcp.html["Lancement d'Cloud Volumes ONTAP dans GCP"^].
 
 
 .Résultat

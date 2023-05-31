@@ -20,7 +20,7 @@ Avec BlueXP, vous devez créer un environnement de travail Cloud Volumes ONTAP p
 
 == Créer un environnement de travail Cloud Volumes ONTAP
 
-Vous pouvez découvrir et ajouter des systèmes Cloud Volumes ONTAP existants à BlueXP. Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-adding-systems.html["Ajout de systèmes Cloud Volumes ONTAP existants à BlueXP"].
+Vous pouvez découvrir et ajouter des systèmes Cloud Volumes ONTAP existants à BlueXP. Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-adding-systems.html["Ajout de systèmes Cloud Volumes ONTAP existants à BlueXP"].
 
 
 
@@ -28,9 +28,9 @@ Vous pouvez découvrir et ajouter des systèmes Cloud Volumes ONTAP existants à
 
 Vous pouvez commencer à utiliser Cloud Volumes ONTAP pour votre environnement cloud en quelques étapes. Pour plus d'informations, reportez-vous à l'une des sections suivantes :
 
-* link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-aws.html["Démarrage rapide de Cloud Volumes ONTAP dans AWS"]
-* link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-azure.html["Démarrage rapide de Cloud Volumes ONTAP dans Azure"]
-* link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-gcp.html["Démarrage rapide pour Cloud Volumes ONTAP dans Google Cloud"]
+* link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-getting-started-aws.html["Démarrage rapide de Cloud Volumes ONTAP dans AWS"]
+* link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-getting-started-azure.html["Démarrage rapide de Cloud Volumes ONTAP dans Azure"]
+* link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-getting-started-gcp.html["Démarrage rapide pour Cloud Volumes ONTAP dans Google Cloud"]
 
 
 Vous devez utiliser le même connecteur pour gérer à la fois l'environnement de travail Cloud Volumes ONTAP et les bases de données.

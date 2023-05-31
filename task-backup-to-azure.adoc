@@ -74,7 +74,7 @@ L'image suivante montre chaque composant et les connexions que vous devez prépa
 image:diagram_cloud_backup_cvo_azure.png["Un diagramme illustrant la façon dont BlueXP Backup and Recovery communique avec les volumes des systèmes source et le stockage de destination où se trouvent les fichiers de sauvegarde."]
 
 Versions de ONTAP prises en charge:: Minimum de ONTAP 9.7P5 ; ONTAP 9.8P13 et version ultérieure est recommandé.
-Conditions de licence:: Pour la sauvegarde et la restauration BlueXP avec une licence PAYGO, un abonnement via Azure Marketplace est requis avant d'activer la sauvegarde et la restauration BlueXP. La facturation de la sauvegarde et de la restauration BlueXP s'effectue via cet abonnement. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html["Vous pouvez vous abonner à la page Détails et amp ; informations d'identification de l'assistant de l'environnement de travail"^].
+Conditions de licence:: Pour la sauvegarde et la restauration BlueXP avec une licence PAYGO, un abonnement via Azure Marketplace est requis avant d'activer la sauvegarde et la restauration BlueXP. La facturation de la sauvegarde et de la restauration BlueXP s'effectue via cet abonnement. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-otc-azure.html["Vous pouvez vous abonner à la page Détails et amp ; informations d'identification de l'assistant de l'environnement de travail"^].
 +
 --
 Pour les licences BYOL de sauvegarde et de restauration BlueXP, vous devez disposer du numéro de série de NetApp qui vous permet d'utiliser le service pendant la durée et la capacité de la licence. link:task-licensing-cloud-backup.html#use-a-bluexp-backup-and-recovery-byol-license["Découvrez comment gérer vos licences BYOL"]. Vous devez utiliser une licence BYOL lorsque le connecteur et le système Cloud Volumes ONTAP sont déployés dans un site invisible (« mode privé »).
@@ -82,12 +82,12 @@ Pour les licences BYOL de sauvegarde et de restauration BlueXP, vous devez dispo
 Vous devez également disposer d'un abonnement Microsoft Azure pour l'espace de stockage où vos sauvegardes seront stockées.
 
 --
-Exigences relatives au connecteur:: Le connecteur peut être installé dans une région Azure avec un accès Internet complet ou limité (mode « standard » ou « restreint »). https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-modes.html["Consultez les modes de déploiement BlueXP pour plus de détails"^].
+Exigences relatives au connecteur:: Le connecteur peut être installé dans une région Azure avec un accès Internet complet ou limité (mode « standard » ou « restreint »). https://docs.netapp.com/us-en/bluexp-setup-admin/concept-modes.html["Consultez les modes de déploiement BlueXP pour plus de détails"^].
 +
 --
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-quick-start-connector-azure.html["Déployer un connecteur dans Azure en mode standard (accès complet à Internet)"^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-quick-start-restricted-mode.html["Installer le connecteur en mode restreint (accès sortant limité)"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["Déployer un connecteur dans Azure en mode standard (accès complet à Internet)"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-restricted-mode.html["Installer le connecteur en mode restreint (accès sortant limité)"^]
 
 
 --
@@ -162,7 +162,7 @@ Vérifiez ou ajoutez des autorisations au connecteur:: Pour utiliser la fonction
 "Microsoft.Synapse/workspaces/privateEndpointConnectionsApproval/action"
 ----
 +
-https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-permissions-azure.html["Afficher le format JSON complet de la règle"^]
+https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["Afficher le format JSON complet de la règle"^]
 
 ... Cliquez sur *Revue + mise à jour*, puis sur *mise à jour*.
 
@@ -188,7 +188,7 @@ Informations requises pour l'utilisation des clés gérées par le client pour l
 
 La sauvegarde et la restauration BlueXP sont activées par défaut dans l'assistant de l'environnement de travail. Assurez-vous de conserver l'option activée.
 
-Voir https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html["Lancement d'Cloud Volumes ONTAP dans Azure"^] Pour connaître les conditions requises et les détails relatifs à la création du système Cloud Volumes ONTAP.
+Voir https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-otc-azure.html["Lancement d'Cloud Volumes ONTAP dans Azure"^] Pour connaître les conditions requises et les détails relatifs à la création du système Cloud Volumes ONTAP.
 
 
 NOTE: Si vous souhaitez choisir le nom du groupe de ressources, *disable* BlueXP Backup and Recovery lors du déploiement de Cloud Volumes ONTAP. Suivez les étapes de la section <<enabling-bluexp-backup-and-recovery-on-an-existing-system,Activation de la sauvegarde et de la restauration BlueXP sur un système existant>> Pour activer la sauvegarde et la restauration BlueXP et choisir le groupe de ressources.

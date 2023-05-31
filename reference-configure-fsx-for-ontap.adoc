@@ -20,7 +20,7 @@ Avec BlueXP, vous devez créer un environnement de travail FSX pour ONTAP afin d
 
 == Créer un environnement de travail FSX pour ONTAP
 
-Vous devez créer les environnements de travail FSX pour ONTAP dans lesquels vos bases de données sont hébergées. Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/start/task-getting-started-fsx.html["Commencez avec Amazon FSX pour ONTAP"] et link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/use/task-creating-fsx-working-environment.html["Créer et gérer un environnement de travail Amazon FSX pour ONTAP"].
+Vous devez créer les environnements de travail FSX pour ONTAP dans lesquels vos bases de données sont hébergées. Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/us-en/bluexp-fsx-ontap/start/task-getting-started-fsx.html["Commencez avec Amazon FSX pour ONTAP"] et link:https://docs.netapp.com/us-en/bluexp-fsx-ontap/use/task-creating-fsx-working-environment.html["Créer et gérer un environnement de travail Amazon FSX pour ONTAP"].
 
 Vous pouvez créer l'environnement de travail FSX pour ONTAP à l'aide de BlueXP ou d'AWS. Si vous avez créé à l'aide d'AWS, vous devriez découvrir FSX pour les systèmes ONTAP dans BlueXP.
 
@@ -30,7 +30,7 @@ Vous pouvez créer l'environnement de travail FSX pour ONTAP à l'aide de BlueXP
 
 Un administrateur de compte doit créer un connecteur dans AWS permettant à BlueXP de gérer les ressources et les processus dans votre environnement de cloud public.
 
-Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-quick-start-connector-aws.html["Création d'un connecteur dans AWS à partir de BlueXP"].
+Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["Création d'un connecteur dans AWS à partir de BlueXP"].
 
 * Vous devez utiliser le même connecteur pour gérer à la fois l'environnement de travail et les bases de données FSX pour ONTAP.
 * Si vous disposez de l'environnement de travail FSX pour ONTAP et des bases de données dans le même cloud privé virtuel (VPC), vous pouvez déployer le connecteur dans le même VPC.

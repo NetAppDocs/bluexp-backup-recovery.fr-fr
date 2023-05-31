@@ -69,8 +69,8 @@ Notez que le noeud final privé est facultatif.
 Exigences relatives aux clusters Kubernetes::
 +
 --
-* Vous avez découvert le cluster Kubernetes en tant qu'environnement de travail BlueXP. https://docs.netapp.com/us-en/cloud-manager-kubernetes/task/task-kubernetes-discover-azure.html["Découvrez comment découvrir le cluster Kubernetes"^].
-* Trident doit être installé sur le cluster, et la version de Trident doit être au moins 21.1. Voir https://docs.netapp.com/us-en/cloud-manager-kubernetes/task/task-k8s-manage-trident.html["Comment installer Trident"^] ou https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-trident.html["Comment mettre à niveau la version de Trident"^].
+* Vous avez découvert le cluster Kubernetes en tant qu'environnement de travail BlueXP. https://docs.netapp.com/us-en/bluexp-kubernetes/task/task-kubernetes-discover-azure.html["Découvrez comment découvrir le cluster Kubernetes"^].
+* Trident doit être installé sur le cluster, et la version de Trident doit être au moins 21.1. Voir https://docs.netapp.com/us-en/bluexp-kubernetes/task/task-k8s-manage-trident.html["Comment installer Trident"^] ou https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-trident.html["Comment mettre à niveau la version de Trident"^].
 * Le cluster doit utiliser Cloud Volumes ONTAP sur Azure pour le stockage back-end de son système.
 * Le système Cloud Volumes ONTAP doit se trouver dans la même région Azure que le cluster Kubernetes et doit exécuter ONTAP 9.7P5 ou version ultérieure (ONTAP 9.8P11 et version ultérieure est recommandée).
 +
@@ -129,7 +129,7 @@ spec:
 
 
 --
-Conditions de licence:: Pour la sauvegarde et la restauration BlueXP avec une licence PAYGO, un abonnement via Azure Marketplace est requis avant d'activer la sauvegarde et la restauration BlueXP. La facturation de la sauvegarde et de la restauration BlueXP s'effectue via cet abonnement. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html["Vous pouvez vous abonner à la page Détails et amp ; informations d'identification de l'assistant de l'environnement de travail"^].
+Conditions de licence:: Pour la sauvegarde et la restauration BlueXP avec une licence PAYGO, un abonnement via Azure Marketplace est requis avant d'activer la sauvegarde et la restauration BlueXP. La facturation de la sauvegarde et de la restauration BlueXP s'effectue via cet abonnement. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-otc-azure.html["Vous pouvez vous abonner à la page Détails et amp ; informations d'identification de l'assistant de l'environnement de travail"^].
 +
 --
 Pour les licences BYOL de sauvegarde et de restauration BlueXP, vous devez disposer du numéro de série de NetApp qui vous permet d'utiliser le service pendant la durée et la capacité de la licence. link:task-licensing-cloud-backup.html#use-a-bluexp-backup-and-recovery-byol-license["Découvrez comment gérer vos licences BYOL"].

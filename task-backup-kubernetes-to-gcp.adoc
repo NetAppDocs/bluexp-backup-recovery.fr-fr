@@ -70,8 +70,8 @@ Notez que le noeud final privé est facultatif.
 Exigences relatives aux clusters Kubernetes::
 +
 --
-* Vous avez découvert le cluster Kubernetes en tant qu'environnement de travail BlueXP. https://docs.netapp.com/us-en/cloud-manager-kubernetes/task/task-kubernetes-discover-gke.html["Découvrez comment découvrir le cluster Kubernetes"^].
-* Trident doit être installé sur le cluster, et la version de Trident doit être au moins 21.1. Voir https://docs.netapp.com/us-en/cloud-manager-kubernetes/task/task-k8s-manage-trident.html["Comment installer Trident"^] ou https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-trident.html["Comment mettre à niveau la version de Trident"^].
+* Vous avez découvert le cluster Kubernetes en tant qu'environnement de travail BlueXP. https://docs.netapp.com/us-en/bluexp-kubernetes/task/task-kubernetes-discover-gke.html["Découvrez comment découvrir le cluster Kubernetes"^].
+* Trident doit être installé sur le cluster, et la version de Trident doit être au moins 21.1. Voir https://docs.netapp.com/us-en/bluexp-kubernetes/task/task-k8s-manage-trident.html["Comment installer Trident"^] ou https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-trident.html["Comment mettre à niveau la version de Trident"^].
 * Le cluster doit utiliser Cloud Volumes ONTAP sur GCP pour le stockage interne de son système.
 * Le système Cloud Volumes ONTAP doit se trouver dans la même région GCP que le cluster Kubernetes et doit exécuter ONTAP 9.7P5 ou version ultérieure (ONTAP 9.8P11 et version ultérieure est recommandée).
 +
@@ -131,7 +131,7 @@ spec:
 
 --
 Régions GCP prises en charge:: La sauvegarde et la restauration BlueXP sont prises en charge dans toutes les régions GCP https://cloud.netapp.com/cloud-volumes-global-regions["Dans ce cas, Cloud Volumes ONTAP est pris en charge"^].
-Conditions de licence:: Pour une licence PAYGO de sauvegarde et de restauration de BlueXP, un abonnement est inclus dans le https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved["Marketplace GCP"^] Elle est nécessaire avant d'activer la sauvegarde et la restauration BlueXP. La facturation de la sauvegarde et de la restauration BlueXP s'effectue via cet abonnement. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-gcp.html["Vous pouvez vous abonner à la page Détails et amp ; informations d'identification de l'assistant de l'environnement de travail"^].
+Conditions de licence:: Pour une licence PAYGO de sauvegarde et de restauration de BlueXP, un abonnement est inclus dans le https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved["Marketplace GCP"^] Elle est nécessaire avant d'activer la sauvegarde et la restauration BlueXP. La facturation de la sauvegarde et de la restauration BlueXP s'effectue via cet abonnement. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-gcp.html["Vous pouvez vous abonner à la page Détails et amp ; informations d'identification de l'assistant de l'environnement de travail"^].
 +
 --
 Pour les licences BYOL de sauvegarde et de restauration BlueXP, vous devez disposer du numéro de série de NetApp qui vous permet d'utiliser le service pendant la durée et la capacité de la licence. link:task-licensing-cloud-backup.html#use-a-bluexp-backup-and-recovery-byol-license["Découvrez comment gérer vos licences BYOL"].
@@ -139,7 +139,7 @@ Pour les licences BYOL de sauvegarde et de restauration BlueXP, vous devez dispo
 Vous devez également disposer d'un abonnement Google pour l'espace de stockage où vos sauvegardes seront stockées.
 
 --
-Compte de services GCP:: Vous devez disposer d'un compte de service dans votre projet Google Cloud avec le rôle d'administrateur de stockage prédéfini. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-creating-gcp-service-account.html["Découvrez comment créer un compte de service"^].
+Compte de services GCP:: Vous devez disposer d'un compte de service dans votre projet Google Cloud avec le rôle d'administrateur de stockage prédéfini. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-creating-gcp-service-account.html["Découvrez comment créer un compte de service"^].
 
 
 
