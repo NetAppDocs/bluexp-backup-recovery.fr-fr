@@ -681,7 +681,6 @@
   <block id="2ffa396b01e2ea9f2f8a8e7307a1e28e" category="list-text">Dans la liste déroulante *Paramètres*, cliquez sur *Plug-in SnapCenter pour VMware vSphere*.</block>
   <block id="4e5b953e1349e67f48dba9317bba75d3" category="list-text">Cliquez sur *Enregistrer le plug-in SnapCenter pour VMware vSphere*.</block>
   <block id="12f2045076b291561318e5d9855f26de" category="list-text">Spécifiez les informations suivantes :</block>
-  <block id="4eb88f79049bc78204f8659b66b7b655" category="list-text">Dans le champ Nom d'utilisateur et Mot de passe, indiquez les informations d'identification de l'utilisateur ayant le rôle d'administrateur.</block>
   <block id="9909e23ede42f2318acada35ac10bd3e" category="list-text">Cliquez sur *Enregistrer*.</block>
   <block id="a2635d75789f249837881cc5136979e1" category="paragraph">*Après la fin*</block>
   <block id="505a83f220c02df2f85c3810cd9ceb38" category="list-text">Réussite</block>
@@ -3796,4 +3795,5 @@
   <block id="8ff7f40c0012810703dc67d79b10ff7b" category="list-text"><block ref="9b634f22874d44b1e001e536ff14de06" category="inline-link-rx"></block> qui étaient disponibles dans votre environnement précédent.</block>
   <block id="9859429ce021a771d55011bbad61663d" category="list-text"><block ref="95020d92addc538671ad8a553222768a" category="inline-link-rx"></block>.</block>
   <block id="dd356e8ea63119f95e3666d6db68f47e" category="paragraph">Ajoutez les détails du système StorageGRID associé à vos environnements de travail ONTAP tels qu'ils ont été configurés dans la configuration du connecteur d'origine à l'aide du<block ref="84b7c1fcfbca071b9004578261b65308" category="inline-link-rx"></block>.</block>
+  <block id="eeba430c3c4e0795629fe640359a8730" category="list-text">Dans le champ Nom d'utilisateur et Mot de passe, spécifiez les informations d'identification de l'utilisateur vCenter avec le rôle d'administrateur.</block>
 </blocks>
