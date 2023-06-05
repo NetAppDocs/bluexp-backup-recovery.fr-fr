@@ -88,7 +88,7 @@ Dans ce dernier cas, si chaque fichier de sauvegarde est verrouillé pendant 44 
 
 === Protection contre les ransomwares
 
-La protection par ransomware analyse vos fichiers de sauvegarde pour rechercher la preuve d'une attaque par ransomware. La détection des attaques par ransomware est effectuée à l'aide d'une comparaison des checksums. Si un ransomware potentiel est identifié dans un fichier de sauvegarde par rapport au fichier de sauvegarde précédent, ce fichier de sauvegarde plus récent est remplacé par le fichier de sauvegarde le plus récent, qui ne montre aucun signe d'attaque par un ransomware. (Le fichier identifié comme ayant subi une attaque par ransomware est supprimé 1 jour après son remplacement.)
+La protection par ransomware analyse vos fichiers de sauvegarde pour rechercher la preuve d'une attaque par ransomware. La détection des attaques par ransomware est effectuée à l'aide d'une comparaison des checksums. Si un ransomware est identifié dans un nouveau fichier de sauvegarde par rapport au fichier de sauvegarde précédent, ce fichier de sauvegarde plus récent est remplacé par le fichier de sauvegarde le plus récent ne présentant aucun signe d'attaque par ransomware. (Le fichier identifié comme ayant subi une attaque par ransomware est supprimé 1 jour après son remplacement.)
 
 Les analyses par ransomware se produisent à 3 points lors du processus de sauvegarde et de restauration :
 
@@ -300,9 +300,10 @@ endif::azure[]
 
 * Data Lock et protection contre les attaques par ransomware n'est pas disponible si vous avez configuré le stockage d'archivage dans la stratégie de sauvegarde.
 * L'option DataLock que vous sélectionnez lors de l'activation de la sauvegarde et de la restauration BlueXP doit être utilisée pour toutes les stratégies de sauvegarde de ce cluster.
-* Vous ne pouvez pas utiliser les deux modes DataLock sur un seul cluster.
+* Vous ne pouvez pas utiliser plusieurs modes DataLock sur un même cluster.
 * Si vous activez DataLock, toutes les sauvegardes de volume seront verrouillées. Vous ne pouvez pas combiner des sauvegardes de volume verrouillées et non verrouillées pour un même cluster.
 * La protection des données et des attaques par ransomware est applicable pour les nouvelles sauvegardes de volumes grâce à une stratégie de sauvegarde avec DataLock et protection contre les attaques par ransomware activées. Vous ne pouvez pas activer cette fonctionnalité après l'activation de la sauvegarde et de la restauration BlueXP.
+* Les volumes FlexGroup peuvent utiliser DataLock et la protection contre les ransomware uniquement avec ONTAP 9.13.1 ou version ultérieure.
 
 
 

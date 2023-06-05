@@ -174,7 +174,7 @@ Gestion des versions d'objet:: Vous ne devez pas activer manuellement la gestion
 
 === Création ou commutation de connecteurs
 
-Lorsque vous sauvegardez des données dans StorageGRID, un connecteur doit être disponible sur site. Vous devrez soit installer un nouveau connecteur, soit vérifier que le connecteur actuellement sélectionné réside sur site. Le connecteur peut être installé sur un site avec ou sans accès à Internet.
+Lors de la sauvegarde des données dans StorageGRID, un connecteur BlueXP doit être disponible sur site. Vous devrez soit installer un nouveau connecteur, soit vérifier que le connecteur actuellement sélectionné réside sur site. Le connecteur peut être installé sur un site avec ou sans accès à Internet.
 
 * https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
 * https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-on-prem.html["Installation du connecteur sur un hôte Linux avec accès à Internet"^]
@@ -183,24 +183,22 @@ Lorsque vous sauvegardez des données dans StorageGRID, un connecteur doit être
 
 
 
-NOTE: La fonctionnalité de sauvegarde et de restauration BlueXP est intégrée au connecteur BlueXP. Lorsqu'il est installé sur un site sans connexion Internet, vous devez mettre à jour régulièrement le logiciel Connector pour accéder aux nouvelles fonctionnalités. Vérifier le link:whats-new.html["Sauvegarde et restauration BlueXP : les nouveautés"] Pour afficher les nouvelles fonctionnalités de chaque version de sauvegarde et de restauration BlueXP, puis suivez les étapes à https://docs.netapp.com/us-en/bluexp-setup-admin/task-managing-connectors.html#upgrade-the-connector-when-using-private-mode["Mettez à niveau le logiciel du connecteur"^] lorsque vous voulez utiliser de nouvelles fonctions.
 
-Nous vous recommandons vivement de créer régulièrement des sauvegardes locales des données de configuration de sauvegarde et de restauration BlueXP lorsque le connecteur est installé sur un site sans connectivité Internet. link:reference-backup-cbs-db-in-dark-site.html["Découvrez comment sauvegarder les données de sauvegarde et de restauration BlueXP dans un site invisible"^].
+==== Exigences de mise en réseau des connecteurs
 
+Assurez-vous que le réseau sur lequel le connecteur est installé active les connexions suivantes :
 
-
-=== Préparation de la mise en réseau pour le connecteur
-
-Assurez-vous que le connecteur dispose des connexions réseau requises.
-
-.Étapes
-. Assurez-vous que le réseau sur lequel le connecteur est installé active les connexions suivantes :
-+
-** Une connexion HTTPS via le port 443 vers le nœud de passerelle StorageGRID
-** Une connexion HTTPS via le port 443 vers votre LIF de gestion de cluster ONTAP
-** Une connexion Internet sortante via le port 443 vers la sauvegarde et la restauration BlueXP (non requise lorsque le connecteur est installé dans un site « invisible »)
+* Une connexion HTTPS via le port 443 vers le nœud de passerelle StorageGRID
+* Une connexion HTTPS via le port 443 vers votre LIF de gestion de cluster ONTAP
+* Une connexion Internet sortante via le port 443 vers la sauvegarde et la restauration BlueXP (non requise lorsque le connecteur est installé dans un site « invisible »)
 
 
+
+
+==== Considérations relatives au mode privé (site invisible)
+
+* La fonctionnalité de sauvegarde et de restauration BlueXP est intégrée au connecteur BlueXP. Une fois installé en mode privé, vous devez mettre à jour régulièrement le logiciel Connector pour accéder aux nouvelles fonctionnalités. Vérifier le link:whats-new.html["Sauvegarde et restauration BlueXP : les nouveautés"] Pour afficher les nouvelles fonctionnalités de chaque version de sauvegarde et de restauration BlueXP. Lorsque vous souhaitez utiliser les nouvelles fonctions, suivez les étapes à https://docs.netapp.com/us-en/bluexp-setup-admin/task-managing-connectors.html#upgrade-the-connector-when-using-private-mode["Mettez à niveau le logiciel du connecteur"^].
+* Lors de l'utilisation de la sauvegarde et de la restauration BlueXP dans un environnement SaaS, les données de configuration de la sauvegarde et de la restauration BlueXP sont sauvegardées dans le cloud. Lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un site sans accès Internet, les données de configuration de la sauvegarde et de la restauration BlueXP sont sauvegardées dans le compartiment StorageGRID où vos sauvegardes sont stockées. Si vous avez un problème de connecteur dans votre site en mode privé, vous pouvez le faire link:reference-backup-cbs-db-in-dark-site.html["Restaurez les données de sauvegarde et de restauration BlueXP sur un nouveau connecteur"^].
 
 
 
@@ -265,7 +263,7 @@ TIP: Les licences PAYGO ne sont pas prises en charge lors de la sauvegarde des f
 
 
 
-== Activation de la sauvegarde et de la restauration BlueXP vers StorageGRID
+== Activation de la sauvegarde et de la restauration BlueXP
 
 Sauvegardez et restaurez BlueXP à tout moment directement à partir de l'environnement de travail sur site.
 

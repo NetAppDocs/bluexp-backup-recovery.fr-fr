@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: reference-backup-cbs-db-in-dark-site.html 
 keywords: backup database, recover database 
-summary: Lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un site sans accès à Internet, vous devez sauvegarder régulièrement les fichiers de sauvegarde et de restauration BlueXP stratégiques en cas de problème avec le système hôte du connecteur BlueXP. Vous pourrez ainsi déployer un nouveau connecteur et restaurer les données de sauvegarde et de restauration BlueXP stratégiques. 
+summary: 'Lors de l"utilisation de la sauvegarde et de la restauration BlueXP sur un site sans accès à Internet, connu sous le nom de « mode privé », les données de configuration de sauvegarde et de restauration BlueXP sont sauvegardées dans le compartiment StorageGRID où vos sauvegardes sont stockées. En cas de problème avec le système hôte du connecteur BlueXP, vous pouvez déployer un nouveau connecteur et restaurer les données de sauvegarde et de restauration BlueXP stratégiques.' 
 ---
-= Sauvegardez et restaurez les données de sauvegarde et de restauration BlueXP dans un site invisible
+= Restaurez les données de sauvegarde et de restauration BlueXP dans un site invisible
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,74 +14,20 @@ summary: Lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un s
 
 
 [role="lead"]
-Lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un site sans accès à Internet, vous devez sauvegarder régulièrement les fichiers de sauvegarde et de restauration BlueXP stratégiques en cas de problème avec le système hôte du connecteur BlueXP. Vous pourrez ainsi déployer un nouveau connecteur et restaurer les données de sauvegarde et de restauration BlueXP stratégiques.
+Lors de l'utilisation de la sauvegarde et de la restauration BlueXP sur un site sans accès Internet, connu sous le nom de « mode privé » ou de « site invisible », les données de configuration de sauvegarde et de restauration BlueXP sont sauvegardées dans le compartiment StorageGRID où vos sauvegardes sont stockées. En cas de problème avec le système hôte du connecteur BlueXP, vous pouvez déployer un nouveau connecteur et restaurer les données de sauvegarde et de restauration BlueXP stratégiques.
 
-Lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un environnement SaaS où le connecteur BlueXP est déployé dans votre fournisseur cloud ou sur votre propre système hôte disposant d'un accès Internet, toutes les données importantes de configuration de la sauvegarde et de la restauration BlueXP sont sauvegardées et stockées dans le cloud. Lorsque vous utilisez la sauvegarde et la restauration BlueXP sur un site sans accès à Internet, connu sous le nom de « mode restreint » ou de « site invisible », ces informations de sauvegarde et de restauration BlueXP sont stockées uniquement sur le système de connecteur local.
+Notez que lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un environnement SaaS où le connecteur BlueXP est déployé dans votre fournisseur cloud ou sur votre propre système hôte disposant d'un accès Internet, toutes les données importantes de configuration de la sauvegarde et de la restauration BlueXP sont sauvegardées et protégées dans le cloud. Si vous rencontrez un problème avec le connecteur, il vous suffit de créer un nouveau connecteur et d'ajouter vos environnements de travail. Les détails de la sauvegarde sont automatiquement restaurés.
 
-Nous décrirons comment sauvegarder les données stratégiques de sauvegarde et de restauration BlueXP sur votre système StorageGRID connecté et comment restaurer les données sur un nouveau connecteur si nécessaire.
+Il existe 2 types de données sauvegardées :
 
-
-
-== Sauvegardez les données stratégiques de sauvegarde et de restauration BlueXP
-
-Il existe 2 types de données à sauvegarder :
-
-* Sauvegarde et restauration de la base de données BlueXP
-* Fichiers de catalogue indexés (utilisés pour la fonctionnalité de recherche et de restauration)
+* Base de données de sauvegarde et de restauration BlueXP : contient la liste de tous les volumes, fichiers de sauvegarde, règles de sauvegarde et informations de configuration.
+* Fichiers de catalogue indexés : contient des index détaillés qui sont utilisés pour la fonctionnalité de recherche et de restauration qui rendent vos recherches très rapides et efficaces lors de la recherche de données de volume que vous souhaitez restaurer.
 
 
-
-NOTE: Vous devez prévoir de sauvegarder régulièrement ces données de sauvegarde et de restauration BlueXP pour que vous puissiez toujours accéder aux données les plus récentes.
-
-Notez qu'aucune donnée de volume n'est jamais incluse dans la base de données de sauvegarde et de restauration BlueXP ou dans les fichiers de catalogue indexés.
+Ces données sont sauvegardées une fois par jour à minuit, et un maximum de 7 copies de chaque fichier sont conservées. Si le connecteur gère plusieurs environnements de travail ONTAP sur site, les fichiers de sauvegarde et de restauration BlueXP seront situés dans le compartiment de l'environnement de travail qui a été activé en premier.
 
 
-
-=== Sauvegardez la base de données de sauvegarde et de restauration BlueXP
-
-La base de données de sauvegarde et de restauration BlueXP contient la liste de tous les volumes, fichiers de sauvegarde, règles de sauvegarde et informations de configuration.
-
-.Étapes
-. Connectez-vous au système hôte du connecteur à l'aide des informations d'identification appropriées.
-. Entrez le shell du conteneur MySQL en entrant la commande suivante :
-+
-[source, cli]
-----
-docker exec -it ds_mysql_1 sh
-----
-. Dans le conteneur, déployez l'« env ».
-. Vous aurez besoin du mot de passe MySQL DB, donc copiez la valeur de la clé "MYSQL_ROOT_PASSWORD".
-. Sauvegardez la base de données MySQL de sauvegarde et de restauration BlueXP en entrant la commande suivante :
-+
-[source, cli]
-----
-mysqldump --user root --password -p cloud_backup --result-file=mysql.dump.cloud_backup.sql
-----
-. Copiez la sauvegarde de base de données MySQL à partir du conteneur mysql docker en entrant la commande suivante :
-+
-[source, cli]
-----
-docker cp ds_mysql_1:/mysql.dump.cloud_backup.sql .
-----
-. Copiez les sauvegardes dans un emplacement sécurisé de votre réseau. Vous pouvez utiliser un système StorageGRID local si vous créez des sauvegardes de volumes ONTAP à cet emplacement.
-
-
-
-
-=== Sauvegardez les fichiers de catalogue indexés
-
-Le catalogue indexé est utilisé pour la fonctionnalité de recherche et de restauration. Il contient des informations sur chaque volume et chaque fichier de sauvegarde, ce qui permet de rechercher des recherches très rapides et efficaces, lorsque vous recherchez des données de volume à restaurer.
-
-. Sur le système hôte Connector, remplacez le répertoire par « /opt/application/netapp/cbs ».
-. Localisez le dossier Catalogue d'index. Il commence par la chaîne *catalogue*.
-. Compressez le dossier « catalog<_xxxxxx_> » en entrant la commande suivante :
-+
-[source, cli]
-----
-zip -r catalogxxxxxx.zip catalogxxxxxx
-----
-. Copiez la sauvegarde compressée dans un emplacement sécurisé de votre réseau.
-
+TIP: Aucune donnée de volume n'est jamais incluse dans la base de données de sauvegarde et de restauration BlueXP ou dans les fichiers de catalogue indexés.
 
 
 
@@ -99,6 +45,19 @@ Pour rétablir votre système de sauvegarde et de restauration BlueXP opération
 
 Une fois que vous avez vérifié que votre système est de nouveau en bon état de fonctionnement, nous vous recommandons de créer de nouveaux fichiers de sauvegarde.
 
+.Ce dont vous avez besoin
+Vous devez accéder aux sauvegardes de base de données et d'index les plus récentes à partir du compartiment StorageGRID où vos fichiers de sauvegarde sont stockés :
+
+* Sauvegarde et restauration BlueXP fichier de base de données MySQL
++
+Ce fichier se trouve à l'emplacement suivant dans le compartiment `netapp-backup-<GUID>/mysql_backup/`, et il est nommé `CBS_DB_Backup_<day>_<month>_<year>.sql`.
+
+* Fichier zip de sauvegarde du catalogue indexé
++
+Ce fichier se trouve à l'emplacement suivant dans le compartiment `netapp-backup-<GUID>/catalog_backup/`, et il est nommé `Indexed_Catalog_DB_Backup_<db_name>_<day>_<month>_<year>.zip`.
+
+
+
 
 
 === Installez un nouveau connecteur sur un nouvel hôte Linux sur site
@@ -113,12 +72,12 @@ Lors de l'installation d'un nouveau connecteur BlueXP, assurez-vous de télécha
 
 === Restaurez la base de données de sauvegarde et de restauration BlueXP
 
-. Copiez les sauvegardes MySQL de l'emplacement sécurisé vers le nouvel hôte de connecteur.
+. Copiez la sauvegarde MySQL de l'emplacement de sauvegarde vers le nouvel hôte de connecteur. Nous utiliserons le nom de fichier exemple « CBS_DB_Backup_23_05_2023.sql » ci-dessous.
 . Copiez la sauvegarde dans le conteneur MySQL docker à l'aide de la commande suivante :
 +
 [source, cli]
 ----
-docker cp mysql.dump.cloud_backup.sql ds_mysql_1:/.
+docker cp CBS_DB_Backup_23_05_2023.sql ds_mysql_1:/.
 ----
 . Entrez le shell du conteneur MySQL à l'aide de la commande suivante :
 +
@@ -132,13 +91,13 @@ docker exec -it ds_mysql_1 sh
 +
 [source, cli]
 ----
-mysql -u root -p cloud_backup < mysql.dump.cloud_backup.sql
+mysql -u root -p cloud_backup < CBS_DB_Backup_23_05_2023.sql
 ----
 . Vérifiez que la base de données MySQL de sauvegarde et de restauration BlueXP a été correctement restaurée à l'aide des commandes SQL suivantes :
 +
 [source, cli]
 ----
-# mysql -u root -p cloud_backup
+mysql -u root -p cloud_backup
 ----
 +
 Saisissez le mot de passe.
@@ -158,14 +117,14 @@ Vérifiez si les volumes affichés sont identiques à ceux qui existaient dans v
 
 === Restaurez les fichiers de catalogue indexés
 
-. Copiez le fichier zip de sauvegarde du catalogue indexé de l'emplacement sécurisé vers le nouvel hôte de connecteur dans le dossier « /opt/application/netapp/cbs ».
-. Décompressez le fichier « cataloguxxxxxx.zip » à l'aide de la commande suivante :
+. Copiez le fichier zip de sauvegarde du catalogue indexé (nous utiliserons l'exemple de nom de fichier « Indexed_Catalog_DB_Backup_catalogdb1_23_05_2023.zip ») de l'emplacement de sauvegarde vers le nouvel hôte du connecteur dans le dossier « /opt/application/netapp/cbs ».
+. Décompressez le fichier « Indexed_Catalog_DB_Backup_catalogdb1_23_05_2023.zip » à l'aide de la commande suivante :
 +
 [source, cli]
 ----
-unzip catalogxxxxxx.zip
+unzip Indexed_Catalog_DB_Backup_catalogdb1_23_05_2023.zip -d catalogdb1
 ----
-. Exécutez la commande *ls* pour vous assurer que le dossier "cataloguxxxxxx" a été créé avec les sous-dossiers "modifications" et "snapshots" en dessous.
+. Exécutez la commande *ls* pour vous assurer que le dossier "catalog 1" a été créé avec les sous-dossiers "modifications" et "instantanés" ci-dessous.
 
 
 

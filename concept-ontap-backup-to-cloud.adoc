@@ -440,7 +440,7 @@ La lecture des données de votre fournisseur de cloud peut s'accélérer et gén
 
 
 * Les sauvegardes de volume FlexGroup ne peuvent pas être transférées vers le stockage d'archivage.
-* Les sauvegardes de volume FlexGroup ne peuvent pas utiliser DataLock et la protection contre les ransomware.
+* Les sauvegardes de volume FlexGroup peuvent utiliser DataLock et la protection contre les ransomware si le cluster exécute ONTAP 9.13.1 ou une version ultérieure.
 * La sauvegarde du volume SVM-DR est prise en charge avec les restrictions suivantes :
 +
 ** Seules les sauvegardes sont prises en charge à partir du système secondaire ONTAP.

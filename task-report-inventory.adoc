@@ -1,0 +1,130 @@
+---
+sidebar: sidebar 
+permalink: task-report-inventory.html 
+keywords: cloud backup, backup and recovery service, backup and recovery, backup, restore, report, inventory 
+summary: 'Grâce aux rapports de sauvegarde et de restauration BlueXP, vous pouvez vous assurer que les données stratégiques sont protégées conformément aux règles définies par votre entreprise et prendre en charge efficacement l"audit pour les processus de conformité. Le rapport d"inventaire des sauvegardes répertorie toutes vos sauvegardes pour un compte, un environnement de travail ou un SVM spécifique.' 
+---
+= Reporting sur la couverture de la protection des données
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Les rapports BlueXP sur la sauvegarde et la restauration vous permettent de vous assurer que les données stratégiques sont protégées conformément aux politiques définies par votre entreprise et de réaliser des audits pour répondre aux besoins de conformité.
+
+Les rapports de sauvegarde et de restauration BlueXP vous aident à atteindre les objectifs suivants :
+
+* *Visibilité des opérations* : surveillez vos contrats de niveau de service concernant la protection des données, le taux de réussite des sauvegardes et l'alignement de la fenêtre de sauvegarde sur les besoins de l'entreprise.
+* *Conformité et vérification* : utilisez les rapports opérationnels et les rapports d'inventaire dans vos processus de vérification interne et externe pour assurer une surveillance continue de la conformité.
+
+
+
+NOTE: Les activités de rapport sont surveillées dans le journal de surveillance des travaux afin que vous puissiez auditer toutes les activités. link:task-monitor-backup-jobs.html["En savoir plus sur la surveillance des tâches"].
+
+
+
+== Champ d'application du rapport
+
+Les rapports sur la sauvegarde et la restauration BlueXP fournissent des informations sur les aspects suivants :
+
+* *Emplacement du connecteur* : sur site ou dans le cloud
+* *Source* : Cloud Volumes ONTAP, sur site, applications ou Kubernetes
+* *Destination* : n'importe quel fournisseur cloud, NetApp StorageGRID ou ONTAP S3
+* *Versions ONTAP* : 9.13.0
+
+
+
+
+== Créez un rapport d'inventaire des sauvegardes
+
+Dans l'onglet Rapports de sauvegarde et de restauration BlueXP, vous pouvez créer le rapport Inventaire des sauvegardes et filtrer son contenu. Le rapport Backup Inventory permet de consulter toutes vos sauvegardes pour un compte, un environnement de travail ou un SVM spécifique.
+
+Le rapport Inventaire des sauvegardes affiche les informations suivantes et bien plus encore :
+
+* Compte, environnement de travail et SVM
+* Volumes protégés et non protégés
+* Cible de sauvegarde
+* Politique de sauvegarde appliquée
+* Type de chiffrement (clé gérée par le fournisseur ou clé gérée par l'utilisateur)
+* État de protection DataLock et anti-ransomware (gouvernance, conformité ou aucune)
+* État d'archivage activé
+* Nombre de copies de sauvegarde
+* Type de sauvegarde (sauvegarde ad hoc planifiée ou initiée par l'utilisateur)
+* Classe de stockage
+* Étiquette snapshot
+
+
+
+NOTE: Le rapport d'inventaire des sauvegardes ne contient pas d'informations de sauvegarde ayant expiré ou ayant échoué.
+
+La partie supérieure du rapport comprend un graphique qui affiche les informations suivantes :
+
+* Nombre de volumes couverts avec au moins une sauvegarde
+* Total des volumes inactifs et des volumes actifs
+
+
+Le rapport Inventaire des sauvegardes affiche les graphiques suivants :
+
+* *Etat de la sauvegarde de volume* : affiche les volumes protégés par rapport aux volumes non protégés pour la portée sélectionnée.
+* *Volumes par nombre de sauvegardes* : regroupe les volumes en fonction du nombre de copies de sauvegarde disponibles pour ce volume.
+
+
+.Étapes
+. Dans le menu supérieur, sélectionnez *Rapports*.
+. Sélectionnez *stock de sauvegarde*.
+. Sélectionnez *Créer un rapport*.
+. Sélectionner le compte, l'environnement de travail et le SVM.
++
+
+TIP: Vous pouvez sélectionner plusieurs environnements de travail et SVM.
+
+. Sélectionnez la période : dernières 24 heures, semaine ou mois.
+. (Facultatif) Filtrer les résultats par état de tâche.
+. (Facultatif) exportez le contenu du rapport au format .CSV en sélectionnant *Télécharger CSV*.
+
+
+
+
+== Créez un rapport d'activité de travail de protection des données
+
+La surveillance proactive peut réduire les efforts nécessaires pour surveiller toutes les ressources de votre écosystème. À partir de ONTAP 9.13.0, le rapport sur l'activité des tâches de protection des données fournit des informations sur les opérations de snapshot, de sauvegarde, de clonage et de restauration que vous pouvez utiliser avec le contrôle de votre contrat de niveau de service et le suivi des taux de sauvegarde et de restauration.
+
+Le rapport s'applique aux opérations de sauvegarde et de restauration BlueXP pour Cloud Volumes ONTAP, sur site, application et Kubernetes.
+
+Le rapport activité de travail de protection des données affiche les informations suivantes et bien plus encore :
+
+* Compte, environnement de travail et SVM
+* Type de tâche (sauvegarde ou restauration)
+* Nom de la ressource (volume ou application)
+* État des tâches
+* Heures et durée de début et de fin
+* Nom de la stratégie pour les tâches de sauvegarde
+* Étiquette Snapshot pour les tâches de sauvegarde
+
+
+Les graphiques en haut de la page affichent les informations suivantes :
+
+* Travaux par type
++
+** Nombre de tâches de sauvegarde et de restauration de volumes ONTAP
+** Nombre de tâches de sauvegarde et de restauration des applications
+** Nombre de tâches de sauvegarde et de restauration des machines virtuelles
+** Nombre de tâches de sauvegarde et de restauration Kubernetes
+
+
+* Activité professionnelle quotidienne
+
+
+.Étapes
+. Dans le menu supérieur, sélectionnez *Rapports*.
+. Sélectionnez *activité de travail de protection des données*.
+. Sélectionnez *Créer un rapport*.
+. Sélectionner le compte, l'environnement de travail et le SVM.
+. Sélectionnez la période : dernières 24 heures, semaine ou mois.
+. (Facultatif) filtrez les résultats par état de travail, type de travail (sauvegarde ou restauration) et ressource.
+. (Facultatif) exportez le contenu du rapport au format .CSV en sélectionnant *Télécharger CSV*.
+
