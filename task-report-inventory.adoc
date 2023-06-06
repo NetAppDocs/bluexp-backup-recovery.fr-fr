@@ -32,7 +32,7 @@ NOTE: Les activités de rapport sont surveillées dans le journal de surveillanc
 Les rapports sur la sauvegarde et la restauration BlueXP fournissent des informations sur les aspects suivants :
 
 * *Emplacement du connecteur* : sur site ou dans le cloud
-* *Source* : Cloud Volumes ONTAP, sur site, applications ou Kubernetes
+* *Source* : volumes Cloud Volumes ONTAP, volumes ONTAP sur site, applications ou volumes persistants Kubernetes
 * *Destination* : n'importe quel fournisseur cloud, NetApp StorageGRID ou ONTAP S3
 * *Versions ONTAP* : 9.13.0
 

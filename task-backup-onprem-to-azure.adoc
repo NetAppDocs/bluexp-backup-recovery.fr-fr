@@ -280,6 +280,9 @@ Vous pouvez créer des sauvegardes à partir de systèmes sur site vers Azure Bl
 === Préparation du stockage Azure Blob pour les sauvegardes
 
 . Vous pouvez utiliser vos propres clés gérées sur mesure pour le chiffrement des données dans l'assistant d'activation au lieu d'utiliser les clés de chiffrement gérées par Microsoft par défaut. Dans ce cas, vous devrez disposer de l'abonnement Azure, du nom du coffre-fort de clé et de la clé. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview["Découvrez comment utiliser vos propres touches"^].
++
+Notez que la sauvegarde et la restauration prennent en charge _les stratégies d'accès Azure_ comme modèle d'autorisation. Le modèle d'autorisation _Azure Role-Based Access Control_ (Azure RBAC) n'est pas actuellement pris en charge.
+
 . Si vous souhaitez bénéficier d'une connexion Internet publique plus sécurisée entre votre data Center sur site et VNet, il existe une option pour configurer un terminal privé Azure dans l'assistant d'activation. Dans ce cas, vous devez connaître le VNet et le sous-réseau pour cette connexion. https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview["Voir les détails sur l'utilisation d'un point d'extrémité privé"^].
 
 

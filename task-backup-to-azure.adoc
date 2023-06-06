@@ -180,6 +180,11 @@ Par défaut, la sauvegarde et la restauration BlueXP provisionne le conteneur Bl
 --
 Configuration requise pour la création de sauvegardes dans un autre abonnement Azure:: Par défaut, les sauvegardes sont créées avec le même abonnement que celui utilisé pour votre système Cloud Volumes ONTAP. Si vous souhaitez utiliser un autre abonnement Azure pour vos sauvegardes, vous devez link:reference-backup-multi-account-azure.html["Connectez-vous au portail Azure et associez les deux abonnements"].
 Informations requises pour l'utilisation des clés gérées par le client pour le chiffrement des données:: Vous pouvez utiliser vos propres clés gérées par le client pour le chiffrement des données dans l'assistant d'activation au lieu d'utiliser les clés de chiffrement gérées par Microsoft par défaut. Dans ce cas, vous devrez disposer de l'abonnement Azure, du nom du coffre-fort de clé et de la clé. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview["Découvrez comment utiliser vos propres touches"^].
++
+--
+Notez que la sauvegarde et la restauration prennent en charge _les stratégies d'accès Azure_ comme modèle d'autorisation. Le modèle d'autorisation _Azure Role-Based Access Control_ (Azure RBAC) n'est pas actuellement pris en charge.
+
+--
 
 
 

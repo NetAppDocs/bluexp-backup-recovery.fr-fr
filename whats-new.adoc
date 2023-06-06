@@ -40,6 +40,14 @@ Vous pouvez maintenant passer en revue _backup Lifecycle_ en tant que Type de t�
 
 
 
+=== Alerte de notification supplémentaire pour les étiquettes de stratégie non concordants
+
+Une nouvelle alerte de sauvegarde a été ajoutée : « les fichiers de sauvegarde n'ont pas été créés, car les étiquettes des règles Snapshot ne correspondent pas ». Si le _label_ défini dans une règle de sauvegarde n'a pas de _label_ correspondant dans la stratégie Snapshot, aucun fichier de sauvegarde n'est créé. Vous devez utiliser System Manager ou l'interface de ligne de commandes de ONTAP pour ajouter l'étiquette manquante à la règle de copie Snapshot du volume.
+
+https://docs.netapp.com/us-en/bluexp-backup-recovery/task-monitor-backup-jobs.html#review-backup-and-restore-alerts-in-the-bluexp-notification-center["Examinez toutes les alertes que les solutions de sauvegarde et de restauration BlueXP peuvent envoyer"].
+
+
+
 === Sauvegarde automatique des fichiers de sauvegarde et de restauration BlueXP stratégiques dans les sites invisibles
 
 Lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un site sans accès à Internet, connu sous le nom de déploiement en « mode privé », les informations de sauvegarde et de restauration BlueXP sont stockées uniquement sur le système de connecteurs local. Cette nouvelle fonctionnalité sauvegarde automatiquement les données stratégiques de sauvegarde et de restauration BlueXP dans un compartiment du système StorageGRID connecté. Vous pouvez ainsi restaurer ces données sur un nouveau connecteur, si nécessaire. https://docs.netapp.com/us-en/bluexp-backup-recovery/reference-backup-cbs-db-in-dark-site.html["En savoir plus >>"]
