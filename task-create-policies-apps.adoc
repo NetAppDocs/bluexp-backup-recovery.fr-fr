@@ -16,14 +16,18 @@ summary: 'Créez vos propres règles pour protéger l"application.'
 [role="lead"]
 Vous devez créer une stratégie pour sauvegarder les données d'application dans le cloud.
 
-*Avant de commencer*
+.Avant de commencer
+* Si vous souhaitez transférer les sauvegardes du magasin d'objets vers le stockage d'archivage, vérifiez que vous utilisez la version ONTAP requise.
++
+** Si vous utilisez Amazon Web Services, vous devez utiliser ONTAP 9.10.1 ou une version ultérieure
+** Si vous utilisez Microsoft Azure, vous devez utiliser ONTAP 9.10.1 ou une version ultérieure
+** Si vous utilisez Google Cloud, vous devez utiliser ONTAP 9.12.1 ou une version ultérieure
 
-* Si vous souhaitez transférer les sauvegardes du magasin d'objets vers le stockage d'archivage, utilisez ONTAP 9.10.1 ou version ultérieure et Amazon Web Services ou Azure en tant que fournisseur cloud.
+
 * Vous devez configurer le niveau d'accès d'archivage pour chaque fournisseur de cloud.
 
 
-*Étapes*
-
+.Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.
 . Dans la liste déroulante Paramètres, cliquez sur *stratégies* > *Créer une stratégie*.
 . Dans la section Détails de la stratégie, spécifiez le nom de la stratégie.

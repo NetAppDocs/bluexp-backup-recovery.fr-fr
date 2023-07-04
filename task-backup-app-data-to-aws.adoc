@@ -16,8 +16,7 @@ summary: 'Réalisez quelques étapes pour sauvegarder vos données applicatives 
 [role="lead"]
 Procédez en quelques étapes pour sauvegarder les données d'applications de ONTAP vers Amazon Web Services.
 
-*Étapes*
-
+.Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.
 . Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à l'application et cliquer sur *Activer la sauvegarde*.
 . Dans la page attribuer une stratégie, sélectionnez la stratégie et cliquez sur *Suivant*.
@@ -42,8 +41,8 @@ La sauvegarde et la restauration BlueXP pour les applications ne prennent en cha
 . Sélectionnez *Amazon Web Services* comme fournisseur de services clouds.
 +
 .. Spécifier le compte AWS
-.. Dans le champ clé d'accès AWS, spécifiez la clé pour le chiffrement des données.
-.. Dans le champ clé secrète AWS, spécifiez le mot de passe pour le chiffrement des données.
+.. Dans le champ clé d'accès AWS, spécifiez la clé.
+.. Dans le champ clé secrète AWS, spécifiez le mot de passe.
 .. Sélectionnez la région dans laquelle vous souhaitez créer les sauvegardes.
 .. Spécifiez l'espace IP.
 .. Sélectionnez le niveau d'archivage.

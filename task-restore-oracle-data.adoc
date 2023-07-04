@@ -14,7 +14,7 @@ summary: Vous pouvez restaurer la base de données Oracle du cloud vers le serve
 
 
 [role="lead"]
-Vous pouvez uniquement restaurer la base de données Oracle sur le même hôte que celui sur lequel la sauvegarde a été créée. Dans le cas d'une base de données RAC, les données sont restaurées vers le nœud sur site sur lequel la sauvegarde a été créée.
+Vous pouvez restaurer la base de données Oracle à l'emplacement d'origine ou dans un autre emplacement. Dans le cas d'une base de données RAC, les données sont restaurées vers le nœud sur site sur lequel la sauvegarde a été créée.
 
 Seule la base de données complète avec restauration du fichier de contrôle est prise en charge. Si les journaux d'archive ne sont pas présents dans l'AFS, vous devez spécifier l'emplacement qui contient les journaux d'archive requis pour la récupération.
 
@@ -26,8 +26,22 @@ IMPORTANT: La restauration de fichiers uniques (SFR) n'est pas prise en charge.
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.
 . Dans le champ *Filter by*, sélectionnez le filtre *Type* et sélectionnez *Oracle* dans la liste déroulante.
 . Cliquez sur *View Details* correspondant à la base de données à restaurer et cliquez sur *Restore*.
-. Sur la page Type de restauration, effectuez les opérations suivantes :
+. Dans la page Options de restauration, spécifiez l'emplacement où vous souhaitez restaurer les fichiers de base de données.
 +
+|===
+| Si... | Procédez comme ça... 
+
+
+ a| 
+Vous souhaitez restaurer l'emplacement d'origine
+ a| 
+.. Sélectionnez *Restaurer à l'emplacement d'origine*.
+.. Si le snapshot est en stockage d'archives, sélectionnez la priorité de restauration de vos données à partir du stockage d'archives.
++
+
+NOTE: Vous devez spécifier la priorité uniquement si vous utilisez Amazon Web Services ou Microsoft Azure en tant que fournisseur cloud.
+
+.. Cliquez sur *Suivant*.
 .. Sélectionnez *Etat de la base de données* si vous souhaitez modifier l'état de la base de données à l'état requis pour effectuer les opérations de restauration et de récupération.
 +
 Les différents États d'une base de données de niveau supérieur à inférieur sont ouverts, montés, démarrés et shutdown.
@@ -38,59 +52,104 @@ Les différents États d'une base de données de niveau supérieur à inférieur
 *** Si une base de données est à l'état ouvert et que pour restaurer la base de données doit être à l'état monté, l'état de la base de données n'est modifié que si vous cochez cette case.
 
 
-.. Sélectionnez *fichiers de contrôle* si vous souhaitez restaurer le fichier de contrôle avec la base de données complète.
-.. Si le snapshot est en stockage d'archivage, spécifiez la priorité de restauration des données à partir du stockage d'archivage.
-
-
-. Sur la page étendue de la récupération, effectuez les opérations suivantes :
-+
 .. Spécifier le périmètre de restauration.
 +
-|===
-| Si... | Procédez comme ça... 
-
-
- a| 
-Que vous souhaitez restaurer à la dernière transaction
- a| 
-Sélectionnez *tous les journaux*.
-
-
-
- a| 
-Que vous souhaitez récupérer à un numéro de changement de système (SCN) spécifique
- a| 
-Sélectionnez *jusqu'à ce que SCN (numéro de changement du système)*.
-
-
-
- a| 
-Veulent restaurer des données et un temps spécifique
- a| 
-Sélectionnez *Date et heure*.
-
+*** Sélectionnez *tous les journaux* si vous souhaitez récupérer la dernière transaction.
+*** Sélectionnez *jusqu'à ce que SCN (Numéro de changement de système)* si vous souhaitez restaurer un SCN spécifique.
+*** Sélectionnez *Date et heure* si vous souhaitez restaurer des données et une heure spécifiques.
++
 Vous devez spécifier la date et l'heure du fuseau horaire de l'hôte de la base de données.
 
+*** Sélectionnez *pas de récupération* si vous ne voulez pas récupérer.
 
 
- a| 
-Ne pas récupérer
- a| 
-Sélectionnez *pas de récupération*.
-
-
-
- a| 
-Vous souhaitez spécifier les emplacements de journaux d'archives externes
- a| 
-Si les journaux d'archivage ne sont pas présents dans le système de fichiers actif, vous devez spécifier l'emplacement qui contient les journaux d'archivage requis pour la restauration.
-
-|===
+.. Si les journaux d'archivage ne sont pas présents dans le système de fichiers actif, vous devez spécifier l'emplacement qui contient les journaux d'archivage requis pour la restauration.
 .. Cochez la case si vous souhaitez ouvrir la base de données après la récupération.
 +
 Dans une configuration RAC, seule l'instance RAC utilisée pour la restauration s'ouvre après une restauration.
 
 
 
+
+
+ a| 
+Vous souhaitez effectuer une restauration temporaire dans un autre espace de stockage, puis copier les fichiers restaurés à leur emplacement d'origine
+ a| 
+.. Sélectionnez *Restaurer à l'emplacement d'origine*.
+.. Si le snapshot est en stockage d'archives, sélectionnez la priorité de restauration de vos données à partir du stockage d'archives.
++
+
+NOTE: Vous devez spécifier la priorité uniquement si vous utilisez Amazon Web Services ou Microsoft Azure en tant que fournisseur cloud.
+
+.. Sélectionnez *Modifier l'emplacement de stockage*.
+.. Cliquez sur *Suivant*.
+.. Dans la page mappage du stockage, spécifiez les détails de l'emplacement de stockage secondaire où les données restaurées à partir du magasin d'objets seront stockées temporairement.
++
+Si vous sélectionnez un système ONTAP sur site et si vous n'avez pas configuré la connexion au cluster au stockage objet, vous êtes invité à fournir des informations supplémentaires concernant le magasin d'objets.
+
+.. Cliquez sur *Suivant*.
+.. Sélectionnez *Etat de la base de données* si vous souhaitez modifier l'état de la base de données à l'état requis pour effectuer les opérations de restauration et de récupération.
++
+Les différents États d'une base de données de niveau supérieur à inférieur sont ouverts, montés, démarrés et shutdown.
+
++
+*** Si la base de données est dans un état supérieur mais que l'état doit être modifié en état inférieur pour effectuer une opération de restauration, vous devez cocher cette case.
+*** Si la base de données est dans un état inférieur mais que l'état doit être supérieur pour effectuer l'opération de restauration, l'état de la base de données est automatiquement modifié, même si vous ne cochez pas la case.
+*** Si une base de données est à l'état ouvert et que pour restaurer la base de données doit être à l'état monté, l'état de la base de données n'est modifié que si vous cochez cette case.
+
+
+.. Spécifier le périmètre de restauration.
++
+*** Sélectionnez *tous les journaux* si vous souhaitez récupérer la dernière transaction.
+*** Sélectionnez *jusqu'à ce que SCN (Numéro de changement de système)* si vous souhaitez restaurer un SCN spécifique.
+*** Sélectionnez *Date et heure* si vous souhaitez restaurer des données et une heure spécifiques.
++
+Vous devez spécifier la date et l'heure du fuseau horaire de l'hôte de la base de données.
+
+*** Sélectionnez *pas de récupération* si vous ne voulez pas récupérer.
+
+
+.. Si les journaux d'archivage ne sont pas présents dans le système de fichiers actif, vous devez spécifier l'emplacement qui contient les journaux d'archivage requis pour la restauration.
+.. Cochez la case si vous souhaitez ouvrir la base de données après la récupération.
++
+Dans une configuration RAC, seule l'instance RAC utilisée pour la restauration s'ouvre après une restauration.
+
+
+
+
+
+ a| 
+Restauration dans un autre emplacement
+ a| 
+.. Sélectionnez *Restaurer à un autre emplacement*.
+.. Si le snapshot est en stockage d'archives, sélectionnez la priorité de restauration de vos données à partir du stockage d'archives.
++
+
+NOTE: Vous devez spécifier la priorité uniquement si vous utilisez Amazon Web Services ou Microsoft Azure en tant que fournisseur cloud.
+
+.. Si vous souhaitez restaurer sur un autre stockage, effectuez les opérations suivantes :
++
+... Sélectionnez *Modifier l'emplacement de stockage*.
+... Cliquez sur *Suivant*.
+... Dans la page mappage du stockage, spécifiez les détails de l'emplacement de stockage secondaire où les données du magasin d'objets doivent être restaurées.
+
+
+.. Cliquez sur *Suivant*.
+.. Dans la page hôte de destination, sélectionnez l'hôte sur lequel la base de données sera montée.
++
+... (Facultatif) pour l'environnement NAS, spécifiez le nom de domaine complet ou l'adresse IP de l'hôte vers lequel les volumes restaurés à partir du magasin d'objets doivent être exportés.
+... (Facultatif) dans le cas d'un environnement SAN, spécifiez les initiateurs de l'hôte sur lesquels les LUN des volumes restaurés à partir du magasin d'objets doivent être mappées.
+
+
+.. Cliquez sur *Suivant*.
+
+
+|===
 . Vérifiez les détails et cliquez sur *Restaurer*.
 
+
+L'option *Restaurer à un autre emplacement* monte la sauvegarde sélectionnée sur l'hôte donné. Vous devez ouvrir manuellement la base de données.
+
+Après avoir monté la sauvegarde, vous ne pouvez pas la monter à nouveau tant qu'elle n'est pas démontée. Vous pouvez utiliser l'option *Unmount* de l'interface utilisateur pour démonter la sauvegarde.
+
+Pour plus d'informations sur l'affichage de la base de données Oracle, reportez-vous à la section https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Manager/How_to_bring_up_Oracle_Database_in_another_NFS_host_after_mounting_storage_from_backup_in_Cloud_Backup_for_Applications["Article de la base de connaissances"].

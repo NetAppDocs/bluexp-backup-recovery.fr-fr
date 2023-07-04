@@ -20,7 +20,8 @@ Suivez ces étapes pour démarrer rapidement.
 [role="quick-margin-list"]
 * Système d'exploitation :
 +
-** RHEL 7.5 ou version ultérieure, 8.x plates-formes certifiées par SAP HANA
+** RHEL 7.6 ou version ultérieure
+** RHEL 8.1 ou version ultérieure pour SAP-HANA SPS07
 ** SLES 12 SP5 ou version ultérieure et plates-formes SPX 15 certifiées par SAP HANA
 
 
@@ -28,9 +29,8 @@ Suivez ces étapes pour démarrer rapidement.
 * Dispositions de stockage : pour les fichiers de données et de journaux, Azure prend uniquement en charge NFSv4.1.
 * Dispositions de la base de données :
 +
-** Conteneur unique version 1.0SPS12
-** Conteneur de base de données mutualisé SAP HANA (MDC) 2.0SPS4, 2.0SPS5, 2.0SPS6 avec un ou plusieurs locataires
-** Système hôte unique SAP HANA, système hôte multiples SAP HANA (sans hôte de secours), réplication système HANA
+** SAP HANA Multitenant Database Container (MDC) 2.0SPS5, 2.0SPS6, 2.0SPS7 avec un ou plusieurs locataires
+** Système hôte unique SAP HANA, système hôte multiple SAP HANA, réplication système HANA
 
 
 * Plug-in SAP HANA sur l'hôte de base de données

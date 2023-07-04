@@ -16,8 +16,7 @@ summary: Procédez comme suit pour enregistrer le serveur SnapCenter.
 [role="lead"]
 Seul un utilisateur doté du rôle SnapCenterAdmin peut enregistrer l'hôte sur lequel SnapCenter Server 4.6 ou version ultérieure est exécuté. Vous pouvez enregistrer plusieurs hôtes de serveur SnapCenter dans BlueXP.
 
-*Étapes*
-
+.Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.
 . Dans la liste déroulante *Paramètres*, cliquez sur *serveurs SnapCenter*.
 . Cliquez sur *Enregistrer le serveur SnapCenter*.
@@ -39,12 +38,8 @@ Les balises sont séparées par une virgule.
 . Cliquez sur *Enregistrer*.
 
 
-*Après la fin*
-
+.Une fois que vous avez terminé
 Cliquez sur *Backup & Restore* > *applications* pour afficher toutes les applications protégées à l'aide de l'hôte serveur SnapCenter enregistré. Par défaut, les applications sont automatiquement découvertes tous les jours à minuit.
-
-
-IMPORTANT: Si des SVM sont ajoutés à SnapCenter à l'aide d'un nom de domaine complet ou d'une adresse IP, les applications s'exécutant sur ces SVM ne peuvent pas être protégées. La sauvegarde et la restauration BlueXP pour les applications reconnaissent uniquement les SVM ajoutés par leur nom ou les SVM détectés par SnapCenter qui ont été ajoutés au cluster ONTAP.
 
 Les applications prises en charge et leurs configurations sont les suivantes :
 

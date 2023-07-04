@@ -22,6 +22,7 @@ Suivez ces étapes pour démarrer rapidement.
 +
 ** RHEL 7.5 ou version ultérieure et 8.x
 ** OL 7.5 ou version ultérieure et 8.x
+** SLES 15 SP4
 
 
 * Stockage cloud NetApp :
@@ -42,7 +43,7 @@ NOTE: Azure NetApp Files ne prend pas en charge l'environnement SAN.
 
 
 * Dispositions de la base de données : Oracle Standard et Oracle Enterprise Standalone (CDB et boîtier de distribution électrique existant et mutualisé)
-* Versions de base de données : 12cR2, 18c, 19c et 21c
+* Versions de base de données : 19c et 21c
 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"] Inscrivez-vous à BlueXP

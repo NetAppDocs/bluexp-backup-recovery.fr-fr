@@ -28,12 +28,12 @@ Lisez les conditions suivantes pour vous assurer que votre configuration est pri
 
 * ONTAP 9.8 ou version ultérieure
 * BlueXP
-* Seuls les datastores NFS sont pris en charge. Les datastores VMFS basés sur iSCSI/FC/NVMe et vvols ne sont pas pris en charge.
+* Les datastores NFS et VMFS sont pris en charge. Les vVols ne sont pas pris en charge.
+* Pour la prise en charge de VMFS, le plug-in SnapCenter pour l'hôte VMware vSphere doit être exécuté sur 4.9 ou une version ultérieure. Assurez-vous d'effectuer une sauvegarde du datastore VMFS si le plug-in SnapCenter pour l'hôte VMware vSphere a été mis à niveau à partir d'une version antérieure vers la version 4.9.
 * Au moins une sauvegarde doit avoir été incluse dans le plug-in SnapCenter pour VMware vSphere 4.6P1.
 * Au moins une règle quotidienne, hebdomadaire ou mensuelle du plug-in SnapCenter pour VMware vSphere sans étiquette ni même étiquette que celle de la politique relative aux machines virtuelles dans BlueXP.
 * Pour les règles prédéfinies, le niveau de planification doit être le même pour le datastore dans le plug-in SnapCenter pour VMware vSphere et dans le cloud.
 * Assurez-vous qu'il n'y a pas de volumes FlexGroup dans le datastore, car la sauvegarde et la restauration des volumes FlexGroup ne sont pas prises en charge.
-* Assurez-vous qu'aucun volume n'est chiffré car la restauration des volumes chiffrés n'est pas prise en charge.
 * Désactivez "*_Recent*" sur les groupes de ressources requis. Si «*_Recent* » est activé pour le groupe de ressources, les sauvegardes de ces groupes de ressources ne peuvent pas être utilisées pour la protection des données dans le cloud et ne peuvent plus être utilisées pour l'opération de restauration.
 * Assurez-vous que le datastore de destination sur lequel la machine virtuelle sera restaurée dispose d'un espace suffisant pour prendre en charge une copie de tous les fichiers des machines virtuelles tels que VMDK, VMX, VMSD, etc.
 * Assurez-vous que le datastore de destination ne contient pas de fichiers de machine virtuelle obsolètes au format restore_xxx_xxxxxx_filename des échecs précédents de l'opération de restauration. Vous devez supprimer les fichiers obsolètes avant de lancer une opération de restauration.

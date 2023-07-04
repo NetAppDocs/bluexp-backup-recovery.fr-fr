@@ -23,12 +23,10 @@ Il est possible de cloner des bases de données pour les raisons suivantes :
 * Pour récupérer les données qui ont été supprimées ou modifiées par erreur.
 
 
-*Avant de commencer*
-
+.Avant de commencer
 Vous devez comprendre les concepts de clonage et vous assurer que toutes les conditions sont remplies. link:concept-clone-cloud-native-oracle-concepts.html["En savoir plus >>"].
 
-*Étapes*
-
+.Étapes
 . Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à la base de données à cloner et cliquer sur *Afficher les détails*.
 . Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à la sauvegarde de données et cliquez sur *Clone*.
 . Sur la page Cloner les détails, sélectionnez l'une des options de clonage.

@@ -14,7 +14,7 @@ summary: 'Procédez à une actualisation à partir d"un système SAP HANA source
 
 
 [role="lead"]
-Vous pouvez actualiser un système cible SAP HANA avec les données d'un système source SAP HANA. Il peut être utilisé pour fournir les données de production actuelles dans un système de test. La sauvegarde dans le cloud vous permet de sélectionner une copie Snapshot à partir d'un système source et de créer un volume ANF basé sur la copie Snapshot. Des exemples de scripts sont disponibles, qui exécute les opérations requises sur l'hôte de base de données pour restaurer la base de données SAP HANA.
+Vous pouvez actualiser un système cible SAP HANA avec les données d'un système source SAP HANA. Il peut être utilisé pour fournir les données de production actuelles dans un système de test. La sauvegarde dans le cloud vous permet de sélectionner une copie Snapshot à partir d'un système source et de créer un volume Azure NetApp Files basé sur la copie Snapshot. Des exemples de scripts sont disponibles, qui exécute les opérations requises sur l'hôte de base de données pour restaurer la base de données SAP HANA.
 
 *Avant de commencer*
 
@@ -56,6 +56,8 @@ Par exemple, si le volume source est vol1, le nom du volume actualisé sera vol1
 NOTE: Le nouveau volume sera placé dans le même pool de capacité que celui des volumes cibles.
 
 * Le chemin de jonction sera le même que le nom du volume.
+* Le « nombre maximal de débit » du nouveau volume est sélectionné dans le volume du système cible avec des pools de capacité de qualité de service (QoS) manuels.
+Pour les pools de capacité QoS automatique, le débit est défini par la capacité du volume source.
 
 
 *Étapes*
@@ -67,7 +69,6 @@ NOTE: Le nouveau volume sera placé dans le même pool de capacité que celui de
 .. Sélectionnez le système source et la copie Snapshot.
 .. Entrez les adresses d'exportation à partir desquelles vous pouvez accéder aux nouveaux volumes.
 .. Saisissez le prescripteur, le postscript et les chemins de script d'échec. Le script en cas d'échec est exécuté uniquement lorsque l'opération d'actualisation du système échoue.
-.. Sélectionnez *Supprimer les sauvegardes SAP HANA associées*. Seules les copies Snapshot seront supprimées. S'il existe des sauvegardes du système cible et que l'option ci-dessus n'est pas sélectionnée, l'opération d'actualisation du système échoue. Vous pouvez également supprimer les sauvegardes de la page *Topology*.
 .. Cliquez sur *Actualiser*.
 
 

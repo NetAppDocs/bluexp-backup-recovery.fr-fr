@@ -16,14 +16,12 @@ summary: 'Réalisez quelques étapes de sauvegarde des données d"applications d
 [role="lead"]
 Effectuez quelques étapes pour sauvegarder les données d'applications de ONTAP vers StorageGRID.
 
-*Ce dont vous aurez besoin*
-
+.Avant de commencer
 Lorsque vous sauvegardez des données dans StorageGRID, un connecteur doit être disponible sur site. Vous devrez soit installer un nouveau connecteur, soit vérifier que le connecteur actuellement sélectionné réside sur site. Le connecteur peut être installé sur un site avec ou sans accès à Internet.
 
 Pour plus d'informations, reportez-vous à la section link:task-backup-onprem-private-cloud.html#creating-or-switching-connectors["Créer des connecteurs pour StorageGRID"].
 
-*Étapes*
-
+.Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.
 . Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à l'application et cliquer sur *Activer la sauvegarde*.
 . Dans la page attribuer une stratégie, sélectionnez la stratégie et cliquez sur *Suivant*.
@@ -51,8 +49,8 @@ La sauvegarde et la restauration BlueXP pour les applications ne prennent en cha
 +
 Entrez les détails au format FQDN:PORT.
 
-.. Dans le champ clé d'accès, spécifiez la clé de chiffrement des données.
-.. Dans le champ clé secrète, spécifiez le mot de passe pour le cryptage des données.
+.. Dans le champ clé d'accès, spécifiez la clé.
+.. Dans le champ clé secrète, spécifiez le mot de passe.
 .. Spécifiez l'espace IP.
 
 

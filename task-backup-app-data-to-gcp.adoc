@@ -16,8 +16,7 @@ summary: 'Réalisez quelques étapes de sauvegarde des données d"applications d
 [role="lead"]
 Effectuez quelques étapes pour sauvegarder les données d'applications de ONTAP vers Google Cloud Platform.
 
-*Étapes*
-
+.Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.
 . Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à l'application et cliquer sur *Activer la sauvegarde*.
 . Dans la page attribuer une stratégie, sélectionnez la stratégie et cliquez sur *Suivant*.
@@ -42,10 +41,14 @@ La sauvegarde et la restauration BlueXP pour les applications ne prennent en cha
 . Sélectionnez *Google Cloud Platform* comme fournisseur cloud.
 +
 .. Sélectionnez le compartiment Google Cloud Project où vous souhaitez créer le compartiment Google Cloud Storage pour les sauvegardes.
-.. Dans le champ clé d'accès Google Cloud, spécifiez la clé de chiffrement des données.
-.. Dans le champ clé secrète Google Cloud, spécifiez le mot de passe pour le chiffrement des données.
+.. Dans le champ clé d'accès Google Cloud, spécifiez la clé.
+.. Dans le champ clé secrète Google Cloud, spécifiez le mot de passe.
 .. Sélectionnez la région dans laquelle vous souhaitez créer les sauvegardes.
 .. Spécifiez l'espace IP.
+.. Sélectionnez le niveau d'archivage.
++
+Il est recommandé de définir le niveau d'archivage car il s'agit d'une activité unique et vous ne serez pas autorisé à le configurer ultérieurement.
+
 
 
 . Vérifiez les détails et cliquez sur *Activer la sauvegarde*.

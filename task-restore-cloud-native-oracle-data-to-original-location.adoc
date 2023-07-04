@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: task-restore-cloud-native-oracle-data.html 
-keywords: cloud-native, application data, restore, data files, control files, recovery, Cloud Manager, BlueXP, Oracle database, Oracle 
-summary: Restaurez les fichiers de données, les fichiers de contrôle ou les deux, puis récupérez la base de données. 
+permalink: task-restore-cloud-native-oracle-data-to-original-location.html 
+keywords: cloud-native, application data, restore, data files, control files, recovery, Cloud Manager, BlueXP, Oracle database, Oracle, original location 
+summary: 'Restaurez les fichiers de données, les fichiers de contrôle ou les deux à leur emplacement d"origine, puis récupérez la base de données.' 
 ---
-= Restaurez des bases de données Oracle cloud natives
+= Restaurez des bases de données Oracle cloud à leur emplacement d'origine
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,15 +14,13 @@ summary: Restaurez les fichiers de données, les fichiers de contrôle ou les de
 
 
 [role="lead"]
-En cas de perte de données, vous pouvez restaurer les fichiers de données, les fichiers de contrôle ou les deux, puis restaurer la base de données.
+En cas de perte de données, vous pouvez restaurer les fichiers de données, les fichiers de contrôle ou les deux à leur emplacement d'origine, puis récupérer la base de données.
 
-*Avant de commencer*
-
+.Avant de commencer
 Si la base de données Oracle 21c est à l'état DÉMARRÉ, l'opération de restauration échoue. Vous devez exécuter la commande suivante pour restaurer la base de données avec succès.
 `cp -f <ORACLE_HOME>/jdbc/lib/ojdbc8.jar /opt/NetApp/snapcenter/spl/plugins/sco/lib/ojdbc8-8.jar`
 
-*Étapes*
-
+.Étapes
 . Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à la base de données à restaurer et cliquez sur *Restaurer*.
 . Sélectionnez le point de restauration vers lequel la base de données doit être restaurée et cliquez sur *Restaurer à l'emplacement d'origine*.
 . Dans la section objectif de restauration, effectuez les opérations suivantes :
@@ -65,10 +63,6 @@ Dans l'infrastructure SAN d'Amazon FSX pour NetApp ONTAP ou de Cloud Volumes ONT
 ** Fichier de paramètres ASM.
 +
 L'option *forcer la restauration sur place* remplace le paramètre de type, le mot de passe et le journal d'archivage des fichiers étrangers. Vous devez utiliser la dernière sauvegarde lorsque l'option * forcer la restauration sur place* est sélectionnée.
-
-+
-
-NOTE: La restauration des fichiers de données avec des fichiers de contrôle ou uniquement des fichiers de contrôle pour iSCSI sur la configuration ASM et la restauration des tablespaces et des PDB ne sont pas prises en charge.
 
 
 

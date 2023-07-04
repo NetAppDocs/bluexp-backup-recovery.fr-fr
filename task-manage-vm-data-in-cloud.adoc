@@ -55,17 +55,34 @@ Vous pouvez modifier les détails du plug-in SnapCenter pour l'hôte VMware vSph
 
 
 
-== Actualiser l'état de protection
+== Actualisez les ressources et les sauvegardes
 
-Lorsque de nouveaux volumes sont ajoutés à la base de données, ou s'il y a une modification de la règle ou du groupe de ressources, vous devez actualiser l'état de protection.
+Si vous souhaitez afficher les derniers datastores et sauvegardes ajoutés à l'application, vous devez actualiser les ressources et les sauvegardes. La découverte des ressources et des sauvegardes est alors lancée et les informations les plus récentes s'affichent.
 
 . Cliquez sur *sauvegarde et restauration* > *machines virtuelles*.
 . Dans la liste déroulante *Paramètres*, cliquez sur *Plug-in SnapCenter pour VMware vSphere*.
-. Cliquez sur image:icon-action.png["action"] Correspondant au plug-in SnapCenter pour l'hôte VMware vSphere et cliquez sur *Refresh*.
-+
-Les nouvelles modifications sont découvertes.
+. Cliquez sur image:icon-action.png["action"] Correspondant au plug-in SnapCenter pour l'hôte VMware vSphere et cliquez sur *Actualiser les ressources et les sauvegardes*.
 
-. Cliquez sur image:icon-action.png["action"] Correspondant au datastore et cliquez sur *Actualiser la protection* pour activer la protection du cloud pour les modifications.
+
+
+
+== Actualiser la stratégie ou le groupe de ressources
+
+En cas de modification de la stratégie ou du groupe de ressources, vous devez actualiser la relation de protection.
+
+. Cliquez sur *sauvegarde et restauration* > *machines virtuelles*.
+. Cliquez sur image:icon-action.png["action"] Correspondant au datastore et cliquez sur *Actualiser la protection*.
+
+
+
+
+== Annulez l'enregistrement du plug-in SnapCenter pour l'hôte VMware vSphere
+
+Tous les datastores et machines virtuelles associés à l'hôte SnapCenter Plug-in pour VMware vSphere ne seront pas protégés.
+
+. Cliquez sur *sauvegarde et restauration* > *machines virtuelles*.
+. Dans la liste déroulante *Paramètres*, cliquez sur *Plug-in SnapCenter pour VMware vSphere*.
+. Cliquez sur image:icon-action.png["action"] Correspondant au plug-in SnapCenter pour l'hôte VMware vSphere et cliquez sur *désinscrire*.
 
 
 

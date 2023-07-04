@@ -366,7 +366,6 @@
   <block id="15b310151036ae6be2ff233527ab8752" category="list-text">Vous pouvez également <block ref="691b942cd3d613931fde06fad7da9248" category="inline-link-macro-rx"></block> Vers un système Cloud Volumes ONTAP dans AWS ou vers un système ONTAP sur site.</block>
   <block id="4a938aa86ba9c09b265a5dc95f09a99c" category="summary">Réalisez quelques étapes de sauvegarde des données d'applications d'ONTAP vers GCP.</block>
   <block id="e7626d40bde0cb9f25e876222f0bb5fc" category="doc">Sauvegardez les données applicatives sur site dans StorageGRID</block>
-  <block id="d428ebb7ac02e1484781b38a799a4f99" category="paragraph">*Ce dont vous aurez besoin*</block>
   <block id="3c129ae4117659984e8ff0ffd5717f67" category="paragraph">Lorsque vous sauvegardez des données dans StorageGRID, un connecteur doit être disponible sur site. Vous devrez soit installer un nouveau connecteur, soit vérifier que le connecteur actuellement sélectionné réside sur site. Le connecteur peut être installé sur un site avec ou sans accès à Internet.</block>
   <block id="59a3f2ec9c1e69a907655f1e19a09af2" category="inline-link-macro">Créer des connecteurs pour StorageGRID</block>
   <block id="1806359058903db4df45ce103a9946d5" category="paragraph">Pour plus d'informations, reportez-vous à la section <block ref="af7b391f127d97d1c0df069f7e4831fa" category="inline-link-macro-rx"></block>.</block>
@@ -488,7 +487,6 @@
   <block id="c3ce6809be6bdc67ae978395484d0585" category="list-text">ONTAP 9.8 ou version ultérieure</block>
   <block id="bff3cdd2fd5f993f3bc3fbbd3c43fb30" category="list-text">Au moins une sauvegarde doit avoir été incluse dans le plug-in SnapCenter pour VMware vSphere 4.6P1.</block>
   <block id="ad747f24f06324c9bc58eeaa274f014a" category="list-text">Assurez-vous qu'il n'y a pas de volumes FlexGroup dans le datastore, car la sauvegarde et la restauration des volumes FlexGroup ne sont pas prises en charge.</block>
-  <block id="d4e9a319924f580f8d8c025f39e06dc3" category="list-text">Assurez-vous qu'aucun volume n'est chiffré car la restauration des volumes chiffrés n'est pas prise en charge.</block>
   <block id="f8038513f93eb5ca7b2505674255b67b" category="list-text">Désactivez "*_Recent*" sur les groupes de ressources requis. Si «*_Recent* » est activé pour le groupe de ressources, les sauvegardes de ces groupes de ressources ne peuvent pas être utilisées pour la protection des données dans le cloud et ne peuvent plus être utilisées pour l'opération de restauration.</block>
   <block id="391eb750d98c55b72607ff6ec6311db2" category="list-text">Assurez-vous que le datastore de destination sur lequel la machine virtuelle sera restaurée dispose d'un espace suffisant pour prendre en charge une copie de tous les fichiers des machines virtuelles tels que VMDK, VMX, VMSD, etc.</block>
   <block id="6ee2c41b7a9bfae5bb618327d9499834" category="list-text">Assurez-vous que le datastore de destination ne contient pas de fichiers de machine virtuelle obsolètes au format restore_xxx_xxxxxx_filename des échecs précédents de l'opération de restauration. Vous devez supprimer les fichiers obsolètes avant de lancer une opération de restauration.</block>
@@ -505,8 +503,6 @@
   <block id="168d35838d683733c740a323264bac1d" category="section-title">Affichez les sauvegardes sur le cloud</block>
   <block id="5f6926750c6dd8a22b3997020614fae5" category="paragraph">Vous pouvez afficher les sauvegardes dans le cloud dans l'interface utilisateur BlueXP.</block>
   <block id="cce0c57f1dd3c02ce23659f1d60e084c" category="list-text">Cliquez sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> Correspondant à l'application et cliquer sur *Afficher les détails*.</block>
-  <block id="bfc776a7bcfd64bdb79a1cc9129389b5" category="list-text">Pour les bases de données Microsoft SQL Server, seules les sauvegardes complètes et la date de fin de chaque sauvegarde sont répertoriées. Vous pouvez sélectionner la sauvegarde et restaurer la base de données sur le serveur SnapCenter sur site.</block>
-  <block id="73c43b8b0d9e0b68dac6c6ffb29419df" category="list-text">Pour les bases de données SAP HANA, seules les sauvegardes de données et la date de fin de chaque sauvegarde sont répertoriées. Vous pouvez sélectionner la sauvegarde et effectuer une opération de montage.</block>
   <block id="2b1eee0a42e21027068e7df802c6472d" category="admonition">Les sauvegardes créées avant d'activer la protection dans le cloud ne sont pas répertoriées pour la restauration.</block>
   <block id="5c5b6e574410e26058b642e5352a6fcc" category="section-title">Changement de disposition de la base de données</block>
   <block id="3aae671182c94c64ed27f9b2256eb996" category="list-text">Dans la liste déroulante *Paramètres*, cliquez sur *serveurs SnapCenter*.</block>
@@ -523,20 +519,6 @@
   <block id="faaa9a060b63aacd7addee167c6e8a89" category="paragraph">Lorsque vous lancez une opération, une fenêtre s'affiche indiquant que le travail est lancé. Vous pouvez cliquer sur le lien pour surveiller le travail.</block>
   <block id="01bfab2b240fd3d6c6cdf0568c743360" category="list-text">Cliquez sur la tâche principale pour afficher les sous-tâches et le statut de chacune de ces sous-tâches.</block>
   <block id="a5996295dff80ec054089a5c1929ceca" category="section-title">Configurer les certificats CA</block>
-  <block id="d06f6ee099078cedbc020bdd466c77ce" category="paragraph">Si vous disposez de certificats CA, vous devez copier manuellement les certificats CA racine sur la machine de connecteur.</block>
-  <block id="ca13813f9bbda0fee941b11bc9a82513" category="list-text">Copiez le certificat sur le volume accessible depuis l'agent docker.</block>
-  <block id="f1a98c411b3d586c83f12a004f15734c" category="list-text"><block ref="01d65f8a1211712123e3633760a1a722" prefix="" category="inline-code"></block></block>
-  <block id="b466e90a2c69435ee6e97f3cb0dfd4a1" category="list-text"><block ref="eac2777647d731833eb1d926a3b3b1f8" prefix="" category="inline-code"></block></block>
-  <block id="69418d2be0e53842b99f36236a6c07d0" category="list-text">Copiez les fichiers de certificat RootCA dans le dossier ci-dessus de la machine de connecteur.</block>
-  <block id="3250a589368ab4e3af465888f66d61e2" category="paragraph"><block ref="0d5ba2132ce495b4c7a9f61425e9b709" prefix="" category="inline-code"></block></block>
-  <block id="e1a27f3458e49e9fc95659f39a22b898" category="list-text">Copiez le fichier CRL sur le volume accessible depuis l'agent docker.</block>
-  <block id="7fda4b78acc84d7c2270b1b6c5b8dd93" category="list-text"><block ref="9c4396bdbc38e09135a4b5e37f861350" prefix="" category="inline-code"></block></block>
-  <block id="413163fb1a0f5c212808a5d532ab45bb" category="list-text"><block ref="7693694200e2a481114448ba67a9202b" prefix="" category="inline-code"></block></block>
-  <block id="dfd0c43da9224f0c5537b66979a55189" category="list-text">Copiez les fichiers CRL dans le dossier ci-dessus sur l'ordinateur du connecteur.</block>
-  <block id="4db36e6fb99acd4baa9d9a99926204b6" category="paragraph"><block ref="96753170cac6d46882f5817f35bf7583" prefix="" category="inline-code"></block></block>
-  <block id="f66a35b8c8476dffd82a65fd5e691b3b" category="list-text">Une fois les certificats et les fichiers CRL copiés, redémarrez le service Cloud Backup pour applications.</block>
-  <block id="d9bedb6ca0e8e6bbd10eebe3f471507d" category="list-text"><block ref="13b4d94d288ed782f1fd1cc27e245080" prefix="" category="inline-code"></block></block>
-  <block id="9eb706636b25b810332dcdc9d194f80b" category="list-text"><block ref="db155b8f9ae2e0def6f6365599dcf526" prefix="" category="inline-code"></block></block>
   <block id="243263104c829e77835d632f591230d5" category="summary">Avant d'ouvrir un dossier de demande de support auprès du support technique NetApp, vous devez ajouter un compte sur le site de support NetApp à BlueXP, puis vous inscrire pour bénéficier du support.</block>
   <block id="42748df9eaa0be17ddc5cc1593cf57ab" category="doc">S'inscrire pour obtenir de l'aide</block>
   <block id="0b0e252af8897fbe981ec6682d2aa33b" category="section-title">Présentation de l'inscription au support</block>
@@ -1311,7 +1293,6 @@
   <block id="aeec20fb97ec5b367b439351c1c00204" category="list-text">Dans la page applications, si la base de données n'est pas protégée à l'aide d'aucune stratégie, cliquez sur *affecter stratégie*.</block>
   <block id="114872d03378e25021c3cc928e318e8a" category="paragraph">Si la base de données est protégée à l'aide d'une ou de plusieurs stratégies, vous pouvez attribuer davantage de stratégies en cliquant sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> &gt; *affecter stratégie*.</block>
   <block id="3c7ba9b9e3e6cc576a0786913d32d5df" category="list-text">Sélectionnez la stratégie et cliquez sur *affecter*.</block>
-  <block id="098e4b45417a1ec0fafb90bed28e6424" category="paragraph">Les sauvegardes seront créées conformément à la planification définie dans la stratégie.</block>
   <block id="556daa2892e6c333b040f2f9ed98a222" category="paragraph">Après avoir affecté la stratégie, vous pouvez créer une sauvegarde à la demande de l'application.</block>
   <block id="ca46a9979585fdf43309efe203535615" category="list-text">Dans la page applications, cliquez sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> Correspondant à l'application et cliquer sur *On-Demand Backup*.</block>
   <block id="fe0a0332700b9a067272058245b48946" category="inline-link">Opération de snapshot non autorisée en raison de clones sauvegardés par des snapshots</block>
@@ -1341,10 +1322,7 @@
   <block id="9330e7377c5511f70bfc35493714892a" category="list-text">Dans l'interface utilisateur BlueXP, cliquez sur *protection* &gt; *sauvegarde et récupération* &gt; *machines virtuelles* &gt; *Paramètres* &gt; *SnapCenter Plug-in pour VMware vSphere*.</block>
   <block id="b4aa547260f4fe266f03ec3a845576a5" category="section-title">Modifiez le plug-in SnapCenter pour l'instance VMware vSphere</block>
   <block id="4cc186df234138a57b2e8c5d8e5f7f8d" category="list-text">Cliquez sur *Enregistrer*.</block>
-  <block id="1b6f5433333a05ee720166b3bef29b73" category="section-title">Actualiser l'état de protection</block>
   <block id="8fc5a6acddf8678dc2c340b6dfae42a9" category="list-text">Cliquez sur *sauvegarde et restauration* &gt; *machines virtuelles*.</block>
-  <block id="048b394365a250ed3a53a1b28e83733e" category="paragraph">Les nouvelles modifications sont découvertes.</block>
-  <block id="3e99ccad833881d9a8aeec4e2665baae" category="list-text">Cliquez sur <block ref="1d94ccc08c31bc8efbc06bfabc6854b6" category="inline-image-macro-rx" type="image"></block> Correspondant au datastore et cliquez sur *Actualiser la protection* pour activer la protection du cloud pour les modifications.</block>
   <block id="2b36d2f46a4c7d47c05352e78b2ebe53" category="doc">Sauvegardez les données des applications sur site dans Google Cloud Platform</block>
   <block id="fa860b204216c5fc8423fbeb3cc0cb75" category="list-text">Sélectionnez *Google Cloud Platform* comme fournisseur cloud.</block>
   <block id="fa0f3e6189a17df2b37f1f89872dbee4" category="list-text">Dans le champ clé d'accès Google Cloud, spécifiez la clé.</block>
@@ -1384,16 +1362,8 @@
   <block id="1921607c8a4d3375b5df7e659b429e1c" category="paragraph">Un compartiment Google Cloud Storage est créé automatiquement dans le compte de service indiqué par la clé d'accès Google et la clé secrète que vous avez saisies, et les fichiers de sauvegarde y sont stockés. Le tableau de bord de sauvegarde de volume s'affiche pour vous permettre de surveiller l'état des sauvegardes. Vous pouvez également surveiller l'état des tâches de sauvegarde et de restauration à l'aide de l' <block ref="5d9366e34fca5f2de6190abcadbc5e98" category="inline-link-macro-rx"></block>.</block>
   <block id="6bf39a60f8a045efaafd2bcde95bf33e" category="inline-link">Modification de la classe de stockage par défaut d'un compartiment</block>
   <block id="30d334a4a47bf8bcc0a713cea94b6d98" category="list-text">Vous pouvez également <block ref="691b942cd3d613931fde06fad7da9248" category="inline-link-macro-rx"></block> Vers un système Cloud Volumes ONTAP dans Google ou vers un système ONTAP sur site.</block>
-  <block id="f806b720158d764a443413aa5a9a658d" category="doc">Montage des sauvegardes d'applications</block>
-  <block id="939f2d392cf3c053138a7886bce3b67c" category="list-text">Dans le champ Filtrer par, sélectionnez *Type* et sélectionnez *SAP HANA* ou *Oracle* dans la liste déroulante.</block>
-  <block id="1f585f145f271e757924a10173abfa9a" category="list-text">Cliquez sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> Correspondant à l'application protégée et sélectionnez *Afficher les détails*.</block>
-  <block id="b8dceecbf6473264df0fee99aa880aa8" category="list-text">Cliquez sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> Correspondant à la sauvegarde et sélectionner *Mount*.</block>
-  <block id="03d405c84bfe0e1a6364e500af6864b1" category="list-text">Spécifiez l'une des options suivantes :</block>
-  <block id="86013e4eb67d3b4efa98a69c18999663" category="list-text">Si le snapshot est en stockage d'archivage, spécifiez la priorité de récupération de vos données à partir du stockage d'archivage.</block>
-  <block id="8ece1a3075cf82b4a6288d5a36855ff2" category="list-text">Cliquez sur *Mount*.</block>
   <block id="18a6c204240510c87aba39d6d8b5d26b" category="doc">Protection des données applicatives sur site</block>
   <block id="ded90f27fe65ac910c74189d47b689e7" category="paragraph">Vous pouvez sauvegarder les données des applications Oracle, Microsoft SQL et SAP HANA depuis les systèmes ONTAP sur site vers Amazon Web Services, Microsoft Azure, Google Cloud Platform et StorageGRID.</block>
-  <block id="351f25e3e7fc628f73a433013b9820a6" category="list-text">SnapCenter Server 4.6 ou version ultérieure vous devez utiliser SnapCenter Server 4.7 si vous souhaitez utiliser les fonctions suivantes :</block>
   <block id="f3753469514d2cda99cee390aa2bf172" category="list-text">Au moins une sauvegarde par application doit être disponible dans SnapCenter Server</block>
   <block id="29d7639a0c7b9ce1eeb1a132409265c0" category="paragraph">L'image suivante montre chaque composant lors de la sauvegarde dans le cloud et les connexions que vous devez préparer de l'un à l'autre :</block>
   <block id="cf12172bd966bafd91b1daeef9357fe8" category="summary">Sauvegardez vos datastores sur site ONTAP dans StorageGRID.</block>
@@ -1408,21 +1378,14 @@
   <block id="241958803b06afbd6f6eb3ef7dbbe9d8" category="list-text">Spécifiez la planification et les informations de conservation.</block>
   <block id="86ec2a14bbb020ef6f3317be9dc1ae88" category="summary">Vous pouvez restaurer la base de données SQL Server depuis le cloud vers le serveur SnapCenter sur site.</block>
   <block id="25cc2482c6aabbea855686d0229477f9" category="doc">Restaurez la base de données SQL Server</block>
-  <block id="c87de8f0f235e22a2827fdcbc98c6525" category="paragraph">Vous pouvez restaurer la base de données SQL Server sur le même hôte ou sur l'autre hôte. La restauration des sauvegardes de journaux et du réamorçage des groupes de disponibilité ne sont pas prises en charge.</block>
   <block id="c4b2754c24325b7485882003d0c5d85a" category="admonition">La restauration de fichiers uniques (SFR) n'est pas prise en charge.</block>
   <block id="77fc9c04c5d3905b02c1cb2816c3ff56" category="list-text">Dans le champ *Filtrer par*, sélectionnez le filtre *Type* et sélectionnez *SQL* dans la liste déroulante.</block>
   <block id="f99dd373d02a7eb7954d187b270ff262" category="list-text">Cliquez sur *Afficher les détails* pour afficher toutes les sauvegardes disponibles.</block>
   <block id="92fd09b3a3ba47a9aedc0bd313e6f6d3" category="list-text">Sélectionnez la sauvegarde et cliquez sur *Restaurer*.</block>
-  <block id="3fb7b85e502bd2e3141073936bd444dc" category="list-text">Sélectionnez l'emplacement où vous souhaitez restaurer les fichiers de base de données.</block>
   <block id="b5a7adde1af5c87d7fd797b6245c2a39" category="cell">Description</block>
-  <block id="88fad46f0016d9b2e879793d579db695" category="paragraph">Sélectionnez un nom d'hôte, indiquez un nom de base de données (facultatif), sélectionnez une instance et spécifiez les chemins de restauration.</block>
   <block id="ee76979200a6d98dbc4fb09493e6e3fa" category="admonition">L'extension de fichier fournie dans le chemin alternatif doit être identique à celle du fichier de base de données d'origine.</block>
-  <block id="d43ed86d76b9ca21bec3b8663dc3ecc6" category="paragraph">Si l'option *Restaurer la base de données sur un autre hôte* n'est pas affichée dans la page Restaurer l'étendue, effacez le cache du navigateur.</block>
-  <block id="7acc08861d4ed79ef851580e5f995af3" category="list-text">Si le snapshot est en stockage d'archivage, spécifiez la priorité de restauration des données à partir du stockage d'archivage.</block>
-  <block id="2c1862acab2937e131b370bf16b90783" category="list-text">Sur la page *Options de pré-restauration*, sélectionnez l'une des options suivantes :</block>
   <block id="940df971899f651cb88b01e557f54200" category="list-text">Sélectionnez *Ecraser la base de données du même nom pendant la restauration* pour restaurer la base de données du même nom.</block>
   <block id="a73ea294ef31ea4d248721452fc4d030" category="list-text">Sélectionnez *conserver les paramètres de réplication de base de données SQL* pour restaurer la base de données et conserver les paramètres de réplication existants.</block>
-  <block id="a8271fd3745fc8b71ff6bfd12f792572" category="list-text">Sur la page *Options de post-restauration*, pour spécifier l'état de la base de données pour restaurer des journaux transactionnels supplémentaires, sélectionnez l'une des options suivantes :</block>
   <block id="b7f1adca38b4833ff2351c144d5e8bd0" category="list-text">Sélectionnez *opérationnel, mais indisponible* si vous restaurez maintenant toutes les sauvegardes nécessaires.</block>
   <block id="f8c4ec8de5d78138befe1f81c75b738c" category="paragraph">Il s'agit du comportement par défaut, qui laisse la base de données prête à l'emploi en revenant les transactions non validées. Vous ne pouvez pas restaurer d'autres journaux de transactions tant que vous n'avez pas créé de sauvegarde.</block>
   <block id="9a509ad7d001fb5ccb9a4a65a3ccd8eb" category="list-text">Sélectionnez *non opérationnel, mais disponible* pour laisser la base de données non opérationnelle sans reprise des transactions non validées.</block>
@@ -1510,27 +1473,20 @@
   <block id="093c813823c463b6495f1ab6601f3c1a" category="paragraph">Seule la base de données complète avec restauration du fichier de contrôle est prise en charge. Si les journaux d'archive ne sont pas présents dans l'AFS, vous devez spécifier l'emplacement qui contient les journaux d'archive requis pour la récupération.</block>
   <block id="8377760bcd9824d8b414e96454b1f639" category="list-text">Dans le champ *Filter by*, sélectionnez le filtre *Type* et sélectionnez *Oracle* dans la liste déroulante.</block>
   <block id="356a014d650e5ff75127d5c7f8512c9b" category="list-text">Cliquez sur *View Details* correspondant à la base de données à restaurer et cliquez sur *Restore*.</block>
-  <block id="1dbebac3a4764e845f4bce351937d6b4" category="list-text">Sur la page Type de restauration, effectuez les opérations suivantes :</block>
   <block id="39a39a3d5651d922f580216bf9d45b85" category="list-text">Sélectionnez *Etat de la base de données* si vous souhaitez modifier l'état de la base de données à l'état requis pour effectuer les opérations de restauration et de récupération.</block>
   <block id="e4602b24fbe5e3160ce64aa6ae40879b" category="paragraph">Si une base de données est à l'état ouvert et que pour restaurer la base de données doit être à l'état monté, l'état de la base de données n'est modifié que si vous cochez cette case.</block>
-  <block id="5fece95e369981cd56f2f39bd68e7428" category="list-text">Sélectionnez *fichiers de contrôle* si vous souhaitez restaurer le fichier de contrôle avec la base de données complète.</block>
-  <block id="2365d9113b1bc87e6269c4e30fec989f" category="list-text">Sur la page étendue de la récupération, effectuez les opérations suivantes :</block>
   <block id="2ff2cf16b39b4e9577d64c948d199af9" category="list-text">Spécifier le périmètre de restauration.</block>
   <block id="61a6d655671eebbd633c1d84fae09e17" category="cell">Si...</block>
   <block id="5e2ad6fd9deb412d871137094ee43ef0" category="cell">Procédez comme ça...</block>
   <block id="88b89a3ecc8bae770512fd2757a77e5c" category="paragraph">Que vous souhaitez restaurer à la dernière transaction</block>
   <block id="6b88fe93605b37a71fe57b312195af04" category="paragraph">Sélectionnez *tous les journaux*.</block>
   <block id="00c60421974c4b44bc58c184a86fbd8d" category="paragraph">Que vous souhaitez récupérer à un numéro de changement de système (SCN) spécifique</block>
-  <block id="5dbfc48b50c2e9d92b94241efe780a08" category="paragraph">Sélectionnez *jusqu'à ce que SCN (numéro de changement du système)*.</block>
-  <block id="a131df3c4a6be3323871fa13b2ee8db4" category="paragraph">Veulent restaurer des données et un temps spécifique</block>
   <block id="5937168e92a38a60d4c1c57f8fcd693e" category="paragraph">Sélectionnez *Date et heure*.</block>
   <block id="f9e5e4d6cf47098ebd8fa6bc6e909e1d" category="paragraph">Vous devez spécifier la date et l'heure du fuseau horaire de l'hôte de la base de données.</block>
   <block id="1c69cfcc6b3635cc197c0e3104cbd69f" category="paragraph">Ne pas récupérer</block>
   <block id="2243d9f85be8c57105c8d2eaabc0b881" category="paragraph">Sélectionnez *pas de récupération*.</block>
-  <block id="48607cd1d278aa7004b0e2145533fde0" category="paragraph">Vous souhaitez spécifier les emplacements de journaux d'archives externes</block>
   <block id="5b5efc09105794c60a1df368de3f2626" category="list-text">Cochez la case si vous souhaitez ouvrir la base de données après la récupération.</block>
   <block id="f6926e5d6abfa62c5d6ac4b2502f34a0" category="paragraph">Dans une configuration RAC, seule l'instance RAC utilisée pour la restauration s'ouvre après une restauration.</block>
-  <block id="d1e18cf16b83a90a2911458097d3358c" category="summary">Afficher les détails de la sauvegarde et surveiller l'état de toutes les tâches.</block>
   <block id="4639d0e2e2909a747265c2f704128bca" category="section-title">Surveiller les tâches</block>
   <block id="a5cae278ab84c15ead127cbc4d6b2fc5" category="paragraph">Vous pouvez surveiller l'état des travaux lancés dans vos environnements de travail. Cela vous permet de voir les travaux qui ont réussi, ceux qui sont en cours et ceux qui ont échoué afin de diagnostiquer et de résoudre tout problème.</block>
   <block id="e645e09bf2ae6466ce5a92513bf9c99b" category="section-title">Afficher les détails de la sauvegarde</block>
@@ -1538,12 +1494,10 @@
   <block id="f713a5b618a13e567bd48c7c23bc1831" category="section-title">Configurer le certificat signé par l'autorité de certification</block>
   <block id="134db136339131109beaeb48cea408f5" category="paragraph">Vous pouvez configurer un certificat signé par l'autorité de certification si vous souhaitez inclure une sécurité supplémentaire à votre environnement.</block>
   <block id="dbb66d78c3928dbc0e61b7f884e7d152" category="paragraph">Le connecteur utilise un certificat auto-signé pour communiquer avec le plug-in. Le certificat auto-signé est importé dans le magasin de clés par le script d'installation. Vous pouvez effectuer les étapes suivantes pour remplacer le certificat auto-signé par un certificat signé par l'autorité de certification.</block>
-  <block id="adf00ddb8543fe1ed45bb8de32ba885b" category="paragraph">Vous pouvez exécuter la commande suivante pour obtenir le _&lt;base_mount_path&gt;_ :<block ref="22ab9e84fb8aba7e93d8b90366ddca59" prefix=" " category="inline-code"></block></block>
   <block id="699212d80ab09d05f5a9a391baf6d544" category="list-text">Connectez-vous au connecteur.</block>
   <block id="267fab2c93ee78a5b7b7c5cd3347f95d" category="paragraph">Le nom du fichier doit être Certificate.pem et key.pem. Le certificat.pem doit avoir toute la chaîne des certificats comme CA intermédiaire et CA racine.</block>
   <block id="2efb3f1040cc3f0d3c2dd66f4495b045" category="list-text">Créez le format PKCS12 du certificat avec le nom certificate.p12 et conservez-le à _&lt;base_mount_path&gt;/client/certificat_.</block>
   <block id="49bcc463a5065066b6e686b906f3e34e" category="list-text">Connectez-vous à l'hôte du plug-in.</block>
-  <block id="2ded4a2cc80040552b54bdd308ecb919" category="list-text">Accédez à _/var/opt/snapcenter/spl/etc_ et exécutez la commande keytool pour importer le fichier Certificate.p12.<block ref="0d48a0d1a6daee261d59f76e1ce65f98" prefix=" " category="inline-code"></block></block>
   <block id="0444de9e3c28e6b65560b207e6ea6eb4" category="list-text">Importer l'autorité de certification racine et les certificats intermédiaires.<block ref="82afa18252ac93862d6b151d7d2ace61" prefix=" " category="inline-code"></block></block>
   <block id="7dc3629efca54d7a3c55707ca70b7456" category="list-text">Créez le format PKCS12 du certificat ayant à la fois le certificat et la clé avec alias _splkeystore_.</block>
   <block id="12fd234da34dd31a3a662ea38cd44d31" category="list-text">Vérifiez les certificats.<block ref="e8068ca056ca63060cbe1fc5c3b7e50a" prefix=" " category="inline-code"></block></block>
@@ -1552,8 +1506,6 @@
   <block id="beed6a355a0f3c2fec57e272c4df9a9b" category="list-text">Redémarrez le conteneur Cloud Manager_scs_Cloud.<block ref="9d7054b7c81b67187a51afa7122a5891" prefix=" " category="inline-code"></block></block>
   <block id="56221c5b2b531b839a3cd5c7e9c9cd9f" category="section-title">Accès aux API REST</block>
   <block id="4512b12288e7290cb279f814b15ba5dc" category="inline-link">Créez un jeton utilisateur avec authentification fédérée</block>
-  <block id="bc75c7043b8e7365f3c8207f2cc978cc" category="summary">Restaurez les fichiers de données, les fichiers de contrôle ou les deux, puis récupérez la base de données.</block>
-  <block id="c48a955b9e2bd6b7c7d520e85a16d929" category="paragraph">En cas de perte de données, vous pouvez restaurer les fichiers de données, les fichiers de contrôle ou les deux, puis restaurer la base de données.</block>
   <block id="878f99c91be407d0f28af03c6c58cc11" category="list-text">Cliquez sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> Correspondant à la base de données à restaurer et cliquer sur *Afficher les détails*.</block>
   <block id="843aa7f2a542d8c13efb89db29c10118" category="list-text">Dans la section objectif de restauration, effectuez les opérations suivantes :</block>
   <block id="abad8f3214f3a57c46ff8ce273f3c2fa" category="paragraph">Vous souhaitez restaurer uniquement les fichiers de données</block>
@@ -2012,7 +1964,6 @@
   <block id="6b9ec885733dcee16db8c4d8dde6312a" category="inline-link-macro">Démarrage rapide de Cloud Volumes ONTAP dans Azure</block>
   <block id="c816d65f45a034b0842bc039567fcb6b" category="inline-link-macro">Démarrage rapide pour Cloud Volumes ONTAP dans Google Cloud</block>
   <block id="2a60e5494e07cff54330378780f8e2a4" category="list-text">(Facultatif) si vous souhaitez transférer des sauvegardes du magasin d'objets vers le stockage d'archives après un certain nombre de jours pour l'optimisation des coûts, cochez la case *Tier backups to Archival* et entrez le nombre de jours après lequel la sauvegarde doit être archivée.</block>
-  <block id="d5b842bb75f6d0fd358e7a35f06b5354" category="summary">Créer des sauvegardes planifiées ou à la demande d'une base de données Oracle.</block>
   <block id="436faef9b95757e54b257ab16a914324" category="section-title">Créez une sauvegarde de la base de données Oracle</block>
   <block id="64fdd98c3f2496dfbbb2e63478269d01" category="paragraph">Vous pouvez soit affecter une stratégie pré-prédéfinie, soit créer une stratégie, puis l'affecter à la base de données. Une fois la stratégie attribuée, les sauvegardes sont créées conformément au planning défini dans la stratégie.</block>
   <block id="531369e846100ce5d91871e142c23ed8" category="section-title">Création d'une sauvegarde à la demande de la base de données Oracle</block>
@@ -2206,14 +2157,12 @@
   <block id="32403f6c910a8a0d4190a977cd4bb5a5" category="list-text">Sélectionnez le Type de système comme conteneur de base de données mutualisé ou conteneur unique.</block>
   <block id="e898199c829d90ae41784a78cdd2d6d9" category="list-text">Entrez le nom du système SAP HANA.</block>
   <block id="a3df030ad26d42c5af0fcbd0e6f513d7" category="list-text">Spécifier le SID du système SAP HANA.</block>
-  <block id="2c3f5c6b3c901543e2ee52841d3ba291" category="list-text">Sélectionnez Plug-in host. (Facultatif) si l'hôte n'est pas ajouté ou si vous souhaitez ajouter plusieurs hôtes, cliquez sur *Ajouter hôte de plug-in*.</block>
   <block id="d800d8f61fa1a641d5224e310e459b0c" category="list-text">Si le système HANA est configuré avec la réplication système HANA, activez *HANA System Replication (HSR) System*.</block>
   <block id="802a79f8e4284baac3abc3713a39791d" category="list-text">Cliquez sur *HDB Secure User Store Keys* (clés de stockage d'utilisateur sécurisées) pour ajouter les détails des clés de la boutique d'utilisateurs.</block>
   <block id="2145a09d2b376e7f0609f6fb4c6b5be5" category="paragraph">Spécifiez le nom de la clé, les détails du système, le nom d'utilisateur et le mot de passe, puis cliquez sur *Ajouter une clé*.</block>
   <block id="b53a101b6e60770ada5a46695bb46566" category="paragraph">Vous pouvez supprimer ou modifier les clés de la boutique utilisateur.</block>
   <block id="50606df711052c72cb3650915aa18292" category="list-text">Dans la page *empreinte de stockage*, cliquez sur *Ajouter un stockage* et effectuez les opérations suivantes :</block>
   <block id="0b4d4df45dec0f187977abf3a0e77fca" category="list-text">Sélectionnez l'environnement de travail et spécifiez le compte NetApp.</block>
-  <block id="f338ba0747a9b1926962438feb3b1f6a" category="paragraph">Accédez à la page *Canvas* pour ajouter un nouvel environnement de travail</block>
   <block id="d253da62a1a7bf3e4d5c1adf904b607a" category="list-text">Sélectionnez les volumes requis.</block>
   <block id="160c15dad3c86fc7f11c9d0f725a510f" category="list-text">Cliquez sur *Ajouter un stockage*.</block>
   <block id="5d74f0257578ebb70b128ed79394919f" category="list-text">Vérifiez tous les détails et cliquez sur *Ajouter système*.</block>
@@ -2222,7 +2171,6 @@
   <block id="01f13da2dfcf737f54346ebf7f44db6f" category="list-text">Dans la liste déroulante Type de système, sélectionnez *Volume global hors données*.</block>
   <block id="5d9b8dbd580deb48e76c53d62ab7c6f3" category="list-text">Spécifiez les SID associés du système SAP HANA.</block>
   <block id="9c40bb6f28c1548e2bec94c55bf9bf96" category="list-text">Sélectionnez l'hôte du plug-in</block>
-  <block id="b5e87b76d37fdb904487f6bc0c10bef7" category="paragraph">(Facultatif) pour ajouter plusieurs hôtes, cliquez sur *Ajouter hôte du plug-in* et spécifiez le nom d'hôte et le port, puis cliquez sur *Ajouter hôte*.</block>
   <block id="7322146fa0278b7076d42a67da3ca68f" category="section-title">Préscripts et postscripts</block>
   <block id="6185a8cfc72f93e3f8af600e5e7f9606" category="paragraph">Le format pris en charge pour les scripts est .sh, le script python, le script perl, etc.</block>
   <block id="3c91acc7806c6fcfd2da29720998df5d" category="paragraph"><block ref="8a0444f402186e75dfce312a113251e3" prefix="" category="inline-code"></block></block>
@@ -2267,7 +2215,6 @@
   <block id="791d63ac899b8ad7fc56dc931d1fd29a" category="list-text">Spécifiez le port SSH et le port du plug-in.</block>
   <block id="505ce6fed4446b13324d0562a28bb6ba" category="paragraph">Le port SSH par défaut est 22 et le port du plug-in est 8145.</block>
   <block id="7494e5d74f494202f9ecbc9e400d55b4" category="list-text">(Facultatif) si l'authentification sans clé n'est pas activée entre le connecteur et l'hôte, vous devez spécifier la clé privée SSH qui sera utilisée pour communiquer avec l'hôte.</block>
-  <block id="fd8b783cdb511cc4699a202fd9e6fa19" category="admonition">Le filtre permettant d'afficher un hôte spécifique ne fonctionne pas. Lorsque vous spécifiez un nom d'hôte dans le filtre, tous les hôtes sont affichés.</block>
   <block id="4f3297cde92a5de45c2448cbe652c2a3" category="list-text">Spécifiez le nom d'utilisateur, le mot de passe et les détails du port.</block>
   <block id="4bee6fec011c2f7ac751849f160f0a3f" category="paragraph">Si la base de données réside dans ASM, vous devez également configurer les paramètres ASM.</block>
   <block id="013e38cfdb2c6d0bb3f17b59760240ff" category="summary">BlueXP offre des sauvegardes, des sauvegardes et des restaurations efficaces et cohérentes avec les applications, basées sur des règles, et des restaurations de bases de données Oracle® résidant sur Amazon FSX pour NetApp ONTAP ou Cloud Volumes ONTAP.</block>
@@ -2282,7 +2229,6 @@
   <block id="d991e9a50dc0cf6a926e5fc91c5466f6" category="list-text">NFS v3 et v4.1 (y compris dNFS)</block>
   <block id="65191ea76e528516c2b69ba9b5993929" category="list-text">ISCSI avec ASM (ASMFD, ASMLib et ASMUdev)</block>
   <block id="e7c148fd9db2c4b380f00535117a8e6c" category="list-text">Dispositions de la base de données : Oracle Standard et Oracle Enterprise Standalone (CDB et boîtier de distribution électrique existant et mutualisé)</block>
-  <block id="ec92fe8b7e318dfcde8d78c9bfe9eeb4" category="list-text">Versions de base de données : 12cR2, 18c, 19c et 21c</block>
   <block id="f9b0b398cc489e9b9c51d5f0a02d79ef" category="list-text">Ajoutez de l'hôte et déployez le plug-in</block>
   <block id="f1ad14bba418337bd66224d583d964a4" category="list-text">Clone de base en un clic</block>
   <block id="3588abe13a84fd4299889022e29bf1cc" category="list-text">Clonage avancé à l'aide d'un fichier de spécifications de clonage personnalisé</block>
@@ -2292,12 +2238,8 @@
   <block id="5669d4dde41a20620530fdebbd1d9492" category="list-text">Surveillance des sauvegardes, de la restauration, du clonage et d'autres tâches</block>
   <block id="9518d577aae2b3d43b6dd0f41fb999e1" category="list-text">Ne prend pas en charge Oracle 11g</block>
   <block id="d67615cd9765a283fd8a9d06cd5d44a1" category="list-text">Ne prend pas en charge les opérations de montage, de catalogue et de vérification sur les sauvegardes</block>
-  <block id="494c3084e3990387ac3b46cb5749bb65" category="list-text">RHEL 7.5 ou version ultérieure, 8.x plates-formes certifiées par SAP HANA</block>
   <block id="504d22b0e020e0b365851eef08a1e4ca" category="list-text">SLES 12 SP5 ou version ultérieure et plates-formes SPX 15 certifiées par SAP HANA</block>
   <block id="c7325743e6b1be5853672e4ed19d279b" category="list-text">Dispositions de la base de données :</block>
-  <block id="4f3c431044df2a4101e620b1add959d6" category="list-text">Conteneur unique version 1.0SPS12</block>
-  <block id="d2175dc4d931807281b7620ca72ae84c" category="list-text">Conteneur de base de données mutualisé SAP HANA (MDC) 2.0SPS4, 2.0SPS5, 2.0SPS6 avec un ou plusieurs locataires</block>
-  <block id="5682f0abdba997874b11dbf9e7941de0" category="list-text">Système hôte unique SAP HANA, système hôte multiples SAP HANA (sans hôte de secours), réplication système HANA</block>
   <block id="b31ef80025021b4e1a3674d3c6f7edd6" category="list-text">Plug-in SAP HANA sur l'hôte de base de données</block>
   <block id="06f6598cf881ccbc6674a22fbae124a7" category="list-text">Ajoutez manuellement des systèmes SAP HANA</block>
   <block id="4142e62814a391bb005b24bff331ca70" category="list-text">Sauvegarde des bases de données SAP HANA</block>
@@ -2510,7 +2452,6 @@
   <block id="62813012ad9cc198c144b40ee8b9d777" category="list-text">Vous pouvez passer le curseur de la souris sur un dossier et cliquer sur <block ref="f6625f52b1c71dcdec014baa14bc9e40" category="inline-image-macro-rx" type="image"></block> à la fin de la ligne pour accéder aux sous-dossiers, puis sélectionner un dossier.</block>
   <block id="5d4acb09fec56e15b5468670a1788d81" category="inline-link">À partir de la page Détails du volume de la zone de travail</block>
   <block id="92a755b6d9fa88006d2c9e3907a504a5" category="list-text">Pour les volumes, vous pouvez sélectionner l'environnement de travail de destination d'origine ou sélectionner un autre environnement de travail. Lors de la restauration d'un volume FlexGroup, vous pouvez choisir plusieurs agrégats.</block>
-  <block id="8453fab1acf37cb3dad50bd528b75148" category="list-text">Seuls les datastores NFS sont pris en charge. Les datastores VMFS basés sur iSCSI/FC/NVMe et vvols ne sont pas pris en charge.</block>
   <block id="898f472703342efc6d5adc298a7628c8" category="paragraph">Vous pouvez fournir des scripts prescripteurs, des scripts postaux et des scripts d'exit pendant la création d'une stratégie. Ces scripts sont exécutés sur l'hôte HANA pendant l'opération de protection des données.</block>
   <block id="c5b751b6877453fd04eb6340347e4511" category="paragraph">Le prescripteur et le PostScript devraient être enregistrés par l'administrateur hôte dans<block ref="91d372f85b001dba79ebc4129e5acd32" prefix=" " category="inline-code"></block> fichier.</block>
   <block id="0baab2619f15ec742e2bf8b60e516b39" category="paragraph">Pour le flux de travail de sauvegarde, les variables d'environnement suivantes sont disponibles dans le cadre du prescripteur et du postscript.</block>
@@ -2688,8 +2629,6 @@
   <block id="09d402d9d90a8c43787a9b36dbc81909" category="paragraph">Vous pouvez modifier les détails du plug-in SnapCenter pour l'hôte VMware vSphere dans BlueXP.</block>
   <block id="8a27c524970cd13dc7b03f92b7043065" category="list-text">Cliquez sur <block ref="1d94ccc08c31bc8efbc06bfabc6854b6" category="inline-image-macro-rx" type="image"></block> Et sélectionnez *Modifier*.</block>
   <block id="05c829c7b617d014c0186656453575ea" category="list-text">Modifiez les détails si nécessaire.</block>
-  <block id="63e8ab93fb455764c3aae06f874e9f89" category="paragraph">Lorsque de nouveaux volumes sont ajoutés à la base de données, ou s'il y a une modification de la règle ou du groupe de ressources, vous devez actualiser l'état de protection.</block>
-  <block id="b08753885f48b8d718edd5f9d9cd7ab7" category="list-text">Cliquez sur <block ref="1d94ccc08c31bc8efbc06bfabc6854b6" category="inline-image-macro-rx" type="image"></block> Correspondant au plug-in SnapCenter pour l'hôte VMware vSphere et cliquez sur *Refresh*.</block>
   <block id="9f7b95641e24cb882e149de39743a97c" category="paragraph">Vous pouvez sauvegarder un ou plusieurs datastores dans StorageGRID en intégrant le plug-in SnapCenter pour l'hôte VMware vSphere avec BlueXP. Ils peuvent ainsi sauvegarder et archiver des données facilement et rapidement à des fins d'efficacité du stockage et d'accélération de la transition vers le cloud.</block>
   <block id="42d7d856cc8f6a2f82ed10cd8356e7d2" category="inline-link">En savoir plus sur les modes de déploiement BlueXP</block>
   <block id="d7cfe6967f3004ef3386a27fe99a4610" category="inline-link">Intégration avec ONTAP S3 en tant que destination</block>
@@ -2701,19 +2640,13 @@
   <block id="06548d8c3dd532a955281943d00e4ae0" category="paragraph">L'image suivante montre la relation entre les composants :</block>
   <block id="27af9a77d19fed3cc5992a809811dc11" category="paragraph">Les copies de sauvegarde sont stockées dans un magasin d'objets créé par BlueXP dans votre compte cloud. Il existe un magasin d'objets par cluster/environnement de travail. BlueXP nomme le magasin d'objets comme suit :<block ref="395f30b009fd80d4c1cba9bc07db445d" prefix=" " category="inline-code"></block>. Veillez à ne pas supprimer ce magasin d'objets.</block>
   <block id="610778054da9c0e7c61921555da9ddc9" category="paragraph">Si vous avez plusieurs connecteurs dans le même compte NetApp, chaque connecteur affiche la même liste de sauvegardes. Cela inclut les sauvegardes associées à Cloud Volumes ONTAP et aux instances ONTAP sur site à partir d'autres connecteurs.</block>
-  <block id="901e4135beeedb7bfd5ee52fd37bb24b" category="summary">Vous pouvez monter les sauvegardes SAP HANA et Oracle sur l'hôte spécifié.</block>
-  <block id="eb39fd3aff5524b4e17bd84f6095e3f8" category="paragraph">Avec les fonctionnalités de sauvegarde et de restauration BlueXP pour les applications, vous pouvez monter les sauvegardes Oracle et HANA sur un autre hôte.</block>
-  <block id="2de9c7620c86709affe923e3290e0fed" category="paragraph">SnapCenter ne prend pas en charge la restauration des sauvegardes Oracle et HANA sur l'hôte secondaire. L'option de montage vous permet donc de monter les sauvegardes Oracle et HANA sur l'autre hôte.</block>
   <block id="47abe672471325a3aa63fcd85f6e3367" category="list-text">Pour l'environnement NAS, spécifiez le nom de domaine complet ou l'adresse IP de l'hôte vers lequel les volumes restaurés à partir du magasin d'objets doivent être exportés.</block>
   <block id="831b20d8b0ff4f1e50aecadcdcdc885d" category="list-text">Pour l'environnement SAN, spécifiez les initiateurs de l'hôte sur lesquels les LUN des volumes restaurés à partir du magasin d'objets doivent être mappées.</block>
-  <block id="5b15111eecc9403b24904137915a535d" category="list-text">Indiquez le suffixe à ajouter au nom du volume.</block>
-  <block id="997e81d378ed6f87f7888840d98149d1" category="paragraph">Cette opération ne monte que le stockage sur l'hôte donné. Vous devez monter manuellement le système de fichiers et faire apparaître la base de données. Après avoir utilisé le volume, l'administrateur du stockage peut le supprimer du cluster ONTAP.</block>
   <block id="9ae1fbeadb6e0efc4e024384fb8a4f8d" category="inline-link">Article de la base de connaissances</block>
   <block id="cae5363be68b32a2a0c60f8507ae22b0" category="list-text">Pour plus d'informations sur l'affichage de la base de données Oracle, reportez-vous à la section<block ref="1c9fee5518775de98a67ea9cec93df22" category="inline-link-rx"></block>.</block>
   <block id="5156a7436794ab08e12e595a0be6113a" category="inline-link">Tr-4667 : présentation du workflow de copie de système SAP avec SnapCenter</block>
   <block id="7e4508b00befcebd86a3b3bc3ad974fe" category="inline-link">Tr-4667 : présentation du workflow de clonage de systèmes SAP avec SnapCenter</block>
   <block id="59e37824aade8855ab656b060200f21a" category="list-text">Pour plus d'informations sur l'accès à la base de données SAP HANA, reportez-vous à la section,<block ref="d22a7b2d0c3d2949e0261469ae872f8b" category="inline-link-rx"></block> et<block ref="37841a7578d02975651b7678de450f40" category="inline-link-rx"></block>.</block>
-  <block id="0d3c05925243511d9e1b15741b72825f" category="paragraph">Vous pouvez uniquement restaurer la base de données Oracle sur le même hôte que celui sur lequel la sauvegarde a été créée. Dans le cas d'une base de données RAC, les données sont restaurées vers le nœud sur site sur lequel la sauvegarde a été créée.</block>
   <block id="94f31781acc8b09f1a2c51cc7c17d9bb" category="paragraph">Les différents États d'une base de données de niveau supérieur à inférieur sont ouverts, montés, démarrés et shutdown.</block>
   <block id="a27f86f1478b6387e451780970eeec78" category="list-text">Si la base de données est dans un état supérieur mais que l'état doit être modifié en état inférieur pour effectuer une opération de restauration, vous devez cocher cette case.</block>
   <block id="716078928e1b9c0191a857b90b4337aa" category="list-text">Si la base de données est dans un état inférieur mais que l'état doit être supérieur pour effectuer l'opération de restauration, l'état de la base de données est automatiquement modifié, même si vous ne cochez pas la case.</block>
@@ -2723,24 +2656,15 @@
   <block id="86168283148ce2a703441df7c9eebd32" category="paragraph">Assurez-vous que le port est ouvert pour que la communication ait lieu entre le serveur SnapCenter et BlueXP.</block>
   <block id="c70d5bad4ddff9626b3f3245da8a13fc" category="list-text">Sélectionnez le connecteur dans la liste déroulante *Connector*.</block>
   <block id="3fc4d8d6036d0b597c573a49c2122c6b" category="paragraph">Cliquez sur *Backup &amp; Restore* &gt; *applications* pour afficher toutes les applications protégées à l'aide de l'hôte serveur SnapCenter enregistré. Par défaut, les applications sont automatiquement découvertes tous les jours à minuit.</block>
-  <block id="04b22cf9476524fb1d1758cfb774a217" category="admonition">Si des SVM sont ajoutés à SnapCenter à l'aide d'un nom de domaine complet ou d'une adresse IP, les applications s'exécutant sur ces SVM ne peuvent pas être protégées. La sauvegarde et la restauration BlueXP pour les applications reconnaissent uniquement les SVM ajoutés par leur nom ou les SVM détectés par SnapCenter qui ont été ajoutés au cluster ONTAP.</block>
   <block id="fab2808b23dc2c58cebadeb8767f0c1f" category="paragraph">Les bases de données suivantes ne sont pas affichées :</block>
   <block id="17e2d63e3b45ecbfe13bcc32fec929d0" category="paragraph">*Avant de commencer*</block>
-  <block id="4c0d2c1f6ed034616024cc438a19bb8c" category="paragraph">Le système SAP HANA doit être dans un état arrêté. Si le système SAP HANA est en cours d'exécution, vous pouvez fournir un médecin pour arrêter le système.</block>
-  <block id="7c1f39b5139c4e5b5999656f65f34d14" category="paragraph">Si vous activez les sauvegardes sur un volume, une opération SnapRestore de fichier unique est effectuée.</block>
   <block id="db3bd7d3767b3b12b5447ace80a58f84" category="list-text">Cliquez sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> Correspondant à la sauvegarde de données que vous souhaitez restaurer et cliquez sur *Restaurer*.</block>
   <block id="23701926ab09ecc0ff2d95c90bdeba8e" category="inline-link-macro">Scripts d'examen préliminaire et de post-script.</block>
   <block id="67e0624a3c366b8b2a884c6201b4c7fc" category="list-text">Dans la page *Restore System*, entrez les scripts. <block ref="1775fd82cd452c1f6bfd5a9921fc22f3" category="inline-link-macro-rx"></block></block>
   <block id="bbed0144c2ba84aeb9db8036e00feff0" category="paragraph">*Quoi de neuf*</block>
-  <block id="a7cbef2eea2534ec1e24148b2ad17a56" category="paragraph">Souhaitez restaurer la base de données sur le même hôte SQL Server que celui sur lequel les sauvegardes ont été créées</block>
-  <block id="7968cad031e63ab507316a4b1b73504b" category="paragraph">Sélectionnez *Restaurer la base de données sur le même hôte que celui sur lequel la sauvegarde a été créée*.</block>
-  <block id="c2ea6921b6200ddbf7105e638f0cf324" category="paragraph">Vous souhaitez restaurer la base de données sur un serveur SQL différent sur le même hôte ou sur un autre hôte sur lequel des sauvegardes ont été créées</block>
-  <block id="3c1c636f7680153fadea728a18acae8d" category="paragraph">Sélectionnez *Restaurer la base de données sur un autre hôte*.</block>
   <block id="f45093e474e81b002e0fc86bd669de92" category="paragraph">Effectuez quelques étapes pour sauvegarder les données d'applications de ONTAP vers Google Cloud Platform.</block>
   <block id="5678a20b6637895d79a33f663b42dbc2" category="paragraph">Configurez la LIF de gestion de cluster à détecter par BlueXP. Une fois l'environnement de travail ajouté pour l'une des applications, il peut être réutilisé pour toutes les autres applications qui résident sur le même cluster ONTAP.</block>
   <block id="837d3589301e8037c200010dda94b0f0" category="paragraph">La sauvegarde et la restauration BlueXP pour les applications ne prennent en charge que les administrateurs du cluster.</block>
-  <block id="b6ab006e15763beb32e46fa733e431c5" category="list-text">Dans le champ clé d'accès Google Cloud, spécifiez la clé de chiffrement des données.</block>
-  <block id="354cf0aa3581eabc1f6d8eceadc0a09c" category="list-text">Dans le champ clé secrète Google Cloud, spécifiez le mot de passe pour le chiffrement des données.</block>
   <block id="d7b96aa97b3e598d4361c8900425e794" category="paragraph">Avec BlueXP, vous devez créer un environnement de travail FSX pour ONTAP afin d'ajouter et de gérer des volumes et des services de données supplémentaires. Vous devez également créer un connecteur dans AWS permettant à BlueXP de gérer les ressources et les processus dans votre environnement de cloud public.</block>
   <block id="fb8b20b7f11dc7e27e25699346303340" category="paragraph">Vous pouvez créer l'environnement de travail FSX pour ONTAP à l'aide de BlueXP ou d'AWS. Si vous avez créé à l'aide d'AWS, vous devriez découvrir FSX pour les systèmes ONTAP dans BlueXP.</block>
   <block id="4c2f287db7a16e371d2d39b0cc02d906" category="paragraph">Un administrateur de compte doit créer un connecteur dans AWS permettant à BlueXP de gérer les ressources et les processus dans votre environnement de cloud public.</block>
@@ -2756,7 +2680,6 @@
   <block id="0dbcf5d30fb23b988f7e09251180eac1" category="paragraph">Procédez en quelques étapes pour sauvegarder les données d'applications de ONTAP vers Microsoft Azure.</block>
   <block id="a9d053f343dbeb5aa5043e32e745a751" category="summary">Procédez à une actualisation à partir d'un système SAP HANA source, qui correspond à la base de données de production, vers un système cible.</block>
   <block id="3e1a90c2232c83a5583ba782a21c185a" category="doc">Actualisez le système cible SAP HANA</block>
-  <block id="955b7cb9ebc08be2e67ad7ad0d47fb58" category="paragraph">Vous pouvez actualiser un système cible SAP HANA avec les données d'un système source SAP HANA. Il peut être utilisé pour fournir les données de production actuelles dans un système de test. La sauvegarde dans le cloud vous permet de sélectionner une copie Snapshot à partir d'un système source et de créer un volume ANF basé sur la copie Snapshot. Des exemples de scripts sont disponibles, qui exécute les opérations requises sur l'hôte de base de données pour restaurer la base de données SAP HANA.</block>
   <block id="6a2d5949052d8d9118cfcade0cfdd25c" category="list-text">Vous devez installer le système cible SAP HANA avant d'exécuter la première opération d'actualisation.</block>
   <block id="c1c067a0bb1a2fe75a7db399b7e238ad" category="list-text">Vous devez ajouter manuellement les systèmes HANA source et cible à la sauvegarde dans le cloud.</block>
   <block id="e58cfb63a12429814fc30c5d8f0e8d76" category="list-text">Vérifiez que la version de la base de données SAP HANA est identique sur le système source et le système cible.</block>
@@ -2781,14 +2704,11 @@
   <block id="521e5b4ee67bb67042f49209b8653819" category="list-text">Sélectionnez le système source et la copie Snapshot.</block>
   <block id="445c03c33e1539bd0b41eb36082d3cb2" category="list-text">Entrez les adresses d'exportation à partir desquelles vous pouvez accéder aux nouveaux volumes.</block>
   <block id="5b1b42f6958d8e1fc337204814ce7e96" category="list-text">Saisissez le prescripteur, le postscript et les chemins de script d'échec. Le script en cas d'échec est exécuté uniquement lorsque l'opération d'actualisation du système échoue.</block>
-  <block id="acf2bd1743649bdaf828543dd8da0582" category="list-text">Sélectionnez *Supprimer les sauvegardes SAP HANA associées*. Seules les copies Snapshot seront supprimées. S'il existe des sauvegardes du système cible et que l'option ci-dessus n'est pas sélectionnée, l'opération d'actualisation du système échoue. Vous pouvez également supprimer les sauvegardes de la page *Topology*.</block>
   <block id="d687cb57e7c0a2bc72631659265b9d28" category="list-text">Cliquez sur *Actualiser*.</block>
   <block id="9efea5dc57ddf655c92c407f96dd1337" category="paragraph">Vous devez créer une stratégie pour sauvegarder les données d'application dans le cloud.</block>
-  <block id="c1da924b2941abda1419c07d1c092777" category="list-text">Si vous souhaitez transférer les sauvegardes du magasin d'objets vers le stockage d'archivage, utilisez ONTAP 9.10.1 ou version ultérieure et Amazon Web Services ou Azure en tant que fournisseur cloud.</block>
   <block id="301968c8dabe6b72a7e8efa9bd0258d1" category="paragraph">Procédez en quelques étapes pour sauvegarder les données d'applications de ONTAP vers Amazon Web Services.</block>
   <block id="cb1dcbbb184441d625fca9abd37d5ec0" category="paragraph">Vous pouvez créer une sauvegarde en attribuant une règle prédéfinie ou la règle que vous avez créée.</block>
   <block id="3d146256911cef5ef0a1d7d23efbc8f2" category="section-title">Créez une règle pour protéger la base de données Oracle</block>
-  <block id="bd6b9b974238317f7f6890d2738ba393" category="list-text">(Facultatif) Entrez le chemin d'accès et le délai d'expiration du post-script qui seront exécutés après la sauvegarde réussie pour copier le snapshot sur le stockage secondaire.</block>
   <block id="48b220d743ecd4aed0830258fdd63841" category="paragraph">Vous pouvez également spécifier les arguments.</block>
   <block id="0087a5b2d25d52f6c7c03528cde33505" category="paragraph">Vous devez conserver les post-scripts dans le chemin _/var/opt/snapcenter/spl/scripts_.</block>
   <block id="796c6a969f63d0d2aa5f429cbcc0c0c2" category="paragraph">SC_ORACLE_SID</block>
@@ -2800,9 +2720,7 @@
   <block id="7039cfffcf417134ed36a0a81b82f21e" category="paragraph">SC_BACKUP_POLICY_NAME</block>
   <block id="b270cefdacc74d90a0ec88bed5fbf42d" category="paragraph">Spécifie le nom de la stratégie utilisée pour créer la sauvegarde.</block>
   <block id="35617fffed5e260abe14f10d109cebd7" category="paragraph">SC_PRIMARY_DATA_VOLUME_FULL_PATH</block>
-  <block id="caff1c693cd4d535af55e9126e0cfc71" category="paragraph">Spécifie les chemins de volume de données concaténés avec "," comme délimiteur. Pour les volumes ANF, les informations sont concaténées avec "/" _/{anfaccount}/{subscription_ID}/{Resource_group}/{Capacity_pool}/{volumname}_</block>
   <block id="6e794ea51a25be446f20e9a702898008" category="paragraph">SC_PRIMARY_ARCHIVELOGS_VOLUME_FULL_PATH</block>
-  <block id="b6413db558b7e51cd7ad505a279d46a4" category="paragraph">Spécifie les chemins du volume du journal d'archives concaténés avec "," comme délimiteur. Pour les volumes ANF, les informations concaténées avec « / » _/{anfaccount}/{subscription_ID}/{Resource_group}/{Capacity_pool}/{volumname}_</block>
   <block id="282c0097d05b4ae7f669fd32d1e62f62" category="paragraph">Vous pouvez affecter une règle prédéfinie ou créer une règle, puis l'affecter à la base de données. Une fois la stratégie attribuée, les sauvegardes sont créées conformément au planning défini dans la stratégie.</block>
   <block id="73eca09a61282d51974dd261aba5d480" category="admonition">Le compte de service (_SnapCenter-account-&lt;account_id&gt;_) est utilisé pour exécuter les opérations de sauvegarde planifiées.</block>
   <block id="40b3d494e45d44ea05a121d23431903f" category="list-text">Après la restauration d'une base de données volumineuse (250 Go ou plus), si vous effectuez une sauvegarde en ligne complète sur la même base de données, l'opération risque d'échouer avec l'erreur suivante :<block ref="2cdd9c86da283a1b59e3d14b0893d8e8" prefix=" " category="inline-code"></block></block>
@@ -2810,13 +2728,9 @@
   <block id="3f36c150e72924297a7e10562d91310d" category="list-text">Informations d'identification de la base de données : si l'authentification utilisateur du système d'exploitation est désactivée, vous devez fournir un mot de passe pour que l'utilisateur sys puisse se connecter à la base de données clonée sur le même hôte ou sur l'hôte cible.</block>
   <block id="0f28904257dc0410709b59fc7dee3634" category="admonition">Assurez-vous que l'écouteur est actif et fonctionne sur l'hôte cible.</block>
   <block id="29df1904737a953fe664af42457666a3" category="paragraph">Vous pouvez gérer la protection des applications en visualisant les règles, en visualisant les sauvegardes, en visualisant les modifications de la disposition, des règles et du groupe de ressources de la base de données, et en surveillant toutes les opérations à partir de l'interface utilisateur BlueXP.</block>
-  <block id="fdd98406a18301162ef98ccf7f44618a" category="paragraph">Vous pouvez également afficher les règles de SnapCenter étendues au cloud en exécutant la<block ref="f391f53076a6f0bdd43ba78daeaf5394" prefix=" " category="inline-code"></block> Cmdlet dans SnapCenter. Les informations concernant les paramètres pouvant être utilisés avec la cmdlet et leurs descriptions peuvent être obtenues en exécutant Get-Help nom_commande.</block>
   <block id="54e5caa106ba057c6767f92dd1fc9585" category="admonition">Le temps nécessaire à l'affichage des sauvegardes dépend de la planification de réplication par défaut d'ONTAP.</block>
-  <block id="1d8427f0001c9c5fa1123d7f927e5690" category="list-text">Pour les bases de données Oracle, les sauvegardes de données et de journaux, le numéro de modification système (SCN) pour chaque sauvegarde et la date de fin pour chaque sauvegarde sont indiqués. Vous pouvez uniquement sélectionner la sauvegarde des données et restaurer la base de données sur le serveur SnapCenter sur site.</block>
   <block id="131bf56dea076782b2ffcdb107f1c64d" category="list-text">Pour l'instance Microsoft SQL Server, les sauvegardes des bases de données sous cette instance sont répertoriées.</block>
-  <block id="d87aa7d62cde4d1f67058f700ccc1e31" category="paragraph">Vous pouvez également afficher ces sauvegardes en exécutant le<block ref="3b327888082d0a6615ac0b1cac5ce6dc" prefix=" " category="inline-code"></block> Cmdlet dans SnapCenter. Les informations concernant les paramètres pouvant être utilisés avec la cmdlet et leurs descriptions peuvent être obtenues en exécutant Get-Help nom_commande.</block>
   <block id="c38851ea84519272d9a64f525a014582" category="paragraph">Lorsque des volumes sont ajoutés à la base de données, le serveur SnapCenter étiquette automatiquement les snapshots sur les nouveaux volumes conformément à la règle et à la planification. Ces nouveaux volumes ne disposent pas du terminal de magasin d'objets et vous devez actualiser les volumes en effectuant les étapes suivantes :</block>
-  <block id="28b684a2798154656057bfadae25442b" category="list-text">Si un volume de stockage est supprimé de l'application après la configuration du fournisseur cloud, pour les nouvelles sauvegardes, le serveur SnapCenter étiquette les snapshots sur lesquels l'application réside.</block>
   <block id="56fbe2f096aa64edf14cf6a040364521" category="list-text">Vous devez supprimer manuellement la relation de magasin d'objets si le volume supprimé n'est utilisé par aucune autre application.</block>
   <block id="f41d81011039cf5b858be58b20be3d6c" category="list-text">Si vous mettez à jour l'inventaire des applications, il contiendra la disposition du stockage actuelle de l'application.</block>
   <block id="a5e6ecead112df3e4d309c64d21be613" category="paragraph">En cas de modification de la règle SnapCenter ou du groupe de ressources, vous devez actualiser la relation de protection.</block>
@@ -2845,32 +2759,22 @@
   <block id="32a864989b165c430348200b3f498a83" category="paragraph">Vous pouvez fermer le port SSH sur l'hôte de l'application après avoir installé le plug-in. Le port SSH n'est pas requis pour des opérations de protection des données.</block>
   <block id="36813624055dc9b033fdb884e90d807e" category="admonition">La clé privée SSH n'est stockée nulle part dans l'application et n'est utilisée pour aucune autre opération.</block>
   <block id="605c793b280b4feb7df272c466c6012c" category="list-text">Dans la page Configuration, effectuez les opérations suivantes :</block>
-  <block id="9d678ee764b7490535279d100a47d199" category="list-text">Configurez l'accès sudo pour l'utilisateur non-root (sudo) en copiant le texte dans _/etc/sudoers.d/snapcenter_ file.</block>
-  <block id="84c043b7279ff048da6eac17746b54d4" category="list-text">Cochez la case et cliquez sur *Suivant*.</block>
   <block id="4e97b087f72ed090d712d63c6464209a" category="list-text">Passez en revue les détails et cliquez sur *découvrir les applications*.</block>
   <block id="3ab2f91e027d82cf137fafc5ba1fad46" category="list-text">Cliquez sur *Paramètres* et sélectionnez *hôtes* pour afficher tous les hôtes.</block>
   <block id="3861ca484ceba1ec4fe010195ae2a99f" category="list-text">Cliquez sur *Paramètres* et sélectionnez *stratégies* pour afficher les stratégies prédéfinies. Examinez les règles prédéfinies et vous pouvez les modifier pour répondre à vos besoins ou créer une nouvelle police.</block>
-  <block id="f76505761d1d589d9c44949c0e7cf701" category="section-title">Installez le plug-in à l'aide du script et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle</block>
   <block id="9d7aeb2d1ce99eaf262e0aff84aa90fe" category="paragraph">Configurez l'authentification basée sur une clé SSH pour le compte utilisateur non-root de l'hôte Oracle et effectuez les étapes suivantes pour installer le plug-in.</block>
   <block id="5e8a9d4736d645cf0f055d944e84951c" category="paragraph">Assurez-vous que la connexion SSH au connecteur est activée.</block>
   <block id="0218f0e3f6d861fe204b02460991a162" category="list-text">Spécifiez le nom de domaine complet ou l'adresse IP de l'hôte sur lequel le plug-in est installé.</block>
   <block id="60aa5eaac0c85cbe7b7fd3bf7d9252a8" category="list-text">Spécifiez l'utilisateur non-root (sudo) qui utilisera le package de plug-in pour le copier sur l'hôte.</block>
   <block id="fa431b57e169cccce6b5507d5005b77b" category="list-text">Cochez la case pour confirmer que le plug-in est installé sur l'hôte.</block>
-  <block id="ad4653d249b9408ab0eaa97a7af2527e" category="list-text">Configurez l'accès sudo pour l'utilisateur SnapCenter en copiant le texte vers<block ref="3b1b032b2f0ec7f73656946ca555b180" prefix=" " category="inline-code"></block> fichier.</block>
-  <block id="f37865521ab3241e236d5e5588a5f489" category="list-text">Installez le plug-in à l'aide du script fourni dans le connecteur.<block ref="ec229264169d10e0e522b26e5b6bac24" prefix=" " category="inline-code"></block></block>
-  <block id="f6118d5df254d948596a2eecbde7e309" category="paragraph">Par exemple :<block ref="7b32029ad907f40b39cdf7478e332d44" prefix=" " category="inline-code"></block></block>
-  <block id="d39ba700b9d69e7870b27c911202c044" category="section-title">Installez le plug-in manuellement et ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle</block>
   <block id="1959cd86803d27b479ab4dc0fdcc5d6f" category="paragraph">Si l'authentification basée sur une clé SSH n'est pas activée sur l'hôte de base de données Oracle, vous devez effectuer les étapes manuelles suivantes pour installer le plug-in, puis ajouter l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle.</block>
   <block id="2c917f45e0d46e5e12f53d249fc09dc1" category="list-text">Dans la page *Détails de l'hôte*, effectuez les opérations suivantes :</block>
   <block id="239e4e825f281583a76859b9e536037c" category="list-text">Spécifiez l'utilisateur sudo non-root (sudo) qui utilisera le package de plug-in pour le copier sur l'hôte.</block>
-  <block id="e7ff6e3c5dba88ceb1ef4a9bbbef074c" category="list-text">Dans la page *Configuration*, effectuez les opérations suivantes :</block>
-  <block id="480a5ae9d6c54a41b779f14faf22d588" category="paragraph">Le fichier binaire du plug-in est disponible à l'adresse suivante : _cd /var/lib/docker/volumes/service-Manager-2_cloudmanager_scs_cloud_volume/_data/$(sudo docker ps|grep -po « cloudmanager_scs_cloud:.*? "|sed -e's/ *$/'|cut -f2 -d":")/sc-linux-host-plugin_</block>
   <block id="53cd2db7b5189ffd4ede87d3128f9abc" category="list-text">Copiez _snapcenter_linux_host_plugin_scs.bin_ depuis le chemin ci-dessus vers _/home/&lt;non root user (sudo)&gt;/.sc_netapp_ path pour chacun des hôtes de base de données Oracle à l'aide de scp ou d'autres méthodes alternatives.</block>
   <block id="28cd1feed4d1442bb984e3c27e99d2ee" category="list-text">Connectez-vous à l'hôte de base de données Oracle à l'aide du compte non-root (sudo).</block>
   <block id="dc81da6c3b34e4764e2512da3b003dc6" category="list-text">Remplacez le répertoire par _/home/&lt;non root user&gt;/.sc_netapp/_ et exécutez la commande suivante pour activer les autorisations d'exécution pour le binaire.<block ref="4cd88a831fa940d7f40686837061308c" prefix=" " category="inline-code"></block></block>
   <block id="7b6e585ad01188657c8452ae21b445b8" category="list-text">Installez le plug-in Oracle en tant qu'utilisateur sudo SnapCenter.<block ref="f11871e64bd259821edac15d21de1875" prefix=" " category="inline-code"></block></block>
   <block id="576e31061b4a534413b8faf6e0741f32" category="list-text">Vérifier que le plug-in est accessible depuis le connecteur en exécutant la commande ci-dessous à partir du connecteur.<block ref="673477aaa70ebb53bf7cf3d6ff85e120" prefix=" " category="inline-code"></block></block>
-  <block id="7a539986d48c2a7ad928e1216c8630e4" category="paragraph">Accédez à l'interface utilisateur BlueXP.</block>
   <block id="4f392ad3504629d02ca4d2f772f8234d" category="paragraph">Vous devez configurer les informations d'identification de la base de données utilisées pour effectuer des opérations de protection des données sur les bases de données Oracle.</block>
   <block id="810204a9d57850414619bb0519f68d56" category="list-text">Si l'authentification du système d'exploitation est désactivée pour la base de données, cliquez sur *configurer* pour modifier l'authentification de la base de données.</block>
   <block id="170010a9200c605ccba180c86c7b8608" category="section-title">Mettez à niveau le plug-in SnapCenter pour bases de données Oracle</block>
@@ -2882,9 +2786,7 @@
   <block id="36c683b951ca9701b7d49ba16a2eb101" category="cell">Mise à niveau avec l'interface utilisateur</block>
   <block id="d384bc48f0cd5d4f796e95e5b26bdde8" category="cell">Mise à niveau à l'aide de la ligne de commande</block>
   <block id="91b9d8ab98c6819c2215b5a096f9712a" category="list-text">Cliquez sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> Correspondant à l'hôte et cliquez sur *Upgrade Plug-in*.</block>
-  <block id="e54b1ad920c915cdfbc885b9413a05d2" category="list-text">Cochez la case et cliquez sur *mettre à niveau*.</block>
   <block id="bd6f38fd25832ee5daa13644079f4432" category="list-text">Connectez-vous à Connector VM.</block>
-  <block id="70a77b6528156a24011537684069cf35" category="list-text">Exécutez le script suivant.<block ref="1ab8c9e83ceb7576b93ce0608fc43b20" prefix=" " category="inline-code"></block></block>
   <block id="db963b5001e54344b1d81fb01040f0cd" category="paragraph">Avec BlueXP, vous devez créer un environnement de travail Cloud Volumes ONTAP pour ajouter et gérer des volumes et des services de données supplémentaires. Vous devez également créer un connecteur pour votre environnement cloud permettant à BlueXP de gérer les ressources et les processus au sein de votre environnement de cloud public.</block>
   <block id="244b71b8d5b47f108e0fdc3d6e2f60ac" category="paragraph">Vous pouvez commencer à utiliser Cloud Volumes ONTAP pour votre environnement cloud en quelques étapes. Pour plus d'informations, reportez-vous à l'une des sections suivantes :</block>
   <block id="1d5dd4cd891271a811fa694e18822996" category="paragraph">Vous devez utiliser le même connecteur pour gérer à la fois l'environnement de travail Cloud Volumes ONTAP et les bases de données.</block>
@@ -2892,8 +2794,6 @@
   <block id="7857a907559e9aa1d032fe9e9508406b" category="list-text">Si vous disposez de l'environnement de travail Cloud Volumes ONTAP et des bases de données dans différents VPC ou réseaux virtuels, assurez-vous que les VPC ou les réseaux sont associés.</block>
   <block id="6d5571dc24e5e0915d6576d87e5ac094" category="paragraph">Effectuez quelques étapes pour sauvegarder les données d'applications de ONTAP vers StorageGRID.</block>
   <block id="678c7b4b57d185b0a32c6bb97f354282" category="list-text">Préciser l'adresse IP du LIF de cluster Management.</block>
-  <block id="35d45d5c5ce076e306b520a11aca5200" category="list-text">Dans le champ clé d'accès, spécifiez la clé de chiffrement des données.</block>
-  <block id="f42df8d50c905dc42d79abceb255aab1" category="list-text">Dans le champ clé secrète, spécifiez le mot de passe pour le cryptage des données.</block>
   <block id="256c6643ca1c733f72685d5a161161f5" category="section-title">14 avril 2023</block>
   <block id="c0c906f83c940d4d16ffb433d7a368ca" category="list-text">Prend en charge l'actualisation du système basée sur des scripts</block>
   <block id="b53bbb0902c6b7a25e7c1ac484d9fec2" category="list-text">Prend en charge la restauration de fichiers uniques Snapshot si la sauvegarde Azure NetApp Files est configurée</block>
@@ -2912,16 +2812,11 @@
   <block id="271bf2db00b3f9d0b5aad9d23db5b5b1" category="list-text">Vous devez avoir créé l'utilisateur SnapCenter et configuré sudo pour l'utilisateur non-root (sudo). Pour plus d'informations, reportez-vous à la section <block ref="6178ed5e7702fbe22f507b323e07e08d" category="inline-link-macro-rx"></block></block>
   <block id="a342ee864ee2041024682964d5eb2d2f" category="list-text">Vous devez avoir installé le plug-in SnapCenter pour SAP HANA avant d'ajouter l'hôte de base de données.</block>
   <block id="66ae4dcc3f5b40460c5e2cdced87ec64" category="list-text">Assurez-vous que la dernière version du plug-in est installée. Pour mettre à niveau le plug-in, reportez-vous à la section <block ref="fa0725cff83262548be2bb3141141535" category="inline-xref-macro-rx"></block>.</block>
-  <block id="c18d0cdc327775e550cab4077e0cf8ed" category="inline-link">article de la base de connaissance</block>
-  <block id="9d88c9b359895326421b4e498514fe63" category="admonition">Si la connectivité entre l'hôte du connecteur BlueXP et l'hôte d'application échoue, reportez-vous à la section<block ref="67a241450d9432d1b6e52c4a1425fef2" category="inline-link-rx"></block> pour plus d'informations.</block>
   <block id="b0f376f04f11f862cdd2470a02895bbb" category="paragraph">Créez un utilisateur non-root (sudo) pour installer le plug-in.</block>
-  <block id="64f154ed6fd8b78f604728f41be40e7b" category="list-text">Copiez le contenu de *sudoer.txt* situé à : _Manager-2_cloudmanager_scs_cloud_volume/_data/$(sudo docker ps|grep -po « cloudmanager_scs_cloud:.*? "|sed -e's/ *$/'|cut -f2 -d":")/sc-linux-host-plugin_</block>
-  <block id="4978d5558bdfd1b30fc95a5ca316fe16" category="list-text">Connectez-vous à l'hôte de base de données SAP HANA à l'aide d'un compte utilisateur root.</block>
   <block id="57c7c4c17c44f6adef8f52a8ca8d47ce" category="list-text">Configurez l'accès sudo pour l'utilisateur non root en copiant le texte copié à l'étape 3 dans _/etc/sudoers.d/snapcenter_ file.</block>
   <block id="cf572248a3ec523ef7a5f32e697e77ae" category="paragraph">Dans les lignes ajoutées au fichier _/etc/sudoers.d/snapcenter_, remplacez _&lt;LINUXUSER&gt;_ par l'utilisateur non-root et _&lt;USER_HOME_DIRECTORY&gt;_ par _Home/&lt;non-root-user&gt;_.</block>
   <block id="5e8ec7f8a9cc569c5d599a0f9c02c7da" category="section-title">Installez le plug-in à l'aide du script</block>
   <block id="3848f62f8f097b98f19e7e88ebfef10c" category="paragraph">Configurez l'authentification basée sur une clé SSH pour le compte utilisateur non root de l'hôte SAP HANA et effectuez les étapes suivantes pour installer le plug-in.</block>
-  <block id="bbbbd900f257dbd3cc56c4ae54eefacb" category="paragraph">*Avant votre début*</block>
   <block id="c9bb2e3da2133ca407c41ee65e8af768" category="list-text">Connectez-vous à Connector VM.</block>
   <block id="49ee3087348e8d44e1feda1917443987" category="cell">Nom</block>
   <block id="e89ab59baea830bd940c300886c50efe" category="cell">Obligatoire</block>
@@ -2941,7 +2836,6 @@
   <block id="6ffd4f25a50edc730a0d5f5b3289f2e8" category="paragraph">port_ssh_hôte</block>
   <block id="fa650b34a9dfeef3a2992bb1aa59bef8" category="paragraph">Spécifie le port SSH sur l'hôte SAP HANA</block>
   <block id="b6d767d2f8ed5d21a44b0e5886680cb9" category="paragraph">22</block>
-  <block id="bb95664f2027c51accfa12aee42e9193" category="paragraph">Par exemple :<block ref="854d96d87066812dd5dfb92365800f10" prefix=" " category="inline-code"></block></block>
   <block id="50ce6c3ec5bc71671b20c5c730c59279" category="paragraph">Après avoir installé le plug-in, vous devez <block ref="fe02bbafed1c03ea0c96e9474666c66f" category="inline-xref-macro-rx"></block>.</block>
   <block id="ab40cd46c3c9263b45ca4de0110e3309" category="section-title">Installez le plug-in manuellement</block>
   <block id="b11731c01840b06321e3728fd82d5c7b" category="paragraph">Si l'authentification basée sur une clé SSH n'est pas activée sur l'hôte HANA, vous devez effectuer les étapes manuelles suivantes pour installer le plug-in.</block>
@@ -2953,7 +2847,6 @@
   <block id="f35f5a5ebccba047b1925b74505fdfbe" category="paragraph">Vous devez mettre à niveau le plug-in SnapCenter pour la base de données SAP HANA pour accéder aux nouvelles fonctionnalités et améliorations les plus récentes.</block>
   <block id="6c2313e6302e3ddccaf89724b45a5b06" category="list-text">Exécutez le script suivant.<block ref="9a9e1cb603fe75305e4d36be20ae9261" prefix=" " category="inline-code"></block></block>
   <block id="82079d60037e9d0df21acad72b86e52d" category="list-text">(Facultatif) Modifier l'utilisateur HDBSQL OS.</block>
-  <block id="bf5b83e4fce51c42d6592beefd18ac45" category="list-text">Vous pouvez modifier ou supprimer les systèmes SAP HANA de l'interface et également à l'aide de l'API REST.</block>
   <block id="1cb5dc89376339563335539bf6e6b34f" category="paragraph">Avant de supprimer le système SAP HANA, vous devez supprimer toutes les sauvegardes associées et supprimer la protection.</block>
   <block id="ed610882a056fb1f63c13e2a503a9aad" category="paragraph">Après avoir ajouté le conteneur de base de données mutualisé ou le système SAP HANA de type conteneur unique, vous pouvez ajouter les volumes non-données du système HANA.</block>
   <block id="d9242f06d616d0d0d92448044927a033" category="paragraph">Vous pouvez ajouter ces ressources aux groupes de ressources pour effectuer des opérations de protection des données après avoir découvert les bases de données SAP HANA disponibles.</block>
@@ -2975,13 +2868,11 @@
   <block id="04a609023441d405d7737b598e996ecc" category="paragraph">Après avoir mis à jour les détails du connecteur pour les hôtes Oracle ou SAP HANA, procédez comme suit pour vérifier que les détails du connecteur ont été correctement mis à jour.</block>
   <block id="c7a27796e5a5232935a8d038a0a6b895" category="list-text">Connectez-vous à BlueXP Connector VM et effectuez les opérations suivantes :</block>
   <block id="28c72bbdc4ab4ab6f8e9dc9141ef35b4" category="list-text">Vérifier que le plug-in est accessible depuis le connecteur en exécutant la commande ci-dessous à partir du connecteur.<block ref="9544839ee9a7e2ffd7168a97cf30d0ba" prefix=" " category="inline-code"></block></block>
-  <block id="55f1f4b32fd8584ea3972f97a31dd31a" category="list-text">Copiez Certificate.p12 de _&lt;base_mount_path&gt;/client/certificate/_ path de la machine virtuelle du connecteur vers _/var/opt/snapcenter/spl/etc/_ sur l'hôte du plug-in.</block>
   <block id="760915aa5f89cc3d82d6b1843f2f6bf5" category="section-title">Configurer le certificat signé par l'autorité de certification pour BlueXP Connector</block>
   <block id="d8874bb71961b94426c411c146dd7e73" category="list-text">Effectuez les étapes suivantes sur le connecteur pour utiliser le certificat de l'autorité de certification comme certificat client lorsque le connecteur se connecte au plug-in.</block>
   <block id="7e2c20ec1886ae9be86114e609044897" category="list-text">Supprimez tous les fichiers existants situés dans _&lt;base_mount_path&gt;/client/certificate_ dans le connecteur.</block>
   <block id="04bdfd410e0dd60a6ae2bf418bd38c2d" category="list-text">Copiez le certificat signé par l'autorité de certification et le fichier de clé dans _&lt;base_mount_path&gt;/client/certificate_ dans le connecteur.</block>
   <block id="d1ba1deae444a2224e05679a25cf4156" category="paragraph">Exemple : openssl pkcs12 -inkey key key.pem -in certificate.pem -export -out certificate.p12</block>
-  <block id="efa34c1a814317d46fe905ed7355d083" category="list-text">Copiez le certificat.p12 et les certificats de l'autorité de certification intermédiaire et de l'autorité de certification racine sur l'hôte du plug-in à l'adresse _/var/opt/snapcenter/spl/etc/_.</block>
   <block id="f3b0d1039ed9a07355614db78c13f344" category="admonition">Le format du certificat CA intermédiaire et du certificat CA racine doit être au format .crt.</block>
   <block id="a347bfd7f53d07f16ec44054dfa4cb80" category="list-text">Procédez comme suit sur l'hôte du plug-in pour valider le certificat envoyé par le connecteur.</block>
   <block id="0764cdf68f97f446e2b458ce7e48a75c" category="admonition">Le certificat.crt fait référence aux certificats de l'autorité de certification racine ainsi qu'à l'autorité de certification intermédiaire.</block>
@@ -2997,7 +2888,6 @@
   <block id="68553a1f6aeafb6e270057c83458f0ea" category="paragraph">Les fichiers CA doivent être au format pem.</block>
   <block id="f2a41ed5adc439ab3b0dc591d647b2c9" category="list-text">Cliquez sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> Correspondant à la base de données à restaurer et cliquez sur *Restaurer*.</block>
   <block id="9a746f42430ce856d696ca2d13f1b5f4" category="list-text">Sélectionnez le point de restauration vers lequel la base de données doit être restaurée et cliquez sur *Restaurer à l'emplacement d'origine*.</block>
-  <block id="a7e4f5d7b5114b57c09100d5e6f4adbf" category="admonition">La restauration des fichiers de données avec des fichiers de contrôle ou uniquement des fichiers de contrôle pour iSCSI sur la configuration ASM et la restauration des tablespaces et des PDB ne sont pas prises en charge.</block>
   <block id="8b37be1d68d16c03982c4f9e6bba4648" category="paragraph">Sélectionnez *jusqu'à SCN* et spécifiez le SCN.</block>
   <block id="2c4a0cae210de8a6147e58041c3a6876" category="section-title">Créez une règle pour protéger la base de données SAP HANA</block>
   <block id="b1c60225b9e714eec7a1db6d414766ec" category="list-text">(Facultatif) spécifiez les scripts. <block ref="1775fd82cd452c1f6bfd5a9921fc22f3" category="inline-link-macro-rx"></block></block>
@@ -3028,7 +2918,6 @@
   <block id="71cb10bcaacfae27cc9bac41865e97f7" category="list-text">Protégez les sauvegardes du stockage secondaire sur site</block>
   <block id="f38022cdfb27bcdacebc0633036b927c" category="list-text">Protégez les applications SAP HANA</block>
   <block id="0a2eb5b37c8e172647166550f43db124" category="list-text">Protégez les applications Oracle et SQL présentes dans l'environnement VMware</block>
-  <block id="a6a03f085aaa031834153004299da2fc" category="list-text">Montez les sauvegardes</block>
   <block id="20bf35a5a6263705cb77bbd72a8cbce2" category="list-text">Au moins une règle quotidienne, hebdomadaire ou mensuelle dans SnapCenter, sans étiquette ni même étiquette que celle de la règle dans BlueXP.</block>
   <block id="5422c69ce598c81146a4b7b614d9df97" category="list-text">Dans le paramètre asm_diskstring, vous devez configurer :</block>
   <block id="ee5ee458f53ce64efd817dfc25ec2b7c" category="list-text">AFD:* si vous utilisez ASMFD</block>
@@ -3408,7 +3297,6 @@
   <block id="ddc4eff2345788fc606fb71155e77e08" category="inline-image-macro">Diagramme illustrant la manière dont la sauvegarde et la restauration BlueXP communiquent avec les applications sur site et le stockage de destination où se trouvent les fichiers de sauvegarde.</block>
   <block id="5900ca7e734dbd4ebfc5c92beb6901ad" category="paragraph"><block ref="5900ca7e734dbd4ebfc5c92beb6901ad" category="inline-image-macro-rx" type="image"></block></block>
   <block id="e2b884e233698d79dba9ae1a61ec9653" category="doc">Protégez vos données d'applications cloud natives</block>
-  <block id="eef768141b9dd395f1e8b3aeeac1b961" category="paragraph">La sauvegarde et la restauration BlueXP pour les applications sont des services SaaS qui offrent des fonctionnalités de protection des données cohérentes au niveau des applications pour les applications qui s'exécutent sur le stockage cloud NetApp. La sauvegarde et la restauration BlueXP assurent une protection efficace, cohérente au niveau des applications et basée sur des règles des applications suivantes :</block>
   <block id="8c7c81dd2ca4a5ab651c1cfb30a19c0e" category="sidebar">Sauvegarde et restauration des données applicatives cloud</block>
   <block id="1aac38ab9167eb6ae3a199d0a8bc7915" category="sidebar">Sauvegarde des bases de données Oracle</block>
   <block id="7394e84832837e7d0dc503d85eb3f36c" category="sidebar">Sauvegarde des bases de données SAP HANA</block>
@@ -3534,7 +3422,6 @@
   <block id="1ec47f8d2867e62133816fe5c965e4ea" category="list-text">Pour obtenir une licence PAYGO de sauvegarde et de restauration de BlueXP, vous devez être abonné à<block ref="2fad159ac15feeefc5347d9f8b6dbeab" category="inline-link-rx"></block>. La facturation de la sauvegarde et de la restauration BlueXP s'effectue via cet abonnement.</block>
   <block id="297636b2bcb79ee4ccd3bb7671403999" category="section-title">Supprimez l'hôte de base de données SAP HANA</block>
   <block id="a2d13879a7b76ffe897fe8103b434355" category="paragraph">Vous pouvez supprimer l'hôte de base de données SAP HANA à l'aide uniquement d'API REST.</block>
-  <block id="a8a535cce11f864e14e13eff6e6b9d73" category="list-text">Supprimez tous les systèmes associés à l'hôte de base de données SAP HANA à l'aide de l'interface ou de l'API REST ci-dessous.<block ref="f43e4584db76b7893255f556ed8c0765" prefix=" " category="inline-code"></block></block>
   <block id="b7f6974b5d69aff198f9237a0a2c094d" category="list-text">Procédez comme suit pour supprimer l'hôte de base de données SAP HANA.</block>
   <block id="200afc5eca1ab2aaaf44d39b4e461f2a" category="list-text">Utilisez L'API REST GET pour obtenir l'ID de l'hôte de base de données SAP HANA qui doit être supprimé.<block ref="51dad906998af1627cfd8c445b8b43ab" prefix=" " category="inline-code"></block>
   <block ref="f95b70fdc3088560732a5ac135644506" prefix=" " category="inline-code"></block>
@@ -3562,7 +3449,6 @@
            <block ref="db764a9381e247045b4f4a6c09e121b0" prefix=" " category="inline-code"></block>
        <block ref="cbb184dd8e05c9709e5dcaedaa0495cf" prefix=" " category="inline-code"></block>
    <block ref="0fbd1776e1ad22c59a7080d35c7fd4db" prefix=" " category="inline-code"></block><block ref="cbb184dd8e05c9709e5dcaedaa0495cf" prefix=" " category="inline-code"></block></block>
-  <block id="cab82189f2bc3aa6ebb43c8830e47693" category="list-text">Modifiez le nom d'hôte ou le port du plug-in à l'aide de L'API DE CORRECTIF ci-dessous.<block ref="1fcec45b91ad39b0aa8d1cf2b8d5e031" prefix=" " category="inline-code"></block></block>
   <block id="c325ed37b6a44d9e765cfd2dd7779cfb" category="paragraph">Les tâches lancées par le système, telles que les opérations de sauvegarde en cours, sont désormais disponibles dans l'onglet *surveillance des tâches* pour les systèmes ONTAP sur site exécutant ONTAP 9.13.1 ou version ultérieure. Les versions précédentes de ONTAP affichent uniquement les travaux initiés par l'utilisateur.</block>
   <block id="4e4c67e8658214022378968dae080ce5" category="list-text">Un package « CVO Edge cache » offre les mêmes fonctionnalités que le package « CVO Professional », mais il inclut également la prise en charge du<block ref="0e8295000b498583f7b721745920fe19" category="inline-link-rx"></block> services. Vous êtes autorisé à déployer un système de mise en cache BlueXP Edge pour chaque 3 To de capacité provisionnée sur le système Cloud Volumes ONTAP. Cette option est disponible via Azure et Google Marketplaces, et ne vous permet pas de sauvegarder les données ONTAP sur site.</block>
   <block id="83e6a84bd8ee7bed2013f07c3bd590c7" category="paragraph"><block ref="e8c794dc8a2003f8106407fa82df9679" category="inline-link-rx"></block>.</block>
@@ -3880,4 +3766,228 @@
   <block id="ba85eaabcb89510a63df45c18680ba9a" category="list-text">Dans la page _Edit Policy_, cliquez sur <block ref="68009ec8a10651d6de3d648624efb837" category="inline-image-macro-rx" type="image"></block> Pour développer la section _Labels &amp; Retention_ afin de modifier la planification et/ou la rétention des sauvegardes, puis cliquez sur *Enregistrer*.</block>
   <block id="aafc4372a2c5748961cfe050c997ca42" category="list-text">Dans la page _Ajouter une nouvelle stratégie_, cliquez sur <block ref="68009ec8a10651d6de3d648624efb837" category="inline-image-macro-rx" type="image"></block> Pour développer la section _Labels &amp; Retention_ afin de définir la planification et la conservation des sauvegardes, puis cliquez sur *Enregistrer*.</block>
   <block id="27b14a69b7d1dfde3096980cc202af91" category="sidebar">Créez des rapports sur la couverture de la protection des données</block>
+  <block id="1785898b30a72a71efa58cd74c5bd968" category="list-text">RHEL 7.6 ou version ultérieure</block>
+  <block id="b1045ab9180f3558b52a06f17084e8aa" category="list-text">RHEL 8.1 ou version ultérieure pour SAP-HANA SPS07</block>
+  <block id="0a3eb24ad165a9e7ad6ffd25324a35d4" category="list-text">SAP HANA Multitenant Database Container (MDC) 2.0SPS5, 2.0SPS6, 2.0SPS7 avec un ou plusieurs locataires</block>
+  <block id="8b7b00164a9190e7c09cb2bb42cb001a" category="list-text">Système hôte unique SAP HANA, système hôte multiple SAP HANA, réplication système HANA</block>
+  <block id="f8988e398a707101924ea388677409fc" category="list-text">Le système SAP HANA doit être dans un état arrêté.</block>
+  <block id="a8b45367ee0c14997ae4e895a47f4bcd" category="list-text">Si le système SAP HANA est en cours d'exécution, vous pouvez fournir un médecin pour arrêter le système.</block>
+  <block id="637b56dcab18156dd176f53be59f448d" category="list-text">Si vous activez les sauvegardes ANF sur un volume, une opération SnapRestore à fichier unique est effectuée.</block>
+  <block id="21d7c708fc3cf78318f0422c1804d895" category="list-text">Pour les volumes non-données et les volumes non-données globaux, une opération de restauration de connexion et de copie est effectuée.</block>
+  <block id="1f4c6214a19160f5513da3ce774b9aa3" category="list-text">Les valeurs de qualité de service (QoS) pour l'opération de connexion et de restauration de copie sont récupérées sur les volumes source des volumes non-données ou des volumes non-données globaux.</block>
+  <block id="7c5673794ab84049a1575a551e904955" category="admonition">La QoS s'applique uniquement aux pools de capacité de type « Manuel ».</block>
+  <block id="d8e8e1e9be8176a39942efc9316a29da" category="paragraph">Pour une opération de connexion et de restauration de copie, accédez au portail Microsoft Azure, sélectionnez le volume, cliquez sur *Modifier* et activez *Masquer le chemin de l'instantané*.</block>
+  <block id="9ecc57e66b15cefd0125186929dc1975" category="admonition">Le nom d'hôte doit être identique à celui de l'hôte utilisé dans la réplication HSR.</block>
+  <block id="4b5d09f1726d80469776849660024054" category="list-text">Copiez le contenu de *sudoer.txt* situé à : _/var/lib/docker/volumes/service-Manager[1]-2_cloudmanager_scs_cloud_volume/_data/$(sudo docker ps|grep -po « cloudmanager_scs_cloud:.*? "|sed -e's/ *$/'|cut -f2 -d":")/sc-linux-host-plugin_</block>
+  <block id="d15dde190bd80c4b67a19bec549b644a" category="list-text">Connectez-vous à l'hôte du système SAP HANA à l'aide d'un compte utilisateur root.</block>
+  <block id="185df8fc7d6cba2b3dc4ddbb241610fe" category="paragraph-title">Avant de commencer</block>
+  <block id="2d38677e8a4946bdca4b843432495b0d" category="list-text">Installez le plug-in à l'aide du script fourni dans le connecteur.<block ref="712ebead777e5d0341cb4c470ac313e6" prefix=" " category="inline-code"></block></block>
+  <block id="5abd5d510cf81f893be3e40108c84360" category="paragraph">Si vous utilisez un connecteur plus ancien, exécutez la commande suivante pour installer le plug-in.<block ref="4dee3cdde0b3f689cacdf7828de5f241" prefix=" " category="inline-code"></block></block>
+  <block id="424ed2f4149fd72cf389b8445b00e1ab" category="paragraph">Par exemple, `sudo bash /var/lib/docker/volumes/service-Manager-2_cloudmanager_scs_cloud_volume/_data/scripts/linux_plugin_copy_and_install.sh --host 10.0.1.1 --username SnapCenter --sshkey /keys/netapp-ssh.ppk</block>
+  <block id="32ded8361c7915052bda371f53ac1cd2" category="paragraph">Le fichier binaire du plug-in est disponible à l'adresse suivante : _cd /var/lib/docker/volumes/service-Manager[1]-2_cloudmanager_scs_cloud_volume/_data/$(sudo docker ps|grep -po « cloudmanager_scs_cloud:.*? "|sed -e's/ *$/'|cut -f2 -d":")/sc-linux-host-plugin_</block>
+  <block id="2b331824c3cc83f2a2e03c85bb44862f" category="list-text">Configurez sudo pour l'utilisateur SnapCenter. Pour plus d'informations, reportez-vous à la section <block ref="5e3b9649d708169ed88a9a242f31b61c" category="inline-xref-macro-rx"></block>.</block>
+  <block id="a64a15a54bc15fd76d581f201d8597db" category="paragraph">Si vous utilisez un connecteur plus ancien, exécutez la commande suivante pour mettre à niveau le plug-in.<block ref="54993491d663e6aaf93dc6ed29ee78c5" prefix=" " category="inline-code"></block></block>
+  <block id="c1c67d1a62632a7d21817e74b7a9b4b6" category="list-text">Sélectionnez Plug-in host.
+(Facultatif) si l'hôte n'est pas ajouté, cliquez sur *Ajouter un hôte de plug-in*.</block>
+  <block id="010678b7a184d05aec2abd32b800f89b" category="paragraph">Dans le volet de navigation de gauche, sélectionnez BlueXP *Canvas* pour ajouter un nouvel environnement de travail.</block>
+  <block id="6127a1470e4ac9558619287c2c509e80" category="paragraph">Vous pouvez modifier ou supprimer les systèmes SAP HANA de l'interface utilisateur.</block>
+  <block id="d65cdf24414c885f7a1b05c0cbb361d5" category="list-text">Supprimez tous les systèmes associés à l'hôte de base de données SAP HANA à l'aide de l'interface ou de l'API REST ci-dessous.<block ref="0c0baa47c52b612c6253de1836b4f5e6" prefix=" " category="inline-code"></block></block>
+  <block id="bfd23c3bc8b4cf882aac94054775463a" category="list-text">Modifiez le nom d'hôte ou le port du plug-in à l'aide de L'API DE CORRECTIF ci-dessous.<block ref="3df630cb139718471dc01612fab9397c" prefix=" " category="inline-code"></block><block ref="f95b70fdc3088560732a5ac135644506" prefix=" " category="inline-code"></block><block ref="a37ea85e4042f80d9f4b6f965b1b2646" prefix=" " category="inline-code"></block><block ref="a783ebe0e7707148dae78011dee49146" prefix=" " category="inline-code"></block><block ref="cbb184dd8e05c9709e5dcaedaa0495cf" prefix=" " category="inline-code"></block></block>
+  <block id="51276db22ab007bf8378ddc5150c089e" category="section-title">04 juillet 2023</block>
+  <block id="91abdc8faafafce1c7b76b1ecb8b37a6" category="list-text">Systèmes SAP HANA</block>
+  <block id="bd8b9d76d990f261019903335a2c9e94" category="list-text">Prend en charge la connexion et la restauration des copies de volumes non-données et de volumes globaux non-données disposant d'une protection secondaire Azure NetApp Files</block>
+  <block id="0ba30ac65d6a9a5888d4dc02307879d6" category="list-text">Prend en charge la restauration des bases de données Oracle sur Azure NetApp Files vers un autre emplacement</block>
+  <block id="699e0e6ae8fec9f5e5e383a17f5ec630" category="list-text">Prise en charge du catalogage Oracle Recovery Manager (RMAN) des sauvegardes de bases de données Oracle sur Azure NetApp Files</block>
+  <block id="02794f70b3a16972197aaf346fca198e" category="list-text">Permet de placer l'hôte de base de données en mode de maintenance pour effectuer des tâches de maintenance</block>
+  <block id="d7d2579b3be99740443be180188dedfc" category="list-text">Prend en charge la restauration dans un autre emplacement</block>
+  <block id="b0e856a98075908a96697bb21ab6fe32" category="list-text">Vous permet de monter des sauvegardes de bases de données Oracle</block>
+  <block id="9e9fa16d2206e067234a9dad53361ff4" category="list-text">Prise en charge du déplacement des sauvegardes de GCP vers le Tier d'archivage</block>
+  <block id="e0d4183564323d306658a92b138bac87" category="section-title">Améliorations de la sauvegarde et de la restauration BlueXP pour les machines virtuelles (hybride)</block>
+  <block id="64870b941ab2700a64f496038bfb77a9" category="list-text">Prend en charge la protection des types de datastores NFS et VMFS</block>
+  <block id="c54bd2b10766a492ae36855e868d61eb" category="list-text">Vous permet d'annuler l'enregistrement du plug-in SnapCenter pour l'hôte VMware vSphere</block>
+  <block id="08c34207830d8869e05cd28a4543f5dc" category="list-text">Prend en charge l'actualisation et la découverte des derniers datastores et sauvegardes</block>
+  <block id="8b803eccc7b3025a4a30eb9283c44e50" category="list-text">Dans le champ clé d'accès AWS, spécifiez la clé.</block>
+  <block id="6e3c30245930a39c89b2820d0afecc99" category="list-text">Dans le champ clé secrète AWS, spécifiez le mot de passe.</block>
+  <block id="da490d8bb350d1ff5d204e7bdf4b2c7d" category="list-text">Dans le champ clé d'accès, spécifiez la clé.</block>
+  <block id="2eccdae60857b53f97fd58344a87c912" category="list-text">Dans le champ clé secrète, spécifiez le mot de passe.</block>
+  <block id="9f3965b57de8600417ada26ea981d243" category="summary">Restaurez les fichiers de données, les fichiers de contrôle ou les deux à leur emplacement d'origine, puis récupérez la base de données.</block>
+  <block id="c53f851b0aefb905b53b1f7fb623300c" category="doc">Restaurez des bases de données Oracle cloud à leur emplacement d'origine</block>
+  <block id="e7abe879ad8765bcf5e173bd23f0644d" category="paragraph">En cas de perte de données, vous pouvez restaurer les fichiers de données, les fichiers de contrôle ou les deux à leur emplacement d'origine, puis récupérer la base de données.</block>
+  <block id="a5233c6b5d691a32f2faf916f0baebe1" category="summary">Vous pouvez restaurer la base de données SAP HANA du cloud vers le serveur SnapCenter sur site.</block>
+  <block id="4916c64add300658e04310a106e04012" category="doc">Restaurez la base de données SAP HANA</block>
+  <block id="33f890a5e5f85b7caf971e2a72c73036" category="paragraph">Vous pouvez restaurer la base de données SAP HANA sur le même hôte.</block>
+  <block id="4b214d6e7bd95c0516f3f50fc89a0e3e" category="list-text">Dans le champ *Filtrer par*, sélectionnez le filtre *Type* et dans la liste déroulante, sélectionnez *HANA*.</block>
+  <block id="839eae4432b00e9cfcdd83d532a31b83" category="list-text">Dans la page Options de restauration, spécifiez l'une des options suivantes :</block>
+  <block id="eee7cd91c87d431eb526192fb8d8f8fa" category="list-text">Si le snapshot est en stockage d'archives, sélectionnez la priorité de restauration de vos données à partir du stockage d'archives.</block>
+  <block id="0a7a7ddc8742b5a7471a5c2d0a3cecb0" category="admonition">Vous devez spécifier la priorité uniquement si vous utilisez Amazon Web Services ou Microsoft Azure en tant que fournisseur cloud.</block>
+  <block id="cfca0342d906d31ff717aa42ed391bcb" category="list-text">S'il n'y a pas assez d'espace sur le stockage source ou si le stockage source est en panne, sélectionnez *Modifier l'emplacement de stockage*.</block>
+  <block id="d0aa9f6dc927738d3c07012b7c8b6e03" category="list-text">Dans la page mappage du stockage, spécifiez les détails de l'emplacement de stockage secondaire dans lequel les données restaurées à partir du magasin d'objets seront stockées.</block>
+  <block id="d3cb840d450fe62742c860611a591afe" category="paragraph">Cette opération n'effectue que l'exportation du stockage de la sauvegarde sélectionnée sur l'hôte donné. Vous devez monter manuellement le système de fichiers et faire apparaître la base de données. Après avoir utilisé le volume, l'administrateur du stockage peut le supprimer du cluster ONTAP.</block>
+  <block id="ec0fc0ea2833a10faacc111a394e09d4" category="list-text">Si des sauvegardes automatiques quotidiennes sont activées sur Amazon FSX pour NetApp ONTAP, les volumes clonés sur Amazon FSX pour NetApp ONTAP ne peuvent pas être supprimés de l'interface utilisateur BlueXP, car FSX aurait créé des sauvegardes sur les volumes clonés.
+Vous devez supprimer les volumes clonés après la suppression de toutes les sauvegardes du volume dans l'interface utilisateur FSX, puis supprimer les clones de l'option force de l'interface utilisateur BlueXP.</block>
+  <block id="6899a442339528c09f4934aff2d6dea0" category="paragraph">La sauvegarde et la restauration BlueXP pour les applications offrent des fonctionnalités de protection des données cohérentes au niveau des applications pour les applications qui s'exécutent sur le stockage cloud NetApp. La sauvegarde et la restauration BlueXP assurent une protection efficace, cohérente au niveau des applications et basée sur des règles des applications suivantes :</block>
+  <block id="0de5e50912af670eb77f45ee57c4118d" category="list-text">Les sauvegardes de bases de données Oracle sur Azure NetApp Files peuvent être cataloguées à l'aide d'Oracle RMAN</block>
+  <block id="d1873efc0cdf4c8e0d69264fb4d3b40f" category="list-text">Restauration des bases de données Oracle sur Azure NetApp Files vers un autre emplacement</block>
+  <block id="822c8fbde1e65209f07f97e6791263d6" category="paragraph">Vous pouvez restaurer la base de données Oracle à l'emplacement d'origine ou dans un autre emplacement. Dans le cas d'une base de données RAC, les données sont restaurées vers le nœud sur site sur lequel la sauvegarde a été créée.</block>
+  <block id="a91a41f2fc1f089d3e56a267d2a78fd0" category="list-text">Dans la page Options de restauration, spécifiez l'emplacement où vous souhaitez restaurer les fichiers de base de données.</block>
+  <block id="c69c60692525e502b22a94d63eaccc46" category="paragraph">Vous souhaitez restaurer l'emplacement d'origine</block>
+  <block id="34c4d04aa0f3533b502e02796da12987" category="list-text">Sélectionnez *Restaurer à l'emplacement d'origine*.</block>
+  <block id="d3848423ad873508b35dee4f882c93c1" category="list-text">Sélectionnez *tous les journaux* si vous souhaitez récupérer la dernière transaction.</block>
+  <block id="5d5be53ceca242c265f3132067176acf" category="list-text">Sélectionnez *jusqu'à ce que SCN (Numéro de changement de système)* si vous souhaitez restaurer un SCN spécifique.</block>
+  <block id="80cf9881a37650ae16840f0f221e2119" category="list-text">Sélectionnez *Date et heure* si vous souhaitez restaurer des données et une heure spécifiques.</block>
+  <block id="29efffe1f66a8912fca8bb27c93fc1b8" category="list-text">Sélectionnez *pas de récupération* si vous ne voulez pas récupérer.</block>
+  <block id="6f99f4737d8256ed0337b7c17764757d" category="paragraph">Vous souhaitez effectuer une restauration temporaire dans un autre espace de stockage, puis copier les fichiers restaurés à leur emplacement d'origine</block>
+  <block id="fd6c41084988e4bb4645834e30b44ff5" category="list-text">Sélectionnez *Modifier l'emplacement de stockage*.</block>
+  <block id="8ee01307d2746e8b138b043603eb24d9" category="list-text">Dans la page mappage du stockage, spécifiez les détails de l'emplacement de stockage secondaire où les données restaurées à partir du magasin d'objets seront stockées temporairement.</block>
+  <block id="8c5b542e3bf5c33a79d410f3c7267c34" category="paragraph">Si vous sélectionnez un système ONTAP sur site et si vous n'avez pas configuré la connexion au cluster au stockage objet, vous êtes invité à fournir des informations supplémentaires concernant le magasin d'objets.</block>
+  <block id="55ae1bb95429a03bb32d84800ae9f163" category="paragraph">Restauration dans un autre emplacement</block>
+  <block id="27f24f295039df910eea0a37a2292d0f" category="list-text">Sélectionnez *Restaurer à un autre emplacement*.</block>
+  <block id="cd23b08068b5c308f9cc0772c3cf9b14" category="list-text">Si vous souhaitez restaurer sur un autre stockage, effectuez les opérations suivantes :</block>
+  <block id="1fa7938e9e890feda45cc6a22d74fdee" category="list-text">Dans la page mappage du stockage, spécifiez les détails de l'emplacement de stockage secondaire où les données du magasin d'objets doivent être restaurées.</block>
+  <block id="ac0523bc65b262ce835f34df8c1b4e7c" category="list-text">Dans la page hôte de destination, sélectionnez l'hôte sur lequel la base de données sera montée.</block>
+  <block id="1b50cce2092e44b8d753e84a4e2b37fc" category="list-text">(Facultatif) pour l'environnement NAS, spécifiez le nom de domaine complet ou l'adresse IP de l'hôte vers lequel les volumes restaurés à partir du magasin d'objets doivent être exportés.</block>
+  <block id="947ae31041ad09b75ae3caa12466e713" category="list-text">(Facultatif) dans le cas d'un environnement SAN, spécifiez les initiateurs de l'hôte sur lesquels les LUN des volumes restaurés à partir du magasin d'objets doivent être mappées.</block>
+  <block id="3f8fcf31f13e30a169bc12ea602aad5f" category="paragraph">L'option *Restaurer à un autre emplacement* monte la sauvegarde sélectionnée sur l'hôte donné. Vous devez ouvrir manuellement la base de données.</block>
+  <block id="da281acf30e2697bebbcc0a2910961f7" category="paragraph">Après avoir monté la sauvegarde, vous ne pouvez pas la monter à nouveau tant qu'elle n'est pas démontée. Vous pouvez utiliser l'option *Unmount* de l'interface utilisateur pour démonter la sauvegarde.</block>
+  <block id="7783ec9741a5d8100dae820693d57a26" category="list-text">Si vous souhaitez transférer les sauvegardes du magasin d'objets vers le stockage d'archivage, vérifiez que vous utilisez la version ONTAP requise.</block>
+  <block id="fa150600eb6c4639a0aefa969e7b726b" category="list-text">Si vous utilisez Amazon Web Services, vous devez utiliser ONTAP 9.10.1 ou une version ultérieure</block>
+  <block id="4f4531e8c58b9c676a23551cf59b1c06" category="list-text">Si vous utilisez Microsoft Azure, vous devez utiliser ONTAP 9.10.1 ou une version ultérieure</block>
+  <block id="5da22ea309211ebae6d45637520d568b" category="list-text">Si vous utilisez Google Cloud, vous devez utiliser ONTAP 9.12.1 ou une version ultérieure</block>
+  <block id="829ef79af81d9034eb421e9cbdf77a86" category="summary">Créez une règle avec ou sans activer RMAN, attribuez-la, puis créez des sauvegardes planifiées ou à la demande de la base de données Oracle.</block>
+  <block id="cc09ff41835529ce890483c46d2746a2" category="paragraph">Vous pouvez créer des sauvegardes planifiées ou à la demande en attribuant une règle prédéfinie ou la règle que vous avez créée.</block>
+  <block id="d9ccc4a878eb176bbc4bdeb40043c102" category="paragraph">Vous pouvez également cataloguer les sauvegardes de bases de données Oracle à l'aide d'Oracle Recovery Manager (RMAN) si vous avez activé le catalogage lors de la création d'une stratégie. Le catalogage (RMAN) est pris en charge uniquement pour les bases de données qui se trouvent sur Azure NetApp Files. Les sauvegardes cataloguées peuvent être utilisées ultérieurement pour les opérations de restauration au niveau des blocs ou de restauration à un point dans le temps de l'espace de stockage. La base de données doit être montée ou supérieure pour le catalogage.</block>
+  <block id="43bcdb782c6bcef2a1a6f6add006442f" category="list-text">Si vous avez sélectionné _Daily_ et _Weekly_ comme planning et que vous souhaitez activer le catalogage RMAN, sélectionnez *Catalog backup with Oracle Recovery Manager (RMAN)*.</block>
+  <block id="0e42c39fc72646ad7b9bc5ed660dbe4c" category="list-text">(Facultatif) Entrez le chemin d'accès et le délai d'expiration du post-script qui seront exécutés après la sauvegarde réussie, comme la copie de l'instantané sur le stockage secondaire.</block>
+  <block id="f88100e0f75b544b4b4129b6dbb5b1e6" category="paragraph">Spécifie les chemins de volume de données concaténés avec "," comme délimiteur.
+Pour les volumes Azure NetApp Files, les informations sont concaténées à l'aide de « / ».
+_ /Abonnements/{subscription_ID}/resourceGroups/{Resource_group}/providers/{Provider}/netAppAccounts/{anfaccount}/capacityPools/{Capacity_pool}/volumes/{volumName}_</block>
+  <block id="dd561949768325f8b1abeaee1393d385" category="paragraph">Spécifie les chemins du volume du journal d'archives concaténés avec "," comme délimiteur.
+Pour les volumes Azure NetApp Files, les informations sont concaténées avec « / ».
+_ /Abonnements/{subscription_ID}/resourceGroups/{Resource_group}/providers/{Provider}/netAppAccounts/{anfaccount}/capacityPools/{Capacity_pool}/volumes/{volumName}_</block>
+  <block id="ccf68bfd874426d222b79d469e0c7f0f" category="section-title">Configurer le référentiel de catalogue RMAN</block>
+  <block id="b88b3aad5e2c7ece60dc4d6f49a17ada" category="paragraph">Vous pouvez configurer la base de données du catalogue de restauration en tant que référentiel du catalogue RMAN. Si vous ne configurez pas le référentiel, par défaut, le fichier de contrôle de la base de données cible devient le référentiel de catalogue RMAN.</block>
+  <block id="32e539a93a91890018053de197d9b00a" category="paragraph">Vous devez enregistrer manuellement la base de données cible dans la base de données du catalogue RMAN.</block>
+  <block id="7792cee0f3a708fd530892e9886c8603" category="list-text">Dans la page applications, cliquez sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> &gt; *Afficher les détails*.</block>
+  <block id="acfd9b7cd105b5915e205004751b43f3" category="inline-image-macro">modification de la fenêtre</block>
+  <block id="b00a221707125b5d4e595935f723df15" category="list-text">Dans la section Détails de la base de données, cliquez sur <block ref="7d06be0ccc38945b0518baa7154b671e" category="inline-image-macro-rx" type="image"></block> Pour configurer le référentiel du catalogue RMAN.</block>
+  <block id="eda38ce807902e33848caf6dc25e5fbf" category="list-text">Spécifiez les informations d'identification pour cataloguer les sauvegardes avec RMAN et le nom TNS (transparent Network Substrate) de la base de données de restauration de catalogue.</block>
+  <block id="cf653025c815c1388101aa5ad3d232b6" category="paragraph">Les sauvegardes seront créées conformément à la planification définie dans la stratégie. Si vous avez activé le catalogue RMAN dans la règle, la sauvegarde à la fin du flux de travail lance l'opération de catalogage comme tâche séparée. La progression du catalogage est visible à partir du moniteur de tâches. Une fois le catalogage réussi, *Backup Details* affiche l'état du catalogue pour chaque sauvegarde.</block>
+  <block id="9ad48007c11f79693890f30169cb4eae" category="paragraph">Si vous avez activé le catalogue RMAN dans la règle, la sauvegarde à la fin du flux de travail lance l'opération de catalogage comme tâche séparée. La progression du catalogage est visible à partir du moniteur de tâches. Une fois le catalogage réussi, *Backup Details* affiche l'état du catalogue pour chaque sauvegarde.</block>
+  <block id="75f97ec226c0d31fad1eb9f33cc140e8" category="list-text">Configurez l'accès sudo pour l'utilisateur SnapCenter dans l'hôte de base de données Oracle en vous connectant à la machine Linux exécutant la base de données Oracle.</block>
+  <block id="3e2df45d8c47bb5ed4fd257279c56694" category="list-text">Copiez le texte affiché dans l'interface utilisateur BlueXP.</block>
+  <block id="950a53f2e1e36a3ea8325438b86c9fe7" category="list-text">Créez le fichier _/etc/sudoers.d/snapcenter_ sur la machine Linux et collez le texte copié.</block>
+  <block id="2b4417eb5baef793b1383a752e578791" category="list-text">Dans l'interface utilisateur BlueXP, cochez la case et cliquez sur *Suivant*.</block>
+  <block id="27d67b03a509c3f9eb8e6b991e531cec" category="section-title">Ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle et installez le plug-in à l'aide du script</block>
+  <block id="3901b048e12f9c28a6fcb7acf7aebc9b" category="list-text">Installez le plug-in à l'aide du script fourni dans le connecteur.<block ref="e8bc39df0ba78fac4a9f78aaa34c37b8" prefix=" " category="inline-code"></block></block>
+  <block id="506c2c0c7f5b70af3df68c45c46f45a7" category="paragraph">Par exemple :</block>
+  <block id="96b65a782b5789cdec4e738e0f55aa1b" category="list-text"><block ref="52b32c38ed998ed0606238a0b041a008" prefix="" category="inline-code"></block></block>
+  <block id="2f354ae44131fd1dd7944c540fb42ff5" category="list-text"><block ref="0a1eb8567cc616e74effb37219629858" prefix="" category="inline-code"></block></block>
+  <block id="0614ba22444a23f98cc5b42e93649a22" category="list-text">Dans l'interface utilisateur BlueXP, consultez les détails et cliquez sur *découvrir les applications*.</block>
+  <block id="fe961c77aa20102ff152c92b372a9fc1" category="section-title">Ajoutez l'hôte à partir de l'interface utilisateur à l'aide de l'option manuelle et installez le plug-in manuellement</block>
+  <block id="e5e2c198622455bc3518abcd038359c2" category="list-text">Modifiez le fichier _/etc/sudoers.d/snapcenter_ sur la machine Linux et collez le texte copié.</block>
+  <block id="d60c23e5f6f5aa25d3d3f975d6eec029" category="list-text">Dans l'interface utilisateur BlueXP, cochez la case et cliquez sur *mettre à niveau*.</block>
+  <block id="d0deb2f0eae776d5137f98574920f9d3" category="list-text">Exécutez le script suivant.<block ref="950403b1e3f17ff45a138cbdec2133c6" prefix=" " category="inline-code"></block></block>
+  <block id="e99351a15c380639147513a65765c910" category="paragraph">Si vous utilisez un connecteur plus ancien, exécutez la commande suivante pour mettre à niveau le plug-in.<block ref="07b2ad58cb48d0bd30ad84d6a6bdfd7d" prefix=" " category="inline-code"></block></block>
+  <block id="9bfef37a59ea84d9474c85061ccb5c6d" category="paragraph">Vous pouvez restaurer la base de données SQL Server à l'emplacement d'origine ou à l'autre emplacement.</block>
+  <block id="cc2de7a3d6d06ec140e204ae05b8a500" category="admonition">La restauration de fichiers uniques (SFR), la récupération des sauvegardes de journaux et la réamorçage des groupes de disponibilité ne sont pas pris en charge.</block>
+  <block id="7bc6d5a8a28607c76af17a625855d538" category="list-text">Sur la page hôte de destination, sélectionnez un nom d'hôte, indiquez un nom de base de données (facultatif), sélectionnez une instance et spécifiez les chemins de restauration.</block>
+  <block id="d475931bfdebb1c87cf700b06709d879" category="paragraph">Vous souhaitez effectuer une restauration temporaire sur un autre stockage, puis copier les fichiers restaurés à l'autre emplacement</block>
+  <block id="0e5a01bda1012831a3b3173c9ab98649" category="list-text">Dans la case *pré-opérations*, sélectionnez l'une des options suivantes :</block>
+  <block id="5d4b51d10ee1c6aed71fa3e4fa28821c" category="list-text">Dans la section *Post-Operations*, pour spécifier l'état de la base de données pour la restauration de journaux transactionnels supplémentaires, sélectionnez l'une des options suivantes :</block>
+  <block id="612baf7b7b12b0d88be2fb266aa753ea" category="paragraph">Vous pouvez également afficher les règles de SnapCenter étendues au cloud en exécutant la<block ref="f391f53076a6f0bdd43ba78daeaf5394" prefix=" " category="inline-code"></block> Cmdlet dans SnapCenter.
+Les informations concernant les paramètres qui peuvent être utilisés avec l'applet de commande et leurs descriptions peuvent être obtenues en exécutant la commande Get-Help nom.</block>
+  <block id="af69dc7cd4dc656bb123feb33f035747" category="list-text">Pour les bases de données Oracle, les sauvegardes de données et de journaux, le numéro de modification système (SCN) pour chaque sauvegarde et la date de fin pour chaque sauvegarde sont indiqués. Vous pouvez sélectionner uniquement la sauvegarde des données et restaurer la base de données à son emplacement d'origine. Vous pouvez monter la sauvegarde des données et des journaux à un autre emplacement.</block>
+  <block id="1f9a864d31c14af73c5606a2029449f9" category="list-text">Pour les bases de données Microsoft SQL Server, seules les sauvegardes complètes et la date de fin de chaque sauvegarde sont répertoriées. Vous pouvez sélectionner la sauvegarde et restaurer la base de données à son emplacement d'origine ou à un autre emplacement.</block>
+  <block id="f80bb777c2ca75acdab342d7be7a016b" category="list-text">Pour les bases de données SAP HANA, seules les sauvegardes de données et la date de fin de chaque sauvegarde sont répertoriées. Vous pouvez sélectionner la sauvegarde et exporter le stockage sur un hôte donné.</block>
+  <block id="c4f4faa6cc54361e4da29cb3c1dd2088" category="paragraph">Vous pouvez également afficher ces sauvegardes en exécutant le<block ref="3b327888082d0a6615ac0b1cac5ce6dc" prefix=" " category="inline-code"></block> Cmdlet dans SnapCenter.
+Les informations concernant les paramètres qui peuvent être utilisés avec l'applet de commande et leurs descriptions peuvent être obtenues en exécutant la commande Get-Help nom.</block>
+  <block id="523b61be98d84bb9177588a76b271f8f" category="section-title">Désactiver la sauvegarde</block>
+  <block id="65ce18f02eba4a0be0d39136da491846" category="paragraph">Vous pouvez supprimer toutes les sauvegardes déplacées vers le magasin d'objets depuis SnapCenter et le magasin d'objets.</block>
+  <block id="00cbae26c86b52b87ef194472843dd3f" category="list-text">Cliquez sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> Correspondant à l'application et cliquez sur Désactiver la sauvegarde.</block>
+  <block id="7854ceabfc5ceeb84919f6a7015a0c44" category="paragraph">Par défaut, cette case est cochée et supprime toutes les sauvegardes qui sont déplacées vers le magasin d'objets depuis SnapCenter et le magasin d'objets.</block>
+  <block id="fcd8ce77655d8abcebadacc848ee133a" category="paragraph">Si vous décochez cette case, les sauvegardes sont conservées uniquement dans le magasin d'objets, mais elles ne peuvent pas être utilisées pour la restauration au niveau de l'application. Plus tard, lorsque vous activez la sauvegarde pour cette application, les sauvegardes conservées dans le magasin d'objets ne sont pas répertoriées pour la restauration.</block>
+  <block id="1bdc84776f1113f6d21c22445857f895" category="list-text">Cliquez sur *Désactiver la sauvegarde*.</block>
+  <block id="8c46d6aa3a74f5eb085b876b42a3c5ff" category="list-text">Si un volume de stockage est ajouté à l'application après la configuration du fournisseur cloud, le serveur SnapCenter marque les snapshots pour les nouvelles sauvegardes sur lesquelles l'application réside.</block>
+  <block id="e0f5dbdaac57f847c9f35310d8a41cc2" category="section-title">Configurez le certificat signé par l'autorité de certification SnapCenter dans BlueXP Connector</block>
+  <block id="0f3b8667b6537f90523aa601bdf6def8" category="paragraph">Vous devez configurer le certificat signé par l'autorité de certification SnapCenter dans BlueXP Connector de manière à ce que le connecteur puisse vérifier le certificat de SnapCenter.</block>
+  <block id="51b591544f28a3badd8767ca6daa3902" category="paragraph">Exécutez la commande suivante dans le connecteur BlueXP pour obtenir _&lt;base_mount_path&gt;_:<block ref="de984fbb154c75ab992a459b6a95e490" prefix=" " category="inline-code"></block></block>
+  <block id="433333be62d4d4d362de3413febe3441" category="list-text">Connectez-vous au connecteur.<block ref="ecf9d04460b74d536a3a3b2044f30c06" prefix=" " category="inline-code"></block></block>
+  <block id="c1e5f8a667d8822ea9c7c6d9a4656383" category="list-text">Copiez les fichiers de l'autorité de certification racine et de l'autorité de certification intermédiaire dans le répertoire _&lt;base_mount_path&gt;/Server/certificate_.</block>
+  <block id="5186dc577d1eb0ae9a81a574c7e13b5a" category="paragraph">Les fichiers CA doivent être au format .pem.</block>
+  <block id="22cd963dbab6ea6f4d15cb5aca107fd0" category="list-text">Si vous disposez de fichiers CRL, effectuez les opérations suivantes :</block>
+  <block id="a2cec29e92b0da0b64989bb222a6a804" category="list-text"><block ref="3f08746afba397c9d6cde09f9a4347d9" prefix="" category="inline-code"></block></block>
+  <block id="b5162e395b476e71a98978f60106c99d" category="list-text">Copiez les fichiers CRL dans le répertoire _&lt;base_mount_path&gt;/Server/crl_.</block>
+  <block id="c96f29b0f857bc7bc84063894bab83d2" category="list-text">Connectez-vous au cloudManager_snapcenter et modifiez enableCACert dans config.yml à true.<block ref="282c9fd2b76585287b1b0ecd38643437" prefix=" " category="inline-code"></block></block>
+  <block id="2c8fbb9ba7aac728ae196cfe40cad477" category="list-text">Redémarrez le conteneur cloudManager_snapcenter.<block ref="db155b8f9ae2e0def6f6365599dcf526" prefix=" " category="inline-code"></block></block>
+  <block id="4450025c6d0f0d79f1e6b2cf9dbed823" category="paragraph">Si le protocole SSL à 2 voies est activé dans SnapCenter, vous devez effectuer les étapes suivantes sur le connecteur pour utiliser le certificat CA comme certificat client lorsque le connecteur se connecte à SnapCenter.</block>
+  <block id="a0f83a253db22a151374b3423ef18668" category="paragraph">Vous devez exécuter la commande suivante pour obtenir le _&lt;base_mount_path&gt;_:<block ref="de984fbb154c75ab992a459b6a95e490" prefix=" " category="inline-code"></block></block>
+  <block id="84a97c0ded9f792e6017253de93472ad" category="list-text">Connectez-vous au connecteur.<block ref="e310c052506802b693ddeef7840fe6eb" prefix=" " category="inline-code"></block></block>
+  <block id="5e743b0bfdd2c2ac539b7422ba9d2627" category="list-text">Connectez-vous au cloudManager_snapcenter et modifiez le sendCACert dans config.yml à true.<block ref="a54a94daee86bc9b0852ba17ae16e244" prefix=" " category="inline-code"></block></block>
+  <block id="c1974a952dac04f4212a0b7c4e9e9f00" category="list-text">Effectuez les étapes suivantes sur le SnapCenter pour valider le certificat envoyé par le connecteur.</block>
+  <block id="8e7670a695e21bc0ca199992307f8537" category="list-text">Connectez-vous à l'hôte de serveur SnapCenter.</block>
+  <block id="951872b9b16258c40527a2df0f8f164a" category="list-text">Cliquez sur *Démarrer* &gt; *lancer la recherche*.</block>
+  <block id="ccea8b458a4a9e69c817695d3097a6e8" category="list-text">Tapez mmc et appuyez sur *entrée*.</block>
+  <block id="86ce5961ef6624058f736d93459d1889" category="list-text">Cliquez sur *Oui*.</block>
+  <block id="a91b40878068e695e2195ab09e2532c3" category="list-text">Dans le menu fichier, cliquez sur *Ajouter/Supprimer un composant logiciel enfichable*.</block>
+  <block id="c87d2860a22aabf89e847e134137ec01" category="list-text">Cliquez sur *certificats* &gt; *Ajouter* &gt; *compte ordinateur* &gt; *Suivant*.</block>
+  <block id="8a98e9005f933018375aa7d0844d7240" category="list-text">Cliquez sur *ordinateur local* &gt; *Terminer*.</block>
+  <block id="a1f3074dd68e8d863afeec874bf78357" category="list-text">Si vous n'avez plus de snap-ins à ajouter à la console, cliquez sur *OK*.</block>
+  <block id="bb4f335f0d25871a3b9c36796484e4bb" category="list-text">Dans l'arborescence de la console, double-cliquez sur *certificats*.</block>
+  <block id="62cf2c06af955668bade109f16b05be8" category="list-text">Cliquez avec le bouton droit de la souris sur le magasin *autorités de certification racines de confiance*.</block>
+  <block id="f4139147b1b7b2fc4471626b33811546" category="list-text">Cliquez sur *Importer* pour importer les certificats et suivez les étapes de l'assistant *importation de certificat*.</block>
+  <block id="5f9593f53c029e05ad3fe317372bbbb7" category="paragraph">Vous pouvez actualiser un système cible SAP HANA avec les données d'un système source SAP HANA. Il peut être utilisé pour fournir les données de production actuelles dans un système de test. La sauvegarde dans le cloud vous permet de sélectionner une copie Snapshot à partir d'un système source et de créer un volume Azure NetApp Files basé sur la copie Snapshot. Des exemples de scripts sont disponibles, qui exécute les opérations requises sur l'hôte de base de données pour restaurer la base de données SAP HANA.</block>
+  <block id="3205bfd250f7e652581ed45c1db8eb26" category="list-text">Le « nombre maximal de débit » du nouveau volume est sélectionné dans le volume du système cible avec des pools de capacité de qualité de service (QoS) manuels.
+Pour les pools de capacité QoS automatique, le débit est défini par la capacité du volume source.</block>
+  <block id="170cf8aa630273f26a308eb9c95fb49a" category="list-text">SnapCenter Server 4.6 ou version ultérieure</block>
+  <block id="a60ee7cfb0bf03a2eb61a9b068a5f2bf" category="list-text">Vous devez utiliser SnapCenter Server 4.7 ou une version ultérieure si vous souhaitez utiliser les fonctions suivantes :</block>
+  <block id="d3456e6a0908a4918170d02ea0c3ee84" category="list-text">Exportation du stockage d'une sauvegarde</block>
+  <block id="0d85057e25566698a3c3dc29d49db941" category="list-text">Vous devez utiliser SnapCenter Server 4.9 si vous souhaitez utiliser les fonctions suivantes :</block>
+  <block id="b8507ca67617589814152570680713d8" category="list-text">Monter les sauvegardes de bases de données Oracle</block>
+  <block id="b1736bc032b4a5b6d651f60785db87f7" category="list-text">Restaurer sur le stockage secondaire</block>
+  <block id="94a7d215d3c763dcc4768c5097b88e2c" category="summary">Vous pouvez afficher les détails de la sauvegarde, surveiller l'état de tous les travaux, supprimer le clone, les données d'audit, mettre à jour les détails du connecteur, configurer les certificats CA, et gérer les hôtes.</block>
+  <block id="5dc8569ee9c4f42d7d835629adc7ef5f" category="section-title">Maintenance des hôtes de base de données Oracle</block>
+  <block id="e65824137d1687f7668c648115afc6be" category="paragraph">Un administrateur peut placer manuellement les hôtes de base de données en mode de maintenance pour effectuer des tâches de maintenance sur les hôtes. Lors de la mise à niveau, les hôtes sont automatiquement mis en mode maintenance et après la mise à niveau, ils sont automatiquement basculés en mode production.</block>
+  <block id="88245f95c61cb1a029ac5e105d2dbcef" category="paragraph">Lorsque les hôtes sont mis en mode maintenance, les opérations à la demande échouent et les tâches planifiées sont ignorées.</block>
+  <block id="24dbe2bfa0da14233c9640f8f2045469" category="admonition">Vous ne pouvez pas vérifier si des tâches sont en cours d'exécution pour les ressources sur les hôtes avant de mettre les hôtes en mode de maintenance.</block>
+  <block id="2e1065e3d9e82b45c25172fbe56bb3e1" category="list-text">Dans l'interface utilisateur BlueXP, cliquez sur *protection* &gt; *sauvegarde et restauration* &gt; *applications*</block>
+  <block id="54f1dd1b4b0cee20fb648277e1e57564" category="list-text">Sélectionnez *Oracle* comme type d'application.</block>
+  <block id="bff6c6e38317c708a017122ffff061d0" category="list-text">Cliquez sur *Paramètres* &gt; *hôtes*.</block>
+  <block id="315359e3c6323d4eda359054319c0815" category="list-text">Effectuez l'une des opérations suivantes :</block>
+  <block id="15971321362e54e26bda28e4c56d8456" category="paragraph">Vous souhaitez placer l'hôte en mode de maintenance</block>
+  <block id="efcc9127143453abf1916fb3c6d1389f" category="paragraph">Cliquez sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> Correspondant à l'hôte et sélectionnez *Activer le mode de maintenance*.</block>
+  <block id="4dc136998723b1723dd65fb967c4745d" category="paragraph">Souhaite sortir l'hôte du mode de maintenance</block>
+  <block id="3261eb27fd899680f932574f52ee49e3" category="paragraph">Cliquez sur <block ref="2231c326e067595aca2fb0545475acf4" category="inline-image-macro-rx" type="image"></block> Correspondant à l'hôte en cours de maintenance et sélectionnez *Désactiver le mode de maintenance*.</block>
+  <block id="2cd898c5523193b070234ed5d34c815d" category="list-text">Copiez Certificate.pem de _&lt;base_mount_path&gt;/client/certificate/_ path de la machine virtuelle du connecteur vers _/var/opt/snapcenter/spl/etc/_ sur l'hôte du plug-in.</block>
+  <block id="d3794a65ac38525b0f295e41c150ee12" category="list-text">Accédez à _/var/opt/snapcenter/spl/etc_ et exécutez la commande keytool pour importer le fichier Certificate.p12.<block ref="11eedec2593dcf6deecf4133d03a7613" prefix=" " category="inline-code"></block></block>
+  <block id="40827a860546af59127b7a2ff41eb4ce" category="list-text">Effectuez l'une des opérations suivantes :</block>
+  <block id="3a42f0d8ab8360d2ee5a9c291f78ccf8" category="list-text">Exécutez la commande suivante pour obtenir le _&lt;base_mount_path&gt;_:<block ref="22ab9e84fb8aba7e93d8b90366ddca59" prefix=" " category="inline-code"></block></block>
+  <block id="3717efafcaa340ed61240daf5d7a6b9b" category="list-text">Copiez le certificat.pem et les certificats de l'autorité de certification intermédiaire et de l'autorité de certification racine du connecteur vers l'hôte du plug-in à l'adresse _/var/opt/snapcenter/spl/etc/_.</block>
+  <block id="8309d51b12d4e82b3afcbb4d6e23db5d" category="list-text">Accédez à _/var/opt/snapcenter/spl/etc_ et exécutez la commande keytool pour importer le fichier certificate.pem.<block ref="11eedec2593dcf6deecf4133d03a7613" prefix=" " category="inline-code"></block></block>
+  <block id="91cbc61972a7259c684c934d00fd85b5" category="list-text">Les datastores NFS et VMFS sont pris en charge. Les vVols ne sont pas pris en charge.</block>
+  <block id="f431fc6e7518bd51210319fc58e32482" category="list-text">Pour la prise en charge de VMFS, le plug-in SnapCenter pour l'hôte VMware vSphere doit être exécuté sur 4.9 ou une version ultérieure. Assurez-vous d'effectuer une sauvegarde du datastore VMFS si le plug-in SnapCenter pour l'hôte VMware vSphere a été mis à niveau à partir d'une version antérieure vers la version 4.9.</block>
+  <block id="e15504865bb682eba5499bdedbb0d431" category="list-text">SLES 15 SP4</block>
+  <block id="0a75e301d6c943a1f7da2ccb563852e7" category="list-text">Versions de base de données : 19c et 21c</block>
+  <block id="738c224049615eeb47fe5a57a6ea8f7c" category="section-title">Actualisez les ressources et les sauvegardes</block>
+  <block id="0e9cec251ac8debda34d029f4302d4eb" category="paragraph">Si vous souhaitez afficher les derniers datastores et sauvegardes ajoutés à l'application, vous devez actualiser les ressources et les sauvegardes. La découverte des ressources et des sauvegardes est alors lancée et les informations les plus récentes s'affichent.</block>
+  <block id="d4707d0210a19770ac7cf0959f935157" category="list-text">Cliquez sur <block ref="1d94ccc08c31bc8efbc06bfabc6854b6" category="inline-image-macro-rx" type="image"></block> Correspondant au plug-in SnapCenter pour l'hôte VMware vSphere et cliquez sur *Actualiser les ressources et les sauvegardes*.</block>
+  <block id="aa8a6c50e00adebd857afeb3c163080e" category="section-title">Actualiser la stratégie ou le groupe de ressources</block>
+  <block id="a663847f6a4dfe84a9e34d968b306aef" category="paragraph">En cas de modification de la stratégie ou du groupe de ressources, vous devez actualiser la relation de protection.</block>
+  <block id="9641f44e6995cb07bf37a72f99cf41b3" category="list-text">Cliquez sur <block ref="1d94ccc08c31bc8efbc06bfabc6854b6" category="inline-image-macro-rx" type="image"></block> Correspondant au datastore et cliquez sur *Actualiser la protection*.</block>
+  <block id="ecb0c28cd21006ad8c86d4be09edf297" category="section-title">Annulez l'enregistrement du plug-in SnapCenter pour l'hôte VMware vSphere</block>
+  <block id="3d61f1dcef482f1c526370542b798e50" category="paragraph">Tous les datastores et machines virtuelles associés à l'hôte SnapCenter Plug-in pour VMware vSphere ne seront pas protégés.</block>
+  <block id="6a45c59dd3a525bee9f5d9c555c1ff8a" category="list-text">Cliquez sur <block ref="1d94ccc08c31bc8efbc06bfabc6854b6" category="inline-image-macro-rx" type="image"></block> Correspondant au plug-in SnapCenter pour l'hôte VMware vSphere et cliquez sur *désinscrire*.</block>
+  <block id="f214ccf7f10c864a2d5f70f246aa9368" category="summary">Restaurez la base de données Oracle à un autre emplacement</block>
+  <block id="6163eb54f8c17422f33910630515d04e" category="doc">Restaurez des bases de données Oracle cloud natives vers un autre emplacement</block>
+  <block id="513d85947ec55df9098ca673daa94533" category="paragraph">En cas de perte de données, vous pouvez restaurer la base de données Oracle à un autre emplacement uniquement sur Azure NetApp Files. L'autre emplacement peut se trouver sur un hôte différent ou sur le même hôte.</block>
+  <block id="8054e2f4321c1d12e0899bddfa924dea" category="list-text">Vous devez vous assurer que la version d'Oracle sur l'hôte secondaire est identique à celle de l'hôte d'origine.</block>
+  <block id="37068a2a476a31b5220be55595037256" category="paragraph">Lors du lancement de l'opération de restauration, vous n'êtes pas autorisé à modifier les configurations, à l'exception du répertoire racine Oracle, du débit de volume maximal, de la SID Oracle et des informations d'identification de la base de données.</block>
+  <block id="4c2903ebe5744535d728676fe4fb9b25" category="paragraph">La récupération complète est activée par défaut avec _jusqu'à ce que Cancel_ soit défini sur true.</block>
+  <block id="29dcac6a29f56130b9ac824001b7ad19" category="paragraph">Le mode de journalisation des archives est désactivé par défaut pour la base de données restaurée. Vous pouvez activer le mode log d'archivage et conserver les journaux d'archivage sur le volume NetApp si nécessaire.</block>
+  <block id="327d9b8a40abd1b5188e8eb5d1170a14" category="list-text">Sélectionnez le point de restauration auquel la base de données doit être restaurée et cliquez sur *Restaurer à un autre emplacement* &gt; *Suivant*.</block>
+  <block id="e25824b39e7838b25e70a2dab35d27e0" category="list-text">Dans la page Configuration, spécifiez les détails de l'emplacement secondaire, SID, Oracle_Home, les informations d'identification de la base de données et le débit de stockage.</block>
+  <block id="c47a899a25187f68c4798270c6b606ab" category="paragraph">Pour les informations d'identification de la base de données, si l'authentification utilisateur du système d'exploitation est désactivée, vous devez fournir un mot de passe pour que l'utilisateur sys puisse se connecter à la base de données restaurée sur le même hôte ou sur l'hôte cible.</block>
+  <block id="796f6e2bb33076b9f7d561b0770887e6" category="list-text">Cliquez sur *Suivant*, passez en revue les détails et cliquez sur *Restaurer*.</block>
+  <block id="65b7a936129faa2d1226305393934917" category="paragraph">La progression de l'opération de restauration peut être affichée dans la page surveillance des travaux. Une fois le travail terminé, cliquez sur *Actualiser la découverte* pour afficher la base de données restaurée. Toutefois, vous ne pouvez pas protéger la base de données restaurée à un autre emplacement.</block>
+  <block id="abfc7c0c366258e23e15cd12a5f89811" category="sidebar">Restaurez à l'emplacement d'origine</block>
+  <block id="25e66e51214e8342374fa891a42988b3" category="sidebar">Restaurez vers un autre emplacement</block>
 </blocks>

@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: task-backup-cloud-native-oracle-data.html 
-keywords: admin role, service account, pre-canned policies, cloud manager, BlueXP, scheduled backups, on-demand backups, create policy, Oracle database, backup limitations 
-summary: 'Créer des sauvegardes planifiées ou à la demande d"une base de données Oracle.' 
+keywords: admin role, service account, pre-canned policies, cloud manager, BlueXP, scheduled backups, on-demand backups, create policy, Oracle database, backup limitations, RMAN, catalog, RMAN catalog 
+summary: Créez une règle avec ou sans activer RMAN, attribuez-la, puis créez des sauvegardes planifiées ou à la demande de la base de données Oracle. 
 ---
 = Sauvegarde des bases de données Oracle cloud natives
 :hardbreaks:
@@ -14,7 +14,9 @@ summary: 'Créer des sauvegardes planifiées ou à la demande d"une base de donn
 
 
 [role="lead"]
-Vous pouvez créer une sauvegarde en attribuant une règle prédéfinie ou la règle que vous avez créée.
+Vous pouvez créer des sauvegardes planifiées ou à la demande en attribuant une règle prédéfinie ou la règle que vous avez créée.
+
+Vous pouvez également cataloguer les sauvegardes de bases de données Oracle à l'aide d'Oracle Recovery Manager (RMAN) si vous avez activé le catalogage lors de la création d'une stratégie. Le catalogage (RMAN) est pris en charge uniquement pour les bases de données qui se trouvent sur Azure NetApp Files. Les sauvegardes cataloguées peuvent être utilisées ultérieurement pour les opérations de restauration au niveau des blocs ou de restauration à un point dans le temps de l'espace de stockage. La base de données doit être montée ou supérieure pour le catalogage.
 
 
 
@@ -29,7 +31,8 @@ Vous pouvez créer des stratégies si vous ne souhaitez pas modifier les straté
 . Spécifiez un nom de stratégie.
 . (Facultatif) modifiez le format du nom de la sauvegarde.
 . Spécifiez la planification et les informations de conservation.
-. (Facultatif) Entrez le chemin d'accès et le délai d'expiration du post-script qui seront exécutés après la sauvegarde réussie pour copier le snapshot sur le stockage secondaire.
+. Si vous avez sélectionné _Daily_ et _Weekly_ comme planning et que vous souhaitez activer le catalogage RMAN, sélectionnez *Catalog backup with Oracle Recovery Manager (RMAN)*.
+. (Facultatif) Entrez le chemin d'accès et le délai d'expiration du post-script qui seront exécutés après la sauvegarde réussie, comme la copie de l'instantané sur le stockage secondaire.
 +
 Vous pouvez également spécifier les arguments.
 
@@ -75,17 +78,37 @@ Spécifie le nom de la stratégie utilisée pour créer la sauvegarde.
  a| 
 SC_PRIMARY_DATA_VOLUME_FULL_PATH
  a| 
-Spécifie les chemins de volume de données concaténés avec "," comme délimiteur. Pour les volumes ANF, les informations sont concaténées avec "/" _/{anfaccount}/{subscription_ID}/{Resource_group}/{Capacity_pool}/{volumname}_
+Spécifie les chemins de volume de données concaténés avec "," comme délimiteur.
+Pour les volumes Azure NetApp Files, les informations sont concaténées à l'aide de « / ».
+_ /Abonnements/{subscription_ID}/resourceGroups/{Resource_group}/providers/{Provider}/netAppAccounts/{anfaccount}/capacityPools/{Capacity_pool}/volumes/{volumName}_
 
 
 
  a| 
 SC_PRIMARY_ARCHIVELOGS_VOLUME_FULL_PATH
  a| 
-Spécifie les chemins du volume du journal d'archives concaténés avec "," comme délimiteur. Pour les volumes ANF, les informations concaténées avec « / » _/{anfaccount}/{subscription_ID}/{Resource_group}/{Capacity_pool}/{volumname}_
+Spécifie les chemins du volume du journal d'archives concaténés avec "," comme délimiteur.
+Pour les volumes Azure NetApp Files, les informations sont concaténées avec « / ».
+_ /Abonnements/{subscription_ID}/resourceGroups/{Resource_group}/providers/{Provider}/netAppAccounts/{anfaccount}/capacityPools/{Capacity_pool}/volumes/{volumName}_
 
 |===
 . Cliquez sur *Créer*.
+
+
+
+
+== Configurer le référentiel de catalogue RMAN
+
+Vous pouvez configurer la base de données du catalogue de restauration en tant que référentiel du catalogue RMAN. Si vous ne configurez pas le référentiel, par défaut, le fichier de contrôle de la base de données cible devient le référentiel de catalogue RMAN.
+
+.Avant de commencer
+Vous devez enregistrer manuellement la base de données cible dans la base de données du catalogue RMAN.
+
+.Étapes
+. Dans la page applications, cliquez sur image:icon-action.png["pour sélectionner l'action"] > *Afficher les détails*.
+. Dans la section Détails de la base de données, cliquez sur image:icon-edit-pen.png["modification de la fenêtre"] Pour configurer le référentiel du catalogue RMAN.
+. Spécifiez les informations d'identification pour cataloguer les sauvegardes avec RMAN et le nom TNS (transparent Network Substrate) de la base de données de restauration de catalogue.
+. Cliquez sur *configurer*.
 
 
 
@@ -105,7 +128,7 @@ Si la base de données est protégée à l'aide d'une ou de plusieurs stratégie
 
 . Sélectionnez la stratégie et cliquez sur *affecter*.
 +
-Les sauvegardes seront créées conformément à la planification définie dans la stratégie.
+Les sauvegardes seront créées conformément à la planification définie dans la stratégie. Si vous avez activé le catalogue RMAN dans la règle, la sauvegarde à la fin du flux de travail lance l'opération de catalogage comme tâche séparée. La progression du catalogage est visible à partir du moniteur de tâches. Une fois le catalogage réussi, *Backup Details* affiche l'état du catalogue pour chaque sauvegarde.
 
 +
 
@@ -123,6 +146,9 @@ Après avoir affecté la stratégie, vous pouvez créer une sauvegarde à la dem
 
 . Dans la page applications, cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à l'application et cliquer sur *On-Demand Backup*.
 . Si plusieurs stratégies sont attribuées à l'application, sélectionnez la stratégie, le niveau de rétention, puis cliquez sur *Créer une sauvegarde*.
++
+Si vous avez activé le catalogue RMAN dans la règle, la sauvegarde à la fin du flux de travail lance l'opération de catalogage comme tâche séparée. La progression du catalogage est visible à partir du moniteur de tâches. Une fois le catalogage réussi, *Backup Details* affiche l'état du catalogue pour chaque sauvegarde.
+
 
 
 

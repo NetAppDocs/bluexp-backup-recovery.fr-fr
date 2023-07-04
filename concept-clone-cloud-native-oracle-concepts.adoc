@@ -56,6 +56,8 @@ Avant de cloner une base de données Oracle, vous devez vous assurer que les pr�
 * Le clonage des bases de données résidant sur Azure NetApp Files n'est pas pris en charge.
 * Le clonage des bases de données résidant sur qtree n'est pas pris en charge.
 * La sauvegarde d'une base de données clonée n'est pas prise en charge.
+* Si des sauvegardes automatiques quotidiennes sont activées sur Amazon FSX pour NetApp ONTAP, les volumes clonés sur Amazon FSX pour NetApp ONTAP ne peuvent pas être supprimés de l'interface utilisateur BlueXP, car FSX aurait créé des sauvegardes sur les volumes clonés.
+Vous devez supprimer les volumes clonés après la suppression de toutes les sauvegardes du volume dans l'interface utilisateur FSX, puis supprimer les clones de l'option force de l'interface utilisateur BlueXP.
 
 
 

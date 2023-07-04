@@ -16,8 +16,7 @@ summary: 'Réalisez quelques étapes pour sauvegarder des données d"application
 [role="lead"]
 Procédez en quelques étapes pour sauvegarder les données d'applications de ONTAP vers Microsoft Azure.
 
-*Étapes*
-
+.Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.
 . Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à l'application et cliquer sur *Activer la sauvegarde*.
 . Dans la page attribuer une stratégie, sélectionnez la stratégie et cliquez sur *Suivant*.

@@ -14,51 +14,102 @@ summary: Vous pouvez restaurer la base de données SQL Server depuis le cloud ve
 
 
 [role="lead"]
-Vous pouvez restaurer la base de données SQL Server sur le même hôte ou sur l'autre hôte. La restauration des sauvegardes de journaux et du réamorçage des groupes de disponibilité ne sont pas prises en charge.
+Vous pouvez restaurer la base de données SQL Server à l'emplacement d'origine ou à l'autre emplacement.
 
 
-IMPORTANT: La restauration de fichiers uniques (SFR) n'est pas prise en charge.
+NOTE: La restauration de fichiers uniques (SFR), la récupération des sauvegardes de journaux et la réamorçage des groupes de disponibilité ne sont pas pris en charge.
 
-*Étapes*
-
+.Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.
 . Dans le champ *Filtrer par*, sélectionnez le filtre *Type* et sélectionnez *SQL* dans la liste déroulante.
 . Cliquez sur *Afficher les détails* pour afficher toutes les sauvegardes disponibles.
 . Sélectionnez la sauvegarde et cliquez sur *Restaurer*.
-. Sélectionnez l'emplacement où vous souhaitez restaurer les fichiers de base de données.
+. Dans la page Options de restauration, spécifiez l'emplacement où vous souhaitez restaurer les fichiers de base de données.
 +
 |===
 | Si... | Procédez comme ça... 
 
 
  a| 
-Souhaitez restaurer la base de données sur le même hôte SQL Server que celui sur lequel les sauvegardes ont été créées
+Vous souhaitez restaurer l'emplacement d'origine
  a| 
-Sélectionnez *Restaurer la base de données sur le même hôte que celui sur lequel la sauvegarde a été créée*.
+.. Sélectionnez *Restaurer à l'emplacement d'origine*.
+.. Si le snapshot est en stockage d'archives, sélectionnez la priorité de restauration de vos données à partir du stockage d'archives.
++
+
+NOTE: Vous devez spécifier la priorité uniquement si vous utilisez Amazon Web Services ou Microsoft Azure en tant que fournisseur cloud.
+
+.. Cliquez sur *Suivant*.
+
 
 
 
  a| 
-Vous souhaitez restaurer la base de données sur un serveur SQL différent sur le même hôte ou sur un autre hôte sur lequel des sauvegardes ont été créées
+Vous souhaitez effectuer une restauration temporaire dans un autre espace de stockage, puis copier les fichiers restaurés à leur emplacement d'origine
  a| 
-Sélectionnez *Restaurer la base de données sur un autre hôte*.
+.. Sélectionnez *Restaurer à l'emplacement d'origine*.
+.. Si le snapshot est en stockage d'archives, sélectionnez la priorité de restauration de vos données à partir du stockage d'archives.
++
 
-Sélectionnez un nom d'hôte, indiquez un nom de base de données (facultatif), sélectionnez une instance et spécifiez les chemins de restauration.
+NOTE: Vous devez spécifier la priorité uniquement si vous utilisez Amazon Web Services ou Microsoft Azure en tant que fournisseur cloud.
 
+.. Sélectionnez *Modifier l'emplacement de stockage*.
+.. Cliquez sur *Suivant*.
+.. Dans la page mappage du stockage, spécifiez les détails de l'emplacement de stockage secondaire où les données restaurées à partir du magasin d'objets seront stockées temporairement.
+.. Cliquez sur *Suivant*.
+
+
+
+
+ a| 
+Restauration dans un autre emplacement
+ a| 
+.. Sélectionnez *Restaurer à un autre emplacement*.
+.. Si le snapshot est en stockage d'archives, sélectionnez la priorité de restauration de vos données à partir du stockage d'archives.
++
+
+NOTE: Vous devez spécifier la priorité uniquement si vous utilisez Amazon Web Services ou Microsoft Azure en tant que fournisseur cloud.
+
+.. Cliquez sur *Suivant*.
+.. Sur la page hôte de destination, sélectionnez un nom d'hôte, indiquez un nom de base de données (facultatif), sélectionnez une instance et spécifiez les chemins de restauration.
++
 
 NOTE: L'extension de fichier fournie dans le chemin alternatif doit être identique à celle du fichier de base de données d'origine.
 
-Si l'option *Restaurer la base de données sur un autre hôte* n'est pas affichée dans la page Restaurer l'étendue, effacez le cache du navigateur.
+.. Cliquez sur *Suivant*.
+
+
+
+
+ a| 
+Vous souhaitez effectuer une restauration temporaire sur un autre stockage, puis copier les fichiers restaurés à l'autre emplacement
+ a| 
+.. Sélectionnez *Restaurer à un autre emplacement*.
+.. Si le snapshot est en stockage d'archives, sélectionnez la priorité de restauration de vos données à partir du stockage d'archives.
++
+
+NOTE: Vous devez spécifier la priorité uniquement si vous utilisez Amazon Web Services ou Microsoft Azure en tant que fournisseur cloud.
+
+.. Sélectionnez *Modifier l'emplacement de stockage*.
+.. Cliquez sur *Suivant*.
+.. Dans la page mappage du stockage, spécifiez les détails de l'emplacement de stockage secondaire où les données restaurées à partir du magasin d'objets seront stockées temporairement.
+.. Cliquez sur *Suivant*.
+.. Sur la page hôte de destination, sélectionnez un nom d'hôte, indiquez un nom de base de données (facultatif), sélectionnez une instance et spécifiez les chemins de restauration.
++
+
+NOTE: L'extension de fichier fournie dans le chemin alternatif doit être identique à celle du fichier de base de données d'origine.
+
+.. Cliquez sur *Suivant*.
+
 
 |===
-. Si le snapshot est en stockage d'archivage, spécifiez la priorité de restauration des données à partir du stockage d'archivage.
-. Sur la page *Options de pré-restauration*, sélectionnez l'une des options suivantes :
+. Dans la case *pré-opérations*, sélectionnez l'une des options suivantes :
 +
 ** Sélectionnez *Ecraser la base de données du même nom pendant la restauration* pour restaurer la base de données du même nom.
 ** Sélectionnez *conserver les paramètres de réplication de base de données SQL* pour restaurer la base de données et conserver les paramètres de réplication existants.
 
 
-. Sur la page *Options de post-restauration*, pour spécifier l'état de la base de données pour restaurer des journaux transactionnels supplémentaires, sélectionnez l'une des options suivantes :
+. Dans la section *Post-Operations*, pour spécifier l'état de la base de données pour la restauration de journaux transactionnels supplémentaires, sélectionnez l'une des options suivantes :
 +
 ** Sélectionnez *opérationnel, mais indisponible* si vous restaurez maintenant toutes les sauvegardes nécessaires.
 +
@@ -77,5 +128,6 @@ Si l'option Annuler le répertoire est activée, davantage de journaux de transa
 
 
 
+. Cliquez sur *Suivant*.
 . Vérifiez les détails et cliquez sur *Restaurer*.
 

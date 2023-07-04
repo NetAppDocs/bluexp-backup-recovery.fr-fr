@@ -18,11 +18,22 @@ En cas de perte de données, vous pouvez restaurer les fichiers de données et n
 
 *Avant de commencer*
 
-Le système SAP HANA doit être dans un état arrêté. Si le système SAP HANA est en cours d'exécution, vous pouvez fournir un médecin pour arrêter le système.
+* Le système SAP HANA doit être dans un état arrêté.
+* Si le système SAP HANA est en cours d'exécution, vous pouvez fournir un médecin pour arrêter le système.
+
 
 *À propos de cette tâche*
 
-Si vous activez les sauvegardes sur un volume, une opération SnapRestore de fichier unique est effectuée.
+* Si vous activez les sauvegardes ANF sur un volume, une opération SnapRestore à fichier unique est effectuée.
+* Pour les volumes non-données et les volumes non-données globaux, une opération de restauration de connexion et de copie est effectuée.
++
+** Les valeurs de qualité de service (QoS) pour l'opération de connexion et de restauration de copie sont récupérées sur les volumes source des volumes non-données ou des volumes non-données globaux.
+
+
+
+
+
+NOTE: La QoS s'applique uniquement aux pools de capacité de type « Manuel ».
 
 *Étapes*
 
@@ -75,6 +86,12 @@ Après une restauration, restaurez manuellement le système SAP HANA ou fourniss
 
 == Restaurez un volume sans données
 
+*À propos de cette tâche*
+
+Pour une opération de connexion et de restauration de copie, accédez au portail Microsoft Azure, sélectionnez le volume, cliquez sur *Modifier* et activez *Masquer le chemin de l'instantané*.
+
+*Étapes*
+
 . Dans la page *applications*, sélectionnez Volume sans données dans la liste déroulante.
 . Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à la sauvegarde que vous souhaitez restaurer, puis cliquez sur *Restaurer*.
 
@@ -82,6 +99,10 @@ Après une restauration, restaurez manuellement le système SAP HANA ou fourniss
 
 
 == Restaurez le volume global sans données
+
+*À propos de cette tâche*
+
+Pour une opération de connexion et de restauration de copie, accédez au portail Microsoft Azure, sélectionnez le volume, cliquez sur *Modifier* et activez *Masquer le chemin de l'instantané*.
 
 *Étapes*
 
