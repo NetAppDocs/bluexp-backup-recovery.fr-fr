@@ -20,7 +20,7 @@ Quelques remarques avant de lire plus loin :
 
 * Si vous avez déjà souscrit à l'abonnement PAYGO (paiement basé sur l'utilisation) dans le marché de votre fournisseur de cloud pour un système Cloud Volumes ONTAP, vous êtes également automatiquement abonné à la sauvegarde et à la restauration BlueXP. Vous n'aurez pas besoin de vous abonner à nouveau.
 * BYOL (Bring Your Own License) de sauvegarde et de restauration BlueXP est une licence flottante que vous pouvez utiliser sur tous les systèmes associés à votre compte BlueXP. Par conséquent, si vous disposez de suffisamment de capacité de sauvegarde sur une licence BYOL, vous n'avez pas besoin d'acheter une autre licence BYOL.
-* Si vous utilisez une licence BYOL, il est également recommandé d'souscrire à un abonnement PAYGO. Si vous sauvegardez plus de données que ce que votre licence BYOL est autorisé, la sauvegarde se poursuit via votre abonnement au paiement à l'utilisation - aucune perturbation du service n'est possible.
+* Si vous utilisez une licence BYOL, il est également recommandé d'souscrire à un abonnement PAYGO. Si vous sauvegardez un nombre de données supérieur à celui autorisé par votre licence BYOL ou si la durée de votre licence expire, la sauvegarde se poursuit avec votre abonnement avec paiement basé sur l'utilisation - aucune interruption de service n'est constatée.
 * La sauvegarde de données ONTAP sur site vers StorageGRID nécessite une licence BYOL, mais les besoins en espace de stockage du fournisseur cloud sont réduits.
 
 
@@ -114,6 +114,8 @@ ifdef::gcp[]
 Si vous utilisez GCP, contactez votre ingénieur commercial NetApp pour acheter un contrat annuel. Le contrat est disponible en tant qu'offre privée dans Google Cloud Marketplace. Une fois que NetApp a partagé l'offre privée avec vous, vous pouvez sélectionner le plan annuel lorsque vous vous abonnez à partir de Google Cloud Marketplace lors de l'activation de la sauvegarde et de la restauration BlueXP.
 
 endif::gcp[]
+
+Si vous avez un contrat annuel depuis un marché, toute la consommation de sauvegarde et de restauration BlueXP est facturée sur ce contrat. Vous ne pouvez pas combiner un contrat annuel de vente avec un contrat BYOL.
 
 
 

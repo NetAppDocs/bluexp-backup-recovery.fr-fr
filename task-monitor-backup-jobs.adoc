@@ -97,7 +97,7 @@ Vous pouvez afficher des informations détaillées telles que le type de tâche 
 Les détails des tâches de restauration affichent des détails sur un fournisseur cible de sauvegarde (Amazon Web Services, Microsoft Azure, Google Cloud, sur site), un nom de compartiment S3, Nom du SVM, nom du volume source, volume de destination, étiquette Snapshot, nombre d'objets restaurés, noms de fichiers, tailles de fichiers, date de la dernière modification et chemin complet du fichier.
 
 
-NOTE: Les détails de la tâche s'affichent uniquement pour les tâches de sauvegarde et de restauration des volumes ONTAP. Les détails de la procédure de sauvegarde planifiée s'affichent uniquement pour les systèmes Cloud Volumes ONTAP commençant par ONTAP 9.13.0. Les détails du travail s'affichent pour les travaux en cours et terminés.
+NOTE: Les détails des tâches apparaissent pour les tâches de sauvegarde ONTAP (ad hoc et planifiées, les tâches planifiées n'apparaissant que pour ONTAP 9.13.0 ou version ultérieure) et toutes les tâches de restauration. Les détails du travail s'affichent pour les travaux en cours et terminés.
 
 .Étapes
 . Sélectionnez l'onglet *surveillance des travaux*.
@@ -145,9 +145,9 @@ Le type de tâche « cycle de vie de sauvegarde » capture toutes les tâches de
 
 Le centre de notification BlueXP assure le suivi de la progression des tâches de sauvegarde et de restauration que vous avez lancées afin de vérifier que l'opération a réussi ou non.
 
-Outre l'affichage des alertes dans la liste de notifications BlueXP, vous pouvez configurer BlueXP pour envoyer des notifications par e-mail en tant qu'alertes afin que vous puissiez être informé de l'activité système importante, même si vous n'êtes pas connecté au système. https://docs.netapp.com/us-en/bluexp-setup-admin/task-monitor-cm-operations.html["En savoir plus sur le Centre de notification et sur la manière d'envoyer des e-mails d'alerte pour les tâches de sauvegarde et de restauration"^].
+Outre l'affichage des alertes dans le Centre de notification, vous pouvez configurer BlueXP pour envoyer certains types de notifications par e-mail en tant qu'alertes afin que vous puissiez être informé de l'activité système importante, même si vous n'êtes pas connecté au système. https://docs.netapp.com/us-en/bluexp-setup-admin/task-monitor-cm-operations.html["En savoir plus sur le Centre de notification et sur la manière d'envoyer des e-mails d'alerte pour les tâches de sauvegarde et de restauration"^].
 
-Les événements suivants déclenchent des alertes par e-mail :
+Le Centre de notification affiche de nombreux événements, mais seuls les événements de sauvegarde et de restauration suivants déclenchent des alertes par e-mail :
 
 [cols="3a,1d"]
 |===
@@ -189,13 +189,13 @@ Tâche de restauration terminée, mais avec des avertissements
 | Erreur 
 |===
 
-NOTE: Depuis Cloud Volumes ONTAP 9.13.0, toutes les alertes s'affichent. Pour les systèmes avec Cloud Volumes ONTAP 9.13.0 et ONTAP sur site, seule l'alerte liée au travail de restauration terminé avec des avertissements s'affiche.
+NOTE: Depuis ONTAP 9.13.0, toutes les alertes apparaissent pour les systèmes Cloud Volumes ONTAP et ONTAP sur site. Pour les systèmes avec Cloud Volumes ONTAP 9.13.0 et ONTAP sur site, seule l'alerte liée à « tâche de restauration terminée, mais avec avertissements » s'affiche.
 
 Par défaut, les administrateurs de compte BlueXP reçoivent des e-mails pour toutes les alertes « critiques » et « recommandations ». Par défaut, tous les autres utilisateurs et destinataires sont configurés pour ne pas recevoir d'e-mails de notification. Il est possible d'envoyer des e-mails aux utilisateurs BlueXP qui font partie de votre compte Cloud NetApp, ou à tous les destinataires qui doivent avoir connaissance des activités de sauvegarde et de restauration.
 
-Pour recevoir les alertes par e-mail de sauvegarde et de restauration BlueXP, vous devez sélectionner les types de sévérité des notifications « critique », « Avertissement » et « erreur ».
+Pour recevoir les alertes par e-mail de sauvegarde et de restauration BlueXP, vous devez sélectionner les types de sévérité des notifications « critique », « Avertissement » et « erreur » dans la page Paramètres des alertes et des notifications.
 
-https://docs.netapp.com/us-en/bluexp-setup-admin/task-monitor-cm-operations.html["En savoir plus sur le Centre de notification et sur la manière d'envoyer des e-mails d'alerte pour les tâches de sauvegarde et de restauration"^].
+https://docs.netapp.com/us-en/bluexp-setup-admin/task-monitor-cm-operations.html["Découvrez comment envoyer des e-mails d'alerte pour les tâches de sauvegarde et de restauration"^].
 
 .Étapes
 . Sélectionnez l'onglet *surveillance des travaux*.

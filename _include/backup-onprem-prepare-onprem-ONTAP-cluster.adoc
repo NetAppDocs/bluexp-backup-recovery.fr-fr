@@ -1,0 +1,43 @@
+= Découvrez vos systèmes ONTAP dans BlueXP
+:allow-uri-read: 
+
+
+Vous devez préparer votre système ONTAP source sur site et tous les systèmes ONTAP ou Cloud Volumes ONTAP secondaires sur site.
+
+La préparation de vos clusters ONTAP implique les étapes suivantes :
+
+* Découvrez vos systèmes ONTAP dans BlueXP
+* Vérifiez la configuration système requise pour ONTAP
+* Vérifiez les exigences réseau de ONTAP pour la sauvegarde des données dans un stockage objet
+* Vérifiez les exigences de mise en réseau ONTAP pour la réplication de volumes
+
+
+
+
+=== Découvrez vos systèmes ONTAP dans BlueXP
+
+Votre système ONTAP source sur site et tous les systèmes ONTAP ou Cloud Volumes ONTAP sur site secondaires doivent être disponibles dans la fenêtre BlueXP Canvas.
+
+Vous devez connaître l'adresse IP de gestion du cluster et le mot de passe permettant au compte utilisateur admin d'ajouter le cluster.
+https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Découvrez comment détecter un cluster"^].
+
+
+
+=== Vérifiez la configuration système requise pour ONTAP
+
+Assurez-vous que les exigences ONTAP suivantes sont respectées :
+
+* Minimum de ONTAP 9.8 ; ONTAP 9.8P13 et ultérieur est recommandé.
+* Une licence SnapMirror (incluse dans le bundle Premium ou Data protection Bundle).
++
+*Remarque :* le « bundle de cloud hybride » n'est pas requis lors de l'utilisation de la sauvegarde et de la restauration BlueXP.
+
++
+Découvrez comment https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["gérez les licences du cluster"^].
+
+* L'heure et le fuseau horaire sont correctement réglés. Découvrez comment https://docs.netapp.com/us-en/ontap/system-admin/manage-cluster-time-concept.html["configurez l'heure du cluster"^].
+* Si vous allez répliquer des données, vérifiez que les volumes source et de destination exécutent des versions ONTAP compatibles avant de répliquer des données.
++
+https://docs.netapp.com/us-en/ontap/data-protection/compatible-ontap-versions-snapmirror-concept.html["Afficher les versions compatibles ONTAP pour les relations SnapMirror"^].
+
+

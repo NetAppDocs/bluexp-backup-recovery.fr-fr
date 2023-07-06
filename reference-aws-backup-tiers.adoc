@@ -24,7 +24,10 @@ Lorsque des fichiers de sauvegarde sont créés initialement, ils sont stockés 
 
 Si vos clusters source exécutent ONTAP 9.10.1 ou version ultérieure, vous pouvez choisir de classer les sauvegardes vers un stockage _S3 Glacier_ ou _S3 Glacier Deep Archive_ après un certain nombre de jours (généralement plus de 30 jours) pour optimiser les coûts. Les données de ces niveaux ne sont pas accessibles immédiatement lorsque cela s'avère nécessaire. Par conséquent, les coûts de récupération sont plus élevés, vous devez déterminer la fréquence à laquelle vous devrez peut-être restaurer les données à partir de ces fichiers de sauvegarde archivés. Reportez-vous à la section à propos de <<Restauration des données à partir du stockage d'archivage,restauration des données à partir du stockage d'archivage>>.
 
-Si vous choisissez _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans votre première règle de sauvegarde lors de l'activation de la sauvegarde et de la restauration BlueXP, ce Tier sera le seul Tier d'archivage disponible pour les futures politiques de sauvegarde de ce cluster. Si vous sélectionnez aucun niveau d'archivage dans votre première stratégie de sauvegarde, alors _S3 Glacier_ sera votre seule option d'archivage pour les futures stratégies.
+* Si vous ne sélectionnez aucun Tier d'archivage dans votre première stratégie de sauvegarde lors de l'activation de la sauvegarde et de la restauration BlueXP, _S3 Glacier_ sera votre seule option d'archivage pour les futures stratégies.
+* Si vous sélectionnez _S3 Glacier_ dans votre première règle de sauvegarde, vous pouvez passer au niveau _S3 Glacier Deep Archive_ pour les futures règles de sauvegarde de ce cluster.
+* Si vous sélectionnez _S3 Glacier Deep Archive_ dans votre première règle de sauvegarde, ce niveau sera le seul Tier d'archivage disponible pour les futures règles de sauvegarde de ce cluster.
+
 
 Notez que lorsque vous configurez la sauvegarde et la restauration BlueXP avec ce type de règle de cycle de vie, vous ne devez pas configurer de règles de cycle de vie lors de la configuration du compartiment dans votre compte AWS.
 

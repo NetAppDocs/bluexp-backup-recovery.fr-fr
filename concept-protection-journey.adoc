@@ -1,0 +1,257 @@
+---
+sidebar: sidebar 
+permalink: concept-protection-journey.html 
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, on-premises ontap, onprem, replication, backup and recovery 
+summary: 'Le service de sauvegarde et de restauration BlueXP vous permet de créer jusqu"à trois copies de vos volumes source pour protéger vos données. Lorsque vous activez ce service sur vos volumes, vous pouvez sélectionner de nombreuses options. Vous devez donc revoir vos choix pour être prêt.' 
+---
+= Planifiez votre parcours en matière de protection
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Le service de sauvegarde et de restauration BlueXP vous permet de créer jusqu'à trois copies de vos volumes source pour protéger vos données. Lorsque vous activez ce service sur vos volumes, vous pouvez sélectionner de nombreuses options. Vous devez donc revoir vos choix pour être prêt.
+
+Nous allons passer en revue les options suivantes :
+
+* Quelles fonctionnalités de protection utiliserez-vous : copies Snapshot, volumes répliqués et/ou sauvegarde dans le cloud
+* Quelle architecture de sauvegarde utiliserez-vous : une sauvegarde en cascade ou « Fan-Out » de vos volumes
+* Utiliserez-vous les règles de sauvegarde par défaut ou devez-vous créer des règles personnalisées avant de commencer
+* Souhaitez-vous que le service crée des compartiments cloud pour vous ou créez-vous des conteneurs de stockage objet avant de commencer
+* Quel mode de déploiement BlueXP Connector utilisez-vous (mode standard, restreint ou privé) ?
+
+
+
+
+== Quelles fonctions de protection utiliserez-vous
+
+Avant de sélectionner les fonctions que vous utiliserez, voici une brève explication de ce que chaque fonction fait et du type de protection qu'elle fournit.
+
+[cols="20,70"]
+|===
+| Type de sauvegarde | Description 
+
+
+| Snapshot | Crée une image en lecture seule et instantanée d'un volume au sein du volume source en tant que copie Snapshot. Vous pouvez utiliser la copie Snapshot pour restaurer des fichiers individuels ou pour restaurer l'intégralité du contenu d'un volume. 
+
+
+| La réplication | Crée une copie secondaire des données sur un autre système de stockage ONTAP et met continuellement à jour les données secondaires. Vous disposez de données actualisées et accessibles dès que vous en avez besoin. 
+
+
+| La sauvegarde dans le cloud | Crée des sauvegardes de vos données dans le cloud à des fins de protection et d'archivage à long terme. Si nécessaire, vous pouvez restaurer un volume, un dossier ou des fichiers individuels de la sauvegarde vers un environnement de travail identique ou différent. 
+|===
+Les snapshots constituent la base de toutes les méthodes de sauvegarde et ils sont tenus d'utiliser le service de sauvegarde et de restauration. Une copie Snapshot est une image instantanée d'un volume en lecture seule. L'image consomme un espace de stockage minimal et entraîne une surcharge minime des performances, car elle enregistre uniquement les modifications apportées aux fichiers depuis la dernière copie Snapshot. La copie Snapshot créée sur votre volume permet de maintenir la synchronisation entre le volume répliqué et le fichier de sauvegarde et les modifications apportées au volume source, comme illustré dans la figure.
+
+image:diagram-321-overview.png["Un diagramme illustrant la façon dont les fichiers de sauvegarde existent sur le système source sous forme de copies Snapshot, de volumes répliqués sur le système de stockage secondaire et de fichiers de sauvegarde dans le stockage objet."]
+
+Vous pouvez choisir de créer à la fois des volumes répliqués sur un autre système de stockage ONTAP et des fichiers de sauvegarde dans le cloud. Ou vous pouvez simplement créer des volumes répliqués ou des fichiers de sauvegarde. C'est votre choix.
+
+En résumé, il s'agit des flux de protection valides que vous pouvez créer pour un volume, ou tous les volumes, dans votre environnement de travail ONTAP :
+
+* Volume source -> copie Snapshot -> volume répliqué -> fichier de sauvegarde
+* Volume source -> copie Snapshot -> fichier de sauvegarde
+* Volume source -> copie Snapshot -> volume répliqué
+
+
+
+NOTE: La création initiale d'un volume répliqué ou d'un fichier de sauvegarde inclut une copie complète des données source, appelée transfert de base. Les transferts suivants contiennent uniquement des copies différentielles des données source (l'instantané).
+
+
+
+=== Comparaison des différentes méthodes de sauvegarde
+
+Le tableau suivant présente une comparaison généralisée des trois méthodes de sauvegarde. Si l'espace de stockage objet est généralement moins cher que votre stockage sur disque sur site, si vous pensez pouvoir restaurer fréquemment des données à partir du cloud, les frais de sortie des fournisseurs cloud peuvent réduire certaines de vos économies. Vous devez identifier la fréquence à laquelle vous devez restaurer les données à partir des fichiers de sauvegarde dans le cloud.
+
+En plus de ces critères, le stockage cloud offre des options de sécurité supplémentaires si vous utilisez la fonction DataLock et de protection contre les ransomware, et des économies supplémentaires en sélectionnant des classes de stockage d'archivage pour les fichiers de sauvegarde plus anciens. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["En savoir plus sur le verrouillage des données et la protection contre les attaques par ransomware"] et link:concept-cloud-backup-policies.html#archival-storage-settings["paramètres de stockage d'archives"].
+
+[cols="18,18,22,18,22"]
+|===
+| Type de sauvegarde | Vitesse des sauvegardes | Coût de sauvegarde | Vitesse de restauration | Coût de restauration 
+
+
+| *Instantané* | Élevée | Faible (espace disque) | Élevée | Faible 
+
+
+| *Réplication* | Moyen | Moyen (espace disque) | Moyen | Moyen (réseau) 
+
+
+| *Sauvegarde cloud* | Faible | Faible (espace objet) | Faible | Élevé (frais de fournisseur) 
+|===
+
+
+== Quelle architecture de sauvegarde utiliserez-vous
+
+Lors de la création de volumes répliqués et de fichiers de sauvegarde, vous pouvez choisir une architecture « fan-out » ou « cascade » pour sauvegarder vos volumes.
+
+Une architecture « Fan-Out » transfère la copie Snapshot de manière indépendante vers le système de stockage de destination et l'objet de sauvegarde dans le cloud.
+
+image:diagram-321-fanout-detailed.png["Diagramme illustrant comment une copie Snapshot d'un volume est utilisée pour créer et mettre à jour un volume répliqué et un fichier de sauvegarde."]
+
+Une architecture _cascade_ transfère d'abord la copie Snapshot vers le système de stockage de destination, puis ce système transfère la copie vers l'objet de sauvegarde dans le cloud.
+
+image:diagram-321-cascade-detailed.png["Diagramme illustrant comment une copie Snapshot d'un volume est utilisée pour créer et mettre à jour un volume répliqué et un fichier de sauvegarde."]
+
+
+
+=== Comparaison des différentes architectures possibles
+
+Ce tableau fournit une comparaison des architectures « Fan-Out » et « Cascade ».
+
+[cols="50,50"]
+|===
+| « Fan-Out » | Cascade 
+
+
+| Faible impact sur les performances du système source, car il envoie des copies Snapshot à 2 systèmes distincts | Moins d'impact sur les performances du système de stockage source car la copie Snapshot n'est envoyée qu'une seule fois 
+
+
+| Plus facile à configurer car toutes les règles, la mise en réseau et les configurations ONTAP sont effectuées sur le système source | Une partie de la mise en réseau et de la configuration ONTAP doit également être effectuée à partir du système secondaire. 
+|===
+
+
+== Utiliserez-vous les règles de sauvegarde par défaut pour les instantanés, les réplications et les sauvegardes
+
+Vous pouvez utiliser les règles par défaut fournies par NetApp pour créer vos sauvegardes ou créer des règles personnalisées. Lorsque vous activez le service de sauvegarde et de restauration de vos volumes à l'aide de l'assistant d'activation, vous pouvez sélectionner parmi les règles par défaut et toutes les autres règles qui existent déjà dans l'environnement de travail (Cloud Volumes ONTAP ou système ONTAP sur site). Si vous souhaitez utiliser une stratégie différente de celles existantes, vous devez créer la stratégie avant de lancer l'assistant d'activation.
+
+* La règle Snapshot par défaut crée des copies Snapshot toutes les heures, tous les jours et toutes les semaines, en conservant 6 copies Snapshot toutes les heures, 2 copies quotidiennes et 2 copies hebdomadaires.
+* La règle de réplication par défaut réplique les copies Snapshot quotidiennes et hebdomadaires, en conservant 7 copies Snapshot quotidiennes et 52 copies Snapshot hebdomadaires.
+* La règle de sauvegarde par défaut réplique les copies Snapshot quotidiennes et hebdomadaires, en conservant 7 copies Snapshot quotidiennes et 52 copies Snapshot hebdomadaires.
+
+
+Si vous créez des règles personnalisées pour la réplication ou la sauvegarde, les étiquettes de règles (par exemple, « quotidien » ou « hebdomadaire ») doivent correspondre aux étiquettes figurant dans vos règles Snapshot ou les volumes répliqués et les fichiers de sauvegarde ne seront pas créés. Vous pouvez créer des règles personnalisées à l'aide de System Manager ou de l'interface de ligne de commande ONTAP.
+
+https://docs.netapp.com/us-en/ontap/data-protection/create-snapshot-policy-task.html["Créez une règle de snapshot à l'aide de l'interface de ligne de commandes de ONTAP"^]
+https://docs.netapp.com/us-en/ontap/data-protection/create-custom-replication-policy-concept.html["Créez la règle de réplication à l'aide de l'interface de ligne de commandes de ONTAP"^]
+https://docs.netapp.com/us-en/ontap/task_dp_back_up_to_cloud.html#create-a-custom-cloud-backup-policy["Créez la règle de sauvegarde à l'aide de System Manager"^]
+https://docs.netapp.com/us-en/ontap-cli-9131/snapmirror-policy-create.html#description["Créez une règle de sauvegarde à l'aide de l'interface de ligne de commandes de ONTAP"^]
+
+
+NOTE: Si vous prévoyez de créer des règles personnalisées lors de l'utilisation de l'architecture en cascade, vous devrez créer les règles de sauvegarde sur objet sur le système secondaire où les volumes répliqués seront créés. Si vous utilisez les stratégies par défaut, vous êtes tous définis.
+
+Vous pouvez créer des stratégies de sauvegarde vers le stockage objet dans l'interface utilisateur de sauvegarde et de restauration BleXP. Voir la section pour link:task-manage-backups-ontap.html#add-a-new-backup-policy["ajout d'une nouvelle politique de sauvegarde"] pour plus d'informations. Vous devez créer des règles de réplication et de copies Snapshot à l'aide de System Manager ou de l'interface de ligne de commande de ONTAP.
+
+Voici quelques exemples de commandes de l'interface de ligne de commande de ONTAP qui peuvent vous être utiles si vous créez des règles personnalisées. Notez que vous devez utiliser le _admin_ vserver (machine virtuelle de stockage) en tant que `<vserver_name>` dans ces commandes.
+
+[cols="30,70"]
+|===
+| Description de la politique | Commande 
+
+
+| Sauvegarde simple dans le cloud | `snapmirror policy create -policy <policy_name> -transfer-priority normal -vserver <vserver_name> -create-snapshot-on-source false -type vault`
+`snapmirror policy add-rule -policy <policy_name> -vserver <vserver_name> -snapmirror-label <snapmirror_label> -keep` 
+
+
+| Sauvegardez vos données dans le cloud avec DataLock et la protection contre les ransomware | `snapmirror policy create -policy CloudBackupService-Enterprise -snapshot-lock-mode enterprise -vserver <vserver_name>`
+`snapmirror policy add-rule -policy CloudBackupService-Enterprise -retention-period 30days` 
+
+
+| Sauvegarde dans le cloud avec une classe de stockage d'archivage | `snapmirror policy create -vserver <vserver_name> -policy <policy_name> -archive-after-days <days> -create-snapshot-on-source false -type vault`
+`snapmirror policy add-rule -policy <policy_name> -vserver <vserver_name> -snapmirror-label <snapmirror_label> -keep` 
+
+
+| Réplication simple vers un autre système de stockage | `snapmirror policy create -policy <policy_name> -type async-mirror -vserver <vserver_name>`
+`snapmirror policy add-rule -policy <policy_name> -vserver <vserver_name> -snapmirror-label <snapmirror_label> -keep` 
+|===
+
+NOTE: Seules les règles de copie peuvent être utilisées pour la sauvegarde vers les relations cloud.
+
+
+
+== Souhaitez-vous que le service crée des compartiments cloud pour vous
+
+Lorsque vous créez des fichiers de sauvegarde dans le stockage cloud, par défaut, le service de sauvegarde et de restauration crée les compartiments dans lesquels les fichiers de sauvegarde seront stockés. Vous pouvez créer les compartiments vous-même si vous souhaitez utiliser un certain nom ou attribuer des propriétés spéciales. Si vous souhaitez créer votre propre compartiment, vous devez le créer avant de lancer l'assistant d'activation.
+
+Vous pouvez créer le conteneur à partir de BlueXP ou de votre fournisseur cloud.
+
+* https://docs.netapp.com/us-en/bluexp-s3-storage/task-add-s3-bucket.html["Création de compartiments S3 à partir de BlueXP"]
+* https://docs.netapp.com/us-en/bluexp-blob-storage/task-add-blob-storage.html["Créez des comptes de stockage Azure Blob à partir de BlueXP"]
+* https://docs.netapp.com/us-en/bluexp-google-cloud-storage/task-add-gcp-bucket.html["Créez des compartiments de stockage Google Cloud à partir de BlueXP"]
+
+
+Notez que vous ne pouvez pas créer vos propres compartiments S3 lors de la création de sauvegardes dans des systèmes StorageGRID.
+
+
+
+== Quel mode de déploiement BlueXP Connector utilisez-vous
+
+Si vous utilisez déjà BlueXP pour gérer votre stockage, un connecteur BlueXP a déjà été installé. Si vous prévoyez d'utiliser le même connecteur avec la sauvegarde et la restauration BlueXP, alors vous êtes paré. Si vous devez utiliser un connecteur différent, vous devez l'installer avant de commencer votre implémentation de sauvegarde et de restauration.
+
+BlueXP propose plusieurs modes de déploiement qui vous permettent d'utiliser BlueXP en fonction de vos exigences métier et de sécurité. _Standard mode_ exploite la couche SaaS de BlueXP pour fournir des fonctionnalités complètes, tandis que _restricted mode_ et _private mode_ sont disponibles pour les entreprises ayant des restrictions de connectivité.
+
+https://docs.netapp.com/us-en/bluexp-setup-admin/concept-modes.html["En savoir plus sur les modes de déploiement BlueXP"^].
+https://www.netapp.tv/details/30567["Regardez cette vidéo sur les modes de déploiement BlueXP"].
+
+
+
+=== Prise en charge des sites avec une connectivité Internet complète
+
+Lorsque la sauvegarde et la restauration BlueXP sont utilisées dans un site doté d'une connectivité Internet complète (également appelé « mode standard » ou « mode SaaS »), vous pouvez créer des volumes répliqués sur tous les systèmes ONTAP ou Cloud Volumes ONTAP sur site gérés par BlueXP, en outre, vous pouvez créer des fichiers de sauvegarde sur un stockage objet dans n'importe quel fournisseur cloud pris en charge. link:concept-ontap-backup-to-cloud.html#supported-backup-destinations["Consultez la liste complète des destinations de sauvegarde prises en charge"].
+
+Pour obtenir la liste des emplacements de connecteur valides, reportez-vous à la rubrique de sauvegarde du fournisseur cloud dans lequel vous prévoyez de créer des fichiers de sauvegarde. Il existe certaines restrictions dans lesquelles le connecteur doit être installé manuellement sur une machine Linux ou déployé dans un fournisseur de cloud spécifique.
+
+ifdef::aws[]
+
+* link:task-backup-to-s3.html["Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3"].
+* link:task-backup-onprem-to-aws.html["Sauvegarde des données ONTAP sur site dans Amazon S3"].
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+* link:task-backup-to-azure.html["Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob"].
+* link:task-backup-onprem-to-azure.html["Sauvegarde des données ONTAP sur site dans Azure Blob"].
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* link:task-backup-to-gcp.html["Sauvegardez les données Cloud Volumes ONTAP dans Google Cloud"].
+* link:task-backup-onprem-to-gcp.html["Sauvegarde des données ONTAP sur site dans Google Cloud"].
+
+
+endif::gcp[]
+
+* link:task-backup-onprem-private-cloud.html["Sauvegarde des données ONTAP sur site dans StorageGRID"].
+
+
+
+
+=== Prise en charge des sites avec une connectivité Internet limitée
+
+La sauvegarde et la restauration BlueXP peuvent être utilisées dans un site doté d'une connectivité Internet limitée (également appelé « mode restreint ») pour sauvegarder des données de volume. Dans ce cas, vous devez déployer le connecteur BlueXP dans la région réservée.
+
+ifdef::aws[]
+
+* Vous pouvez sauvegarder les données à partir de systèmes Cloud Volumes ONTAP installés dans des régions commerciales AWS vers Amazon S3. Découvrez comment link:task-backup-to-s3.html["Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3"].
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+* Vous pouvez sauvegarder les données à partir de systèmes Cloud Volumes ONTAP installés dans les régions commerciales Azure vers Azure Blob. Découvrez comment link:task-backup-to-azure.html["Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob"].
+
+
+endif::azure[]
+
+
+
+=== Assistance pour les sites sans connexion Internet
+
+Les fonctionnalités de sauvegarde et de restauration BlueXP peuvent être utilisées dans un site sans connexion Internet (également appelé « mode privé » ou « sites invisibles ») pour sauvegarder des données de volume. Dans ce cas, vous devrez déployer le connecteur BlueXP sur un hôte Linux du même site.
+
+* Vous pouvez sauvegarder les données à partir de systèmes ONTAP locaux sur site vers des systèmes NetApp StorageGRID locaux. Découvrez comment  link:task-backup-onprem-private-cloud.html["Sauvegarde des données ONTAP sur site dans StorageGRID"] pour plus d'informations.
+ifdef::aws[]
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+endif::azure[]

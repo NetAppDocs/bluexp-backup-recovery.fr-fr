@@ -17,6 +17,9 @@ summary: Avec la sauvegarde et la restauration BlueXP, vous pouvez créer des r�
 Avec la sauvegarde et la restauration BlueXP, vous pouvez créer des règles de sauvegarde avec plusieurs paramètres de configuration pour vos systèmes ONTAP et Cloud Volumes ONTAP sur site.
 
 
+NOTE: Ces paramètres de règles sont uniquement pertinents pour la sauvegarde vers le stockage objet. Aucun de ces paramètres n'affecte vos règles de réplication ou de copie Snapshot. Des paramètres de stratégie similaires pour les instantanés et les réplications seront ajoutés ultérieurement.
+
+
 
 == Planifications de sauvegarde
 
@@ -70,7 +73,7 @@ Cette fonction n'assure pas la protection de vos volumes source, uniquement pour
 
 === Qu'est-ce que DataLock
 
-DataLock protège vos fichiers de sauvegarde contre les modifications ou les suppressions pendant un certain temps. Cette fonctionnalité utilise la technologie du fournisseur de stockage objet pour le « verrouillage des objets ». La période pendant laquelle le fichier de sauvegarde est verrouillé (et conservé) est appelée période de rétention de DataLock. Il est basé sur le programme de stratégie de sauvegarde et le paramètre de conservation que vous avez définis, plus une mémoire tampon de 14 jours. Toute stratégie de rétention DataLock inférieure à 30 jours est arrondie à 30 jours minimum.
+DataLock protège vos fichiers de sauvegarde contre toute modification ou suppression pendant une certaine période, également appelée stockage inaltérable. Cette fonctionnalité utilise la technologie du fournisseur de stockage objet pour le « verrouillage des objets ». La période pendant laquelle le fichier de sauvegarde est verrouillé (et conservé) est appelée période de rétention de DataLock. Il est basé sur le programme de stratégie de sauvegarde et le paramètre de conservation que vous avez définis, plus une mémoire tampon de 14 jours. Toute stratégie de rétention DataLock inférieure à 30 jours est arrondie à 30 jours minimum.
 
 Notez que les anciennes sauvegardes sont supprimées après l'expiration de la période de rétention de DataLock, et non après l'expiration de la période de conservation de la stratégie de sauvegarde.
 
@@ -325,7 +328,10 @@ ifdef::aws[]
 Si votre cluster utilise ONTAP 9.10.1 ou version ultérieure, vous pouvez hiérarchiser les anciennes sauvegardes sur le stockage _S3 Glacier_ ou _S3 Glacier Deep Archive_. link:reference-aws-backup-tiers.html["En savoir plus sur le stockage d'archives AWS"^].
 
 +
-Notez que si vous choisissez _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans votre première règle de sauvegarde lors de l'activation de la sauvegarde et de la restauration BlueXP, ce niveau sera le seul Tier d'archivage disponible pour les futures politiques de sauvegarde de ce cluster. Si vous sélectionnez aucun niveau d'archivage dans votre première stratégie de sauvegarde, alors _S3 Glacier_ sera votre seule option d'archivage pour les futures stratégies.
+** Si vous ne sélectionnez aucun Tier d'archivage dans votre première stratégie de sauvegarde lors de l'activation de la sauvegarde et de la restauration BlueXP, _S3 Glacier_ sera votre seule option d'archivage pour les futures stratégies.
+** Si vous sélectionnez _S3 Glacier_ dans votre première règle de sauvegarde, vous pouvez passer au niveau _S3 Glacier Deep Archive_ pour les futures règles de sauvegarde de ce cluster.
+** Si vous sélectionnez _S3 Glacier Deep Archive_ dans votre première règle de sauvegarde, ce niveau sera le seul Tier d'archivage disponible pour les futures règles de sauvegarde de ce cluster.
+
 
 
 
