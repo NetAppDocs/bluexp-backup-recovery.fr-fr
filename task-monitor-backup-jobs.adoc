@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-monitor-backup-jobs.html 
 keywords: cloud backup, bluexp backup and recovery, backup, restore, status, monitor, alert, notification 
-summary: 'Vous pouvez surveiller l"état des tâches de sauvegarde planifiées ou que vous avez lancées et restaurer les tâches que vous avez lancées dans vos environnements de travail. Vous pouvez voir les travaux qui ont réussi, ceux en cours et ceux qui ont échoué afin de pouvoir diagnostiquer et résoudre les problèmes. Vous pouvez également configurer les notifications à envoyer par e-mail afin de vous informer de l"activité importante du système, même lorsque vous n"êtes pas connecté au système.' 
+summary: 'Vous pouvez contrôler l"état de toutes vos tâches de sauvegarde et de restauration. Vous pouvez voir les travaux terminés, en cours ou en échec pour pouvoir diagnostiquer et résoudre les problèmes. Le centre de notification BlueXP vous permet d"activer l"envoi de notifications par e-mail pour vous informer de l"activité système importante, même si vous n"êtes pas connecté au système. À l"aide de la chronologie BlueXP, vous pouvez afficher les détails de toutes les actions initiées via l"interface utilisateur ou l"API.' 
 ---
 = Surveiller l'état des tâches de sauvegarde et de restauration
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: 'Vous pouvez surveiller l"état des tâches de sauvegarde planifiées o
 
 
 [role="lead"]
-Vous pouvez contrôler l'état des tâches de sauvegarde que vous avez initiées ou planifiées et restaurer les tâches que vous avez initiées. Vous pouvez voir les travaux terminés, en cours ou en échec pour pouvoir diagnostiquer et résoudre les problèmes. Le centre de notification BlueXP vous permet d'activer l'envoi de notifications par e-mail pour vous informer de l'activité système importante, même si vous n'êtes pas connecté au système. À l'aide de la chronologie BlueXP, vous pouvez afficher les détails de toutes les actions initiées via l'interface utilisateur ou l'API.
+Vous pouvez surveiller l'état des tâches de sauvegarde que vous avez lancées ou qui sont planifiées et restaurer les tâches que vous avez initiées. Vous pouvez voir les travaux terminés, en cours ou en échec pour pouvoir diagnostiquer et résoudre les problèmes. Le centre de notification BlueXP vous permet d'activer l'envoi de notifications par e-mail pour vous informer de l'activité système importante, même si vous n'êtes pas connecté au système. À l'aide de la chronologie BlueXP, vous pouvez afficher les détails de toutes les actions initiées via l'interface utilisateur ou l'API.
 
 
 
@@ -31,7 +31,7 @@ L'état de la sauvegarde et de la restauration peut être :
 * Échec
 
 
-Les opérations de sauvegarde et de restauration initiées par l'utilisateur à partir de l'interface utilisateur et de l'API de Cloud Backup, ainsi que les tâches lancées par le système, telles que les opérations de sauvegarde planifiées en cours, sont disponibles dans l'onglet surveillance des tâches. Toutefois, cela est vrai uniquement pour les systèmes Cloud Volumes ONTAP exécutant ONTAP 9.13.0 ou version ultérieure et les systèmes ONTAP sur site exécutant ONTAP 9.13.1 ou version ultérieure. Lors de l'exécution de versions antérieures de ONTAP, seuls les travaux initiés par l'utilisateur sont affichés.
+Les opérations de sauvegarde et de restauration que vous avez initiées à partir de l'interface utilisateur et de l'API de sauvegarde et de restauration BlueXP, ainsi que les tâches lancées par le système, telles que les opérations de sauvegarde planifiées en cours, sont disponibles dans l'onglet surveillance des tâches. Toutefois, cela est vrai uniquement pour les systèmes Cloud Volumes ONTAP exécutant ONTAP 9.13.0 ou version ultérieure et les systèmes ONTAP sur site exécutant ONTAP 9.13.1 ou version ultérieure. Lors de l'exécution de versions antérieures de ONTAP, seuls les travaux initiés par l'utilisateur sont affichés.
 
 
 NOTE: Si vous avez mis à niveau vos systèmes ONTAP vers la version 9.13.x et que vous ne voyez pas les opérations de sauvegarde planifiées en cours dans le moniteur de tâches, vous devez redémarrer le service de sauvegarde et de restauration BlueXP. link:reference-restart-backup.html["Découvrez comment redémarrer la sauvegarde et la restauration BlueXP"].
@@ -45,7 +45,7 @@ image:screenshot_backup_job_monitor.png["Capture d'écran affichant les tâches 
 +
 Cette capture d'écran affiche les en-têtes de colonne par défaut.
 
-. Pour afficher des colonnes supplémentaires (Environnement de travail, SVM, Nom d'utilisateur, charges de travail, politique, Et Snapshot Label), sélectionnez image:button_plus_sign_round.png["le bouton signe plus"].
+. Pour afficher des colonnes supplémentaires (Working Environment, SVM, User Name, Workload, Policy Name, Et Snapshot Label), sélectionnez image:button_plus_sign_round.png["le bouton signe plus"].
 
 
 
@@ -70,7 +70,7 @@ image:screenshot_backup_job_monitor_filters.png["Capture d'écran de la configur
 Cette capture d'écran montre comment rechercher toutes les tâches de sauvegarde « Volume » pour les volumes nommés « Volume_1 » la semaine dernière.
 
 +
-La plupart des filtres sont explicites. Le filtre des « charges de travail » vous permet d'afficher les travaux dans les catégories suivantes :
+La plupart des filtres sont explicites. Le filtre de « charge de travail » vous permet d'afficher les travaux dans les catégories suivantes :
 
 +
 ** Volumes (volumes Cloud Volumes ONTAP et ONTAP sur site)
@@ -147,7 +147,7 @@ Le centre de notification BlueXP assure le suivi de la progression des tâches d
 
 Outre l'affichage des alertes dans le Centre de notification, vous pouvez configurer BlueXP pour envoyer certains types de notifications par e-mail en tant qu'alertes afin que vous puissiez être informé de l'activité système importante, même si vous n'êtes pas connecté au système. https://docs.netapp.com/us-en/bluexp-setup-admin/task-monitor-cm-operations.html["En savoir plus sur le Centre de notification et sur la manière d'envoyer des e-mails d'alerte pour les tâches de sauvegarde et de restauration"^].
 
-Le Centre de notification affiche de nombreux événements, mais seuls les événements de sauvegarde et de restauration suivants déclenchent des alertes par e-mail :
+Le Centre de notification affiche de nombreux événements de sauvegarde et de restauration, mais seuls les événements suivants déclenchent des alertes par e-mail :
 
 [cols="3a,1d"]
 |===
@@ -198,9 +198,8 @@ Pour recevoir les alertes par e-mail de sauvegarde et de restauration BlueXP, vo
 https://docs.netapp.com/us-en/bluexp-setup-admin/task-monitor-cm-operations.html["Découvrez comment envoyer des e-mails d'alerte pour les tâches de sauvegarde et de restauration"^].
 
 .Étapes
-. Sélectionnez l'onglet *surveillance des travaux*.
-. Affichez les notifications en sélectionnant le (image:icon_bell.png["signal sonore de notification"]) Dans la barre de menus BlueXP.
-. Consultez la notification.
+. Dans la barre de menus BlueXP, sélectionnez le (image:icon_bell.png["signal sonore de notification"]).
+. Consultez les notifications.
 
 
 

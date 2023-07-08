@@ -34,7 +34,7 @@ Découvrez comment connecter votre cluster ONTAP sur site directement à Storage
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"] Préparez votre connecteur BlueXP
 [role="quick-margin-para"]
-Si vous avez déjà déployé un connecteur dans votre StorageGRID ou sur site, vous êtes paré. Si ce n'est pas le cas, vous devrez créer un connecteur BlueXP pour sauvegarder les données ONTAP dans StorageGRID. Vous devrez également personnaliser les paramètres réseau du connecteur pour qu'il puisse se connecter à StorageGRID.
+Si vous avez déjà déployé un connecteur dans vos locaux, alors vous êtes tous ensemble. Si ce n'est pas le cas, vous devrez créer un connecteur BlueXP pour sauvegarder les données ONTAP dans StorageGRID. Vous devrez également personnaliser les paramètres réseau du connecteur pour qu'il puisse se connecter à StorageGRID.
 
 [role="quick-margin-para"]
 <<Préparez votre connecteur BlueXP,Apprenez à créer un connecteur et à définir les paramètres réseau requis.>>
@@ -73,7 +73,7 @@ Sélectionnez l'environnement de travail et cliquez sur *Activer > volumes de sa
 
 L'image suivante montre chaque composant lors de la sauvegarde d'un système ONTAP sur site dans StorageGRID et les connexions que vous devez préparer entre eux.
 
-Vous pouvez également vous connecter à un système ONTAP secondaire pour les volumes répliqués via la connexion publique ou privée.
+Vous pouvez également vous connecter à un système ONTAP secondaire dans le même emplacement sur site pour répliquer des volumes.
 
 image:diagram_cloud_backup_onprem_storagegrid.png["Un diagramme illustrant la façon dont BlueXP Backup and Recovery communique avec les volumes des systèmes source et le stockage de destination où se trouvent les fichiers de sauvegarde."]
 
@@ -113,6 +113,9 @@ Assurez-vous que le réseau sur lequel le connecteur est installé active les co
 ==== Considérations relatives au mode privé (site invisible)
 
 * La fonctionnalité de sauvegarde et de restauration BlueXP est intégrée au connecteur BlueXP. Lorsqu'il est installé en mode privé, vous devez mettre à jour régulièrement le logiciel Connector pour accéder aux nouvelles fonctionnalités. Vérifier le link:whats-new.html["Sauvegarde et restauration BlueXP : les nouveautés"] Pour afficher les nouvelles fonctionnalités de chaque version de sauvegarde et de restauration BlueXP. Lorsque vous souhaitez utiliser les nouvelles fonctions, suivez les étapes à https://docs.netapp.com/us-en/bluexp-setup-admin/task-managing-connectors.html#upgrade-the-connector-when-using-private-mode["Mettez à niveau le logiciel du connecteur"^].
++
+La nouvelle version de la sauvegarde et de la restauration BlueXP, qui permet de planifier et de créer des copies Snapshot et des volumes répliqués, en plus de la création de sauvegardes vers le stockage objet, nécessite que vous utilisiez la version 3.9.31 ou ultérieure du connecteur BlueXP. Il est donc recommandé d'utiliser cette dernière version pour gérer toutes vos sauvegardes.
+
 * Lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un environnement SaaS, les données de configuration de la sauvegarde et de la restauration BlueXP sont sauvegardées dans le cloud. Lorsque vous utilisez la sauvegarde et la restauration BlueXP sur un site sans accès Internet, les données de configuration de la sauvegarde et de la restauration BlueXP sont sauvegardées dans le compartiment StorageGRID où vos sauvegardes sont stockées. Si vous avez un problème de connecteur dans votre site en mode privé, vous pouvez le faire link:reference-backup-cbs-db-in-dark-site.html["Restaurez les données de sauvegarde et de restauration BlueXP sur un nouveau connecteur"^].
 
 
@@ -177,8 +180,8 @@ https://docs.netapp.com/us-en/ontap/data-protection/compatible-ontap-versions-sn
 
 Vous devez configurer les exigences suivantes sur le système qui se connecte au stockage objet.
 
-* Lorsque vous utilisez une architecture de sauvegarde « Fan-Out », les paramètres suivants doivent être configurés sur le système de stockage principal.
-* Lorsque vous utilisez une architecture de sauvegarde en cascade, les paramètres suivants doivent être configurés sur le système de stockage secondaire.
+* Lorsque vous utilisez une architecture de sauvegarde « Fan-Out », les paramètres suivants doivent être configurés sur le système de stockage _primary_.
+* Lorsque vous utilisez une architecture de sauvegarde en cascade, les paramètres suivants doivent être configurés sur le système de stockage _secondary_.
 
 
 Les exigences de mise en réseau de clusters ONTAP suivantes sont requises :
@@ -225,7 +228,7 @@ Comme vous pouvez répliquer sur Cloud Volumes ONTAP ou un système sur site, v�
 
 == Préparez StorageGRID en tant que cible de sauvegarde
 
-StorageGRID doit remplir les conditions suivantes. Voir la https://docs.netapp.com/us-en/storagegrid-116/["Documentation StorageGRID"^] pour en savoir plus.
+StorageGRID doit remplir les conditions suivantes. Voir la https://docs.netapp.com/us-en/storagegrid-117/["Documentation StorageGRID"^] pour en savoir plus.
 
 Versions de StorageGRID prises en charge:: StorageGRID 10.3 et versions ultérieures sont prises en charge.
 +
@@ -235,7 +238,7 @@ Pour utiliser DataLock & protection contre les attaques par ransomware pour vos 
 Pour effectuer le Tiering des sauvegardes plus anciennes sur un stockage d'archivage dans le cloud, vos systèmes StorageGRID doivent exécuter la version 11.3 ou une version ultérieure. En outre, vos systèmes StorageGRID doivent être découverts dans le canevas BlueXP.
 
 --
-Identifiants S3:: Vous devez avoir créé un compte de locataire S3 pour contrôler l'accès à votre stockage StorageGRID. https://docs.netapp.com/us-en/storagegrid-116/admin/creating-tenant-account.html["Pour plus d'informations, consultez la documentation StorageGRID"^].
+Identifiants S3:: Vous devez avoir créé un compte de locataire S3 pour contrôler l'accès à votre stockage StorageGRID. https://docs.netapp.com/us-en/storagegrid-117/admin/creating-tenant-account.html["Pour plus d'informations, consultez la documentation StorageGRID"^].
 +
 --
 Lorsque vous configurez la sauvegarde sur StorageGRID, l'assistant de sauvegarde vous demande une clé d'accès S3 et une clé secrète pour un compte de locataire. Le compte de locataire permet à BlueXP Backup and Recovery de s'authentifier et d'accéder aux compartiments StorageGRID utilisés pour stocker les sauvegardes. Les clés sont requises afin que StorageGRID sache qui effectue la demande.
@@ -357,7 +360,7 @@ Choisissez les volumes à protéger. Vous pouvez choisir de protéger les volume
 [NOTE]
 ====
 * Vous ne pouvez activer une sauvegarde que sur un seul volume FlexGroup à la fois.
-* Les volumes sélectionnés doivent également avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes avec le mode SnapLock Compliance ne sont pas pris en charge actuellement.) Vous ne pouvez pas sélectionner une combinaison de volumes verrouillés et déverrouillés.
+* Les volumes sélectionnés doivent également avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes en mode conformité SnapLock ne sont pas pris en charge actuellement.) Vous ne pouvez pas sélectionner une combinaison de volumes verrouillés et déverrouillés.
 
 
 ====
@@ -406,10 +409,10 @@ NOTE: Si les règles Snapshot et de réplication des volumes choisis sont diffé
 ** *Backup* : sauvegarde les volumes dans le stockage objet.
 
 
-. *Architecture* : si vous avez choisi la réplication et la sauvegarde, choisissez l'un des flux d'informations suivants :
+. *Architecture* : si vous avez choisi à la fois la réplication et la sauvegarde, choisissez l'un des flux d'informations suivants :
 +
-** *Cascading* : les informations passent du stockage primaire au stockage secondaire au stockage objet et du stockage secondaire au stockage objet.
-** *Fan Out* : les informations passent du stockage primaire au stockage secondaire _et_ de la source au stockage objet.
+** *Cascading* : les informations passent du stockage primaire au stockage secondaire, puis du stockage secondaire au stockage objet.
+** *Fan Out* : les informations passent du stockage primaire au stockage secondaire _et_ du stockage primaire au stockage objet.
 +
 Pour plus d'informations sur ces architectures, reportez-vous à la section link:concept-protection-journey.html["Planifiez votre parcours en matière de protection"].
 
@@ -498,6 +501,6 @@ Vous pouvez afficher et éventuellement copier les commandes d'API utilisées da
 == Et la suite ?
 
 * C'est possible link:task-manage-backups-ontap.html["gérez vos fichiers de sauvegarde et vos règles de sauvegarde"^]. Cela comprend le démarrage et l'arrêt des sauvegardes, la suppression des sauvegardes, l'ajout et la modification de la planification des sauvegardes, etc.
-* C'est possible link:task-manage-backup-settings-ontap.html["gérez les paramètres de sauvegarde au niveau du cluster"^]. Il s'agit notamment de changer les clés de stockage que ONTAP utilise pour accéder au stockage cloud, de modifier la bande passante réseau disponible pour télécharger les sauvegardes vers le stockage objet, de modifier le paramètre de sauvegarde automatique pour les volumes futurs, etc.
+* C'est possible link:task-manage-backup-settings-ontap.html["gérez les paramètres de sauvegarde au niveau du cluster"^]. Cela inclut notamment la modification de la bande passante réseau disponible pour télécharger les sauvegardes vers le stockage objet, la modification du paramètre de sauvegarde automatique pour les volumes futurs, et bien plus encore.
 * Vous pouvez également link:task-restore-backups-ontap.html["restaurez des volumes, des dossiers ou des fichiers individuels à partir d'un fichier de sauvegarde"^] Sur un système ONTAP local.
 
