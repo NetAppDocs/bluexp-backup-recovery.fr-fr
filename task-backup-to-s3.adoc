@@ -215,10 +215,13 @@ Configuration requise pour la création des sauvegardes sur un autre compte AWS:
 
 
 --
-Créez vos propres compartiments:: Par défaut, le service crée des compartiments pour vous. Ou, si vous souhaitez utiliser vos propres compartiments, vous pouvez les créer avant de démarrer l'assistant d'activation de sauvegarde, puis les sélectionner dans l'assistant.
+Créez vos propres compartiments:: Par défaut, le service crée des compartiments pour vous. Si vous souhaitez utiliser vos propres compartiments, vous pouvez les créer avant de démarrer l'assistant d'activation de sauvegarde, puis les sélectionner dans l'assistant.
++
+--
+Si vous créez vos propres compartiments, vous devez utiliser le nom de compartiment NetApp-backup.
 
+--
 
-Si vous créez vos propres compartiments, vous devez utiliser le nom de compartiment NetApp-Backup.
 
 
 
@@ -230,7 +233,7 @@ Avant d'activer les sauvegardes dans BlueXP Backup and Recovery, assurez-vous qu
 
 ==== Configuration réseau requise par Cloud Volumes ONTAP
 
-Le groupe de sécurité de l’instance doit inclure les règles entrantes et sortantes requises : plus précisément, les règles pour ICMP et les ports 11104 et 11105. Ces règles sont incluses dans le groupe de sécurité prédéfini.
+Le groupe de sécurité de l'instance doit inclure les règles d'entrée et de sortie requises : plus précisément, les règles d'ICMP et les ports 11104 et 11105. Ces règles sont incluses dans le groupe de sécurité prédéfini.
 
 
 
@@ -239,7 +242,7 @@ Le groupe de sécurité de l’instance doit inclure les règles entrantes et so
 * Si le cluster se trouve sur votre site, vous devez disposer d'une connexion entre votre réseau d'entreprise et votre réseau virtuel du fournisseur cloud. Il s'agit généralement d'une connexion VPN.
 * Les clusters ONTAP doivent répondre à des exigences supplémentaires en termes de sous-réseau, de port, de pare-feu et de cluster.
 +
-Comme vous pouvez répliquer sur Cloud Volumes ONTAP ou un système sur site, vérifiez les exigences de peering pour les systèmes ONTAP sur site. Reportez-vous à la section https://docs.netapp.com/us-en/ontap-sm-classic/peering/reference_prerequisites_for_cluster_peering.html["Afficher les conditions préalables au peering de cluster dans la documentation de ONTAP"^].
+Comme vous pouvez répliquer sur des systèmes Cloud Volumes ONTAP ou sur site, examinez les exigences de peering pour les systèmes ONTAP sur site. https://docs.netapp.com/us-en/ontap-sm-classic/peering/reference_prerequisites_for_cluster_peering.html["Afficher les conditions préalables au peering de cluster dans la documentation de ONTAP"^].
 
 
 
@@ -250,7 +253,7 @@ Comme vous pouvez répliquer sur Cloud Volumes ONTAP ou un système sur site, v�
 
 == Activez la sauvegarde et la restauration BlueXP sur Cloud Volumes ONTAP
 
-L'activation de la sauvegarde et de la restauration BluXP est simple. Les étapes diffèrent légèrement selon que vous disposez d'un système Cloud Volumes ONTAP existant ou d'un nouveau système.
+L'activation de la sauvegarde et de la restauration BlueXP est simple. Les étapes diffèrent légèrement selon que vous disposez d'un système Cloud Volumes ONTAP existant ou d'un nouveau système.
 
 *Activez la sauvegarde et la restauration BlueXP sur un nouveau système*
 
@@ -270,11 +273,11 @@ image:screenshot_backup_to_gcp.png["La montre l'option de sauvegarde et de resta
 
 
 .Résultat
-La sauvegarde et la restauration BlueXP sont activées sur le système, qui sauvegarde les volumes tous les jours et conserve les 30 copies de sauvegarde les plus récentes.
+La sauvegarde et la restauration BlueXP sont activées sur le système. Une fois les volumes créés sur ces systèmes Cloud Volumes ONTAP, lancez la sauvegarde et la restauration BlueXP link:task-manage-backups-ontap.html#activate-backup-on-additional-volumes-in-a-working-environment["activez la sauvegarde sur chaque volume que vous souhaitez protéger"].
 
 *Activez la sauvegarde et la restauration BlueXP sur un système existant*
 
-Sauvegardez et restaurez BlueXP à tout moment directement depuis l'environnement de travail.
+Activez la sauvegarde et la restauration BlueXP sur un système existant à tout moment, directement depuis l'environnement de travail.
 
 .Étapes
 . Dans BlueXP Canvas, sélectionnez l'environnement de travail et sélectionnez *Activer* en regard du service de sauvegarde et de restauration dans le panneau de droite.

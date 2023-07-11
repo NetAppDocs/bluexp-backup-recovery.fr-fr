@@ -213,7 +213,7 @@ https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.htm
 
 == Vérification des besoins en licence
 
-Vous devrez vérifier les exigences de licence pour Azure et BlueXP :
+Vous devez vérifier les exigences de licence pour Azure et BlueXP :
 
 * Avant de pouvoir activer la sauvegarde et la restauration BlueXP pour votre cluster, vous devez soit souscrire à une offre BlueXP Marketplace de paiement basé sur l'utilisation (PAYGO), soit acheter et activer une licence BYOL de sauvegarde et de restauration BlueXP auprès de NetApp. Ces licences sont destinées à votre compte et peuvent être utilisées sur plusieurs systèmes.
 +
@@ -309,7 +309,7 @@ Avant d'activer les sauvegardes dans BlueXP Backup and Recovery, assurez-vous qu
 
 ==== Configuration réseau requise par Cloud Volumes ONTAP
 
-Le groupe de sécurité de l’instance doit inclure les règles entrantes et sortantes requises : plus précisément, les règles pour ICMP et les ports 11104 et 11105. Ces règles sont incluses dans le groupe de sécurité prédéfini.
+Le groupe de sécurité de l'instance doit inclure les règles d'entrée et de sortie requises : plus précisément, les règles d'ICMP et les ports 11104 et 11105. Ces règles sont incluses dans le groupe de sécurité prédéfini.
 
 
 
@@ -318,7 +318,7 @@ Le groupe de sécurité de l’instance doit inclure les règles entrantes et so
 * Si le cluster se trouve sur votre site, vous devez disposer d'une connexion entre votre réseau d'entreprise et votre réseau virtuel du fournisseur cloud. Il s'agit généralement d'une connexion VPN.
 * Les clusters ONTAP doivent répondre à des exigences supplémentaires en termes de sous-réseau, de port, de pare-feu et de cluster.
 +
-Comme vous pouvez répliquer sur Cloud Volumes ONTAP ou un système sur site, vérifiez les exigences de peering pour les systèmes ONTAP sur site. Reportez-vous à la section https://docs.netapp.com/us-en/ontap-sm-classic/peering/reference_prerequisites_for_cluster_peering.html["Afficher les conditions préalables au peering de cluster dans la documentation de ONTAP"^].
+Comme vous pouvez répliquer sur des systèmes Cloud Volumes ONTAP ou sur site, examinez les exigences de peering pour les systèmes ONTAP sur site. https://docs.netapp.com/us-en/ontap-sm-classic/peering/reference_prerequisites_for_cluster_peering.html["Afficher les conditions préalables au peering de cluster dans la documentation de ONTAP"^].
 
 
 
@@ -335,9 +335,11 @@ Notez que la sauvegarde et la restauration prennent en charge _les stratégies d
 
 
 
-=== Créez vos propres compartiments
+=== Créez votre compte de stockage Azure Blob
 
-Par défaut, le service crée des compartiments pour vous. Ou, si vous souhaitez utiliser vos propres compartiments, vous pouvez les créer avant de démarrer l'assistant d'activation de sauvegarde, puis les sélectionner dans l'assistant.
+Par défaut, le service crée des comptes de stockage pour vous. Si vous souhaitez utiliser vos propres comptes de stockage, vous pouvez les créer avant de démarrer l'assistant d'activation de sauvegarde, puis sélectionner ces comptes de stockage dans l'assistant.
+
+Si vous créez vos propres comptes de stockage, vous devez utiliser le nom de compte de stockage « netapp-backup ».
 
 
 
@@ -391,7 +393,7 @@ Choisissez les volumes à protéger. Vous pouvez choisir de protéger les volume
 [NOTE]
 ====
 * Vous ne pouvez activer une sauvegarde que sur un seul volume FlexGroup à la fois.
-* Les volumes sélectionnés doivent également avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes avec le mode SnapLock Compliance ne sont pas pris en charge actuellement.) Vous ne pouvez pas sélectionner une combinaison de volumes verrouillés et déverrouillés.
+* Les volumes sélectionnés doivent également avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes en mode conformité SnapLock ne sont pas pris en charge actuellement.) Vous ne pouvez pas sélectionner une combinaison de volumes verrouillés et déverrouillés.
 
 
 ====

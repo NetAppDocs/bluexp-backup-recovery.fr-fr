@@ -23,7 +23,7 @@ Après l'activation, la sauvegarde et la restauration créent des sauvegardes in
 * Sauvegarde du volume dans le stockage objet
 
 
-image:diagram-321-overview.png["Un diagramme illustrant la façon dont les fichiers de sauvegarde existent sur le système source sous forme de copies Snapshot, de volumes répliqués sur le système de stockage secondaire et de fichiers de sauvegarde dans le stockage objet."]
+image:diagram-321-overview-mkt.png["Un diagramme illustrant la façon dont les fichiers de sauvegarde existent sur le système source sous forme de copies Snapshot, de volumes répliqués sur le système de stockage secondaire et de fichiers de sauvegarde dans le stockage objet."]
 
 Les fonctionnalités de sauvegarde et de restauration BlueXP s'appuient sur la technologie de réplication des données SnapMirror de NetApp pour s'assurer que toutes les sauvegardes sont entièrement synchronisées en créant des copies Snapshot et en les transférant vers les emplacements de sauvegarde.
 

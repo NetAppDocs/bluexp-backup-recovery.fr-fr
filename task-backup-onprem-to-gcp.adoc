@@ -55,10 +55,10 @@ Découvrez vos clusters ONTAP dans BlueXP, vérifiez que les clusters répondent
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinq"] Préparez Google Cloud en tant que cible de sauvegarde
 [role="quick-margin-para"]
-Configurez les autorisations du connecteur pour créer et gérer le compartiment Azure. Vous devez également configurer des autorisations pour le cluster ONTAP sur site afin qu'il puisse lire et écrire les données dans le compartiment Azure.
+Configurez les autorisations pour le connecteur afin de créer et de gérer le compartiment Google Cloud. Vous devez également configurer des autorisations pour le cluster ONTAP sur site afin qu'il puisse lire et écrire les données dans le compartiment Google Cloud.
 
 [role="quick-margin-para"]
-Vous pouvez également configurer vos propres clés de chiffrement personnalisées pour les données au lieu d'utiliser les clés de chiffrement Azure par défaut. <<Préparez Azure Blob en tant que cible de sauvegarde,Découvrez comment préparer votre environnement Azure pour recevoir des sauvegardes ONTAP.>>
+Vous pouvez également configurer vos propres clés de chiffrement personnalisées pour les données au lieu d'utiliser les clés de chiffrement Google Cloud par défaut. <<Prepare Google Cloud as your backup target,Découvrez comment préparer votre environnement Google Cloud pour recevoir des sauvegardes ONTAP.>>
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Six"] Activez les sauvegardes sur vos volumes ONTAP
 [role="quick-margin-para"]
@@ -254,7 +254,7 @@ Avant d'activer les sauvegardes dans BlueXP Backup and Recovery, assurez-vous qu
 
 ==== Configuration réseau requise par Cloud Volumes ONTAP
 
-Le groupe de sécurité de l’instance doit inclure les règles entrantes et sortantes requises : plus précisément, les règles pour ICMP et les ports 11104 et 11105. Ces règles sont incluses dans le groupe de sécurité prédéfini.
+Le groupe de sécurité de l'instance doit inclure les règles d'entrée et de sortie requises : plus précisément, les règles d'ICMP et les ports 11104 et 11105. Ces règles sont incluses dans le groupe de sécurité prédéfini.
 
 
 
@@ -263,7 +263,7 @@ Le groupe de sécurité de l’instance doit inclure les règles entrantes et so
 * Si le cluster se trouve sur votre site, vous devez disposer d'une connexion entre votre réseau d'entreprise et votre réseau virtuel du fournisseur cloud. Il s'agit généralement d'une connexion VPN.
 * Les clusters ONTAP doivent répondre à des exigences supplémentaires en termes de sous-réseau, de port, de pare-feu et de cluster.
 +
-Comme vous pouvez répliquer sur Cloud Volumes ONTAP ou un système sur site, vérifiez les exigences de peering pour les systèmes ONTAP sur site. Reportez-vous à la section https://docs.netapp.com/us-en/ontap-sm-classic/peering/reference_prerequisites_for_cluster_peering.html["Afficher les conditions préalables au peering de cluster dans la documentation de ONTAP"^].
+Comme vous pouvez répliquer sur des systèmes Cloud Volumes ONTAP ou sur site, examinez les exigences de peering pour les systèmes ONTAP sur site. https://docs.netapp.com/us-en/ontap-sm-classic/peering/reference_prerequisites_for_cluster_peering.html["Afficher les conditions préalables au peering de cluster dans la documentation de ONTAP"^].
 
 
 

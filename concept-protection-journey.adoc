@@ -50,7 +50,7 @@ image:diagram-321-overview.png["Un diagramme illustrant la façon dont les fichi
 
 Vous pouvez choisir de créer à la fois des volumes répliqués sur un autre système de stockage ONTAP et des fichiers de sauvegarde dans le cloud. Ou vous pouvez simplement créer des volumes répliqués ou des fichiers de sauvegarde. C'est votre choix.
 
-En résumé, il s'agit des flux de protection valides que vous pouvez créer pour un volume, ou tous les volumes, dans votre environnement de travail ONTAP :
+En résumé, il s'agit des flux de protection valides que vous pouvez créer pour les volumes de votre environnement de travail ONTAP :
 
 * Volume source -> copie Snapshot -> volume répliqué -> fichier de sauvegarde
 * Volume source -> copie Snapshot -> fichier de sauvegarde
@@ -87,11 +87,11 @@ En plus de ces critères, le stockage cloud offre des options de sécurité supp
 
 Lors de la création de volumes répliqués et de fichiers de sauvegarde, vous pouvez choisir une architecture « fan-out » ou « cascade » pour sauvegarder vos volumes.
 
-Une architecture « Fan-Out » transfère la copie Snapshot de manière indépendante vers le système de stockage de destination et l'objet de sauvegarde dans le cloud.
+Une architecture *Fan-Out* transfère la copie Snapshot de manière indépendante vers le système de stockage de destination et l'objet de sauvegarde dans le cloud.
 
 image:diagram-321-fanout-detailed.png["Diagramme illustrant comment une copie Snapshot d'un volume est utilisée pour créer et mettre à jour un volume répliqué et un fichier de sauvegarde."]
 
-Une architecture _cascade_ transfère d'abord la copie Snapshot vers le système de stockage de destination, puis ce système transfère la copie vers l'objet de sauvegarde dans le cloud.
+Une architecture *cascade* transfère d'abord la copie Snapshot vers le système de stockage de destination, puis ce système transfère la copie vers l'objet de sauvegarde dans le cloud.
 
 image:diagram-321-cascade-detailed.png["Diagramme illustrant comment une copie Snapshot d'un volume est utilisée pour créer et mettre à jour un volume répliqué et un fichier de sauvegarde."]
 
@@ -124,21 +124,25 @@ Vous pouvez utiliser les règles par défaut fournies par NetApp pour créer vos
 
 Si vous créez des règles personnalisées pour la réplication ou la sauvegarde, les étiquettes de règles (par exemple, « quotidien » ou « hebdomadaire ») doivent correspondre aux étiquettes figurant dans vos règles Snapshot ou les volumes répliqués et les fichiers de sauvegarde ne seront pas créés. Vous pouvez créer des règles personnalisées à l'aide de System Manager ou de l'interface de ligne de commande ONTAP.
 
+https://docs.netapp.com/us-en/ontap/task_dp_configure_snapshot.html["Créez une règle de snapshot à l'aide de System Manager"^]
 https://docs.netapp.com/us-en/ontap/data-protection/create-snapshot-policy-task.html["Créez une règle de snapshot à l'aide de l'interface de ligne de commandes de ONTAP"^]
-https://docs.netapp.com/us-en/ontap/data-protection/create-custom-replication-policy-concept.html["Créez la règle de réplication à l'aide de l'interface de ligne de commandes de ONTAP"^]
-https://docs.netapp.com/us-en/ontap/task_dp_back_up_to_cloud.html#create-a-custom-cloud-backup-policy["Créez la règle de sauvegarde à l'aide de System Manager"^]
+https://docs.netapp.com/us-en/ontap/task_dp_create_custom_data_protection_policies.html["Créez une règle de réplication à l'aide de System Manager"^]
+https://docs.netapp.com/us-en/ontap/data-protection/create-custom-replication-policy-concept.html["Créez une règle de réplication à l'aide de l'interface de ligne de commandes de ONTAP"^]
+https://docs.netapp.com/us-en/ontap/task_dp_back_up_to_cloud.html#create-a-custom-cloud-backup-policy["Créez une règle de sauvegarde à l'aide de System Manager"^]
 https://docs.netapp.com/us-en/ontap-cli-9131/snapmirror-policy-create.html#description["Créez une règle de sauvegarde à l'aide de l'interface de ligne de commandes de ONTAP"^]
 
+*Remarque :* lorsque vous utilisez System Manager, sélectionnez *Asynchronous* comme type de stratégie pour les stratégies de réplication, puis sélectionnez *Asynchronous* et *Sauvegarder dans le cloud* pour la sauvegarde vers les stratégies d'objet.
 
-NOTE: Si vous prévoyez de créer des règles personnalisées lors de l'utilisation de l'architecture en cascade, vous devrez créer les règles de sauvegarde sur objet sur le système secondaire où les volumes répliqués seront créés. Si vous utilisez les stratégies par défaut, vous êtes tous définis.
-
-Vous pouvez créer des stratégies de sauvegarde vers le stockage objet dans l'interface utilisateur de sauvegarde et de restauration BleXP. Voir la section pour link:task-manage-backups-ontap.html#add-a-new-backup-policy["ajout d'une nouvelle politique de sauvegarde"] pour plus d'informations. Vous devez créer des règles de réplication et de copies Snapshot à l'aide de System Manager ou de l'interface de ligne de commande de ONTAP.
+Vous pouvez créer des règles de sauvegarde vers du stockage objet dans l'interface utilisateur de sauvegarde et de restauration BlueXP. Voir la section pour link:task-manage-backups-ontap.html#add-a-new-backup-policy["ajout d'une nouvelle politique de sauvegarde"] pour plus d'informations. Vous devez créer des règles de réplication et de copies Snapshot à l'aide de System Manager ou de l'interface de ligne de commande de ONTAP.
 
 Voici quelques exemples de commandes de l'interface de ligne de commande de ONTAP qui peuvent vous être utiles si vous créez des règles personnalisées. Notez que vous devez utiliser le _admin_ vserver (machine virtuelle de stockage) en tant que `<vserver_name>` dans ces commandes.
 
 [cols="30,70"]
 |===
 | Description de la politique | Commande 
+
+
+| Règles Snapshot simples | `snapshot policy create -policy WeeklySnapshotPolicy -enabled true -schedule1 weekly -count1 10 -vserver ClusterA -snapmirror-label1 weekly` 
 
 
 | Sauvegarde simple dans le cloud | `snapmirror policy create -policy <policy_name> -transfer-priority normal -vserver <vserver_name> -create-snapshot-on-source false -type vault`
@@ -158,6 +162,34 @@ Voici quelques exemples de commandes de l'interface de ligne de commande de ONTA
 |===
 
 NOTE: Seules les règles de copie peuvent être utilisées pour la sauvegarde vers les relations cloud.
+
+
+
+=== Où résident mes règles ?
+
+Les règles de sauvegarde résident à différents emplacements selon l'architecture de sauvegarde que vous prévoyez d'utiliser : Fan-Out ou Cascading. Les règles de réplication et les règles de sauvegarde ne sont pas conçues de la même manière, car les réplications associent deux systèmes de stockage ONTAP et la sauvegarde sur objet utilise un fournisseur de stockage comme destination.
+
+Les règles Snapshot résident toujours sur le système de stockage principal.
+
+Les règles de réplication résident toujours sur le système de stockage secondaire.
+
+Les règles de sauvegarde sur objet sont créées sur le système où réside le volume source. Il s'agit du cluster principal pour les configurations « Fan-Out » et du cluster secondaire pour les configurations en cascade.
+
+Ces différences sont indiquées dans le tableau.
+
+[cols="25,25,25,25"]
+|===
+| Architecture | Règle Snapshot | Règle de réplication | Politique de sauvegarde 
+
+
+| *Fan-Out* | Primaire | Secondaire | Primaire 
+
+
+| *Cascade* | Primaire | Secondaire | Secondaire 
+|===
+Ainsi, si vous prévoyez de créer des règles personnalisées lors de l'utilisation de l'architecture en cascade, vous devrez créer les règles de réplication et de sauvegarde sur objet sur le système secondaire où les volumes répliqués seront créés. Si vous prévoyez de créer des règles personnalisées lors de l'utilisation de l'architecture « Fan-Out », vous devrez créer les règles de réplication sur le système secondaire où les volumes répliqués seront créés et sauvegarder les règles d'objet sur le système principal.
+
+Si vous utilisez les stratégies par défaut qui existent sur tous les systèmes ONTAP, vous êtes tous définis.
 
 
 
@@ -195,29 +227,29 @@ Pour obtenir la liste des emplacements de connecteur valides, reportez-vous à l
 
 ifdef::aws[]
 
-* link:task-backup-to-s3.html["Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3"].
-* link:task-backup-onprem-to-aws.html["Sauvegarde des données ONTAP sur site dans Amazon S3"].
+* link:task-backup-to-s3.html["Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3"]
+* link:task-backup-onprem-to-aws.html["Sauvegarde des données ONTAP sur site dans Amazon S3"]
 
 
 endif::aws[]
 
 ifdef::azure[]
 
-* link:task-backup-to-azure.html["Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob"].
-* link:task-backup-onprem-to-azure.html["Sauvegarde des données ONTAP sur site dans Azure Blob"].
+* link:task-backup-to-azure.html["Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob"]
+* link:task-backup-onprem-to-azure.html["Sauvegarde des données ONTAP sur site dans Azure Blob"]
 
 
 endif::azure[]
 
 ifdef::gcp[]
 
-* link:task-backup-to-gcp.html["Sauvegardez les données Cloud Volumes ONTAP dans Google Cloud"].
-* link:task-backup-onprem-to-gcp.html["Sauvegarde des données ONTAP sur site dans Google Cloud"].
+* link:task-backup-to-gcp.html["Sauvegardez les données Cloud Volumes ONTAP dans Google Cloud"]
+* link:task-backup-onprem-to-gcp.html["Sauvegarde des données ONTAP sur site dans Google Cloud"]
 
 
 endif::gcp[]
 
-* link:task-backup-onprem-private-cloud.html["Sauvegarde des données ONTAP sur site dans StorageGRID"].
+* link:task-backup-onprem-private-cloud.html["Sauvegarde des données ONTAP sur site dans StorageGRID"]
 
 
 
