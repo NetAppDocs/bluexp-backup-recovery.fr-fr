@@ -204,7 +204,7 @@ La sauvegarde et la restauration BlueXP prennent en charge les règles d'accès 
 
 Par défaut, le service crée des comptes de stockage pour vous. Si vous souhaitez utiliser vos propres comptes de stockage, vous pouvez les créer avant de démarrer l'assistant d'activation de sauvegarde, puis sélectionner ces comptes de stockage dans l'assistant.
 
-Si vous créez vos propres comptes de stockage, vous devez utiliser le nom de compte de stockage « netapp-backup ».
+link:concept-protection-journey.html#do-you-want-to-create-your-own-object-storage-container["En savoir plus sur la création de vos propres comptes de stockage"^].
 
 
 

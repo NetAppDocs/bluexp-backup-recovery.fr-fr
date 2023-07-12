@@ -329,6 +329,8 @@ Vous devrez entrer les clés dans BlueXP Backup and Recovery plus tard lorsque v
 
 Par défaut, le service crée des compartiments pour vous. Ou, si vous souhaitez utiliser vos propres compartiments, vous pouvez les créer avant de démarrer l'assistant d'activation de sauvegarde, puis les sélectionner dans l'assistant.
 
+link:concept-protection-journey.html#do-you-want-to-create-your-own-object-storage-container["En savoir plus sur la création de vos propres compartiments"^].
+
 
 
 === Configurez des clés de chiffrement gérées par le client (CMEK) pour le chiffrement des données

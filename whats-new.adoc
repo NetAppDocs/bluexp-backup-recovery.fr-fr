@@ -46,9 +46,9 @@ Vous pouvez ensuite gérer vos anciens clusters à l'aide de la version précéd
 
 
 
-=== Créez vos compartiments pour la sauvegarde vers le stockage objet
+=== Possibilité de créer votre conteneur de stockage pour la sauvegarde vers un stockage objet
 
-Lorsque vous créez des fichiers de sauvegarde dans un stockage objet, par défaut, le service de sauvegarde et de restauration crée les compartiments dans le stockage objet pour vous. Vous pouvez créer les compartiments vous-même si vous souhaitez utiliser un certain nom ou attribuer des propriétés spéciales. Si vous souhaitez créer votre propre compartiment, vous devez le créer avant de lancer l'assistant d'activation.
+Lorsque vous créez des fichiers de sauvegarde dans un stockage objet, par défaut, le service de sauvegarde et de restauration crée les compartiments dans le stockage objet pour vous. Vous pouvez créer les compartiments vous-même si vous souhaitez utiliser un certain nom ou attribuer des propriétés spéciales. Si vous souhaitez créer votre propre compartiment, vous devez le créer avant de lancer l'assistant d'activation. https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-protection-journey.html#do-you-want-to-create-your-own-object-storage-container["Découvrez comment créer vos compartiments de stockage objet"].
 
 Cette fonctionnalité n'est actuellement pas prise en charge lors de la création de fichiers de sauvegarde sur des systèmes StorageGRID.
 

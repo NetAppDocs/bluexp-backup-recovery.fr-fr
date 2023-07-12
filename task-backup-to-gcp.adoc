@@ -39,7 +39,7 @@ Si un connecteur est déjà déployé dans une région GCP, vous êtes tous conf
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"] Vérification des besoins en licence
 [role="quick-margin-para"]
-Vous devez vérifier les exigences de licence pour Azure et BlueXP.
+Vous devez vérifier les exigences de licence pour Google Cloud et BlueXP.
 
 [role="quick-margin-para"]
 <<Vérification des besoins en licence>>.
@@ -170,7 +170,7 @@ cloudkms.keyRings.setIamPolicy
 
 Par défaut, le service crée des compartiments pour vous. Si vous souhaitez utiliser vos propres compartiments, vous pouvez les créer avant de démarrer l'assistant d'activation de sauvegarde, puis les sélectionner dans l'assistant.
 
-Si vous créez vos propres compartiments, vous devez utiliser le nom de compartiment NetApp-backup.
+link:concept-protection-journey.html#do-you-want-to-create-your-own-object-storage-container["En savoir plus sur la création de vos propres compartiments"^].
 
 
 

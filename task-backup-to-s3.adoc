@@ -218,7 +218,7 @@ Configuration requise pour la création des sauvegardes sur un autre compte AWS:
 Créez vos propres compartiments:: Par défaut, le service crée des compartiments pour vous. Si vous souhaitez utiliser vos propres compartiments, vous pouvez les créer avant de démarrer l'assistant d'activation de sauvegarde, puis les sélectionner dans l'assistant.
 +
 --
-Si vous créez vos propres compartiments, vous devez utiliser le nom de compartiment NetApp-backup.
+link:concept-protection-journey.html#do-you-want-to-create-your-own-object-storage-container["En savoir plus sur la création de vos propres compartiments"^].
 
 --
 

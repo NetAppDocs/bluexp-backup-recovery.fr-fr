@@ -193,18 +193,42 @@ Si vous utilisez les stratégies par défaut qui existent sur tous les systèmes
 
 
 
-== Souhaitez-vous que le service crée des compartiments cloud pour vous
+== Voulez-vous créer votre propre conteneur de stockage objet
 
-Lorsque vous créez des fichiers de sauvegarde dans le stockage cloud, par défaut, le service de sauvegarde et de restauration crée les compartiments dans lesquels les fichiers de sauvegarde seront stockés. Vous pouvez créer les compartiments vous-même si vous souhaitez utiliser un certain nom ou attribuer des propriétés spéciales. Si vous souhaitez créer votre propre compartiment, vous devez le créer avant de lancer l'assistant d'activation.
+Lorsque vous créez des fichiers de sauvegarde dans un stockage objet pour un environnement de travail, par défaut, le service de sauvegarde et de restauration crée le conteneur (compartiment ou compte de stockage) pour les fichiers de sauvegarde dans le compte de stockage objet que vous avez configuré. Par défaut, le compartiment AWS ou GCP est nommé « netapp-Backup-<uuid> ». Le compte de stockage Azure Blob est nommé « <uuid> ».
 
-Vous pouvez créer le conteneur à partir de BlueXP ou de votre fournisseur cloud.
+Vous pouvez créer le conteneur vous-même dans le compte du fournisseur d'objets si vous souhaitez utiliser un préfixe spécifique ou attribuer des propriétés spéciales. Si vous souhaitez créer votre propre conteneur, vous devez le créer avant de lancer l'assistant d'activation. Le conteneur doit être utilisé exclusivement pour stocker les fichiers de sauvegarde de volume ONTAP - il ne peut pas être utilisé à d'autres fins. L'assistant d'activation de la sauvegarde détecte automatiquement vos conteneurs provisionnés pour le compte et les informations d'identification sélectionnés afin que vous puissiez sélectionner celui que vous souhaitez utiliser.
+
+Vous pouvez créer le compartiment à partir de BlueXP ou de votre fournisseur cloud.
 
 * https://docs.netapp.com/us-en/bluexp-s3-storage/task-add-s3-bucket.html["Création de compartiments S3 à partir de BlueXP"]
 * https://docs.netapp.com/us-en/bluexp-blob-storage/task-add-blob-storage.html["Créez des comptes de stockage Azure Blob à partir de BlueXP"]
 * https://docs.netapp.com/us-en/bluexp-google-cloud-storage/task-add-gcp-bucket.html["Créez des compartiments de stockage Google Cloud à partir de BlueXP"]
 
 
-Notez que vous ne pouvez pas créer vos propres compartiments S3 lors de la création de sauvegardes dans des systèmes StorageGRID.
+*Remarque :* pour le moment, vous ne pouvez pas utiliser vos propres compartiments S3 lors de la création de sauvegardes dans les systèmes StorageGRID.
+
+Si vous prévoyez d'utiliser un préfixe de compartiment différent de « netapp-backup-xxxxxx », vous devez modifier les autorisations S3 pour le rôle IAM du connecteur. Pour plus d'informations, consultez les rubriques relatives à la création de sauvegardes dans AWS S3.
+
+
+
+=== Réglages avancés du godet
+
+Si vous prévoyez de transférer d'anciens fichiers de sauvegarde vers le stockage d'archivage, ou si vous prévoyez d'activer DataLock et la protection contre les ransomware pour verrouiller vos fichiers de sauvegarde et les scanner à la recherche d'un éventuel ransomware, vous devrez créer le conteneur avec certains paramètres de configuration :
+
+* À l'heure actuelle, le stockage d'archives par compartiments est pris en charge dans le stockage AWS S3 avec ONTAP 9.10.1 ou une version ultérieure sur vos clusters. Par défaut, les sauvegardes démarrent dans la classe de stockage S3 _Standard_. Veillez à créer le compartiment avec les règles de cycle de vie appropriées :
++
+** Déplacez les objets dans l'ensemble du périmètre du compartiment vers S3 _Standard-IA_ après 30 jours.
+** Déplacez les objets avec la balise « smc_push_to_archive: True » vers _Glacier flexible Retrieval_ (anciennement S3 Glacier)
+
+
+* Data Lock et la protection contre les ransomware sont pris en charge dans le stockage AWS lorsque vous utilisez le logiciel ONTAP 9.11.1 ou une version ultérieure sur vos clusters, et le stockage Azure lorsque vous utilisez ONTAP 9.12.1 ou une version ultérieure du logiciel.
++
+** Pour AWS, vous devez activer le verrouillage objet sur le compartiment selon une période de conservation de 30 jours.
+** Pour Azure, vous devez créer une classe de stockage avec une prise en charge des immuabilité au niveau de la version.
+
+
+
 
 
 

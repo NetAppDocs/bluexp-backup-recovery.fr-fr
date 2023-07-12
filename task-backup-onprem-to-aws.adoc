@@ -405,7 +405,9 @@ Reportez-vous à la https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_cr
 
 Par défaut, le service crée des compartiments pour vous. Ou, si vous souhaitez utiliser vos propres compartiments, vous pouvez les créer avant de démarrer l'assistant d'activation de sauvegarde, puis les sélectionner dans l'assistant.
 
-Si vous créez vos propres compartiments, vous devez utiliser le nom de compartiment NetApp-Backup.  Si vous devez utiliser un nom personnalisé, modifiez le `ontapcloud-instance-policy-netapp-backup` IAMROle pour les CVO existants et ajouter la liste suivante aux autorisations S3. Vous devez inclure `“Resource”: “arn:aws:s3:::*”` et attribuez toutes les autorisations nécessaires qui doivent être associées au compartiment.
+link:concept-protection-journey.html#do-you-want-to-create-your-own-object-storage-container["En savoir plus sur la création de vos propres compartiments"^].
+
+Si vous créez vos propres compartiments, vous devez utiliser le nom de compartiment NetApp-Backup. Si vous devez utiliser un nom personnalisé, modifiez le `ontapcloud-instance-policy-netapp-backup` IAMROle pour les CVO existants et ajouter la liste suivante aux autorisations S3. Vous devez inclure `“Resource”: “arn:aws:s3:::*”` et attribuez toutes les autorisations nécessaires qui doivent être associées au compartiment.
 
 [%collapsible]
 ====
