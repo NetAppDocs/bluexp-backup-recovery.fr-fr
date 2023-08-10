@@ -97,8 +97,6 @@ Cette API renvoie une réponse comme suit. Vous pouvez récupérer l'ID de l'age
 
 L'exemple suivant montre un appel d'API pour activer la sauvegarde et la restauration BlueXP dans un environnement de travail. Dans cette nouvelle règle, les libellés sont définis quotidiennement, à l'heure et à la semaine. Après les jours, l'archive est-180 américaine-2 est définie dans le cloud Azure. Notez que cela n'active que la sauvegarde de l'environnement de travail, mais qu'aucun volume n'est sauvegardé.
 
-Si vous choisissez « auto-backup-enabled » : « true », tous les volumes déjà existants du système seront sauvegardés, de plus tous les volumes futurs seront également sauvegardés.
-
 .Demande d'API
 Vous verrez que nous utilisons l'ID de compte BlueXP `account-DpTFcxN3`, ID connecteur BlueXP `iZwFFeVCZjWnzGlw8RgD0QQNANZvpP7Iclients`, et jeton utilisateur `Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5rSXlPVFUzUWpZek1E…y6nyhBjwkeMwHc4ValobjUmju2x0xUH48g` dans cette commande.
 

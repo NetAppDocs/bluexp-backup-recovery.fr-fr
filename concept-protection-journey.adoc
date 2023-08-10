@@ -201,12 +201,12 @@ Vous pouvez créer le conteneur vous-même dans le compte du fournisseur d'objet
 
 Vous pouvez créer le compartiment à partir de BlueXP ou de votre fournisseur cloud.
 
-* https://docs.netapp.com/us-en/bluexp-s3-storage/task-add-s3-bucket.html["Création de compartiments S3 à partir de BlueXP"]
+* https://docs.netapp.com/us-en/bluexp-s3-storage/task-add-s3-bucket.html["Création de compartiments Amazon S3 à partir de BlueXP"]
 * https://docs.netapp.com/us-en/bluexp-blob-storage/task-add-blob-storage.html["Créez des comptes de stockage Azure Blob à partir de BlueXP"]
 * https://docs.netapp.com/us-en/bluexp-google-cloud-storage/task-add-gcp-bucket.html["Créez des compartiments de stockage Google Cloud à partir de BlueXP"]
 
 
-*Remarque :* pour le moment, vous ne pouvez pas utiliser vos propres compartiments S3 lors de la création de sauvegardes dans les systèmes StorageGRID.
+*Remarque :* pour le moment, vous ne pouvez pas utiliser vos propres compartiments S3 lors de la création de sauvegardes dans des systèmes StorageGRID ou dans ONTAP S3.
 
 Si vous prévoyez d'utiliser un préfixe de compartiment différent de « netapp-backup-xxxxxx », vous devez modifier les autorisations S3 pour le rôle IAM du connecteur. Pour plus d'informations, consultez les rubriques relatives à la création de sauvegardes dans AWS S3.
 
@@ -274,6 +274,7 @@ ifdef::gcp[]
 endif::gcp[]
 
 * link:task-backup-onprem-private-cloud.html["Sauvegarde des données ONTAP sur site dans StorageGRID"]
+* link:task-backup-onprem-to-ontap-s3.html["Sauvegarde d'ONTAP sur site dans ONTAP S3"]
 
 
 
@@ -302,7 +303,8 @@ endif::azure[]
 
 Les fonctionnalités de sauvegarde et de restauration BlueXP peuvent être utilisées dans un site sans connexion Internet (également appelé « mode privé » ou « sites invisibles ») pour sauvegarder des données de volume. Dans ce cas, vous devrez déployer le connecteur BlueXP sur un hôte Linux du même site.
 
-* Vous pouvez sauvegarder les données à partir de systèmes ONTAP locaux sur site vers des systèmes NetApp StorageGRID locaux. Découvrez comment  link:task-backup-onprem-private-cloud.html["Sauvegarde des données ONTAP sur site dans StorageGRID"] pour plus d'informations.
+* Vous pouvez sauvegarder les données à partir de systèmes ONTAP locaux sur site vers des systèmes NetApp StorageGRID locaux. Découvrez comment link:task-backup-onprem-private-cloud.html["Sauvegarde des données ONTAP sur site dans StorageGRID"] pour plus d'informations.
+* Vous pouvez sauvegarder les données à partir de systèmes ONTAP locaux sur site vers des systèmes ONTAP locaux ou des systèmes Cloud Volumes ONTAP configurés pour le stockage objet S3. Découvrez comment link:task-backup-onprem-to-ontap-s3.html["Sauvegardez les données ONTAP sur site dans ONTAP S3"] pour plus d'informations.
 ifdef::aws[]
 
 

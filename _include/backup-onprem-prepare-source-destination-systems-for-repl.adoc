@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Avant d'activer les sauvegardes dans BlueXP Backup and Recovery, assurez-vous que les systèmes source et de destination respectent la version d'ONTAP et les exigences de mise en réseau.
+Avant d'activer les sauvegardes dans BlueXP Backup and Recovery, assurez-vous que les systèmes source et de destination respectent les exigences de mise en réseau suivantes.
 
 
 
@@ -14,7 +14,7 @@ Le groupe de sécurité de l'instance doit inclure les règles d'entrée et de s
 
 ==== Exigences de mise en réseau ONTAP sur site
 
-* Si le cluster se trouve sur votre site, vous devez disposer d'une connexion entre votre réseau d'entreprise et votre réseau virtuel du fournisseur cloud. Il s'agit généralement d'une connexion VPN.
+* Si le cluster se trouve dans votre site, vous devez disposer d'une connexion entre votre réseau d'entreprise et votre réseau virtuel dans le fournisseur cloud. Il s'agit généralement d'une connexion VPN.
 * Les clusters ONTAP doivent répondre à des exigences supplémentaires en termes de sous-réseau, de port, de pare-feu et de cluster.
 +
 Comme vous pouvez répliquer sur des systèmes Cloud Volumes ONTAP ou sur site, examinez les exigences de peering pour les systèmes ONTAP sur site. https://docs.netapp.com/us-en/ontap-sm-classic/peering/reference_prerequisites_for_cluster_peering.html["Afficher les conditions préalables au peering de cluster dans la documentation de ONTAP"^].

@@ -114,7 +114,28 @@ Système ONTAP sur site | Google Cloud Storage endif::gcp[]
 
 
 | Système ONTAP sur site | Cloud Volumes ONTAP
-Système ONTAP sur site | Ifdef::aws[] Amazon S3 endif::aws[] ifdef::Azure[] Azure Blob endif::Azure[] ifdef::gcp[] Google Cloud Storage endif::gcp[] NetApp StorageGRID 
+Système ONTAP sur site | ifdef::aws[]
+
+Amazon S3
+
+endif::aws[]
+
+
+ifdef::azure[]
+
+Blob d'Azure
+
+endif::azure[]
+
+
+ifdef::gcp[]
+
+Google Cloud Storage
+
+end if::gcp[]
+
+NetApp StorageGRID
+ONTAP S3 
 |===
 
 
@@ -143,6 +164,10 @@ Système ONTAP sur site | Cloud Volumes ONTAP dans le système ONTAP sur site Go
 
 
 | NetApp StorageGRID | Système ONTAP sur site
+Cloud Volumes ONTAP | Système ONTAP sur site 
+
+
+| ONTAP S3 | Système ONTAP sur site
 Cloud Volumes ONTAP | Système ONTAP sur site 
 |===
 Notez que les références aux « systèmes ONTAP sur site » incluent les systèmes FAS, AFF et ONTAP Select.
@@ -231,6 +256,8 @@ BlueXP Backup and Recovery est disponible avec les modèles de consommation suiv
 * *Annuel* : contrat annuel sur le marché de votre fournisseur cloud.
 
 
+Une licence Backup est requise uniquement pour la sauvegarde et la restauration à partir du stockage objet. La création de copies Snapshot et de volumes répliqués ne nécessite pas de licence.
+
 
 
 === Bring your own license (BYOL)
@@ -298,6 +325,8 @@ Ce schéma illustre les volumes répliqués sur un système Cloud Volumes ONTAP,
 
 === L'emplacement des sauvegardes
 
+Les sauvegardes résident dans des emplacements distants en fonction du type de sauvegarde :
+
 * _Copies Snapshot_ résident sur le volume source dans l'environnement de travail source.
 * Les _volumes répliqués_ résident sur le système de stockage secondaire : un système Cloud Volumes ONTAP ou ONTAP sur site.
 * _Les copies de sauvegarde_ sont stockées dans un magasin d'objets créé par BlueXP dans votre compte cloud. Chaque cluster/environnement de travail est équipé d'un magasin d'objets, et BlueXP a indiqué le magasin d'objets comme suit : « netapp-backup-clusterUUID ». Veillez à ne pas supprimer ce magasin d'objets.
@@ -325,9 +354,11 @@ ifdef::gcp[]
 endif::gcp[]
 
 +
-** Dans StorageGRID, BlueXP utilise un compte de stockage existant pour le compartiment de magasin d'objets.
+** Dans StorageGRID, BlueXP utilise un compte locataire existant pour le compartiment S3.
 
 +
+** Dans ONTAP S3, BlueXP utilise un compte utilisateur pour le compartiment S3.
+
 Pour modifier ultérieurement le magasin d'objets de destination d'un cluster, vous devez link:task-manage-backups-ontap.html#unregistering-bluexp-backup-and-recovery-for-a-working-environment["Annulez l'enregistrement de la sauvegarde et de la restauration BlueXP pour l'environnement de travail"^], Puis activez la sauvegarde et la restauration BlueXP à l'aide des informations du nouveau fournisseur cloud.
 
 

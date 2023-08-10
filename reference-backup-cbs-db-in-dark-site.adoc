@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: reference-backup-cbs-db-in-dark-site.html 
 keywords: backup database, recover database 
-summary: 'Lors de l"utilisation de la sauvegarde et de la restauration BlueXP sur un site sans accès à Internet, connu sous le nom de « mode privé », les données de configuration de sauvegarde et de restauration BlueXP sont sauvegardées dans le compartiment StorageGRID où vos sauvegardes sont stockées. En cas de problème avec le système hôte du connecteur BlueXP, vous pouvez déployer un nouveau connecteur et restaurer les données de sauvegarde et de restauration BlueXP stratégiques.' 
+summary: 'Lors de l"utilisation de la sauvegarde et de la restauration BlueXP sur un site sans accès à Internet, connu sous le nom de « mode privé », les données de configuration de sauvegarde et de restauration BlueXP sont sauvegardées dans le compartiment StorageGRID ou ONTAP S3 où sont stockées vos sauvegardes. En cas de problème avec le système hôte du connecteur BlueXP, vous pouvez déployer un nouveau connecteur et restaurer les données de sauvegarde et de restauration BlueXP stratégiques.' 
 ---
 = Restaurez les données de sauvegarde et de restauration BlueXP dans un site invisible
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: 'Lors de l"utilisation de la sauvegarde et de la restauration BlueXP su
 
 
 [role="lead"]
-Lors de l'utilisation de la sauvegarde et de la restauration BlueXP sur un site sans accès Internet, connu sous le nom de « mode privé » ou de « site invisible », les données de configuration de sauvegarde et de restauration BlueXP sont sauvegardées dans le compartiment StorageGRID où vos sauvegardes sont stockées. En cas de problème avec le système hôte du connecteur BlueXP, vous pouvez déployer un nouveau connecteur et restaurer les données de sauvegarde et de restauration BlueXP stratégiques.
+Lors de l'utilisation de la sauvegarde et de la restauration BlueXP sur un site sans accès à Internet, connu sous le nom de « mode privé », les données de configuration de sauvegarde et de restauration BlueXP sont sauvegardées dans le compartiment StorageGRID ou ONTAP S3 où sont stockées vos sauvegardes. En cas de problème avec le système hôte du connecteur BlueXP, vous pouvez déployer un nouveau connecteur et restaurer les données de sauvegarde et de restauration BlueXP stratégiques.
 
 Notez que lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un environnement SaaS où le connecteur BlueXP est déployé dans votre fournisseur cloud ou sur votre propre système hôte disposant d'un accès Internet, toutes les données importantes de configuration de la sauvegarde et de la restauration BlueXP sont sauvegardées et protégées dans le cloud. Si vous rencontrez un problème avec le connecteur, il vous suffit de créer un nouveau connecteur et d'ajouter vos environnements de travail. Les détails de la sauvegarde sont automatiquement restaurés.
 
@@ -46,7 +46,7 @@ Pour rétablir votre système de sauvegarde et de restauration BlueXP opération
 Une fois que vous avez vérifié que votre système est de nouveau en bon état de fonctionnement, nous vous recommandons de créer de nouveaux fichiers de sauvegarde.
 
 .Ce dont vous avez besoin
-Vous devez accéder aux sauvegardes de base de données et d'index les plus récentes à partir du compartiment StorageGRID où vos fichiers de sauvegarde sont stockés :
+Vous devez accéder aux sauvegardes de base de données et d'index les plus récentes à partir du compartiment StorageGRID ou ONTAP S3 où vos fichiers de sauvegarde sont stockés :
 
 * Sauvegarde et restauration BlueXP fichier de base de données MySQL
 +
@@ -131,7 +131,7 @@ unzip Indexed_Catalog_DB_Backup_catalogdb1_23_05_2023.zip -d catalogdb1
 
 === Découvrir les clusters ONTAP et les systèmes StorageGRID
 
-. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html#discover-clusters-using-a-connector["Découvrez tous les environnements de travail ONTAP sur site"^] qui étaient disponibles dans votre environnement précédent.
+. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html#discover-clusters-using-a-connector["Découvrez tous les environnements de travail ONTAP sur site"^] qui étaient disponibles dans votre environnement précédent. Cela inclut le système ONTAP que vous avez utilisé comme serveur S3.
 . https://docs.netapp.com/us-en/bluexp-storagegrid/task-discover-storagegrid.html["Découvrir vos systèmes StorageGRID"^].
 
 

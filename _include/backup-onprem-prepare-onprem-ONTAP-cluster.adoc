@@ -36,7 +36,7 @@ Assurez-vous que les exigences ONTAP suivantes sont respectées :
 Découvrez comment https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["gérez les licences du cluster"^].
 
 * L'heure et le fuseau horaire sont correctement réglés. Découvrez comment https://docs.netapp.com/us-en/ontap/system-admin/manage-cluster-time-concept.html["configurez l'heure du cluster"^].
-* Si vous allez répliquer des données, vérifiez que les volumes source et de destination exécutent des versions ONTAP compatibles avant de répliquer des données.
+* Si vous allez répliquer des données, vérifiez que les systèmes source et cible exécutent des versions ONTAP compatibles avant de répliquer des données.
 +
 https://docs.netapp.com/us-en/ontap/data-protection/compatible-ontap-versions-snapmirror-concept.html["Afficher les versions compatibles ONTAP pour les relations SnapMirror"^].
 

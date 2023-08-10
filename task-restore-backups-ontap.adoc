@@ -154,6 +154,10 @@ Système ONTAP sur site | Cloud Volumes ONTAP dans le système ONTAP sur site Go
 
 | NetApp StorageGRID | Système ONTAP sur site
 Cloud Volumes ONTAP | Système ONTAP sur site 
+
+
+| ONTAP S3 | Système ONTAP sur site
+Cloud Volumes ONTAP | Système ONTAP sur site 
 |===
 ifdef::aws[]
 
@@ -191,6 +195,7 @@ ifdef::gcp[]
 endif::gcp[]
 
 * Pour StorageGRID, le connecteur doit être déployé sur site, avec ou sans accès à Internet
+* Pour ONTAP S3, le connecteur peut être déployé dans vos locaux (avec ou sans accès à Internet) ou dans un environnement de fournisseur cloud
 
 
 Notez que les références aux « systèmes ONTAP sur site » incluent les systèmes FAS, AFF et ONTAP Select.
@@ -262,6 +267,7 @@ ifdef::gcp[]
 endif::gcp[]
 
 * Lors de la restauration à partir de StorageGRID, entrez le FQDN du serveur StorageGRID et le port que ONTAP doit utiliser pour la communication HTTPS avec StorageGRID, sélectionnez la clé d'accès et la clé secrète nécessaires pour accéder au stockage objet, et l'IPspace dans le cluster ONTAP où le volume de destination résidera.
+* Lors d'une restauration à partir de ONTAP S3, entrez le nom de domaine complet du serveur ONTAP S3 et le port que ONTAP doit utiliser pour les communications HTTPS avec ONTAP S3, sélectionnez la clé d'accès et la clé secrète requises pour accéder au stockage objet. et l'IPspace dans le cluster ONTAP où le volume de destination sera hébergé.
 +
 .. Entrez le nom à utiliser pour le volume restauré, puis sélectionnez le VM de stockage et l'agrégat dans lequel le volume sera stocké. Lors de la restauration d'un volume FlexGroup, vous pouvez choisir plusieurs agrégats. Par défaut, *<source_volume_name>_restore* est utilisé comme nom de volume.
 +
@@ -307,8 +313,13 @@ Notez que la restauration d'un volume à partir d'un fichier de sauvegarde qui r
 
 Si vous n'avez besoin de restaurer que quelques fichiers depuis la sauvegarde d'un volume ONTAP, vous avez la possibilité de restaurer un dossier ou des fichiers individuels au lieu de restaurer tout le volume. Vous pouvez restaurer des dossiers et des fichiers vers un volume existant dans l'environnement de travail d'origine ou vers un autre environnement de travail utilisant le même compte cloud. Vous pouvez également restaurer des dossiers et des fichiers vers un volume situé sur un système ONTAP sur site.
 
-*Remarque :* vous ne pouvez restaurer un dossier ou des fichiers individuels qu'à partir d'un fichier de sauvegarde dans le stockage objet pour le moment. La restauration de fichiers et de dossiers n'est actuellement pas prise en charge à partir d'une copie Snapshot locale ou d'un fichier de sauvegarde résidant dans un environnement de travail secondaire (volume répliqué).
+[NOTE]
+====
+* À ce stade, vous ne pouvez restaurer un dossier ou des fichiers individuels qu'à partir d'un fichier de sauvegarde dans le stockage objet. La restauration de fichiers et de dossiers n'est actuellement pas prise en charge à partir d'une copie Snapshot locale ou d'un fichier de sauvegarde résidant dans un environnement de travail secondaire (volume répliqué).
+* La restauration de fichiers et de dossiers n'est actuellement pas prise en charge à partir des volumes du stockage objet ONTAP S3.
 
+
+====
 Si vous sélectionnez plusieurs fichiers, tous les fichiers sont restaurés sur le même volume de destination que vous choisissez. Si vous souhaitez restaurer des fichiers sur différents volumes, vous devez exécuter le processus de restauration plusieurs fois.
 
 Si vous utilisez ONTAP 9.13.0 ou une version ultérieure, vous pouvez restaurer un dossier avec tous les fichiers et sous-dossiers qu'il contient. Lorsque vous utilisez une version de ONTAP antérieure à 9.13.0, seuls les fichiers de ce dossier sont restaurés - aucun sous-dossier, ni fichier dans des sous-dossiers, ne sont restaurés.
@@ -500,6 +511,7 @@ endif::gcp[]
 * Si le fichier de sauvegarde du stockage objet a été configuré avec la protection DataLock & ransomware, la restauration au niveau des dossiers est prise en charge uniquement si la version de ONTAP est 9.13.1 ou supérieure. Si vous utilisez une version antérieure de ONTAP, vous pouvez restaurer l'intégralité du volume à partir du fichier de sauvegarde, puis accéder au dossier et aux fichiers dont vous avez besoin.
 * Si le fichier de sauvegarde du stockage objet réside dans le stockage d'archives, la restauration au niveau des dossiers est prise en charge uniquement si la version de ONTAP est 9.13.1 ou supérieure. Si vous utilisez une version antérieure de ONTAP, vous pouvez restaurer le dossier à partir d'un fichier de sauvegarde plus récent qui n'a pas été archivé, ou vous pouvez restaurer le volume entier à partir de la sauvegarde archivée, puis accéder au dossier et aux fichiers dont vous avez besoin.
 * La priorité de restauration « élevée » n'est pas prise en charge lors de la restauration de données à partir d'un stockage d'archivage Azure vers des systèmes StorageGRID.
+* La restauration de dossiers n'est actuellement pas prise en charge à partir des volumes du stockage objet ONTAP S3.
 
 
 ====
@@ -538,6 +550,10 @@ Système ONTAP sur site | Cloud Volumes ONTAP dans le système ONTAP sur site Go
 
 | NetApp StorageGRID | Système ONTAP sur site
 Cloud Volumes ONTAP | Système ONTAP sur site 
+
+
+| ONTAP S3 | Système ONTAP sur site
+Cloud Volumes ONTAP | Système ONTAP sur site 
 |===
 Pour la recherche et la restauration, le connecteur peut être installé aux emplacements suivants :
 
@@ -563,6 +579,7 @@ ifdef::gcp[]
 endif::gcp[]
 
 * Pour StorageGRID, le connecteur doit être déployé sur site, avec ou sans accès à Internet
+* Pour ONTAP S3, le connecteur peut être déployé dans vos locaux (avec ou sans accès à Internet) ou dans un environnement de fournisseur cloud
 
 
 Notez que les références aux « systèmes ONTAP sur site » incluent les systèmes FAS, AFF et ONTAP Select.
@@ -625,7 +642,7 @@ Notez que si vous utilisiez déjà la sauvegarde et la restauration BlueXP avec 
 
 endif::gcp[]
 
-* Configuration minimale requise pour StorageGRID :
+* Exigences d'StorageGRID et d'ONTAP S3 :
 +
 En fonction de votre configuration, la recherche et la restauration peuvent être mises en œuvre de deux façons :
 
@@ -690,7 +707,7 @@ ifdef::gcp[]
 
 endif::gcp[]
 
-* Pour les sauvegardes stockées dans StorageGRID, l'espace est provisionné sur le connecteur ou sur l'environnement du fournisseur cloud.
+* Pour les sauvegardes stockées dans StorageGRID ou ONTAP S3, il provisionne l'espace sur le connecteur ou dans l'environnement du fournisseur cloud.
 
 
 Si l'indexation a déjà été activée pour votre environnement de travail, passez à la section suivante pour restaurer vos données.
@@ -751,7 +768,7 @@ Si vous sélectionnez un système ONTAP sur site et que vous n'avez pas encore c
 ifdef::aws[]
 
 +
-*** Lors de la restauration depuis Amazon S3, sélectionnez l'IPspace dans le cluster ONTAP où se trouve le volume de destination, entrez la clé d'accès et la clé secrète pour l'utilisateur créé pour donner l'accès au cluster ONTAP au compartiment S3, Il est également possible de choisir un terminal VPC privé pour sécuriser le transfert de données. link:task-backup-onprem-to-aws.html#cluster-networking-requirements["Reportez-vous aux détails de ces exigences"].
+*** Lors de la restauration depuis Amazon S3, sélectionnez l'IPspace dans le cluster ONTAP où se trouve le volume de destination, entrez la clé d'accès et la clé secrète pour l'utilisateur créé pour donner l'accès au cluster ONTAP au compartiment S3, Il est également possible de choisir un terminal VPC privé pour sécuriser le transfert de données. link:task-backup-onprem-to-aws.html#verify-ontap-networking-requirements-for-backing-up-data-to-object-storage["Reportez-vous aux détails de ces exigences"].
 
 
 
@@ -762,19 +779,20 @@ endif::aws[]
 
 ifdef::azure[]
 
-* Lors de la restauration à partir d'Azure Blob, sélectionnez l'IPspace dans le cluster ONTAP où réside le volume de destination, puis choisissez un terminal privé pour le transfert de données sécurisé en sélectionnant le vnet et le sous-réseau. link:task-backup-onprem-to-azure.html#requirements["Reportez-vous aux détails de ces exigences"].
+* Lors de la restauration à partir d'Azure Blob, sélectionnez l'IPspace dans le cluster ONTAP où réside le volume de destination, puis choisissez un terminal privé pour le transfert de données sécurisé en sélectionnant le vnet et le sous-réseau. link:task-backup-onprem-to-azure.html#verify-ontap-networking-requirements-for-backing-up-data-to-object-storage["Reportez-vous aux détails de ces exigences"].
 
 
 endif::azure[]
 
 ifdef::gcp[]
 
-* Lors de la restauration à partir de Google Cloud Storage, sélectionnez l'IPspace dans le cluster ONTAP où réside le volume de destination, ainsi que la clé d'accès et la clé secrète pour accéder au stockage objet. link:task-backup-onprem-to-gcp.html#requirements["Reportez-vous aux détails de ces exigences"].
+* Lors de la restauration à partir de Google Cloud Storage, sélectionnez l'IPspace dans le cluster ONTAP où réside le volume de destination, ainsi que la clé d'accès et la clé secrète pour accéder au stockage objet. link:task-backup-onprem-to-gcp.html#verify-ontap-networking-requirements-for-backing-up-data-to-object-storage["Reportez-vous aux détails de ces exigences"].
 
 
 endif::gcp[]
 
-* Lors d'une restauration à partir de StorageGRID, entrez le FQDN du serveur StorageGRID et le port que ONTAP doit utiliser pour la communication HTTPS avec StorageGRID, entrez la clé d'accès et la clé secrète nécessaires pour accéder au stockage objet, et l'IPspace dans le cluster ONTAP où réside le volume de destination. link:task-backup-onprem-private-cloud.html#requirements["Reportez-vous aux détails de ces exigences"].
+* Lors d'une restauration à partir de StorageGRID, entrez le FQDN du serveur StorageGRID et le port que ONTAP doit utiliser pour la communication HTTPS avec StorageGRID, entrez la clé d'accès et la clé secrète nécessaires pour accéder au stockage objet, et l'IPspace dans le cluster ONTAP où réside le volume de destination. link:task-backup-onprem-private-cloud.html#verify-ontap-networking-requirements-for-backing-up-data-to-object-storage["Reportez-vous aux détails de ces exigences"].
+* Lors d'une restauration à partir de ONTAP S3, entrez le nom de domaine complet du serveur ONTAP S3 et le port que ONTAP doit utiliser pour les communications HTTPS avec ONTAP S3, sélectionnez la clé d'accès et la clé secrète requises pour accéder au stockage objet. et l'IPspace dans le cluster ONTAP où le volume de destination sera hébergé. link:task-backup-onprem-to-ontap-s3.html#verify-ontap-networking-requirements-for-backing-up-data-to-object-storage["Reportez-vous aux détails de ces exigences"].
 
 
 .Résultats

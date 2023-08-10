@@ -266,7 +266,7 @@ Assurez-vous que les exigences ONTAP suivantes sont respectées :
 Découvrez comment https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["gérez les licences du cluster"^].
 
 * L'heure et le fuseau horaire sont correctement réglés. Découvrez comment https://docs.netapp.com/us-en/ontap/system-admin/manage-cluster-time-concept.html["configurez l'heure du cluster"^].
-* Si vous allez répliquer des données, vérifiez que les volumes source et de destination exécutent des versions ONTAP compatibles avant de répliquer des données.
+* Si vous allez répliquer des données, vérifiez que les systèmes source et cible exécutent des versions ONTAP compatibles avant de répliquer des données.
 +
 https://docs.netapp.com/us-en/ontap/data-protection/compatible-ontap-versions-snapmirror-concept.html["Afficher les versions compatibles ONTAP pour les relations SnapMirror"^].
 
@@ -303,7 +303,7 @@ Lorsque vous configurez la sauvegarde et la restauration BlueXP, vous êtes invi
 
 === Vérifiez les exigences de mise en réseau ONTAP pour la réplication de volumes
 
-Avant d'activer les sauvegardes dans BlueXP Backup and Recovery, assurez-vous que les systèmes source et de destination respectent la version d'ONTAP et les exigences de mise en réseau.
+Avant d'activer les sauvegardes dans BlueXP Backup and Recovery, assurez-vous que les systèmes source et de destination respectent les exigences de mise en réseau suivantes.
 
 
 
@@ -315,7 +315,7 @@ Le groupe de sécurité de l'instance doit inclure les règles d'entrée et de s
 
 ==== Exigences de mise en réseau ONTAP sur site
 
-* Si le cluster se trouve sur votre site, vous devez disposer d'une connexion entre votre réseau d'entreprise et votre réseau virtuel du fournisseur cloud. Il s'agit généralement d'une connexion VPN.
+* Si le cluster se trouve dans votre site, vous devez disposer d'une connexion entre votre réseau d'entreprise et votre réseau virtuel dans le fournisseur cloud. Il s'agit généralement d'une connexion VPN.
 * Les clusters ONTAP doivent répondre à des exigences supplémentaires en termes de sous-réseau, de port, de pare-feu et de cluster.
 +
 Comme vous pouvez répliquer sur des systèmes Cloud Volumes ONTAP ou sur site, examinez les exigences de peering pour les systèmes ONTAP sur site. https://docs.netapp.com/us-en/ontap-sm-classic/peering/reference_prerequisites_for_cluster_peering.html["Afficher les conditions préalables au peering de cluster dans la documentation de ONTAP"^].
@@ -388,29 +388,24 @@ La page Introduction de l'assistant affiche les options de protection, y compris
 
 === Sélectionnez les volumes à sauvegarder
 
-Choisissez les volumes à protéger. Vous pouvez choisir de protéger les volumes FlexVol ou FlexGroup, mais vous ne pouvez pas en combiner plusieurs pour l'environnement de travail que vous avez choisi de protéger.
+Choisissez les volumes à protéger. Un volume protégé possède un ou plusieurs des éléments suivants : règle Snapshot, règle de réplication, règle de sauvegarde sur objet.
+
+Vous pouvez choisir de protéger les volumes FlexVol ou FlexGroup, mais vous ne pouvez pas sélectionner un mélange de ces volumes lors de l'activation de la sauvegarde pour un environnement de travail. Découvrez comment link:task-manage-backups-ontap.html#activate-backup-on-additional-volumes-in-a-working-environment["activer la sauvegarde des volumes supplémentaires dans l'environnement de travail"] (FlexVol ou FlexGroup) après avoir configuré la sauvegarde des volumes initiaux.
 
 [NOTE]
 ====
 * Vous ne pouvez activer une sauvegarde que sur un seul volume FlexGroup à la fois.
-* Les volumes sélectionnés doivent également avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes en mode conformité SnapLock ne sont pas pris en charge actuellement.) Vous ne pouvez pas sélectionner une combinaison de volumes verrouillés et déverrouillés.
+* Les volumes sélectionnés doivent avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes en mode conformité SnapLock ne sont pas pris en charge actuellement.)
 
 
 ====
-Un volume protégé possède un ou plusieurs des éléments suivants : règle Snapshot, règle de réplication, règle de sauvegarde sur objet.
-
-
-NOTE: Si les règles Snapshot et de réplication des volumes choisis sont différentes de celles que vous sélectionnez ultérieurement, les règles existantes seront remplacées.
-
 .Étapes
+Notez que si des règles Snapshot ou de réplication sont déjà appliquées sur les volumes que vous choisissez, les règles que vous sélectionnez ultérieurement remplaceront ces règles existantes.
+
 . Dans la page Sélectionner des volumes, sélectionnez le ou les volumes à protéger.
 +
-** Vous pouvez également filtrer les lignes pour afficher uniquement les volumes avec certains types de volumes, styles et autres pour faciliter la sélection.
-** Après avoir sélectionné le premier volume, vous pouvez sélectionner tous les volumes FlexVol. Pour sauvegarder tous les volumes FlexVol existants et tous les volumes FlexVol ajoutés ultérieurement, cochez un volume en premier, puis cochez la case dans la ligne de titre. (image:button_backup_all_volumes.png[""]).
-+
-
-TIP: Nous vous recommandons cette option afin que tous vos volumes soient sauvegardés et que vous n'aurez jamais à vous souvenir de pouvoir effectuer des sauvegardes pour de nouveaux volumes.
-
+** Vous pouvez également filtrer les lignes pour n'afficher que les volumes avec certains types de volumes, styles et autres pour faciliter la sélection.
+** Après avoir sélectionné le premier volume, vous pouvez sélectionner tous les volumes FlexVol (les volumes FlexGroup ne peuvent être sélectionnés qu'un par un). Pour sauvegarder tous les volumes FlexVol existants, cochez d'abord un volume, puis cochez la case dans la ligne de titre. (image:button_backup_all_volumes.png[""]).
 ** Pour sauvegarder des volumes individuels, cochez la case de chaque volume (image:button_backup_1_volume.png[""]).
 
 
@@ -502,7 +497,7 @@ NOTE: Si vous avez choisi un compte de stockage Microsoft existant, les informat
 
 TIP: Pour créer une règle personnalisée, vous pouvez utiliser System Manager ou l'interface de ligne de commandes de ONTAP `snapmirror policy create` commande. Reportez-vous à la section.
 
-** *Exporter les copies Snapshot existantes vers le stockage objet en tant que copies de sauvegarde* : s'il existe des copies Snapshot locales pour les volumes en lecture/écriture dans cet environnement de travail qui correspondent à l'étiquette du programme de sauvegarde que vous venez de sélectionner pour cet environnement de travail (par exemple, tous les jours, toutes les semaines, etc.), cette invite supplémentaire s'affiche. Cochez cette case pour que tous les snapshots historiques soient copiés dans le stockage objet en tant que fichiers de sauvegarde afin de garantir une protection complète de vos volumes.
+** *Exporter les copies Snapshot existantes vers le stockage objet en tant que copies de sauvegarde* : s'il existe des copies Snapshot locales pour les volumes de cet environnement de travail qui correspondent au libellé du programme de sauvegarde que vous venez de sélectionner pour cet environnement de travail (par exemple, tous les jours, toutes les semaines, etc.), cette invite supplémentaire s'affiche. Cochez cette case pour que tous les snapshots historiques soient copiés dans le stockage objet en tant que fichiers de sauvegarde afin de garantir une protection complète de vos volumes.
 
 
 . Sélectionnez *Suivant*.
