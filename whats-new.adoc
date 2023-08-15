@@ -22,7 +22,7 @@ Découvrez les nouveautés de la sauvegarde et de la restauration BlueXP.
 
 [IMPORTANT]
 ====
-En raison d'une amélioration importante de la sécurité, votre connecteur nécessite désormais un accès Internet sortant vers deux terminaux supplémentaires afin de gérer les ressources de sauvegarde et de restauration dans votre environnement de cloud public. Si ces noeuds finaux n'ont pas été blanchis dans votre pare-feu, une erreur s'affiche dans l'interface utilisateur à propos de « Service indisponible » ou de « Echec de la détermination de l'état du service » :
+En raison d'une amélioration importante de la sécurité, votre connecteur nécessite désormais un accès Internet sortant vers deux terminaux supplémentaires afin de gérer les ressources de sauvegarde et de restauration dans votre environnement de cloud public. Si ces points finaux n'ont pas été ajoutés à la liste « autorisé » de votre pare-feu, une erreur s'affiche dans l'interface utilisateur à propos de « Service indisponible » ou de « Echec de la détermination de l'état du service » :
 
 \https://api.cloud.netapp.com
 \https://netapp-cloud-account.auth0.com/userinfo
