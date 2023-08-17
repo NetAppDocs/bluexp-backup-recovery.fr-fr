@@ -34,7 +34,7 @@ Vous pouvez connecter votre cluster ONTAP sur site directement à Google Cloud S
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"] Préparez votre connecteur BlueXP
 [role="quick-margin-para"]
-Si vous avez déjà déployé un connecteur dans votre Google Cloud ou sur site, alors vous êtes paré. Si ce n'est pas le cas, vous devrez créer un connecteur BlueXP pour sauvegarder les données ONTAP sur le stockage Google Cloud. Vous devrez également personnaliser les paramètres réseau du connecteur pour qu'il puisse se connecter à Google Cloud.
+Si un connecteur est déjà déployé dans votre VPC Google Cloud Platform, vous devez le configurer. Si ce n'est pas le cas, vous devrez créer un connecteur BlueXP pour sauvegarder les données ONTAP sur le stockage Google Cloud. Vous devrez également personnaliser les paramètres réseau du connecteur pour qu'il puisse se connecter à Google Cloud.
 
 [role="quick-margin-para"]
 <<Préparez votre connecteur BlueXP,Apprenez à créer un connecteur et à définir les paramètres réseau requis.>>
