@@ -1,0 +1,195 @@
+---
+sidebar: sidebar 
+permalink: task-create-policies-ontap.html 
+keywords: backing up, back up, backup, backup on-prem ontap, policy, policies, backup policies, cloud backup, aws, aws s3, amazon s3, government 
+summary: 'Vous pouvez utiliser les règles de sauvegarde par défaut fournies par NetApp pour créer vos sauvegardes ou créer des règles personnalisées. Les règles régissent le type de sauvegarde, l"architecture de sauvegarde, les systèmes de stockage et la fréquence des sauvegardes.' 
+---
+= Gérez les règles de sauvegarde des volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous pouvez utiliser les règles de sauvegarde par défaut fournies par NetApp pour créer vos sauvegardes ou créer des règles personnalisées. Les stratégies régissent la fréquence des sauvegardes, l'heure à laquelle la sauvegarde est effectuée et le nombre de fichiers de sauvegarde conservés.
+
+Lorsque vous activez le service de sauvegarde et de restauration de vos volumes à l'aide de l'assistant d'activation, vous pouvez sélectionner parmi les règles par défaut et toutes les autres règles qui existent déjà dans l'environnement de travail (Cloud Volumes ONTAP ou système ONTAP sur site). Si vous souhaitez utiliser une stratégie différente de celles existantes, vous devez créer la stratégie avant de lancer l'assistant d'activation.
+
+Pour en savoir plus sur les règles de sauvegarde par défaut fournies, reportez-vous à la section link:concept-protection-journey.html["Planifiez votre parcours en matière de protection"].
+
+La sauvegarde et la restauration BlueXP proposent trois types de sauvegarde des données ONTAP : copies Snapshot, réplications et sauvegardes vers le stockage objet. Leurs règles résident à différents emplacements en raison de l'architecture que vous utilisez et du type de sauvegarde :
+
+[cols="25,25,25,25"]
+|===
+| Architecture | Emplacement du stockage des règles Snapshot | Emplacement de stockage de la règle de réplication | Sauvegarde vers l'emplacement de stockage de la règle objet 
+
+
+| *Fan-Out* | Primaire | Secondaire | Primaire 
+
+
+| *Cascade* | Primaire | Secondaire | Secondaire 
+|===
+Créez des stratégies de sauvegarde à l'aide des outils suivants en fonction de votre environnement, de vos préférences et du type de protection :
+
+* Interface utilisateur BlueXP
+* Interface de System Manager
+* INTERFACE DE LIGNE DE COMMANDES DE ONTAP
+
+
+
+TIP: Lorsque vous utilisez System Manager, sélectionnez *Asynchronous* comme type de stratégie pour les règles de réplication, puis sélectionnez *Asynchronous* et *Sauvegarder dans le cloud* pour la sauvegarde sur les stratégies d'objet.
+
+
+
+== Afficher les stratégies d'un environnement de travail
+
+. Dans l'interface utilisateur BlueXP, sélectionnez *volumes* > *Paramètres de sauvegarde*.
+. Dans la page Paramètres de sauvegarde, sélectionnez l'environnement de travail, puis sélectionnez *actions* image:icon-action.png["Icône actions"] Et sélectionnez *gestion des politiques*.
++
+La page gestion des polices s'affiche.
+
++
+image:screenshot_policies_management.png["Page de gestion des stratégies"]
+
++
+Les règles relatives aux snapshots sont affichées par défaut.
+
+. Pour afficher les autres stratégies qui existent dans l'environnement de travail, sélectionnez *Replication Policies* ou *Backup Policies*. Si les règles existantes peuvent être utilisées pour vos plans de sauvegarde, tout est défini. Si vous avez besoin d'une règle avec des caractéristiques différentes, vous pouvez créer de nouvelles règles à partir de cette page.
+
+
+
+
+== Créer une règle Snapshot
+
+Une partie de votre stratégie 3-2-1 implique la création d'une copie Snapshot du volume sur le système de stockage *principal*.
+
+Une partie du processus de création des règles consiste à identifier les étiquettes Snapshot et SnapMirror indiquant la planification et la conservation. Vous pouvez utiliser des étiquettes prédéfinies ou créer vos propres étiquettes.
+
+.Étapes
+. Sur la page stratégies, sélectionnez *Créer une nouvelle stratégie* > *Créer une stratégie Snapshot*.
+. Spécifiez le nom de la stratégie.
+. Sélectionnez le ou les plannings Snapshot. Vous pouvez avoir un maximum de 5 étiquettes. Ou créez un planning.
+. Si vous choisissez de créer un planning :
++
+.. Sélectionnez la fréquence horaire, quotidienne, hebdomadaire, mensuelle ou annuelle.
+.. Spécifiez les étiquettes Snapshot qui indiquent la planification et la conservation.
+.. Indiquez le moment et la fréquence de la prise de l'instantané.
+.. Conservation : entrez le nombre d'instantanés à conserver.
+
+
+. Sélectionnez *Créer*.
+
+
+
+
+=== Exemple de règle Snapshot utilisant une architecture en cascade
+
+Dans cet exemple, une politique Snapshot est créée avec deux clusters :
+
+. Cluster 1 :
++
+.. Sélectionnez Cluster 1 sur la page policy.
+.. Ignorez les sections de la stratégie réplication et sauvegarde dans un objet.
+.. Création de la règle Snapshot
+
+
+. Cluster 2 :
++
+.. Sélectionnez Cluster 2 sur la page Policy.
+.. Ignorez la section règle Snapshot.
+.. Configurez les règles de réplication et de sauvegarde sur objet.
+
+
+
+
+
+
+== Création d'une règle de réplication
+
+Votre stratégie 3-2-1 peut inclure la réplication d'un volume sur un système de stockage différent. La règle de réplication réside sur le système de stockage *secondaire*.
+
+.Étapes
+. Dans la page stratégies, sélectionnez *Créer une nouvelle stratégie* > *Créer une nouvelle stratégie de réplication*.
+. Dans la section Détails de la stratégie, spécifiez le nom de la stratégie.
+. Spécifier les étiquettes SnapMirror (maximum 5) indiquant la conservation de chaque étiquette.
+. Spécifiez le planning de transfert.
+. Sélectionnez *Créer*.
+
+
+
+
+== Création d'une règle de stockage de sauvegarde sur objet
+
+Votre stratégie 3-2-1 peut inclure la sauvegarde d'un volume dans le stockage objet.
+
+Cette stratégie de stockage réside dans différents emplacements de système de stockage selon l'architecture de sauvegarde :
+
+* « Fan-Out » : système de stockage principal
+* En cascade : système de stockage secondaire
+
+
+.Étapes
+. Dans la page gestion des stratégies, sélectionnez *Créer une nouvelle stratégie* > *Créer une nouvelle stratégie de sauvegarde*.
+. Dans la section Détails de la stratégie, spécifiez le nom de la stratégie.
+. Spécifier les étiquettes SnapMirror (maximum 5) indiquant la conservation de chaque étiquette.
+. Spécifiez les paramètres, y compris le planning de transfert et le moment d'archivage des sauvegardes.
+. (Facultatif) pour déplacer les anciens fichiers de sauvegarde vers une classe de stockage ou un niveau d'accès moins coûteux après un certain nombre de jours, sélectionnez l'option *Archive* et indiquez le nombre de jours qui doivent s'écouler avant l'archivage des données.
++
+https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-cloud-backup-policies.html#archival-storage-settings["En savoir plus sur les paramètres de stockage des archives"].
+
+. (Facultatif) pour protéger vos sauvegardes d'être modifiées ou supprimées, sélectionnez l'option *DataLock & ransomware protection*.
++
+Si votre cluster utilise ONTAP 9.11.1 ou une version ultérieure, vous pouvez choisir de protéger vos sauvegardes contre la suppression en configurant _DataLock_ et _protection contre les ransomware_.
+
++
+link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["En savoir plus sur les paramètres DataLock disponibles"^].
+
+. Sélectionnez *Créer*.
+
+
+
+
+== Modifier une stratégie
+
+Vous pouvez modifier une règle Snapshot, de réplication ou de sauvegarde personnalisée.
+
+La modification de la règle de sauvegarde affecte tous les volumes qui utilisent cette règle.
+
+.Étapes
+. Dans la page gestion des stratégies, sélectionnez la stratégie, puis sélectionnez *actions* image:icon-action.png["Icône actions"] Et sélectionnez *Modifier la stratégie*.
++
+
+NOTE: Le processus est le même pour les politiques de réplication et de sauvegarde.
+
+. Dans la page Modifier la stratégie, effectuez les modifications.
+. Sélectionnez *Enregistrer*.
+
+
+
+
+== Supprimer une règle
+
+Vous pouvez supprimer des règles qui ne sont associées à aucun volume.
+
+Si une policy est associée à un volume et que vous souhaitez la supprimer, vous devez d'abord la supprimer du volume.
+
+.Étapes
+. Dans la page gestion des stratégies, sélectionnez la stratégie, puis sélectionnez *actions* image:icon-action.png["Icône actions"] Et sélectionnez *Supprimer la règle Snapshot*.
+. Sélectionnez *Supprimer*.
+
+
+
+
+== Trouvez plus d'informations
+
+Pour obtenir des instructions sur la création de règles à l'aide de System Manager ou de l'interface de ligne de commandes ONTAP, consultez les documents suivants :
+
+https://docs.netapp.com/us-en/ontap/task_dp_configure_snapshot.html["Créez une règle Snapshot à l'aide de System Manager"^]
+https://docs.netapp.com/us-en/ontap/data-protection/create-snapshot-policy-task.html["Créez une règle Snapshot à l'aide de l'interface de ligne de commandes de ONTAP"^]
+https://docs.netapp.com/us-en/ontap/task_dp_create_custom_data_protection_policies.html["Créez une règle de réplication à l'aide de System Manager"^]
+https://docs.netapp.com/us-en/ontap/data-protection/create-custom-replication-policy-concept.html["Créez une règle de réplication à l'aide de l'interface de ligne de commandes de ONTAP"^]
+https://docs.netapp.com/us-en/ontap/task_dp_back_up_to_cloud.html#create-a-custom-cloud-backup-policy["Créez une règle de sauvegarde vers le stockage objet à l'aide de System Manager"^]
+https://docs.netapp.com/us-en/ontap-cli-9131/snapmirror-policy-create.html#description["Créez une règle de sauvegarde vers le stockage objet à l'aide de l'interface de ligne de commandes de ONTAP"^]

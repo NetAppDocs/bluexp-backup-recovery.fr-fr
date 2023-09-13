@@ -179,13 +179,10 @@ Notez que les références aux « systèmes ONTAP sur site » incluent les syst�
 La sauvegarde et la restauration BlueXP prennent en charge les types de volumes suivants :
 
 * Volumes FlexVol de lecture/écriture
-* Volumes de destination SnapMirror avec protection des données (DP)
-* Volumes SnapLock Enterprise (requiert ONTAP 9.11.1 ou version ultérieure)
-+
-** Les volumes de conformité SnapLock ne sont actuellement pas pris en charge.
-
-
 * Volumes FlexGroup (requiert ONTAP 9.12.1 ou version ultérieure)
+* Volumes SnapLock Enterprise (requiert ONTAP 9.11.1 ou version ultérieure)
+* Volumes de conformité SnapLock (requiert ONTAP 9.14 ou version ultérieure)
+* Volumes de destination SnapMirror avec protection des données (DP)
 
 
 Reportez-vous aux sections de la section <<Limites,Limites de la sauvegarde et de la restauration>> pour des exigences et restrictions supplémentaires.

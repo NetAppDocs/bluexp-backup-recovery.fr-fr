@@ -948,7 +948,6 @@
   <block id="53cfd5032381d05f65cbc6d64e0004f5" category="list-text">s3:GetObject</block>
   <block id="63c20717f207c238dd1a7f80b31c8b44" category="list-text">s3:PutBuckObjectLockConfiguration</block>
   <block id="0c1b0b85cf95eb29ecb3d5b774e010c2" category="list-text">s3:GetLifecyclConfiguration</block>
-  <block id="2720ba253382275ebb851de5d590b5cc" category="list-text">s3:ListBuckeByTags</block>
   <block id="70c72880a06cb649d8a568819cf5e5d1" category="list-text">s3:GetBucketTagging</block>
   <block id="538e4e83b58b6bce3bde0ae671e33b67" category="list-text">s3:DeleteObjectVersion</block>
   <block id="30756eb77e955d4514eb285a2d31ee73" category="list-text">s3:ListBuckeVersions</block>
@@ -1502,7 +1501,6 @@
   <block id="36c688567530141607520ff8f371abad" category="paragraph">Vous devriez pouvoir voir toutes les sauvegardes qui ont été créées pour vos volumes.</block>
   <block id="ca58572920332b0113296b57e60a56de" category="list-text">Dans le Tableau de bord de restauration, sous la section Rechercher et restaurer, cliquez sur *Paramètres d'indexation*.</block>
   <block id="080b8dd3f3323a86a22c3af13ee1c495" category="list-text">À partir de la page Rechercher et restaurer, exécutez quelques recherches de catalogue pour confirmer que la restauration du catalogue indexé a bien été effectuée.</block>
-  <block id="650c5c3b9794e3433e90f3f1f307a2c3" category="list-text">Les volumes de conformité SnapLock ne sont actuellement pas pris en charge.</block>
   <block id="bab09e9304b5c4bff1eb4287ce6071b7" category="list-text">Volumes FlexGroup (requiert ONTAP 9.12.1 ou version ultérieure)</block>
   <block id="181beb5ba2cd4630deb7eb4905bcf5d0" category="list-text">Dans GCP, les sauvegardes sont associées à la classe de stockage _Standard_.</block>
   <block id="e3ef2b7eb11e46c821f75f7c65663319" category="inline-link-macro">En savoir plus sur le stockage des archives Google</block>
@@ -3720,7 +3718,6 @@ Toutes les données écrites sur le volume source d'origine entre la dernière r
   <block id="0d8299302957cb3fba22b94473c12c7d" category="paragraph">Vous pouvez utiliser vos propres clés gérées par le client pour le chiffrement des données au lieu d'utiliser les clés de chiffrement gérées par Google par défaut. Les clés inter-régions et inter-projets sont prises en charge. Vous pouvez donc choisir un projet pour un compartiment différent du projet de la clé CMEK.</block>
   <block id="309939239d7103f08e00804428d22284" category="paragraph">Si vous prévoyez d'utiliser vos propres clés gérées par le client :</block>
   <block id="8b9e35eb97786c146adac12f589d404b" category="paragraph">Si la destination Google Cloud Storage pour vos sauvegardes existe en tant qu'environnement de travail sur la zone de travail, vous pouvez faire glisser le cluster ONTAP vers le stockage objet Google Cloud.</block>
-  <block id="ce60c44daed8a68a91ece5b6596057cc" category="list-text">Sélectionnez *volumes* dans la barre de sauvegarde et de récupération. Dans l'onglet volumes, sélectionnez l'option *actions (...)* et sélectionnez *Activer la sauvegarde* pour un seul volume (qui n'a pas déjà activé la réplication ou la sauvegarde sur le stockage objet). .</block>
   <block id="6726285215cd3fb82b2bc565d1c05a91" category="list-text">*Cascading* : les informations passent du stockage primaire au stockage secondaire et du stockage secondaire au stockage objet.</block>
   <block id="cd20fb22a544b75dcfdc55e676a57177" category="list-text">*Fan Out* : les informations passent du stockage primaire au stockage secondaire _et_ du stockage primaire au stockage objet.</block>
   <block id="62f87cf8c16c2da5d5b4f260c306b995" category="paragraph">Créez un nouveau compartiment ou sélectionnez-en un que vous avez déjà créé.</block>
@@ -3730,7 +3727,6 @@ Toutes les données écrites sur le volume source d'origine entre la dernière r
   <block id="351ef22e858cc4f3282062dfc08b26c6" category="admonition">Si vous avez choisi un compte de stockage Google Cloud existant, les informations de chiffrement sont déjà disponibles. Vous n'avez donc pas besoin de les saisir maintenant.</block>
   <block id="e0278e3316b81b329baced2d53dcdc63" category="paragraph">Si vous choisissez d'utiliser vos propres clés gérées par le client, entrez le porte-clés et le nom de la clé.<block ref="f8e0e63bffb58004a25f7278cd43c42c" category="inline-link-rx"></block>.</block>
   <block id="5ff1fe0a088aed28b3f32142c788c3d5" category="list-text">*Mise en réseau* : choisissez l'IPspace.</block>
-  <block id="880f6f7d5949be70d701b695256a4761" category="admonition">Pour créer une règle personnalisée, vous pouvez utiliser System Manager ou l'interface de ligne de commandes de ONTAP. Voir &lt;link&gt;.</block>
   <block id="bf125f3150943c9c18a4cd821384babe" category="paragraph">Un volume répliqué est créé dans le cluster de destination qui sera synchronisé avec le volume source.</block>
   <block id="a3c584a28c3b65e7dd15a0fab91559ce" category="paragraph">Un compartiment Google Cloud Storage est créé automatiquement dans le compte de service indiqué par la clé d'accès Google et la clé secrète que vous avez saisies, et les fichiers de sauvegarde y sont stockés. Le tableau de bord de sauvegarde de volume s'affiche pour vous permettre de surveiller l'état des sauvegardes.</block>
   <block id="be7c136f5c48ebfb72acc7a3f7f76696" category="doc">Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3</block>
@@ -4311,7 +4307,6 @@ ONTAP 9.9.1 et versions ultérieures sont requis pour les systèmes Cloud Volume
   <block id="51c1c5aa077ac8366955ff0cfc3e181a" category="paragraph">Choisissez les volumes à protéger. Un volume protégé possède un ou plusieurs des éléments suivants : règle Snapshot, règle de réplication, règle de sauvegarde sur objet.</block>
   <block id="e16bee3ecafb1ee1c54b43ad85dd8215" category="inline-link-macro">activer la sauvegarde des volumes supplémentaires dans l'environnement de travail</block>
   <block id="bb3015339c2686a35dc74324b8e4e4ea" category="paragraph">Vous pouvez choisir de protéger les volumes FlexVol ou FlexGroup, mais vous ne pouvez pas sélectionner un mélange de ces volumes lors de l'activation de la sauvegarde pour un environnement de travail. Découvrez comment <block ref="d59114f3cd03b41fa3f830654247699f" category="inline-link-macro-rx"></block> (FlexVol ou FlexGroup) après avoir configuré la sauvegarde des volumes initiaux.</block>
-  <block id="6af8d284e8fb7d947e52105e66ccd610" category="list-text">Les volumes sélectionnés doivent avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes en mode conformité SnapLock ne sont pas pris en charge actuellement.)</block>
   <block id="cc54d40dc91fd9f2adf463d5e6a20e64" category="paragraph">Notez que si des règles Snapshot ou de réplication sont déjà appliquées sur les volumes que vous choisissez, les règles que vous sélectionnez ultérieurement remplaceront ces règles existantes.</block>
   <block id="faf9e3428a892363316a8c1e34a4551b" category="list-text">Vous pouvez également filtrer les lignes pour n'afficher que les volumes avec certains types de volumes, styles et autres pour faciliter la sélection.</block>
   <block id="0e118ce24ee3412ae2c2aa20c222f02f" category="list-text">Après avoir sélectionné le premier volume, vous pouvez sélectionner tous les volumes FlexVol (les volumes FlexGroup ne peuvent être sélectionnés qu'un par un). Pour sauvegarder tous les volumes FlexVol existants, cochez d'abord un volume, puis cochez la case dans la ligne de titre. (<block ref="2b1190f90c2c717d2aa70aabd2fc4c36" category="inline-image-macro-rx" type="image"></block>).</block>
@@ -4362,7 +4357,6 @@ ifdef::aws[]</block>
   <block id="470964c6383a21c37ec7c78148306066" category="list-text">Pour ONTAP S3, le connecteur peut être déployé dans vos locaux (avec ou sans accès à Internet) ou dans un environnement de fournisseur cloud</block>
   <block id="f19394f3b7f64df50fbe3cf08b518aa3" category="list-text">Lors d'une restauration à partir de ONTAP S3, entrez le nom de domaine complet du serveur ONTAP S3 et le port que ONTAP doit utiliser pour les communications HTTPS avec ONTAP S3, sélectionnez la clé d'accès et la clé secrète requises pour accéder au stockage objet. et l'IPspace dans le cluster ONTAP où le volume de destination sera hébergé.</block>
   <block id="6b2e325b80840b0a9d8b16c541de5ba2" category="list-text">À ce stade, vous ne pouvez restaurer un dossier ou des fichiers individuels qu'à partir d'un fichier de sauvegarde dans le stockage objet. La restauration de fichiers et de dossiers n'est actuellement pas prise en charge à partir d'une copie Snapshot locale ou d'un fichier de sauvegarde résidant dans un environnement de travail secondaire (volume répliqué).</block>
-  <block id="74869d9e98fa5c8ed15010d55dad05c7" category="list-text">La restauration de fichiers et de dossiers n'est actuellement pas prise en charge à partir des volumes du stockage objet ONTAP S3.</block>
   <block id="24ac68c9fd3a2031d9d90480b0b100c4" category="list-text">La restauration de dossiers n'est actuellement pas prise en charge à partir des volumes du stockage objet ONTAP S3.</block>
   <block id="6f09a8c8e8b4f8b3acf1f96e43dca354" category="list-text">Exigences d'StorageGRID et d'ONTAP S3 :</block>
   <block id="8100b28bcfd3e23e2256df4e160ffe93" category="list-text">Pour les sauvegardes stockées dans StorageGRID ou ONTAP S3, il provisionne l'espace sur le connecteur ou dans l'environnement du fournisseur cloud.</block>
@@ -4473,4 +4467,118 @@ ONTAP S3</block>
   <block id="a4ecfc70574394990cf17bd83df499f7" category="cell">Événement</block>
   <block id="94798620994cb827b675957027c80437" category="paragraph">En raison d'une amélioration importante de la sécurité, votre connecteur nécessite désormais un accès Internet sortant vers un terminal supplémentaire afin de gérer les ressources de sauvegarde et de restauration au sein de votre environnement de cloud public. Si ce point final n'a pas été ajouté à la liste « autorisé » de votre pare-feu, une erreur s'affiche dans l'interface utilisateur à propos de « Service indisponible » ou de « Echec de la détermination de l'état du service » :</block>
   <block id="300f031c227ed1b4448a8bb51abec2bb" category="paragraph">\https://netapp-cloud-account.auth0.com</block>
+  <block id="809c75c03a253c08bfaa32177821bc49" category="list-text">Les volumes sélectionnés doivent avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes avec le mode conformité SnapLock requièrent ONTAP 9.14 ou version ultérieure.)</block>
+  <block id="437f900a689b3effaba13525bf426e50" category="inline-link-macro">Création d'une règle</block>
+  <block id="e4847718f673436ca61df1d6ff85e9ad" category="admonition">Pour créer une règle personnalisée à l'aide de l'interface utilisateur, reportez-vous à la section <block ref="63a3f471efcfd7e4daa79f468df674ce" category="inline-link-macro-rx"></block>.</block>
+  <block id="63ded913a4470920f93edd534ec90156" category="section-title">11 septembre 2023</block>
+  <block id="101143ec501ddd03e76bf93ad136c2de" category="section-title">Gestion des nouvelles règles pour les données ONTAP</block>
+  <block id="d3744875712ea1e210c10ab00d139b5b" category="paragraph">Cette version inclut la possibilité de créer des règles Snapshot personnalisées, des règles de réplication et des règles pour les sauvegardes vers un stockage objet pour les données ONTAP.</block>
+  <block id="99a56480b438dfe7afa3558f8c8e61d0" category="inline-link">En savoir plus sur les stratégies</block>
+  <block id="53a26cd89d8676b12d682e92f9b49a79" category="paragraph"><block ref="99a3bdb35a901d86516bb48e573064a3" category="inline-link-rx"></block>.</block>
+  <block id="90bd868a90cdf44166755a0fdec24b6e" category="section-title">Prise en charge de la restauration de fichiers et de dossiers à partir de volumes dans le stockage objet ONTAP S3</block>
+  <block id="efec702225db296adcaac3abb0665451" category="paragraph">Auparavant, vous ne pouviez pas restaurer de fichiers et de dossiers à l'aide de la fonction « Parcourir et restaurer » lorsque des volumes étaient sauvegardés sur le stockage objet ONTAP S3. Cette version supprime cette restriction.</block>
+  <block id="38da59f967f6f913365cf5cefb459344" category="inline-link">En savoir plus sur la restauration des données</block>
+  <block id="7b3040066d7e59383891bdcb2977076f" category="paragraph"><block ref="bfc7bc1f2f7fff3212c093c1fc6b6317" category="inline-link-rx"></block>.</block>
+  <block id="52cc7bb26d5185a2c3b92b71a3d6e319" category="section-title">Prise en charge supplémentaire de la sauvegarde et de la restauration des volumes SnapLock</block>
+  <block id="4cb4cd292be9258bfc850d1aa644d9f6" category="paragraph">La sauvegarde et la restauration peuvent désormais sauvegarder des volumes FlexVol et FlexGroup configurés en mode de protection SnapLock Compliance ou SnapLock Enterprise. Pour cette prise en charge, vos clusters doivent exécuter ONTAP 9.14 ou une version ultérieure. La sauvegarde de volumes FlexVol à l'aide de SnapLock Enterprise mode est prise en charge depuis ONTAP version 9.11.1. Les versions antérieures de ONTAP ne prennent pas en charge la sauvegarde des volumes de protection SnapLock.</block>
+  <block id="115e674b1dc0942f53bc91e279bbd7eb" category="inline-link">En savoir plus sur la protection des données ONTAP</block>
+  <block id="5ea7c922bf64f9c4520ccdf833e34e39" category="paragraph"><block ref="287ce1c3ffcd9fd04ac3fb9608fef690" category="inline-link-rx"></block>.</block>
+  <block id="7b666c0edc9876b87778d0969629cfbf" category="list-text">Sélectionnez *volumes* dans la barre de sauvegarde et de récupération. Dans l'onglet volumes, sélectionnez *actions* <block ref="29668165f4efcae1e525eece87489e44" category="inline-image-macro-rx" type="image"></block> Et sélectionnez *Activer la sauvegarde* pour un seul volume (dont la réplication ou la sauvegarde sur le stockage objet n'est pas déjà activée).</block>
+  <block id="fee16c8f65e9221b33938ce4c94bb0de" category="admonition">Pour créer une stratégie personnalisée, reportez-vous à la section <block ref="63a3f471efcfd7e4daa79f468df674ce" category="inline-link-macro-rx"></block>.</block>
+  <block id="c1e74c6339bd5a7ce0c8f49560afe41d" category="list-text">*Règle de sauvegarde* : sélectionnez une stratégie de stockage objet de sauvegarde existante.</block>
+  <block id="718dfdf9ba4cd59f98163d4d75844472" category="list-text">Volumes de conformité SnapLock (requiert ONTAP 9.14 ou version ultérieure)</block>
+  <block id="ef8c31bba1fe5a62e7a6cfedbb9d29da" category="summary">Vous pouvez utiliser les règles de sauvegarde par défaut fournies par NetApp pour créer vos sauvegardes ou créer des règles personnalisées. Les règles régissent le type de sauvegarde, l'architecture de sauvegarde, les systèmes de stockage et la fréquence des sauvegardes.</block>
+  <block id="defb6c38e16057d80b8b116a92ab8665" category="doc">Gérez les règles de sauvegarde des volumes ONTAP</block>
+  <block id="7ee9b8ccc530c51b1215b5f1266eee5e" category="paragraph">Vous pouvez utiliser les règles de sauvegarde par défaut fournies par NetApp pour créer vos sauvegardes ou créer des règles personnalisées. Les stratégies régissent la fréquence des sauvegardes, l'heure à laquelle la sauvegarde est effectuée et le nombre de fichiers de sauvegarde conservés.</block>
+  <block id="1023513b30fa21977b0dbd6b2e65992c" category="paragraph">Lorsque vous activez le service de sauvegarde et de restauration de vos volumes à l'aide de l'assistant d'activation, vous pouvez sélectionner parmi les règles par défaut et toutes les autres règles qui existent déjà dans l'environnement de travail (Cloud Volumes ONTAP ou système ONTAP sur site). Si vous souhaitez utiliser une stratégie différente de celles existantes, vous devez créer la stratégie avant de lancer l'assistant d'activation.</block>
+  <block id="c5e61d7841bf9a1c1ef625157d503535" category="paragraph">Pour en savoir plus sur les règles de sauvegarde par défaut fournies, reportez-vous à la section <block ref="26e6d65b3efbcdaf9fdb0f41b6ffe1ab" category="inline-link-macro-rx"></block>.</block>
+  <block id="bea7279384d85082d745d10903672658" category="paragraph">La sauvegarde et la restauration BlueXP proposent trois types de sauvegarde des données ONTAP : copies Snapshot, réplications et sauvegardes vers le stockage objet. Leurs règles résident à différents emplacements en raison de l'architecture que vous utilisez et du type de sauvegarde :</block>
+  <block id="9c2cf3d903ec11e031aac200337d550f" category="cell">Emplacement du stockage des règles Snapshot</block>
+  <block id="03cef7774b631377e1518e05ea03e5f0" category="cell">Emplacement de stockage de la règle de réplication</block>
+  <block id="47678324688906f6896f307bc4023541" category="cell">Sauvegarde vers l'emplacement de stockage de la règle objet</block>
+  <block id="1be22c5f78f317083889cb6e2929d752" category="paragraph">Créez des stratégies de sauvegarde à l'aide des outils suivants en fonction de votre environnement, de vos préférences et du type de protection :</block>
+  <block id="4539bbf69cf6212ec275958c8953cb21" category="list-text">Interface utilisateur BlueXP</block>
+  <block id="4b5f4ae9ecbdcd94e894932f499d9381" category="list-text">Interface de System Manager</block>
+  <block id="de134183bea5df515a6756a539ce6f18" category="list-text">INTERFACE DE LIGNE DE COMMANDES DE ONTAP</block>
+  <block id="9ea44de032373e29ccec8880ba060c49" category="admonition">Lorsque vous utilisez System Manager, sélectionnez *Asynchronous* comme type de stratégie pour les règles de réplication, puis sélectionnez *Asynchronous* et *Sauvegarder dans le cloud* pour la sauvegarde sur les stratégies d'objet.</block>
+  <block id="7677a1d2704f93f5cc1c8fd7d26f85d3" category="section-title">Afficher les stratégies d'un environnement de travail</block>
+  <block id="72fb2dcef5a06d29aaae7643f0eb8635" category="list-text">Dans l'interface utilisateur BlueXP, sélectionnez *volumes* &gt; *Paramètres de sauvegarde*.</block>
+  <block id="5af3f75fe74a0c63676cb0ebc8ea40bb" category="list-text">Dans la page Paramètres de sauvegarde, sélectionnez l'environnement de travail, puis sélectionnez *actions* <block ref="29668165f4efcae1e525eece87489e44" category="inline-image-macro-rx" type="image"></block> Et sélectionnez *gestion des politiques*.</block>
+  <block id="ad1858c9b18af8cbe0b4325833b61ce0" category="paragraph">La page gestion des polices s'affiche.</block>
+  <block id="e3b8283edc07b71aba66f3cad9a2de47" category="inline-image-macro">Page de gestion des stratégies</block>
+  <block id="296b9ff4c428eb1b284df172e8f937be" category="paragraph"><block ref="296b9ff4c428eb1b284df172e8f937be" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0829ebf3236644a786e081485a185704" category="paragraph">Les règles relatives aux snapshots sont affichées par défaut.</block>
+  <block id="490ebe8423732c19d7c4ed267db26f2f" category="list-text">Pour afficher les autres stratégies qui existent dans l'environnement de travail, sélectionnez *Replication Policies* ou *Backup Policies*. Si les règles existantes peuvent être utilisées pour vos plans de sauvegarde, tout est défini. Si vous avez besoin d'une règle avec des caractéristiques différentes, vous pouvez créer de nouvelles règles à partir de cette page.</block>
+  <block id="8fb446fc6204f4002da66fd95a8ebf7d" category="section-title">Créer une règle Snapshot</block>
+  <block id="cbad557bcb30ebd6fc0cb19c52d98918" category="paragraph">Une partie de votre stratégie 3-2-1 implique la création d'une copie Snapshot du volume sur le système de stockage *principal*.</block>
+  <block id="87d7b16c83e147764f7157c544e8b1f0" category="paragraph">Une partie du processus de création des règles consiste à identifier les étiquettes Snapshot et SnapMirror indiquant la planification et la conservation. Vous pouvez utiliser des étiquettes prédéfinies ou créer vos propres étiquettes.</block>
+  <block id="5bbd322028180cb2d9c51ea786314b04" category="list-text">Sur la page stratégies, sélectionnez *Créer une nouvelle stratégie* &gt; *Créer une stratégie Snapshot*.</block>
+  <block id="b7eb033e2f95b4885d2ab78242e53701" category="list-text">Spécifiez le nom de la stratégie.</block>
+  <block id="8ea6a94b6e34dd5df6320e7e8b8a2514" category="list-text">Sélectionnez le ou les plannings Snapshot. Vous pouvez avoir un maximum de 5 étiquettes. Ou créez un planning.</block>
+  <block id="4b97d1b547dd6a60145647bd089cb09b" category="list-text">Si vous choisissez de créer un planning :</block>
+  <block id="7106575767318bcd310114183d6baad1" category="list-text">Sélectionnez la fréquence horaire, quotidienne, hebdomadaire, mensuelle ou annuelle.</block>
+  <block id="e44b517397b0ade092a5c512079728c8" category="list-text">Spécifiez les étiquettes Snapshot qui indiquent la planification et la conservation.</block>
+  <block id="0779f4f56c0897ff7ffb03c6b275ee51" category="list-text">Indiquez le moment et la fréquence de la prise de l'instantané.</block>
+  <block id="f5ed7a849165313457c0aac7b3379f97" category="list-text">Conservation : entrez le nombre d'instantanés à conserver.</block>
+  <block id="bf18811faac9b8e4fcaebab51afd1113" category="list-text">Sélectionnez *Créer*.</block>
+  <block id="8bddac47f7f2312dbc2c31cf92766f2b" category="section-title">Exemple de règle Snapshot utilisant une architecture en cascade</block>
+  <block id="ab3e57896123f7580b91c4f58922e7db" category="paragraph">Dans cet exemple, une politique Snapshot est créée avec deux clusters :</block>
+  <block id="dc30a10b7f3dac3bcce7b54e12502e89" category="list-text">Cluster 1 :</block>
+  <block id="021a6f1742e889f9d4e45828420cb0cf" category="list-text">Sélectionnez Cluster 1 sur la page policy.</block>
+  <block id="6bb6c0bda8ce0184ecb36d092b4d1e63" category="list-text">Ignorez les sections de la stratégie réplication et sauvegarde dans un objet.</block>
+  <block id="1714f47626850cab3042950c5841ba26" category="list-text">Création de la règle Snapshot</block>
+  <block id="83655cf6beab33b344c9ae17bec532d0" category="list-text">Cluster 2 :</block>
+  <block id="e2db720dd9637e04a09a88a6c179ea4c" category="list-text">Sélectionnez Cluster 2 sur la page Policy.</block>
+  <block id="0ef5b185a636e8d973f33fc4c87833bd" category="list-text">Ignorez la section règle Snapshot.</block>
+  <block id="8dd072d2922c8edc60aa60c9bc0cdc46" category="list-text">Configurez les règles de réplication et de sauvegarde sur objet.</block>
+  <block id="b67380033d7d5bdab053c0dad43a80c0" category="section-title">Création d'une règle de réplication</block>
+  <block id="3dec072d7e14f395b6012bebe3b45fad" category="paragraph">Votre stratégie 3-2-1 peut inclure la réplication d'un volume sur un système de stockage différent. La règle de réplication réside sur le système de stockage *secondaire*.</block>
+  <block id="a279488f43a48271cf71b391369880a3" category="list-text">Dans la page stratégies, sélectionnez *Créer une nouvelle stratégie* &gt; *Créer une nouvelle stratégie de réplication*.</block>
+  <block id="82927e590f678cf898b673e8ed85274d" category="list-text">Spécifier les étiquettes SnapMirror (maximum 5) indiquant la conservation de chaque étiquette.</block>
+  <block id="d034072367cfae53d523d1b9d4c614d7" category="list-text">Spécifiez le planning de transfert.</block>
+  <block id="f578bfb9ea0e0cda707a0426ef4bdd1e" category="section-title">Création d'une règle de stockage de sauvegarde sur objet</block>
+  <block id="4a9a4e09559bd837deb6b0db0f17b586" category="paragraph">Votre stratégie 3-2-1 peut inclure la sauvegarde d'un volume dans le stockage objet.</block>
+  <block id="1a730740674df2bc24af9ce2e66da7df" category="paragraph">Cette stratégie de stockage réside dans différents emplacements de système de stockage selon l'architecture de sauvegarde :</block>
+  <block id="7c8ffe07bb7dc70647a194385ea66773" category="list-text">« Fan-Out » : système de stockage principal</block>
+  <block id="96ab2d22b4464dc324915df8e5067ca9" category="list-text">En cascade : système de stockage secondaire</block>
+  <block id="868680c8c14bb13ca00e6f4892aeb3c3" category="list-text">Dans la page gestion des stratégies, sélectionnez *Créer une nouvelle stratégie* &gt; *Créer une nouvelle stratégie de sauvegarde*.</block>
+  <block id="bfd2bf5ca91b1984485de4fe52e739a9" category="list-text">Spécifiez les paramètres, y compris le planning de transfert et le moment d'archivage des sauvegardes.</block>
+  <block id="ddb011fe917012a700049a04ecd807d0" category="list-text">(Facultatif) pour déplacer les anciens fichiers de sauvegarde vers une classe de stockage ou un niveau d'accès moins coûteux après un certain nombre de jours, sélectionnez l'option *Archive* et indiquez le nombre de jours qui doivent s'écouler avant l'archivage des données.</block>
+  <block id="88b38144f5678f838e589bb3f66fb7c3" category="inline-link">En savoir plus sur les paramètres de stockage des archives</block>
+  <block id="2f06c0f9a9c55e002f0fca564655709f" category="paragraph"><block ref="2b8c84e24d5058cbeba0f5b8c6d03c2f" category="inline-link-rx"></block>.</block>
+  <block id="de7befde4d7cc6f9bdfc275272097393" category="list-text">(Facultatif) pour protéger vos sauvegardes d'être modifiées ou supprimées, sélectionnez l'option *DataLock &amp; ransomware protection*.</block>
+  <block id="2d9688ca19f23219c0b4f9a9455f77b5" category="paragraph">Si votre cluster utilise ONTAP 9.11.1 ou une version ultérieure, vous pouvez choisir de protéger vos sauvegardes contre la suppression en configurant _DataLock_ et _protection contre les ransomware_.</block>
+  <block id="8b8b4afe72e073cb2f31b19794927e17" category="paragraph"><block ref="a1590ca0a57c2e20ed40ac0f3384a5af" category="inline-link-macro-rx"></block>.</block>
+  <block id="fb6e9d876191a4c0c156e739e377be59" category="section-title">Modifier une stratégie</block>
+  <block id="b633d734395141aa32f026fd1762bc20" category="paragraph">Vous pouvez modifier une règle Snapshot, de réplication ou de sauvegarde personnalisée.</block>
+  <block id="dab1e1444e686afc30710bb64ca8164a" category="paragraph">La modification de la règle de sauvegarde affecte tous les volumes qui utilisent cette règle.</block>
+  <block id="4285bd228d80d45d4b3b9af468f2244e" category="list-text">Dans la page gestion des stratégies, sélectionnez la stratégie, puis sélectionnez *actions* <block ref="29668165f4efcae1e525eece87489e44" category="inline-image-macro-rx" type="image"></block> Et sélectionnez *Modifier la stratégie*.</block>
+  <block id="34297ffa69670c3dc8b036dedd867ac3" category="admonition">Le processus est le même pour les politiques de réplication et de sauvegarde.</block>
+  <block id="58a58cd0a42d2dd49b74b06f28da7dda" category="list-text">Dans la page Modifier la stratégie, effectuez les modifications.</block>
+  <block id="10492389e94efdebbb66f7b0cd8a1324" category="list-text">Sélectionnez *Enregistrer*.</block>
+  <block id="8b6af900279ab887f7d317420c8ef15c" category="section-title">Supprimer une règle</block>
+  <block id="75ce7dc717739caa5a73dc6d99a13b85" category="paragraph">Vous pouvez supprimer des règles qui ne sont associées à aucun volume.</block>
+  <block id="8e387edf6d63170eca6d1d1b9175d85b" category="paragraph">Si une policy est associée à un volume et que vous souhaitez la supprimer, vous devez d'abord la supprimer du volume.</block>
+  <block id="7c8a6ef0dcbcbfb263df1c751ccb1918" category="list-text">Dans la page gestion des stratégies, sélectionnez la stratégie, puis sélectionnez *actions* <block ref="29668165f4efcae1e525eece87489e44" category="inline-image-macro-rx" type="image"></block> Et sélectionnez *Supprimer la règle Snapshot*.</block>
+  <block id="0f024621e0673f1f4e657983682d6e72" category="list-text">Sélectionnez *Supprimer*.</block>
+  <block id="9c83e144e5481ac6766f4055e566594d" category="section-title">Trouvez plus d'informations</block>
+  <block id="739525550bd3f8378558eb1d87764bde" category="paragraph">Pour obtenir des instructions sur la création de règles à l'aide de System Manager ou de l'interface de ligne de commandes ONTAP, consultez les documents suivants :</block>
+  <block id="4a7bfaa61b260e84e240b222e517825e" category="inline-link">Créez une règle Snapshot à l'aide de System Manager</block>
+  <block id="18f722142cf1242ec6d2b1e76122b14a" category="inline-link">Créez une règle Snapshot à l'aide de l'interface de ligne de commandes de ONTAP</block>
+  <block id="9d089a52567a29f4f420f7f2f76246ac" category="inline-link">Créez une règle de sauvegarde vers le stockage objet à l'aide de System Manager</block>
+  <block id="fb258284d7569744ca758873d339532b" category="inline-link">Créez une règle de sauvegarde vers le stockage objet à l'aide de l'interface de ligne de commandes de ONTAP</block>
+  <block id="bc7ba4c7d62d6d4917e638edbc43dbb5" category="paragraph"><block ref="1d5508fcd8027e26b48962bd984558d5" category="inline-link-rx"></block>
+<block ref="25d9216966497b44f1274c2fdc3f62ee" category="inline-link-rx"></block>
+<block ref="6a671fae687ae09ed6ec2eb759a70329" category="inline-link-rx"></block>
+<block ref="76f9b86225921137bc166f71caebf3f1" category="inline-link-rx"></block>
+<block ref="ab2445e139747cf732d46d877cc62a64" category="inline-link-rx"></block>
+<block ref="9c225a8772c7b3c40b62701739b123cf" category="inline-link-rx"></block></block>
+  <block id="b58c28277f6391f0fef677b518977600" category="list-text">Sélectionnez *volumes* dans la barre de sauvegarde et de récupération. Dans l'onglet volumes, sélectionnez *actions* <block ref="29668165f4efcae1e525eece87489e44" category="inline-image-macro-rx" type="image"></block> Et sélectionnez *Activer la sauvegarde* pour un seul volume (dont la réplication ou la sauvegarde sur le stockage objet n'est pas déjà activée). .</block>
+  <block id="fd3268ccfb501d98109da6d282e89db0" category="list-text">Sélectionnez *volumes* dans la barre de sauvegarde et de récupération. Dans l'onglet volumes, sélectionnez *actions* <block ref="29668165f4efcae1e525eece87489e44" category="inline-image-macro-rx" type="image"></block> Et sélectionnez *Activer la sauvegarde* pour un seul volume (la réplication ou la sauvegarde sur le stockage objet n'est pas déjà activée).</block>
+  <block id="78720f30e58d9a141f5d550176409702" category="admonition">Pour créer une stratégie personnalisée, reportez-vous à la section <block ref="63a3f471efcfd7e4daa79f468df674ce" category="inline-link-macro-rx"></block>..</block>
+  <block id="311000e4ce9d283fb43e8211781ee9e3" category="list-text">Sélectionnez *volumes* dans la barre de sauvegarde et de récupération. Dans l'onglet volumes, sélectionnez *actions* <block ref="29668165f4efcae1e525eece87489e44" category="inline-image-macro-rx" type="image"></block> Et sélectionnez *Activer la sauvegarde* pour un seul volume (dont la réplication ou la sauvegarde sur le stockage objet n'est pas déjà activée).</block>
+  <block id="e89b128dbf2037e11616e345055bbd03" category="list-text">Les volumes sélectionnés doivent avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes avec le mode conformité SnapLock ne sont pas pris en charge pour le moment et requièrent ONTAP 9.14 ou une version ultérieure.)</block>
+  <block id="33846815732f0a61e794b0e44401b00f" category="admonition">Pour créer une stratégie personnalisée, reportez-vous à la section
+<block ref="63a3f471efcfd7e4daa79f468df674ce" category="inline-link-macro-rx"></block>.</block>
+  <block id="6b28ac02ff2a9de6b423b9f57d6a4d09" category="sidebar">Gérez les règles des volumes ONTAP</block>
 </blocks>

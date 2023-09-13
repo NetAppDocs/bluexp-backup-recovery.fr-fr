@@ -370,7 +370,7 @@ image:screenshot_backup_onprem_enable.png["Capture d'écran affichant le bouton 
 +
 Si la destination Azure pour vos sauvegardes existe en tant qu'environnement de travail sur la zone de travail, vous pouvez faire glisser le cluster ONTAP vers le stockage objet Azure Blob.
 
-** Sélectionnez *volumes* dans la barre de sauvegarde et de récupération. Dans l'onglet volumes, sélectionnez l'option *actions (...)* et sélectionnez *Activer la sauvegarde* pour un seul volume (qui n'a pas déjà activé la réplication ou la sauvegarde sur le stockage objet).
+** Sélectionnez *volumes* dans la barre de sauvegarde et de récupération. Dans l'onglet volumes, sélectionnez *actions* image:icon-action.png["Icône actions"] Et sélectionnez *Activer la sauvegarde* pour un seul volume (dont la réplication ou la sauvegarde sur le stockage objet n'est pas déjà activée).
 
 
 +
@@ -395,7 +395,7 @@ Vous pouvez choisir de protéger les volumes FlexVol ou FlexGroup, mais vous ne 
 [NOTE]
 ====
 * Vous ne pouvez activer une sauvegarde que sur un seul volume FlexGroup à la fois.
-* Les volumes sélectionnés doivent avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes en mode conformité SnapLock ne sont pas pris en charge actuellement.)
+* Les volumes sélectionnés doivent avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes avec le mode conformité SnapLock ne sont pas pris en charge pour le moment et requièrent ONTAP 9.14 ou une version ultérieure.)
 
 
 ====
@@ -449,12 +449,16 @@ Pour plus d'informations sur ces architectures, reportez-vous à la section link
 . *Instantané local* : choisissez une stratégie de snapshot existante.
 +
 
-TIP: Pour créer une règle personnalisée, vous pouvez utiliser System Manager ou l'interface de ligne de commandes de ONTAP `snapmirror policy create` commande. Reportez-vous à la section.
+TIP: Pour créer une stratégie personnalisée, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
 
 . *Réplication* : définissez les options suivantes :
 +
 ** *Cible de réplication* : sélectionnez l'environnement de travail de destination et le SVM. Si vous le souhaitez, sélectionnez le ou les agrégats de destination, ainsi que le préfixe ou le suffixe à ajouter au nom du volume répliqué.
 ** *Règle de réplication* : choisissez une règle de réplication existante.
++
+
+TIP: Pour créer une stratégie personnalisée, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
+
 
 
 . *Sauvegarder dans l'objet* : si vous avez sélectionné *Sauvegarder*, définissez les options suivantes :
@@ -492,10 +496,10 @@ NOTE: Si vous avez choisi un compte de stockage Microsoft existant, les informat
 ... Vous pouvez également choisir d'utiliser un terminal privé Azure que vous avez déjà configuré. https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview["Découvrez comment utiliser un terminal privé Azure"].
 
 
-** *Politique de sauvegarde* : sélectionnez une stratégie de sauvegarde existante.
+** *Règle de sauvegarde* : sélectionnez une stratégie de stockage objet de sauvegarde existante.
 +
 
-TIP: Pour créer une règle personnalisée, vous pouvez utiliser System Manager ou l'interface de ligne de commandes de ONTAP `snapmirror policy create` commande. Reportez-vous à la section.
+TIP: Pour créer une stratégie personnalisée, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
 
 ** *Exporter les copies Snapshot existantes vers le stockage objet en tant que copies de sauvegarde* : s'il existe des copies Snapshot locales pour les volumes de cet environnement de travail qui correspondent au libellé du programme de sauvegarde que vous venez de sélectionner pour cet environnement de travail (par exemple, tous les jours, toutes les semaines, etc.), cette invite supplémentaire s'affiche. Cochez cette case pour que tous les snapshots historiques soient copiés dans le stockage objet en tant que fichiers de sauvegarde afin de garantir une protection complète de vos volumes.
 

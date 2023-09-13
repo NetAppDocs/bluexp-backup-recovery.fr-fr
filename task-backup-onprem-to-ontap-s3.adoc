@@ -312,7 +312,7 @@ Vous pouvez choisir de protéger les volumes FlexVol ou FlexGroup, mais vous ne 
 [NOTE]
 ====
 * Vous ne pouvez activer une sauvegarde que sur un seul volume FlexGroup à la fois.
-* Les volumes sélectionnés doivent avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes en mode conformité SnapLock ne sont pas pris en charge actuellement.)
+* Les volumes sélectionnés doivent avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes avec le mode conformité SnapLock requièrent ONTAP 9.14 ou version ultérieure.)
 
 
 ====
@@ -386,6 +386,10 @@ TIP: La sélection de l'IPspace approprié permet de garantir que la sauvegarde 
 +
 
 TIP: Pour créer une règle personnalisée, vous pouvez utiliser System Manager ou l'interface de ligne de commandes de ONTAP `snapmirror policy create` commande. Reportez-vous à la section.
+
++
+
+TIP: Pour créer une règle personnalisée à l'aide de l'interface utilisateur, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
 
 
 

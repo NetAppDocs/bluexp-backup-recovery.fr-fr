@@ -16,11 +16,10 @@ summary: 'Les sauvegardes de vos données de volume ONTAP sont disponibles aux e
 [role="lead"]
 Les sauvegardes de vos données de volume ONTAP sont disponibles aux emplacements où vous avez créé des sauvegardes : copies Snapshot, volumes répliqués et sauvegardes stockées dans le stockage objet. Vous pouvez restaurer les données à un point dans le temps à partir de ces emplacements de sauvegarde. Vous pouvez restaurer un volume ONTAP complet à partir d'un fichier de sauvegarde ou, si vous n'avez besoin que de restaurer quelques fichiers, vous pouvez restaurer un dossier ou des fichiers individuels.
 
-Vous pouvez restaurer un *volume* (en tant que nouveau volume) dans l'environnement de travail d'origine, vers un environnement de travail différent qui utilise le même compte cloud ou sur un système ONTAP sur site.
+* Vous pouvez restaurer un *volume* (en tant que nouveau volume) dans l'environnement de travail d'origine, vers un environnement de travail différent qui utilise le même compte cloud ou sur un système ONTAP sur site.
+* Vous pouvez restaurer un *dossier* sur un volume de l'environnement de travail d'origine, sur un volume dans un environnement de travail différent qui utilise le même compte cloud ou sur un volume situé sur un système ONTAP sur site.
+* Vous pouvez restaurer *les fichiers* sur un volume de l'environnement de travail d'origine, sur un volume dans un autre environnement de travail qui utilise le même compte cloud ou sur un volume d'un système ONTAP sur site.
 
-Vous pouvez restaurer un *dossier* sur un volume de l'environnement de travail d'origine, sur un volume dans un environnement de travail différent qui utilise le même compte cloud ou sur un volume situé sur un système ONTAP sur site.
-
-Vous pouvez restaurer *les fichiers* sur un volume de l'environnement de travail d'origine, sur un volume dans un autre environnement de travail qui utilise le même compte cloud ou sur un volume d'un système ONTAP sur site.
 
 Une licence de sauvegarde et de restauration BlueXP valide est requise pour restaurer les données à partir de fichiers de sauvegarde vers un système de production.
 
@@ -313,13 +312,9 @@ Notez que la restauration d'un volume à partir d'un fichier de sauvegarde qui r
 
 Si vous n'avez besoin de restaurer que quelques fichiers depuis la sauvegarde d'un volume ONTAP, vous avez la possibilité de restaurer un dossier ou des fichiers individuels au lieu de restaurer tout le volume. Vous pouvez restaurer des dossiers et des fichiers vers un volume existant dans l'environnement de travail d'origine ou vers un autre environnement de travail utilisant le même compte cloud. Vous pouvez également restaurer des dossiers et des fichiers vers un volume situé sur un système ONTAP sur site.
 
-[NOTE]
-====
-* À ce stade, vous ne pouvez restaurer un dossier ou des fichiers individuels qu'à partir d'un fichier de sauvegarde dans le stockage objet. La restauration de fichiers et de dossiers n'est actuellement pas prise en charge à partir d'une copie Snapshot locale ou d'un fichier de sauvegarde résidant dans un environnement de travail secondaire (volume répliqué).
-* La restauration de fichiers et de dossiers n'est actuellement pas prise en charge à partir des volumes du stockage objet ONTAP S3.
 
+NOTE: À ce stade, vous ne pouvez restaurer un dossier ou des fichiers individuels qu'à partir d'un fichier de sauvegarde dans le stockage objet. La restauration de fichiers et de dossiers n'est actuellement pas prise en charge à partir d'une copie Snapshot locale ou d'un fichier de sauvegarde résidant dans un environnement de travail secondaire (volume répliqué).
 
-====
 Si vous sélectionnez plusieurs fichiers, tous les fichiers sont restaurés sur le même volume de destination que vous choisissez. Si vous souhaitez restaurer des fichiers sur différents volumes, vous devez exécuter le processus de restauration plusieurs fois.
 
 Si vous utilisez ONTAP 9.13.0 ou une version ultérieure, vous pouvez restaurer un dossier avec tous les fichiers et sous-dossiers qu'il contient. Lorsque vous utilisez une version de ONTAP antérieure à 9.13.0, seuls les fichiers de ce dossier sont restaurés - aucun sous-dossier, ni fichier dans des sous-dossiers, ne sont restaurés.

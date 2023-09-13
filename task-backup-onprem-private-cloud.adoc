@@ -362,7 +362,7 @@ Vous pouvez choisir de protéger les volumes FlexVol ou FlexGroup, mais vous ne 
 [NOTE]
 ====
 * Vous ne pouvez activer une sauvegarde que sur un seul volume FlexGroup à la fois.
-* Les volumes sélectionnés doivent avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes en mode conformité SnapLock ne sont pas pris en charge actuellement.)
+* Les volumes sélectionnés doivent avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes avec le mode conformité SnapLock requièrent ONTAP 9.14 ou version ultérieure.)
 
 
 ====
@@ -416,13 +416,19 @@ Pour plus d'informations sur ces architectures, reportez-vous à la section link
 . *Instantané local* : choisissez une stratégie de snapshot existante.
 +
 
-TIP: Pour créer une règle personnalisée, vous pouvez utiliser System Manager ou l'interface de ligne de commandes de ONTAP `snapmirror policy create` commande. Reportez-vous à la section.
+TIP: Pour créer une stratégie personnalisée, reportez-vous à la section
+link:task-create-policies-ontap.html["Création d'une règle"].
 
 . *Réplication* : définissez les options suivantes :
 +
 ** *Cible de réplication* : sélectionnez l'environnement de travail de destination et le SVM. Si vous le souhaitez, sélectionnez le ou les agrégats de destination, ainsi que le préfixe ou le suffixe à ajouter au nom du volume répliqué.
 ** *Règle de réplication* : choisissez une règle de réplication existante.
 
+
++
+
+TIP: Pour créer une stratégie personnalisée, reportez-vous à la section
+link:task-create-policies-ontap.html["Création d'une règle"].
 
 . *Sauvegarder dans l'objet* : si vous avez sélectionné *Sauvegarder*, définissez les options suivantes :
 +
@@ -436,10 +442,11 @@ La clé d'accès et la clé secrète sont destinées à l'utilisateur IAM dont v
 
 TIP: En sélectionnant l'IPspace approprié, vous vous assurez que la sauvegarde et la restauration BlueXP peuvent établir une connexion entre ONTAP et votre stockage objet StorageGRID.
 
-** *Politique de sauvegarde* : sélectionnez une stratégie de sauvegarde existante.
+** *Règle de sauvegarde* : sélectionnez une stratégie de stockage objet de sauvegarde existante.
 +
 
-TIP: Pour créer une règle personnalisée, vous pouvez utiliser System Manager ou l'interface de ligne de commandes de ONTAP `snapmirror policy create` commande. Reportez-vous à la section.
+TIP: Pour créer une stratégie personnalisée, reportez-vous à la section
+link:task-create-policies-ontap.html["Création d'une règle"].
 
 +
 Si votre cluster utilise ONTAP 9.11.1 ou version supérieure, vous pouvez choisir de protéger vos sauvegardes contre les suppressions et les attaques par ransomware en configurant _DataLock et ransomware protection_. _DataLock_ protège vos fichiers de sauvegarde contre la modification ou la suppression, et _Attack protection_ analyse vos fichiers de sauvegarde pour rechercher la preuve d'une attaque par ransomware dans vos fichiers de sauvegarde. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["En savoir plus sur les paramètres DataLock disponibles"^].
