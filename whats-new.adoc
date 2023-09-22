@@ -306,9 +306,9 @@ Dans le passé, lorsque vous avez restauré un dossier, seuls les fichiers de ce
 
 
 
-=== Possibilité de sauvegarder des données à partir de systèmes Cloud Volumes ONTAP dans des sites invisibles
+=== Possibilité de sauvegarder les données des systèmes Cloud Volumes ONTAP sur des sites avec une connectivité sortante limitée
 
-Vous pouvez désormais sauvegarder les données à partir de systèmes Cloud Volumes ONTAP installés dans les régions commerciales AWS et Azure vers Amazon S3 ou Azure Blob. Pour ce faire, vous devez installer le connecteur sur un hôte Linux de la région commerciale et déployer le système Cloud Volumes ONTAP là aussi. Voir https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-to-s3.html["Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3"] et https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-to-azure.html["Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob"].
+Vous pouvez désormais sauvegarder les données à partir de systèmes Cloud Volumes ONTAP installés dans les régions commerciales AWS et Azure vers Amazon S3 ou Azure Blob. Pour ce faire, vous devez installer le connecteur en « mode restreint » sur un hôte Linux de la région commerciale, et déployer le système Cloud Volumes ONTAP là aussi. Voir https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-to-s3.html["Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3"] et https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-to-azure.html["Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob"].
 
 
 
