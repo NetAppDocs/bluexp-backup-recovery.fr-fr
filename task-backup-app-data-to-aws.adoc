@@ -16,6 +16,8 @@ summary: 'Réalisez quelques étapes pour sauvegarder vos données applicatives 
 [role="lead"]
 Procédez en quelques étapes pour sauvegarder les données d'applications de ONTAP vers Amazon Web Services.
 
+BlueXP prend en charge le verrouillage des données et la protection contre les ransomware. Si le cluster ONTAP s'exécute sous ONTAP 9.11.1 ou version ultérieure et si vous n'avez pas configuré de stockage d'archivage, vous pouvez protéger les sauvegardes contre le remplacement, la suppression et les menaces de ransomware.
+
 .Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.
 . Cliquez sur image:icon-action.png["pour sélectionner l'action"] Correspondant à l'application et cliquer sur *Activer la sauvegarde*.
@@ -45,11 +47,12 @@ La sauvegarde et la restauration BlueXP pour les applications ne prennent en cha
 .. Dans le champ clé secrète AWS, spécifiez le mot de passe.
 .. Sélectionnez la région dans laquelle vous souhaitez créer les sauvegardes.
 .. Spécifiez l'espace IP.
-.. Sélectionnez le niveau d'archivage.
+.. Sélectionnez le niveau d'archivage si vous avez configuré le stockage d'archives dans la stratégie.
 +
 Il est recommandé de définir le niveau d'archivage car il s'agit d'une activité unique et vous ne serez pas autorisé à le configurer ultérieurement.
 
 
 
+. Configurez le verrouillage des données et la protection contre les ransomware.
 . Vérifiez les détails et cliquez sur *Activer la sauvegarde*.
 

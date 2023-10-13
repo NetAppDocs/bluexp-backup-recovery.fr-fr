@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
-permalink: task-quick-start-oracle.html 
-keywords: Cloud Manager, BlueXP, configuration, support, Oracle 
-summary: Procédez en quelques étapes pour commencer à sauvegarder la base de données Oracle. 
+permalink: task-quick-start-sql.html 
+keywords: Cloud Manager, BlueXP, configuration, support, SQL server 
+summary: Procédez en quelques étapes pour commencer à sauvegarder la base de données Microsoft SQL Server. 
 ---
 = Démarrage rapide
 :hardbreaks:
@@ -20,30 +20,28 @@ Suivez ces étapes pour démarrer rapidement.
 [role="quick-margin-list"]
 * Système d'exploitation :
 +
-** RHEL 7.5 ou version ultérieure et 8.x
-** OL 7.5 ou version ultérieure et 8.x
-** SLES 15 SP4
+** Windows 2016
+** Windows 2019
+** Windows 2022
 
 
-* Stockage cloud NetApp :
+* Stockage cloud NetApp : Amazon FSX pour NetApp ONTAP
+* Disposition du stockage : SAN (ISCSI)
 +
-** Amazon FSX pour NetApp ONTAP
-** Cloud Volumes ONTAP
-** Azure NetApp Files
+La configuration NAS n'est pas prise en charge.
 
-
-* Disposition du stockage :
+* Versions de la base de données :
 +
-** NFS v3 et v4.1 (y compris dNFS)
-** ISCSI avec ASM (ASMFD, ASMLib et ASMUdev)
+** Microsoft SQL Server 2016
+** Microsoft SQL Server 2019
+** Microsoft SQL Server 2022
+
+
+* Configuration de la base de données :
 +
-
-NOTE: Azure NetApp Files ne prend pas en charge l'environnement SAN.
-
+** Autonome
 
 
-* Dispositions de la base de données : Oracle Standard et Oracle Enterprise Standalone (CDB et boîtier de distribution électrique existant et mutualisé)
-* Versions de base de données : 19c et 21c
 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"] Inscrivez-vous à BlueXP

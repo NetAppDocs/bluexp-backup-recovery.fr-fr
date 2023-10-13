@@ -16,7 +16,7 @@ summary: Apprenez-en plus sur la protection des données sur vos machines virtue
 [role="lead"]
 La sauvegarde et la restauration BlueXP pour les machines virtuelles assurent la protection des données en sauvegardant les datastores et en restaurant les machines virtuelles.
 
-Vous pouvez sauvegarder des datastores dans Amazon Web Services S3, Microsoft Azure Blob, Google Cloud Platform et StorageGRID, et restaurer des machines virtuelles dans le plug-in SnapCenter sur site pour l'hôte VMware vSphere.
+Vous pouvez sauvegarder des datastores dans Amazon Web Services S3, Microsoft Azure Blob, Google Cloud Platform et StorageGRID, et restaurer des machines virtuelles dans le plug-in SnapCenter sur site pour l'hôte VMware vSphere. La sauvegarde et la restauration BlueXP pour les machines virtuelles prennent également en charge le modèle de déploiement des connecteurs proxy.
 
 .Avant de commencer
 Lisez les conditions suivantes pour vous assurer que votre configuration est prise en charge avant de commencer à sauvegarder des datastores et des machines virtuelles auprès d'un fournisseur cloud.
@@ -37,6 +37,7 @@ Lisez les conditions suivantes pour vous assurer que votre configuration est pri
 * Désactivez "*_Recent*" sur les groupes de ressources requis. Si «*_Recent* » est activé pour le groupe de ressources, les sauvegardes de ces groupes de ressources ne peuvent pas être utilisées pour la protection des données dans le cloud et ne peuvent plus être utilisées pour l'opération de restauration.
 * Assurez-vous que le datastore de destination sur lequel la machine virtuelle sera restaurée dispose d'un espace suffisant pour prendre en charge une copie de tous les fichiers des machines virtuelles tels que VMDK, VMX, VMSD, etc.
 * Assurez-vous que le datastore de destination ne contient pas de fichiers de machine virtuelle obsolètes au format restore_xxx_xxxxxx_filename des échecs précédents de l'opération de restauration. Vous devez supprimer les fichiers obsolètes avant de lancer une opération de restauration.
+* Pour déployer un connecteur avec proxy configuré, assurez-vous que tous les appels de connecteur sortants sont acheminés via le serveur proxy.
 
 
 L'image suivante montre chaque composant et les connexions que vous devez préparer entre eux :

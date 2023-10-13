@@ -19,6 +19,9 @@ summary: 'Vous pouvez afficher les détails de la sauvegarde, surveiller l"état
 
 Vous pouvez surveiller l'état des travaux lancés dans vos environnements de travail. Cela vous permet de voir les travaux qui ont réussi, ceux qui sont en cours et ceux qui ont échoué afin de diagnostiquer et de résoudre tout problème.
 
+
+NOTE: Les tâches planifiées sont répertoriées sur la page de contrôle des tâches BlueXP après un délai de 5 minutes (maximum) à compter de l'heure d'achèvement du travail.
+
 Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/us-en/bluexp-backup-recovery/task-monitor-backup-jobs.html["Contrôler l'état des tâches"].
 
 
@@ -113,7 +116,7 @@ Après avoir mis à jour les détails du connecteur pour les hôtes Oracle ou SA
 
 . Connectez-vous à l'hôte du plug-in et effectuez les opérations suivantes :
 +
-.. Accédez à _/var/opt/snapcenter/spl/etc_ et exécutez la commande keytool pour importer le fichier Certificate.p12.
+.. Accédez à _/var/opt/snapcenter/spl/etc_ et exécutez la commande keytool pour importer le fichier certificate.pem.
 `keytool -import -alias agentcert -file certificate.pem  -keystore keystore.jks -deststorepass snapcenter -noprompt`
 .. Redémarrer SPL : `systemctl restart spl`
 .. Effectuez l'une des opérations suivantes :

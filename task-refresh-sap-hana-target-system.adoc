@@ -14,12 +14,12 @@ summary: 'Procédez à une actualisation à partir d"un système SAP HANA source
 
 
 [role="lead"]
-Vous pouvez actualiser un système cible SAP HANA avec les données d'un système source SAP HANA. Il peut être utilisé pour fournir les données de production actuelles dans un système de test. La sauvegarde dans le cloud vous permet de sélectionner une copie Snapshot à partir d'un système source et de créer un volume Azure NetApp Files basé sur la copie Snapshot. Des exemples de scripts sont disponibles, qui exécute les opérations requises sur l'hôte de base de données pour restaurer la base de données SAP HANA.
+Vous pouvez actualiser un système cible SAP HANA avec les données d'un système source SAP HANA. Il peut être utilisé pour fournir les données de production actuelles dans un système de test. La sauvegarde et la restauration BlueXP vous permettent de sélectionner une copie Snapshot à partir d'un système source et de créer un volume Azure NetApp Files basé sur la copie Snapshot. Des exemples de scripts sont disponibles, qui exécute les opérations requises sur l'hôte de base de données pour restaurer la base de données SAP HANA.
 
 *Avant de commencer*
 
 * Vous devez installer le système cible SAP HANA avant d'exécuter la première opération d'actualisation.
-* Vous devez ajouter manuellement les systèmes HANA source et cible à la sauvegarde dans le cloud.
+* Vous devez ajouter manuellement les systèmes HANA source et cible dans la sauvegarde et la restauration BlueXP.
 * Vérifiez que la version de la base de données SAP HANA est identique sur le système source et le système cible.
 * Vous devez avoir décidé des scripts d'actualisation à utiliser. Les scripts d'actualisation sont disponibles dans le rapport technique de la solution.
 +
@@ -36,6 +36,9 @@ Vous pouvez personnaliser les scripts d'actualisation.
 ** NOM_BASE_DE_DONNÉES_LOCATAIRE
 
 
+* Vous devez mettre à niveau le plug-in vers la version 3.0.
+* Les chemins de montage doivent être les mêmes pour le volume de données sur les systèmes SAP HANA source et cible.
+* Avant la première opération d'actualisation, assurez-vous que le fichier '/etc/fstab' ne contient pas d'entrées pour les volumes de données du système SAP HANA cible.
 
 
 *À propos de cette tâche*
@@ -58,6 +61,7 @@ NOTE: Le nouveau volume sera placé dans le même pool de capacité que celui de
 * Le chemin de jonction sera le même que le nom du volume.
 * Le « nombre maximal de débit » du nouveau volume est sélectionné dans le volume du système cible avec des pools de capacité de qualité de service (QoS) manuels.
 Pour les pools de capacité QoS automatique, le débit est défini par la capacité du volume source.
+* Lors de l'actualisation du système, le montage et le démontage automatiques des volumes sont effectués à l'aide de workflows au lieu de scripts.
 
 
 *Étapes*
@@ -67,7 +71,8 @@ Pour les pools de capacité QoS automatique, le débit est défini par la capaci
 . Dans la page *actualisation du système*, effectuez les opérations suivantes :
 +
 .. Sélectionnez le système source et la copie Snapshot.
-.. Entrez les adresses d'exportation à partir desquelles vous pouvez accéder aux nouveaux volumes.
+.. (Facultatif) Entrez les adresses d'exportation à partir desquelles les nouveaux volumes sont accessibles.
+.. (Facultatif) Entrez le débit de stockage maximal (MIB).
 .. Saisissez le prescripteur, le postscript et les chemins de script d'échec. Le script en cas d'échec est exécuté uniquement lorsque l'opération d'actualisation du système échoue.
 .. Cliquez sur *Actualiser*.
 

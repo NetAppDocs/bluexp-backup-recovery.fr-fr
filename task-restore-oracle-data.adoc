@@ -37,10 +37,6 @@ Vous souhaitez restaurer l'emplacement d'origine
  a| 
 .. Sélectionnez *Restaurer à l'emplacement d'origine*.
 .. Si le snapshot est en stockage d'archives, sélectionnez la priorité de restauration de vos données à partir du stockage d'archives.
-+
-
-NOTE: Vous devez spécifier la priorité uniquement si vous utilisez Amazon Web Services ou Microsoft Azure en tant que fournisseur cloud.
-
 .. Cliquez sur *Suivant*.
 .. Sélectionnez *Etat de la base de données* si vous souhaitez modifier l'état de la base de données à l'état requis pour effectuer les opérations de restauration et de récupération.
 +
@@ -77,11 +73,10 @@ Vous souhaitez effectuer une restauration temporaire dans un autre espace de sto
  a| 
 .. Sélectionnez *Restaurer à l'emplacement d'origine*.
 .. Si le snapshot est en stockage d'archives, sélectionnez la priorité de restauration de vos données à partir du stockage d'archives.
-+
-
-NOTE: Vous devez spécifier la priorité uniquement si vous utilisez Amazon Web Services ou Microsoft Azure en tant que fournisseur cloud.
-
 .. Sélectionnez *Modifier l'emplacement de stockage*.
++
+Si vous sélectionnez *Modifier l'emplacement de stockage*, vous pouvez ajouter un suffixe au volume de destination. Si vous n'avez pas coché la case, *_restore* est ajouté par défaut au volume de destination.
+
 .. Cliquez sur *Suivant*.
 .. Dans la page mappage du stockage, spécifiez les détails de l'emplacement de stockage secondaire où les données restaurées à partir du magasin d'objets seront stockées temporairement.
 +
@@ -123,13 +118,12 @@ Restauration dans un autre emplacement
  a| 
 .. Sélectionnez *Restaurer à un autre emplacement*.
 .. Si le snapshot est en stockage d'archives, sélectionnez la priorité de restauration de vos données à partir du stockage d'archives.
-+
-
-NOTE: Vous devez spécifier la priorité uniquement si vous utilisez Amazon Web Services ou Microsoft Azure en tant que fournisseur cloud.
-
 .. Si vous souhaitez restaurer sur un autre stockage, effectuez les opérations suivantes :
 +
 ... Sélectionnez *Modifier l'emplacement de stockage*.
++
+Si vous sélectionnez *Modifier l'emplacement de stockage*, vous pouvez ajouter un suffixe au volume de destination. Si vous n'avez pas coché la case, *_restore* est ajouté par défaut au volume de destination.
+
 ... Cliquez sur *Suivant*.
 ... Dans la page mappage du stockage, spécifiez les détails de l'emplacement de stockage secondaire où les données du magasin d'objets doivent être restaurées.
 

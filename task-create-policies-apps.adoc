@@ -22,6 +22,7 @@ Vous devez créer une stratégie pour sauvegarder les données d'application dan
 ** Si vous utilisez Amazon Web Services, vous devez utiliser ONTAP 9.10.1 ou une version ultérieure
 ** Si vous utilisez Microsoft Azure, vous devez utiliser ONTAP 9.10.1 ou une version ultérieure
 ** Si vous utilisez Google Cloud, vous devez utiliser ONTAP 9.12.1 ou une version ultérieure
+** Si vous utilisez StorageGRID, vous devez utiliser ONTAP 9.12.1 ou une version ultérieure
 
 
 * Vous devez configurer le niveau d'accès d'archivage pour chaque fournisseur de cloud.

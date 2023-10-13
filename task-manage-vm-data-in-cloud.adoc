@@ -89,7 +89,7 @@ Tous les datastores et machines virtuelles associés à l'hôte SnapCenter Plug-
 
 == Surveiller les tâches
 
-Des travaux sont créés pour toutes les opérations Cloud Backup. Vous pouvez surveiller tous les travaux et toutes les sous-tâches effectuées dans le cadre de chaque tâche.
+Des tâches sont créées pour toutes les opérations de sauvegarde et de restauration BlueXP. Vous pouvez surveiller tous les travaux et toutes les sous-tâches effectuées dans le cadre de chaque tâche.
 
 . Cliquez sur *sauvegarde et récupération* > *surveillance des tâches*.
 +

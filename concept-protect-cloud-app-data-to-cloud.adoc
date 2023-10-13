@@ -18,6 +18,7 @@ La sauvegarde et la restauration BlueXP pour les applications offrent des foncti
 
 * Bases de données Oracle hébergées sur Amazon FSX pour NetApp ONTAP, Cloud Volumes ONTAP et Azure NetApp Files
 * Systèmes SAP HANA résidant sur Azure NetApp Files
+* Bases de données Microsoft SQL Server résidant sur Amazon FSX pour NetApp ONTAP
 
 
 
@@ -139,4 +140,37 @@ Vous pouvez spécifier différentes fréquences d'horaires, telles que les heure
 
 * Pour la configuration HSR, seul le HSR 2 nœuds est pris en charge (1 principal et 1 secondaire)
 * La rétention ne sera pas déclenchée si le script PostScript échoue pendant l'opération de restauration
+
+
+
+
+== Protégez la base de données Microsoft SQL Server
+
+
+
+=== Caractéristiques
+
+* Ajoutez manuellement l'hôte et déployez le plug-in
+* Découvrir les bases de données manuellement
+* Sauvegardez les instances SQL Server résidant sur Amazon FSX pour NetApp ONTAP
++
+** Sauvegarde à la demande
+** Sauvegarde planifiée basée sur la règle
+** Sauvegarde des journaux de l'instance de Microsoft SQL Server
+
+
+* Restaurez la base de données à son emplacement d'origine
+
+
+
+
+=== Limites
+
+* La sauvegarde est prise en charge uniquement pour les instances SQL Server
+* La configuration de l'instance de cluster de basculement (FCI) n'est pas prise en charge
+* L'interface utilisateur BlueXP ne prend pas en charge les opérations spécifiques à une base de données SQL
++
+Toutes les opérations spécifiques à la base de données Microsoft SQL Server s'effectuent en exécutant des API REST.
+
+* La restauration vers un autre emplacement n'est pas prise en charge
 

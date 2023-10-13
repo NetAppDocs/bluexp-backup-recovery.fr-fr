@@ -67,6 +67,9 @@ Vous devez sauvegarder au moins une sauvegarde sur le site principal et sur les 
 ** Les ressources non-data volumes (NDV), telles que les binaires HANA, le volume des journaux d'archives HANA, le volume partagé HANA, etc
 
 
+* MongoDB
+* MySQL
+* PostgreSQL
 
 
 Les bases de données suivantes ne sont pas affichées :
