@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: task-create-policies-ontap.html 
-keywords: backing up, back up, backup, backup on-prem ontap, policy, policies, backup policies, cloud backup, aws, aws s3, amazon s3, government 
+keywords: backing up, back up, backup, backup on-prem ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud 
 summary: 'Vous pouvez utiliser les règles de sauvegarde par défaut fournies par NetApp pour créer vos sauvegardes ou créer des règles personnalisées. Les règles régissent le type de sauvegarde, l"architecture de sauvegarde, les systèmes de stockage et la fréquence des sauvegardes.' 
 ---
 = Gérez les règles de sauvegarde des volumes ONTAP
@@ -141,9 +141,9 @@ Cette stratégie de stockage réside dans différents emplacements de système d
 . Dans la section Détails de la stratégie, spécifiez le nom de la stratégie.
 . Spécifier les étiquettes SnapMirror (maximum 5) indiquant la conservation de chaque étiquette.
 . Spécifiez les paramètres, y compris le planning de transfert et le moment d'archivage des sauvegardes.
-. (Facultatif) pour déplacer les anciens fichiers de sauvegarde vers une classe de stockage ou un niveau d'accès moins coûteux après un certain nombre de jours, sélectionnez l'option *Archive* et indiquez le nombre de jours qui doivent s'écouler avant l'archivage des données.
+. (Facultatif) pour déplacer les anciens fichiers de sauvegarde vers une classe de stockage ou un niveau d'accès moins coûteux après un certain nombre de jours, sélectionnez l'option *Archive* et indiquez le nombre de jours qui doivent s'écouler avant l'archivage des données. Entrez *0* comme "Archive après jours" pour envoyer votre fichier de sauvegarde directement au stockage d'archives.
 +
-https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-cloud-backup-policies.html#archival-storage-settings["En savoir plus sur les paramètres de stockage des archives"].
+link:concept-cloud-backup-policies.html#archival-storage-settings["En savoir plus sur les paramètres de stockage des archives"].
 
 . (Facultatif) pour protéger vos sauvegardes d'être modifiées ou supprimées, sélectionnez l'option *DataLock & ransomware protection*.
 +

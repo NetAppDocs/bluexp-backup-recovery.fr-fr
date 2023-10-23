@@ -55,7 +55,7 @@ Si nécessaire, vous pouvez restaurer un _volume_ entier, un _dossier_ ou un ou 
 
 
 
-Voir <<Limites de la réplication,Limites de la réplication>> Pour obtenir la liste des fonctionnalités de réplication indisponibles avec les fonctionnalités de sauvegarde et de restauration BlueXP.
+Voir link:reference-limitations.html#replication-limitations["Limites de la réplication"] Pour obtenir la liste des fonctionnalités de réplication indisponibles avec les fonctionnalités de sauvegarde et de restauration BlueXP.
 
 *Fonctions de sauvegarde vers objet :*
 
@@ -186,7 +186,7 @@ La sauvegarde et la restauration BlueXP prennent en charge les types de volumes 
 * Volumes de destination SnapMirror avec protection des données (DP)
 
 
-Reportez-vous aux sections de la section <<Limites,Limites de la sauvegarde et de la restauration>> pour des exigences et restrictions supplémentaires.
+Reportez-vous aux sections de la section link:reference-limitations.html#backup-to-object-limitations["Limites de la sauvegarde et de la restauration"] pour des exigences et restrictions supplémentaires.
 
 
 
@@ -398,7 +398,7 @@ TIP: DataLock ne peut pas être activé si vous effectuez le Tiering des sauvega
 
 === Stockage d'archivage pour les fichiers de sauvegarde plus anciens
 
-Si vous utilisez un certain stockage cloud, vous pouvez déplacer d'anciens fichiers de sauvegarde vers un Tier de stockage/accès moins onéreux après un certain nombre de jours. Notez que le stockage d'archives ne peut pas être utilisé si vous avez activé DataLock.
+Si vous utilisez un certain stockage cloud, vous pouvez déplacer d'anciens fichiers de sauvegarde vers un Tier de stockage/accès moins onéreux après un certain nombre de jours. Vous pouvez également choisir d'envoyer immédiatement vos fichiers de sauvegarde vers le système de stockage d'archivage sans être écrits sur le stockage cloud standard. Notez que le stockage d'archives ne peut pas être utilisé si vous avez activé DataLock.
 
 ifdef::aws[]
 
@@ -454,92 +454,4 @@ La lecture des données de votre fournisseur de cloud peut s'accélérer et gén
 
 
 * Tenez compte de l'impact des sauvegardes avant d'affecter le `all` tiering des règles sur les volumes. Comme les données sont immédiatement hiérarchisées, BlueXP Backup and Recovery lit les données depuis le Tier cloud plutôt que depuis le Tier local. Étant donné que les opérations de sauvegarde simultanées partagent la liaison réseau avec le magasin d'objets cloud, les performances peuvent être affectées si les ressources réseau deviennent saturées. Dans ce cas, il peut être nécessaire de configurer de manière proactive plusieurs interfaces réseau (LIF) afin de réduire ce type de saturation réseau.
-
-
-
-
-== Limites
-
-
-
-=== Limites de la réplication
-
-* Vous ne pouvez sélectionner qu'un seul volume FlexGroup à la fois pour la réplication. Vous devrez activer les sauvegardes séparément pour chaque volume FlexGroup.
-+
-Il n'existe aucune limitation pour les volumes FlexVol. Vous pouvez sélectionner tous les volumes FlexVol de votre environnement de travail et attribuer les mêmes règles de sauvegarde.
-
-* La fonctionnalité suivante est prise en charge dans le https://docs.netapp.com/us-en/bluexp-replication/index.html["Service de réplication BlueXP"], Mais pas lors de l'utilisation de la fonction de réplication de la sauvegarde et restauration BlueXP :
-+
-** Il n'y a pas de prise en charge d'une configuration en cascade où la réplication se produit du volume A au volume B et du volume B au volume C. La prise en charge inclut la réplication du volume A vers le volume B.
-** La réplication de données depuis et vers les systèmes FSX pour ONTAP n'est pas prise en charge.
-** La création d'une réplication ponctuelle d'un volume n'est pas prise en charge.
-
-
-* Lors de la création de réplications à partir de systèmes ONTAP sur site, si la version ONTAP du système Cloud Volumes ONTAP cible est 9.8, 9.9 ou 9.11, seules les stratégies de coffre-fort en miroir sont autorisées.
-
-
-
-
-=== Limitations de la sauvegarde vers un objet
-
-* Lorsque vous créez ou modifiez une règle de sauvegarde lorsqu'aucun volume n'est affecté à la règle, le nombre de sauvegardes conservées peut être de 1018 au maximum. Une fois que vous avez affecté des volumes à la règle, vous pouvez la modifier pour créer jusqu'à 4000 sauvegardes.
-* Lors de la sauvegarde de volumes de protection des données (DP) :
-+
-** Relations avec les libellés SnapMirror `app_consistent` et `all_source_snapshot` elles ne seront pas sauvegardées dans le cloud.
-** Si vous créez des copies Snapshot locales sur le volume de destination SnapMirror (indépendamment des étiquettes SnapMirror utilisées), ces snapshots ne seront pas déplacés vers le cloud en tant que sauvegardes. À ce stade, vous devrez créer une règle Snapshot portant les étiquettes souhaitées sur le volume DP source pour que la sauvegarde et la restauration BlueXP puissent les sauvegarder.
-
-
-* Les sauvegardes de volume FlexGroup ne peuvent pas être transférées vers le stockage d'archivage.
-* Les sauvegardes de volume FlexGroup peuvent utiliser DataLock et la protection contre les ransomware si le cluster exécute ONTAP 9.13.1 ou une version ultérieure.
-* La sauvegarde du volume SVM-DR est prise en charge avec les restrictions suivantes :
-+
-** Seules les sauvegardes sont prises en charge à partir du système secondaire ONTAP.
-** La règle Snapshot appliquée au volume doit faire partie des règles reconnues par la sauvegarde et la restauration BlueXP, y compris quotidienne, hebdomadaire, mensuelle, etc La règle par défaut « sm_created » (utilisée pour *Mirror All snapshots*) n'est pas reconnue et le volume DP ne sera pas affiché dans la liste des volumes pouvant être sauvegardés.
-
-
-
-
-* Support MetroCluster :
-+
-** Si vous utilisez ONTAP 9.12.1 GA ou supérieur, la sauvegarde est prise en charge lorsqu'elle est connectée au système principal. L'intégralité de la configuration de sauvegarde est transférée vers le système secondaire pour que les sauvegardes vers le cloud puissent se poursuivre automatiquement après le basculement. Vous n'avez pas besoin de configurer la sauvegarde sur le système secondaire (en fait, vous êtes limité à ce faire).
-** Lorsque vous utilisez ONTAP 9.12.0 et les versions antérieures, la sauvegarde est prise en charge uniquement à partir du système secondaire ONTAP.
-** Les sauvegardes de volumes FlexGroup ne sont pas prises en charge pour le moment.
-
-
-* La sauvegarde de volume ad-hoc à l'aide du bouton *Backup Now* n'est pas prise en charge sur les volumes de protection des données.
-* Les configurations SM-BC ne sont pas prises en charge.
-* ONTAP ne prend pas en charge la réplication « Fan-Out » des relations SnapMirror depuis un seul volume vers plusieurs magasins d'objets. Par conséquent, cette configuration n'est pas prise en charge par la sauvegarde et la restauration BlueXP.
-* Le mode WORM/Compliance sur un magasin d'objets est actuellement pris en charge sur Amazon S3, Azure et StorageGRID. Appelée fonctionnalité DataLock, elle doit être gérée à l'aide des paramètres de sauvegarde et de restauration BlueXP, et non via l'interface du fournisseur cloud.
-
-
-
-
-=== Limites de restauration
-
-Ces limitations s'appliquent à la fois aux méthodes de recherche et de restauration et de navigation pour restaurer des fichiers et des dossiers, sauf indication contraire.
-
-* Parcourir et restaurer peut restaurer jusqu'à 100 fichiers individuels à la fois.
-* La fonction de recherche et de restauration permet de restaurer 1 fichier à la fois.
-* Si vous utilisez ONTAP 9.13.0 ou une version ultérieure, Parcourir et restaurer et Rechercher et restaurer peuvent restaurer un dossier avec tous les fichiers et sous-dossiers qu'il contient.
-+
-Lorsque vous utilisez une version de ONTAP supérieure à 9.11.1 mais antérieure à 9.13.0, l'opération de restauration peut uniquement restaurer le dossier sélectionné et les fichiers de ce dossier - aucun sous-dossier, ou fichiers dans des sous-dossiers, ne sont restaurés.
-
-+
-Si vous utilisez une version de ONTAP antérieure à 9.11.1, la restauration de dossiers n'est pas prise en charge.
-
-* La restauration de répertoires/dossiers est prise en charge pour les données qui résident dans le stockage d'archives uniquement lorsque le cluster exécute ONTAP 9.13.1 ou une version ultérieure.
-* La restauration de répertoire/dossier est prise en charge pour les données protégées à l'aide de DataLock uniquement lorsque le cluster exécute ONTAP 9.13.1 ou une version ultérieure.
-* La restauration de répertoires/dossiers n'est actuellement pas prise en charge sur les sauvegardes de volume FlexGroup.
-* La restauration de répertoire/dossier n'est actuellement pas prise en charge pour les réplications et/ou les snapshots locaux.
-* La restauration des volumes FlexGroup vers des volumes FlexVol, ou des volumes FlexVol vers des volumes FlexGroup n'est pas prise en charge.
-* Le fichier en cours de restauration doit être dans la même langue que celle du volume de destination. Vous recevrez un message d'erreur si les langues ne sont pas les mêmes.
-* La priorité de restauration _élevée_ n'est pas prise en charge lors de la restauration de données à partir du stockage d'archives Azure vers les systèmes StorageGRID.
-* Limites de la restauration rapide :
-+
-** L'emplacement de destination doit être un système Cloud Volumes ONTAP utilisant ONTAP 9.13.0 ou une version ultérieure.
-** Elle n'est pas prise en charge avec les sauvegardes situées dans le stockage archivé.
-** Les volumes FlexGroup sont pris en charge uniquement si le système source à partir duquel la sauvegarde cloud a été créée exécutait ONTAP 9.12.1 ou version ultérieure.
-** Les volumes SnapLock sont pris en charge uniquement si le système source à partir duquel la sauvegarde cloud a été créée exécutait ONTAP 9.11.0 ou version ultérieure.
-
-
 

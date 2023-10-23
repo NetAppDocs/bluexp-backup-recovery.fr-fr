@@ -50,6 +50,9 @@ PAYGO propose plusieurs plans pour la sauvegarde et la restauration BlueXP :
 
 * Un pack « Cloud Backup » vous permet de sauvegarder les données Cloud Volumes ONTAP et ONTAP sur site.
 * Pack « CVO Professional » pour regrouper les fonctionnalités de sauvegarde et de restauration Cloud Volumes ONTAP et BlueXP. Cela inclut un nombre illimité de sauvegardes pour le système Cloud Volumes ONTAP utilisant la licence (la capacité de sauvegarde n'est pas comptée par rapport à la capacité sous licence). Cette option ne vous permet pas de sauvegarder les données ONTAP sur site.
++
+Notez que cette option nécessite également un abonnement PAYGO pour la sauvegarde et la restauration, mais aucun frais n'est facturé pour les systèmes Cloud Volumes ONTAP éligibles.
+
 * Un package « CVO Edge cache » offre les mêmes fonctionnalités que le package « CVO Professional », mais il inclut également la prise en charge du https://docs.netapp.com/us-en/bluexp-edge-caching/concept-gfc.html["La mise en cache BlueXP Edge"^] services. Vous êtes autorisé à déployer un système de mise en cache BlueXP Edge pour chaque 3 To de capacité provisionnée sur le système Cloud Volumes ONTAP. Cette option est disponible via Azure et Google Marketplaces, et ne vous permet pas de sauvegarder les données ONTAP sur site.
 
 

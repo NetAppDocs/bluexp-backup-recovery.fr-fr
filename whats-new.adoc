@@ -22,23 +22,21 @@ Découvrez les nouveautés de la sauvegarde et de la restauration BlueXP.
 
 
 
-=== 3-2-1 création de la police pendant l'activation de la sauvegarde
+=== 3-2-1 création de la stratégie de sauvegarde lors de l'activation de la sauvegarde
 
-Auparavant, des règles personnalisées devaient être créées avant de lancer une copie Snapshot, une réplication ou une sauvegarde. Depuis ONTAP 9.8 P5, vous pouvez maintenant créer une règle pendant le processus d'activation de la sauvegarde à l'aide de l'interface de sauvegarde et de restauration BlueXP.
+Auparavant, des règles personnalisées devaient être créées avant de lancer une copie Snapshot, une réplication ou une sauvegarde. Vous pouvez désormais créer une règle pendant le processus d'activation de la sauvegarde à l'aide de l'interface de sauvegarde et de restauration de BlueXP.
 
 https://docs.netapp.com/us-en/bluexp-backup-recovery/task-create-policies-ontap.html["En savoir plus sur les stratégies"].
 
 
 
-=== Prise en charge de la restauration rapide à la demande
+=== Prise en charge de la restauration rapide à la demande des volumes ONTAP
 
 La sauvegarde et la restauration BlueXP permettent désormais d'effectuer une « restauration rapide » d'un volume depuis le stockage cloud vers un système Cloud Volumes ONTAP. La restauration rapide est idéale pour les reprises après incident où vous devez fournir un accès à un volume dès que possible. Une restauration rapide restaure les métadonnées du fichier de sauvegarde sur un volume au lieu de restaurer l'intégralité du fichier de sauvegarde.
 
-Le système de destination Cloud Volumes ONTAP doit exécuter ONTAP version 9.13.0 ou ultérieure.
+Le système de destination Cloud Volumes ONTAP doit exécuter ONTAP version 9.13.0 ou ultérieure. https://docs.netapp.com/us-en/bluexp-backup-recovery/task-restore-backups-ontap.html["En savoir plus sur la restauration des données"].
 
-https://docs.netapp.com/us-en/bluexp-backup-recovery/task-restore-backups-ontap.html["En savoir plus sur la restauration des données"].
-
-Le moniteur des tâches de sauvegarde et de restauration BlueXP affiche désormais des informations sur les tâches de restauration rapide.
+Le moniteur des tâches de sauvegarde et de restauration BlueXP affiche également des informations sur la progression des tâches de restauration rapide.
 
 
 
@@ -100,6 +98,12 @@ https://docs.netapp.com/us-en/bluexp-backup-recovery/task-restore-backups-ontap.
 
 
 
+=== Possibilité d'archiver immédiatement les données de sauvegarde au lieu d'effectuer une première écriture sur le stockage standard
+
+Vous pouvez désormais envoyer immédiatement vos fichiers de sauvegarde dans le système de stockage d'archives au lieu d'écrire les données dans le stockage cloud standard. Cette fonctionnalité est particulièrement utile pour les utilisateurs qui ont rarement besoin d'accéder aux données issues de sauvegardes cloud ou qui remplacent un environnement de sauvegarde sur bande.
+
+
+
 === Prise en charge supplémentaire de la sauvegarde et de la restauration des volumes SnapLock
 
 La sauvegarde et la restauration peuvent désormais sauvegarder des volumes FlexVol et FlexGroup configurés en mode de protection SnapLock Compliance ou SnapLock Enterprise. Pour cette prise en charge, vos clusters doivent exécuter ONTAP 9.14 ou une version ultérieure. La sauvegarde de volumes FlexVol à l'aide de SnapLock Enterprise mode est prise en charge depuis ONTAP version 9.11.1. Les versions antérieures de ONTAP ne prennent pas en charge la sauvegarde des volumes de protection SnapLock.
@@ -112,9 +116,12 @@ https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-ontap-backup-to-clo
 
 [IMPORTANT]
 ====
-En raison d'une amélioration importante de la sécurité, votre connecteur nécessite désormais un accès Internet sortant vers un terminal supplémentaire afin de gérer les ressources de sauvegarde et de restauration au sein de votre environnement de cloud public. Si ce point final n'a pas été ajouté à la liste « autorisé » de votre pare-feu, une erreur s'affiche dans l'interface utilisateur à propos de « Service indisponible » ou de « Echec de la détermination de l'état du service » :
-
+* En raison d'une amélioration importante de la sécurité, votre connecteur nécessite désormais un accès Internet sortant vers un terminal supplémentaire afin de gérer les ressources de sauvegarde et de restauration au sein de votre environnement de cloud public. Si ce point final n'a pas été ajouté à la liste « autorisé » de votre pare-feu, une erreur s'affiche dans l'interface utilisateur à propos de « Service indisponible » ou de « Echec de la détermination de l'état du service » :
++
 \https://netapp-cloud-account.auth0.com
+
+* Vous devez désormais souscrire un abonnement PAYGO pour la sauvegarde et la restauration lorsque vous utilisez le pack « CVO Professional » qui vous permet de regrouper les fonctionnalités de sauvegarde et de restauration de Cloud Volumes ONTAP et BlueXP. Cela n'était pas nécessaire par le passé. Aucun frais n'est facturé sur l'abonnement à la sauvegarde et à la récupération pour les systèmes Cloud Volumes ONTAP éligibles, mais il est requis lors de la configuration de la sauvegarde sur les nouveaux volumes.
+
 
 ====
 
@@ -678,74 +685,3 @@ Par le passé, un fichier restauré sur le volume d'origine a toujours été res
 === Effectuez un glisser-déposer pour activer la sauvegarde dans le cloud sur les systèmes StorageGRID
 
 Si le https://docs.netapp.com/us-en/bluexp-storagegrid/task-discover-storagegrid.html["StorageGRID"^] Destination de vos sauvegardes existe en tant qu'environnement de travail sur la toile. Vous pouvez faire glisser votre environnement de travail ONTAP sur site vers la destination pour lancer l'assistant de configuration de Cloud Backup.
-
-
-
-== 18 août 2022
-
-
-
-=== La protection des données des applications cloud natives a été prise en charge
-
-Cloud Backup pour applications est un service SaaS qui fournit des fonctionnalités de protection des données pour les applications exécutées sur NetApp Cloud Storage. Cloud Backup pour les applications activées dans BlueXP offre des sauvegardes et des restaurations efficaces et cohérentes avec les applications, basées sur des règles, de bases de données Oracle résidant sur Amazon FSX pour NetApp ONTAP.
-https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-protect-cloud-app-data-to-cloud.html["En savoir plus >>"^].
-
-
-
-=== La fonction de recherche et de restauration est désormais prise en charge avec les fichiers de sauvegarde dans Azure Blob
-
-La méthode de recherche et de restauration des volumes et des fichiers est désormais disponible pour les utilisateurs qui stockent leurs fichiers de sauvegarde dans le stockage Azure Blob. https://docs.netapp.com/us-en/bluexp-backup-recovery/task-restore-backups-ontap.html#prerequisites-2["Découvrez comment restaurer vos volumes et fichiers à l'aide de Search  Restore"^].
-
-Notez que des autorisations supplémentaires sont nécessaires dans le rôle connecteur pour utiliser cette fonctionnalité. Un connecteur déployé avec la version 3.9.21 du logiciel (août 2022) inclut ces autorisations. Vous devrez ajouter manuellement les autorisations si vous avez déployé le connecteur à l'aide d'une version antérieure. https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-onprem-to-azure.html#verify-or-add-permissions-to-the-connector["Voir comment ajouter ces autorisations, si nécessaire"^].
-
-
-
-=== Nous avons ajouté la possibilité de protéger vos fichiers de sauvegarde contre les suppressions et les attaques par ransomware
-
-Cloud Backup dispose désormais de la prise en charge du verrouillage des objets pour les sauvegardes sécurisées par ransomware. Si votre cluster utilise ONTAP 9.11.1 ou version ultérieure et que votre destination de sauvegarde est Amazon S3, une nouvelle option de stratégie de sauvegarde appelée _DataLock et protection contre les attaques par ransomware_ est maintenant disponible. DataLock protège vos fichiers de sauvegarde contre la modification ou la suppression, et la protection contre les ransomwares analyse vos fichiers de sauvegarde pour rechercher des signes d'attaque par ransomware sur vos fichiers de sauvegarde. https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-cloud-backup-policies.html#datalock-and-ransomware-protection["Découvrez comment protéger vos sauvegardes avec DataLock et des attaques par ransomware"^].
-
-Notez que des autorisations supplémentaires sont nécessaires dans le rôle connecteur pour utiliser cette fonctionnalité. Un connecteur déployé à l'aide du logiciel version 3.9.21 inclut ces autorisations. Vous devrez ajouter manuellement les autorisations si vous avez déployé le connecteur à l'aide d'une version antérieure. https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-onprem-to-aws.html#set-up-s3-permissions["Découvrez comment ajouter ces autorisations si nécessaire"^].
-
-
-
-=== Cloud Backup prend désormais en charge les règles créées à l'aide d'étiquettes SnapMirror personnalisées
-
-Auparavant, Cloud Backup prenait uniquement en charge les étiquettes SnapMirror prédéfinies : toutes les heures, tous les jours, toutes les semaines, toutes les heures et tous les ans. Désormais, Cloud Backup peut détecter les règles SnapMirror qui comportent des étiquettes SnapMirror personnalisées que vous avez créées à l'aide de System Manager ou de l'interface de ligne de commande. Ces nouvelles étiquettes sont accessibles dans l'interface utilisateur de Cloud Backup, ce qui vous permet de sauvegarder des volumes avec le label SnapMirror de votre choix dans le cloud.
-
-
-
-=== Autres améliorations de la politique de sauvegarde pour les systèmes ONTAP
-
-Certaines pages de stratégie de sauvegarde ont été redessinées afin de faciliter l'affichage de toutes les règles de sauvegarde disponibles pour les volumes de chaque cluster ONTAP. Vous pouvez ainsi consulter les détails des règles disponibles de façon à appliquer les meilleures règles à vos volumes.
-
-
-
-=== Effectuez un glisser-déposer pour activer Cloud Backup sur Azure Blob et Google Cloud Storage
-
-Si le https://docs.netapp.com/us-en/bluexp-setup-admin/task-viewing-azure-blob.html["Blob d'Azure"^] ou https://docs.netapp.com/us-en/bluexp-setup-admin/task-viewing-gcp-storage.html["Google Cloud Storage"^] La destination de vos sauvegardes existe en tant qu'environnement de travail sur la toile. Vous pouvez faire glisser votre environnement de travail ONTAP ou Cloud Volumes ONTAP sur site (installé dans Azure ou GCP) vers la destination pour lancer l'assistant de configuration de la sauvegarde.
-
-Cette fonctionnalité existe déjà pour les compartiments Amazon S3.
-
-
-
-== 13 juillet 2022
-
-
-
-=== La prise en charge a été ajoutée pour la sauvegarde des volumes SnapLock Enterprise
-
-Vous pouvez désormais utiliser Cloud Backup pour sauvegarder des volumes SnapLock Enterprise dans des clouds publics et privés. Cette fonctionnalité requiert que votre système ONTAP exécute ONTAP 9.11.1 ou une version ultérieure. Cependant, les volumes de conformité SnapLock ne sont pas pris en charge actuellement.
-
-
-
-=== Vous pouvez désormais créer des fichiers de sauvegarde dans le cloud public lorsque vous utilisez un connecteur sur site
-
-Auparavant, vous deviez déployer le connecteur dans le même fournisseur de cloud que où vous créiez des fichiers de sauvegarde. Un connecteur déployé dans votre environnement sur site permet désormais de créer des fichiers de sauvegarde à partir de systèmes ONTAP sur site vers Amazon S3, Azure Blob et Google Cloud Storage. (Un connecteur sur site était toujours nécessaire pour créer des fichiers de sauvegarde sur les systèmes StorageGRID.)
-
-
-
-=== Des fonctionnalités supplémentaires sont disponibles lors de la création de stratégies de sauvegarde pour les systèmes ONTAP
-
-* Nous pouvons maintenant sauvegarder chaque année. La valeur de conservation par défaut est 1 pour les sauvegardes annuelles, mais vous pouvez modifier cette valeur si vous souhaitez accéder à de nombreux fichiers de sauvegarde des années précédentes.
-* Vous pouvez nommer vos stratégies de sauvegarde de façon à ce que vous puissiez identifier vos stratégies avec un texte plus descriptif.
-

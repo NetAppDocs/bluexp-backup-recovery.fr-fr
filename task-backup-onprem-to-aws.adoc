@@ -227,13 +227,7 @@ Toutes les LIF intercluster au sein de l'IPspace doivent avoir accès au magasin
 
 === Vérifiez les exigences de mise en réseau ONTAP pour la réplication de volumes
 
-Avant d'activer les sauvegardes dans BlueXP Backup and Recovery, assurez-vous que les systèmes source et de destination respectent les exigences de mise en réseau suivantes.
-
-
-
-==== Configuration réseau requise par Cloud Volumes ONTAP
-
-Le groupe de sécurité de l'instance doit inclure les règles d'entrée et de sortie requises : plus précisément, les règles d'ICMP et les ports 11104 et 11105. Ces règles sont incluses dans le groupe de sécurité prédéfini.
+Si vous prévoyez de créer des volumes répliqués sur un système ONTAP secondaire à l'aide de la sauvegarde et de la restauration BlueXP, assurez-vous que les systèmes source et de destination respectent les exigences de mise en réseau suivantes.
 
 
 
@@ -244,6 +238,13 @@ Le groupe de sécurité de l'instance doit inclure les règles d'entrée et de s
 +
 Comme vous pouvez répliquer sur des systèmes Cloud Volumes ONTAP ou sur site, examinez les exigences de peering pour les systèmes ONTAP sur site. https://docs.netapp.com/us-en/ontap-sm-classic/peering/reference_prerequisites_for_cluster_peering.html["Afficher les conditions préalables au peering de cluster dans la documentation de ONTAP"^].
 
+
+
+
+
+==== Configuration réseau requise par Cloud Volumes ONTAP
+
+* Le groupe de sécurité de l'instance doit inclure les règles d'entrée et de sortie requises : plus précisément, les règles d'ICMP et les ports 11104 et 11105. Ces règles sont incluses dans le groupe de sécurité prédéfini.
 
 
 

@@ -311,10 +311,17 @@ endif::azure[]
 
 == Paramètres de stockage d'archivage
 
-Si vous utilisez un certain stockage cloud, vous pouvez déplacer d'anciens fichiers de sauvegarde vers un Tier de stockage/accès moins onéreux après un certain nombre de jours. Notez que le stockage d'archives ne peut pas être utilisé si vous avez activé DataLock.
+Après un certain nombre de jours, lorsque vous utilisez le stockage cloud AWS, Azure ou Google, vous pouvez transférer les fichiers de sauvegarde plus anciens vers un Tier de stockage/d'accès d'archivage plus économique. Vous pouvez également choisir d'envoyer immédiatement vos fichiers de sauvegarde vers le système de stockage d'archivage sans être écrits sur le stockage cloud standard. Il vous suffit d'entrer *0* comme "Archive après jours" pour envoyer votre fichier de sauvegarde directement au stockage d'archives. Cette fonctionnalité est particulièrement utile pour les utilisateurs qui ont rarement besoin d'accéder aux données issues de sauvegardes cloud ou qui remplacent une solution de sauvegarde sur bande.
 
-Vous n'avez pas accès immédiatement aux données des niveaux d'archivage quand vous en avez besoin. Par conséquent, vos coûts de récupération sont plus élevés, vous devez déterminer la fréquence à laquelle restaurer les données à partir des fichiers de sauvegarde archivés.
+Les données des niveaux d'archivage ne sont pas accessibles immédiatement en cas de besoin. Leur coût de récupération est donc plus élevé. Il vous faudra donc déterminer la fréquence à laquelle vous devrez restaurer les données à partir des fichiers de sauvegarde avant de décider d'archiver vos fichiers de sauvegarde.
 
+[NOTE]
+====
+* Le stockage d'archives ne peut pas être utilisé si vous avez activé DataLock.
+* Vous ne pouvez pas modifier la stratégie d'archivage après avoir sélectionné *0* jours (archiver immédiatement).
+
+
+====
 Chaque politique de sauvegarde fournit une section pour _Archival_ que vous pouvez appliquer à vos fichiers de sauvegarde.
 
 image:screenshot_archive_tier_settings.png["Capture d'écran des paramètres de la politique d'archivage lors de la création d'une politique de sauvegarde."]
