@@ -359,15 +359,37 @@ Pour plus d'informations sur ces architectures, reportez-vous à la section link
 
 
 
-. *Instantané local* : choisissez une stratégie de snapshot existante.
+. *Instantané local* : choisissez une règle Snapshot existante ou créez-en une nouvelle.
 +
 
-TIP: Pour créer une règle personnalisée, vous pouvez utiliser System Manager ou l'interface de ligne de commandes de ONTAP `snapmirror policy create` commande. Reportez-vous à la section.
+TIP: Si vous souhaitez créer une stratégie personnalisée avant d'activer la copie Snapshot, vous pouvez utiliser System Manager ou l'interface de ligne de commandes de ONTAP `snapmirror policy create` commande. Reportez-vous à la section.
+
++
+
+TIP: Pour créer une stratégie personnalisée à l'aide de ce service avant d'activer le snapshot, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
+
++
+Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
+
++
+** Entrez le nom de la règle.
+** Sélectionnez jusqu'à 5 programmes, généralement de fréquences différentes.
+** Sélectionnez *Créer*.
+
 
 . *Replication* : si vous avez sélectionné *Replication*, définissez les options suivantes :
 +
 ** *Cible de réplication* : sélectionnez l'environnement de travail de destination et le SVM. Vous pouvez également sélectionner l'agrégat de destination (ou les agrégats pour les volumes FlexGroup) et ajouter le préfixe ou le suffixe au nom du volume répliqué.
-** *Règle de réplication* : choisissez une règle de réplication existante.
+** *Règle de réplication* : choisissez une règle de réplication existante ou créez-en une nouvelle.
++
+Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
+
++
+*** Entrez le nom de la règle.
+*** Sélectionnez jusqu'à 5 programmes, généralement de fréquences différentes.
+*** Sélectionnez *Créer*.
+
+
 
 
 . *Sauvegarder dans l'objet* : si vous avez sélectionné *Sauvegarder*, définissez les options suivantes :
@@ -382,14 +404,23 @@ La clé d'accès et la clé secrète sont destinées à l'utilisateur que vous a
 
 TIP: La sélection de l'IPspace approprié permet de garantir que la sauvegarde et la restauration BlueXP peuvent configurer une connexion de ONTAP à votre stockage objet ONTAP S3.
 
-** *Politique de sauvegarde* : sélectionnez une stratégie de sauvegarde existante.
+** *Politique de sauvegarde* : sélectionnez une stratégie de sauvegarde existante ou créez-en une nouvelle.
 +
 
-TIP: Pour créer une règle personnalisée, vous pouvez utiliser System Manager ou l'interface de ligne de commandes de ONTAP `snapmirror policy create` commande. Reportez-vous à la section.
+TIP: Vous pouvez créer une règle avec System Manager ou l'interface de ligne de commandes de ONTAP. Pour créer une règle personnalisée à l'aide de l'interface de ligne de commandes de ONTAP `snapmirror policy create` commande, voir.
 
 +
 
-TIP: Pour créer une règle personnalisée à l'aide de l'interface utilisateur, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
+TIP: Pour créer une stratégie personnalisée avant d'activer la sauvegarde à l'aide de l'interface utilisateur, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
+
++
+Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
+
++
+*** Entrez le nom de la règle.
+*** Sélectionnez jusqu'à 5 programmes, généralement de fréquences différentes.
+*** Sélectionnez *Créer*.
+
 
 
 

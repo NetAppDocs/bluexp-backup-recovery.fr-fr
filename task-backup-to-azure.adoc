@@ -342,7 +342,7 @@ Notez que si des règles Snapshot ou de réplication sont déjà appliquées sur
 . Dans la page Sélectionner des volumes, sélectionnez le ou les volumes à protéger.
 +
 ** Vous pouvez également filtrer les lignes pour n'afficher que les volumes avec certains types de volumes, styles et autres pour faciliter la sélection.
-** Après avoir sélectionné le premier volume, vous pouvez sélectionner tous les volumes FlexVol (les volumes FlexGroup ne peuvent être sélectionnés qu'un par un). Pour sauvegarder tous les volumes FlexVol existants, cochez d'abord un volume, puis cochez la case dans la ligne de titre. (image:button_backup_all_volumes.png[""]).
+** Après avoir sélectionné le premier volume, vous pouvez sélectionner tous les volumes FlexVol. (Les volumes FlexGroup ne peuvent être sélectionnés qu'un par un.) Pour sauvegarder tous les volumes FlexVol existants, cochez d'abord un volume, puis cochez la case dans la ligne de titre. (image:button_backup_all_volumes.png[""]).
 ** Pour sauvegarder des volumes individuels, cochez la case de chaque volume (image:button_backup_1_volume.png[""]).
 
 
@@ -383,18 +383,36 @@ Pour plus d'informations sur ces architectures, reportez-vous à la section link
 
 
 
-. *Instantané local* : choisissez une stratégie de snapshot existante.
+. *Instantané local* : choisissez une règle Snapshot existante ou créez-en une.
 +
 
-TIP: Pour créer une stratégie personnalisée, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
+TIP: Pour créer une stratégie personnalisée avant d'activer la copie Snapshot, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
+
++
+Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
+
++
+** Entrez le nom de la règle.
+** Sélectionnez jusqu'à 5 programmes, généralement de fréquences différentes.
+** Sélectionnez *Créer*.
+
 
 . *Réplication* : définissez les options suivantes :
 +
 ** *Cible de réplication* : sélectionnez l'environnement de travail de destination et le SVM. Si vous le souhaitez, sélectionnez le ou les agrégats de destination, ainsi que le préfixe ou le suffixe à ajouter au nom du volume répliqué.
-** *Règle de réplication* : choisissez une règle de réplication existante.
+** *Règle de réplication* : choisissez une règle de réplication existante ou créez-en une.
 +
 
-TIP: Pour créer une stratégie personnalisée, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
+TIP: Pour créer une stratégie personnalisée avant d'activer la réplication, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
+
++
+Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
+
++
+*** Entrez le nom de la règle.
+*** Sélectionnez jusqu'à 5 programmes, généralement de fréquences différentes.
+*** Sélectionnez *Créer*.
+
 
 
 
@@ -439,10 +457,19 @@ NOTE: Si vous avez choisi un compte de stockage Microsoft existant, les informat
 ... Vous pouvez également choisir d'utiliser un terminal privé Azure que vous avez déjà configuré. https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview["Découvrez comment utiliser un terminal privé Azure"].
 
 
-** *Règle de sauvegarde* : sélectionnez une stratégie de stockage objet de sauvegarde existante.
+** *Politique de sauvegarde* : sélectionnez une stratégie de stockage existante de sauvegarde vers objet.
 +
 
-TIP: Pour créer une stratégie personnalisée, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
+TIP: Pour créer une stratégie personnalisée avant d'activer la sauvegarde, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
+
++
+Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
+
++
+*** Entrez le nom de la règle.
+*** Sélectionnez jusqu'à 5 programmes, généralement de fréquences différentes.
+*** Sélectionnez *Créer*.
+
 
 ** *Exporter les copies Snapshot existantes vers le stockage objet en tant que copies de sauvegarde* : s'il existe des copies Snapshot locales pour les volumes de cet environnement de travail qui correspondent au libellé du programme de sauvegarde que vous venez de sélectionner pour cet environnement de travail (par exemple, tous les jours, toutes les semaines, etc.), cette invite supplémentaire s'affiche. Cochez cette case pour que tous les snapshots historiques soient copiés dans le stockage objet en tant que fichiers de sauvegarde afin de garantir une protection complète de vos volumes.
 

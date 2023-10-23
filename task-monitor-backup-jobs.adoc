@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-monitor-backup-jobs.html 
 keywords: cloud backup, bluexp backup and recovery, backup, restore, status, monitor, alert, notification 
-summary: 'Vous pouvez surveiller l"état des snapshots locaux, des réplications et des tâches de sauvegarde vers le stockage objet que vous avez initiées, et restaurer les tâches que vous avez initiées. Vous pouvez voir les travaux terminés, en cours ou en échec pour pouvoir diagnostiquer et résoudre les problèmes. Le centre de notification BlueXP vous permet d"activer l"envoi de notifications par e-mail pour vous informer de l"activité système importante, même si vous n"êtes pas connecté au système. À l"aide de la chronologie BlueXP, vous pouvez afficher les détails de toutes les actions initiées via l"interface utilisateur ou l"API.' 
+summary: 'Vous pouvez surveiller l"état des snapshots locaux, des réplications et des tâches de sauvegarde vers le stockage objet que vous avez initiées ou qui ont été planifiées, et restaurer les tâches que vous avez initiées ou planifiées. Vous pouvez voir les travaux terminés, en cours ou en échec pour pouvoir diagnostiquer et résoudre les problèmes. Le centre de notification BlueXP vous permet d"activer l"envoi de notifications par e-mail pour vous informer de l"activité système importante, même si vous n"êtes pas connecté au système. À l"aide de la chronologie BlueXP, vous pouvez afficher les détails de toutes les actions initiées via l"interface utilisateur ou l"API.' 
 ---
 = Surveiller l'état des tâches de sauvegarde et de restauration
 :hardbreaks:
@@ -31,7 +31,7 @@ Le statut peut être :
 * Échec
 
 
-Les snapshots, les réplications, les sauvegardes vers le stockage objet et les opérations de restauration que vous avez initiées à partir de l'interface et de l'API de sauvegarde et de restauration BlueXP, ainsi que les tâches lancées par le système, telles que les opérations de sauvegarde planifiées en cours, sont disponibles dans l'onglet surveillance des tâches. Toutefois, cela est vrai uniquement pour les systèmes Cloud Volumes ONTAP exécutant ONTAP 9.13.0 ou version ultérieure et les systèmes ONTAP sur site exécutant ONTAP 9.13.1 ou version ultérieure. Lors de l'exécution de versions antérieures de ONTAP, seuls les travaux initiés par l'utilisateur sont affichés.
+Les snapshots, les réplications, les sauvegardes vers le stockage objet et les opérations de restauration que vous avez initiées à partir de l'interface et de l'API de sauvegarde et de restauration BlueXP sont disponibles dans l'onglet surveillance des tâches.
 
 
 NOTE: Si vous avez mis à niveau vos systèmes ONTAP vers la version 9.13.x et que vous ne voyez pas les opérations de sauvegarde planifiées en cours dans le moniteur de tâches, vous devez redémarrer le service de sauvegarde et de restauration BlueXP. link:reference-restart-backup.html["Découvrez comment redémarrer la sauvegarde et la restauration BlueXP"].
@@ -128,7 +128,7 @@ Vous pouvez télécharger le contenu de la page principale de surveillance des t
 
 == Examinez les tâches de conservation (cycle de vie des sauvegardes)
 
-La surveillance des flux de conservation (cycle de vie des sauvegardes) vous aide à assurer l'exhaustivité des audits, la responsabilité et la sécurité des sauvegardes. Pour vous aider à suivre le cycle de vie des sauvegardes, il peut être utile d'identifier l'expiration de toutes les copies de sauvegarde.
+La surveillance des flux de conservation (ou _cycle de vie de sauvegarde_) vous aide à assurer l'exhaustivité des audits, la responsabilité et la sécurité des sauvegardes. Pour vous aider à suivre le cycle de vie des sauvegardes, il peut être utile d'identifier l'expiration de toutes les copies de sauvegarde.
 
 Une tâche de cycle de vie de sauvegarde effectue le suivi de toutes les copies Snapshot supprimées ou placées dans la file d'attente à supprimer. À partir de ONTAP 9.13, vous pouvez consulter tous les types de travail appelés « conservation » sur la page surveillance des travaux.
 
@@ -137,7 +137,7 @@ Le type de tâche « conservation » capture toutes les tâches de suppression d
 .Étapes
 . Sélectionnez l'onglet *surveillance des travaux*.
 . Sélectionnez la zone *recherche avancée et filtrage* pour ouvrir le panneau recherche.
-. Sélectionnez le type de travail « conservation ».
+. Sélectionnez « conservation » comme type de travail.
 
 
 

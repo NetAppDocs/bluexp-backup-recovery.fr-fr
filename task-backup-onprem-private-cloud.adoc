@@ -413,22 +413,38 @@ Pour plus d'informations sur ces architectures, reportez-vous à la section link
 
 
 
-. *Instantané local* : choisissez une stratégie de snapshot existante.
+. *Instantané local* : choisissez une règle Snapshot existante ou créez-en une nouvelle.
 +
 
-TIP: Pour créer une stratégie personnalisée, reportez-vous à la section
-link:task-create-policies-ontap.html["Création d'une règle"].
+TIP: Pour créer une stratégie personnalisée avant d'activer la copie Snapshot, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
+
++
+Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
+
++
+** Entrez le nom de la règle.
+** Sélectionnez jusqu'à 5 programmes, généralement de fréquences différentes.
+** Sélectionnez *Créer*.
+
 
 . *Réplication* : définissez les options suivantes :
 +
 ** *Cible de réplication* : sélectionnez l'environnement de travail de destination et le SVM. Si vous le souhaitez, sélectionnez le ou les agrégats de destination, ainsi que le préfixe ou le suffixe à ajouter au nom du volume répliqué.
-** *Règle de réplication* : choisissez une règle de réplication existante.
-
-
+** *Règle de réplication* : choisissez une règle de réplication existante ou créez-en une.
 +
 
-TIP: Pour créer une stratégie personnalisée, reportez-vous à la section
-link:task-create-policies-ontap.html["Création d'une règle"].
+TIP: Pour créer une stratégie personnalisée avant d'activer la réplication, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
+
++
+Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
+
++
+*** Entrez le nom de la règle.
+*** Sélectionnez jusqu'à 5 programmes, généralement de fréquences différentes.
+*** Sélectionnez *Créer*.
+
+
+
 
 . *Sauvegarder dans l'objet* : si vous avez sélectionné *Sauvegarder*, définissez les options suivantes :
 +
@@ -442,17 +458,25 @@ La clé d'accès et la clé secrète sont destinées à l'utilisateur IAM dont v
 
 TIP: En sélectionnant l'IPspace approprié, vous vous assurez que la sauvegarde et la restauration BlueXP peuvent établir une connexion entre ONTAP et votre stockage objet StorageGRID.
 
-** *Règle de sauvegarde* : sélectionnez une stratégie de stockage objet de sauvegarde existante.
+** *Règle de sauvegarde* : sélectionnez une stratégie de stockage objet de sauvegarde existante ou créez-en une.
 +
 
-TIP: Pour créer une stratégie personnalisée, reportez-vous à la section
-link:task-create-policies-ontap.html["Création d'une règle"].
+TIP: Pour créer une stratégie personnalisée avant d'activer la sauvegarde, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
 
++
+Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
+
++
+*** Entrez le nom de la règle.
+*** Sélectionnez jusqu'à 5 programmes, généralement de fréquences différentes.
+*** Sélectionnez *Créer*.
 +
 Si votre cluster utilise ONTAP 9.11.1 ou version supérieure, vous pouvez choisir de protéger vos sauvegardes contre les suppressions et les attaques par ransomware en configurant _DataLock et ransomware protection_. _DataLock_ protège vos fichiers de sauvegarde contre la modification ou la suppression, et _Attack protection_ analyse vos fichiers de sauvegarde pour rechercher la preuve d'une attaque par ransomware dans vos fichiers de sauvegarde. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["En savoir plus sur les paramètres DataLock disponibles"^].
 
 +
 Si votre cluster utilise ONTAP 9.12.1 ou version ultérieure et que votre système StorageGRID utilise la version 11.4 ou ultérieure, vous pouvez choisir de transférer les anciennes sauvegardes vers des tiers d'archivage dans le cloud public après un certain nombre de jours. La prise en charge est pour les tiers de stockage AWS S3 Glacier/S3 Glacier Deep Archive ou Azure Archive. <<Preparing to archive older backup files to public cloud storage,Découvrez comment configurer vos systèmes pour cette fonctionnalité>>.
+
+
 
 ** *Sauvegarde par Tier dans le cloud public* : sélectionnez le fournisseur de cloud vers lequel vous souhaitez hiérarchiser les sauvegardes et entrez les détails du fournisseur.
 +

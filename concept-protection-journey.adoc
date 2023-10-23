@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: concept-protection-journey.html 
-keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, on-premises ontap, onprem, replication, backup and recovery 
+keywords: backing up, restoring, recovery, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, on-premises ontap, onprem, replication, backup and recovery 
 summary: 'Le service de sauvegarde et de restauration BlueXP vous permet de créer jusqu"à trois copies de vos volumes source pour protéger vos données. Lorsque vous activez ce service sur vos volumes, vous pouvez sélectionner de nombreuses options. Vous devez donc revoir vos choix pour être prêt.' 
 ---
 = Planifiez votre parcours en matière de protection
@@ -20,7 +20,7 @@ Nous allons passer en revue les options suivantes :
 
 * Quelles fonctionnalités de protection utiliserez-vous : copies Snapshot, volumes répliqués et/ou sauvegarde dans le cloud
 * Quelle architecture de sauvegarde utiliserez-vous : une sauvegarde en cascade ou « Fan-Out » de vos volumes
-* Utiliserez-vous les règles de sauvegarde par défaut ou devez-vous créer des règles personnalisées avant de commencer
+* Utiliserez-vous les règles de sauvegarde par défaut ou devez-vous créer des règles personnalisées
 * Souhaitez-vous que le service crée des compartiments cloud pour vous ou créez-vous des conteneurs de stockage objet avant de commencer
 * Quel mode de déploiement BlueXP Connector utilisez-vous (mode standard, restreint ou privé) ?
 
@@ -58,7 +58,7 @@ En résumé, il s'agit des flux de protection valides que vous pouvez créer pou
 
 
 
-NOTE: La création initiale d'un volume répliqué ou d'un fichier de sauvegarde inclut une copie complète des données source, appelée transfert de base. Les transferts suivants contiennent uniquement des copies différentielles des données source (l'instantané).
+NOTE: La création initiale d'un volume répliqué ou d'un fichier de sauvegarde inclut une copie complète des données sources -- il s'agit d'un _transfert de base_. Les transferts suivants contiennent uniquement des copies différentielles des données source (l'instantané).
 
 
 
@@ -113,19 +113,21 @@ Ce tableau fournit une comparaison des architectures « Fan-Out » et « Cascade
 |===
 
 
-== Utiliserez-vous les règles de sauvegarde par défaut pour les instantanés, les réplications et les sauvegardes
+== Utiliserez-vous les règles de sauvegarde par défaut pour les copies Snapshot, les réplications et les sauvegardes
 
-Vous pouvez utiliser les règles par défaut fournies par NetApp pour créer vos sauvegardes ou créer des règles personnalisées. Lorsque vous activez le service de sauvegarde et de restauration de vos volumes à l'aide de l'assistant d'activation, vous pouvez sélectionner parmi les règles par défaut et toutes les autres règles qui existent déjà dans l'environnement de travail (Cloud Volumes ONTAP ou système ONTAP sur site). Si vous souhaitez utiliser une stratégie différente de celles existantes, vous devez créer la stratégie avant de lancer l'assistant d'activation.
+Vous pouvez utiliser les règles par défaut fournies par NetApp pour créer vos sauvegardes ou créer des règles personnalisées. Lorsque vous activez le service de sauvegarde et de restauration de vos volumes à l'aide de l'assistant d'activation, vous pouvez sélectionner parmi les règles par défaut et toutes les autres règles qui existent déjà dans l'environnement de travail (Cloud Volumes ONTAP ou système ONTAP sur site). Si vous souhaitez utiliser une stratégie différente de celles existantes, vous pouvez créer la stratégie avant de démarrer ou pendant l'utilisation de l'assistant d'activation.
 
-* La règle Snapshot par défaut crée des copies Snapshot toutes les heures, tous les jours et toutes les semaines, en conservant 6 copies Snapshot toutes les heures, 2 copies quotidiennes et 2 copies hebdomadaires.
+* La règle Snapshot par défaut crée des copies Snapshot toutes les heures, tous les jours et toutes les semaines, en conservant 6 copies Snapshot toutes les heures, 2 copies quotidiennes et 2 copies Snapshot hebdomadaires.
 * La règle de réplication par défaut réplique les copies Snapshot quotidiennes et hebdomadaires, en conservant 7 copies Snapshot quotidiennes et 52 copies Snapshot hebdomadaires.
 * La règle de sauvegarde par défaut réplique les copies Snapshot quotidiennes et hebdomadaires, en conservant 7 copies Snapshot quotidiennes et 52 copies Snapshot hebdomadaires.
 
 
-Si vous créez des règles personnalisées pour la réplication ou la sauvegarde, les étiquettes de règles (par exemple, « quotidien » ou « hebdomadaire ») doivent correspondre aux étiquettes figurant dans vos règles Snapshot ou les volumes répliqués et les fichiers de sauvegarde ne seront pas créés. Vous pouvez créer des règles personnalisées à l'aide de System Manager ou de l'interface de ligne de commande ONTAP.
+Si vous créez des règles personnalisées pour la réplication ou la sauvegarde, les étiquettes de règles (par exemple, « quotidien » ou « hebdomadaire ») doivent correspondre aux étiquettes figurant dans vos règles Snapshot ou les volumes répliqués et les fichiers de sauvegarde ne seront pas créés.
 
-https://docs.netapp.com/us-en/ontap/task_dp_configure_snapshot.html["Créez une règle de snapshot à l'aide de System Manager"^]
-https://docs.netapp.com/us-en/ontap/data-protection/create-snapshot-policy-task.html["Créez une règle de snapshot à l'aide de l'interface de ligne de commandes de ONTAP"^]
+Vous pouvez créer des règles personnalisées à l'aide de BlueXP Backup Recovery, de System Manager ou de l'interface de ligne de commande ONTAP.
+
+https://docs.netapp.com/us-en/ontap/task_dp_configure_snapshot.html["Créez une règle Snapshot à l'aide de System Manager"^]
+https://docs.netapp.com/us-en/ontap/data-protection/create-snapshot-policy-task.html["Créez une règle Snapshot à l'aide de l'interface de ligne de commandes de ONTAP"^]
 https://docs.netapp.com/us-en/ontap/task_dp_create_custom_data_protection_policies.html["Créez une règle de réplication à l'aide de System Manager"^]
 https://docs.netapp.com/us-en/ontap/data-protection/create-custom-replication-policy-concept.html["Créez une règle de réplication à l'aide de l'interface de ligne de commandes de ONTAP"^]
 https://docs.netapp.com/us-en/ontap/task_dp_back_up_to_cloud.html#create-a-custom-cloud-backup-policy["Créez une règle de sauvegarde à l'aide de System Manager"^]
@@ -133,7 +135,7 @@ https://docs.netapp.com/us-en/ontap-cli-9131/snapmirror-policy-create.html#descr
 
 *Remarque :* lorsque vous utilisez System Manager, sélectionnez *Asynchronous* comme type de stratégie pour les stratégies de réplication, puis sélectionnez *Asynchronous* et *Sauvegarder dans le cloud* pour la sauvegarde vers les stratégies d'objet.
 
-Vous pouvez créer des règles de sauvegarde vers du stockage objet dans l'interface utilisateur de sauvegarde et de restauration BlueXP. Voir la section pour link:task-manage-backups-ontap.html#add-a-new-backup-policy["ajout d'une nouvelle politique de sauvegarde"] pour plus d'informations. Vous devez créer des règles de réplication et de copies Snapshot à l'aide de System Manager ou de l'interface de ligne de commande de ONTAP.
+Vous pouvez créer des règles de stockage Snapshot, de réplication et de sauvegarde vers un stockage objet dans l'interface de sauvegarde et de restauration BlueXP. Voir la section pour link:task-manage-backups-ontap.html#add-a-new-backup-policy["ajout d'une nouvelle politique de sauvegarde"] pour plus d'informations.
 
 Voici quelques exemples de commandes de l'interface de ligne de commande de ONTAP qui peuvent vous être utiles si vous créez des règles personnalisées. Notez que vous devez utiliser le _admin_ vserver (machine virtuelle de stockage) en tant que `<vserver_name>` dans ces commandes.
 

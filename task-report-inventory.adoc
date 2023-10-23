@@ -83,6 +83,7 @@ Le rapport Inventaire des sauvegardes affiche les graphiques suivants :
 TIP: Vous pouvez sélectionner plusieurs environnements de travail et SVM.
 
 . Sélectionnez la période : dernières 24 heures, semaine ou mois.
+. Consultez les sections du rapport (règles Snapshot, règles de réplication ou règles de sauvegarde), en fonction de vos sélections de rapport.
 . (Facultatif) Filtrer les résultats par état de tâche.
 . (Facultatif) exportez le contenu du rapport au format .CSV en sélectionnant *Télécharger CSV*.
 
@@ -93,7 +94,7 @@ TIP: Vous pouvez sélectionner plusieurs environnements de travail et SVM.
 
 La surveillance proactive peut réduire les efforts nécessaires pour surveiller toutes les ressources de votre écosystème. À partir de ONTAP 9.13.0, le rapport sur l'activité des tâches de protection des données fournit des informations sur les opérations de snapshot, de sauvegarde, de clonage et de restauration que vous pouvez utiliser avec le contrôle de votre contrat de niveau de service et le suivi des taux de sauvegarde et de restauration.
 
-Le rapport s'applique aux opérations de sauvegarde et de restauration BlueXP pour Cloud Volumes ONTAP, sur site, application et Kubernetes.
+Le rapport s'applique aux opérations de sauvegarde et de restauration BlueXP pour les données Cloud Volumes ONTAP, sur site, applicatives et Kubernetes.
 
 Le rapport activité de travail de protection des données affiche les informations suivantes et bien plus encore :
 

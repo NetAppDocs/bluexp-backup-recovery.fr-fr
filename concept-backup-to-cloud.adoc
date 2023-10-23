@@ -18,7 +18,7 @@ Le service de sauvegarde et de restauration BlueXP assure une protection des don
 
 Ce service effectue une réplication incrémentielle persistante au niveau des blocs et préserve toutes les fonctionnalités d'efficacité du stockage, ce qui réduit considérablement le volume des données répliquées et stockées. En outre, vous ne payez que pour ce qui est protégé et utilisez les tiers de stockage les plus économiques du marché, ce qui rend la sauvegarde et la restauration BlueXP très économique.
 
-Si nécessaire, vous pouvez restaurer un _volume_ entier à partir d'une sauvegarde vers le même environnement de travail ou vers un environnement de travail différent. Lorsque vous sauvegardez des données ONTAP, vous pouvez également choisir de restaurer un ou plusieurs _fichiers_ d'une sauvegarde vers le même environnement de travail ou vers un environnement de travail différent.
+Si nécessaire, vous pouvez restaurer un _volume_ entier à partir d'une sauvegarde vers le même environnement de travail ou vers un environnement de travail différent. Lors de la sauvegarde des données ONTAP, vous pouvez également choisir de restaurer un dossier ou un ou plusieurs _fichiers_ d'une sauvegarde vers le même environnement de travail ou un environnement différent.
 
 https://bluexp.netapp.com/cloud-backup["En savoir plus sur la sauvegarde et la restauration BlueXP"^].
 
@@ -73,11 +73,12 @@ ifdef::gcp[]
 endif::gcp[]
 
 * Dans StorageGRID, BlueXP utilise un compte de stockage existant pour le compartiment de magasin d'objets.
+* Dans ONTAP S3, BlueXP utilise un compte utilisateur pour le compartiment S3.
 
 
 
 
-=== Les sauvegardes sont effectuées à minuit
+=== Quand les sauvegardes sont-elles effectuées
 
 * Les sauvegardes horaires commencent 5 minutes après l'heure, toutes les heures.
 * Les sauvegardes quotidiennes commencent juste après minuit chaque jour.

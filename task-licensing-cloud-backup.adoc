@@ -135,9 +135,9 @@ Vous utilisez le portefeuille digital BlueXP pour gérer les licences BYOL. Vous
 
 === Obtenez votre fichier de licence de sauvegarde et de restauration BlueXP
 
-Après avoir acheté votre licence BlueXP Backup and Recovery (Cloud Backup), vous activez la licence dans BlueXP en saisissant le numéro de série et le compte NSS de BlueXP Backup and Recovery ou en téléchargeant le fichier de licence NLF. Les étapes ci-dessous montrent comment obtenir le fichier de licence NLF si vous prévoyez d'utiliser cette méthode.
+Après avoir acheté votre licence BlueXP Backup and Recovery (Cloud Backup), vous activez la licence dans BlueXP en entrant le numéro de série BlueXP Backup and Recovery et le compte NSS (NetApp support site), ou en téléchargeant le fichier de licence NetApp. Les étapes ci-dessous montrent comment obtenir le fichier de licence NLF si vous prévoyez d'utiliser cette méthode.
 
-Si vous exécutez la sauvegarde et la restauration BlueXP dans un site sur site qui ne dispose pas d'un accès Internet, c'est-à-dire que vous avez déployé le connecteur BlueXP dans https://docs.netapp.com/us-en/bluexp-setup-admin/concept-modes.html#private-mode["mode privé"^], vous devez obtenir le fichier de licence à partir d'un système connecté à internet. L'activation de la licence à l'aide du numéro de série et du compte NSS n'est pas disponible pour les installations en mode privé.
+Si vous exécutez la sauvegarde et la restauration BlueXP dans un site sur site qui ne dispose pas d'un accès Internet, c'est-à-dire que vous avez déployé le connecteur BlueXP dans https://docs.netapp.com/us-en/bluexp-setup-admin/concept-modes.html#private-mode["mode privé"^], vous devez obtenir le fichier de licence à partir d'un système connecté à internet. L'activation de la licence à l'aide du numéro de série et du compte du site de support NetApp n'est pas disponible pour les installations en mode privé.
 
 .Avant de commencer
 Vous devez disposer des informations suivantes avant de commencer :
