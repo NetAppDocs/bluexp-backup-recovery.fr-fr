@@ -66,6 +66,7 @@ Cette fonction n'assure pas la protection de vos volumes source, uniquement pour
 ====
 * Si vous prévoyez d'utiliser DataLock et une protection contre les ransomware, vous devez l'activer lors de la création de votre première stratégie de sauvegarde et de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster.
 * Il est impossible de désactiver le verrouillage des données et la protection contre les attaques par ransomware pour un cluster après sa configuration. N'activez pas cette fonctionnalité sur un cluster pour l'essayer.
+* Lorsque BlueXP analyse un fichier de sauvegarde pour détecter les ransomwares lors de la restauration des données de volume, vous encourez des coûts de sortie supplémentaires de votre fournisseur de cloud pour accéder au contenu du fichier de sauvegarde.
 
 
 ====

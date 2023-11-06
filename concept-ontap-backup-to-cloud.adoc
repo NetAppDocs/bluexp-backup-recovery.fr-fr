@@ -234,7 +234,8 @@ ifdef::gcp[]
 
 endif::gcp[]
 
-* Si vous devez restaurer les données de volume à partir d'un fichier de sauvegarde déplacé vers un stockage objet d'archivage, des frais de récupération par Gio sont facturés au fournisseur cloud pour chaque demande.
+* Si vous prévoyez de restaurer les données de volume à partir d'un fichier de sauvegarde déplacé vers un stockage objet d'archivage, des frais de récupération par Gio sont facturés au fournisseur cloud pour chaque demande.
+* Si vous prévoyez d'analyser un fichier de sauvegarde pour détecter les ransomwares pendant le processus de restauration des données de volume (si vous avez activé DataLock et la protection contre les ransomwares pour vos sauvegardes dans le cloud), vous encourrez également des coûts de sortie supplémentaires pour votre fournisseur de cloud.
 
 
 *Frais de service*

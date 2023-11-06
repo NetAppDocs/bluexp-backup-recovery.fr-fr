@@ -238,7 +238,7 @@ image:screenshot_restore_select_volume_snapshot.png["Capture d'écran indiquant 
 
 . Cliquez sur *Suivant*.
 +
-Si vous sélectionnez un fichier de sauvegarde dans le stockage objet et que la protection contre les ransomware est active pour cette sauvegarde (si vous avez activé DataLock et la protection contre les ransomware dans la politique de sauvegarde), vous êtes invité à exécuter une analyse supplémentaire par ransomware sur le fichier de sauvegarde avant de restaurer les données. Nous vous recommandons de scanner le fichier de sauvegarde à des fins d'attaques par ransomware.
+Si vous sélectionnez un fichier de sauvegarde dans le stockage objet et que la protection contre les ransomware est active pour cette sauvegarde (si vous avez activé DataLock et la protection contre les ransomware dans la politique de sauvegarde), vous êtes invité à exécuter une analyse supplémentaire par ransomware sur le fichier de sauvegarde avant de restaurer les données. Nous vous recommandons de scanner le fichier de sauvegarde à des fins d'attaques par ransomware. (Vos fournisseurs de cloud s'exposent à des frais de sortie supplémentaires pour accéder au contenu du fichier de sauvegarde.)
 
 . Dans la page _Select destination_, sélectionnez *Environnement de travail* où vous souhaitez restaurer le volume.
 +
@@ -405,7 +405,8 @@ link:reference-google-backup-tiers.html#restoring-data-from-archival-storage["En
 
 endif::gcp[]
 
-+ et si la protection par ransomware est active pour le fichier de sauvegarde (si vous avez activé DataLock et ransomware protection dans la stratégie de sauvegarde), vous êtes invité à exécuter une analyse par ransomware supplémentaire sur le fichier de sauvegarde avant de restaurer les données. Nous vous recommandons de scanner le fichier de sauvegarde à des fins d'attaques par ransomware.
++
+Si la protection contre les ransomware est active pour le fichier de sauvegarde (si vous avez activé DataLock et la protection contre les ransomware dans la politique de sauvegarde), vous êtes invité à exécuter une analyse supplémentaire contre les ransomware sur le fichier de sauvegarde avant de restaurer les données. Nous vous recommandons de scanner le fichier de sauvegarde à des fins d'attaques par ransomware. (Vos fournisseurs de cloud s'exposent à des frais de sortie supplémentaires pour accéder au contenu du fichier de sauvegarde.)
 
 +image:screenshot_restore_select_files.png["Capture d'écran de la page Sélectionner des éléments pour accéder aux éléments à restaurer."]
 
