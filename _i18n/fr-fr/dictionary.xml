@@ -266,9 +266,7 @@
   <block id="5938ac938681497e7209c89bcf1fc58f" category="inline-link">Découvrez comment utiliser vos propres touches</block>
   <block id="486567bdd60f21beefa59174661f6d52" category="section-title">Configurez votre système pour une connexion privée à l'aide d'une interface de terminal VPC</block>
   <block id="d37ada70a820c5c84f992a48e05045cf" category="inline-link-macro">premier diagramme</block>
-  <block id="55082684c888abf218793c0bd2f3b5e4" category="paragraph">Si vous voulez utiliser une connexion Internet publique standard, alors toutes les autorisations sont définies par le connecteur et il n'y a rien d'autre que vous devez faire. Ce type de connexion est indiqué dans le <block ref="b1224f75874af139b1e7a51a1da970e9" category="inline-link-macro-rx"></block>.</block>
   <block id="7cb65d7424b08922f4902800ae6b79d0" category="inline-link-macro">deuxième diagramme</block>
-  <block id="ca301c03d4c5ce91946df8b15f3dbe5f" category="paragraph">Si vous souhaitez bénéficier d'une connexion plus sécurisée via Internet entre votre data Center sur site et le VPC, vous pouvez sélectionner une connexion AWS PrivateLink dans l'assistant d'activation de la sauvegarde. Elle est indispensable pour connecter votre système sur site à l'aide d'un VPN ou d'AWS Direct Connect via une interface de terminal VPC qui utilise une adresse IP privée. Ce type de connexion est indiqué dans le <block ref="0f7afb920fb200721cfd6111e33f99d4" category="inline-link-macro-rx"></block>.</block>
   <block id="a08b285fd78cf03936887841fbc87805" category="inline-link">Pour plus d'informations sur l'utilisation d'AWS PrivateLink pour Amazon S3, reportez-vous à la section</block>
   <block id="4adab5b6b391c43cf0cfd73c09d5bdf8" category="inline-xref">Ajoutez les autorisations S3 à partir de la règle de sauvegarde</block>
   <block id="f59bbb6de7b8eafb6ccb2f617135ff84" category="list-text">Modifiez la configuration du groupe de sécurité associée au connecteur BlueXP. Vous devez modifier la règle en « personnalisé » (à partir de « accès complet ») et vous devez <block ref="52cd24ecfd99d5b16a10d03c54f9d16b" category="inline-xref-macro-rx"></block> comme indiqué précédemment.</block>
@@ -2794,7 +2792,6 @@
   <block id="9af84f05d8931a3676e35cb449e96606" category="list-text">Vous devez vérifier que l'API Google « Cloud Key Management Service (KMS) » est activée dans votre projet. Voir la<block ref="5b19b983398533c382bb79968f58dbf1" category="inline-link-rx"></block> pour plus d'informations.</block>
   <block id="db058563d6eb243b453d48635769d049" category="list-text">Les clés HSM (avec support matériel) et générées par logiciel sont prises en charge.</block>
   <block id="90a4c64194204c56808168a2ae360226" category="summary">Vous pouvez acquérir une licence de sauvegarde et de restauration BlueXP via un abonnement au Marketplace annuel ou à l'utilisation auprès de votre fournisseur cloud ou en achetant une licence personnalisée auprès de NetApp. Une licence valide est requise pour activer la sauvegarde et la restauration BlueXP dans un environnement de travail, créer des sauvegardes de vos données de production et restaurer les données de sauvegarde sur un système de production.</block>
-  <block id="6b238043e3f0cbcb294416f3238efea2" category="admonition">Lorsque vous créez des sauvegardes dans des régions AWS Chine, vous devez modifier le nom de ressource AWS « arn » sous toutes les sections _Resource_ des stratégies IAM de « aws » à « aws-cn », par exemple<block ref="e50d17688e67620204df0dd1b12e2baf" prefix=" " category="inline-code"></block>.</block>
   <block id="72c7fe989ff4840809134384de3dd80c" category="admonition">Si vous avez mis à niveau vos systèmes ONTAP vers la version 9.13.x et que vous ne voyez pas les opérations de sauvegarde planifiées en cours dans le moniteur de tâches, vous devez redémarrer le service de sauvegarde et de restauration BlueXP. <block ref="bdf197dfe0363b0f0f92ecc4a997870a" category="inline-link-macro-rx"></block>.</block>
   <block id="53775c897cfb7fba4b875a6f0ce56341" category="admonition">Si vous prévoyez de supprimer un environnement ou un cluster de travail qui dispose de sauvegardes, vous devez supprimer les sauvegardes *avant* de supprimer le système. La sauvegarde et la restauration BlueXP ne suppriment pas automatiquement les sauvegardes lorsque vous supprimez un système et il n'existe pas de prise en charge à jour dans l'interface utilisateur pour supprimer les sauvegardes une fois le système supprimé. Vous continuerez d'être facturé pour les coûts de stockage objet pour les sauvegardes restantes.</block>
   <block id="7063b7db80bf8574d1141e84ae0a1c85" category="list-text">Les sauvegardes de volume FlexGroup ne peuvent pas être transférées vers le stockage d'archivage.</block>
@@ -3828,28 +3825,6 @@ ifdef::aws[]</block>
   <block id="12486a40437a6b66be9b1d2eaf68dacb" category="list-text">(Facultatif) configurez votre système pour une connexion privée à l'aide d'une interface de point de terminaison VPC.</block>
   <block id="27481ab02cd2907ee58a87a01de37de2" category="list-text">Lorsque vous activez le service, l'assistant de sauvegarde vous invite à entrer une clé d'accès et une clé secrète. Ces identifiants sont ensuite transmis au cluster ONTAP afin que ONTAP puisse sauvegarder et restaurer les données dans le compartiment S3. Pour cela, vous devez créer un utilisateur IAM avec les autorisations suivantes.</block>
   <block id="b4bc25d0b351437deb290fa50a36f062" category="paragraph">Reportez-vous à la<block ref="eb8d2636cc0b0f2875b50c1561ec0060" category="inline-link-rx"></block>.</block>
-  <block id="50b086f5a622de5e2ad8e86ada10bc12" category="paragraph">"Action": [
-    « S3:ListBucket »
-    « S3:GetBucketLocation »
-]
-« Ressource » : « arn:aws:s3:::* »,
-« Effet » : « Autoriser »
-},
-{
-    "Action": [
-        « S3:GetObject »,
-        « S3:PutObject »,
-        « S3:DeleteObject »,
-        « S3:ListAllMyBuckets »,
-        « S3:PutObjectTagging »,
-        « S3:GetObjectTagging »,
-        « S3:RestoreObject »,
-        « S3:GetBucketObjectLockConfiguration »,
-        « S3:GetObjectRetention »,
-        « S3:PutBucketObjectLockConfiguration »,
-        « S3:PutObjectRetention »
-        ]
-    « Ressource » : « arn:aws:s3:::* »,</block>
   <block id="e2eb08f750d15308f8411635e75fc5e7" category="inline-link">Reportez-vous à la procédure d'utilisation de vos propres touches</block>
   <block id="de4ef5a5f97836ab944189954e7907e4" category="paragraph">Si vous souhaitez utiliser vos propres clés gérées par le client pour le chiffrement des données plutôt que les clés par défaut, vous devez disposer des clés gérées par le chiffrement déjà configurées avant de démarrer l'assistant de sauvegarde et de restauration BlueXP.<block ref="4f334d1f128fd0a003f5f48bc9fc4cbc" category="inline-link-rx"></block>.</block>
   <block id="b08fc812a1a1619370d32b6eda413475" category="inline-link">Pour en savoir plus sur l'utilisation d'AWS PrivateLink pour Amazon S3, consultez la page</block>
@@ -4078,7 +4053,6 @@ ifdef::aws[]</block>
   <block id="594ef985d417f60832e167b7a55944ba" category="paragraph"><block ref="90242aed4d9e662a807d0696ac4bc7d5" category="inline-link-macro-rx"></block>.</block>
   <block id="11a8a2e103fceba512eb133362ab467a" category="inline-link-macro">En savoir plus sur la création de vos propres comptes de stockage</block>
   <block id="b1864ef3e1c982ea79e143744ce2e778" category="paragraph"><block ref="5168b6a061fd7575c70ed688cdecff09" category="inline-link-macro-rx"></block>.</block>
-  <block id="24c3f29f7b3c09228614448507eb27eb" category="paragraph">Si vous créez vos propres compartiments, vous devez utiliser le nom de compartiment NetApp-Backup. Si vous devez utiliser un nom personnalisé, modifiez le<block ref="36f2cf0d90ddea374df0d9a8b6aa6300" prefix=" " category="inline-code"></block> IAMROle pour les CVO existants et ajouter la liste suivante aux autorisations S3. Vous devez inclure<block ref="a99022ed92fce54cbefc53cc3a7bb0a9" prefix=" " category="inline-code"></block> et attribuez toutes les autorisations nécessaires qui doivent être associées au compartiment.</block>
   <block id="28543445b2c93df38084996ffc019a63" category="section-title">Voulez-vous créer votre propre conteneur de stockage objet</block>
   <block id="44f63148cdcdb30b0f9a4cc99944e0cb" category="paragraph">Lorsque vous créez des fichiers de sauvegarde dans un stockage objet pour un environnement de travail, par défaut, le service de sauvegarde et de restauration crée le conteneur (compartiment ou compte de stockage) pour les fichiers de sauvegarde dans le compte de stockage objet que vous avez configuré. Par défaut, le compartiment AWS ou GCP est nommé « netapp-Backup-&lt;uuid&gt; ». Le compte de stockage Azure Blob est nommé « &lt;uuid&gt; ».</block>
   <block id="f108f3b7f4cf5d3e79e581222e60586a" category="paragraph">Vous pouvez créer le conteneur vous-même dans le compte du fournisseur d'objets si vous souhaitez utiliser un préfixe spécifique ou attribuer des propriétés spéciales. Si vous souhaitez créer votre propre conteneur, vous devez le créer avant de lancer l'assistant d'activation. Le conteneur doit être utilisé exclusivement pour stocker les fichiers de sauvegarde de volume ONTAP - il ne peut pas être utilisé à d'autres fins. L'assistant d'activation de la sauvegarde détecte automatiquement vos conteneurs provisionnés pour le compte et les informations d'identification sélectionnés afin que vous puissiez sélectionner celui que vous souhaitez utiliser.</block>
@@ -4775,4 +4749,14 @@ Si la protection contre les ransomware est active pour le fichier de sauvegarde 
   <block id="aa4c67fd3731395f4450c9686b20f799" category="section-title">Prise en charge des tâches planifiées dans le moniteur des tâches</block>
   <block id="314b40130d46a229c3a19dc5e2e23aa4" category="paragraph">Le moniteur de tâches de sauvegarde et de restauration BlueXP a précédemment surveillé les tâches planifiées de sauvegarde et de restauration volume à magasin d'objets, mais pas les tâches Snapshot, de réplication, de sauvegarde et de restauration locales qui ont été planifiées via l'interface utilisateur ou l'API.</block>
   <block id="04c6b318fe9c7f19ae925a90e52c6569" category="paragraph">Le moniteur des tâches de sauvegarde et de restauration BlueXP inclut désormais des tâches planifiées pour les snapshots locaux, les réplications et les sauvegardes vers le stockage objet.</block>
+  <block id="10c83d8d6aa254ef1949380a4435a4d4" category="paragraph">Si vous créez des sauvegardes dans des régions AWS GovCloud ou AWS China, vous devez modifier le nom de ressource AWS « arn » sous toutes les sections _Resource_ dans les deux ensembles d'autorisations suivantes :</block>
+  <block id="4c8fab8f36cba8fb1f202396d9a9ebcd" category="list-text">Pour les régions AWS GovCloud, vous devez remplacer « aws » par « aws-US-gov », par exemple<block ref="5437327155aa3716e710fd4319a91b7e" prefix=" " category="inline-code"></block>.</block>
+  <block id="d55b464ea46a7e055a6cefee97d57046" category="list-text">Pour les régions d'AWS Chine, vous devez remplacer « aws » par « aws-cn », par exemple<block ref="e50d17688e67620204df0dd1b12e2baf" prefix=" " category="inline-code"></block>.</block>
+  <block id="c791030455c6b061d69eaa3110693967" category="paragraph">Si vous créez vos propres compartiments, vous devez utiliser le nom de compartiment NetApp-Backup. Si vous devez utiliser un nom personnalisé, modifiez le<block ref="36f2cf0d90ddea374df0d9a8b6aa6300" prefix=" " category="inline-code"></block> IAMROle pour les CVO existants et ajouter la liste suivante aux autorisations S3.</block>
+  <block id="a2cea9ad2302bf1c011966b2b76de8a1" category="paragraph">Si vos compartiments personnalisés se trouvent dans les régions AWS GovCloud ou AWS China, vous devez modifier le nom de ressource AWS « arn » sous toutes les sections _Resource_ des autorisations :</block>
+  <block id="a306027de621391e07a3f37323f0a7a1" category="list-text">Pour les régions AWS GovCloud, vous devez remplacer « aws » par « aws-US-gov », par exemple<block ref="d3c2ab280b3f8c407baa043db6f71305" prefix=" " category="inline-code"></block>.</block>
+  <block id="fdd52d5d7016bf165e6a4cb2d6cab2d3" category="list-text">Pour les régions d'AWS Chine, vous devez remplacer « aws » par « aws-cn », par exemple<block ref="bb55156256f7fc6b96c6be713812db69" prefix=" " category="inline-code"></block>.</block>
+  <block id="4ec233ea13ab88b2246fbb211a91665c" category="paragraph">Si vous voulez utiliser une connexion Internet publique standard, alors toutes les autorisations sont définies par le connecteur et il n'y a rien d'autre que vous devez faire. Ce type de connexion est indiqué dans le <block ref="38757d2cfcaca456ef39c830b3fbfbb6" category="inline-link-macro-rx"></block>.</block>
+  <block id="4d9403aeb0d455887fedd3ace41764e0" category="paragraph">Si vous souhaitez bénéficier d'une connexion plus sécurisée via Internet entre votre data Center sur site et le VPC, vous pouvez sélectionner une connexion AWS PrivateLink dans l'assistant d'activation de la sauvegarde. Elle est indispensable pour connecter votre système sur site à l'aide d'un VPN ou d'AWS Direct Connect via une interface de terminal VPC qui utilise une adresse IP privée. Ce type de connexion est indiqué dans le <block ref="95f59ac3cbae4d92bede28fe387b5a78" category="inline-link-macro-rx"></block>.</block>
+  <block id="d32f70c539312af4cedd6200342bc293" category="paragraph">Si vous créez des sauvegardes dans des régions AWS GovCloud ou AWS China, vous devez modifier le nom de ressource AWS « arn » sous toutes les sections _Resource_ dans les jeux d'autorisations ci-dessus et ci-dessous :</block>
 </blocks>
