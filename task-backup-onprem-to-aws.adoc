@@ -466,10 +466,6 @@ Si vous souhaitez bénéficier d'une connexion plus sécurisée via Internet ent
 
 .Étapes
 . Créez une configuration de point final de l'interface à l'aide de la console Amazon VPC ou de la ligne de commande. https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html["Pour en savoir plus sur l'utilisation d'AWS PrivateLink pour Amazon S3, consultez la page"^].
-. Modifiez la configuration du groupe de sécurité associée au connecteur BlueXP. Vous devez modifier la règle en « personnalisé » (à partir de « accès complet ») et vous devez <<Configurez les autorisations S3,Ajoutez les autorisations S3 à partir de la règle de sauvegarde>> comme indiqué précédemment.
-+
-image:screenshot_backup_aws_sec_group.png["Copie d'écran du groupe de sécurité AWS associé au connecteur."]
-
 +
 Si vous utilisez le port 80 (HTTP) pour la communication avec le noeud final privé, vous êtes tous définis. Vous pouvez activer la sauvegarde et la restauration BlueXP sur le cluster dès maintenant.
 
