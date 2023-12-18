@@ -18,6 +18,39 @@ Découvrez les nouveautés de la sauvegarde et de la restauration BlueXP.
 
 
 
+== 15 décembre 2023
+
+
+
+=== Rapports disponibles pour les copies Snapshot locales et les copies Snapshot de réplication
+
+Auparavant, vous pouviez générer des rapports sur les copies de sauvegarde uniquement. Désormais, vous pouvez également créer des rapports sur les copies Snapshot locales et de réplication.
+
+Avec ces rapports, vous pouvez effectuer les opérations suivantes :
+
+* Assurez-vous que les données stratégiques sont protégées conformément à la politique de votre entreprise.
+* Assurez-vous que les sauvegardes s'exécutaient correctement pour un groupe de volumes.
+* Protégez vos données de production.
+
+
+Reportez-vous à la section https://docs.netapp.com/us-en/bluexp-backup-recovery/task-report-inventory.html["Reporting sur la couverture de la protection des données"].
+
+
+
+=== Balisage personnalisé disponible sur les volumes pour le tri et le filtrage
+
+Vous pouvez désormais ajouter des balises personnalisées à des volumes à partir de ONTAP 9.13.1, afin de regrouper des volumes dans et entre des environnements de travail. Vous pouvez ainsi trier les volumes dans les pages de l'interface de sauvegarde et de restauration BlueXP et filtrer les rapports.
+
+
+
+=== Sauvegardes du catalogue conservées pendant 30 jours
+
+Auparavant, Catalog.zip sauvegardes étaient conservées pendant 7 jours. Maintenant, ils sont conservés pendant 30 jours.
+
+Reportez-vous à la section https://docs.netapp.com/us-en/bluexp-backup-recovery/reference-backup-cbs-db-in-dark-site.html["Restaurez les données de sauvegarde et de restauration BlueXP dans des sites invisibles"].
+
+
+
 == 23 octobre 2023
 
 
@@ -37,6 +70,14 @@ La sauvegarde et la restauration BlueXP permettent désormais d'effectuer une «
 Le système de destination Cloud Volumes ONTAP doit exécuter ONTAP version 9.13.0 ou ultérieure. https://docs.netapp.com/us-en/bluexp-backup-recovery/task-restore-backups-ontap.html["En savoir plus sur la restauration des données"].
 
 Le moniteur des tâches de sauvegarde et de restauration BlueXP affiche également des informations sur la progression des tâches de restauration rapide.
+
+
+
+=== Augmentation de la conservation des sauvegardes des données ONTAP sur site vers des compartiments StorageGRID
+
+StorageGRID peut désormais conserver jusqu'à 30 sauvegardes de données ONTAP sur site à partir de la sauvegarde et de la restauration BlueXP dans un compartiment unique. Auparavant, le nombre maximum de sauvegardes était de 7 dans un compartiment.
+
+https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-onprem-private-cloud.html["En savoir plus sur la sauvegarde des données ONTAP sur site dans StorageGRID"].
 
 
 

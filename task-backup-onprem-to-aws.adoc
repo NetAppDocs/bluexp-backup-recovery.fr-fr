@@ -407,7 +407,7 @@ Par défaut, le service crée des compartiments pour vous. Si vous souhaitez uti
 
 link:concept-protection-journey.html#do-you-want-to-create-your-own-object-storage-container["En savoir plus sur la création de vos propres compartiments"^].
 
-Si vous créez vos propres compartiments, vous devez utiliser le nom de compartiment NetApp-Backup. Si vous devez utiliser un nom personnalisé, modifiez le `ontapcloud-instance-policy-netapp-backup` IAMROle pour les CVO existants et ajouter la liste suivante aux autorisations S3.
+Si vous créez vos propres compartiments, vous devez utiliser un nom de compartiment commençant par « netapp-backup ». Si vous devez utiliser un nom personnalisé, modifiez les règles utilisées dans la section Setup S3 permissions pour utiliser un ARN de ressource correspondant à votre propre préfixe de compartiment personnalisé.
 
 [%collapsible]
 ====

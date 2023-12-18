@@ -40,7 +40,7 @@ NOTE: Si vous avez mis à niveau vos systèmes ONTAP vers la version 9.13.x et q
 . Dans le menu BlueXP, sélectionnez *protection > sauvegarde et récupération*.
 . Sélectionnez l'onglet *surveillance des travaux*.
 +
-image:screenshot_backup_job_monitor.png["Capture d'écran affichant les tâches de sauvegarde et de restauration dans le tableau de bord surveillance des tâches."]
+image:screenshot_backup_job_monitor2.png["Capture d'écran affichant les tâches de sauvegarde et de restauration dans le tableau de bord surveillance des tâches."]
 
 +
 Cette capture d'écran affiche les en-têtes de colonne par défaut.
@@ -52,7 +52,7 @@ Cette capture d'écran affiche les en-têtes de colonne par défaut.
 
 === Rechercher et filtrer la liste des travaux
 
-Vous pouvez filtrer les opérations de la page surveillance des tâches à l'aide de plusieurs filtres, tels que la règle, le libellé Snapshot, le type d'opération (protection, restauration, conservation ou autre) et le type de protection (instantané local, réplication ou sauvegarde dans le cloud).
+Vous pouvez filtrer les opérations de la page surveillance des tâches à l'aide de plusieurs filtres, tels que la règle, le libellé Snapshot, le type d'opération (protection, restauration, conservation ou autre), les balises personnalisées sur les volumes et le type de protection (Snapshot local, réplication ou sauvegarde dans le cloud).
 
 Par défaut, la page surveillance des tâches affiche les tâches de protection et de restauration des dernières 24 heures. Vous pouvez modifier la période à l'aide du filtre de période.
 

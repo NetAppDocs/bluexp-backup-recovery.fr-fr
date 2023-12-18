@@ -231,10 +231,13 @@ image:screenshot_restore_volume_selection.png["Capture d'écran de la sélection
 
 . Dans la page _Select Source_, accédez au fichier de sauvegarde du volume que vous souhaitez restaurer. Sélectionnez le *Environnement de travail*, le *Volume* et le fichier *Backup* dont l'horodatage doit être restauré.
 +
-La colonne *Location* indique si le fichier de sauvegarde (instantané) est *local* (une copie Snapshot sur le système source), *Secondary* (un volume répliqué sur un système ONTAP secondaire) ou *Object Storage* (un fichier de sauvegarde dans le stockage objet). Choisissez le fichier à restaurer.
+Si vous le souhaitez, recherchez des balises personnalisées pour répertorier uniquement les volumes avec une balise spécifique.
 
 +
-image:screenshot_restore_select_volume_snapshot.png["Capture d'écran indiquant la sélection de l'environnement de travail, du volume et du fichier de sauvegarde de volume à restaurer."]
+image:screenshot_restore_select_volume_snapshot2.png["Capture d'écran indiquant la sélection de l'environnement de travail, du volume et du fichier de sauvegarde de volume à restaurer."]
+
++
+La colonne *Location* indique si le fichier de sauvegarde (instantané) est *local* (une copie Snapshot sur le système source), *Secondary* (un volume répliqué sur un système ONTAP secondaire) ou *Object Storage* (un fichier de sauvegarde dans le stockage objet). Choisissez le fichier à restaurer.
 
 . Cliquez sur *Suivant*.
 +
