@@ -23,6 +23,9 @@ Les sauvegardes de vos données de volume ONTAP sont disponibles aux emplacement
 
 Une licence de sauvegarde et de restauration BlueXP valide est requise pour restaurer les données à partir de fichiers de sauvegarde vers un système de production.
 
+
+NOTE: Les snapshots doivent avoir des noms uniques, sinon les opérations de restauration ne fonctionneront pas correctement.
+
 En résumé, il s'agit des flux valides que vous pouvez utiliser pour restaurer les données de volume dans un environnement de travail ONTAP :
 
 * Fichier de sauvegarde -> volume restauré
