@@ -24,7 +24,7 @@ Il existe 2 types de données sauvegardées :
 * Fichiers de catalogue indexés : contient des index détaillés qui sont utilisés pour la fonctionnalité de recherche et de restauration qui rendent vos recherches très rapides et efficaces lors de la recherche de données de volume que vous souhaitez restaurer.
 
 
-Ces données sont sauvegardées une fois par jour à minuit, et un maximum de 30 copies de chaque fichier sont conservées. Si le connecteur gère plusieurs environnements de travail ONTAP sur site, les fichiers de sauvegarde et de restauration BlueXP seront situés dans le compartiment de l'environnement de travail qui a été activé en premier.
+Ces données sont sauvegardées une fois par jour à minuit, et un maximum de 7 copies de chaque fichier sont conservées. Si le connecteur gère plusieurs environnements de travail ONTAP sur site, les fichiers de sauvegarde et de restauration BlueXP seront situés dans le compartiment de l'environnement de travail qui a été activé en premier.
 
 
 TIP: Aucune donnée de volume n'est jamais incluse dans la base de données de sauvegarde et de restauration BlueXP ou dans les fichiers de catalogue indexés.

@@ -42,6 +42,17 @@ Les datastores et machines virtuelles protégés à l'aide du plug-in SnapCenter
 
 
 
+== Déprotégez les datastores
+
+Vous pouvez annuler la protection d'un datastore déjà protégé auparavant. Vous pouvez annuler la protection d'un datastore lorsque vous souhaitez supprimer les sauvegardes cloud ou que vous ne souhaitez plus le sauvegarder dans le cloud. Une fois la protection terminée, le datastore peut à nouveau être protégé.
+
+.Étapes
+. Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *machines virtuelles*.
+. Cliquez sur image:icon-action.png["action"] Correspondant au datastore que vous souhaitez annuler la protection et cliquez sur *Unprotect*.
+
+
+
+
 == Modifiez le plug-in SnapCenter pour l'instance VMware vSphere
 
 Vous pouvez modifier les détails du plug-in SnapCenter pour l'hôte VMware vSphere dans BlueXP.

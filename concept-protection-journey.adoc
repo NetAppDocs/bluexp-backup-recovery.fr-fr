@@ -46,9 +46,6 @@ Avant de sélectionner les fonctions que vous utiliserez, voici une brève expli
 |===
 Les snapshots constituent la base de toutes les méthodes de sauvegarde et ils sont tenus d'utiliser le service de sauvegarde et de restauration. Une copie Snapshot est une image instantanée d'un volume en lecture seule. L'image consomme un espace de stockage minimal et entraîne une surcharge minime des performances, car elle enregistre uniquement les modifications apportées aux fichiers depuis la dernière copie Snapshot. La copie Snapshot créée sur votre volume permet de maintenir la synchronisation entre le volume répliqué et le fichier de sauvegarde et les modifications apportées au volume source, comme illustré dans la figure.
 
-
-NOTE: Les snapshots doivent avoir des noms uniques, sinon les opérations de restauration ne fonctionneront pas correctement.
-
 image:diagram-321-overview.png["Un diagramme illustrant la façon dont les fichiers de sauvegarde existent sur le système source sous forme de copies Snapshot, de volumes répliqués sur le système de stockage secondaire et de fichiers de sauvegarde dans le stockage objet."]
 
 Vous pouvez choisir de créer à la fois des volumes répliqués sur un autre système de stockage ONTAP et des fichiers de sauvegarde dans le cloud. Ou vous pouvez simplement créer des volumes répliqués ou des fichiers de sauvegarde. C'est votre choix.
@@ -239,7 +236,7 @@ Si vous prévoyez de transférer d'anciens fichiers de sauvegarde vers le stocka
 
 == Quel mode de déploiement BlueXP Connector utilisez-vous
 
-Si vous utilisez déjà BlueXP pour gérer votre stockage, un connecteur BlueXP a déjà été installé. Si vous prévoyez d'utiliser le même connecteur avec la sauvegarde et la restauration BlueXP, alors vous êtes paré. Si vous devez utiliser un connecteur différent, vous devrez le déployer avant de commencer votre implémentation de sauvegarde et de restauration.
+Si vous utilisez déjà BlueXP pour gérer votre stockage, un connecteur BlueXP a déjà été installé. Si vous prévoyez d'utiliser le même connecteur avec la sauvegarde et la restauration BlueXP, alors vous êtes paré. Si vous devez utiliser un connecteur différent, vous devez l'installer avant de commencer votre implémentation de sauvegarde et de restauration.
 
 BlueXP propose plusieurs modes de déploiement qui vous permettent d'utiliser BlueXP en fonction de vos exigences métier et de sécurité. _Standard mode_ exploite la couche SaaS de BlueXP pour fournir des fonctionnalités complètes, tandis que _restricted mode_ et _private mode_ sont disponibles pour les entreprises ayant des restrictions de connectivité.
 
@@ -248,11 +245,11 @@ https://www.netapp.tv/details/30567["Regardez cette vidéo sur les modes de dép
 
 
 
-=== Prise en charge lors de l'utilisation du mode standard
+=== Prise en charge des sites avec une connectivité Internet complète
 
-La sauvegarde et la restauration BlueXP sont entièrement prises en charge en mode standard : les sites avec une connectivité Internet complète. Dans ce cas, vous pouvez créer des volumes répliqués sur tous les systèmes ONTAP ou Cloud Volumes ONTAP sur site gérés par BlueXP, ainsi que vous pouvez créer des fichiers de sauvegarde sur le stockage objet dans n'importe quel fournisseur cloud pris en charge. link:concept-ontap-backup-to-cloud.html#supported-backup-destinations["Consultez la liste complète des destinations de sauvegarde prises en charge"].
+Lorsque la sauvegarde et la restauration BlueXP sont utilisées dans un site doté d'une connectivité Internet complète (également appelé « mode standard » ou « mode SaaS »), vous pouvez créer des volumes répliqués sur tous les systèmes ONTAP ou Cloud Volumes ONTAP sur site gérés par BlueXP, en outre, vous pouvez créer des fichiers de sauvegarde sur un stockage objet dans n'importe quel fournisseur cloud pris en charge. link:concept-ontap-backup-to-cloud.html#supported-backup-destinations["Consultez la liste complète des destinations de sauvegarde prises en charge"].
 
-Pour obtenir la liste des emplacements de connecteur valides, reportez-vous à la rubrique de sauvegarde du fournisseur cloud dans lequel vous prévoyez de créer des fichiers de sauvegarde. Il peut y avoir des restrictions lorsque le connecteur est déployé dans un fournisseur de cloud spécifique ou lorsqu'il est installé manuellement sur une machine Linux.
+Pour obtenir la liste des emplacements de connecteur valides, reportez-vous à la rubrique de sauvegarde du fournisseur cloud dans lequel vous prévoyez de créer des fichiers de sauvegarde. Il existe certaines restrictions dans lesquelles le connecteur doit être installé manuellement sur une machine Linux ou déployé dans un fournisseur de cloud spécifique.
 
 ifdef::aws[]
 
@@ -284,9 +281,9 @@ endif::gcp[]
 
 
 
-=== Prise en charge en mode restreint
+=== Prise en charge des sites avec une connectivité Internet limitée
 
-La sauvegarde et la restauration BlueXP sont prises en charge en mode restreint : les sites disposant d'une connectivité Internet limitée. Dans ce cas, vous ne pouvez créer des fichiers de sauvegarde que pour un ensemble limité de fournisseurs cloud. Vous devez déployer le connecteur BlueXP dans la région restreinte.
+La sauvegarde et la restauration BlueXP peuvent être utilisées dans un site doté d'une connectivité Internet limitée (également appelé « mode restreint ») pour sauvegarder des données de volume. Dans ce cas, vous devez déployer le connecteur BlueXP dans la région réservée.
 
 ifdef::aws[]
 
@@ -304,9 +301,9 @@ endif::azure[]
 
 
 
-=== Prise en charge lors de l'utilisation du mode privé
+=== Assistance pour les sites sans connexion Internet
 
-La sauvegarde et la restauration BlueXP sont prises en charge en mode privé, c'est-à-dire pour les sites sans connectivité Internet. Dans ce cas, vous ne pouvez créer des fichiers de sauvegarde que pour un ensemble limité de fournisseurs de stockage objet. Vous devrez déployer le connecteur BlueXP sur un hôte Linux du même site.
+Les fonctionnalités de sauvegarde et de restauration BlueXP peuvent être utilisées dans un site sans connexion Internet (également appelé « mode privé » ou « sites invisibles ») pour sauvegarder des données de volume. Dans ce cas, vous devrez déployer le connecteur BlueXP sur un hôte Linux du même site.
 
 * Vous pouvez sauvegarder les données à partir de systèmes ONTAP locaux sur site vers des systèmes NetApp StorageGRID locaux. Découvrez comment link:task-backup-onprem-private-cloud.html["Sauvegarde des données ONTAP sur site dans StorageGRID"] pour plus d'informations.
 * Vous pouvez sauvegarder les données à partir de systèmes ONTAP locaux sur site vers des systèmes ONTAP locaux ou des systèmes Cloud Volumes ONTAP configurés pour le stockage objet S3. Découvrez comment link:task-backup-onprem-to-ontap-s3.html["Sauvegardez les données ONTAP sur site dans ONTAP S3"] pour plus d'informations.

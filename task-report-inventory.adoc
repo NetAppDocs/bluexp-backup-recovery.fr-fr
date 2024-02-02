@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-report-inventory.html 
 keywords: cloud backup, backup and recovery service, backup and recovery, backup, restore, report, inventory 
-summary: 'Grâce aux rapports de sauvegarde et de restauration BlueXP, vous pouvez vous assurer que les données stratégiques sont protégées conformément aux règles définies par votre entreprise et prendre en charge efficacement l"audit pour les processus de conformité. Avec le rapport d"inventaire des sauvegardes, vous pouvez voir toutes vos copies Snapshot locales, réplications et sauvegardes.' 
+summary: 'Grâce aux rapports de sauvegarde et de restauration BlueXP, vous pouvez vous assurer que les données stratégiques sont protégées conformément aux règles définies par votre entreprise et prendre en charge efficacement l"audit pour les processus de conformité. Le rapport d"inventaire des sauvegardes répertorie toutes vos sauvegardes pour un compte, un environnement de travail ou un SVM spécifique.' 
 ---
 = Reporting sur la couverture de la protection des données
 :hardbreaks:
@@ -41,18 +41,18 @@ Les rapports sur la sauvegarde et la restauration BlueXP fournissent des informa
 
 == Créez un rapport d'inventaire des sauvegardes
 
-Dans l'onglet Rapports de sauvegarde et de restauration BlueXP, vous pouvez créer un rapport d'inventaire des sauvegardes et filtrer son contenu. Le rapport Inventaire des sauvegardes affiche toutes les copies Snapshot locales, les réplications sur un stockage secondaire et les sauvegardes d'un compte, d'un environnement de travail ou d'un inventaire SVM spécifique.
+Dans l'onglet Rapports de sauvegarde et de restauration BlueXP, vous pouvez créer le rapport Inventaire des sauvegardes et filtrer son contenu. Le rapport Backup Inventory permet de consulter toutes vos sauvegardes pour un compte, un environnement de travail ou un SVM spécifique.
 
 Le rapport Inventaire des sauvegardes affiche les informations suivantes et bien plus encore :
 
 * Compte, environnement de travail et SVM
 * Volumes protégés et non protégés
-* Cible
-* Politique appliquée
+* Cible de sauvegarde
+* Politique de sauvegarde appliquée
 * Type de chiffrement (clé gérée par le fournisseur ou clé gérée par l'utilisateur)
 * État de protection DataLock et anti-ransomware (gouvernance, conformité ou aucune)
 * État d'archivage activé
-* Nombre de copies Snapshot locales, de réplications ou de copies de sauvegarde
+* Nombre de copies de sauvegarde
 * Type de sauvegarde (sauvegarde ad hoc planifiée ou initiée par l'utilisateur)
 * Classe de stockage
 * Étiquette snapshot
@@ -63,25 +63,28 @@ NOTE: Le rapport d'inventaire des sauvegardes ne contient pas d'informations de 
 
 La partie supérieure du rapport comprend un graphique qui affiche les informations suivantes :
 
-* Nombre de volumes avec au moins un snapshot local, une réplication ou une sauvegarde (selon l'onglet affiché)
+* Nombre de volumes couverts avec au moins une sauvegarde
 * Total des volumes inactifs et des volumes actifs
 
 
-image:screenshot-report-backup-accountlevel.png["Exemple de rapport d'inventaire des sauvegardes"]
+Le rapport Inventaire des sauvegardes affiche les graphiques suivants :
+
+* *Etat de la sauvegarde de volume* : affiche les volumes protégés par rapport aux volumes non protégés pour la portée sélectionnée.
+* *Volumes par nombre de sauvegardes* : regroupe les volumes en fonction du nombre de copies de sauvegarde disponibles pour ce volume.
+
 
 .Étapes
 . Dans le menu supérieur, sélectionnez *Rapports*.
 . Sélectionnez *stock de sauvegarde*.
 . Sélectionnez *Créer un rapport*.
-. Sélectionnez l'étendue du rapport au niveau du compte ou personnalisé.
-. Sélectionnez les filtres du rapport :
+. Sélectionner le compte, l'environnement de travail et le SVM.
 +
-** Volumes
-** Protection : sélectionnez le type de protection (copies Snapshot locales, réplication ou sauvegardes) que vous souhaitez voir dans le rapport. Vous pouvez sélectionner les trois. En outre, indiquez si vous souhaitez inclure des volumes non protégés.
 
+TIP: Vous pouvez sélectionner plusieurs environnements de travail et SVM.
 
-. Sélectionnez *Créer un rapport*.
-. Consultez les onglets de rapport (instantané local, réplication ou sauvegarde), selon vos sélections de rapport.
+. Sélectionnez la période : dernières 24 heures, semaine ou mois.
+. Consultez les sections du rapport (règles Snapshot, règles de réplication ou règles de sauvegarde), en fonction de vos sélections de rapport.
+. (Facultatif) Filtrer les résultats par état de tâche.
 . (Facultatif) exportez le contenu du rapport au format .CSV en sélectionnant *Télécharger CSV*.
 
 

@@ -424,7 +424,6 @@
   <block id="67dbdeb11e22ea7def810bade59ce818" category="paragraph">Ces numéros de série sont généralement appelés _PAYGO - numéros de série_ et sont générés par BlueXP au moment du déploiement de Cloud Volumes ONTAP.</block>
   <block id="328a2c1e7778e9edaf79d90c51409ac4" category="list-text">Si vous avez un compte au niveau du client, vous pouvez ajouter un ou plusieurs comptes NSS.</block>
   <block id="b50f0a46135bcb7083b1f2f82032fc26" category="inline-image-macro">Capture d'écran du menu aide où support est la première option répertoriée</block>
-  <block id="19d089db572ee6a1e154a0c9c9e57bfd" category="paragraph">NetApp utilise Microsoft Azure Active Directory comme fournisseur d'identités pour les services d'authentification spécifiques au support et aux licences.</block>
   <block id="465ec6d5eafa3524c948c99d8bfcd306" category="list-text">Sur la page de connexion, indiquez l'adresse e-mail et le mot de passe que vous avez enregistrés sur le site de support NetApp pour réaliser le processus d'authentification.</block>
   <block id="cbc6cc3bb022583403171b447b2a962c" category="paragraph">Ces actions permettent à BlueXP d'utiliser votre compte NSS pour des opérations telles que le téléchargement de licences, la vérification de la mise à niveau logicielle et les inscriptions de support futures.</block>
   <block id="cf3a2d2c139bf5c9cc87fe714bfff3b1" category="paragraph">Notez ce qui suit :</block>
@@ -754,7 +753,6 @@
   <block id="a03a09176193c264d8dcbdcb8f2f9043" category="list-text">Cliquez sur *Restaurer* correspondant à la sauvegarde que vous souhaitez restaurer.</block>
   <block id="edf569ed393967b7a0079a7341765e10" category="list-text">Vérifiez les détails et cliquez sur *Restaurer*.</block>
   <block id="0291e73f7c30c841795ff165a80bdc0e" category="list-text">Cliquez sur <block ref="1d94ccc08c31bc8efbc06bfabc6854b6" category="inline-image-macro-rx" type="image"></block> Correspondant à la machine virtuelle que vous souhaitez restaurer et cliquer sur *Restaurer*.</block>
-  <block id="42387e1cb260fd1fb8624acde3767841" category="paragraph">La machine virtuelle est restaurée au même emplacement depuis lequel la sauvegarde a été effectuée.</block>
   <block id="2d242bb36ec91b32005f9296ff03a912" category="section-title">Architecture</block>
   <block id="5aa6aa9ade143b785fa0243d0138a6b5" category="paragraph">Il orchestre les workflows de protection des données pour les applications qui résident sur NetApp Cloud Storage.</block>
   <block id="0f0f84cb9775a6f4ad6b4796bfcedfe9" category="list-text">Système d'exploitation :</block>
@@ -1383,15 +1381,8 @@
   <block id="0253148ca606e51aa3fdb4d9f8b84f32" category="sidebar">Tiers de stockage d'archivage AWS pris en charge</block>
   <block id="9f442565cfeffa804173efd111c4d74c" category="sidebar">Tiers d'accès d'archivage Azure pris en charge</block>
   <block id="0adc03eac86772ad2c75c8f140be417e" category="sidebar">Connaissances et support</block>
-  <block id="c1d2d81968b4f89d4185d4baf66ba468" category="sidebar">Sauvegardez les données ONTAP dans le cloud</block>
-  <block id="4001622cdabc59603efa5eed8e44df9e" category="sidebar">Sauvegardez les données Kubernetes dans le cloud</block>
-  <block id="4c371e6c984a858ae1f9d8d607a2cfd4" category="sidebar">Gérer les fichiers de sauvegarde ONTAP</block>
-  <block id="9ad6a8ad1e5cd26c5022383b87ca0567" category="sidebar">Modifier la stratégie attribuée aux volumes existants</block>
-  <block id="0dcde7b293f3d0e01f5ffaf43f982c8d" category="sidebar">Créer une sauvegarde de volume manuelle</block>
   <block id="9803985aa2d019cb1230ddfd51b0a626" category="sidebar">Afficher la liste des sauvegardes pour chaque volume</block>
   <block id="de00c1e27be1485dd099e4cd2aaa554d" category="sidebar">Supprimer les sauvegardes</block>
-  <block id="813011e2103649bb71f124adedcc10ea" category="sidebar">Communauté sur les blogs</block>
-  <block id="dd490b81914dd945601e442a41cb4222" category="sidebar">Communauté NetApp</block>
   <block id="e29d7c0b36af68edd13ebac84f15b44b" category="sidebar">Ou du fournisseur cloud</block>
   <block id="46aef2e5080a5347df1ce7546e1be1df" category="sidebar">Tous les fournisseurs cloud</block>
   <block id="6beccc67ff905f7da0b29dece26b0485" category="sidebar">Amazon Web Services</block>
@@ -1707,8 +1698,6 @@
   <block id="9bc04b83e994e96133d24116c5a25bf5" category="list-text">@ est utilisé pour séparer les données de son nom de base de données et pour séparer la valeur de sa clé. Exemple : DATA@RG2_SCspr24819002_07-20- 2021_12.16.48.9267_0|LOG@RG2_scspr2417819002_07-20-2021_12.16.48.9267_1</block>
   <block id="08d3131fcf6d963372785be681e343e9" category="list-text">| est utilisé pour séparer les données entre deux entités différentes pour le paramètre SC_BACKUP_NAME. Exemple : DATA@RG2_scspr2417819002_07-20-2021_12.16.48.9267_0|LOG@RG2_scspr2417819002_07-20-2021_12.16.48.9267_1</block>
   <block id="1dc2b43d41c36670d82fe3076115def6" category="list-text">, est utilisé pour séparer un ensemble de variables pour la même clé. Exemple : DATA@RG2_SCspr24819002_07-20- 2021_12.16.48.9267_0|LOG@RG2_SCvspr24819002_07-20- 2021_12.16.48.9267_1,RG2_SCspr24819002_07-21- 2021_12.16.48.9267_1,RG2_SCspr24819002_07_22_2021_12.16.48.9267______________1</block>
-  <block id="5183d16b45269aeda8f220ef35e5327c" category="list-text">Sélectionnez la machine virtuelle à restaurer à partir de la sauvegarde.</block>
-  <block id="0b204b102ed08f6af904a33d81026023" category="list-text">Sélectionnez *Archive Restore Priority* et cliquez sur *Next*.</block>
   <block id="071df86763e0e93af80e50596aa0710c" category="list-text">Sélectionnez la sauvegarde par laquelle vous souhaitez restaurer la machine virtuelle.</block>
   <block id="d4f871b7d459c4ece286a475f033ca49" category="summary">Création de sauvegardes planifiées ou à la demande d'une base de données SAP HANA.</block>
   <block id="613bbcbbbc87937c088f5ca502714159" category="section-title">Ajouter des hôtes de base de données SAP HANA</block>
@@ -2087,10 +2076,6 @@
   <block id="b9f7c26581cad3cbd789c6d293692814" category="admonition">Vous ne pouvez pas restaurer des machines virtuelles qui s'étendent sur plusieurs datastores.</block>
   <block id="76edd5381919de6c1c9b123a884984f8" category="list-text">Dans l'interface utilisateur BlueXP, cliquez sur *protection* &gt; *sauvegarde et restauration* &gt; *machines virtuelles* &gt; *Plug-in SnapCenter pour VMware vSphere* et sélectionnez le plug-in SnapCenter pour l'hôte VMware vSphere.</block>
   <block id="873069930fc1357e9cd4216822243f14" category="admonition">Si la machine virtuelle source est déplacée vers un autre emplacement (vMotion) et si l'utilisateur déclenche une restauration de cette machine virtuelle à partir de BlueXP, la machine virtuelle est restaurée vers l'emplacement source à partir duquel la sauvegarde a été effectuée.</block>
-  <block id="5d920b501536441ea32ecc24679c72a2" category="cell">Les fonctions que vous recherchez...</block>
-  <block id="df2d87dc916178a7076837c06010ded0" category="paragraph">Restauration à partir du datastore</block>
-  <block id="4569e5f9f0309302f499c21fc4cb8ee6" category="paragraph">Cette option n'est disponible que si la machine virtuelle est protégée à l'aide d'une stratégie dans laquelle les paramètres d'archivage sont configurés. Pour Amazon Web Services, la priorité de restauration d'archivage est élevée, standard ou faible. Pour Microsoft Azure, la priorité de restauration d'archivage est élevée et standard.</block>
-  <block id="2a8a756e65415cefaa2a8f2d963e01be" category="paragraph">Restauration à partir de machines virtuelles</block>
   <block id="5d0ad01dbdb8717fbebf1cb44a3c10cd" category="list-text">Vous devez configurer le niveau d'accès d'archivage pour chaque fournisseur de cloud.</block>
   <block id="bbe48fb854ea022537208eeeff822f91" category="paragraph-title">Description de la tâche</block>
   <block id="ca69b8ee34e44ac66b7f0dfd3b786e9c" category="paragraph">BlueXP dispose de règles prédéfinies suivantes :</block>
@@ -2412,7 +2397,6 @@
   <block id="20d112bbc5f1942b3e0e448e4e89747a" category="list-text">Pour la haute disponibilité Cloud Volumes ONTAP, seule une des adresses IP de l'interface réseau est utilisée. Si la connectivité de l'IP est en panne ou si vous ne pouvez pas accéder à l'IP, les opérations de protection des données échouent.</block>
   <block id="7c47521b95a312ac4eb933479f7a14a8" category="list-text">Les adresses IP de l'interface réseau d'Amazon FSX pour NetApp ONTAP ou Cloud Volumes ONTAP doivent être uniques dans le compte et la région BlueXP.</block>
   <block id="a46033978f070978d19c56a083f9252f" category="sidebar">Sauvegarde et restauration des données des applications sur site</block>
-  <block id="691b857c2ea9a46d47730b371ae5ac4d" category="sidebar">Sauvegardez les données d'applications dans le cloud</block>
   <block id="5019db204cdfcff4225102866ab1c6bb" category="paragraph">Assurez-vous que vous avez rempli toutes les <block ref="c22fa2c0fe9f65f9b0ae3d1833efe89e" category="inline-link-macro-rx"></block> avant de sauvegarder des datastores dans le cloud.</block>
   <block id="23b39cc9d92424089210492c9ae6a9dd" category="paragraph">Assurez-vous que vous avez rempli toutes les <block ref="c22fa2c0fe9f65f9b0ae3d1833efe89e" category="inline-link-macro-rx"></block> avant de restaurer des machines virtuelles à partir du cloud.</block>
   <block id="05325f804117a5761ceaa9843ca9dcbd" category="paragraph">Les API REST permettant de protéger les applications dans le cloud sont disponibles dans :<block ref="3b69a934f25b6e0b95aa2e5dfdea3a71" category="inline-link-rx"></block>.</block>
@@ -2650,14 +2634,7 @@
   <block id="9630a54f038cd0c834e3dfc055ceeb96" category="list-text">La protection des données et des attaques par ransomware est applicable pour les nouvelles sauvegardes de volumes grâce à une stratégie de sauvegarde avec DataLock et protection contre les attaques par ransomware activées. Vous ne pouvez pas activer cette fonctionnalité après l'activation de la sauvegarde et de la restauration BlueXP.</block>
   <block id="683fc015ec20f6233b25343bf3daea19" category="paragraph">Si votre cluster sur site utilise ONTAP 9.12.1 ou une version ultérieure, vous pouvez choisir de transférer les sauvegardes plus anciennes vers un stockage _Archive_ dans l'interface utilisateur de sauvegarde et de restauration BlueXP après un certain nombre de jours pour optimiser les coûts. <block ref="60cdd04e7131e97598ce1c583d8c9a5e" category="inline-link-macro-rx"></block>.</block>
   <block id="01492017a2321f7b3f8484fd1f8aa8d7" category="sidebar">Documentation sur la sauvegarde et la restauration BlueXP</block>
-  <block id="54153028a776309bcfbdd3b7b8285463" category="sidebar">Blogs sur la sauvegarde et la restauration BlueXP</block>
-  <block id="960dd4200d015a0a12dfd299c1348c9c" category="sidebar">Utilisations de la sauvegarde et de la restauration BlueXP</block>
-  <block id="a1c18d7af73fa7e0ef0013130f15b257" category="sidebar">Restaurez les données depuis le cloud</block>
-  <block id="6edd76ff9d03a833a8a254cc8af745d0" category="sidebar">Restaurez les données du volume ONTAP</block>
-  <block id="10b8a325c32b95729e9b37864d6a110a" category="sidebar">Restaurez les données des applications Oracle sur site</block>
-  <block id="6002846df6663ea571e55d74bd085335" category="sidebar">Restaurez les données d'applications SQL Server sur site</block>
   <block id="18de97333e5776e0c135dd87c10b965c" category="sidebar">Restaurer les données des machines virtuelles</block>
-  <block id="16cc11572a7582fe5007212d56145dc8" category="sidebar">Restaurez les données de volume Kubernetes</block>
   <block id="70dfad9357f3b3b710b73d8eb3666851" category="paragraph">Le service de sauvegarde et de restauration BlueXP assure une protection des données efficace, sécurisée et économique pour les données NetApp ONTAP, les volumes persistants Kubernetes, les bases de données et les machines virtuelles, sur site et dans le cloud. Les sauvegardes sont automatiquement générées et stockées dans un magasin d'objets de votre compte cloud public ou privé.</block>
   <block id="9a3f2e7eb30992bb084418711e5093f2" category="doc">Gestion de la protection des données des datastores et des machines virtuelles</block>
   <block id="2131f85f2f51908e5c573c231b274f4c" category="paragraph">Vous devez vous assurer que la communication est ouverte entre le plug-in SnapCenter sur site pour l'hôte VMware vSphere qui s'exécute sur le port 8144 par défaut et l'instance de connecteur BlueXP qui peut être exécutée sur n'importe quel fournisseur cloud (Amazon Web Services, Microsoft Azure, Google Cloud Platform) ou sur site.</block>
@@ -2666,13 +2643,10 @@
   <block id="38fb3153d6139974d24ba11e28a0718d" category="list-text">Pour transférer les sauvegardes du magasin d'objets vers le stockage d'archives, vous devez exécuter ONTAP 9.10.1 ou une version ultérieure et Amazon Web Services ou Microsoft Azure doit être le fournisseur cloud.</block>
   <block id="44dae527927c9be3aabaf37ba09b9068" category="admonition">Vous ne pouvez ni modifier ni supprimer une règle associée à un datastore.</block>
   <block id="ffa1e37a2c6478ff157a0a7d25a607e9" category="doc">Restaurez des données de machines virtuelles à partir du cloud</block>
-  <block id="95513dac8a621e64dcee2a0f311b0e66" category="paragraph">Vous pouvez restaurer les données des machines virtuelles depuis le cloud vers vCenter sur site. La sauvegarde sera restaurée au même emplacement que celui où elle a été effectuée. Si la machine virtuelle a été sauvegardée à l'aide de la stratégie d'archivage, vous pouvez définir la priorité de restauration d'archivage.</block>
-  <block id="6c0dd80335ed3d649017aa79a23eddae" category="list-text">Vous pouvez effectuer des restaurations à partir du datastore ou de machines virtuelles :</block>
   <block id="54a98d3cca3d552c2562869bfcebf735" category="section-title">Protection des bases de données Oracle</block>
   <block id="b45eb079efd4b3748b1efc669c02c01c" category="section-title">Protection des bases de données SAP HANA</block>
   <block id="3eb97a71011fe0dae37080fd785e4db5" category="sidebar">Sauvegarde et restauration des données des machines virtuelles</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">Quoi de neuf</block>
-  <block id="7048662b75c8f210e59f898d992521cc" category="sidebar">Sauvegardez les datastores dans le cloud</block>
   <block id="3daba77ab92b57915950a36f17f965c3" category="summary">Le service de sauvegarde et de restauration BlueXP assure une protection des données efficace, sécurisée et économique pour les données NetApp ONTAP, les bases de données et les machines virtuelles, à la fois sur site et dans le cloud. Les sauvegardes sont automatiquement générées et stockées dans un magasin d'objets de votre compte cloud public ou privé.</block>
   <block id="6192be65cd3fbb101c0f789fab9eae08" category="inline-link">La mise en cache BlueXP Edge</block>
   <block id="0a190b7a7b571c1c4ae19e069137c2ac" category="paragraph">Vous utilisez le portefeuille digital BlueXP pour gérer les licences BYOL. Vous pouvez ajouter de nouvelles licences, mettre à jour les licences existantes et afficher l'état des licences depuis le portefeuille digital BlueXP.</block>
@@ -2730,11 +2704,6 @@
   <block id="889ec023b70caa5a07a4a3f56bf968d0" category="paragraph">Les détails des connecteurs seront mis à jour avec succès si le plug-in SnapCenter pour le service SAP HANA est installé et en cours d'exécution sur tous les hôtes, et également si tous sont accessibles depuis le nouveau connecteur.</block>
   <block id="640d0fce8cb27172173cedbb3781302e" category="list-text">Connectez-vous à l'hôte du plug-in et effectuez les opérations suivantes :</block>
   <block id="64d3d37e27efd6f22e6fa648ce465b2e" category="sidebar">Redémarrez la sauvegarde et la restauration BlueXP</block>
-  <block id="b7814feabc73eee3174693c2ffa692c8" category="sidebar">Sauvegardez une base de données Oracle cloud native</block>
-  <block id="5da2654bf0788a90ff3e2ff74e45e114" category="sidebar">Sauvegarde de la base de données SAP HANA cloud native</block>
-  <block id="2f1042d0e59ea2a8ebfd0fb9bb5c169f" category="sidebar">Restaurez les données des applications Oracle cloud natives</block>
-  <block id="54d6597fa185df5cd22caa81d7e9d4d9" category="sidebar">Restaurez les données des applications SAP HANA cloud natives</block>
-  <block id="f93e4e0ba0745745e36a3b67b14a8a5b" category="sidebar">Webinaires BlueXP</block>
   <block id="a3e9bcad86b818f7875704d49bbe6240" category="list-text">Pour les règles prédéfinies, le niveau de planification doit être le même pour le datastore dans le plug-in SnapCenter pour VMware vSphere et dans le cloud.</block>
   <block id="eb7084fa002dda093f8d4e3d744ec8c3" category="paragraph">L'architecture de sauvegarde et de restauration BlueXP pour les applications inclut les composants suivants.</block>
   <block id="94e1a3fbef097baefd6187935d2712fd" category="list-text">La sauvegarde et la restauration BlueXP sont un ensemble de services de protection des données hébergés en tant que service SaaS par NetApp et basés sur la plateforme SaaS BlueXP.</block>
@@ -3060,7 +3029,6 @@
   <block id="0231cb971bb3375c29d3f87768ec4489" category="inline-image-macro">bouton flèche vers le bas</block>
   <block id="ba85eaabcb89510a63df45c18680ba9a" category="list-text">Dans la page _Edit Policy_, cliquez sur <block ref="68009ec8a10651d6de3d648624efb837" category="inline-image-macro-rx" type="image"></block> Pour développer la section _Labels &amp; Retention_ afin de modifier la planification et/ou la rétention des sauvegardes, puis cliquez sur *Enregistrer*.</block>
   <block id="aafc4372a2c5748961cfe050c997ca42" category="list-text">Dans la page _Ajouter une nouvelle stratégie_, cliquez sur <block ref="68009ec8a10651d6de3d648624efb837" category="inline-image-macro-rx" type="image"></block> Pour développer la section _Labels &amp; Retention_ afin de définir la planification et la conservation des sauvegardes, puis cliquez sur *Enregistrer*.</block>
-  <block id="27b14a69b7d1dfde3096980cc202af91" category="sidebar">Créez des rapports sur la couverture de la protection des données</block>
   <block id="1785898b30a72a71efa58cd74c5bd968" category="list-text">RHEL 7.6 ou version ultérieure</block>
   <block id="b1045ab9180f3558b52a06f17084e8aa" category="list-text">RHEL 8.1 ou version ultérieure pour SAP-HANA SPS07</block>
   <block id="0a3eb24ad165a9e7ad6ffd25324a35d4" category="list-text">SAP HANA Multitenant Database Container (MDC) 2.0SPS5, 2.0SPS6, 2.0SPS7 avec un ou plusieurs locataires</block>
@@ -3961,8 +3929,6 @@ ifdef::aws[]</block>
   <block id="6ad80584a8fba3d1fc876fd412e2b184" category="paragraph">Vous pouvez ensuite gérer vos anciens clusters à l'aide de la version précédente du logiciel.</block>
   <block id="ea600ff03360da539b9cf2f109798fac" category="paragraph">Cette fonctionnalité n'est actuellement pas prise en charge lors de la création de fichiers de sauvegarde sur des systèmes StorageGRID.</block>
   <block id="f717a77f4fa4c437e114a568e845c80e" category="sidebar">Gestion de la sauvegarde vers les paramètres d'objet au niveau du cluster</block>
-  <block id="a7b1a9069e674c0aac2afe848aefc5a0" category="sidebar">Activez les sauvegardes de volume sur des volumes supplémentaires</block>
-  <block id="90f7372e4d5f7acc9a7ad384567a8fb1" category="sidebar">Gérer les relations de réplication</block>
   <block id="4e94aca278bbfbf09c063f578946bd47" category="paragraph">Si vous avez déjà déployé un connecteur dans vos locaux, alors vous êtes tous ensemble. Si ce n'est pas le cas, vous devrez créer un connecteur BlueXP pour sauvegarder les données ONTAP dans StorageGRID. Vous devrez également personnaliser les paramètres réseau du connecteur pour qu'il puisse se connecter à StorageGRID.</block>
   <block id="54c50d39294a1455c6b25fe6e2d434fb" category="paragraph">Vous pouvez également vous connecter à un système ONTAP secondaire dans le même emplacement sur site pour répliquer des volumes.</block>
   <block id="cde30b836a89432bbe569f5477e106cb" category="paragraph">La nouvelle version de la sauvegarde et de la restauration BlueXP, qui permet de planifier et de créer des copies Snapshot et des volumes répliqués, en plus de la création de sauvegardes vers le stockage objet, nécessite que vous utilisiez la version 3.9.31 ou ultérieure du connecteur BlueXP. Il est donc recommandé d'utiliser cette dernière version pour gérer toutes vos sauvegardes.</block>
@@ -4246,7 +4212,6 @@ ONTAP S3</block>
   <block id="04afa98530b9fa98eb8d1adf9da08f7f" category="paragraph">Le filtre Type « cycle de vie de sauvegarde » a été renommé « conservation ». Utilisez ce filtre pour suivre le cycle de vie des sauvegardes et identifier l'expiration de toutes les copies de sauvegarde. Le type de tâche « conservation » capture toutes les tâches de suppression de Snapshot initiées sur un volume protégé par la sauvegarde et la restauration BlueXP.</block>
   <block id="751f8afbc94898745cc6e2ea8a5ccd4c" category="inline-link">En savoir plus sur le moniteur de tâches mis à jour</block>
   <block id="bf6c8f020a512a9accf77240c1333a16" category="paragraph"><block ref="f412c2e0203811d72b16f88cf9eb5d19" category="inline-link-rx"></block>.</block>
-  <block id="d09fe30f62c514ce3f7fb2767974cf23" category="sidebar">Vidéos sur la sauvegarde et la restauration BlueXP</block>
   <block id="b2263890e0533b772d021294e4d3aa41" category="paragraph">Vous pouvez trouver votre identifiant de compte BlueXP en sélectionnant le menu déroulant *compte* en haut de BlueXP, puis en cliquant sur *gérer compte* en regard de votre compte. Votre ID de compte se trouve dans l'onglet vue d'ensemble. Pour un site en mode privé sans accès à Internet, utilisez *account-DARKSITE1*.</block>
   <block id="35abe2d136b4990eddee4a79d5635e4e" category="paragraph">Si un connecteur est déjà déployé dans votre VPC Google Cloud Platform, vous devez le configurer. Si ce n'est pas le cas, vous devrez créer un connecteur BlueXP pour sauvegarder les données ONTAP sur le stockage Google Cloud. Vous devrez également personnaliser les paramètres réseau du connecteur pour qu'il puisse se connecter à Google Cloud.</block>
   <block id="3b27991b1aa229f52835df236ba4b917" category="paragraph">Le Centre de notification affiche de nombreux événements Snapshot, de réplication, de sauvegarde dans le cloud et de restauration, mais seuls certains événements déclenchent des alertes par e-mail :</block>
@@ -4355,10 +4320,6 @@ ONTAP S3</block>
   <block id="6b28ac02ff2a9de6b423b9f57d6a4d09" category="sidebar">Gérez les règles des volumes ONTAP</block>
   <block id="49f768fa096c849abfc2310e4f864f5e" category="section-title">Possibilité de sauvegarder les données des systèmes Cloud Volumes ONTAP sur des sites avec une connectivité sortante limitée</block>
   <block id="39539808000ad0a6d6ca39474e4fb77b" category="paragraph">Vous pouvez désormais sauvegarder les données à partir de systèmes Cloud Volumes ONTAP installés dans les régions commerciales AWS et Azure vers Amazon S3 ou Azure Blob. Pour ce faire, vous devez installer le connecteur en « mode restreint » sur un hôte Linux de la région commerciale, et déployer le système Cloud Volumes ONTAP là aussi. Voir<block ref="17dde2a04d27e7ad2a9f0a451a7a0e90" category="inline-link-rx"></block> et<block ref="e88a100423dadabfc9781439f925633d" category="inline-link-rx"></block>.</block>
-  <block id="998e825e50e0075b888cb10290b5aad3" category="sidebar">Sauvegarde d'ONTAP sur site dans ONTAP S3</block>
-  <block id="a856f192005c2a27d642572c6eabcaf3" category="sidebar">Sauvegardez le cluster Kubernetes sur Amazon S3</block>
-  <block id="d8aa0af6f24f3e5cbb56b502233a7241" category="sidebar">Sauvegarde du cluster Kubernetes dans Azure Blob</block>
-  <block id="f91d920c6ff7bb789d8210aebe92e10e" category="sidebar">Sauvegarde du cluster Kubernetes dans Google Cloud</block>
   <block id="ece19bab46695021f109a5e50f08bebe" category="paragraph">L'enregistrement au support est requis pour recevoir le support technique spécifique à BlueXP et à ses solutions et services de stockage. L'enregistrement au support est également requis pour activer les principaux workflows des systèmes Cloud Volumes ONTAP.</block>
   <block id="8a3d807608e632d188a288fc5f4aa7eb" category="paragraph">L'inscription au support n'active pas le support NetApp pour un service de fichiers de fournisseur cloud. Pour obtenir de l'aide concernant un service de fichiers d'un fournisseur cloud, son infrastructure ou toute solution utilisant le service, consultez la section « obtention d'aide » de la documentation BlueXP associée à ce produit.</block>
   <block id="522cbb900314aeb84eb5a961c5f94672" category="section-title">Bénéficiez du support pour les services de fichiers d'un fournisseur cloud</block>
@@ -4587,8 +4548,6 @@ ONTAP S3</block>
   <block id="c9451ea35f35ed30a32348021953a59c" category="sidebar">Ajoutez un hôte et installez le plug-in SnapCenter pour SQL Server</block>
   <block id="54bab37592758bedbe84c23554e20c3a" category="sidebar">Sauvegarder les bases de données SQL Server</block>
   <block id="f055d7dc297e937dbedf854f4e8d5f28" category="sidebar">Restaurez des bases de données SQL Server natives du cloud</block>
-  <block id="eacd1d0a9374cb22a99c806b2924cf90" category="sidebar">Sauvegardez votre base de données SQL Server cloud native</block>
-  <block id="6240606371654cf871393e757b75ae12" category="sidebar">Restaurez des données SQL Server natives du cloud</block>
   <block id="b91f5702154a342b0f24808369863324" category="list-text">*Instantané local* : choisissez une règle Snapshot existante ou créez-en une nouvelle.</block>
   <block id="1a9240d843443385061b2272dcfbfff0" category="admonition">Si vous souhaitez créer une stratégie personnalisée avant d'activer la copie Snapshot, vous pouvez utiliser System Manager ou l'interface de ligne de commandes de ONTAP<block ref="21daf815c4decbf3cba733c88297587b" prefix=" " category="inline-code"></block> commande. Reportez-vous à la section<block ref="ec3ed4692ea8e2ea03ef1cb28143229e" category="inline-link-rx"></block>.</block>
   <block id="e26dd0d96691532707185229fc0a17cb" category="admonition">Pour créer une stratégie personnalisée à l'aide de ce service avant d'activer le snapshot, reportez-vous à la section <block ref="63a3f471efcfd7e4daa79f468df674ce" category="inline-link-macro-rx"></block>.</block>
@@ -4719,15 +4678,6 @@ Si la protection contre les ransomware est active pour le fichier de sauvegarde 
   <block id="aa4c67fd3731395f4450c9686b20f799" category="section-title">Prise en charge des tâches planifiées dans le moniteur des tâches</block>
   <block id="314b40130d46a229c3a19dc5e2e23aa4" category="paragraph">Le moniteur de tâches de sauvegarde et de restauration BlueXP a précédemment surveillé les tâches planifiées de sauvegarde et de restauration volume à magasin d'objets, mais pas les tâches Snapshot, de réplication, de sauvegarde et de restauration locales qui ont été planifiées via l'interface utilisateur ou l'API.</block>
   <block id="04c6b318fe9c7f19ae925a90e52c6569" category="paragraph">Le moniteur des tâches de sauvegarde et de restauration BlueXP inclut désormais des tâches planifiées pour les snapshots locaux, les réplications et les sauvegardes vers le stockage objet.</block>
-  <block id="10c83d8d6aa254ef1949380a4435a4d4" category="paragraph">Si vous créez des sauvegardes dans des régions AWS GovCloud ou AWS China, vous devez modifier le nom de ressource AWS « arn » sous toutes les sections _Resource_ dans les deux ensembles d'autorisations suivantes :</block>
-  <block id="4c8fab8f36cba8fb1f202396d9a9ebcd" category="list-text">Pour les régions AWS GovCloud, vous devez remplacer « aws » par « aws-US-gov », par exemple<block ref="5437327155aa3716e710fd4319a91b7e" prefix=" " category="inline-code"></block>.</block>
-  <block id="d55b464ea46a7e055a6cefee97d57046" category="list-text">Pour les régions d'AWS Chine, vous devez remplacer « aws » par « aws-cn », par exemple<block ref="e50d17688e67620204df0dd1b12e2baf" prefix=" " category="inline-code"></block>.</block>
-  <block id="a2cea9ad2302bf1c011966b2b76de8a1" category="paragraph">Si vos compartiments personnalisés se trouvent dans les régions AWS GovCloud ou AWS China, vous devez modifier le nom de ressource AWS « arn » sous toutes les sections _Resource_ des autorisations :</block>
-  <block id="a306027de621391e07a3f37323f0a7a1" category="list-text">Pour les régions AWS GovCloud, vous devez remplacer « aws » par « aws-US-gov », par exemple<block ref="d3c2ab280b3f8c407baa043db6f71305" prefix=" " category="inline-code"></block>.</block>
-  <block id="fdd52d5d7016bf165e6a4cb2d6cab2d3" category="list-text">Pour les régions d'AWS Chine, vous devez remplacer « aws » par « aws-cn », par exemple<block ref="bb55156256f7fc6b96c6be713812db69" prefix=" " category="inline-code"></block>.</block>
-  <block id="4ec233ea13ab88b2246fbb211a91665c" category="paragraph">Si vous voulez utiliser une connexion Internet publique standard, alors toutes les autorisations sont définies par le connecteur et il n'y a rien d'autre que vous devez faire. Ce type de connexion est indiqué dans le <block ref="38757d2cfcaca456ef39c830b3fbfbb6" category="inline-link-macro-rx"></block>.</block>
-  <block id="4d9403aeb0d455887fedd3ace41764e0" category="paragraph">Si vous souhaitez bénéficier d'une connexion plus sécurisée via Internet entre votre data Center sur site et le VPC, vous pouvez sélectionner une connexion AWS PrivateLink dans l'assistant d'activation de la sauvegarde. Elle est indispensable pour connecter votre système sur site à l'aide d'un VPN ou d'AWS Direct Connect via une interface de terminal VPC qui utilise une adresse IP privée. Ce type de connexion est indiqué dans le <block ref="95f59ac3cbae4d92bede28fe387b5a78" category="inline-link-macro-rx"></block>.</block>
-  <block id="d32f70c539312af4cedd6200342bc293" category="paragraph">Si vous créez des sauvegardes dans des régions AWS GovCloud ou AWS China, vous devez modifier le nom de ressource AWS « arn » sous toutes les sections _Resource_ dans les jeux d'autorisations ci-dessus et ci-dessous :</block>
   <block id="8017dc46d55f13a6a86439ecb091248d" category="section-title">15 décembre 2023</block>
   <block id="7ab0753b80059fbad40a2fd72c4592ce" category="section-title">Rapports disponibles pour les copies Snapshot locales et les copies Snapshot de réplication</block>
   <block id="9e6cfaae073aa85c2c955e17e29074a8" category="paragraph">Auparavant, vous pouviez générer des rapports sur les copies de sauvegarde uniquement. Désormais, vous pouvez également créer des rapports sur les copies Snapshot locales et de réplication.</block>
@@ -4742,36 +4692,83 @@ Si la protection contre les ransomware est active pour le fichier de sauvegarde 
   <block id="2a7d8d5d92a8e8110b2bc2ab71c0c002" category="paragraph">Auparavant, Catalog.zip sauvegardes étaient conservées pendant 7 jours. Maintenant, ils sont conservés pendant 30 jours.</block>
   <block id="16f6196e265bdbd3f9da022848c51d8a" category="inline-link">Restaurez les données de sauvegarde et de restauration BlueXP dans des sites invisibles</block>
   <block id="89b2c6f6be45f8f05d713b7bae69cd15" category="paragraph">Reportez-vous à la section<block ref="5596168e45150b1d53148898addeba07" category="inline-link-rx"></block>.</block>
-  <block id="08953d12d492df51bc90f2f43cd41a5e" category="section-title">Augmentation de la conservation des sauvegardes des données ONTAP sur site vers des compartiments StorageGRID</block>
-  <block id="c07f9ba29ac424f316877aae26aa07b0" category="paragraph">StorageGRID peut désormais conserver jusqu'à 30 sauvegardes de données ONTAP sur site à partir de la sauvegarde et de la restauration BlueXP dans un compartiment unique. Auparavant, le nombre maximum de sauvegardes était de 7 dans un compartiment.</block>
-  <block id="a4304a5e5ad0523cd1e2516efcbb04ea" category="inline-link">En savoir plus sur la sauvegarde des données ONTAP sur site dans StorageGRID</block>
-  <block id="9fa7efa5e741bc1c7fa825541ca578ff" category="paragraph"><block ref="c5cc080595ac6d000b39fc62e24bb795" category="inline-link-rx"></block>.</block>
-  <block id="37cad79be3887e5af23a3b72ee504d6d" category="paragraph">Si vous le souhaitez, recherchez des balises personnalisées pour répertorier uniquement les volumes avec une balise spécifique.</block>
-  <block id="7c3caa9c3fd1fb1fcc416313f95f520c" category="paragraph"><block ref="7c3caa9c3fd1fb1fcc416313f95f520c" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="49feba59aa7ad0370913ee7881a2b607" category="paragraph">Ces données sont sauvegardées une fois par jour à minuit, et un maximum de 30 copies de chaque fichier sont conservées. Si le connecteur gère plusieurs environnements de travail ONTAP sur site, les fichiers de sauvegarde et de restauration BlueXP seront situés dans le compartiment de l'environnement de travail qui a été activé en premier.</block>
-  <block id="e18a212580deea6e1168cf2df519b5f9" category="paragraph">Si vous créez vos propres compartiments, vous devez utiliser un nom de compartiment commençant par « netapp-backup ». Si vous devez utiliser un nom personnalisé, modifiez les règles utilisées dans la section Setup S3 permissions pour utiliser un ARN de ressource correspondant à votre propre préfixe de compartiment personnalisé.</block>
-  <block id="2dcb89b10f74019d9a3c831460feb047" category="summary">Grâce aux rapports de sauvegarde et de restauration BlueXP, vous pouvez vous assurer que les données stratégiques sont protégées conformément aux règles définies par votre entreprise et prendre en charge efficacement l'audit pour les processus de conformité. Avec le rapport d'inventaire des sauvegardes, vous pouvez voir toutes vos copies Snapshot locales, réplications et sauvegardes.</block>
-  <block id="264f9f7063a386a1c61f47d1330c657c" category="paragraph">Dans l'onglet Rapports de sauvegarde et de restauration BlueXP, vous pouvez créer un rapport d'inventaire des sauvegardes et filtrer son contenu. Le rapport Inventaire des sauvegardes affiche toutes les copies Snapshot locales, les réplications sur un stockage secondaire et les sauvegardes d'un compte, d'un environnement de travail ou d'un inventaire SVM spécifique.</block>
-  <block id="c41a31890959544c6523af684561abe5" category="list-text">Cible</block>
-  <block id="ce3c72bb17e9e75c64f8ddb597b24de8" category="list-text">Politique appliquée</block>
-  <block id="7a17628d164aaaf3b67bbf67f3ace740" category="list-text">Nombre de copies Snapshot locales, de réplications ou de copies de sauvegarde</block>
-  <block id="2efdb59bdb9318d558fc5d7af5b6404e" category="list-text">Nombre de volumes avec au moins un snapshot local, une réplication ou une sauvegarde (selon l'onglet affiché)</block>
-  <block id="355454effdd54e97bcd6f8c9ed946504" category="inline-image-macro">Exemple de rapport d'inventaire des sauvegardes</block>
-  <block id="d08879467c6493ef59052f6379e81e0f" category="paragraph"><block ref="d08879467c6493ef59052f6379e81e0f" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="ef16ddee8e5ddacc361e250bd6c8bdb4" category="list-text">Sélectionnez l'étendue du rapport au niveau du compte ou personnalisé.</block>
-  <block id="c4164f47b30d87e7888c12f3fdbe8af8" category="list-text">Sélectionnez les filtres du rapport :</block>
-  <block id="c6f01c78bfe0a0a495cb5d3ed77824a9" category="list-text">Volumes</block>
-  <block id="344ec8079925c0a9d42c79d780542bb4" category="list-text">Protection : sélectionnez le type de protection (copies Snapshot locales, réplication ou sauvegardes) que vous souhaitez voir dans le rapport. Vous pouvez sélectionner les trois. En outre, indiquez si vous souhaitez inclure des volumes non protégés.</block>
-  <block id="d022d12f96f41872be0c2dbe7f553aa5" category="list-text">Consultez les onglets de rapport (instantané local, réplication ou sauvegarde), selon vos sélections de rapport.</block>
-  <block id="93f66acb069f7a06ab0ee856c98d2746" category="paragraph"><block ref="93f66acb069f7a06ab0ee856c98d2746" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="f803143ce95b805b1f67a186b607f0a2" category="paragraph">Vous pouvez filtrer les opérations de la page surveillance des tâches à l'aide de plusieurs filtres, tels que la règle, le libellé Snapshot, le type d'opération (protection, restauration, conservation ou autre), les balises personnalisées sur les volumes et le type de protection (Snapshot local, réplication ou sauvegarde dans le cloud).</block>
-  <block id="ed1a67a206c44665ed4e8af600e8efb0" category="admonition">Les snapshots doivent avoir des noms uniques, sinon les opérations de restauration ne fonctionneront pas correctement.</block>
-  <block id="1dc07a81431924d105e577843fab46a1" category="paragraph">Si vous utilisez déjà BlueXP pour gérer votre stockage, un connecteur BlueXP a déjà été installé. Si vous prévoyez d'utiliser le même connecteur avec la sauvegarde et la restauration BlueXP, alors vous êtes paré. Si vous devez utiliser un connecteur différent, vous devrez le déployer avant de commencer votre implémentation de sauvegarde et de restauration.</block>
-  <block id="a291b3163a4794d9131365f0a3dcc467" category="section-title">Prise en charge lors de l'utilisation du mode standard</block>
-  <block id="df8cd79f58be84231ee05f3d91442113" category="paragraph">La sauvegarde et la restauration BlueXP sont entièrement prises en charge en mode standard : les sites avec une connectivité Internet complète. Dans ce cas, vous pouvez créer des volumes répliqués sur tous les systèmes ONTAP ou Cloud Volumes ONTAP sur site gérés par BlueXP, ainsi que vous pouvez créer des fichiers de sauvegarde sur le stockage objet dans n'importe quel fournisseur cloud pris en charge. <block ref="53011d10cc707465ef24eb421fc1dc04" category="inline-link-macro-rx"></block>.</block>
-  <block id="655545eef6e8f8de57e231bcae036156" category="paragraph">Pour obtenir la liste des emplacements de connecteur valides, reportez-vous à la rubrique de sauvegarde du fournisseur cloud dans lequel vous prévoyez de créer des fichiers de sauvegarde. Il peut y avoir des restrictions lorsque le connecteur est déployé dans un fournisseur de cloud spécifique ou lorsqu'il est installé manuellement sur une machine Linux.</block>
-  <block id="ef4fa6e95e8fb4a58af199a2ba2b425e" category="section-title">Prise en charge en mode restreint</block>
-  <block id="1667d929b1ab016a8cfa3414df6283ee" category="paragraph">La sauvegarde et la restauration BlueXP sont prises en charge en mode restreint : les sites disposant d'une connectivité Internet limitée. Dans ce cas, vous ne pouvez créer des fichiers de sauvegarde que pour un ensemble limité de fournisseurs cloud. Vous devez déployer le connecteur BlueXP dans la région restreinte.</block>
-  <block id="43c11931374ad33282cc54a70addc852" category="section-title">Prise en charge lors de l'utilisation du mode privé</block>
-  <block id="db8e2db8da88a405c16b644f4e2e7271" category="paragraph">La sauvegarde et la restauration BlueXP sont prises en charge en mode privé, c'est-à-dire pour les sites sans connectivité Internet. Dans ce cas, vous ne pouvez créer des fichiers de sauvegarde que pour un ensemble limité de fournisseurs de stockage objet. Vous devrez déployer le connecteur BlueXP sur un hôte Linux du même site.</block>
+  <block id="d59e0b46782e48a01966e5c7ccc38d17" category="paragraph">NetApp utilise Microsoft Entra ID comme fournisseur d'identité pour les services d'authentification spécifiques à la prise en charge et à l'octroi de licences.</block>
+  <block id="7460c264ec9185e5da4ecd95b8cabe8d" category="paragraph"><block ref="7460c264ec9185e5da4ecd95b8cabe8d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6b238043e3f0cbcb294416f3238efea2" category="admonition">Lorsque vous créez des sauvegardes dans des régions AWS Chine, vous devez modifier le nom de ressource AWS « arn » sous toutes les sections _Resource_ des stratégies IAM de « aws » à « aws-cn », par exemple<block ref="e50d17688e67620204df0dd1b12e2baf" prefix=" " category="inline-code"></block>.</block>
+  <block id="4b758548b6a16028d0d7c1e443c285bd" category="paragraph">Si vous utilisez déjà BlueXP pour gérer votre stockage, un connecteur BlueXP a déjà été installé. Si vous prévoyez d'utiliser le même connecteur avec la sauvegarde et la restauration BlueXP, alors vous êtes paré. Si vous devez utiliser un connecteur différent, vous devez l'installer avant de commencer votre implémentation de sauvegarde et de restauration.</block>
+  <block id="b41bae1862cc28338655904ad32e407e" category="section-title">Prise en charge des sites avec une connectivité Internet complète</block>
+  <block id="df28403f823a8cccd6d3aa652ebe7892" category="paragraph">Lorsque la sauvegarde et la restauration BlueXP sont utilisées dans un site doté d'une connectivité Internet complète (également appelé « mode standard » ou « mode SaaS »), vous pouvez créer des volumes répliqués sur tous les systèmes ONTAP ou Cloud Volumes ONTAP sur site gérés par BlueXP, en outre, vous pouvez créer des fichiers de sauvegarde sur un stockage objet dans n'importe quel fournisseur cloud pris en charge. <block ref="53011d10cc707465ef24eb421fc1dc04" category="inline-link-macro-rx"></block>.</block>
+  <block id="cd6458cee7347b844e32d364eccbaa5c" category="paragraph">Pour obtenir la liste des emplacements de connecteur valides, reportez-vous à la rubrique de sauvegarde du fournisseur cloud dans lequel vous prévoyez de créer des fichiers de sauvegarde. Il existe certaines restrictions dans lesquelles le connecteur doit être installé manuellement sur une machine Linux ou déployé dans un fournisseur de cloud spécifique.</block>
+  <block id="2714d7e7e24c727c2c54bb6ba96c4617" category="section-title">Prise en charge des sites avec une connectivité Internet limitée</block>
+  <block id="e5f27584b8554a76c0aba2da480263ad" category="paragraph">La sauvegarde et la restauration BlueXP peuvent être utilisées dans un site doté d'une connectivité Internet limitée (également appelé « mode restreint ») pour sauvegarder des données de volume. Dans ce cas, vous devez déployer le connecteur BlueXP dans la région réservée.</block>
+  <block id="9fe942ae01924dd657ce7f1996246cc6" category="section-title">Assistance pour les sites sans connexion Internet</block>
+  <block id="ef96453aea07412d08268c286055e516" category="paragraph">Les fonctionnalités de sauvegarde et de restauration BlueXP peuvent être utilisées dans un site sans connexion Internet (également appelé « mode privé » ou « sites invisibles ») pour sauvegarder des données de volume. Dans ce cas, vous devrez déployer le connecteur BlueXP sur un hôte Linux du même site.</block>
+  <block id="628b6da02e99f426a81f25cb6fc98d4a" category="summary">Grâce aux rapports de sauvegarde et de restauration BlueXP, vous pouvez vous assurer que les données stratégiques sont protégées conformément aux règles définies par votre entreprise et prendre en charge efficacement l'audit pour les processus de conformité. Le rapport d'inventaire des sauvegardes répertorie toutes vos sauvegardes pour un compte, un environnement de travail ou un SVM spécifique.</block>
+  <block id="f149f54356387e5794adb107c0cc0a7d" category="paragraph">Dans l'onglet Rapports de sauvegarde et de restauration BlueXP, vous pouvez créer le rapport Inventaire des sauvegardes et filtrer son contenu. Le rapport Backup Inventory permet de consulter toutes vos sauvegardes pour un compte, un environnement de travail ou un SVM spécifique.</block>
+  <block id="fe6088e55d445ff8c5e73198a4b10d33" category="list-text">Cible de sauvegarde</block>
+  <block id="44558cf0d95753fc793030cefd55087b" category="list-text">Politique de sauvegarde appliquée</block>
+  <block id="20e266a6449440b3d67b85ead1217fb1" category="list-text">Nombre de copies de sauvegarde</block>
+  <block id="ccf68adbbbaa71c4ed09254c95dc35ed" category="list-text">Nombre de volumes couverts avec au moins une sauvegarde</block>
+  <block id="4eb47739f755a1148ef510f3d10ca279" category="paragraph">Le rapport Inventaire des sauvegardes affiche les graphiques suivants :</block>
+  <block id="8aab504f5ceeb44f855ca81302865568" category="list-text">*Etat de la sauvegarde de volume* : affiche les volumes protégés par rapport aux volumes non protégés pour la portée sélectionnée.</block>
+  <block id="c9ef4c767ef6317e3bedf50654e6f9db" category="list-text">*Volumes par nombre de sauvegardes* : regroupe les volumes en fonction du nombre de copies de sauvegarde disponibles pour ce volume.</block>
+  <block id="da8b2e21cf3fbf1deb6e54876d0bb30e" category="admonition">Vous pouvez sélectionner plusieurs environnements de travail et SVM.</block>
+  <block id="bb556c03f0c66474f3d3666fd4354e8e" category="list-text">Consultez les sections du rapport (règles Snapshot, règles de réplication ou règles de sauvegarde), en fonction de vos sélections de rapport.</block>
+  <block id="7c6f87c6386a4b34232097d33f03a21f" category="list-text">(Facultatif) Filtrer les résultats par état de tâche.</block>
+  <block id="24c3f29f7b3c09228614448507eb27eb" category="paragraph">Si vous créez vos propres compartiments, vous devez utiliser le nom de compartiment NetApp-Backup. Si vous devez utiliser un nom personnalisé, modifiez le<block ref="36f2cf0d90ddea374df0d9a8b6aa6300" prefix=" " category="inline-code"></block> IAMROle pour les CVO existants et ajouter la liste suivante aux autorisations S3. Vous devez inclure<block ref="a99022ed92fce54cbefc53cc3a7bb0a9" prefix=" " category="inline-code"></block> et attribuez toutes les autorisations nécessaires qui doivent être associées au compartiment.</block>
+  <block id="50b086f5a622de5e2ad8e86ada10bc12" category="paragraph">"Action": [
+    « S3:ListBucket »
+    « S3:GetBucketLocation »
+]
+« Ressource » : « arn:aws:s3:::* »,
+« Effet » : « Autoriser »
+},
+{
+    "Action": [
+        « S3:GetObject »,
+        « S3:PutObject »,
+        « S3:DeleteObject »,
+        « S3:ListAllMyBuckets »,
+        « S3:PutObjectTagging »,
+        « S3:GetObjectTagging »,
+        « S3:RestoreObject »,
+        « S3:GetBucketObjectLockConfiguration »,
+        « S3:GetObjectRetention »,
+        « S3:PutBucketObjectLockConfiguration »,
+        « S3:PutObjectRetention »
+        ]
+    « Ressource » : « arn:aws:s3:::* »,</block>
+  <block id="55082684c888abf218793c0bd2f3b5e4" category="paragraph">Si vous voulez utiliser une connexion Internet publique standard, alors toutes les autorisations sont définies par le connecteur et il n'y a rien d'autre que vous devez faire. Ce type de connexion est indiqué dans le <block ref="b1224f75874af139b1e7a51a1da970e9" category="inline-link-macro-rx"></block>.</block>
+  <block id="ca301c03d4c5ce91946df8b15f3dbe5f" category="paragraph">Si vous souhaitez bénéficier d'une connexion plus sécurisée via Internet entre votre data Center sur site et le VPC, vous pouvez sélectionner une connexion AWS PrivateLink dans l'assistant d'activation de la sauvegarde. Elle est indispensable pour connecter votre système sur site à l'aide d'un VPN ou d'AWS Direct Connect via une interface de terminal VPC qui utilise une adresse IP privée. Ce type de connexion est indiqué dans le <block ref="0f7afb920fb200721cfd6111e33f99d4" category="inline-link-macro-rx"></block>.</block>
+  <block id="4adab5b6b391c43cf0cfd73c09d5bdf8" category="inline-xref">Ajoutez les autorisations S3 à partir de la règle de sauvegarde</block>
+  <block id="f59bbb6de7b8eafb6ccb2f617135ff84" category="list-text">Modifiez la configuration du groupe de sécurité associée au connecteur BlueXP. Vous devez modifier la règle en « personnalisé » (à partir de « accès complet ») et vous devez <block ref="52cd24ecfd99d5b16a10d03c54f9d16b" category="inline-xref-macro-rx"></block> comme indiqué précédemment.</block>
+  <block id="54979ba354582c6f2824abc12558cf5a" category="inline-image-macro">Copie d'écran du groupe de sécurité AWS associé au connecteur.</block>
+  <block id="9fffc2ed11f6ca99ac2677ff1c97fd9a" category="paragraph"><block ref="9fffc2ed11f6ca99ac2677ff1c97fd9a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c9cfba3160309eb4416746c049e4b9da" category="paragraph">Ces données sont sauvegardées une fois par jour à minuit, et un maximum de 7 copies de chaque fichier sont conservées. Si le connecteur gère plusieurs environnements de travail ONTAP sur site, les fichiers de sauvegarde et de restauration BlueXP seront situés dans le compartiment de l'environnement de travail qui a été activé en premier.</block>
+  <block id="6a0946e9e6df1feca77ae10577f6057c" category="paragraph"><block ref="6a0946e9e6df1feca77ae10577f6057c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="743978dcd7046c82225d9b638969fd96" category="paragraph">Vous pouvez filtrer les opérations de la page surveillance des tâches à l'aide de plusieurs filtres, tels que la règle, le libellé Snapshot, le type d'opération (protection, restauration, conservation ou autre) et le type de protection (instantané local, réplication ou sauvegarde dans le cloud).</block>
+  <block id="b1314bfff132a050766ce5d32ac976de" category="section-title">Déprotégez les datastores</block>
+  <block id="24e973d26bb253c7b5fb8a764db6860a" category="paragraph">Vous pouvez annuler la protection d'un datastore déjà protégé auparavant. Vous pouvez annuler la protection d'un datastore lorsque vous souhaitez supprimer les sauvegardes cloud ou que vous ne souhaitez plus le sauvegarder dans le cloud. Une fois la protection terminée, le datastore peut à nouveau être protégé.</block>
+  <block id="2c86bcd8467882ddafa5699064a113a9" category="list-text">Cliquez sur <block ref="1d94ccc08c31bc8efbc06bfabc6854b6" category="inline-image-macro-rx" type="image"></block> Correspondant au datastore que vous souhaitez annuler la protection et cliquez sur *Unprotect*.</block>
+  <block id="331f8541bc1d88d7b3a99d070122fc1c" category="paragraph">Vous pouvez restaurer les données des machines virtuelles depuis le cloud vers vCenter sur site. Vous pouvez restaurer la machine virtuelle au même emplacement à partir duquel la sauvegarde a été effectuée ou dans un autre emplacement. Si la machine virtuelle a été sauvegardée à l'aide de la stratégie d'archivage, vous pouvez définir la priorité de restauration d'archivage.</block>
+  <block id="1c79f8653ccf267be1bce47f8ccf3d2f" category="list-text">Si vous effectuez une restauration vers un autre emplacement :</block>
+  <block id="0bd63162a36deb15bb735dfc68ec0b84" category="list-text">Assurez-vous que les vCenters source et de destination sont en mode lié.</block>
+  <block id="b9d3026a416c9548a1ce214ae1cac290" category="list-text">Vérifiez que les informations sur les clusters source et cible sont ajoutées dans BlueXP Canvas et dans les vCenters en mode lié dans le plug-in SnapCenter pour l'hôte VMware vSphere.</block>
+  <block id="e1a91a510a1e1994581033bf34c8a34e" category="list-text">Assurez-vous que l'environnement de travail (WE) est ajouté correspondant à l'autre emplacement dans BlueXP Canvas.</block>
+  <block id="d180a4da8965c4cd5488cd05903774f0" category="list-text">Vous pouvez restaurer la machine virtuelle à son emplacement d'origine ou à un autre emplacement à partir du datastore ou des machines virtuelles :</block>
+  <block id="db5366d69994d30376d1a970dcebb9ce" category="cell">Si vous souhaitez restaurer la machine virtuelle...</block>
+  <block id="ccc5c5f6926c7affe9ddb8b5fd8e78d0" category="paragraph">à l'emplacement d'origine à partir du datastore</block>
+  <block id="0ff9c86e6cb7e9150a24770fd6ae4e8d" category="list-text">Sélectionnez la machine virtuelle à restaurer à partir de la sauvegarde et cliquez sur *Suivant*.</block>
+  <block id="4e732f3a4af9bd149e3901ae89613eca" category="list-text">Assurez-vous que *Original* est sélectionné et cliquez sur *Continuer*.</block>
+  <block id="05aff9b89c6c077ab1119387a7d6852b" category="list-text">Si la machine virtuelle est protégée à l'aide d'une stratégie dans laquelle les paramètres d'archivage sont configurés, sélectionnez *priorité de restauration d'archivage* et cliquez sur *Suivant*.</block>
+  <block id="4064eae8789a1dea97cfc09ac17d017a" category="paragraph">Pour Amazon Web Services, la priorité de restauration d'archivage est élevée, standard ou faible. Pour Microsoft Azure, la priorité de restauration d'archivage est élevée et standard.</block>
+  <block id="c0df5d97adcf3825af806d990e658e67" category="paragraph">dans un autre emplacement à partir du datastore</block>
+  <block id="2f663ab73d99f410b05e9f748fdb9f69" category="list-text">Sélectionnez *alternatif*.</block>
+  <block id="1825907f18d398bff7d7bf89210651db" category="list-text">Sélectionnez le serveur vCenter, l'hôte ESXi, le datastore et le réseau de remplacement.</block>
+  <block id="5f13633d652590518e2dc9e07d7f16b0" category="list-text">Indiquez un nom pour la machine virtuelle après la restauration et cliquez sur *Continuer*.</block>
+  <block id="0236f808af929087f6a9616d379b96a4" category="paragraph">à l'emplacement d'origine à partir des machines virtuelles</block>
+  <block id="ccb90cb50d99e7cb9712a836810d4fae" category="paragraph">à un autre emplacement que les machines virtuelles</block>
+  <block id="4e1f7d458412b18adef0e5ff0db2eee8" category="section-title">01 février 2024</block>
+  <block id="a409179aac0b12213b3fa77e0a22bd61" category="list-text">Prise en charge de la restauration de machines virtuelles vers un autre emplacement</block>
+  <block id="9c75b0f26dddf07ed827e32aaf28bee9" category="list-text">Prise en charge de l'annulation de la protection des datastores</block>
 </blocks>

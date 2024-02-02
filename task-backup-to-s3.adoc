@@ -182,15 +182,9 @@ Voici les autorisations spécifiques de la stratégie :
         },
 ----
 ====
-[NOTE]
-====
-Si vous créez des sauvegardes dans des régions AWS GovCloud ou AWS China, vous devez modifier le nom de ressource AWS « arn » sous toutes les sections _Resource_ dans les jeux d'autorisations ci-dessus et ci-dessous :
 
-* Pour les régions AWS GovCloud, vous devez remplacer « aws » par « aws-US-gov », par exemple `arn:aws-us-gov:s3:::netapp-backup-*`.
-* Pour les régions d'AWS Chine, vous devez remplacer « aws » par « aws-cn », par exemple `arn:aws-cn:s3:::netapp-backup-*`.
+NOTE: Lorsque vous créez des sauvegardes dans des régions AWS Chine, vous devez modifier le nom de ressource AWS « arn » sous toutes les sections _Resource_ des stratégies IAM de « aws » à « aws-cn », par exemple `arn:aws-cn:s3:::netapp-backup-*`.
 
-
-====
 Autorisations d'accès Cloud Volumes ONTAP AWS requises:: Lorsque votre système Cloud Volumes ONTAP exécute ONTAP 9.12.1 ou une version ultérieure, le rôle IAM qui fournit cet environnement de travail avec autorisations doit inclure un nouvel ensemble d'autorisations S3 spécifiquement pour la sauvegarde et la restauration BlueXP depuis les dernières versions https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-set-up-iam-roles.html["Politique de Cloud Volumes ONTAP"^].
 +
 --

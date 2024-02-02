@@ -18,6 +18,18 @@ Découvrez les nouveautés de la sauvegarde et de la restauration BlueXP.
 
 
 
+== 01 février 2024
+
+
+
+=== Améliorations apportées à la sauvegarde et à la restauration BlueXP pour les machines virtuelles
+
+* Prise en charge de la restauration de machines virtuelles vers un autre emplacement
+* Prise en charge de l'annulation de la protection des datastores
+
+
+
+
 == 15 décembre 2023
 
 
@@ -70,14 +82,6 @@ La sauvegarde et la restauration BlueXP permettent désormais d'effectuer une «
 Le système de destination Cloud Volumes ONTAP doit exécuter ONTAP version 9.13.0 ou ultérieure. https://docs.netapp.com/us-en/bluexp-backup-recovery/task-restore-backups-ontap.html["En savoir plus sur la restauration des données"].
 
 Le moniteur des tâches de sauvegarde et de restauration BlueXP affiche également des informations sur la progression des tâches de restauration rapide.
-
-
-
-=== Augmentation de la conservation des sauvegardes des données ONTAP sur site vers des compartiments StorageGRID
-
-StorageGRID peut désormais conserver jusqu'à 30 sauvegardes de données ONTAP sur site à partir de la sauvegarde et de la restauration BlueXP dans un compartiment unique. Auparavant, le nombre maximum de sauvegardes était de 7 dans un compartiment.
-
-https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-onprem-private-cloud.html["En savoir plus sur la sauvegarde des données ONTAP sur site dans StorageGRID"].
 
 
 
