@@ -1,0 +1,2499 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head class="at-element-marker">
+  <title>Sauvegarde des bases de données SAP HANA cloud natives | NetApp Documentation</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Sauvegarde des bases de données SAP HANA cloud natives | NetApp Documentation" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/fr-fr/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html" />
+	<meta property="og:description" content="Création de sauvegardes planifiées ou à la demande d"une base de données SAP HANA." />
+  <meta property="og:image" content="https://docs.netapp.com/fr-fr/bluexp-backup-recovery/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Création de sauvegardes planifiées ou à la demande d"une base de données SAP HANA.">
+  <meta name="keywords" content=" cloud-native, application data, back up, policy, pre-canned policies, scheduled backups, on-demand backups, cloud manager, BlueXP, add hosts, create policy, SAP HANA Database"><!-- Icons -->
+  <link rel="icon" href="/fr-fr/bluexp-backup-recovery/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><link rel="alternate" type="application/rss+xml" title="NetApp Documentation" href="/fr-fr/bluexp-backup-recovery/feed.xml"><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/fr-fr/bluexp-backup-recovery/css/ie-netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/fr-fr/bluexp-backup-recovery/css/ie-landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/fr-fr/bluexp-backup-recovery/css/ie-tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel="canonical" href="https://docs.netapp.com/fr-fr/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html" />
+  <!-- Top level site integrations -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js"></script>
+    <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-document-language="true" data-domain-script="72570c5c-fe30-465f-b0e0-b77f7fb4ae34"></script>
+    <script type="text/javascript">function OptanonWrapper() { }</script>
+    <script type="text/plain" class="optanon-category-C0002" src="https://assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js"></script>
+    <script class="optanon-category-C0001">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.setAttribute('class','optanon-category-C0001');j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MD73T9M');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      const MASTHEAD_OFFSET = 65;
+      const SECTIONS = $("main h2, main h3");
+      // PAGE NAV - Init
+      if (SECTIONS.length == 0) {
+        // remove if there is no elements
+        /*
+        $("#ie-right-navbar").remove();
+        $("#ie-right-navbar-collapse").remove();
+        */
+      } else {
+        $(".page-nav-title").css('display', 'block');
+        for (var i = 0; i < SECTIONS.length; i++) {
+          var sectionId = $(SECTIONS[i]).attr('id');
+          var sectionName = $(SECTIONS[i]).text();
+          var subClass = $(SECTIONS[i]).is("h3") ? ' page-nav__sublink' : '';
+          $("#page-menu").append('<li class="page-nav-item"><a href="#' + sectionId + '" class="page-nav__link' + subClass + '">' + sectionName + '</a></li>');
+        }
+      }
+    });
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/fr-fr/bluexp-backup-recovery/js/na-search.js'></script><script src='/fr-fr/bluexp-backup-recovery/js/ie-clouddocs.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script>
+    /*
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+      */
+  </script>
+  <script src='/fr-fr/bluexp-backup-recovery/js/custom-dropdown.js'></script>
+  <script src='/fr-fr/bluexp-backup-recovery/js/FileSaver.min.js'></script>
+  <script src='/fr-fr/bluexp-backup-recovery/js/jszip-utils.min.js'></script>
+  <script src='/fr-fr/bluexp-backup-recovery/js/jszip.min.js'></script><script src='/fr-fr/bluexp-backup-recovery/js/ie-pdf-ux.js'></script></head>
+
+
+  <body class role="document" data-flavor="azure">
+    <div class="skip-to-main">
+      <a href="#main" >Skip to main content</a>
+    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD73T9M"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="page" class="">
+      <div id="ie-phone-menu" class=""></div>
+      <div id="ie-content-wrap" class="">
+        <nav id="ie-new-header">
+    <ul>
+        <li id="ie-phone-menu-button">
+            <a href="#">
+                <image id="" src="/fr-fr/bluexp-backup-recovery/images/hamburger.svg" alt="menu" />
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.netapp.com/fr">
+                <image id="ie-header-logo" src="/fr-fr/bluexp-backup-recovery/images/netapp_logo.svg" alt="netapp" />
+            </a>
+        </li>
+        <li id="ie-header-docs">
+            <a href="https://www.netapp.com/fr/support-and-training/documentation/">Documents</a>
+        </li>
+
+        <!-- Empty container to push header left with or without lang selector -->
+        <li id="empty-container" style="margin-left: auto">
+        </li>
+        <!-- Start Language Selector --><li id="ie-language-dropdown">
+            <div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+                <div class="custom-dropdown-select custom-dropdown-select-lang">
+                    <img src="/fr-fr/bluexp-backup-recovery/images/language_white_24dp.svg" class="n-globe__icon" />
+                    <span class="lang-name">Français</span>
+                    <img src="/fr-fr/bluexp-backup-recovery/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/fr-fr/bluexp-backup-recovery/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu"><li>
+                        <a href="https://docs.netapp.com/fr-fr/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html"
+                            target="_self"><span translate="no" class="notranslate">Français</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html"
+                            target="_self"><span translate="no" class="notranslate">English</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ja-jp/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html"
+                            target="_self"><span translate="no" class="notranslate">日本語</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ko-kr/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html"
+                            target="_self"><span translate="no" class="notranslate">한국어</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-cn/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html"
+                            target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-tw/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html"
+                            target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/de-de/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html"
+                            target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/es-es/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html"
+                            target="_self"><span translate="no" class="notranslate">Español</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/it-it/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html"
+                            target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+                    </li></ul>
+            </div>
+            </li>
+        <!-- End Language Selector -->
+
+
+        <li id="ie-allnetapp">
+            <div id="allnetapp-dropdown" class="custom-dropdown custom-dropdown-allnetapp">
+                <div class="custom-dropdown-select custom-dropdown-select-allnetapp">
+                    <img src="/fr-fr/bluexp-backup-recovery/images/apps_white_24dp.svg" alt="" class="allnetapp-icon" />
+                    <span class="allnetapp-name">Tout NetApp</span>
+                    <img src="/fr-fr/bluexp-backup-recovery/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/fr-fr/bluexp-backup-recovery/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu allnetapp-dropdown">
+                    <li>
+                        <a href="https://bluexp.netapp.com/fr/"
+                            target="_self"><span translate="no" class="notranslate">BlueXP</span></a>
+                    </li>
+                    <li>
+                        <a href="https://mysupport.netapp.com/site/"
+                            target="_self"><span translate="no" class="notranslate">Support</span></a>
+                    </li>
+                    <li>
+                        <a href="https://kb.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">Base de connaissances</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.netapp.com/fr/support-and-training/netapp-learning-services/"
+                            target="_self"><span translate="no" class="notranslate">Formation</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+
+    </ul>
+</nav>
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+
+<div id="ie-new-sidebar-collapse" style="display: none">
+    <img id="sidebar-expand" class="ie-searchbox-icon" src="/fr-fr/bluexp-backup-recovery/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-new-sidebar">
+    <div id="ie-product-identity-lockup">
+        <div id="sidebar-collapse" class="">
+            <img src="/fr-fr/bluexp-backup-recovery/images/double_arrow.svg" alt="" />
+        </div>
+        <div id="ie-breadcrumb" class="">
+  <ul class="ie-breadcrumb">
+    <li class="">
+      <a href="https://docs.netapp.com">Tous les documents</a>
+    </li>
+    
+    
+    <li class="">
+      <a href="https://docs.netapp.com/us-en/cloud/">Documents sur le cloud</a>
+    </li>
+    
+
+    
+    <li class="">
+      <a href="https://docs.netapp.com/fr-fr/bluexp-family/">
+        BlueXP
+      </a>
+    </li>
+    
+  </ul>
+  
+  <div class="ie-product-name" >
+    <!--<a href="/fr-fr/bluexp-backup-recovery/">-->
+      BlueXP backup and recovery
+    <!--</a>-->
+  </div>
+</div>
+
+            
+<div id="ie-selectors">
+<div id="flavor-dropdown" class="custom-dropdown" data-url="/fr-fr/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html">
+  
+  
+  <div class="custom-dropdown-select selected" title="Azure">
+    <label>Ou du fournisseur cloud</label>
+    <div>Azure</div>  
+    <img src="/fr-fr/bluexp-backup-recovery/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown flavor invisible" />
+    <img src="/fr-fr/bluexp-backup-recovery/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup flavor" />
+    <!--<img src="/fr-fr/bluexp-backup-recovery/images/dismiss.svg" class="custom-icon selected" id="remove-flavor" alt="" />-->
+  </div>
+  
+
+  <ul class="custom-dropdown-menu">
+    
+    
+    <li data-value="aws" data-url="/fr-fr/bluexp-backup-recovery/aws">Amazon Web Services</li>
+    
+    
+    
+    <li data-value="gcp" data-url="/fr-fr/bluexp-backup-recovery/gcp">Google Cloud</li>
+    
+    
+    
+    <li data-value="azure" data-url="/fr-fr/bluexp-backup-recovery/azure/task-backup-cloud-native-sap-hana-data.html">Microsoft Azure
+    </li>
+    
+    
+    <li data-url="/fr-fr/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html">Tous les fournisseurs cloud</li>
+  </ul>
+</div>
+</div>
+        
+        
+
+<div id="ie-searchbox" class="ie-searchbox-sidebar ">
+    <img class="ie-searchbox-icon" src="/fr-fr/bluexp-backup-recovery/images/loupe.svg" alt=""/>
+    <div id="react-search" 
+        data-search-html="/fr-fr/bluexp-backup-recovery/azure/search.html" 
+        data-type="widget"
+        data-placeholder="Rechercher dans la documentation"
+        data-no-results-found="Aucun résultat trouvé pour : {query}"
+        data-did-you-mean="Rechercher {suggestion}."
+        data-no-results-found-did-you-mean="Aucun résultat n'a été trouvé pour {query}. Voulez-vous dire {suggestion} ?"
+        data-results-found="{hitCount} résultats"
+        data-error-message="Une erreur s'est produite. Merci de réessayer."
+        data-error-reset="Réinitialiser la recherche"
+        data-sk-es-pf-indexes="" 
+        data-flavor="azure">
+    </div>
+</div>
+        
+    </div>
+    <div id="ie-new-toc"><script>
+  let sidebarAccordion = true;
+
+  /* specific css rules for Mac */
+  if(navigator.platform.match('Mac') !== null) {
+    document.body.setAttribute('class', 'OSX');
+  }
+
+</script>
+
+<div id="ie-sidebar-container">
+  <ul id="ie-sidebar-list" ><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Documentation sur la sauvegarde et la restauration BlueXP"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/fr-fr/bluexp-backup-recovery/azure/index.html">
+        Documentation sur la sauvegarde et la restauration BlueXP
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Notes de mise à jour"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Notes de mise à jour</div>-->
+         Notes de mise à jour
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Quoi de neuf"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/whats-new.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/whats-new.html">
+        Quoi de neuf
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Limites connues"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/reference-limitations.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/reference-limitations.html">
+        Limites connues
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Commencez"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Commencez</div>-->
+         Commencez
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Découvrez la sauvegarde et la restauration BlueXP"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/concept-backup-to-cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/concept-backup-to-cloud.html">
+        Découvrez la sauvegarde et la restauration BlueXP
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuration des licences"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-licensing-cloud-backup.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-licensing-cloud-backup.html">
+        Configuration des licences
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Surveillez la protection des données"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Surveillez la protection des données</div>-->
+         Surveillez la protection des données
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reporting sur la couverture de la protection des données"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-report-inventory.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-report-inventory.html">
+        Reporting sur la couverture de la protection des données
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Surveiller l'état des tâches de sauvegarde et de restauration"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-monitor-backup-jobs.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-monitor-backup-jobs.html">
+        Surveiller l'état des tâches de sauvegarde et de restauration
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde et restauration des données ONTAP"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Sauvegarde et restauration des données ONTAP</div>-->
+         Sauvegarde et restauration des données ONTAP
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Protégez les données de vos volumes ONTAP"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/concept-ontap-backup-to-cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/concept-ontap-backup-to-cloud.html">
+        Protégez les données de vos volumes ONTAP
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Planifiez votre parcours en matière de protection"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/concept-protection-journey.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/concept-protection-journey.html">
+        Planifiez votre parcours en matière de protection
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérez les règles des volumes ONTAP"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-create-policies-ontap.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-create-policies-ontap.html">
+        Gérez les règles des volumes ONTAP
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde d'Cloud Volumes ONTAP dans Azure Blob"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-backup-to-azure.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-backup-to-azure.html">
+        Sauvegarde d'Cloud Volumes ONTAP dans Azure Blob
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde d'ONTAP sur site dans Azure Blob"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-backup-onprem-to-azure.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-backup-onprem-to-azure.html">
+        Sauvegarde d'ONTAP sur site dans Azure Blob
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde d'ONTAP sur site dans ONTAP S3"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-backup-onprem-to-ontap-s3.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-backup-onprem-to-ontap-s3.html">
+        Sauvegarde d'ONTAP sur site dans ONTAP S3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde du système ONTAP sur site dans StorageGRID"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-backup-onprem-private-cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-backup-onprem-private-cloud.html">
+        Sauvegarde du système ONTAP sur site dans StorageGRID
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérer les sauvegardes ONTAP"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-manage-backups-ontap.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-manage-backups-ontap.html">
+        Gérer les sauvegardes ONTAP
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurez vos données à partir de sauvegardes ONTAP"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-restore-backups-ontap.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-restore-backups-ontap.html">
+        Restaurez vos données à partir de sauvegardes ONTAP
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestion de la sauvegarde vers les paramètres d'objet au niveau du cluster"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-manage-backup-settings-ontap.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-manage-backup-settings-ontap.html">
+        Gestion de la sauvegarde vers les paramètres d'objet au niveau du cluster
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde et restauration des données des applications sur site"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Sauvegarde et restauration des données des applications sur site</div>-->
+         Sauvegarde et restauration des données des applications sur site
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Protection des données applicatives sur site"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/concept-protect-app-data-to-cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/concept-protect-app-data-to-cloud.html">
+        Protection des données applicatives sur site
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Enregistrez SnapCenter Server"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-register-snapcenter-server.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-register-snapcenter-server.html">
+        Enregistrez SnapCenter Server
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Créez une règle pour sauvegarder les applications"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-create-policies-apps.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-create-policies-apps.html">
+        Créez une règle pour sauvegarder les applications
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegardez les données applicatives sur site dans Microsoft Azure"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-backup-app-data-to-azure.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-backup-app-data-to-azure.html">
+        Sauvegardez les données applicatives sur site dans Microsoft Azure
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegardez les données applicatives sur site dans StorageGRID"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-backup-app-data-to-storagegrid.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-backup-app-data-to-storagegrid.html">
+        Sauvegardez les données applicatives sur site dans StorageGRID
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérer la protection des applications"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-manage-app-backups.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-manage-app-backups.html">
+        Gérer la protection des applications
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurez les données des applications sur site"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Restaurez les données des applications sur site</div>-->
+         Restaurez les données des applications sur site
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurez la base de données Oracle"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-restore-oracle-data.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-restore-oracle-data.html">
+        Restaurez la base de données Oracle
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurez la base de données SQL Server"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-restore-sql-data.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-restore-sql-data.html">
+        Restaurez la base de données SQL Server
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurez la base de données SAP HANA"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-restore-hana-backup.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-restore-hana-backup.html">
+        Restaurez la base de données SAP HANA
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurez les bases de données MongoDB, MySQL et PostgreSQL"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-restore-customplugin-backup.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-restore-customplugin-backup.html">
+        Restaurez les bases de données MongoDB, MySQL et PostgreSQL
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde et restauration des données applicatives cloud"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Sauvegarde et restauration des données applicatives cloud</div>-->
+         Sauvegarde et restauration des données applicatives cloud
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Protégez vos données d'applications cloud natives"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/concept-protect-cloud-app-data-to-cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/concept-protect-cloud-app-data-to-cloud.html">
+        Protégez vos données d'applications cloud natives
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde des bases de données Oracle cloud natives"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Sauvegarde des bases de données Oracle cloud natives</div>-->
+         Sauvegarde des bases de données Oracle cloud natives
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Démarrage rapide"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-quick-start-oracle.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-quick-start-oracle.html">
+        Démarrage rapide
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configurer FSX pour ONTAP"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/reference-configure-fsx-for-ontap.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/reference-configure-fsx-for-ontap.html">
+        Configurer FSX pour ONTAP
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configurez Cloud Volumes ONTAP"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/reference-configure-cloud-volumes-ontap.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/reference-configure-cloud-volumes-ontap.html">
+        Configurez Cloud Volumes ONTAP
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configurez Azure NetApp Files"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/reference-configure-azure-netapp-files.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/reference-configure-azure-netapp-files.html">
+        Configurez Azure NetApp Files
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Installez le plug-in SnapCenter pour Oracle et ajoutez des hôtes de base de données"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-add-host-discover-oracle-databases.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-add-host-discover-oracle-databases.html">
+        Installez le plug-in SnapCenter pour Oracle et ajoutez des hôtes de base de données
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde des bases de données Oracle"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-backup-cloud-native-oracle-data.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-backup-cloud-native-oracle-data.html">
+        Sauvegarde des bases de données Oracle
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde des bases de données SAP HANA cloud natives"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Sauvegarde des bases de données SAP HANA cloud natives</div>-->
+         Sauvegarde des bases de données SAP HANA cloud natives
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Démarrage rapide"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-quick-start-hana.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-quick-start-hana.html">
+        Démarrage rapide
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configurez Azure NetApp Files"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/reference-configure-azure-netapp-files.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/reference-configure-azure-netapp-files.html">
+        Configurez Azure NetApp Files
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Installez le plug-in SnapCenter pour SAP HANA et ajoutez des hôtes de base de données"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-deploy-snapcenter-plugin-for-sap-hana.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-deploy-snapcenter-plugin-for-sap-hana.html">
+        Installez le plug-in SnapCenter pour SAP HANA et ajoutez des hôtes de base de données
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde des bases de données SAP HANA"
+      data-li-level="3#" 
+      class="  ie-sidebar-selected    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-backup-cloud-native-sap-hana-data.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-backup-cloud-native-sap-hana-data.html">
+        Sauvegarde des bases de données SAP HANA
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegardez vos bases de données SQL Server natives du cloud à l'aide d'API REST"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Sauvegardez vos bases de données SQL Server natives du cloud à l'aide d'API REST</div>-->
+         Sauvegardez vos bases de données SQL Server natives du cloud à l'aide d'API REST
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Démarrage rapide"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-quick-start-sql.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-quick-start-sql.html">
+        Démarrage rapide
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configurer FSX pour ONTAP"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/reference-configure-fsx-for-ontap.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/reference-configure-fsx-for-ontap.html">
+        Configurer FSX pour ONTAP
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Ajoutez un hôte et installez le plug-in SnapCenter pour SQL Server"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-add-sqlhost-install-plugin-sql.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-add-sqlhost-install-plugin-sql.html">
+        Ajoutez un hôte et installez le plug-in SnapCenter pour SQL Server
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarder les bases de données SQL Server"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-backup-cloud-native-sql-data.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-backup-cloud-native-sql-data.html">
+        Sauvegarder les bases de données SQL Server
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurez des bases de données Oracle cloud natives"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Restaurez des bases de données Oracle cloud natives</div>-->
+         Restaurez des bases de données Oracle cloud natives
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurez à l'emplacement d'origine"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-restore-cloud-native-oracle-data-to-original-location.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-restore-cloud-native-oracle-data-to-original-location.html">
+        Restaurez à l'emplacement d'origine
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurez vers un autre emplacement"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-restore-cloud-native-oracle-data-to-alternate-location.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-restore-cloud-native-oracle-data-to-alternate-location.html">
+        Restaurez vers un autre emplacement
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurez des bases de données SAP HANA cloud natives"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-restore-cloud-native-sap-hana-data.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-restore-cloud-native-sap-hana-data.html">
+        Restaurez des bases de données SAP HANA cloud natives
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurez des bases de données SQL Server natives du cloud"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-restore-cloud-native-sql-data.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-restore-cloud-native-sql-data.html">
+        Restaurez des bases de données SQL Server natives du cloud
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Clonez des bases de données Oracle cloud natives"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Clonez des bases de données Oracle cloud natives</div>-->
+         Clonez des bases de données Oracle cloud natives
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Concepts et conditions de clonage"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/concept-clone-cloud-native-oracle-concepts.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/concept-clone-cloud-native-oracle-concepts.html">
+        Concepts et conditions de clonage
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Clonez des bases de données Oracle cloud natives"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-clone-cloud-native-oracle-data.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/bluexp-backup-recovery/azure/task-clone-cloud-native-oracle-data.html">
+        Clonez des bases de données Oracle cloud natives
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Actualisez le système cible SAP HANA"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-refresh-sap-hana-target-system.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-refresh-sap-hana-target-system.html">
+        Actualisez le système cible SAP HANA
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérez la protection des données applicatives cloud"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-manage-cloud-native-app-data.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-manage-cloud-native-app-data.html">
+        Gérez la protection des données applicatives cloud
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde et restauration des données des machines virtuelles"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Sauvegarde et restauration des données des machines virtuelles</div>-->
+         Sauvegarde et restauration des données des machines virtuelles
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Protection des données des machines virtuelles"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/concept-protect-vm-data.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/concept-protect-vm-data.html">
+        Protection des données des machines virtuelles
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Enregistrez le plug-in SnapCenter pour l'hôte VMware vSphere"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-register-snapCenter-plug-in-for-vmware-vsphere.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-register-snapCenter-plug-in-for-vmware-vsphere.html">
+        Enregistrez le plug-in SnapCenter pour l'hôte VMware vSphere
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Créer une stratégie pour sauvegarder les datastores"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-create-policies-vms.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-create-policies-vms.html">
+        Créer une stratégie pour sauvegarder les datastores
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde des datastores dans Microsoft Azure"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-backup-vm-data-to-azure.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-backup-vm-data-to-azure.html">
+        Sauvegarde des datastores dans Microsoft Azure
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde des datastores sur StorageGRID"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-backup-vm-data-to-storagegrid.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-backup-vm-data-to-storagegrid.html">
+        Sauvegarde des datastores sur StorageGRID
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestion de la protection des données des datastores et des machines virtuelles"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-manage-vm-data-in-cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-manage-vm-data-in-cloud.html">
+        Gestion de la protection des données des datastores et des machines virtuelles
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurer les données des machines virtuelles"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-restore-vm-data.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-restore-vm-data.html">
+        Restaurer les données des machines virtuelles
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde et restauration des données Kubernetes"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Sauvegarde et restauration des données Kubernetes</div>-->
+         Sauvegarde et restauration des données Kubernetes
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Protéger vos données Kubernetes"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/concept-kubernetes-backup-to-cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/concept-kubernetes-backup-to-cloud.html">
+        Protéger vos données Kubernetes
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sauvegarde dans Azure Blob"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-backup-kubernetes-to-azure.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-backup-kubernetes-to-azure.html">
+        Sauvegarde dans Azure Blob
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérer les sauvegardes Kubernetes"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-manage-backups-kubernetes.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-manage-backups-kubernetes.html">
+        Gérer les sauvegardes Kubernetes
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurez vos données à partir de sauvegardes Kubernetes"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-restore-backups-kubernetes.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-restore-backups-kubernetes.html">
+        Restaurez vos données à partir de sauvegardes Kubernetes
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Automatisez avec l'API REST"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/api-backup-restore.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/fr-fr/bluexp-backup-recovery/azure/api-backup-restore.html">
+        Automatisez avec l'API REST
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Référence"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Référence</div>-->
+         Référence
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Paramètres de stratégie de sauvegarde"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/concept-cloud-backup-policies.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/concept-cloud-backup-policies.html">
+        Paramètres de stratégie de sauvegarde
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Tiers de stockage d'archivage AWS pris en charge"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/reference-aws-backup-tiers.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/reference-aws-backup-tiers.html">
+        Tiers de stockage d'archivage AWS pris en charge
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Tiers d'accès d'archivage Azure pris en charge"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/reference-azure-backup-tiers.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/reference-azure-backup-tiers.html">
+        Tiers d'accès d'archivage Azure pris en charge
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Tiers de stockage d'archivage Google pris en charge"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/reference-google-backup-tiers.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/reference-google-backup-tiers.html">
+        Tiers de stockage d'archivage Google pris en charge
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configurer la sauvegarde pour l'accès à plusieurs comptes dans Azure"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/reference-backup-multi-account-azure.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/reference-backup-multi-account-azure.html">
+        Configurer la sauvegarde pour l'accès à plusieurs comptes dans Azure
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurez la base de données de sauvegarde et de restauration BlueXP sur un site invisible"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/reference-backup-cbs-db-in-dark-site.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/reference-backup-cbs-db-in-dark-site.html">
+        Restaurez la base de données de sauvegarde et de restauration BlueXP sur un site invisible
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Redémarrez la sauvegarde et la restauration BlueXP"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/reference-restart-backup.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/reference-restart-backup.html">
+        Redémarrez la sauvegarde et la restauration BlueXP
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Connaissances et support"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/bluexp-backup-recovery/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/bluexp-backup-recovery/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Connaissances et support</div>-->
+         Connaissances et support
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="S'inscrire pour obtenir de l'aide"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-support-registration.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-support-registration.html">
+        S'inscrire pour obtenir de l'aide
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Obtenez de l'aide"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/task-get-help.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/bluexp-backup-recovery/azure/task-get-help.html">
+        Obtenez de l'aide
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mentions légales"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/task-backup-cloud-native-sap-hana-data.html" 
+      dale-entry-url="/legal-notices.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/fr-fr/bluexp-backup-recovery/azure/legal-notices.html">
+        Mentions légales
+      </a></li></ul>
+</div>
+<script>
+
+  $(".ie-sidebar-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    expandedLI = $('li.ie-sidebar-expand')
+
+    const li = $(this).closest("li");
+
+    const parentsLI = $(li).parents('li');
+
+    expandedLI.map(element => {
+      if (sidebarAccordion && !li.hasClass('ie-sidebar-expand') && jQuery.inArray(expandedLI[element], parentsLI) == -1) {
+        $(expandedLI[element]).toggleClass('ie-sidebar-expand');
+        $(expandedLI[element]).children("ul").animate({ height: 'toggle' }, 400, function () {
+          $(li).children("ul").toggleClass('ie-sidebar-open');
+
+        })
+      }
+
+    })
+
+    $(li).toggleClass('ie-sidebar-expand');
+    $(li).children("ul").animate({ height: 'toggle' }, 400, function () {
+      $(li).children("ul").toggleClass('ie-sidebar-open');
+    })
+  });
+
+
+  
+    $("li.ie-sidebar-selected").parents('ul').toggleClass("ie-sidebar-open");
+    $("li.ie-sidebar-selected").toggleClass("ie-sidebar-expand")
+    $("ul.ie-sidebar-open").parent().toggleClass("ie-sidebar-expand");
+    $("li.ie-sidebar-selected").children('ul').toggleClass("ie-sidebar-open")
+  
+  
+</script>
+    </div>
+</div>
+<script>
+
+    
+    let sidebarScrollTopPosition = 0;
+    $("#ie-new-toc").on("scroll", function () {
+        if (sidebarScrollTopPosition == 0) {
+            $.cookie("sidebarScroll", $("#ie-new-toc").scrollTop(), {
+                path: "/fr-fr/bluexp-backup-recovery"
+            });
+        }
+
+        if ($("#ie-new-toc").scrollTop() > 0) {
+            $('#ie-product-identity-lockup').addClass('ie-addShadow');
+        } else {
+            $('#ie-product-identity-lockup').removeClass('ie-addShadow');
+        }
+    });
+
+    $(function () {
+        if ($.cookie("sidebarScroll")) {
+            $("#ie-new-toc").scrollTop($.cookie("sidebarScroll"));
+        }
+    });
+
+    function setSidebarBottom() {
+        const footerGap = PXinViewport($(".n-footer"));
+        document.getElementById("ie-new-sidebar").style.bottom = Math.max(0, footerGap) + "px";
+    }
+
+    window.onscroll = () => {
+        setSidebarBottom();
+    };
+
+    $("#sidebar-collapse").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        if ($.cookie("sidebarScroll")) {
+            sidebarScrollTopPosition = $.cookie("sidebarScroll");
+        }
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 350, function () {
+            $("#ie-new-sidebar-collapse").show();
+            $("#ie-new-sidebar").removeClass("open")
+            $("#ie-new-sidebar").addClass("close")
+            $("#ie-new-sidebar").removeAttr("style")
+        });
+        $(".ie-content-pane").animate({ width: (width + sidebarWidth), marginLeft: (marginLeft - sidebarWidth) }, 350, function () {
+            resizeContent()
+        })
+
+    });
+    $("#sidebar-expand").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 250, function () {
+            $('#ie-new-sidebar').css('display', 'flex');
+            $("#ie-new-sidebar-collapse").hide();
+            $("#ie-new-sidebar").removeClass("close")
+            $("#ie-new-sidebar").addClass("open")
+            setSidebarBottom();
+
+            if (sidebarScrollTopPosition != 0) {
+                $.cookie("sidebarScroll", sidebarScrollTopPosition, {
+                    path: "/fr-fr/bluexp-backup-recovery"
+                })
+                $("#ie-new-toc").scrollTop(sidebarScrollTopPosition);
+                sidebarScrollTopPosition = 0;
+            }
+        });
+        $(".ie-content-pane").animate({ width: (width - sidebarWidth), 'marginLeft': (marginLeft + sidebarWidth) }, 250, function () {
+            resizeContent()
+        })
+    });
+    function resizeContent() {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        const rightNavbarVisible =  $("#ie-right-navbar").css('display') && $("#ie-right-navbar").css('display') != 'none';
+        const sidebarVisible = $("#ie-new-sidebar").css('display') != 'none';
+        const rightNavbarWidth = $("#ie-right-navbar").width();
+        const rightNavbarCollapseWidth = $("#ie-right-navbar-collapse").width();
+        const rightNavbarCollapseVisible = $("#ie-right-navbar-collapse").css('display') && $("#ie-right-navbar-collapse").css('display') != 'none';
+        
+        if (rightNavbarVisible && sidebarVisible) {
+            $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarWidth}px)`)
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+        } else if (sidebarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarCollapseWidth}px)`)
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar").width()}px)`)
+            }
+
+        } else if (rightNavbarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            $(".ie-content-pane").width(`calc(100% - ${rightNavbarWidth}px)`)
+        } else {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${rightNavbarCollapseWidth}px)`);
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar-collapse").width()}px) `);
+            }
+            
+        }
+    }
+    $(window).on("resize load", function () {
+        setSidebarBottom();
+        resizeContent()
+    });
+
+
+</script>
+
+<div class="ie-content-pane ie-component-detail-content ie-component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <!-- include utility.html -->
+      <div class="ie-info-disclaimer">
+    <span>
+      <div class="ie-info-disclaimer-container">
+        <div class="ie-info-disclaimer-icon">
+          <img src="/fr-fr/bluexp-backup-recovery/images/notification-icons.svg" class="luci-icon" alt="" />
+        </div>
+        <div class="ie-info-disclaimer-content">
+          <span> La version française est une traduction automatique. La version anglaise prévaut sur la française en cas de divergence. </span>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </span>
+  </div><div class="ie-component-detail-heading-wrap">
+  <h1 class="ie-component-detail-heading">Sauvegarde des bases de données SAP HANA cloud natives</h1>
+</div>
+
+<div id="ie-byline">
+  
+<div class="page-details">
+    
+        
+            <time datetime="2023-04-21 12:09:39 +0000">04/21/2023</time>
+        
+    
+    
+        <span>Contributeurs
+        </span>
+    
+    
+</div>
+<div class="page-controls">
+    <div id="contribute-dropdown" class="custom-dropdown custom-dropdown-contrib" >
+        <div class="custom-dropdown-select custom-dropdown-select-contrib">
+        <span class="contrib-name"><img src="/fr-fr/bluexp-backup-recovery/images/discuss-sm.svg" alt="" class="github-icon" />Suggérer des modifications</span>
+        <img src="/fr-fr/bluexp-backup-recovery/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown invisible" />
+        <img src="/fr-fr/bluexp-backup-recovery/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup" />
+        </div>
+        <ul class="custom-dropdown-menu suggested-changes-dropdown"><li>
+                <a target="_blank" href="https://github.com/NetAppDocs/bluexp-backup-recovery.fr-fr/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/fr-fr/bluexp-backup-recovery/task-backup-cloud-native-sap-hana-data.html&page-title=Sauvegarde des bases de données SAP HANA cloud natives" class="page-nav-contribute-link" role="button">Demander des modifications de la documentation</a>
+            </li><li> 
+                <a target="_blank" href="https://github.com/NetAppDocs/bluexp-backup-recovery/blob/main/task-backup-cloud-native-sap-hana-data.adoc" class="page-nav-contribute-link" role="button">Modifier cette page</a>
+            </li><li><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >En savoir plus sur les contributions</a></li>
+        </ul>
+    </div>
+    <div id="pdf-control-container">
+        <div class="n-pdf-header">
+            <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+                <img class="adobe-icon" src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>PDF<img src="/fr-fr/bluexp-backup-recovery/images/dropdown-arrow.svg" class="custom-icon" alt="" />
+            </a>
+        </div>
+        <div class="n-pdf-body-container">
+            <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+                    
+                    
+                    
+                    <a target="_blank" class="pdf-download-link" href="/fr-fr/bluexp-backup-recovery/pdfs/azure/fullsite-sidebar/Documentation_sur_la_sauvegarde_et_la_restauration_BlueXP.pdf" >
+                    <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>Un fichier PDF de toute la documentation</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Notes_de_mise_à_jour.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Notes de mise à jour
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Commencez.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Commencez
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Surveillez_la_protection_des_données.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Surveillez la protection des données
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Sauvegarde_et_restauration_des_données_ONTAP.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Sauvegarde et restauration des données ONTAP
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Sauvegarde_et_restauration_des_données_des_applications_sur_site.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Sauvegarde et restauration des données des applications sur site
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Restaurez_les_données_des_applications_sur_site.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Restaurez les données des applications sur site
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Sauvegarde_et_restauration_des_données_applicatives_cloud.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Sauvegarde et restauration des données applicatives cloud
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Sauvegarde_des_bases_de_données_Oracle_cloud_natives.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Sauvegarde des bases de données Oracle cloud natives
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Sauvegarde_des_bases_de_données_SAP_HANA_cloud_natives.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Sauvegarde des bases de données SAP HANA cloud natives
+          </a>
+          
+
+
+
+
+
+
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Sauvegardez_vos_bases_de_données_SQL_Server_natives_du_cloud_à_l_aide_d_API_REST.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Sauvegardez vos bases de données SQL Server natives du cloud à l'aide d'API REST
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Restaurez_des_bases_de_données_Oracle_cloud_natives.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Restaurez des bases de données Oracle cloud natives
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Clonez_des_bases_de_données_Oracle_cloud_natives.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Clonez des bases de données Oracle cloud natives
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Sauvegarde_et_restauration_des_données_des_machines_virtuelles.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Sauvegarde et restauration des données des machines virtuelles
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Sauvegarde_et_restauration_des_données_Kubernetes.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Sauvegarde et restauration des données Kubernetes
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Référence.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Référence
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/bluexp-backup-recovery/pdfs/azure/sidebar/Connaissances_et_support.pdf" 
+            
+          >
+            <img src="/fr-fr/bluexp-backup-recovery/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Connaissances et support
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+</li></ul>
+            <div class="zip-pdf-link-container" style="display: none;">   
+                <a href="#" id="zipPdf">
+                <img src="/fr-fr/bluexp-backup-recovery/images/pdf-zip.png" alt="" width="16" height="16"/>
+                <pre>Plusieurs fichiers PDF<span class="zip-size"></span></pre>
+                </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+        </div>
+    </div>        
+<script>
+$("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+$("#toggleButtonPdf").on('click', function(e){ 
+    e.stopPropagation();
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+});
+
+//hide is by clicking outside pdfcontainer
+$(document).on('click', function (e) {
+    if ($('#toggleContainerPdf').is(':visible') && !$('.n-pdf-body-container').is(e.target) && !$('.n-pdf-body-container').has(e.target).length)  {
+        
+        $("#toggleContainerPdf").toggle('display');
+        $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+        $("#toggleButtonPdf").removeClass("active");
+    }
+});
+</script>
+<script>
+    function getPdfLocation() {
+        const pdfLocation = window.scrollX + document.querySelector('#pdf-control-container').getBoundingClientRect().left
+        if (pdfLocation < 450) {
+            $(".n-pdf-body-container").addClass("block")
+        } else {
+            $(".n-pdf-body-container").removeClass("block")
+        }
+    
+    }
+    $( window ).on( "resize", function() {
+        getPdfLocation()
+} );
+</script>
+<script>
+    const pdfButtonWidth =  $(".n-pdf-header").width();
+    const pdfMenuWidth = $(".n-pdf-body-container").width();
+    $(".n-pdf-body-container").css('margin-left', `calc(${pdfButtonWidth - pdfMenuWidth}px)`);
+</script>
+</div>
+
+    
+
+</div>
+
+
+
+
+<div class="content-to-index">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>Vous pouvez créer une sauvegarde en attribuant une règle prédéfinie ou la règle que vous avez créée.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="créez-une-règle-pour-protéger-la-base-de-données-sap-hana">Créez une règle pour protéger la base de données SAP HANA</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous pouvez créer des stratégies si vous ne voulez pas utiliser ou modifier les stratégies prédéfinies.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dans la page <strong>applications</strong>, dans la liste déroulante Paramètres, sélectionnez <strong>stratégies</strong>.</p>
+</li>
+<li>
+<p>Cliquez sur <strong>Créer une stratégie</strong>.</p>
+</li>
+<li>
+<p>Spécifiez un nom de stratégie.</p>
+</li>
+<li>
+<p>(Facultatif) modifiez le format du nom de la copie Snapshot.</p>
+</li>
+<li>
+<p>Sélectionnez le type de stratégie.</p>
+</li>
+<li>
+<p>Spécifiez la planification et les informations de conservation.</p>
+</li>
+<li>
+<p>(Facultatif) spécifiez les scripts. <a href="task-backup-cloud-native-sap-hana-data.html#prescripts-and-postscripts">"Scripts d'examen préliminaire et de post-script."</a></p>
+</li>
+<li>
+<p>Cliquez sur <strong>Créer</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="préscripts-et-postscripts">Préscripts et postscripts</h3>
+<div class="paragraph">
+<p>Vous pouvez fournir des scripts prescripteurs, des scripts postaux et des scripts d'exit pendant la création d'une stratégie. Ces scripts sont exécutés sur l'hôte HANA pendant l'opération de protection des données.</p>
+</div>
+<div class="paragraph">
+<p>Le format pris en charge pour les scripts est .sh, le script python, le script perl, etc.</p>
+</div>
+<div class="paragraph">
+<p>Le prescripteur et le PostScript devraient être enregistrés par l'administrateur hôte dans <code>/opt/NetApp/snapcenter/scc/etc/allowed_commands.config</code> fichier.</p>
+</div>
+<div class="paragraph">
+<p><code>[root@scspa2622265001 etc]# cat allowed_commands.config<br>
+command: mount<br>
+command: umount<br>
+command: /mnt/scripts/pre_script.sh<br>
+command: /mnt/scripts/post_script.sh</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="variables-environnementales">Variables environnementales</h3>
+<div class="paragraph">
+<p>Pour le flux de travail de sauvegarde, les variables d'environnement suivantes sont disponibles dans le cadre du prescripteur et du postscript.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Variable d'environnement</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>SID</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifiant système de la base de données HANA sélectionnée pour la restauration</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>BackupName</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Nom de sauvegarde choisi pour l'opération de restauration</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserStoreKeyNames</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Clé userstore configurée pour la base de données HANA</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>OSDBUser</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>OSDBUser configuré pour la base de données HANA</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>NomPolicy</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Uniquement pour sauvegarde planifiée</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>type_programme</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Uniquement pour sauvegarde planifiée</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="créez-une-sauvegarde-de-la-base-de-données-sap-hana">Créez une sauvegarde de la base de données SAP HANA</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous pouvez soit affecter une stratégie pré-prédéfinie, soit créer une stratégie, puis l'affecter à la base de données. Une fois la stratégie attribuée, les sauvegardes sont créées conformément au planning défini dans la stratégie.</p>
+</div>
+<div class="paragraph">
+<p><strong>Avant de commencer</strong></p>
+</div>
+<div class="paragraph">
+<p>Vous devez avoir ajouté les hôtes de base de données SAP HANA.<a href="task-deploy-snapcenter-plugin-for-sap-hana.html#add-sap-hana-database-hosts">"Ajouter des hôtes de base de données SAP HANA"</a></p>
+</div>
+<div class="paragraph">
+<p><strong>À propos de cette tâche</strong></p>
+</div>
+<div class="paragraph">
+<p>Pour la réplication système HANA (HSR), la tâche de sauvegarde planifiée ne se déclenche que pour le système HANA principal. Si le système bascule vers le système HANA secondaire, les planifications existantes déclenchent une sauvegarde sur le système HANA principal actuel. Si la règle n'est pas affectée au système HANA principal et secondaire, la planification échoue après le basculement.</p>
+</div>
+<div class="paragraph">
+<p>Si des règles différentes sont attribuées aux systèmes HSR, la sauvegarde planifiée déclenche à la fois pour les systèmes HANA principaux et secondaires et la sauvegarde échoue pour le système HANA secondaire.</p>
+</div>
+<div class="paragraph">
+<p><strong>Étapes</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dans la page applications, si la base de données n'est pas protégée à l'aide d'aucune stratégie, cliquez sur <strong>affecter stratégie</strong>.</p>
+<div class="paragraph">
+<p>Bien que la base de données soit protégée à l'aide d'une ou de plusieurs stratégies, vous pouvez, si nécessaire, continuer à affecter d'autres stratégies en cliquant sur <span class="image"><img src="./media/icon-action.png" alt="pour sélectionner l'action"></span> &gt; <strong>affecter stratégie</strong>.</p>
+</div>
+</li>
+<li>
+<p>Sélectionnez la stratégie et cliquez sur <strong>affecter</strong>.</p>
+<div class="paragraph">
+<p>Les sauvegardes sont créées conformément au calendrier défini dans la règle.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/bluexp-backup-recovery/images/note.svg" alt="Remarque">
+</td>
+<td class="content">
+Le compte de service (<em>SnapCenter-account-&lt;account_id&gt;</em>) est utilisé pour exécuter les opérations de sauvegarde planifiées.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="création-dune-sauvegarde-à-la-demande-de-la-base-de-données-sap-hana">Création d'une sauvegarde à la demande de la base de données SAP HANA</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Après avoir affecté la stratégie, vous pouvez créer une sauvegarde à la demande de l'application.</p>
+</div>
+<div class="paragraph">
+<p><strong>Étapes</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dans la page <strong>applications</strong>, cliquez sur <span class="image"><img src="./media/icon-action.png" alt="pour sélectionner l'action"></span> Correspondant à l'application et cliquer sur <strong>On-Demand Backup</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez un type de sauvegarde à la demande.</p>
+</li>
+<li>
+<p>Pour la sauvegarde basée sur la stratégie, sélectionnez la stratégie, le niveau de rétention, puis cliquez sur <strong>Créer une sauvegarde</strong>.</p>
+</li>
+<li>
+<p>Pour une seule fois, sélectionnez Snapshot basé sur une copie ou fichier, effectuez les opérations suivantes :</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Sélectionnez la valeur de rétention et spécifiez le nom de la sauvegarde.</p>
+</li>
+<li>
+<p>(Facultatif) spécifiez les scripts et le chemin des scripts.</p>
+<div class="paragraph">
+<p>Pour plus d'informations, voir <a href="task-backup-cloud-native-sap-hana-data.html#prescripts-and-postscripts">"Prescripts et Postscripts"</a></p>
+</div>
+</li>
+<li>
+<p>Cliquez sur <strong>Créer une sauvegarde</strong>.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+<div id="ie-right-navbar-collapse" class="close">
+  <img id="navbar-expand" class="ie-searchbox-icon" src="/fr-fr/bluexp-backup-recovery/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-right-navbar" class="open">
+  <div id="right-navbar-collapse">
+    <img src="/fr-fr/bluexp-backup-recovery/images/double_arrow.svg" alt="" />
+  </div>
+  <div class="page-nav-container">
+    <nav class="page-nav-fixed">
+      <div class="page-nav-title">Sur cette page</div>
+      <div class="page-nav-links">
+        <ul class="page-nav-inner" id="page-menu"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script>
+  resizeContent();
+  function setRightBarHeight() {
+    var h = 0;
+
+    // header 1
+    h += PXinViewport($('.n-footer'));
+    h += PXinViewport($('#ie-new-header'));
+
+    if ($('#ie-right-navbar').length) {
+      $('#ie-right-navbar').css({ height: `calc(100vh - ${h}px)` });
+    }
+    if ($('.page-nav-links').length) {
+      h += 98;
+      $('.page-nav-links').css({ height: `calc(100vh - ${h}px)` });
+    }
+  }
+
+  $(document).ready(function () {
+    // PAGE NAV - Click
+    const MASTHEAD_OFFSET = 65;
+    const SECTIONS = $("main h2, main h3");
+    let calculateActiveSection = false;
+    setTimeout(() => {
+      calculateActiveSection = true;
+    }, 100)
+
+    $(".page-nav__link").click(function (event) {
+      calculateActiveSection = false;
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      var target = $(event.target);
+      target.addClass('page-nav__link--active');
+      location.hash = event.target.hash;
+      setTimeout(() => {
+        calculateActiveSection = true;
+      }, 100)
+
+    });
+
+    // PAGE NAV - Scroll
+    $(window).on('resize scroll', function () {
+      if (calculateActiveSection) {
+        var activeSection = getActiveSection(SECTIONS, MASTHEAD_OFFSET);
+        if (activeSection) {
+          var activeHref = $(activeSection).attr('id');
+          $(".page-nav__link").removeClass('page-nav__link--active');
+          $("#page-menu a[href=#" + activeHref + "]").addClass('page-nav__link--active');
+          if (location.hash != "#" + activeHref) {
+            if (history.replaceState) {
+              history.replaceState(null, null, "#" + activeHref);
+            }
+          }
+        }
+      }
+    });
+
+    $(".n-pdf-button").click(function () {
+      $(this).toggleClass("active");
+    });
+
+    $.fn.isVisibleAndInViewport = function () {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom && $(this).is(":visible");
+    };
+
+
+    $(window).on('resize scroll', function () {
+      setRightBarHeight();
+    });
+
+    $(window).trigger('resize');
+
+
+  });
+
+  $("#right-navbar-collapse").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 350, function () {
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+    });
+    $(".ie-content-pane").animate({ width: (width + rightNavbarWidth) }, 350, function () {
+      resizeContent()
+      setSidebarBottom();
+    })
+
+  });
+  $("#navbar-expand").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 250, function () {
+      $("#ie-right-navbar-collapse").removeClass("open")
+      $("#ie-right-navbar-collapse").addClass("close")
+      $("#ie-right-navbar").removeClass("close")
+      $("#ie-right-navbar").addClass("open")
+      setRightBarHeight();
+      setSidebarBottom();
+    });
+    $(".ie-content-pane").animate({ width: (width - rightNavbarWidth) }, 250, function () {
+      resizeContent()
+    })
+  });
+
+  function navbarResize() {
+    const rightNavbarResized = $("#ie-right-navbar-collapse").hasClass('resized');
+    if (window.innerWidth < 1024) {
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+      $("#ie-right-navbar").removeAttr("style")
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar-collapse").addClass("resized")
+    } else {
+      if (rightNavbarResized) {
+        $('#ie-right-navbar').removeClass('close');
+        $('#ie-right-navbar').addClass('open');
+        $("#ie-right-navbar-collapse").removeClass("resized")
+        $("#ie-right-navbar-collapse").removeClass("open")
+        $("#ie-right-navbar-collapse").addClass("close")
+      }
+    }
+    resizeContent()
+  }
+  navbarResize();
+  $(window).on('resize load', function () {
+    navbarResize()
+  });
+
+  function getActiveSection(sections, offset) {
+    var scrollPosition = $(window).scrollTop() + offset + 5;
+    var activeSection;
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      var activePosition = el.offset().top;
+      if (activePosition > scrollPosition) {
+        break;
+      }
+
+      activeSection = sections[i];
+    }
+
+    return activeSection;
+  }
+
+  $("a[href*=#]:not([href=#])").click(function () {
+    setTimeout(() => {
+      $(window).trigger('scroll');
+    }, 105)
+  })
+
+  const hashOnLoad = location.href.split("#")[1];
+  setTimeout(function () {
+    if (hashOnLoad) {
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      $("#page-menu a[href=#" + hashOnLoad + "]").addClass('page-nav__link--active');
+    }
+  }, 100)
+
+</script>
+
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+        <div class="n-footer__left">
+          <li class="n-footer__copyright-link">
+                    <a href="https://www.netapp.com/company/legal/copyright/">© 2024 NetApp, Inc.</a>
+          </li>
+        </div>
+        <div class="n-footer__center">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">Conditions d'utilisation</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Déclaration de confidentialité</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Déclaration sur les cookies</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Paramètres des cookies</a>
+            </li>
+          </ul>
+       </div>
+        <div class="n-footer__right">
+              <li class="n-footer__copyright-link">
+                <a target="_self" href="javascript:netapp_mailto()">Envoyer des commentaires à propos de cette page</a>
+              </li>
+        </div>
+     </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/fr-fr/bluexp-backup-recovery/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/fr-fr/bluexp-backup-recovery/js/prism.js'></script>
+      <script type="text/javascript" src='/fr-fr/bluexp-backup-recovery/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/fr-fr/bluexp-backup-recovery/js/ie-tabbed-blocks.js'></script>
+    <script src='/fr-fr/bluexp-backup-recovery/js/ie-sidebar.js'></script>
+  </body>
+
+</html>
