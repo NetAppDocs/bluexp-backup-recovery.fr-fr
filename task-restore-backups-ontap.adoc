@@ -56,16 +56,19 @@ Ce tableau fournit une comparaison des caractéristiques des 2 méthodes.
 | Parcourir et restaurer | Recherche et restauration 
 
 
-| Parcourez une structure de type dossier pour trouver le volume, le dossier ou le fichier dans un seul fichier de sauvegarde | Recherchez un volume, un dossier ou un fichier dans *tous les fichiers de sauvegarde* par nom de volume partiel ou complet, nom de dossier/fichier partiel ou complet, plage de tailles et filtres de recherche supplémentaires 
+| Parcourez une structure de style dossier pour trouver le volume, le dossier ou le fichier dans un seul fichier de sauvegarde. | Recherchez un volume, un dossier ou un fichier dans *tous les fichiers de sauvegarde* par nom de volume partiel ou complet, nom de dossier ou de fichier partiel ou complet, plage de taille et filtres de recherche supplémentaires. 
 
 
 | Ne gère pas la restauration de fichier si le fichier a été supprimé ou renommé et si l'utilisateur ne connaît pas le nom du fichier d'origine | Gère les répertoires nouvellement créés/supprimés/renommés et les fichiers nouvellement créés/supprimés/renommés 
 
 
-| Aucune ressource supplémentaire n'est requise du fournisseur de cloud | Lors d'une restauration à partir du cloud, des ressources supplémentaires de compartiment et de fournisseur de cloud public sont requises par compte 
+| Aucune ressource supplémentaire n'est requise du fournisseur de cloud | Lorsque vous effectuez une restauration à partir du cloud, des ressources supplémentaires de compartiment et de fournisseur de cloud public sont requises par compte. 
 
 
-| Aucun coût supplémentaire n'est requis du fournisseur de cloud | Lors de la restauration à partir du cloud, des coûts supplémentaires sont requis lors de l'analyse de vos sauvegardes et volumes pour obtenir les résultats de la recherche 
+| Aucun coût supplémentaire n'est requis du fournisseur de cloud | Lorsque vous effectuez une restauration à partir du cloud, des coûts supplémentaires sont requis lors de l'analyse de vos sauvegardes et volumes pour obtenir les résultats de la recherche. 
+
+
+| La restauration rapide est prise en charge. | La restauration rapide n'est pas prise en charge. 
 |===
 Ce tableau fournit une liste des opérations de restauration valides en fonction de l'emplacement où se trouvent vos fichiers de sauvegarde.
 
@@ -77,10 +80,10 @@ Ce tableau fournit une liste des opérations de restauration valides en fonction
 |  | *Restaurer le volume* | *Restaurer les fichiers* | *Restaurer le dossier* | *Restaurer le volume* | *Restaurer les fichiers* | *Restaurer le dossier* 
 
 
-| La copie Snapshot | Oui. | Non | Non | Oui. | Oui. | Non 
+| La copie Snapshot | Oui. | Non | Non | Oui. | Oui. | Oui. 
 
 
-| Volume répliqué | Oui. | Non | Non | Oui. | Oui. | Non 
+| Volume répliqué | Oui. | Non | Non | Oui. | Oui. | Oui. 
 
 
 | Fichier de sauvegarde | Oui. | Oui. | Oui. | Oui. | Oui. | Oui. 
@@ -131,32 +134,42 @@ Vous pouvez restaurer des données ONTAP à partir d'un fichier de sauvegarde r�
 
 *Remarque :* vous pouvez restaurer un volume à partir de n'importe quel type de fichier de sauvegarde, mais vous ne pouvez restaurer un dossier ou des fichiers individuels qu'à partir d'un fichier de sauvegarde dans le stockage objet à ce stade.
 
-[cols="33,33,33"]
+[cols="25,25,25,25"]
 |===
-2+| Emplacement du fichier de sauvegarde | Environnement de travail de destination 
+| *À partir du magasin d'objets (sauvegarde)* | *De primaire (instantané)* | *À partir du système secondaire (réplication)* | Vers l'environnement de travail de destination
 
-
-| *Magasin d'objets (sauvegarde)* | *Système secondaire (réplication)* | ifdef::aws[] 
+ifdef::aws[] 
 
 
 | Amazon S3 | Cloud Volumes ONTAP dans AWS
-Système ONTAP sur site | Cloud Volumes ONTAP dans le système ONTAP sur site AWS endif::aws[] ifdef::Azure[] 
+Système ONTAP sur site | Cloud Volumes ONTAP dans AWS
+Système ONTAP sur site
+
+endif::aws[]
 
 
-| Blob d'Azure | Cloud Volumes ONTAP dans Azure
-Système ONTAP sur site | Cloud Volumes ONTAP dans le système ONTAP sur site Azure endif::Azure[] ifdef::gcp[] 
+
+ifdef::azure[] | Blob d'Azure 
 
 
-| Google Cloud Storage | Cloud Volumes ONTAP dans Google
-Système ONTAP sur site | Cloud Volumes ONTAP dans le système ONTAP sur site Google endif::gcp[] 
+| Cloud Volumes ONTAP dans Azure
+Système ONTAP sur site | Cloud Volumes ONTAP dans Azure
+Système ONTAP sur site
+
+endif::azure[]
 
 
-| NetApp StorageGRID | Système ONTAP sur site
-Cloud Volumes ONTAP | Système ONTAP sur site 
+
+ifdef::gcp[] | Google Cloud Storage | Cloud Volumes ONTAP dans Google
+Système ONTAP sur site 
 
 
-| ONTAP S3 | Système ONTAP sur site
-Cloud Volumes ONTAP | Système ONTAP sur site 
+| Cloud Volumes ONTAP dans le système ONTAP sur site Google endif::gcp[] | NetApp StorageGRID | Système ONTAP sur site | Système ONTAP sur site
+Cloud Volumes ONTAP 
+
+
+| Vers le système ONTAP sur site | ONTAP S3 | Système ONTAP sur site | Système ONTAP sur site
+Cloud Volumes ONTAP 
 |===
 ifdef::aws[]
 
@@ -208,7 +221,7 @@ NOTE: Si la version ONTAP de votre système est inférieure à 9.13.1, vous ne p
 
 Lorsque vous restaurez un volume à partir d'un fichier de sauvegarde, la sauvegarde et la restauration BlueXP créent un _nouveau_ volume en utilisant les données de la sauvegarde. Lors de l'utilisation d'une sauvegarde à partir d'un stockage objet, vous pouvez restaurer les données sur un volume de l'environnement de travail d'origine, dans un environnement de travail différent situé dans le même compte cloud que l'environnement de travail source ou sur un système ONTAP sur site.
 
-Lorsque vous restaurez une sauvegarde dans le cloud sur un système Cloud Volumes ONTAP à l'aide d'ONTAP 9.13.0 ou version ultérieure, vous pouvez effectuer une opération de restauration rapide. La restauration rapide est idéale pour les reprises après incident où vous devez fournir un accès à un volume dès que possible. Une restauration rapide restaure les métadonnées du fichier de sauvegarde sur un volume au lieu de restaurer l'intégralité du fichier de sauvegarde. La restauration rapide n'est pas recommandée pour les applications sensibles aux performances ou à la latence, et elle n'est pas prise en charge avec les sauvegardes du stockage d'archives.
+Lors de la restauration d'une sauvegarde cloud sur un système Cloud Volumes ONTAP utilisant ONTAP 9.13.0 ou une version ultérieure ou sur un système ONTAP sur site exécutant ONTAP 9.14.1, vous pouvez effectuer une opération de restauration _rapide. La restauration rapide est idéale pour les reprises après incident où vous devez fournir un accès à un volume dès que possible. Une restauration rapide restaure les métadonnées du fichier de sauvegarde sur un volume au lieu de restaurer l'intégralité du fichier de sauvegarde. La restauration rapide n'est pas recommandée pour les applications sensibles aux performances ou à la latence, et elle n'est pas prise en charge avec les sauvegardes du stockage d'archives.
 
 
 NOTE: La restauration rapide est prise en charge pour les volumes FlexGroup uniquement si le système source à partir duquel la sauvegarde cloud a été créée exécutait ONTAP 9.12.1 ou version ultérieure. De plus, elle n'est prise en charge pour les volumes SnapLock que si le système source exécutait ONTAP 9.11.0 ou une version ultérieure.
@@ -278,7 +291,7 @@ endif::gcp[]
 image:screenshot_restore_new_vol_name.png["Capture d'écran indiquant le nom du nouveau volume à restaurer."]
 
 +
-Lors de la restauration d'une sauvegarde à partir d'un stockage objet vers un système Cloud Volumes ONTAP à l'aide de ONTAP 9.13.0 ou d'une version ultérieure, vous pouvez effectuer une opération de restauration rapide.
+Lors de la restauration d'une sauvegarde à partir d'un stockage objet vers un système Cloud Volumes ONTAP utilisant ONTAP 9.13.0 ou une version ultérieure, ou vers un système ONTAP sur site exécutant ONTAP 9.14.1, vous avez la possibilité d'effectuer une opération de restauration _rapide_.
 
 +
 Et si vous restaurez le volume à partir d'un fichier de sauvegarde résidant sur un niveau de stockage d'archives (disponible à partir de ONTAP 9.10.1), vous pouvez sélectionner la priorité de restauration.
@@ -305,6 +318,15 @@ ifdef::gcp[]
 link:reference-google-backup-tiers.html#restoring-data-from-archival-storage["En savoir plus sur la restauration à partir du stockage d'archivage Google"]. Les fichiers de sauvegarde du niveau de stockage Google Archive sont restaurés presque immédiatement, sans priorité de restauration.
 
 endif::gcp[]
+
+. Cliquez sur *Suivant* pour choisir d'effectuer une restauration normale ou rapide :
++
+image:screenshot_restore_browse_quick_restore.png["Capture d'écran montrant les processus de restauration normaux et rapides."]
+
++
+** *Restauration normale* : utilisez la restauration normale sur les volumes qui exigent des performances élevées. Les volumes ne seront pas disponibles tant que le processus de restauration n'est pas terminé.
+** *Restauration rapide* : les volumes restaurés et les données seront disponibles immédiatement. Ne l'utilisez pas sur des volumes qui exigent des performances élevées car pendant le processus de restauration rapide, l'accès aux données peut être plus lent que d'habitude.
+
 
 . Cliquez sur *Restaurer* et vous revenez au Tableau de bord de restauration pour vérifier la progression de l'opération de restauration.
 
@@ -486,8 +508,6 @@ L'opération de recherche examine toutes les copies Snapshot locales existantes 
 
 Lorsque vous restaurez un volume _complet_ à partir d'un fichier de sauvegarde, la sauvegarde et la restauration BlueXP créent un _nouveau_ volume en utilisant les données de la sauvegarde. Vous pouvez restaurer les données en tant que volume dans l'environnement de travail d'origine, dans un autre environnement de travail situé dans le même compte cloud que l'environnement de travail source ou dans un système ONTAP sur site.
 
-Lorsque vous restaurez une sauvegarde dans le cloud sur un système Cloud Volumes ONTAP à l'aide d'ONTAP 9.13.0 ou version ultérieure, vous pouvez effectuer une opération de restauration rapide. La restauration rapide est idéale pour les reprises après incident où vous devez fournir un accès à un volume dès que possible. Une restauration rapide restaure les métadonnées du fichier de sauvegarde sur un volume au lieu de restaurer l'intégralité du fichier de sauvegarde. La restauration rapide n'est pas recommandée pour les applications sensibles aux performances ou à la latence, et elle n'est pas prise en charge avec les sauvegardes du stockage d'archives.
-
 Vous pouvez restaurer des _dossiers ou des fichiers_ à l'emplacement du volume d'origine, sur un volume différent dans le même environnement de travail, dans un autre environnement de travail qui utilise le même compte cloud ou sur un volume d'un système ONTAP sur site.
 
 Si vous utilisez ONTAP 9.13.0 ou une version ultérieure, vous pouvez restaurer un dossier avec tous les fichiers et sous-dossiers qu'il contient. Lorsque vous utilisez une version de ONTAP antérieure à 9.13.0, seuls les fichiers de ce dossier sont restaurés - aucun sous-dossier, ni fichier dans des sous-dossiers, ne sont restaurés.
@@ -516,7 +536,6 @@ endif::gcp[]
 ====
 * Si le fichier de sauvegarde du stockage objet a été configuré avec la protection DataLock & ransomware, la restauration au niveau des dossiers est prise en charge uniquement si la version de ONTAP est 9.13.1 ou supérieure. Si vous utilisez une version antérieure de ONTAP, vous pouvez restaurer l'intégralité du volume à partir du fichier de sauvegarde, puis accéder au dossier et aux fichiers dont vous avez besoin.
 * Si le fichier de sauvegarde du stockage objet réside dans le stockage d'archives, la restauration au niveau des dossiers est prise en charge uniquement si la version de ONTAP est 9.13.1 ou supérieure. Si vous utilisez une version antérieure de ONTAP, vous pouvez restaurer le dossier à partir d'un fichier de sauvegarde plus récent qui n'a pas été archivé, ou vous pouvez restaurer le volume entier à partir de la sauvegarde archivée, puis accéder au dossier et aux fichiers dont vous avez besoin.
-* La restauration rapide est prise en charge pour les volumes FlexGroup uniquement si le système source à partir duquel la sauvegarde cloud a été créée exécutait ONTAP 9.12.1 ou version ultérieure. La restauration rapide des volumes SnapLock est prise en charge uniquement si le système source à partir duquel la sauvegarde cloud a été créée exécutait ONTAP 9.11.0 ou une version ultérieure. Les volumes FlexVol ne sont pas requis au minimum.
 * La priorité de restauration « élevée » n'est pas prise en charge lors de la restauration de données à partir d'un stockage d'archivage Azure vers des systèmes StorageGRID.
 * La restauration de dossiers n'est actuellement pas prise en charge à partir des volumes du stockage objet ONTAP S3.
 
@@ -761,14 +780,11 @@ image:screenshot_restore_step2_search_restore.png["Capture d'écran montrant com
 
 . Recherchez le fichier de sauvegarde que vous souhaitez utiliser pour restaurer les données et cliquez sur *Restaurer*.
 +
-Notez que les résultats identifient également les copies Snapshot de volume local contenant le fichier dans votre recherche. Vous pouvez effectuer une restauration à partir du fichier de sauvegarde dans le cloud ou de la copie Snapshot.
+Notez que les résultats identifient les copies Snapshot des volumes locaux et les volumes répliqués à distance contenant le fichier dans votre recherche. Vous pouvez effectuer des restaurations à partir du fichier de sauvegarde dans le cloud, de la copie Snapshot ou du volume répliqué.
 
 . Sélectionnez l'emplacement de destination où vous souhaitez restaurer le volume, le dossier ou le(s) fichier(s) et cliquez sur *Restaurer*.
 +
 ** Pour les volumes, vous pouvez sélectionner l'environnement de travail de destination d'origine ou sélectionner un autre environnement de travail. Lors de la restauration d'un volume FlexGroup, vous devrez choisir plusieurs agrégats.
-+
-Lors de la restauration d'une sauvegarde à partir d'un stockage objet vers un système Cloud Volumes ONTAP à l'aide de ONTAP 9.13.0 ou d'une version ultérieure, vous pouvez effectuer une opération de restauration rapide.
-
 ** Pour les dossiers, vous pouvez restaurer l'emplacement d'origine ou sélectionner un autre emplacement, y compris l'environnement de travail, le volume et le dossier.
 ** Pour les fichiers, vous pouvez restaurer l'emplacement d'origine ou sélectionner un autre emplacement, y compris l'environnement de travail, le volume et le dossier. Lorsque vous sélectionnez l'emplacement d'origine, vous pouvez choisir d'écraser le ou les fichiers source ou de créer de nouveaux fichiers.
 +

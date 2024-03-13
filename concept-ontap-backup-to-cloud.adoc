@@ -78,7 +78,7 @@ Voir link:reference-limitations.html#replication-limitations["Limites de la rép
 * Restaurez vos données à un point dans le temps à partir de copies Snapshot locales, de volumes répliqués ou de volumes sauvegardés dans le stockage objet.
 * Restaurez un volume, un dossier ou des fichiers individuels vers le système source ou vers un autre système.
 * Restaurez les données dans un environnement de travail à l'aide d'un autre abonnement/compte ou dans une autre région.
-* Possibilité d'effectuer une « restauration rapide » d'un volume depuis un stockage cloud vers un système Cloud Volumes ONTAP ; idéal pour les situations de reprise d'activité où vous devez fournir un accès à un volume dès que possible.
+* Possibilité d'effectuer une _restauration rapide_ d'un volume depuis le stockage cloud vers un système Cloud Volumes ONTAP ou sur un système sur site ; idéal pour les situations de reprise d'activité où vous devez fournir un accès à un volume dès que possible.
 * Les données sont restaurées au niveau bloc, en plaçant les données directement à l'emplacement que vous spécifiez, tout en préservant les ACL d'origine.
 * Catalogues de fichiers accessibles et consultables pour une sélection simplifiée de dossiers et de fichiers individuels pour la restauration de fichiers uniques.
 
