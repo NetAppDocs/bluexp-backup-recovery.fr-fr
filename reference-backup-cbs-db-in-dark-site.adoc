@@ -14,7 +14,7 @@ summary: 'Lors de l"utilisation de la sauvegarde et de la restauration BlueXP su
 
 
 [role="lead"]
-Lors de l'utilisation de la sauvegarde et de la restauration BlueXP sur un site sans accès à Internet, connu sous le nom de « mode privé », les données de configuration de sauvegarde et de restauration BlueXP sont sauvegardées dans le compartiment StorageGRID ou ONTAP S3 où sont stockées vos sauvegardes. En cas de problème avec le système hôte du connecteur BlueXP, vous pouvez déployer un nouveau connecteur et restaurer les données de sauvegarde et de restauration BlueXP stratégiques.
+Lors de l'utilisation de la sauvegarde et de la restauration BlueXP sur un site sans accès à Internet, connu sous le nom de _mode privé_, les données de configuration de sauvegarde et de restauration BlueXP sont sauvegardées dans le compartiment StorageGRID ou ONTAP S3 où sont stockées vos sauvegardes. En cas de problème avec le système hôte du connecteur BlueXP, vous pouvez déployer un nouveau connecteur et restaurer les données de sauvegarde et de restauration BlueXP stratégiques.
 
 Notez que lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un environnement SaaS où le connecteur BlueXP est déployé dans votre fournisseur cloud ou sur votre propre système hôte disposant d'un accès Internet, toutes les données importantes de configuration de la sauvegarde et de la restauration BlueXP sont sauvegardées et protégées dans le cloud. Si vous rencontrez un problème avec le connecteur, il vous suffit de créer un nouveau connecteur et d'ajouter vos environnements de travail. Les détails de la sauvegarde sont automatiquement restaurés.
 

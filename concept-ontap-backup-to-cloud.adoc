@@ -58,7 +58,7 @@ Si nécessaire, vous pouvez restaurer un _volume_ entier, un _dossier_ ou un ou 
 
 Voir link:reference-limitations.html#replication-limitations["Limites de la réplication"] Pour obtenir la liste des fonctionnalités de réplication indisponibles avec les fonctionnalités de sauvegarde et de restauration BlueXP.
 
-*Fonctions de sauvegarde vers objet :*
+*Fonctions de sauvegarde sur objet :*
 
 * Sauvegardez des copies indépendantes de vos volumes de données dans un stockage objet à faible coût.
 * Appliquer une seule stratégie de sauvegarde à tous les volumes d'un cluster, ou attribuer différentes règles de sauvegarde aux volumes ayant des objectifs de point de restauration uniques.
@@ -78,9 +78,9 @@ Voir link:reference-limitations.html#replication-limitations["Limites de la rép
 * Restaurez vos données à un point dans le temps à partir de copies Snapshot locales, de volumes répliqués ou de volumes sauvegardés dans le stockage objet.
 * Restaurez un volume, un dossier ou des fichiers individuels vers le système source ou vers un autre système.
 * Restaurez les données dans un environnement de travail à l'aide d'un autre abonnement/compte ou dans une autre région.
-* Possibilité d'effectuer une _restauration rapide_ d'un volume depuis le stockage cloud vers un système Cloud Volumes ONTAP ou sur un système sur site ; idéal pour les situations de reprise d'activité où vous devez fournir un accès à un volume dès que possible.
-* Les données sont restaurées au niveau bloc, en plaçant les données directement à l'emplacement que vous spécifiez, tout en préservant les ACL d'origine.
-* Catalogues de fichiers accessibles et consultables pour une sélection simplifiée de dossiers et de fichiers individuels pour la restauration de fichiers uniques.
+* Effectuer une _restauration rapide_ d'un volume du stockage cloud vers un système Cloud Volumes ONTAP ou sur un système sur site ; la solution idéale pour les situations de reprise d'activité où vous devez fournir un accès à un volume dès que possible.
+* Restaurez les données au niveau du bloc, en plaçant les données directement à l'emplacement que vous spécifiez, tout en préservant les listes de contrôle d'accès d'origine.
+* Parcourez et recherchez des catalogues de fichiers pour sélectionner facilement des dossiers et des fichiers individuels pour restaurer des fichiers uniques.
 
 
 
@@ -389,13 +389,23 @@ TIP: La période de conservation pour les sauvegardes de volumes de protection d
 
 === Sauvegarder les paramètres de protection des fichiers
 
-Si votre cluster utilise ONTAP 9.11.1 ou version ultérieure, vous pouvez protéger vos sauvegardes dans le stockage objet contre la suppression et les attaques par ransomware. Chaque stratégie de sauvegarde fournit une section pour _DataLock et protection contre les attaques par ransomware_ qui peut être appliquée à vos fichiers de sauvegarde pendant une période spécifique - la _période de rétention_. _DataLock_ protège vos fichiers de sauvegarde contre leur modification ou leur suppression. _Protection par ransomware_ analyse vos fichiers de sauvegarde pour rechercher la preuve d'une attaque par ransomware lors de la création d'un fichier de sauvegarde, et lorsque les données d'un fichier de sauvegarde sont en cours de restauration.
+Si votre cluster utilise ONTAP 9.11.1 ou version ultérieure, vous pouvez protéger vos sauvegardes dans le stockage objet contre la suppression et les attaques par ransomware. Chaque stratégie de sauvegarde fournit une section pour _DataLock et protection contre les attaques par ransomware_ qui peut être appliquée à vos fichiers de sauvegarde pendant une période spécifique - la _période de rétention_.
+
+* _DataLock_ protège vos fichiers de sauvegarde contre leur modification ou leur suppression.
+* _Protection par ransomware_ analyse vos fichiers de sauvegarde pour rechercher la preuve d'une attaque par ransomware lors de la création d'un fichier de sauvegarde, et lorsque les données d'un fichier de sauvegarde sont en cours de restauration.
+
+
+Les analyses planifiées de la protection contre les ransomware sont activées par défaut. Le paramètre par défaut de la fréquence de balayage est de 7 jours. L'analyse s'effectue uniquement sur la dernière copie Snapshot. Les analyses programmées peuvent être désactivées pour réduire vos coûts. Vous pouvez activer ou désactiver les analyses par ransomware planifiées sur la dernière copie Snapshot à l'aide de l'option de la page Paramètres avancés. Si vous l'activez, les analyses sont effectuées chaque semaine par défaut. Vous pouvez modifier ce planning en jours ou en semaines ou le désactiver, ce qui vous permet d'économiser des coûts.
 
 La période de conservation des sauvegardes est identique à la période de conservation du programme de sauvegarde, plus 14 jours. Par exemple, les _sauvegardes hebdomadaires_ avec _5_ copies conservées verrouillent chaque fichier de sauvegarde pendant 5 semaines. _Monthly_ backups avec _6_ copies conservées verrouilleront chaque fichier de sauvegarde pendant 6 mois.
 
 Le support est actuellement disponible lorsque votre destination de sauvegarde est Amazon S3, Azure Blob ou NetApp StorageGRID. D'autres destinations de fournisseurs de stockage seront ajoutées dans les prochaines versions.
 
-Voir link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["Protection des données par verrouillage et protection contre les ransomwares"^] Pour plus d'informations sur le fonctionnement des fonctionnalités DataLock et de protection contre les attaques par ransomware.
+Pour plus de détails, reportez-vous aux informations suivantes :
+
+* link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["Fonctionnement de DataLock et de la protection contre les ransomware"].
+* link:manage-backup-settings-ontap.html["Comment mettre à jour les options de protection contre les ransomware dans la page Paramètres avancés"].
+
 
 
 TIP: DataLock ne peut pas être activé si vous effectuez le Tiering des sauvegardes sur le stockage d'archivage.

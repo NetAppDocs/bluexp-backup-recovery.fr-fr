@@ -319,7 +319,7 @@ endif::gcp[]
 
 
 
-== Ajoutez une nouvelle règle de sauvegarde dans le cloud
+== Ajoutez une nouvelle stratégie de sauvegarde dans le cloud
 
 Lorsque vous activez la sauvegarde et la restauration BlueXP pour un environnement de travail, tous les volumes que vous sélectionnez initialement sont sauvegardés à l'aide de la règle de sauvegarde par défaut que vous avez définie. Si vous souhaitez attribuer différentes stratégies de sauvegarde à certains volumes ayant des objectifs de point de récupération différents, vous pouvez créer des règles supplémentaires pour ce cluster et les affecter à d'autres volumes.
 

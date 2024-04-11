@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: task-manage-backup-settings-ontap.html 
-keywords: cloud backup, cloud backup service, storage keys, network bandwidth, auto backup, delete yearly snapshot, export snapshots 
-summary: 'Vous pouvez modifier de nombreux paramètres de sauvegarde au niveau du cluster que vous avez définis lors de l"activation de la sauvegarde et de la restauration BlueXP pour chaque système ONTAP. Vous pouvez également modifier certains paramètres appliqués comme paramètres de sauvegarde par défaut. Cela vous permet notamment de modifier les clés de stockage, le taux de transfert des sauvegardes vers le stockage objet ou non, l"exportation des copies Snapshot historiques sous forme de fichiers de sauvegarde, etc.' 
+keywords: cloud backup, cloud backup service, storage keys, network bandwidth, auto backup, delete yearly snapshot, export snapshots, ransomware scans, scans 
+summary: 'Vous pouvez modifier de nombreux paramètres de sauvegarde à objet au niveau du cluster que vous avez définis lors de l"activation de la sauvegarde et de la restauration BlueXP pour chaque système ONTAP. Vous pouvez également modifier certains paramètres appliqués comme paramètres de sauvegarde par défaut. Cela vous permet notamment de modifier les clés de stockage, le taux de transfert des sauvegardes vers le stockage objet ou non, l"exportation des copies Snapshot historiques sous forme de fichiers de sauvegarde, etc. Vous pouvez également activer ou désactiver les analyses anti-ransomware pour votre environnement de travail.' 
 ---
-= Gérez les paramètres de sauvegarde au niveau du cluster
+= Gérez les options de stockage de sauvegarde sur objet dans la page Paramètres avancés
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,23 +14,22 @@ summary: 'Vous pouvez modifier de nombreux paramètres de sauvegarde au niveau d
 
 
 [role="lead"]
-Vous pouvez modifier de nombreux paramètres de sauvegarde au niveau du cluster que vous avez définis lors de l'activation de la sauvegarde et de la restauration BlueXP pour chaque système ONTAP. Vous pouvez également modifier certains paramètres appliqués comme paramètres de sauvegarde par défaut. Cela inclut notamment la modification du taux de transfert des sauvegardes vers le stockage objet, l'exportation ou non des copies Snapshot historiques sous forme de fichiers de sauvegarde.
+Vous pouvez modifier les paramètres de stockage de sauvegarde à objet au niveau du cluster que vous avez définis lors de l'activation de la sauvegarde et de la restauration BlueXP pour chaque système ONTAP à l'aide de la page Paramètres avancés. Vous pouvez également modifier certains paramètres appliqués comme paramètres de sauvegarde par défaut. Cela inclut la modification du taux de transfert des sauvegardes vers le stockage objet, l'exportation ou non des copies Snapshot historiques sous forme de fichiers de sauvegarde, ainsi que l'activation ou la désactivation des analyses par ransomware planifiées pour un environnement en bon état de marche.
 
 
-NOTE: Ces paramètres sont uniquement disponibles pour la sauvegarde vers le stockage objet. Aucun de ces paramètres n'a d'incidence sur vos paramètres de copie Snapshot ou de réplication. Des paramètres de réplication similaires au niveau du cluster pour les instantanés et les réplications seront ajoutés ultérieurement.
+NOTE: Ces paramètres sont uniquement disponibles pour le stockage de sauvegarde sur objet. Aucun de ces paramètres n'a d'incidence sur vos paramètres de copie Snapshot ou de réplication. Des paramètres de réplication similaires au niveau du cluster pour les instantanés et les réplications seront ajoutés ultérieurement.
 
-Les paramètres de sauvegarde au niveau du cluster sont disponibles dans la page _Advanced Settings_.
+Vous pouvez modifier les options suivantes dans la page Paramètres avancés :
 
-L'ensemble des paramètres de sauvegarde que vous pouvez modifier comprend :
-
-* Modification de la bande passante réseau allouée pour charger les sauvegardes dans le stockage objet
+* Modification de la bande passante réseau allouée au téléchargement des sauvegardes vers le stockage objet à l'aide de l'option taux de transfert maximal
 ifdef::aws[]
 
 
 endif::aws[]
 
-* Modification de l'inclusion ou non de copies Snapshot historiques dans vos fichiers de sauvegarde de base initiaux pour les volumes futurs
+* Modification de l'exportation ou non des copies Snapshot historiques sous forme de fichiers de sauvegarde et de leur inclusion dans les fichiers de sauvegarde de base initiaux pour les futurs volumes
 * Modification de la suppression des snapshots « annuels » du système source
+* Activation ou désactivation de l'analyse planifiée des ransomwares pour un environnement opérationnel
 
 
 
@@ -53,11 +52,12 @@ image:screenshot_backup_advanced_settings_button.png["Capture d'écran affichant
 La page _Paramètres avancés_ affiche les paramètres actuels de cet environnement de travail.
 
 +
-image:screenshot_backup_advanced_settings_page.png["Capture d'écran présentant les valeurs des paramètres de sauvegarde avancés pour un environnement de travail spécifique."]
+image:screenshot_backup_advanced_settings_page2.png["Capture d'écran présentant les valeurs des paramètres de sauvegarde avancés pour un environnement de travail spécifique."]
+
+. Développez l'option et effectuez la modification.
 
 
-
-Si vous devez apporter des modifications, développez simplement l'option et apportez les modifications nécessaires. Toutes les opérations de sauvegarde après la modification utiliseront les nouvelles valeurs.
+Toutes les opérations de sauvegarde après la modification utiliseront les nouvelles valeurs.
 
 Certaines options ne sont plus disponibles en fonction de la version de ONTAP sur le cluster source et en fonction du fournisseur cloud où résident les sauvegardes.
 
@@ -65,11 +65,19 @@ Certaines options ne sont plus disponibles en fonction de la version de ONTAP su
 
 == Modifiez la bande passante réseau disponible pour charger les sauvegardes dans le stockage objet
 
-Lorsque vous activez la sauvegarde et la restauration BlueXP pour un environnement de travail, ONTAP peut utiliser par défaut une quantité illimitée de bande passante pour transférer les données de sauvegarde des volumes de l'environnement de travail vers le stockage objet. Si vous remarquez que le trafic de sauvegarde affecte les charges de travail normales des utilisateurs, vous pouvez limiter la quantité de bande passante réseau utilisée pendant le transfert. Vous pouvez choisir une valeur comprise entre 1 et 1,000 Mbit/s comme vitesse de transfert maximale.
+Lorsque vous activez la sauvegarde et la restauration BlueXP pour un environnement de travail, ONTAP peut utiliser par défaut une quantité illimitée de bande passante pour transférer les données de sauvegarde des volumes de l'environnement de travail vers le stockage objet. Si vous remarquez que le trafic de sauvegarde affecte les charges de travail utilisateur normales, vous pouvez limiter la quantité de bande passante réseau utilisée pendant le transfert à l'aide de l'option débit de transfert maximal de la page Paramètres avancés.
 
+.Étapes
+. Dans l'onglet *volumes*, sélectionnez *Paramètres de sauvegarde*.
+. Dans la page _Backup Settings_, cliquez sur image:screenshot_horizontal_more_button.gif["Plus d'icône"] Pour l'environnement de travail et sélectionnez *Paramètres avancés*.
+. Dans la page Paramètres avancés, développez la section *taux de transfert max*.
++
 image:screenshot_backup_edit_transfer_rate.png["Capture d'écran de l'entrée de taux de transfert maximum dans la page Paramètres avancés."]
 
-Sélectionnez le bouton radio *Limited* et saisissez la bande passante maximale utilisable, ou sélectionnez *Unlimited* pour indiquer qu'il n'y a pas de limite.
+. Choisissez une valeur comprise entre 1 et 1,000 Mbit/s comme taux de transfert maximal.
+. Sélectionnez le bouton radio *Limited* et saisissez la bande passante maximale utilisable, ou sélectionnez *Unlimited* pour indiquer qu'il n'y a pas de limite.
+. Sélectionnez *appliquer*.
+
 
 Ce paramètre n'affecte pas la bande passante allouée à d'autres relations de réplication qui peuvent être configurées pour des volumes dans l'environnement de travail.
 
@@ -85,9 +93,16 @@ S'il existe des copies Snapshot locales pour les volumes correspondant au libell
 
 Notez que cette option s'applique uniquement aux nouveaux fichiers de sauvegarde pour les nouveaux volumes de lecture/écriture et qu'elle n'est pas prise en charge avec les volumes DP (protection des données).
 
+.Étapes
+. Dans l'onglet *volumes*, sélectionnez *Paramètres de sauvegarde*.
+. Dans la page _Backup Settings_, cliquez sur image:screenshot_horizontal_more_button.gif["Plus d'icône"] Pour l'environnement de travail et sélectionnez *Paramètres avancés*.
+. Dans la page Paramètres avancés, développez la section *Exporter les copies Snapshot existantes*.
++
 image:screenshot_backup_edit_export_snapshots.png["Capture d'écran de l'entrée Exporter des copies Snapshot existantes dans la page Paramètres avancés."]
 
-Il vous suffit d'indiquer si vous souhaitez exporter les copies Snapshot existantes, puis de cliquer sur *appliquer*.
+. Indiquez si vous souhaitez exporter les copies Snapshot existantes.
+. Sélectionnez *appliquer*.
+
 
 
 
@@ -95,6 +110,38 @@ Il vous suffit d'indiquer si vous souhaitez exporter les copies Snapshot existan
 
 Lorsque vous sélectionnez l'étiquette de sauvegarde « annuelle » pour une règle de sauvegarde pour l'un de vos volumes, la copie Snapshot créée est très volumineuse. Par défaut, ces snapshots annuels sont supprimés automatiquement du système source après leur transfert vers le stockage objet. Vous pouvez modifier ce comportement par défaut à partir de la section Suppression annuelle de l'instantané.
 
+.Étapes
+. Dans l'onglet *volumes*, sélectionnez *Paramètres de sauvegarde*.
+. Dans la page _Backup Settings_, cliquez sur image:screenshot_horizontal_more_button.gif["Plus d'icône"] Pour l'environnement de travail et sélectionnez *Paramètres avancés*.
+. Dans la page Paramètres avancés, développez la section *Suppression annuelle des instantanés*.
++
 image:screenshot_backup_edit_yearly_snap_delete.png["Capture d'écran de l'entrée instantanés annuels dans la page Paramètres avancés."]
 
-Sélectionnez *Disabled* et cliquez sur *Apply* si vous souhaitez conserver les instantanés annuels sur le système source.
+. Sélectionnez *Désactivé* pour conserver les instantanés annuels sur le système source.
+. Sélectionnez *appliquer*.
+
+
+
+
+== Activez ou désactivez les analyses par ransomware planifiées
+
+Les analyses planifiées de la protection contre les ransomware sont activées par défaut. Le paramètre par défaut de la fréquence de balayage est de 7 jours. L'analyse s'effectue uniquement sur la dernière copie Snapshot. Vous pouvez activer ou désactiver les analyses par ransomware planifiées sur la dernière copie Snapshot à l'aide de l'option de la page Paramètres avancés. Si vous l'activez, les acquisitions sont effectuées tous les 7 jours par défaut. Vous pouvez modifier ce planning en jours ou en semaines ou le désactiver, ce qui vous permet d'économiser des coûts.
+
+
+TIP: L'activation des analyses par ransomware entraîne des frais supplémentaires, selon le fournisseur cloud.
+
+Les analyses par ransomware planifiées s'exécutent uniquement sur la dernière copie Snapshot.
+
+Si les analyses par ransomware planifiées sont désactivées, vous pouvez toujours effectuer des analyses à la demande et le scan pendant une opération de restauration sera toujours effectué.
+
+Reportez-vous à la section link:task-create-policies-ontap.html["Gestion des règles"] pour en savoir plus sur la gestion des règles qui implémentent la détection des ransomware.
+
+.Étapes
+. Dans l'onglet *volumes*, sélectionnez *Paramètres de sauvegarde*.
+. Dans la page _Backup Settings_, cliquez sur image:screenshot_horizontal_more_button.gif["Plus d'icône"] Pour l'environnement de travail et sélectionnez *Paramètres avancés*.
+. Dans la page Paramètres avancés, développez la section *ransomware scan*.
+. Sélectionnez *analyse par ransomware planifiée*.
+. Si vous le souhaitez, modifiez l'analyse par défaut de chaque semaine en jours ou semaines.
+. Définissez la fréquence en jours ou en semaines de l'analyse.
+. Sélectionnez *appliquer*.
+

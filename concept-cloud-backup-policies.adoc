@@ -4,7 +4,7 @@ permalink: concept-cloud-backup-policies.html
 keywords: backing up, back up, backup, back up volumes, cloud backup, backup policies, policies, schedules 
 summary: Avec la sauvegarde et la restauration BlueXP, vous pouvez créer des règles de sauvegarde avec plusieurs paramètres de configuration pour vos systèmes ONTAP et Cloud Volumes ONTAP sur site. 
 ---
-= Paramètres de configuration des règles de sauvegarde et de restauration BlueXP
+= Options de règle de sauvegarde sur objet
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,14 +14,14 @@ summary: Avec la sauvegarde et la restauration BlueXP, vous pouvez créer des r�
 
 
 [role="lead"]
-Avec la sauvegarde et la restauration BlueXP, vous pouvez créer des règles de sauvegarde avec plusieurs paramètres de configuration pour vos systèmes ONTAP et Cloud Volumes ONTAP sur site.
+Avec la sauvegarde et la restauration BlueXP, vous pouvez créer des règles de sauvegarde avec plusieurs paramètres pour vos systèmes ONTAP et Cloud Volumes ONTAP sur site.
 
 
-NOTE: Ces paramètres de règles sont uniquement pertinents pour la sauvegarde vers le stockage objet. Aucun de ces paramètres n'affecte vos règles de réplication ou de copie Snapshot. Des paramètres de stratégie similaires pour les instantanés et les réplications seront ajoutés ultérieurement.
+NOTE: Ces paramètres de règles s'appliquent uniquement au stockage de sauvegarde dans un stockage objet. Aucun de ces paramètres n'affecte vos règles de réplication ou de copie Snapshot. Des paramètres de stratégie similaires pour les instantanés et les réplications seront ajoutés ultérieurement.
 
 
 
-== Planifications de sauvegarde
+== Options de planning de sauvegarde
 
 La sauvegarde et la restauration BlueXP vous permettent de créer plusieurs règles de sauvegarde avec des calendriers uniques pour chaque environnement de travail (cluster). Vous pouvez attribuer différentes stratégies de sauvegarde à des volumes ayant différents objectifs de point de récupération (RPO).
 
@@ -52,7 +52,7 @@ Notez que les sauvegardes annuelles sont automatiquement supprimées du système
 
 
 
-== Protection des données par verrouillage et protection contre les ransomwares
+== Options de protection DataLock et anti-ransomware
 
 La sauvegarde et la restauration BlueXP prennent en charge DataLock et la protection contre les ransomwares pour vos sauvegardes de volume. Ces fonctionnalités vous permettent de verrouiller vos fichiers de sauvegarde et de les analyser afin de détecter un ransomware possible sur les fichiers de sauvegarde. Il s'agit d'un paramètre facultatif que vous pouvez définir dans vos stratégies de sauvegarde lorsque vous souhaitez bénéficier d'une protection supplémentaire pour vos sauvegardes de volume d'un cluster.
 
@@ -64,8 +64,8 @@ Cette fonction n'assure pas la protection de vos volumes source, uniquement pour
 
 [CAUTION]
 ====
-* Si vous prévoyez d'utiliser DataLock et une protection contre les ransomware, vous devez l'activer lors de la création de votre première stratégie de sauvegarde et de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster.
-* Il est impossible de désactiver le verrouillage des données et la protection contre les attaques par ransomware pour un cluster après sa configuration. N'activez pas cette fonctionnalité sur un cluster pour l'essayer.
+* Si vous prévoyez d'utiliser DataLock et une protection contre les ransomware, vous pouvez l'activer lors de la création de votre première stratégie de sauvegarde et de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster. Vous pouvez ensuite l'activer à l'aide des paramètres avancés de sauvegarde et de restauration BlueXP.
+* Une fois configuré pour réduire les coûts, DataLock et la protection contre les ransomware peuvent être désactivés pour un cluster.
 * Lorsque BlueXP analyse un fichier de sauvegarde pour détecter les ransomwares lors de la restauration des données de volume, vous encourez des coûts de sortie supplémentaires de votre fournisseur de cloud pour accéder au contenu du fichier de sauvegarde.
 
 
@@ -96,7 +96,10 @@ La protection par ransomware analyse vos fichiers de sauvegarde pour rechercher 
 
 Les analyses par ransomware se produisent à 3 points lors du processus de sauvegarde et de restauration :
 
-* Lorsqu'un fichier de sauvegarde est créé
+* Lorsqu'un fichier de sauvegarde est créé.
++
+Vous pouvez également activer ou désactiver les analyses par ransomware planifiées.
+
 +
 Le scan n'est pas effectué sur le fichier de sauvegarde lors de l'écriture initiale sur le stockage cloud, mais lorsque le fichier de sauvegarde *Next* est écrit. Par exemple, si vous avez défini un programme de sauvegarde hebdomadaire pour mardi, le mardi 14, une sauvegarde est créée. Puis, mardi, une nouvelle sauvegarde est créée. Le scan par ransomware est alors exécuté sur le fichier de sauvegarde depuis le 14.
 
@@ -112,11 +115,15 @@ Vous pouvez à tout moment exécuter une analyse de protection par ransomware à
 
 
 
-=== Paramètres de verrouillage des données et de protection contre les ransomwares
+=== Options de protection DataLock et anti-ransomware
 
 Chaque stratégie de sauvegarde fournit une section pour _DataLock et protection contre les attaques par ransomware_ que vous pouvez appliquer à vos fichiers de sauvegarde.
 
 image:screenshot_datalock_ransomware_settings.png["Capture d'écran des paramètres DataLock et protection contre les attaques par ransomware pour AWS, Azure et StorageGRID lors de la création d'une stratégie de sauvegarde."]
+
+Les analyses planifiées de la protection contre les ransomware sont activées par défaut. Le paramètre par défaut de la fréquence de balayage est de 7 jours. L'analyse s'effectue uniquement sur la dernière copie Snapshot. Vous pouvez activer ou désactiver les analyses par ransomware planifiées sur la dernière copie Snapshot à l'aide de l'option de la page Paramètres avancés. Si vous l'activez, les acquisitions sont effectuées tous les 7 jours par défaut. Vous pouvez modifier ce planning en jours ou en semaines ou le désactiver, ce qui vous permet d'économiser des coûts.
+
+Reportez-vous à la section link:manage-backup-settings-ontap.html["Comment mettre à jour les options de protection contre les ransomware dans la page Paramètres avancés"].
 
 Vous pouvez choisir parmi les paramètres suivants pour chaque stratégie de sauvegarde :
 
@@ -209,6 +216,9 @@ ifdef::aws[]
 ** Ce connecteur peut être déployé dans le cloud ou sur site
 ** Les autorisations S3 suivantes doivent faire partie du rôle IAM qui fournit au connecteur les autorisations. Ils résident dans la section « backupS3Policy » pour la ressource « arn:aws:s3::NetApp-backup-* » :
 +
+.Autorisations AWS S3
+[%collapsible]
+====
 *** s3:GetObjectVersionTagging
 *** s3:GetBuckeObjectLockConfiguration
 *** s3:GetObjectVersionAcl
@@ -235,10 +245,11 @@ ifdef::aws[]
 *** s3:PutObjectRetention
 *** s3:GetBucketLocation
 *** s3:GetObjectVersion
+
+
+====
 +
 https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-aws.html["Affichez le format JSON complet de la règle dans laquelle vous pouvez copier et coller les autorisations requises"^].
-
-
 
 
 
@@ -265,6 +276,9 @@ endif::azure[]
 ** Le connecteur doit être déployé sur votre site (il peut être installé sur un site avec ou sans accès Internet)
 ** Les autorisations S3 suivantes doivent faire partie du rôle IAM qui fournit au connecteur des autorisations :
 +
+.Autorisations StorageGRID S3
+[%collapsible]
+====
 *** s3:GetObjectVersionTagging
 *** s3:GetBuckeObjectLockConfiguration
 *** s3:GetObjectVersionAcl
@@ -292,6 +306,7 @@ endif::azure[]
 *** s3:GetObjectVersion
 
 
+====
 
 
 
@@ -304,13 +319,13 @@ endif::azure[]
 * L'option DataLock que vous sélectionnez lors de l'activation de la sauvegarde et de la restauration BlueXP doit être utilisée pour toutes les stratégies de sauvegarde de ce cluster.
 * Vous ne pouvez pas utiliser plusieurs modes DataLock sur un même cluster.
 * Si vous activez DataLock, toutes les sauvegardes de volume seront verrouillées. Vous ne pouvez pas combiner des sauvegardes de volume verrouillées et non verrouillées pour un même cluster.
-* La protection des données et des attaques par ransomware est applicable pour les nouvelles sauvegardes de volumes grâce à une stratégie de sauvegarde avec DataLock et protection contre les attaques par ransomware activées. Vous ne pouvez pas activer cette fonctionnalité après l'activation de la sauvegarde et de la restauration BlueXP.
+* La protection des données et des attaques par ransomware est applicable pour les nouvelles sauvegardes de volumes grâce à une stratégie de sauvegarde avec DataLock et protection contre les attaques par ransomware activées. Vous pouvez ultérieurement activer ou désactiver cette fonction à l'aide de l'option Paramètres avancés.
 * Les volumes FlexGroup peuvent utiliser DataLock et la protection contre les ransomware uniquement avec ONTAP 9.13.1 ou version ultérieure.
 
 
 
 
-== Paramètres de stockage d'archivage
+== Options de stockage d'archives
 
 Lorsque vous utilisez le stockage cloud AWS, Azure ou Google, vous pouvez déplacer les fichiers de sauvegarde plus anciens vers un Tier d'accès ou une classe de stockage d'archivage moins coûteux au bout d'un certain nombre de jours. Vous pouvez également choisir d'envoyer immédiatement vos fichiers de sauvegarde vers le système de stockage d'archivage sans être écrits sur le stockage cloud standard. Il vous suffit d'entrer *0* comme "Archive après jours" pour envoyer votre fichier de sauvegarde directement au stockage d'archives. Cette fonctionnalité est particulièrement utile pour les utilisateurs qui ont rarement besoin d'accéder aux données issues de sauvegardes cloud ou qui remplacent une solution de sauvegarde sur bande.
 

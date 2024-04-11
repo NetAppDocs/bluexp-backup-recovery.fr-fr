@@ -1,0 +1,138 @@
+---
+indexpage:
+  title: Documentation sur la sauvegarde et la restauration BlueXP
+  summary: Le service de sauvegarde et de restauration BlueXP assure une protection
+    des données efficace, sécurisée et économique pour les données NetApp ONTAP, les
+    volumes persistants Kubernetes, les bases de données et les machines virtuelles
+    (VM), à la fois sur site et dans le cloud.
+  keywords: bluexp, bluexp backup recovery, ontap, kubernetes, virtual machines, vm,
+    on-premises, data protection
+  lead: Le service de sauvegarde et de restauration BlueXP assure une protection des
+    données efficace, sécurisée et économique pour les données NetApp ONTAP, les volumes
+    persistants Kubernetes, les bases de données et les machines virtuelles, sur site
+    et dans le cloud.
+  tiles:
+  - title: Commencez
+    links:
+    - title: Découvrez la sauvegarde et la restauration BlueXP
+      url: concept-backup-to-cloud.html
+    - title: Quoi de neuf
+      url: whats-new.html
+    - title: Configuration des licences
+      url: task-licensing-cloud-backup.html
+    - title: Surveiller l'état des tâches de sauvegarde et de restauration
+      url: task-monitor-backup-jobs.html
+    - title: Créez des rapports sur la couverture de la protection des données
+      url: task-report-inventory.html
+  - title: Sauvegardez les données ONTAP dans le cloud
+    links:
+    - title: Sauvegarde d'Cloud Volumes ONTAP dans Amazon S3
+      url: task-backup-to-s3.html
+      flavor: aws
+    - title: Sauvegarde d'Cloud Volumes ONTAP dans Azure Blob
+      url: task-backup-to-azure.html
+      flavor: azure
+    - title: Sauvegarde de Cloud Volumes ONTAP dans Google Cloud
+      url: task-backup-to-gcp.html
+      flavor: gcp
+    - title: Sauvegarde d'ONTAP sur site dans Amazon S3
+      url: task-backup-onprem-to-aws.html
+      flavor: aws
+    - title: Sauvegarde d'ONTAP sur site dans Azure Blob
+      url: task-backup-onprem-to-azure.html
+      flavor: azure
+    - title: Sauvegarde d'un système ONTAP sur site dans Google Cloud
+      url: task-backup-onprem-to-gcp.html
+      flavor: gcp
+    - title: Sauvegarde d'ONTAP sur site dans ONTAP S3
+      url: task-backup-onprem-to-ontap-s3.html
+    - title: Sauvegarde du système ONTAP sur site dans StorageGRID
+      url: task-backup-onprem-private-cloud.html
+  - title: Gérer les fichiers de sauvegarde ONTAP
+    links:
+    - title: Gérez les sauvegardes de vos systèmes ONTAP
+      url: task-manage-backups-ontap.html
+    - title: Gérez les règles des volumes ONTAP
+      url: task-create-policies-ontap.html
+    - title: Options de règles de sauvegarde vers objet (DataLock et protection contre
+        les ransomware)
+      url: concept-cloud-backup-policies.html
+    - title: Gérez les options de sauvegarde sur objet dans Paramètres avancés
+      url: task-manage-backup-settings-ontap.html
+    - title: Gérer les relations de réplication
+      url: task-manage-backups-ontap.html#manage-the-replication-relationship-with-the-source-volume
+  - title: Sauvegardez les données d'applications dans le cloud
+    links:
+    - title: Sauvegardez les données des applications sur site dans Amazon Web Services
+      flavor: aws
+      url: task-backup-app-data-to-aws.html
+    - title: Sauvegardez les données applicatives sur site dans Microsoft Azure
+      flavor: azure
+      url: task-backup-app-data-to-azure.html
+    - title: Sauvegardez les données des applications sur site dans Google Cloud
+      flavor: gcp
+      url: task-backup-app-data-to-gcp.html
+    - title: Sauvegardez les données applicatives sur site dans StorageGRID
+      url: task-backup-app-data-to-storagegrid.html
+    - title: Sauvegardez une base de données Oracle cloud native
+      url: task-backup-cloud-native-oracle-data.html
+    - title: Sauvegarde de la base de données SAP HANA cloud native
+      flavor: azure
+      url: task-backup-cloud-native-sap-hana-data.html
+    - title: Sauvegardez votre base de données SQL Server cloud native
+      url: task-backup-cloud-native-sql-data.html
+  - title: Sauvegardez les datastores dans le cloud
+    links:
+    - title: Sauvegarde des datastores dans Amazon Web Services
+      flavor: aws
+      url: task-backup-vm-data-to-aws.html
+    - title: Sauvegarde des datastores dans Microsoft Azure
+      flavor: azure
+      url: task-backup-vm-data-to-azure.html
+    - title: Sauvegarde des datastores dans Google Cloud Platform
+      flavor: gcp
+      url: task-backup-vm-data-to-gcp.html
+    - title: Sauvegarde des datastores sur StorageGRID
+      url: task-backup-vm-data-to-storagegrid.html
+  - title: Restaurez les données depuis le cloud
+    links:
+    - title: Restaurez les données du volume ONTAP
+      url: task-restore-backups-ontap.html
+    - title: Restaurez les données des applications Oracle sur site
+      url: task-restore-oracle-data.html
+    - title: Restaurez les données d'applications SQL Server sur site
+      url: task-restore-sql-data.html
+    - title: Restaurez les données des applications Oracle cloud natives
+      url: task-restore-cloud-native-oracle-data.html
+    - title: Restaurez les données des applications SAP HANA cloud natives
+      flavor: azure
+      url: task-restore-cloud-native-sap-hana-data.html
+    - title: Restaurez des données SQL Server natives du cloud
+      url: task-restore-cloud-native-sql-data.html
+    - title: Restaurer les données des machines virtuelles
+      url: task-restore-vm-data.html
+    - title: Restaurez les données de volume Kubernetes
+      url: task-restore-backups-kubernetes.html
+  - title: Sauvegardez les données Kubernetes dans le cloud
+    links:
+    - title: Sauvegardez le cluster Kubernetes sur Amazon S3
+      url: task-backup-kubernetes-to-s3.html
+      flavor: aws
+    - title: Sauvegarde du cluster Kubernetes dans Azure Blob
+      url: task-backup-kubernetes-to-azure.html
+      flavor: azure
+    - title: Sauvegarde du cluster Kubernetes dans Google Cloud
+      url: task-backup-kubernetes-to-gcp.html
+      flavor: gcp
+  - title: Blogs et communauté
+    links:
+    - title: Communauté NetApp
+      url: https://community.netapp.com/t5/Public-Cloud-Services/ct-p/CDS
+    - title: Blogs sur la sauvegarde et la restauration BlueXP
+      url: https://bluexp.netapp.com/blog/topic/cloud-backup
+    - title: Utilisations de la sauvegarde et de la restauration BlueXP
+      url: https://bluexp.netapp.com/cloud-backup
+    - title: Vidéos sur la sauvegarde et la restauration BlueXP
+      url: https://youtube.com/playlist?list=PLdXI3bZJEw7modoLQEVUHoQ8DJyVk_1wU
+    - title: Webinaires BlueXP
+      url: https://bluexp.netapp.com/events

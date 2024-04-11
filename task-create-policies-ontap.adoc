@@ -20,7 +20,7 @@ Lorsque vous activez le service de sauvegarde et de restauration de vos volumes 
 
 Pour en savoir plus sur les règles de sauvegarde par défaut fournies, reportez-vous à la section link:concept-protection-journey.html["Planifiez votre parcours en matière de protection"].
 
-La sauvegarde et la restauration BlueXP proposent trois types de sauvegarde des données ONTAP : copies Snapshot, réplications et sauvegardes vers le stockage objet. Leurs règles résident à différents emplacements en raison de l'architecture que vous utilisez et du type de sauvegarde :
+La sauvegarde et la restauration BlueXP proposent trois types de sauvegarde des données ONTAP : copies Snapshot, réplications et sauvegardes vers le stockage objet. Leurs règles résident à différents emplacements en fonction de l'architecture que vous utilisez et du type de sauvegarde :
 
 [cols="25,25,25,25"]
 |===
@@ -62,7 +62,18 @@ Les règles relatives aux snapshots sont affichées par défaut.
 
 
 
-== Créez une règle Snapshot avant de lancer la copie Snapshot
+== Création de règles
+
+Vous pouvez créer des règles qui régissent vos copies Snapshot, réplications et sauvegardes sur le stockage objet :
+
+* <<Créez une règle Snapshot avant de lancer la copie Snapshot>>
+* <<Créez une règle de réplication avant de lancer la réplication>>
+* <<Créez une règle de stockage objet pour la sauvegarde avant d'initier la sauvegarde>>
+
+
+
+
+=== Créez une règle Snapshot avant de lancer la copie Snapshot
 
 Une partie de votre stratégie 3-2-1 implique la création d'une copie Snapshot du volume sur le système de stockage *principal*.
 
@@ -88,9 +99,7 @@ La page gestion des polices s'affiche.
 . Sélectionnez *Créer*.
 
 
-
-
-=== Exemple de règle Snapshot utilisant une architecture en cascade
+*Exemple de stratégie Snapshot utilisant une architecture en cascade*
 
 Dans cet exemple, une politique Snapshot est créée avec deux clusters :
 
@@ -112,7 +121,7 @@ Dans cet exemple, une politique Snapshot est créée avec deux clusters :
 
 
 
-== Créez une règle de réplication avant de lancer la réplication
+=== Créez une règle de réplication avant de lancer la réplication
 
 Votre stratégie 3-2-1 peut inclure la réplication d'un volume sur un système de stockage différent. La règle de réplication réside sur le système de stockage *secondaire*.
 
@@ -126,7 +135,7 @@ Votre stratégie 3-2-1 peut inclure la réplication d'un volume sur un système 
 
 
 
-== Créez une règle de stockage objet pour la sauvegarde avant d'initier la sauvegarde
+=== Créez une règle de stockage objet pour la sauvegarde avant d'initier la sauvegarde
 
 Votre stratégie 3-2-1 peut inclure la sauvegarde d'un volume dans le stockage objet.
 
