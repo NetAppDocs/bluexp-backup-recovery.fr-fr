@@ -598,9 +598,7 @@ Pour plus d'informations sur ces architectures, reportez-vous à la section link
 
 TIP: Pour créer une stratégie personnalisée avant d'activer la copie Snapshot, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
 
-+
-Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
-
+. Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
 +
 ** Entrez le nom de la règle.
 ** Sélectionnez jusqu'à 5 programmes, généralement de fréquences différentes.
@@ -608,17 +606,13 @@ Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et pr
 *** Pour les règles de sauvegarde sur objet, définissez les paramètres DataLock et de protection contre les ransomware. Pour plus d'informations sur DataLock et la protection contre les ransomware, reportez-vous à link:concept-cloud-backup-policies.html["Paramètres de la règle de sauvegarde sur objet"].
 
 
+** Sélectionnez *Créer*.
 
 
-
-
-* Sélectionnez *Créer*.
+. *Réplication* : définissez les options suivantes :
 +
-.. *Réplication* : définissez les options suivantes :
-
-
-* *Cible de réplication* : sélectionnez l'environnement de travail de destination et le SVM. Si vous le souhaitez, sélectionnez le ou les agrégats de destination, ainsi que le préfixe ou le suffixe à ajouter au nom du volume répliqué.
-* *Règle de réplication* : choisissez une règle de réplication existante ou créez une règle.
+** *Cible de réplication* : sélectionnez l'environnement de travail de destination et le SVM. Si vous le souhaitez, sélectionnez le ou les agrégats de destination, ainsi que le préfixe ou le suffixe à ajouter au nom du volume répliqué.
+** *Règle de réplication* : choisissez une règle de réplication existante ou créez une règle.
 +
 
 TIP: Pour créer une stratégie personnalisée avant d'activer la réplication, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
@@ -627,33 +621,36 @@ TIP: Pour créer une stratégie personnalisée avant d'activer la réplication, 
 Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
 
 +
-** Entrez le nom de la règle.
-** Sélectionnez jusqu'à 5 programmes, généralement de fréquences différentes.
-** Sélectionnez *Créer*.
+*** Entrez le nom de la règle.
+*** Sélectionnez jusqu'à 5 programmes, généralement de fréquences différentes.
+*** Sélectionnez *Créer*.
+
+
+
+
+. *Sauvegarder dans l'objet* : si vous avez sélectionné *Sauvegarder*, définissez les options suivantes :
 +
-... *Sauvegarder dans l'objet* : si vous avez sélectionné *Sauvegarder*, définissez les options suivantes :
-
-
-
-
-* *Fournisseur* : sélectionnez *Amazon Web Services*.
-* *Paramètres du fournisseur* : saisissez les détails du fournisseur et la région AWS dans laquelle les sauvegardes seront stockées.
+** *Fournisseur* : sélectionnez *Amazon Web Services*.
+** *Paramètres du fournisseur* : saisissez les détails du fournisseur et la région AWS dans laquelle les sauvegardes seront stockées.
 +
 La clé d'accès et la clé secrète sont destinées à l'utilisateur IAM que vous avez créé pour donner à l'utilisateur ONTAP l'accès au compartiment S3.
 
-* *Bucket* : choisissez un compartiment S3 existant ou créez-en un nouveau. Reportez-vous à la section https://docs.netapp.com/us-en/bluexp-s3-storage/task-add-s3-bucket.html["Ajout de compartiments S3"^].
-* *Clé de chiffrement* : si vous avez créé un nouveau compartiment S3, entrez les informations de clé de chiffrement qui vous ont été fournies par le fournisseur. Vous pouvez choisir d'utiliser les clés de chiffrement Amazon S3 par défaut ou de gérer le chiffrement de vos données à partir de votre compte AWS.
+** *Bucket* : choisissez un compartiment S3 existant ou créez-en un nouveau. Reportez-vous à la section https://docs.netapp.com/us-en/bluexp-s3-storage/task-add-s3-bucket.html["Ajout de compartiments S3"^].
+** *Clé de chiffrement* : si vous avez créé un nouveau compartiment S3, entrez les informations de clé de chiffrement qui vous ont été fournies par le fournisseur. Vous pouvez choisir d'utiliser les clés de chiffrement Amazon S3 par défaut ou de gérer le chiffrement de vos données à partir de votre compte AWS.
+
+
 +
 
 NOTE: Si vous avez choisi un compartiment existant, les informations de chiffrement sont déjà disponibles. Vous n'avez donc pas besoin de le saisir maintenant.
 
-* *Mise en réseau* : choisissez l'IPspace et si vous allez utiliser un terminal privé. Le point final privé est désactivé par défaut.
 +
-.. L'IPspace dans le cluster ONTAP où les volumes à sauvegarder résident. Les LIF intercluster pour cet IPspace doivent avoir un accès Internet sortant.
-.. Vous pouvez également choisir d'utiliser AWS PrivateLink que vous avez configuré précédemment. https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html["Pour plus d'informations sur l'utilisation d'AWS PrivateLink pour Amazon S3, reportez-vous à la section"^].
+** *Mise en réseau* : choisissez l'IPspace et si vous allez utiliser un terminal privé. Le point final privé est désactivé par défaut.
++
+... L'IPspace dans le cluster ONTAP où les volumes à sauvegarder résident. Les LIF intercluster pour cet IPspace doivent avoir un accès Internet sortant.
+... Vous pouvez également choisir d'utiliser AWS PrivateLink que vous avez configuré précédemment. https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html["Pour plus d'informations sur l'utilisation d'AWS PrivateLink pour Amazon S3, reportez-vous à la section"^].
 
 
-* *Politique de sauvegarde* : sélectionnez une stratégie de sauvegarde existante ou créez une stratégie.
+** *Politique de sauvegarde* : sélectionnez une stratégie de sauvegarde existante ou créez une stratégie.
 +
 
 TIP: Pour créer une stratégie personnalisée avant d'activer la sauvegarde, reportez-vous à la section link:task-create-policies-ontap.html["Création d'une règle"].
@@ -662,16 +659,15 @@ TIP: Pour créer une stratégie personnalisée avant d'activer la sauvegarde, re
 Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
 
 +
-** Entrez le nom de la règle.
-** Sélectionnez jusqu'à 5 programmes, généralement de fréquences différentes.
-** Sélectionnez *Créer*.
+*** Entrez le nom de la règle.
+*** Sélectionnez jusqu'à 5 programmes, généralement de fréquences différentes.
+*** Sélectionnez *Créer*.
 
 
-* *Exporter les copies Snapshot existantes vers le stockage objet en tant que copies de sauvegarde* : s'il existe des copies Snapshot locales pour les volumes de cet environnement de travail qui correspondent au libellé du programme de sauvegarde que vous venez de sélectionner pour cet environnement de travail (par exemple, tous les jours, toutes les semaines, etc.), cette invite supplémentaire s'affiche. Cochez cette case pour que tous les snapshots historiques soient copiés dans le stockage objet en tant que fichiers de sauvegarde afin de garantir une protection complète de vos volumes.
-+
-.. Sélectionnez *Suivant*.
+** *Exporter les copies Snapshot existantes vers le stockage objet en tant que copies de sauvegarde* : s'il existe des copies Snapshot locales pour les volumes de cet environnement de travail qui correspondent au libellé du programme de sauvegarde que vous venez de sélectionner pour cet environnement de travail (par exemple, tous les jours, toutes les semaines, etc.), cette invite supplémentaire s'affiche. Cochez cette case pour que tous les snapshots historiques soient copiés dans le stockage objet en tant que fichiers de sauvegarde afin de garantir une protection complète de vos volumes.
 
 
+. Sélectionnez *Suivant*.
 
 
 

@@ -98,7 +98,7 @@ Les analyses par ransomware se produisent à 3 points lors du processus de sauve
 
 * Lorsqu'un fichier de sauvegarde est créé.
 +
-Vous pouvez également activer ou désactiver les analyses par ransomware planifiées.
+Vous pouvez également activer ou désactiver les analyses par ransomware.
 
 +
 Le scan n'est pas effectué sur le fichier de sauvegarde lors de l'écriture initiale sur le stockage cloud, mais lorsque le fichier de sauvegarde *Next* est écrit. Par exemple, si vous avez défini un programme de sauvegarde hebdomadaire pour mardi, le mardi 14, une sauvegarde est créée. Puis, mardi, une nouvelle sauvegarde est créée. Le scan par ransomware est alors exécuté sur le fichier de sauvegarde depuis le 14.
@@ -121,7 +121,7 @@ Chaque stratégie de sauvegarde fournit une section pour _DataLock et protection
 
 image:screenshot_datalock_ransomware_settings.png["Capture d'écran des paramètres DataLock et protection contre les attaques par ransomware pour AWS, Azure et StorageGRID lors de la création d'une stratégie de sauvegarde."]
 
-Les analyses planifiées de la protection contre les ransomware sont activées par défaut. Le paramètre par défaut de la fréquence de balayage est de 7 jours. L'analyse s'effectue uniquement sur la dernière copie Snapshot. Vous pouvez activer ou désactiver les analyses par ransomware planifiées sur la dernière copie Snapshot à l'aide de l'option de la page Paramètres avancés. Si vous l'activez, les acquisitions sont effectuées tous les 7 jours par défaut. Vous pouvez modifier ce planning en jours ou en semaines ou le désactiver, ce qui vous permet d'économiser des coûts.
+Les analyses de protection contre les ransomware sont activées par défaut. Le paramètre par défaut de la fréquence de balayage est de 7 jours. L'analyse s'effectue uniquement sur la dernière copie Snapshot. Vous pouvez activer ou désactiver les analyses anti-ransomware sur la dernière copie Snapshot à l'aide de l'option de la page Paramètres avancés. Si vous l'activez, les acquisitions sont effectuées tous les 7 jours par défaut.
 
 Reportez-vous à la section link:manage-backup-settings-ontap.html["Comment mettre à jour les options de protection contre les ransomware dans la page Paramètres avancés"].
 

@@ -26,13 +26,13 @@ Découvrez les nouveautés de la sauvegarde et de la restauration BlueXP.
 
 Auparavant, lorsque vous avez activé la détection des ransomwares dans une règle de sauvegarde, les analyses se sont automatiquement produites lors de la création de la première sauvegarde et de la restauration d'une sauvegarde. Dans les versions antérieures, le service a analysé toutes les copies Snapshot et vous ne pouviez pas désactiver les analyses.
 
-Avec cette version, vous pouvez désormais activer ou désactiver les analyses anti-ransomware sur la dernière copie Snapshot à l'aide de l'option de la page Paramètres avancés. Si vous l'activez, les analyses sont effectuées chaque semaine par défaut. Vous pouvez modifier ce planning en jours ou en semaines ou le désactiver, ce qui vous permet d'économiser des coûts.
+Avec cette version, vous pouvez désormais activer ou désactiver les analyses anti-ransomware sur la dernière copie Snapshot à l'aide de l'option de la page Paramètres avancés. Si vous l'activez, les analyses sont effectuées chaque semaine par défaut.
 
 Pour plus de détails, reportez-vous aux informations suivantes :
 
-* link:task-manage-backup-settings-ontap.html["Gérer les paramètres de sauvegarde"]
-* link:task-create-policies-ontap.html["Gérez les règles des volumes ONTAP"]
-* link:concept-cloud-backup-policies.html["Paramètres de la règle de sauvegarde sur objet"]
+* https://docs.netapp.com/us-en/bluexp-backup-recovery/task-manage-backup-settings-ontap.html["Gérer les paramètres de sauvegarde"]
+* https://docs.netapp.com/us-en/bluexp-backup-recovery/task-create-policies-ontap.html["Gérez les règles des volumes ONTAP"]
+* https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-cloud-backup-policies.html["Paramètres de la règle de sauvegarde sur objet"]
 
 
 
