@@ -94,7 +94,7 @@ Dans ce dernier cas, si chaque fichier de sauvegarde est verrouillé pendant 44 
 
 La protection par ransomware analyse vos fichiers de sauvegarde pour rechercher la preuve d'une attaque par ransomware. La détection des attaques par ransomware est effectuée à l'aide d'une comparaison des checksums. Si un ransomware est identifié dans un nouveau fichier de sauvegarde par rapport au fichier de sauvegarde précédent, ce fichier de sauvegarde plus récent est remplacé par le fichier de sauvegarde le plus récent ne présentant aucun signe d'attaque par ransomware. (Le fichier identifié comme ayant subi une attaque par ransomware est supprimé 1 jour après son remplacement.)
 
-Les analyses par ransomware se produisent à 3 points lors du processus de sauvegarde et de restauration :
+Les analyses par ransomware se produisent aux points suivants du processus de sauvegarde et de restauration :
 
 * Lorsqu'un fichier de sauvegarde est créé.
 +
@@ -123,7 +123,9 @@ image:screenshot_datalock_ransomware_settings.png["Capture d'écran des paramèt
 
 Les analyses de protection contre les ransomware sont activées par défaut. Le paramètre par défaut de la fréquence de balayage est de 7 jours. L'analyse s'effectue uniquement sur la dernière copie Snapshot. Vous pouvez activer ou désactiver les analyses anti-ransomware sur la dernière copie Snapshot à l'aide de l'option de la page Paramètres avancés. Si vous l'activez, les acquisitions sont effectuées tous les 7 jours par défaut.
 
-Reportez-vous à la section link:manage-backup-settings-ontap.html["Comment mettre à jour les options de protection contre les ransomware dans la page Paramètres avancés"].
+Vous pouvez modifier ce planning en jours ou en semaines ou le désactiver, ce qui vous permet d'économiser des coûts.
+
+Reportez-vous à la section link:task-manage-backup-settings-ontap.html["Comment mettre à jour les options de protection contre les ransomware dans la page Paramètres avancés"].
 
 Vous pouvez choisir parmi les paramètres suivants pour chaque stratégie de sauvegarde :
 
