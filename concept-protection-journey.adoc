@@ -64,7 +64,7 @@ NOTE: La création initiale d'un volume répliqué ou d'un fichier de sauvegarde
 
 Le tableau suivant présente une comparaison généralisée des trois méthodes de sauvegarde. Si l'espace de stockage objet est généralement moins cher que votre stockage sur disque sur site, si vous pensez pouvoir restaurer fréquemment des données à partir du cloud, les frais de sortie des fournisseurs cloud peuvent réduire certaines de vos économies. Vous devez identifier la fréquence à laquelle vous devez restaurer les données à partir des fichiers de sauvegarde dans le cloud.
 
-En plus de ces critères, le stockage cloud offre des options de sécurité supplémentaires si vous utilisez la fonction DataLock et de protection contre les ransomware, et des économies supplémentaires en sélectionnant des classes de stockage d'archivage pour les fichiers de sauvegarde plus anciens. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["En savoir plus sur le verrouillage des données et la protection contre les attaques par ransomware"] et link:concept-cloud-backup-policies.html#archival-storage-settings["paramètres de stockage d'archives"].
+En plus de ces critères, le stockage cloud offre des options de sécurité supplémentaires si vous utilisez la fonction DataLock et de protection contre les ransomware, et des économies supplémentaires en sélectionnant des classes de stockage d'archivage pour les fichiers de sauvegarde plus anciens. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection-options["En savoir plus sur le verrouillage des données et la protection contre les attaques par ransomware"] et link:concept-cloud-backup-policies.html#archival-storage-options["paramètres de stockage d'archives"].
 
 [cols="18,18,22,18,22"]
 |===
@@ -120,7 +120,7 @@ Vous pouvez utiliser les règles par défaut fournies par NetApp pour créer vos
 
 Si vous créez des règles personnalisées pour la réplication ou la sauvegarde, les étiquettes de règles (par exemple, « quotidien » ou « hebdomadaire ») doivent correspondre aux étiquettes figurant dans vos règles Snapshot ou les volumes répliqués et les fichiers de sauvegarde ne seront pas créés.
 
-Vous pouvez créer des règles de stockage Snapshot, de réplication et de sauvegarde vers un stockage objet dans l'interface de sauvegarde et de restauration BlueXP. Voir la section pour link:task-manage-backups-ontap.html#add-a-new-backup-policy["ajout d'une nouvelle politique de sauvegarde"] pour plus d'informations.
+Vous pouvez créer des règles de stockage Snapshot, de réplication et de sauvegarde vers un stockage objet dans l'interface de sauvegarde et de restauration BlueXP. Voir la section pour link:task-manage-backups-ontap.html#add-a-new-backup-to-cloud-policy["ajout d'une nouvelle politique de sauvegarde"] pour plus d'informations.
 
 Outre l'utilisation de BlueXP Backup Recovery pour créer des règles personnalisées, vous pouvez utiliser System Manager ou l'interface de ligne de commande ONTAP.
 

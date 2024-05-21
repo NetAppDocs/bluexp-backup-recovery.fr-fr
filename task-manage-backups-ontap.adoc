@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: task-manage-backups-ontap.html 
-keywords: cloud backup, cloud backup service, backup schedule, change schedule, change backup schedule, modify schedule, modify backup schedule, retention, backup retention, delete, delete backups, deleting, deleting backups, disable, disable backups, turn off backups, disable cloud backup, turn off cloud backup 
+keywords: cloud backup, cloud backup service, backup schedule, change schedule, change backup schedule, modify schedule, modify backup schedule, retention, backup retention, delete, delete backups, deleting, deleting backups, disable, disable backups, turn off backups, disable cloud backup, turn off cloud backup, bluexp 
 summary: Vous pouvez gérer les sauvegardes de vos systèmes Cloud Volumes ONTAP et ONTAP sur site en modifiant la planification de sauvegarde, en créant de nouvelles stratégies de sauvegarde, en activant/désactivant les sauvegardes de volume, en pause des sauvegardes, en supprimant les sauvegardes, etc. Cela inclut tous les types de sauvegardes, y compris les copies Snapshot, les volumes répliqués et les fichiers de sauvegarde dans le stockage objet. 
 ---
 = Gérez les sauvegardes de vos systèmes ONTAP
@@ -136,7 +136,7 @@ Vous pouvez créer une copie Snapshot ad hoc ou une sauvegarde vers l'objet d'un
 
 Le nom de la sauvegarde inclut l'horodatage afin que vous puissiez identifier votre sauvegarde à la demande à partir d'autres sauvegardes planifiées.
 
-Si vous avez activé _DataLock et protection contre les ransomware_ lors de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster, la sauvegarde à la demande sera également configurée avec DataLock et la période de conservation sera de 30 jours. Les analyses par ransomware ne sont pas prises en charge pour les sauvegardes ad hoc. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["En savoir plus sur le verrouillage des données et la protection contre les attaques par ransomware"^].
+Si vous avez activé _DataLock et protection contre les ransomware_ lors de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster, la sauvegarde à la demande sera également configurée avec DataLock et la période de conservation sera de 30 jours. Les analyses par ransomware ne sont pas prises en charge pour les sauvegardes ad hoc. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection-options["En savoir plus sur le verrouillage des données et la protection contre les attaques par ransomware"^].
 
 Notez que lors de la création d'une sauvegarde ad hoc, un Snapshot est créé sur le volume source. Cet instantané ne faisant pas partie d'une planification Snapshot normale, il ne sera pas désactivé. Vous pouvez supprimer manuellement cet instantané du volume source une fois la sauvegarde terminée. Ainsi, les blocs liés à cette copie Snapshot peuvent être libérés. Le nom de l'instantané commence par `cbs-snapshot-adhoc-`. https://docs.netapp.com/us-en/ontap/san-admin/delete-all-existing-snapshot-copies-volume-task.html["Reportez-vous à la section mode de suppression d'une copie Snapshot à l'aide ONTAP de l'interface de ligne de commandes de"^].
 
@@ -323,7 +323,7 @@ endif::gcp[]
 
 Lorsque vous activez la sauvegarde et la restauration BlueXP pour un environnement de travail, tous les volumes que vous sélectionnez initialement sont sauvegardés à l'aide de la règle de sauvegarde par défaut que vous avez définie. Si vous souhaitez attribuer différentes stratégies de sauvegarde à certains volumes ayant des objectifs de point de récupération différents, vous pouvez créer des règles supplémentaires pour ce cluster et les affecter à d'autres volumes.
 
-Si vous souhaitez appliquer une nouvelle stratégie de sauvegarde à certains volumes d'un environnement de travail, vous devez d'abord ajouter la stratégie de sauvegarde à l'environnement de travail. C'est alors possible <<Changing the policy assigned to existing volumes,appliquer la policy aux volumes de cet environnement de travail>>.
+Si vous souhaitez appliquer une nouvelle stratégie de sauvegarde à certains volumes d'un environnement de travail, vous devez d'abord ajouter la stratégie de sauvegarde à l'environnement de travail. C'est alors possible <<Modifier les paramètres de sauvegarde attribués aux volumes existants,appliquer la policy aux volumes de cet environnement de travail>>.
 
 [NOTE]
 ====
@@ -390,7 +390,7 @@ CAUTION: Si vous prévoyez de supprimer un environnement ou un cluster de travai
 
 === Supprimez tous les fichiers de sauvegarde d'un environnement de travail
 
-La suppression de toutes les sauvegardes du stockage objet pour un environnement de travail ne désactive pas les sauvegardes futures des volumes de cet environnement de travail. Si vous souhaitez arrêter la création de sauvegardes de tous les volumes d'un environnement de travail, vous pouvez désactiver les sauvegardes <<Deactivating BlueXP backup and recovery for a working environment,comme décrit ici>>.
+La suppression de toutes les sauvegardes du stockage objet pour un environnement de travail ne désactive pas les sauvegardes futures des volumes de cet environnement de travail. Si vous souhaitez arrêter la création de sauvegardes de tous les volumes d'un environnement de travail, vous pouvez désactiver les sauvegardes <<Désactivez la sauvegarde et la restauration BlueXP dans un environnement de travail,comme décrit ici>>.
 
 Notez que cette action n'a aucun impact sur les copies Snapshot ou les volumes répliqués. Ces types de fichiers de sauvegarde ne sont pas supprimés.
 
@@ -449,7 +449,7 @@ Cette fonction n'est disponible que si votre système exécute ONTAP 9.12.1 ou u
 Vous ne pouvez pas supprimer le volume source de l'interface utilisateur de sauvegarde et de restauration BlueXP. Cependant, vous pouvez ouvrir la page Détails du volume sur la toile, et https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes["supprimez le volume de ce site"].
 
 
-NOTE: Une fois la relation supprimée, vous ne pouvez pas supprimer des fichiers de sauvegarde de volume individuels. Vous pouvez cependant link:task-manage-backups-ontap.html#deleting-all-backup-files-for-a-volume["supprimez toutes les sauvegardes du volume"] si vous souhaitez supprimer tous les fichiers de sauvegarde.
+NOTE: Une fois la relation supprimée, vous ne pouvez pas supprimer des fichiers de sauvegarde de volume individuels. Vous pouvez cependant supprimer toutes les sauvegardes du volume.
 
 .Étapes
 . Dans l'onglet *volumes*, cliquez sur image:screenshot_horizontal_more_button.gif["Plus d'icône"] Pour le volume source et sélectionnez *Backup* > *Delete Relationship*.
@@ -464,7 +464,7 @@ image:screenshot_delete_relationship_single.png["Copie d'écran montrant comment
 
 La désactivation de la sauvegarde et de la restauration BlueXP pour un environnement de travail désactive les sauvegardes de chaque volume du système, et désactive également la restauration d'un volume. Les sauvegardes existantes ne seront pas supprimées. Cela ne désinscrit pas le service de sauvegarde de cet environnement de travail, car il vous permet de suspendre l'ensemble de l'activité de sauvegarde et de restauration pendant une période donnée.
 
-Notez que vous continuerez d'être facturé par votre fournisseur cloud pour les coûts de stockage objet correspondant à la capacité que vos sauvegardes utilisent, sauf si vous <<Suppression de tous les fichiers de sauvegarde d'un environnement de travail,supprimez les sauvegardes>>.
+Notez que vous continuerez d'être facturé par votre fournisseur cloud pour les coûts de stockage objet correspondant à la capacité que vos sauvegardes utilisent, sauf si vous <<Supprimer les sauvegardes,supprimez les sauvegardes>>.
 
 .Étapes
 . Dans l'onglet *volumes*, sélectionnez *Paramètres de sauvegarde*.

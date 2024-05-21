@@ -152,14 +152,14 @@ Cette stratégie de stockage réside dans différents emplacements de système d
 . Spécifiez les paramètres, y compris le planning de transfert et le moment d'archivage des sauvegardes.
 . (Facultatif) pour déplacer les anciens fichiers de sauvegarde vers une classe de stockage ou un niveau d'accès moins coûteux après un certain nombre de jours, sélectionnez l'option *Archive* et indiquez le nombre de jours qui doivent s'écouler avant l'archivage des données. Entrez *0* comme "Archive après jours" pour envoyer votre fichier de sauvegarde directement au stockage d'archives.
 +
-link:concept-cloud-backup-policies.html#archival-storage-settings["En savoir plus sur les paramètres de stockage des archives"].
+link:concept-cloud-backup-policies.html#archival-storage-options["En savoir plus sur les paramètres de stockage des archives"].
 
 . (Facultatif) pour protéger vos sauvegardes d'être modifiées ou supprimées, sélectionnez l'option *DataLock & ransomware protection*.
 +
 Si votre cluster utilise ONTAP 9.11.1 ou une version ultérieure, vous pouvez choisir de protéger vos sauvegardes contre la suppression en configurant _DataLock_ et _protection contre les ransomware_.
 
 +
-link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["En savoir plus sur les paramètres DataLock disponibles"^].
+link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection-options["En savoir plus sur les paramètres DataLock disponibles"^].
 
 . Sélectionnez *Créer*.
 

@@ -363,7 +363,7 @@ endif::gcp[]
 +
 ** Dans ONTAP S3, BlueXP utilise un compte utilisateur pour le compartiment S3.
 
-Pour modifier ultérieurement le magasin d'objets de destination d'un cluster, vous devez link:task-manage-backups-ontap.html#unregistering-bluexp-backup-and-recovery-for-a-working-environment["Annulez l'enregistrement de la sauvegarde et de la restauration BlueXP pour l'environnement de travail"^], Puis activez la sauvegarde et la restauration BlueXP à l'aide des informations du nouveau fournisseur cloud.
+Pour modifier ultérieurement le magasin d'objets de destination d'un cluster, vous devez link:task-manage-backups-ontap.html#unregister-bluexp-backup-and-recovery-for-a-working-environment["Annulez l'enregistrement de la sauvegarde et de la restauration BlueXP pour l'environnement de travail"^], Puis activez la sauvegarde et la restauration BlueXP à l'aide des informations du nouveau fournisseur cloud.
 
 
 
@@ -378,9 +378,9 @@ NOTE: La règle Snapshot appliquée au volume doit comporter l'une des étiquett
 
 Une fois que vous avez atteint le nombre maximal de sauvegardes pour une catégorie ou un intervalle, les anciennes sauvegardes sont supprimées de sorte que vous disposez toujours des sauvegardes les plus récentes (de sorte que les sauvegardes obsolètes ne continuent pas à occuper de l'espace).
 
-Voir link:concept-cloud-backup-policies.html#backup-schedules["Planifications de sauvegarde"^] pour plus de détails sur la façon dont les options de planification disponibles.
+Voir link:concept-cloud-backup-policies.html["Planifications de sauvegarde"^] pour plus de détails sur la façon dont les options de planification disponibles.
 
-Notez que vous pouvez link:task-manage-backups-ontap.html#creating-a-manual-volume-backup-at-any-time["création d'une sauvegarde à la demande d'un volume"] À tout moment à partir du tableau de bord de sauvegarde, en plus des fichiers de sauvegarde créés à partir des sauvegardes planifiées.
+Notez que vous pouvez link:task-manage-backups-ontap.html#create-a-manual-volume-backup-at-any-time["création d'une sauvegarde à la demande d'un volume"] À tout moment à partir du tableau de bord de sauvegarde, en plus des fichiers de sauvegarde créés à partir des sauvegardes planifiées.
 
 
 TIP: La période de conservation pour les sauvegardes de volumes de protection de données est identique à la période définie dans la relation SnapMirror source. Vous pouvez le modifier si vous le souhaitez à l'aide de l'API.
@@ -403,8 +403,8 @@ Le support est actuellement disponible lorsque votre destination de sauvegarde e
 
 Pour plus de détails, reportez-vous aux informations suivantes :
 
-* link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection["Fonctionnement de DataLock et de la protection contre les ransomware"].
-* link:manage-backup-settings-ontap.html["Comment mettre à jour les options de protection contre les ransomware dans la page Paramètres avancés"].
+* link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection-options["Fonctionnement de DataLock et de la protection contre les ransomware"].
+* link:task-manage-backup-settings-ontap.html["Comment mettre à jour les options de protection contre les ransomware dans la page Paramètres avancés"].
 
 
 
@@ -448,11 +448,11 @@ endif::gcp[]
 
 * Dans StorageGRID, les sauvegardes sont associées à la classe de stockage _Standard_.
 +
-Si votre cluster sur site utilise ONTAP 9.12.1 ou version ultérieure et que votre système StorageGRID utilise 11.4 ou version ultérieure, vous pouvez archiver les fichiers de sauvegarde d'ancienne génération dans un stockage d'archivage dans le cloud public après un certain nombre de jours. La prise en charge est pour les tiers de stockage AWS S3 Glacier/S3 Glacier Deep Archive ou Azure Archive. link:task-backup-onprem-private-cloud.html#preparing-to-archive-older-backup-files-to-public-cloud-storage["En savoir plus sur l'archivage des fichiers de sauvegarde StorageGRID"^].
+Si votre cluster sur site utilise ONTAP 9.12.1 ou version ultérieure et que votre système StorageGRID utilise 11.4 ou version ultérieure, vous pouvez archiver les fichiers de sauvegarde d'ancienne génération dans un stockage d'archivage dans le cloud public après un certain nombre de jours. La prise en charge est pour les tiers de stockage AWS S3 Glacier/S3 Glacier Deep Archive ou Azure Archive. link:task-backup-onprem-private-cloud.html#prepare-to-archive-older-backup-files-to-public-cloud-storage["En savoir plus sur l'archivage des fichiers de sauvegarde StorageGRID"^].
 
 
 
-Voir link:concept-cloud-backup-policies.html#archival-storage-settings["Paramètres de stockage d'archivage"] pour plus d'informations sur l'archivage d'anciens fichiers de sauvegarde.
+Voir link:concept-cloud-backup-policies.html#archival-storage-options["Paramètres de stockage d'archivage"] pour plus d'informations sur l'archivage d'anciens fichiers de sauvegarde.
 
 
 

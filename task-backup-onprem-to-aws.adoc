@@ -442,9 +442,9 @@ Si vous souhaitez utiliser vos propres clés gérées par le client pour le chif
 
 === Configurez votre système pour une connexion privée à l'aide d'une interface de terminal VPC
 
-Si vous voulez utiliser une connexion Internet publique standard, alors toutes les autorisations sont définies par le connecteur et il n'y a rien d'autre que vous devez faire. Ce type de connexion est indiqué dans le link:task-backup-onprem-to-aws.html#network-diagrams-for-connection-options["premier diagramme"].
+Si vous voulez utiliser une connexion Internet publique standard, alors toutes les autorisations sont définies par le connecteur et il n'y a rien d'autre que vous devez faire. Ce type de connexion est indiqué dans le link:task-backup-onprem-to-aws.html#identify-the-connection-method["premier diagramme"].
 
-Si vous souhaitez bénéficier d'une connexion plus sécurisée via Internet entre votre data Center sur site et le VPC, vous pouvez sélectionner une connexion AWS PrivateLink dans l'assistant d'activation de la sauvegarde. Elle est indispensable pour connecter votre système sur site à l'aide d'un VPN ou d'AWS Direct Connect via une interface de terminal VPC qui utilise une adresse IP privée. Ce type de connexion est indiqué dans le link:task-backup-onprem-to-aws.html#network-diagrams-for-connection-options["deuxième diagramme"].
+Si vous souhaitez bénéficier d'une connexion plus sécurisée via Internet entre votre data Center sur site et le VPC, vous pouvez sélectionner une connexion AWS PrivateLink dans l'assistant d'activation de la sauvegarde. Elle est indispensable pour connecter votre système sur site à l'aide d'un VPN ou d'AWS Direct Connect via une interface de terminal VPC qui utilise une adresse IP privée. Ce type de connexion est indiqué dans le link:task-backup-onprem-to-aws.html#identify-the-connection-method["deuxième diagramme"].
 
 .Étapes
 . Créez une configuration de point final de l'interface à l'aide de la console Amazon VPC ou de la ligne de commande. https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html["Pour en savoir plus sur l'utilisation d'AWS PrivateLink pour Amazon S3, consultez la page"^].

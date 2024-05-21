@@ -73,17 +73,27 @@ Lors de l'installation d'un nouveau connecteur BlueXP, assurez-vous de télécha
 === Restaurez la base de données de sauvegarde et de restauration BlueXP
 
 . Copiez la sauvegarde MySQL de l'emplacement de sauvegarde vers le nouvel hôte de connecteur. Nous utiliserons le nom de fichier exemple « CBS_DB_Backup_23_05_2023.sql » ci-dessous.
-. Copiez la sauvegarde dans le conteneur MySQL docker à l'aide de la commande suivante :
+. Copiez la sauvegarde dans le conteneur MySQL docker à l'aide de l'une des commandes suivantes, selon que vous utilisez un conteneur Docker ou Podman :
 +
 [source, cli]
 ----
 docker cp CBS_DB_Backup_23_05_2023.sql ds_mysql_1:/.
 ----
-. Entrez le shell du conteneur MySQL à l'aide de la commande suivante :
++
+[source, cli]
+----
+podman cp CBS_DB_Backup_23_05_2023.sql ds_mysql_1:/.
+----
+. Entrez le shell du conteneur MySQL à l'aide de l'une des commandes suivantes, selon que vous utilisez un conteneur Docker ou Podman :
 +
 [source, cli]
 ----
 docker exec -it ds_mysql_1 sh
+----
++
+[source, cli]
+----
+podman exec -it ds_mysql_1 sh
 ----
 . Dans le conteneur, déployez l'« env ».
 . Vous aurez besoin du mot de passe MySQL DB, donc copiez la valeur de la clé "MYSQL_ROOT_PASSWORD".

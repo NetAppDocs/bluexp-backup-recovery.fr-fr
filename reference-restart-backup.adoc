@@ -33,17 +33,17 @@ La fonctionnalité de sauvegarde et de restauration BlueXP est intégrée au con
 |===
 . Entrez la commande pour redémarrer le service.
 +
-[cols="45,45"]
+[cols="40,30,30"]
 |===
-| Emplacement du connecteur | Commande 
+| Emplacement du connecteur | Commande Docker | Commande Podman 
 
 
-| Déploiement cloud | `docker restart cloudmanager_cbs` 
+| Déploiement cloud | `docker restart cloudmanager_cbs` | `podman restart cloudmanager cbs`` 
 
 
-| Installation manuelle avec accès à Internet | `docker restart cloudmanager_cbs` 
+| Installation manuelle avec accès à Internet | `docker restart cloudmanager_cbs` | `podman restart cloudmanager cbs`` 
 
 
-| Installation manuelle sans accès à Internet | `docker restart ds_cloudmanager_cbs_1` 
+| Installation manuelle sans accès à Internet | `docker restart ds_cloudmanager_cbs_1` | `podman restart ds_cloudmanager_cbs_1`` 
 |===
 

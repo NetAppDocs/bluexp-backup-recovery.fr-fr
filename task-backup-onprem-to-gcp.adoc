@@ -58,7 +58,7 @@ Découvrez vos clusters ONTAP dans BlueXP, vérifiez que les clusters répondent
 Configurez les autorisations pour le connecteur afin de créer et de gérer le compartiment Google Cloud. Vous devez également configurer des autorisations pour le cluster ONTAP sur site afin qu'il puisse lire et écrire les données dans le compartiment Google Cloud.
 
 [role="quick-margin-para"]
-Vous pouvez également configurer vos propres clés de chiffrement personnalisées pour les données au lieu d'utiliser les clés de chiffrement Google Cloud par défaut. <<Prepare Google Cloud as your backup target,Découvrez comment préparer votre environnement Google Cloud pour recevoir des sauvegardes ONTAP.>>
+Vous pouvez également configurer vos propres clés de chiffrement personnalisées pour les données au lieu d'utiliser les clés de chiffrement Google Cloud par défaut. <<Prepare Google Cloud storage as your backup target,Découvrez comment préparer votre environnement Google Cloud pour recevoir des sauvegardes ONTAP.>>
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Six"] Activez les sauvegardes sur vos volumes ONTAP
 [role="quick-margin-para"]

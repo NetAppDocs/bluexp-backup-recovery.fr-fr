@@ -480,7 +480,7 @@ Si votre cluster utilise ONTAP 9.11.1 ou version supérieure, vous pouvez choisi
 
 
 +
-Si votre cluster utilise ONTAP 9.12.1 ou version ultérieure et que votre système StorageGRID utilise la version 11.4 ou ultérieure, vous pouvez choisir de transférer les anciennes sauvegardes vers des tiers d'archivage dans le cloud public après un certain nombre de jours. La prise en charge est pour les tiers de stockage AWS S3 Glacier/S3 Glacier Deep Archive ou Azure Archive. <<Preparing to archive older backup files to public cloud storage,Découvrez comment configurer vos systèmes pour cette fonctionnalité>>.
+Si votre cluster utilise ONTAP 9.12.1 ou version ultérieure et que votre système StorageGRID utilise la version 11.4 ou ultérieure, vous pouvez choisir de transférer les anciennes sauvegardes vers des tiers d'archivage dans le cloud public après un certain nombre de jours. La prise en charge est pour les tiers de stockage AWS S3 Glacier/S3 Glacier Deep Archive ou Azure Archive. <<Préparez-vous à archiver les fichiers de sauvegarde les plus anciens dans le cloud public,Découvrez comment configurer vos systèmes pour cette fonctionnalité>>.
 
 +
 ** *Sauvegarde par Tier dans le cloud public* : sélectionnez le fournisseur de cloud vers lequel vous souhaitez hiérarchiser les sauvegardes et entrez les détails du fournisseur.

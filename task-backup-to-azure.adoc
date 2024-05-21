@@ -241,7 +241,7 @@ La sauvegarde et la restauration BlueXP sont activées par défaut dans l'assist
 Voir https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-otc-azure.html["Lancement d'Cloud Volumes ONTAP dans Azure"^] Pour connaître les conditions requises et les détails relatifs à la création du système Cloud Volumes ONTAP.
 
 
-NOTE: Si vous souhaitez choisir le nom du groupe de ressources, *disable* BlueXP Backup and Recovery lors du déploiement de Cloud Volumes ONTAP. Suivez les étapes de la section <<enabling-bluexp-backup-and-recovery-on-an-existing-system,Activation de la sauvegarde et de la restauration BlueXP sur un système existant>> Pour activer la sauvegarde et la restauration BlueXP et choisir le groupe de ressources.
+NOTE: Si vous souhaitez choisir le nom du groupe de ressources, *disable* BlueXP Backup and Recovery lors du déploiement de Cloud Volumes ONTAP. Suivez les étapes de la section <<enable-bluexp-backup-and-recovery-on-cloud-volumes-ontap,Activation de la sauvegarde et de la restauration BlueXP sur un système existant>> Pour activer la sauvegarde et la restauration BlueXP et choisir le groupe de ressources.
 
 .Étapes
 . Dans le canevas BlueXP, sélectionnez *Ajouter un environnement de travail*, choisissez le fournisseur cloud et sélectionnez *Ajouter nouveau*. Sélectionnez *Créer Cloud Volumes ONTAP*.

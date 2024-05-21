@@ -103,7 +103,7 @@ indexpage:
     - title: Restaurez les données d'applications SQL Server sur site
       url: task-restore-sql-data.html
     - title: Restaurez les données des applications Oracle cloud natives
-      url: task-restore-cloud-native-oracle-data.html
+      url: task-restore-cloud-native-oracle-data-to-original-location.html
     - title: Restaurez les données des applications SAP HANA cloud natives
       flavor: azure
       url: task-restore-cloud-native-sap-hana-data.html

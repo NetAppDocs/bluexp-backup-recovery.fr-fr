@@ -22,7 +22,7 @@ La sauvegarde et la restauration BlueXP prennent en charge une classe de stockag
 
 Lors de la création initiale des fichiers de sauvegarde, ils sont stockés dans le stockage _Standard_. Il est optimisé pour stocker les données peu utilisées, mais vous pouvez également y accéder immédiatement.
 
-Si votre cluster sur site utilise ONTAP 9.12.1 ou une version ultérieure, vous pouvez choisir de transférer les sauvegardes plus anciennes vers un stockage _Archive_ dans l'interface utilisateur de sauvegarde et de restauration BlueXP après un certain nombre de jours (en général plus de 30 jours) pour optimiser les coûts. Les données de ce niveau nécessitent un coût de récupération plus élevé, vous devez donc déterminer la fréquence à laquelle vous devrez peut-être restaurer les données à partir de ces fichiers de sauvegarde archivés. Reportez-vous à la section à propos de <<Restauration des données à partir du stockage d'archivage,restauration des données à partir du stockage d'archivage>>.
+Si votre cluster sur site utilise ONTAP 9.12.1 ou une version ultérieure, vous pouvez choisir de transférer les sauvegardes plus anciennes vers un stockage _Archive_ dans l'interface utilisateur de sauvegarde et de restauration BlueXP après un certain nombre de jours (en général plus de 30 jours) pour optimiser les coûts. Les données de ce niveau nécessitent un coût de récupération plus élevé, vous devez donc déterminer la fréquence à laquelle vous devrez peut-être restaurer les données à partir de ces fichiers de sauvegarde archivés. Reportez-vous à la section à propos de <<restore data from archival storage,restauration des données à partir du stockage d'archivage>>.
 
 Notez que lorsque vous configurez la sauvegarde et la restauration BlueXP avec ce type de règle de cycle de vie, vous ne devez pas configurer de règles de cycle de vie lors de la configuration du compartiment dans votre compte Google.
 
@@ -30,7 +30,7 @@ https://cloud.google.com/storage/docs/storage-classes["En savoir plus sur les cl
 
 
 
-== Restauration des données à partir du stockage d'archivage
+== Restaurez les données à partir du stockage d'archives
 
 Le stockage d'anciens fichiers de sauvegarde dans un stockage d'archivage est bien moins coûteux que le stockage standard. En revanche, l'accès aux données à partir d'un fichier de sauvegarde dans le stockage d'archivage à des fins de restauration prendra un peu plus de temps et coûtera plus d'argent.
 

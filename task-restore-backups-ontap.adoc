@@ -92,9 +92,9 @@ Avant de pouvoir utiliser l'une ou l'autre méthode de restauration, assurez-vou
 
 Reportez-vous aux étapes de configuration requise et de restauration pour le type d'opération de restauration que vous souhaitez utiliser :
 
-* <<Restoring volumes using Browse & Restore,Restaurez les volumes à l'aide de Browse  ; restaurez
-* <<Restoring folders and files using Browse & Restore,Restaurez les dossiers et les fichiers à l'aide de Browse  Restore
-* <<Restoring ONTAP data using Search & Restore,Restaurez des volumes, des dossiers et des fichiers à l'aide de Search  ; Restore
+* <<Restaurez les volumes à l'aide de Browse  ; restaurez,Restaurez les volumes à l'aide de Browse  ; restaurez
+* <<Restaurez les dossiers et les fichiers à l'aide de Browse  Restore,Restaurez les dossiers et les fichiers à l'aide de Browse  Restore
+* <<restore-ontap-data-using-search-restore,Restaurez des volumes, des dossiers et des fichiers à l'aide de Search  ; Restore
 
 
 
@@ -303,19 +303,19 @@ ifdef::aws[]
 
 
 
-link:reference-aws-backup-tiers.html#restoring-data-from-archival-storage["En savoir plus sur la restauration à partir du stockage d'archivage AWS"].
+link:reference-aws-backup-tiers.html#restore-data-from-archival-storage["En savoir plus sur la restauration à partir du stockage d'archivage AWS"].
 
 endif::aws[]
 
 ifdef::azure[]
 
-link:reference-azure-backup-tiers.html#restoring-data-from-archival-storage["En savoir plus sur la restauration à partir du stockage d'archivage Azure"].
+link:reference-azure-backup-tiers.html#restore-data-from-archival-storage["En savoir plus sur la restauration à partir du stockage d'archivage Azure"].
 
 endif::azure[]
 
 ifdef::gcp[]
 
-link:reference-google-backup-tiers.html#restoring-data-from-archival-storage["En savoir plus sur la restauration à partir du stockage d'archivage Google"]. Les fichiers de sauvegarde du niveau de stockage Google Archive sont restaurés presque immédiatement, sans priorité de restauration.
+link:reference-google-backup-tiers.html#restore-data-from-archival-storage["En savoir plus sur la restauration à partir du stockage d'archivage Google"]. Les fichiers de sauvegarde du niveau de stockage Google Archive sont restaurés presque immédiatement, sans priorité de restauration.
 
 endif::gcp[]
 
@@ -411,19 +411,19 @@ ifdef::aws[]
 
 
 
-link:reference-aws-backup-tiers.html#restoring-data-from-archival-storage["En savoir plus sur la restauration à partir du stockage d'archivage AWS"].
+link:reference-aws-backup-tiers.html#restore-data-from-archival-storage["En savoir plus sur la restauration à partir du stockage d'archivage AWS"].
 
 endif::aws[]
 
 ifdef::azure[]
 
-link:reference-azure-backup-tiers.html#restoring-data-from-archival-storage["En savoir plus sur la restauration à partir du stockage d'archivage Azure"].
+link:reference-azure-backup-tiers.html#restore-data-from-archival-storage["En savoir plus sur la restauration à partir du stockage d'archivage Azure"].
 
 endif::azure[]
 
 ifdef::gcp[]
 
-link:reference-google-backup-tiers.html#restoring-data-from-archival-storage["En savoir plus sur la restauration à partir du stockage d'archivage Google"]. Les fichiers de sauvegarde du niveau de stockage Google Archive sont restaurés presque immédiatement, sans priorité de restauration.
+link:reference-google-backup-tiers.html#restore-data-from-archival-storage["En savoir plus sur la restauration à partir du stockage d'archivage Google"]. Les fichiers de sauvegarde du niveau de stockage Google Archive sont restaurés presque immédiatement, sans priorité de restauration.
 
 endif::gcp[]
 
@@ -500,7 +500,7 @@ Vous disposez de quelques options pour l'emplacement de restauration des dossier
 
 
 
-== Restauration de données ONTAP à l'aide de la fonction de recherche et de restauration
+== Restaurer les données ONTAP à l'aide de la fonction de recherche et de restauration
 
 Vous pouvez restaurer un volume, un dossier ou des fichiers à partir d'un fichier de sauvegarde ONTAP à l'aide de la fonction Rechercher et restaurer. La fonction Search & Restore vous permet de rechercher un volume, un dossier ou un fichier spécifique dans toutes les sauvegardes, puis d'effectuer une restauration. Vous n'avez pas besoin de connaître le nom exact de l'environnement de travail, le nom du volume ou le nom du fichier : la recherche examine tous les fichiers de sauvegarde de volume.
 
@@ -754,7 +754,7 @@ Selon la taille des volumes de l'environnement de travail et le nombre de fichie
 
 === Restaurez des volumes, des dossiers et des fichiers à l'aide de Search &amp ; Restore
 
-Après vous <<Enabling the Indexed Catalog for each working environment,Indexation activée pour votre environnement de travail>>, Vous pouvez restaurer des volumes, des dossiers et des fichiers à l'aide de la fonction Rechercher et restaurer. Cela vous permet d'utiliser une large gamme de filtres pour trouver le fichier ou volume exact que vous souhaitez restaurer à partir de tous les fichiers de sauvegarde.
+Après vous <<enable-the-indexed-catalog-for-each-working-environment,Indexation activée pour votre environnement de travail>>, Vous pouvez restaurer des volumes, des dossiers et des fichiers à l'aide de la fonction Rechercher et restaurer. Cela vous permet d'utiliser une large gamme de filtres pour trouver le fichier ou volume exact que vous souhaitez restaurer à partir de tous les fichiers de sauvegarde.
 
 .Étapes
 . Dans le menu BlueXP, sélectionnez *protection > sauvegarde et récupération*.
