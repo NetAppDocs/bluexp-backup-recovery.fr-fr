@@ -100,7 +100,7 @@ Lorsque vous sauvegardez des données dans ONTAP S3, un connecteur BlueXP doit �
 * https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html#how-to-create-a-connector["Installez le connecteur dans votre environnement cloud"^]
 * https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-on-prem.html["Installation du connecteur sur un hôte Linux avec accès à Internet"^]
 * https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["Installation du connecteur sur un hôte Linux sans accès à Internet"^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-managing-connectors.html["Basculement entre les connecteurs"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-manage-multiple-connectors.html#switch-between-connectors["Basculement entre les connecteurs"^]
 
 
 
@@ -118,7 +118,7 @@ Assurez-vous que le réseau sur lequel le connecteur est installé active les co
 
 ==== Considérations relatives au mode privé (site invisible)
 
-La fonctionnalité de sauvegarde et de restauration BlueXP est intégrée au connecteur BlueXP. Lorsqu'il est installé en mode privé, vous devez mettre à jour régulièrement le logiciel Connector pour accéder aux nouvelles fonctionnalités. Vérifier le link:whats-new.html["Sauvegarde et restauration BlueXP : les nouveautés"] Pour afficher les nouvelles fonctionnalités de chaque version de sauvegarde et de restauration BlueXP. Lorsque vous souhaitez utiliser les nouvelles fonctions, suivez les étapes à https://docs.netapp.com/us-en/bluexp-setup-admin/task-managing-connectors.html#upgrade-the-connector-when-using-private-mode["Mettez à niveau le logiciel du connecteur"^].
+La fonctionnalité de sauvegarde et de restauration BlueXP est intégrée au connecteur BlueXP. Lorsqu'il est installé en mode privé, vous devez mettre à jour régulièrement le logiciel Connector pour accéder aux nouvelles fonctionnalités. Vérifier le link:whats-new.html["Sauvegarde et restauration BlueXP : les nouveautés"] Pour afficher les nouvelles fonctionnalités de chaque version de sauvegarde et de restauration BlueXP. Lorsque vous souhaitez utiliser les nouvelles fonctions, suivez les étapes à https://docs.netapp.com/us-en/bluexp-setup-admin/task-upgrade-connector.html["Mettez à niveau le logiciel du connecteur"^].
 
 Lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un environnement SaaS standard, les données de configuration de sauvegarde et de restauration BlueXP sont sauvegardées dans le cloud. Lorsque vous utilisez la sauvegarde et la restauration BlueXP dans un site sans accès Internet, les données de configuration de sauvegarde et de restauration BlueXP sont sauvegardées dans le compartiment ONTAP S3 où vos sauvegardes sont stockées. Si vous avez un problème de connecteur dans votre site en mode privé, vous pouvez le faire link:reference-backup-cbs-db-in-dark-site.html["Restaurez les données de sauvegarde et de restauration BlueXP sur un nouveau connecteur"^].
 

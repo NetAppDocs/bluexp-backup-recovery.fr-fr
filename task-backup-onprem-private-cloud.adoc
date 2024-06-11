@@ -94,7 +94,7 @@ Lorsque vous sauvegardez des données dans StorageGRID, un connecteur BlueXP doi
 * https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
 * https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-on-prem.html["Installation du connecteur sur un hôte Linux avec accès à Internet"^]
 * https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["Installation du connecteur sur un hôte Linux sans accès à Internet"^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-managing-connectors.html["Basculement entre les connecteurs"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-manage-multiple-connectors.html#switch-between-connectors["Basculement entre les connecteurs"^]
 
 
 
@@ -112,7 +112,7 @@ Assurez-vous que le réseau sur lequel le connecteur est installé active les co
 
 ==== Considérations relatives au mode privé (site invisible)
 
-* La fonctionnalité de sauvegarde et de restauration BlueXP est intégrée au connecteur BlueXP. Lorsqu'il est installé en mode privé, vous devez mettre à jour régulièrement le logiciel Connector pour accéder aux nouvelles fonctionnalités. Vérifier le link:whats-new.html["Sauvegarde et restauration BlueXP : les nouveautés"] Pour afficher les nouvelles fonctionnalités de chaque version de sauvegarde et de restauration BlueXP. Lorsque vous souhaitez utiliser les nouvelles fonctions, suivez les étapes à https://docs.netapp.com/us-en/bluexp-setup-admin/task-managing-connectors.html#upgrade-the-connector-when-using-private-mode["Mettez à niveau le logiciel du connecteur"^].
+* La fonctionnalité de sauvegarde et de restauration BlueXP est intégrée au connecteur BlueXP. Lorsqu'il est installé en mode privé, vous devez mettre à jour régulièrement le logiciel Connector pour accéder aux nouvelles fonctionnalités. Vérifier le link:whats-new.html["Sauvegarde et restauration BlueXP : les nouveautés"] Pour afficher les nouvelles fonctionnalités de chaque version de sauvegarde et de restauration BlueXP. Lorsque vous souhaitez utiliser les nouvelles fonctions, suivez les étapes à https://docs.netapp.com/us-en/bluexp-setup-admin/task-upgrade-connector.html["Mettez à niveau le logiciel du connecteur"^].
 +
 La nouvelle version de la sauvegarde et de la restauration BlueXP, qui permet de planifier et de créer des copies Snapshot et des volumes répliqués, en plus de la création de sauvegardes vers le stockage objet, nécessite que vous utilisiez la version 3.9.31 ou ultérieure du connecteur BlueXP. Il est donc recommandé d'utiliser cette dernière version pour gérer toutes vos sauvegardes.
 

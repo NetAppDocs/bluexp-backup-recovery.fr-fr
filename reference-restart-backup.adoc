@@ -26,7 +26,7 @@ La fonctionnalité de sauvegarde et de restauration BlueXP est intégrée au con
 | Emplacement du connecteur | Procédure 
 
 
-| Déploiement cloud | Suivez les instructions de la section https://docs.netapp.com/us-en/bluexp-setup-admin/task-managing-connectors.html#connect-to-the-linux-vm["Connexion à la machine virtuelle Connector Linux"^] en fonction du fournisseur cloud que vous utilisez. 
+| Déploiement cloud | Suivez les instructions de la section https://docs.netapp.com/us-en/bluexp-setup-admin/task-maintain-connectors.html#connect-to-the-linux-vm["Connexion à la machine virtuelle Connector Linux"^] en fonction du fournisseur cloud que vous utilisez. 
 
 
 | Installation manuelle | Connectez-vous au système Linux. 
