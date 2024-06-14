@@ -91,6 +91,14 @@ La sauvegarde et la restauration BlueXP prennent en charge les environnements de
 
 
 
+=== Régions prises en charge
+
+Cloud Volumes ONTAP prend en charge la sauvegarde et la restauration BlueXP dans de nombreuses régions Amazon Web Services, Microsoft Azure et Google Cloud.
+
+https://bluexp.netapp.com/cloud-volumes-global-regions?__hstc=177456119.0da05194dc19e7d38fcb4a4d94f105bc.1583956311718.1592507347473.1592829225079.52&__hssc=177456119.1.1592838591096&__hsfp=76784061&hsCtaTracking=c082a886-e2e2-4ef0-8ef2-89061b2b1955%7Cd07def13-e88c-40a0-b2a1-23b3b4e7a6e7#cvo["En savoir plus sur la carte des régions globales"^]
+
+
+
 === Destinations de sauvegarde prises en charge
 
 BlueXP Backup and Recovery vous permet de sauvegarder des volumes ONTAP depuis les environnements de travail source suivants vers les environnements de travail secondaires et le stockage objet de fournisseurs de cloud public et privé. Les copies Snapshot résident dans l'environnement de travail source.
