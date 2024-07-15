@@ -39,36 +39,21 @@ Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu'aux secti
 [role="quick-margin-para"]
 Si vous avez déjà déployé un connecteur dans une région AWS, vous êtes paré. Si ce n'est pas le cas, vous devrez installer un connecteur BlueXP dans AWS pour sauvegarder les données Cloud Volumes ONTAP sur AWS. Le connecteur peut être installé sur un site avec un accès Internet complet (« mode standard ») ou avec une connectivité Internet limitée (« mode restreint »).
 
-[role="quick-margin-para"]
-<<Préparez votre connecteur BlueXP>>
-
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"] Vérification des besoins en licence
 [role="quick-margin-para"]
 Vous devez vérifier les exigences de licence pour AWS et BlueXP.
-
-[role="quick-margin-para"]
-<<Vérification des besoins en licence>>.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatre"] Vérifiez les exigences de mise en réseau ONTAP pour la réplication de volumes
 [role="quick-margin-para"]
 Assurez-vous que les systèmes de stockage primaire et secondaire respectent la version ONTAP et les exigences réseau.
 
-[role="quick-margin-para"]
-<<Vérifiez les exigences de mise en réseau ONTAP pour la réplication de volumes>>.
-
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinq"] Sauvegardez et restaurez vos données BlueXP
 [role="quick-margin-para"]
 Sélectionnez l'environnement de travail et cliquez sur *Activer > volumes de sauvegarde* en regard du service de sauvegarde et de restauration dans le volet droit.
 
-[role="quick-margin-para"]
-<<Activez la sauvegarde et la restauration BlueXP sur Cloud Volumes ONTAP>>.
-
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Six"] Activez les sauvegardes sur vos volumes ONTAP
 [role="quick-margin-para"]
 Suivez les instructions de l'assistant d'installation pour sélectionner les règles de réplication et de sauvegarde que vous utiliserez ainsi que les volumes à sauvegarder.
-
-[role="quick-margin-para"]
-<<Activez les sauvegardes sur vos volumes ONTAP>>.
 
 
 
