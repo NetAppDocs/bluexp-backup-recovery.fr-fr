@@ -31,6 +31,9 @@ En résumé, il s'agit des flux valides que vous pouvez utiliser pour restaurer 
 
 
 
+NOTE: Pour connaître les limitations liées à la restauration des données ONTAP, reportez-vous à la section link:reference-limitations.html["Limites de sauvegarde et de restauration pour les volumes ONTAP"].
+
+
 
 == Le tableau de bord de restauration
 

@@ -233,8 +233,7 @@ Si vous utilisez déjà BlueXP pour gérer votre stockage, un connecteur BlueXP 
 
 BlueXP propose plusieurs modes de déploiement qui vous permettent d'utiliser BlueXP en fonction de vos exigences métier et de sécurité. _Standard mode_ exploite la couche SaaS de BlueXP pour fournir des fonctionnalités complètes, tandis que _restricted mode_ et _private mode_ sont disponibles pour les entreprises ayant des restrictions de connectivité.
 
-https://docs.netapp.com/us-en/bluexp-setup-admin/concept-modes.html["En savoir plus sur les modes de déploiement BlueXP"^].
-https://www.netapp.tv/details/30567["Regardez cette vidéo sur les modes de déploiement BlueXP"].
+https://docs.netapp.com/us-en/bluexp-setup-admin/concept-modes.html["En savoir plus sur les modes de déploiement BlueXP"^]. https://media.netapp.com/video-detail/078912eb-f081-5bd3-8342-bdd2d5c85d44/netapp-bluexp-backup-and-recovery-deployment-modes["Regardez cette vidéo sur les modes de déploiement BlueXP"^].
 
 
 
