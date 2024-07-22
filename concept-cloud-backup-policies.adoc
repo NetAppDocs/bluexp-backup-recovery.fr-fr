@@ -321,9 +321,36 @@ endif::azure[]
 * L'option DataLock que vous sélectionnez lors de l'activation de la sauvegarde et de la restauration BlueXP doit être utilisée pour toutes les stratégies de sauvegarde de ce cluster.
 * Vous ne pouvez pas utiliser plusieurs modes DataLock sur un même cluster.
 * Si vous activez DataLock, toutes les sauvegardes de volume seront verrouillées. Vous ne pouvez pas combiner des sauvegardes de volume verrouillées et non verrouillées pour un même cluster.
-* La protection des données et des attaques par ransomware est applicable pour les nouvelles sauvegardes de volumes grâce à une stratégie de sauvegarde avec DataLock et protection contre les attaques par ransomware activées. Vous pouvez ultérieurement activer ou désactiver cette fonction à l'aide de l'option Paramètres avancés.
+* La protection des données et des attaques par ransomware est applicable pour les nouvelles sauvegardes de volumes grâce à une stratégie de sauvegarde avec DataLock et protection contre les attaques par ransomware activées. Vous pouvez ultérieurement activer ou désactiver ces fonctions à l'aide de l'option Paramètres avancés.
 * Les volumes FlexGroup peuvent utiliser DataLock et la protection contre les ransomware uniquement avec ONTAP 9.13.1 ou version ultérieure.
 
+
+
+
+=== Conseils pour réduire les coûts liés à DataLock
+
+Vous pouvez activer ou désactiver la fonction d'analyse anti-ransomware tout en maintenant la fonction DataLock active. Pour éviter des frais supplémentaires, vous pouvez désactiver les analyses par ransomware planifiées. Cela vous permet de personnaliser vos paramètres de sécurité et d'éviter les coûts encourus par le fournisseur de cloud.
+
+Même si la planification des analyses par ransomware est désactivée, vous pouvez toujours effectuer des analyses à la demande si nécessaire.
+
+Vous pouvez choisir différents niveaux de protection :
+
+* *DataLock _without_ ransomware scans* : fournit une protection pour les données de sauvegarde dans le stockage de destination qui peuvent être soit en mode gouvernance, soit en mode conformité.
++
+** *Mode gouvernance* : offre aux administrateurs la possibilité d'écraser ou de supprimer des données protégées.
+** *Mode de conformité* : assure une indélébilité complète jusqu'à l'expiration de la période de conservation. Cela permet de répondre aux exigences de sécurité des données les plus strictes dans les environnements où les réglementations sont très strictes. Les données ne peuvent pas être remplacées ou modifiées au cours de leur cycle de vie, offrant ainsi le niveau de protection le plus élevé pour vos copies de sauvegarde.
++
+
+NOTE: Microsoft Azure utilise à la place le mode Verrouiller et déverrouiller.
+
+
+
+* *DataLock _with_ ransomware scans* : fournit une couche supplémentaire de sécurité pour vos données. Cette fonctionnalité permet de détecter toute tentative de modification de copies de sauvegarde. En cas de tentative, une nouvelle version des données est créée discrètement. La fréquence d'acquisition peut être modifiée sur 1, 2, 3, 4, 5, 6 ou 7 jours. Si les acquisitions sont définies sur tous les 7 jours, les coûts diminuent considérablement.
+
+
+Pour plus de conseils sur la réduction des coûts DataLock, reportez-vous à la section https://community.netapp.com/t5/Tech-ONTAP-Blogs/Understanding-BlueXP-Backup-and-Recovery-DataLock-and-Ransomware-Feature-TCO/ba-p/453475[]
+
+De plus, vous pouvez obtenir des estimations du coût associé à DataLock en visitant le https://bluexp.netapp.com/cloud-backup-service-tco-calculator["Calculateur de TCO des solutions de sauvegarde et de restauration BlueXP"].
 
 
 

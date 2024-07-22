@@ -275,7 +275,7 @@ image:screenshot_backup_cvo_enable.png["Capture d'écran présentant le bouton A
 
 
 
-TIP: Pour modifier les paramètres de sauvegarde ou ajouter une réplication, reportez-vous à la section link:../task-manage-backups-ontap.html["Gérer les sauvegardes ONTAP"].
+TIP: Pour modifier les paramètres de sauvegarde ou ajouter une réplication, reportez-vous à la section link:task-manage-backups-ontap.html["Gérer les sauvegardes ONTAP"].
 
 
 

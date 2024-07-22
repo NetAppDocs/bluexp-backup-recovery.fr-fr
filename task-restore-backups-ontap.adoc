@@ -343,7 +343,7 @@ Notez que la restauration d'un volume à partir d'un fichier de sauvegarde qui r
 
 === Restaurez les dossiers et les fichiers à l'aide de Browse & Restore
 
-Si vous n'avez besoin de restaurer que quelques fichiers depuis la sauvegarde d'un volume ONTAP, vous avez la possibilité de restaurer un dossier ou des fichiers individuels au lieu de restaurer tout le volume. Vous pouvez restaurer des dossiers et des fichiers vers un volume existant dans l'environnement de travail d'origine ou vers un autre environnement de travail utilisant le même compte cloud. Vous pouvez également restaurer des dossiers et des fichiers vers un volume situé sur un système ONTAP sur site.
+Si vous n'avez besoin de restaurer que quelques fichiers à partir d'une sauvegarde de volume ONTAP, vous pouvez choisir de restaurer un dossier ou des fichiers individuels au lieu de restaurer le volume entier. Vous pouvez restaurer des dossiers et des fichiers vers un volume existant dans l'environnement de travail d'origine ou vers un autre environnement de travail utilisant le même compte cloud. Vous pouvez également restaurer des dossiers et des fichiers vers un volume situé sur un système ONTAP sur site.
 
 
 NOTE: À ce stade, vous ne pouvez restaurer un dossier ou des fichiers individuels qu'à partir d'un fichier de sauvegarde dans le stockage objet. La restauration de fichiers et de dossiers n'est actuellement pas prise en charge à partir d'une copie Snapshot locale ou d'un fichier de sauvegarde résidant dans un environnement de travail secondaire (volume répliqué).
@@ -356,6 +356,7 @@ Si vous utilisez ONTAP 9.13.0 ou une version ultérieure, vous pouvez restaurer 
 ====
 * Si le fichier de sauvegarde a été configuré avec la protection DataLock & ransomware, la restauration au niveau des dossiers est prise en charge uniquement si la version de ONTAP est 9.13.1 ou supérieure. Si vous utilisez une version antérieure de ONTAP, vous pouvez restaurer l'intégralité du volume à partir du fichier de sauvegarde, puis accéder au dossier et aux fichiers dont vous avez besoin.
 * Si le fichier de sauvegarde réside dans le stockage d'archives, la restauration au niveau du dossier est prise en charge uniquement si la version de ONTAP est 9.13.1 ou supérieure. Si vous utilisez une version antérieure de ONTAP, vous pouvez restaurer le dossier à partir d'un fichier de sauvegarde plus récent qui n'a pas été archivé, ou vous pouvez restaurer le volume entier à partir de la sauvegarde archivée, puis accéder au dossier et aux fichiers dont vous avez besoin.
+* Avec ONTAP 9.15.1 p2, vous pouvez restaurer des dossiers FlexGroup à l'aide de l'option Parcourir et restaurer.
 
 
 ====
@@ -365,6 +366,7 @@ Si vous utilisez ONTAP 9.13.0 ou une version ultérieure, vous pouvez restaurer 
 
 * La version ONTAP doit être 9.6 ou supérieure pour effectuer des opérations _file_ restore.
 * La version ONTAP doit être 9.11.1 ou supérieure pour effectuer des opérations _folder_ restore. ONTAP version 9.13.1 est requis si les données se trouvent dans un stockage d'archivage ou si le fichier de sauvegarde utilise DataLock et la protection contre les ransomware.
+* La version ONTAP doit être 9.15.1 p2 ou supérieure pour restaurer les répertoires FlexGroup à l'aide de l'option Parcourir et restaurer.
 
 
 
