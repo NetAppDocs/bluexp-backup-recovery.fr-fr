@@ -3774,7 +3774,6 @@ Cloud Volumes ONTAP</block>
   <block id="5e91843f25a40c882d43652a02c8f50e" category="list-text"><block ref="5e91843f25a40c882d43652a02c8f50e" category="inline-link-rx"></block></block>
   <block id="bd83bdfad11f4eb2160cecbaafa5771f" category="section-title">Quel mode de déploiement BlueXP Connector utilisez-vous</block>
   <block id="40f7e0f171ae7f38e670d73e8a4c284b" category="paragraph">BlueXP propose plusieurs modes de déploiement qui vous permettent d'utiliser BlueXP en fonction de vos exigences métier et de sécurité. _Standard mode_ exploite la couche SaaS de BlueXP pour fournir des fonctionnalités complètes, tandis que _restricted mode_ et _private mode_ sont disponibles pour les entreprises ayant des restrictions de connectivité.</block>
-  <block id="fb67e88bd0479a55df78c8a83275d5e7" category="inline-link">Regardez cette vidéo sur les modes de déploiement BlueXP</block>
   <block id="0f8751300c4a6857f8a492b7f39fba12" category="inline-link-macro">Consultez la liste complète des destinations de sauvegarde prises en charge</block>
   <block id="2e87d4ef1e0516d893da73de140af706" category="inline-link-macro">Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob</block>
   <block id="32f34f4c2eca6b21bfa54bfe2cf7ad10" category="inline-link-macro">Sauvegarde des données ONTAP sur site dans Azure Blob</block>
@@ -4902,7 +4901,6 @@ ifdef::aws[]</block>
   <block id="90463a14d4c78ea524911daef7d9cf71" category="paragraph">Cloud Volumes ONTAP prend en charge la sauvegarde et la restauration BlueXP dans de nombreuses régions Amazon Web Services, Microsoft Azure et Google Cloud.</block>
   <block id="6c6a0225cb0a619d8872981b7be0ac95" category="inline-link">En savoir plus sur la carte des régions globales</block>
   <block id="dac27b02289e52ad3bf6be2e625f4031" category="paragraph"><block ref="70c5fe87a2dc0f089282cb7307d783bf" category="inline-link-rx"></block></block>
-  <block id="a0833f9e76bfd36f87ee1d758fbe0cf4" category="paragraph"><block ref="2f5063518a76fb11ac58b566cf1a20ab" category="inline-link-rx"></block>. <block ref="1335d5eb0bcdbaf6050d71dc83f5893f" category="inline-link-rx"></block>.</block>
   <block id="baa1235434f9122bbcf4cd93c72c3ed3" category="list-text">Si vous sauvegardez un volume DP et décidez ensuite de rompre la relation SnapMirror avec ce volume, vous ne pouvez pas restaurer les fichiers sur ce volume sauf si vous supprimez également la relation SnapMirror ou inversez la direction SnapMirror.</block>
   <block id="97a40c9bbf6946a2928acd09286296b8" category="paragraph">La fonctionnalité Browse &amp; Restore pour la restauration de fichiers uniques et de répertoires n'est pas prise en charge lorsque vous utilisez les connecteurs BlueXP s'exécutant dans Podman (connecteurs BlueXP créés manuellement avec RHEL 8 ou 9). Tous les autres types d'opérations de restauration sont pris en charge lors de l'utilisation de Podman. Vous pouvez donc restaurer vos données à l'aide de ces autres méthodes jusqu'à ce que ce problème soit résolu :</block>
   <block id="210a764f3461866061c80320620c0eec" category="admonition">Pour connaître les limitations liées à la restauration des données ONTAP, reportez-vous à la section <block ref="15bd83aed33bf3bd63f2e9166e3e91ba" category="inline-link-macro-rx"></block>.</block>
@@ -4960,4 +4958,5 @@ ifdef::aws[]</block>
   <block id="cd4619af82dfe7627dc934e29e85a6e9" category="paragraph">Avec cette version, la prise en charge de la restauration de dossiers FlexGroup est un aperçu technologique.</block>
   <block id="9b7af6cb2e410e55ce793003b7110047" category="paragraph">Pour plus de détails, reportez-vous à <block ref="07023d18b01371174abc5a157da41b99" category="inline-link-macro-rx"></block>.</block>
   <block id="707304f314bfa71975e8ffb352535092" category="paragraph">Pour plus de détails sur l'activation manuelle, reportez-vous<block ref="7de2d0863d92330816fac8b7768edb68" category="inline-link-rx"></block>à la section .</block>
+  <block id="0459722050fe78ea88f3bdcad4866ce0" category="paragraph"><block ref="2f5063518a76fb11ac58b566cf1a20ab" category="inline-link-rx"></block>.</block>
 </blocks>
