@@ -313,7 +313,7 @@ Vous pouvez choisir de protéger les volumes FlexVol ou FlexGroup, mais vous ne 
 [NOTE]
 ====
 * Vous ne pouvez activer une sauvegarde que sur un seul volume FlexGroup à la fois.
-* Les volumes sélectionnés doivent avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé. (Les volumes avec le mode conformité SnapLock requièrent ONTAP 9.14 ou version ultérieure.)
+* Les volumes sélectionnés doivent avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé.
 
 
 ====
