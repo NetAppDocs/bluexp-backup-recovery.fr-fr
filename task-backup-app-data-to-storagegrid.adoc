@@ -21,7 +21,7 @@ BlueXP prend en charge le verrouillage des données et la protection contre les 
 .Avant de commencer
 Lorsque vous sauvegardez des données dans StorageGRID, un connecteur doit être disponible sur site. Vous devrez soit installer un nouveau connecteur, soit vérifier que le connecteur actuellement sélectionné réside sur site. Le connecteur peut être installé sur un site avec ou sans accès à Internet.
 
-Pour plus d'informations, reportez-vous à la section link:task-backup-onprem-private-cloud.html#creating-or-switching-connectors["Créer des connecteurs pour StorageGRID"].
+Pour plus d'informations, voir link:task-backup-onprem-private-cloud.html#create-or-switch-connectors["Créer des connecteurs pour StorageGRID"].
 
 .Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.
