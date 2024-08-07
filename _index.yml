@@ -1,16 +1,14 @@
 ---
 indexpage:
   title: Documentation sur la sauvegarde et la restauration BlueXP
-  summary: Le service de sauvegarde et de restauration BlueXP assure une protection
-    des données efficace, sécurisée et économique pour les données NetApp ONTAP, les
-    volumes persistants Kubernetes, les bases de données et les machines virtuelles
-    (VM), à la fois sur site et dans le cloud.
-  keywords: bluexp, bluexp backup recovery, ontap, kubernetes, virtual machines, vm,
-    on-premises, data protection
+  summary: Le service de sauvegarde et de restauration BlueXP  assure une protection
+    des données efficace, sécurisée et économique pour les données, bases de données
+    et machines virtuelles NetApp ONTAP, sur site et dans le cloud.
+  keywords: bluexp, bluexp backup recovery, ontap, virtual machine, vm, on-premises,
+    data protection
   lead: Le service de sauvegarde et de restauration BlueXP assure une protection des
-    données efficace, sécurisée et économique pour les données NetApp ONTAP, les volumes
-    persistants Kubernetes, les bases de données et les machines virtuelles, sur site
-    et dans le cloud.
+    données efficace, sécurisée et économique pour les données NetApp ONTAP, les bases
+    de données et les machines virtuelles, à la fois sur site et dans le cloud.
   tiles:
   - title: Commencez
     links:
@@ -97,19 +95,6 @@ indexpage:
       url: task-restore-sql-data.html
     - title: Restaurer les données des machines virtuelles
       url: task-restore-vm-data.html
-    - title: Restaurez les données de volume Kubernetes
-      url: task-restore-backups-kubernetes.html
-  - title: Sauvegardez les données Kubernetes dans le cloud
-    links:
-    - title: Sauvegardez le cluster Kubernetes sur Amazon S3
-      url: task-backup-kubernetes-to-s3.html
-      flavor: aws
-    - title: Sauvegarde du cluster Kubernetes dans Azure Blob
-      url: task-backup-kubernetes-to-azure.html
-      flavor: azure
-    - title: Sauvegarde du cluster Kubernetes dans Google Cloud
-      url: task-backup-kubernetes-to-gcp.html
-      flavor: gcp
   - title: Blogs et communauté
     links:
     - title: Communauté NetApp

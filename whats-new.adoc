@@ -560,7 +560,7 @@ Vous pouvez désormais sauvegarder les données à partir de systèmes Cloud Vol
 
 === Plusieurs améliorations apportées au moniteur de tâches
 
-* La page surveillance des tâches a ajouté un filtrage avancé pour vous permettre de rechercher des tâches de sauvegarde et de restauration par temps, workload (volumes, applications, machines virtuelles ou Kubernetes), Type de tâche, état, environnement de travail et machine virtuelle de stockage. Vous pouvez également entrer du texte libre pour rechercher n'importe quelle ressource, par exemple, "application_3".  https://docs.netapp.com/us-en/bluexp-backup-recovery/task-monitor-backup-jobs.html#searching-and-filtering-the-list-of-jobs["Voir comment utiliser les filtres avancés"].
+* La page surveillance des tâches a ajouté un filtrage avancé qui vous permet de rechercher des tâches de sauvegarde et de restauration par heure, charge de travail (volumes, applications ou machines virtuelles), type de tâche, état, environnement de travail et machine virtuelle de stockage. Vous pouvez également entrer du texte libre pour rechercher n'importe quelle ressource, par exemple, "application_3".  https://docs.netapp.com/us-en/bluexp-backup-recovery/task-monitor-backup-jobs.html#searching-and-filtering-the-list-of-jobs["Voir comment utiliser les filtres avancés"].
 * Les opérations de sauvegarde et de restauration initiées par l'utilisateur à partir de l'interface utilisateur et de l'API de sauvegarde et de restauration BlueXP, ainsi que les tâches initiées par le système, telles que les opérations de sauvegarde en continu, sont désormais disponibles dans l'onglet *surveillance des tâches* pour les systèmes Cloud Volumes ONTAP exécutant ONTAP 9.13.0 ou version ultérieure. Les versions antérieures des systèmes Cloud Volumes ONTAP et les systèmes ONTAP sur site n'affichent actuellement que les tâches initiées par l'utilisateur.
 
 
@@ -789,7 +789,7 @@ Dans la version précédente, la prise en charge a été ajoutée pour créer de
 
 Les mises à jour suivantes ont été effectuées sur le https://docs.netapp.com/us-en/bluexp-backup-recovery/task-monitor-backup-jobs.html["Surveillance des travaux"]:
 
-* Une colonne pour « charge de travail » est disponible. Vous pouvez donc filtrer la page pour afficher les travaux des services de sauvegarde suivants : volumes, applications, machines virtuelles et Kubernetes.
+* Une colonne pour « charge de travail » est disponible. Vous pouvez donc filtrer la page pour afficher les travaux des services de sauvegarde suivants : volumes, applications et machines virtuelles.
 * Vous pouvez ajouter de nouvelles colonnes pour « Nom d'utilisateur » et « Type de travail » si vous souhaitez afficher ces détails pour une tâche de sauvegarde spécifique.
 * La page Détails du travail affiche tous les sous-travaux en cours d'exécution pour terminer le travail principal.
 * La page est automatiquement actualisée toutes les 15 minutes pour que vous puissiez toujours voir les résultats de l'état des travaux les plus récents. Et vous pouvez cliquer sur le bouton *Actualiser* pour mettre la page à jour immédiatement.

@@ -20,7 +20,7 @@ Vous pouvez surveiller l'état des snapshots locaux, des réplications et des t�
 
 == Afficher l'état des travaux sur le moniteur des travaux
 
-Vous pouvez afficher la liste de toutes les opérations Snapshot, de réplication, de sauvegarde sur le stockage objet et de restauration, ainsi que leur état actuel dans l'onglet *Job Monitoring*. Cela inclut les opérations de votre Cloud Volumes ONTAP, de votre ONTAP sur site, de vos applications, de vos machines virtuelles et de vos systèmes Kubernetes. Chaque opération, ou tâche, a un ID et un état uniques.
+Vous pouvez afficher la liste de toutes les opérations Snapshot, de réplication, de sauvegarde sur le stockage objet et de restauration, ainsi que leur état actuel dans l'onglet *Job Monitoring*. Cela inclut des opérations à partir de votre Cloud Volumes ONTAP, de votre ONTAP sur site, de vos applications et de vos machines virtuelles. Chaque opération, ou tâche, a un ID et un état uniques.
 
 Le statut peut être :
 
@@ -76,7 +76,6 @@ La plupart des filtres sont explicites. Le filtre de « charge de travail » vou
 ** Volumes (volumes Cloud Volumes ONTAP et ONTAP sur site)
 ** En termes de latence
 ** Ordinateurs virtuels
-** Kubernetes
 
 
 +
