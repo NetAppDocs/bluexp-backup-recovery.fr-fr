@@ -169,7 +169,7 @@ Le Centre de notification affiche de nombreux événements Snapshot, de réplica
 | La réplication | Échec des tâches de pause de la réplication de sauvegarde et de restauration BlueXP | Erreur | Non 
 
 
-| La réplication | Échec des tâches de réplication de sauvegarde et de restauration BlueXP | Erreur | Non 
+| La réplication | Échec de la réplication de sauvegarde et de restauration BlueXP  | Erreur | Non 
 
 
 | La réplication | Échec de la tâche de resynchronisation de la réplication de sauvegarde et de restauration BlueXP | Erreur | Non 

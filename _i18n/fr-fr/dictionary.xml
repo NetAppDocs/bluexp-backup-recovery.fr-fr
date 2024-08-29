@@ -3043,7 +3043,6 @@ ONTAP S3</block>
   <block id="3b2352f9f987ea3f850c59d97818e5b2" category="cell">Échec de la création de copies Snapshot ad hoc pour la sauvegarde et la restauration BlueXP</block>
   <block id="7dfd6144b0880ea61dc9ca44cde23608" category="cell">Échec de la tâche de réplication ad hoc pour la sauvegarde et la restauration BlueXP</block>
   <block id="44fb2635a11260b2cc484928766b933c" category="cell">Échec des tâches de pause de la réplication de sauvegarde et de restauration BlueXP</block>
-  <block id="ebc078a09fc4b31b91b35b54aa44f5c4" category="cell">Échec des tâches de réplication de sauvegarde et de restauration BlueXP</block>
   <block id="c55e60943b328ba5333135136a72eed3" category="cell">Échec de la tâche de resynchronisation de la réplication de sauvegarde et de restauration BlueXP</block>
   <block id="5e67cebd99d17acfd6723171138a26c0" category="cell">La réplication de sauvegarde et de restauration BlueXP n'interrompt pas les opérations</block>
   <block id="148858fe75d91455e16176a0e57a23a4" category="cell">Échec de la tâche de resynchronisation inverse de la réplication de sauvegarde et de restauration BlueXP</block>
@@ -3735,4 +3734,5 @@ ifdef::aws[]</block>
   <block id="0d80ea71f9929ca6943ff4f16a27de3e" category="list-text">Une colonne pour « charge de travail » est disponible. Vous pouvez donc filtrer la page pour afficher les travaux des services de sauvegarde suivants : volumes, applications et machines virtuelles.</block>
   <block id="756733f39050e99f4221fe80d10ea604" category="sidebar">Le service de sauvegarde et de restauration BlueXP assure une protection des données efficace, sécurisée et économique pour les données NetApp ONTAP, les bases de données et les machines virtuelles, à la fois sur site et dans le cloud.</block>
   <block id="e117f11185531a360eff8bfed09af453" category="sidebar">Le service de sauvegarde et de restauration BlueXP  assure une protection des données efficace, sécurisée et économique pour les données, bases de données et machines virtuelles NetApp ONTAP, sur site et dans le cloud.</block>
+  <block id="0760245e68680af16b611d238a130354" category="cell">Échec de la réplication de sauvegarde et de restauration BlueXP </block>
 </blocks>
