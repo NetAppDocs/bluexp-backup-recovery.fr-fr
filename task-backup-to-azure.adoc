@@ -191,7 +191,7 @@ https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.htm
 
 Vous pouvez utiliser vos propres clés gérées par le client pour le chiffrement des données dans l'assistant d'activation au lieu d'utiliser les clés de chiffrement gérées par Microsoft par défaut. Dans ce cas, vous devez disposer de l'abonnement Azure, du nom du coffre-fort de clés et de la clé. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview["Découvrez comment utiliser vos propres touches"^].
 
-La sauvegarde et la restauration BlueXP prennent en charge les règles d'accès _Azure_ en tant que modèle d'autorisation. Le modèle d'autorisation _Azure Role-Based Access Control_ (Azure RBAC) n'est pas actuellement pris en charge.
+La sauvegarde et la restauration BlueXP  prennent en charge les stratégies d'accès _Azure_, le modèle d'autorisation _Azure Role-Based Access Control_ (Azure RBAC) et le modèle _Managed Hardware Security Model_ (HSM) (voir https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/overview["Qu'est-ce que le HSM géré par Azure Key Vault ?"] ).
 
 
 
