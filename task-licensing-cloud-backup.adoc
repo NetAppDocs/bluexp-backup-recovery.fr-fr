@@ -19,7 +19,7 @@ Vous pouvez acheter une licence pour la sauvegarde et la restauration BlueXP via
 Quelques remarques avant de lire plus loin :
 
 * Si vous avez déjà souscrit à l'abonnement PAYGO (paiement basé sur l'utilisation) dans le marché de votre fournisseur de cloud pour un système Cloud Volumes ONTAP, vous êtes également automatiquement abonné à la sauvegarde et à la restauration BlueXP. Vous n'aurez pas besoin de vous abonner à nouveau.
-* BYOL (Bring Your Own License) de sauvegarde et de restauration BlueXP est une licence flottante que vous pouvez utiliser sur tous les systèmes associés à votre compte BlueXP. Par conséquent, si vous disposez de suffisamment de capacité de sauvegarde sur une licence BYOL, vous n'avez pas besoin d'acheter une autre licence BYOL.
+* BYOL (Bring Your Own License) est une licence flottante qui vous permet d'utiliser sur tous les systèmes associés à votre entreprise ou à votre compte BlueXP  BlueXP . Par conséquent, si vous disposez de suffisamment de capacité de sauvegarde sur une licence BYOL, vous n'avez pas besoin d'acheter une autre licence BYOL.
 * Si vous utilisez une licence BYOL, il est également recommandé d'souscrire à un abonnement PAYGO. Si vous sauvegardez un nombre de données supérieur à celui autorisé par votre licence BYOL ou si la durée de votre licence expire, la sauvegarde se poursuit avec votre abonnement avec paiement basé sur l'utilisation - aucune interruption de service n'est constatée.
 * La sauvegarde de données ONTAP sur site vers StorageGRID nécessite une licence BYOL, mais les besoins en espace de stockage du fournisseur cloud sont réduits.
 
@@ -140,7 +140,7 @@ endif::gcp[]
 
 Modèle BYOL de 1, 2 ou 3 ans avec les licences Bring Your Own. Vous ne payez que les données que vous protégez, calculées par la capacité logique utilisée (_avant_ toutes les efficacités) des volumes ONTAP source qui sont sauvegardés. Cette capacité est également connue sous le nom de téraoctets frontaux (FETB).
 
-La licence de sauvegarde et de restauration BYOL BlueXP est une licence flottante qui permet de partager la capacité totale entre tous les systèmes associés à votre compte BlueXP. Pour les systèmes ONTAP, vous pouvez obtenir une estimation approximative de la capacité dont vous avez besoin en exécutant la commande d'interface de ligne de commande `volume show -fields logical-used-by-afs` pour les volumes que vous prévoyez de sauvegarder.
+La licence de sauvegarde et de restauration BYOL BlueXP  est une licence flottante qui permet de partager la capacité totale sur tous les systèmes associés à votre entreprise ou compte BlueXP . Pour les systèmes ONTAP, vous pouvez obtenir une estimation approximative de la capacité nécessaire en exécutant la commande CLI des `volume show -fields logical-used-by-afs` volumes à sauvegarder.
 
 Si vous ne disposez pas d'une licence BYOL pour la sauvegarde et la restauration BlueXP, cliquez sur l'icône de chat dans le coin inférieur droit de BlueXP pour en acheter une.
 
@@ -157,19 +157,34 @@ Après avoir acheté votre licence BlueXP Backup and Recovery (Cloud Backup), vo
 Si vous exécutez la sauvegarde et la restauration BlueXP dans un site sur site qui ne dispose pas d'un accès Internet, c'est-à-dire que vous avez déployé le connecteur BlueXP dans https://docs.netapp.com/us-en/bluexp-setup-admin/concept-modes.html#private-mode["mode privé"^], vous devez obtenir le fichier de licence à partir d'un système connecté à internet. L'activation de la licence à l'aide du numéro de série et du compte du site de support NetApp n'est pas disponible pour les installations en mode privé.
 
 .Avant de commencer
-Vous devez disposer des informations suivantes avant de commencer :
-
-* Numéro de série de la sauvegarde et de la restauration BlueXP
-+
-Recherchez ce numéro dans votre numéro de commande ou contactez l'équipe chargée du compte pour obtenir ces informations.
-
-* ID de compte BlueXP
-+
-Vous pouvez trouver votre identifiant de compte BlueXP en sélectionnant le menu déroulant *compte* en haut de BlueXP, puis en cliquant sur *gérer compte* en regard de votre compte. Votre ID de compte se trouve dans l'onglet vue d'ensemble. Pour un site en mode privé sans accès à Internet, utilisez *account-DARKSITE1*.
-
-
+Vous aurez besoin de votre numéro de série de sauvegarde et de restauration BlueXP . Recherchez ce numéro dans votre numéro de commande ou contactez l'équipe chargée du compte pour obtenir ces informations.
 
 .Étapes
+. Recherchez votre ID de compte BlueXP  :
++
+.. Dans le coin supérieur droit de la console BlueXP , sélectionnez image:icon-settings-option.png["L'icône des paramètres qui s'affiche en haut à droite de la console Web BlueXP ."] > *gestion des identités et des accès*.
+.. Sur la page Organisation, recherchez votre ID de compte et copiez-le.
++
+Si aucun ID de compte n'est répertorié et que vous avez juste un ID d'organisation, vous devrez copier les huit premiers caractères de l'ID d'organisation et l'ajouter à _account-_
+
++
+Par exemple, supposons qu'il s'agit de votre identifiant d'entreprise :
+
++
+ea10e1c6-80cc-4219-8e99-3c3e6b161ba5
+
++
+Votre identifiant de compte est le suivant :
+
++
+account-ea10e1c6
+
++
+
+NOTE: Pour un site en mode privé sans accès à Internet, utilisez *account-DARKSITE1*.
+
+
+
 . Connectez-vous au https://mysupport.netapp.com["Site de support NetApp"^] Et cliquez sur *systèmes > licences logicielles*.
 . Entrez votre numéro de série de licence de sauvegarde et de restauration BlueXP.
 +

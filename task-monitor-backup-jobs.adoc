@@ -186,7 +186,7 @@ Le Centre de notification affiche de nombreux événements Snapshot, de réplica
 
 NOTE: Depuis ONTAP 9.13.0, toutes les alertes apparaissent pour les systèmes Cloud Volumes ONTAP et ONTAP sur site. Pour les systèmes avec Cloud Volumes ONTAP 9.13.0 et ONTAP sur site, seule l'alerte liée à « tâche de restauration terminée, mais avec avertissements » s'affiche.
 
-Par défaut, les administrateurs de compte BlueXP reçoivent des e-mails pour toutes les alertes « critiques » et « recommandations ». Par défaut, tous les autres utilisateurs et destinataires sont configurés pour ne pas recevoir d'e-mails de notification. Il est possible d'envoyer des e-mails aux utilisateurs BlueXP qui font partie de votre compte Cloud NetApp, ou à tous les destinataires qui doivent avoir connaissance des activités de sauvegarde et de restauration.
+Par défaut, les administrateurs de compte et d'organisation BlueXP  reçoivent des e-mails pour toutes les alertes « critiques » et « recommandations ». Par défaut, tous les autres utilisateurs et destinataires sont configurés pour ne pas recevoir d'e-mails de notification. Il est possible d'envoyer des e-mails aux utilisateurs BlueXP qui font partie de votre compte Cloud NetApp, ou à tous les destinataires qui doivent avoir connaissance des activités de sauvegarde et de restauration.
 
 Pour recevoir les alertes par e-mail de sauvegarde et de restauration BlueXP, vous devez sélectionner les types de sévérité des notifications « critique », « Avertissement » et « erreur » dans la page Paramètres des alertes et des notifications.
 
