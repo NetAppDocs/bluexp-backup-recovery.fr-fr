@@ -3506,8 +3506,6 @@ ifdef::aws[]</block>
   <block id="216ef706f9f25f4eb179f940b530a4d5" category="admonition">Ces paramètres de règles s'appliquent uniquement au stockage de sauvegarde dans un stockage objet. Aucun de ces paramètres n'affecte vos règles de réplication ou de copie Snapshot. Des paramètres de stratégie similaires pour les instantanés et les réplications seront ajoutés ultérieurement.</block>
   <block id="a2e6f50bd5494a56ee0794883aeee5e5" category="section-title">Options de planning de sauvegarde</block>
   <block id="051658be4ba182ab30138c3d0fa07f2b" category="section-title">Options de protection DataLock et anti-ransomware</block>
-  <block id="5eab2e069820454037ee67f5a8712f35" category="list-text">Si vous prévoyez d'utiliser DataLock et une protection contre les ransomware, vous pouvez l'activer lors de la création de votre première stratégie de sauvegarde et de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster. Vous pouvez ensuite l'activer à l'aide des paramètres avancés de sauvegarde et de restauration BlueXP.</block>
-  <block id="8bf75ab26f222aaa987f761ede723ee0" category="list-text">Une fois configuré pour réduire les coûts, DataLock et la protection contre les ransomware peuvent être désactivés pour un cluster.</block>
   <block id="943aed8f26021fcc91ef6a9745099eea" category="list-text">Lorsqu'un fichier de sauvegarde est créé.</block>
   <block id="645f12199dae2b82a1985743cbc3e647" category="section-title">Options de protection DataLock et anti-ransomware</block>
   <block id="28393e8d0c5d4d42b764689c3d805dd0" category="example-title">Autorisations AWS S3</block>
@@ -3757,4 +3755,5 @@ ifdef::aws[]</block>
   <block id="8d9ab45267715f2ac0f3956dcc48c029" category="paragraph">Voir<block ref="17dde2a04d27e7ad2a9f0a451a7a0e90" category="inline-link-rx"></block>.</block>
   <block id="78d043c8f38ceca4388c8f7251b8d0a4" category="paragraph">Dans les versions précédentes, le rôle d'administrateur du stockage était requis pour le compte de service permettant à la sauvegarde et à la restauration BlueXP d'accéder aux compartiments de stockage Google Cloud. Vous pouvez désormais créer un rôle personnalisé avec un ensemble réduit d'autorisations à attribuer au compte de service.</block>
   <block id="c3fc4078f4f9169223583aa65515bc3a" category="paragraph"><block ref="dc783245fae5a9dea930533d2d02d38a" category="inline-link-rx"></block>.</block>
+  <block id="5b932b14c237e03588a415b41b9a0b43" category="list-text">Si vous prévoyez d'utiliser DataLock et une protection contre les ransomware, vous pouvez l'activer lors de la création de votre première stratégie de sauvegarde et de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster. Vous pouvez ultérieurement activer ou désactiver l'analyse en cas d'attaque par ransomware à l'aide des paramètres avancés de sauvegarde et de restauration de BlueXP .</block>
 </blocks>
