@@ -275,18 +275,18 @@ endif::gcp[]
 
 === Prise en charge des sites avec une connectivité Internet limitée
 
-La sauvegarde et la restauration BlueXP peuvent être utilisées dans un site doté d'une connectivité Internet limitée (également appelé _mode restreint_) pour sauvegarder des données de volume. Dans ce cas, vous devez déployer le connecteur BlueXP dans la région réservée.
+La sauvegarde et la restauration BlueXP peuvent être utilisées dans un site doté d'une connectivité Internet limitée (également appelé _mode restreint_) pour sauvegarder des données de volume. Dans ce cas, vous devez déployer BlueXP  Connector dans la région cloud de destination.
 
 ifdef::aws[]
 
-* Vous pouvez sauvegarder les données à partir de systèmes Cloud Volumes ONTAP installés dans des régions commerciales AWS vers Amazon S3. link:task-backup-to-s3.html["Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3"].
+* Vous pouvez sauvegarder les données à partir de systèmes ONTAP sur site ou de systèmes Cloud Volumes ONTAP installés dans les régions commerciales AWS vers Amazon S3. link:task-backup-to-s3.html["Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3"].
 
 
 endif::aws[]
 
 ifdef::azure[]
 
-* Vous pouvez sauvegarder les données à partir de systèmes Cloud Volumes ONTAP installés dans les régions commerciales Azure vers Azure Blob.  link:task-backup-to-azure.html["Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob"].
+* Vous pouvez sauvegarder les données à partir de systèmes ONTAP sur site ou de systèmes Cloud Volumes ONTAP installés dans des régions commerciales Azure vers Azure Blob. link:task-backup-to-azure.html["Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob"].
 
 
 endif::azure[]

@@ -96,6 +96,8 @@ Lorsque vous travaillez avec plusieurs volumes, tous les volumes doivent avoir l
 * Même type (lecture-écriture ou volume protection des données)
 
 
+Lorsque plus de cinq volumes sont activés pour la sauvegarde, la sauvegarde et la restauration BlueXP  initialise seulement cinq volumes à la fois. Une fois ces opérations terminées, il crée le lot suivant de cinq sous-travaux pour démarrer le jeu suivant et continue jusqu'à ce que tous les volumes soient initialisés.
+
 .Étapes
 . Dans l'onglet *volumes*, filtrez en fonction de l'environnement de travail sur lequel résident les volumes.
 . Sélectionnez tous les volumes sur lesquels vous souhaitez gérer les paramètres de sauvegarde.
