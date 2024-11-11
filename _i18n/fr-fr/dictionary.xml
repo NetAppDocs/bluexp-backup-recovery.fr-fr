@@ -3757,4 +3757,16 @@ ifdef::aws[]</block>
   <block id="ba69c078d6c88577ac4045721cf8bc4b" category="cell"><block ref="1db7b4242367cddbadaf1e041e531c76" prefix="" category="inline-code"></block></block>
   <block id="e23da6bf724f3225b25342aa20aab822" category="cell"><block ref="1e8904cbbffb7eff1de96297f70cd53e" prefix="" category="inline-code"></block></block>
   <block id="7a912606781d54fe98a96090d0cd3c74" category="paragraph">Lorsque plus de cinq volumes sont activés pour la sauvegarde, la sauvegarde et la restauration BlueXP  initialise seulement cinq volumes à la fois. Une fois ces opérations terminées, il crée le lot suivant de cinq sous-travaux pour démarrer le jeu suivant et continue jusqu'à ce que tous les volumes soient initialisés.</block>
+  <block id="46206fcd0fa4af78eefe04f1bd8d42c6" category="list-text">SnapLock Compliance pour les volumes sur site (nécessite ONTAP 9.14 ou version ultérieure)</block>
+  <block id="07c8845dbdef949b860ebfc99bd558ac" category="section-title">6 novembre 2024</block>
+  <block id="a5fd9c132798873e9eb6aafb58e50034" category="section-title">Modes de protection SnapLock Compliance et SnapLock Enterprise</block>
+  <block id="139da935670a9f985194d3241917c359" category="paragraph">La sauvegarde et la restauration BlueXP  peuvent désormais sauvegarder des volumes FlexVol et FlexGroup sur site configurés en mode de protection SnapLock Compliance ou SnapLock Enterprise. Pour cette prise en charge, vos clusters doivent exécuter ONTAP 9.14 ou une version ultérieure. La sauvegarde de volumes FlexVol à l'aide de SnapLock Enterprise mode est prise en charge depuis ONTAP version 9.11.1. Les versions antérieures de ONTAP ne prennent pas en charge la sauvegarde des volumes de protection SnapLock.</block>
+  <block id="9ddb3e6714694f5c7f619d474fec8169" category="paragraph">Consultez la liste complète des volumes pris en charge dans le<block ref="9e68a582cc487ad29425f5a4796c9e45" category="inline-link-rx"></block>.</block>
+  <block id="fec92c3dfb6a0b3db498488c7f4d2f29" category="section-title">Indexation pour le processus de recherche et de restauration sur la page volumes</block>
+  <block id="20d3b0b7cfe7a9f3dcfdb0faa9398efd" category="paragraph">Avant de pouvoir utiliser la fonction de recherche et de restauration, vous devez activer « indexation » sur chaque environnement de travail source à partir duquel vous souhaitez restaurer les données du volume. Cela permet au catalogue indexé de suivre les fichiers de sauvegarde de chaque volume. La page volumes affiche désormais l'état de l'indexation :</block>
+  <block id="cd9b31737e78e0a0a755acc12151f766" category="list-text">Indexé : les volumes ont été indexés.</block>
+  <block id="02e4eb80c967f3b9add2ba16a690eef2" category="list-text">En cours</block>
+  <block id="838534d879f74e7af515a7de57e72b71" category="list-text">Non indexé</block>
+  <block id="73d4d0de3c5f56849f3c1a290a6681f2" category="list-text">Indexation suspendue</block>
+  <block id="cb48cbf342305a9ae53e02e21fcb644c" category="list-text">Non activé</block>
 </blocks>
