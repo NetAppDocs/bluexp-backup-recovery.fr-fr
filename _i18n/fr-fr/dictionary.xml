@@ -690,9 +690,7 @@
   <block id="1d7733f94633408426a8b5de97f97f13" category="list-text">au 13ème mois, la première sauvegarde mensuelle est supprimée, et la nouvelle sauvegarde mensuelle du 13ème mois est ajoutée (en conservant un maximum de 12 sauvegardes mensuelles)</block>
   <block id="c669c23edafe470b3fd44da0d90e43a1" category="inline-link-macro">Dans la page Paramètres avancés</block>
   <block id="71dc99a235b204c380fc1f0d4ff3d988" category="paragraph">Notez que les sauvegardes annuelles sont automatiquement supprimées du système source après leur transfert vers le stockage objet. Ce comportement par défaut peut être modifié <block ref="84fdcd8fda5ef8d60546cc911ec3f8e9" category="inline-link-macro-rx"></block> Pour l'environnement de travail.</block>
-  <block id="aa254718f2c52dc147bfd8f98b0c4840" category="inline-link">Cloud Insights et Cloud Secure</block>
   <block id="86fef274eb09e789513af0922e579b5a" category="inline-link">Protections contre les ransomwares fournies par ONTAP</block>
-  <block id="105cf1dd74d7a9079245d031f91df8b0" category="paragraph">Cette fonction n'assure pas la protection de vos volumes source, uniquement pour les sauvegardes de ces volumes source. Faites confiance à NetApp<block ref="2e57621b97dadc1cef3dd80d75e83676" category="inline-link-rx"></block>, ou une partie du<block ref="086d55e347fe71de47923b356a73187b" category="inline-link-rx"></block> pour protéger vos volumes source.</block>
   <block id="921b747c1abfd997d26a273c0b62011b" category="section-title">Qu'est-ce que DataLock</block>
   <block id="dc52d5a83e31ec66da3344056a4e4e39" category="paragraph">Notez que les anciennes sauvegardes sont supprimées après l'expiration de la période de rétention de DataLock, et non après l'expiration de la période de conservation de la stratégie de sauvegarde.</block>
   <block id="f6494bde8c5d58e1a40bf174c8083f96" category="paragraph">Voyons quelques exemples de fonctionnement de cette méthode :</block>
@@ -3757,16 +3755,6 @@ ifdef::aws[]</block>
   <block id="ba69c078d6c88577ac4045721cf8bc4b" category="cell"><block ref="1db7b4242367cddbadaf1e041e531c76" prefix="" category="inline-code"></block></block>
   <block id="e23da6bf724f3225b25342aa20aab822" category="cell"><block ref="1e8904cbbffb7eff1de96297f70cd53e" prefix="" category="inline-code"></block></block>
   <block id="7a912606781d54fe98a96090d0cd3c74" category="paragraph">Lorsque plus de cinq volumes sont activés pour la sauvegarde, la sauvegarde et la restauration BlueXP  initialise seulement cinq volumes à la fois. Une fois ces opérations terminées, il crée le lot suivant de cinq sous-travaux pour démarrer le jeu suivant et continue jusqu'à ce que tous les volumes soient initialisés.</block>
-  <block id="46206fcd0fa4af78eefe04f1bd8d42c6" category="list-text">SnapLock Compliance pour les volumes sur site (nécessite ONTAP 9.14 ou version ultérieure)</block>
-  <block id="07c8845dbdef949b860ebfc99bd558ac" category="section-title">6 novembre 2024</block>
-  <block id="a5fd9c132798873e9eb6aafb58e50034" category="section-title">Modes de protection SnapLock Compliance et SnapLock Enterprise</block>
-  <block id="139da935670a9f985194d3241917c359" category="paragraph">La sauvegarde et la restauration BlueXP  peuvent désormais sauvegarder des volumes FlexVol et FlexGroup sur site configurés en mode de protection SnapLock Compliance ou SnapLock Enterprise. Pour cette prise en charge, vos clusters doivent exécuter ONTAP 9.14 ou une version ultérieure. La sauvegarde de volumes FlexVol à l'aide de SnapLock Enterprise mode est prise en charge depuis ONTAP version 9.11.1. Les versions antérieures de ONTAP ne prennent pas en charge la sauvegarde des volumes de protection SnapLock.</block>
-  <block id="9ddb3e6714694f5c7f619d474fec8169" category="paragraph">Consultez la liste complète des volumes pris en charge dans le<block ref="9e68a582cc487ad29425f5a4796c9e45" category="inline-link-rx"></block>.</block>
-  <block id="fec92c3dfb6a0b3db498488c7f4d2f29" category="section-title">Indexation pour le processus de recherche et de restauration sur la page volumes</block>
-  <block id="20d3b0b7cfe7a9f3dcfdb0faa9398efd" category="paragraph">Avant de pouvoir utiliser la fonction de recherche et de restauration, vous devez activer « indexation » sur chaque environnement de travail source à partir duquel vous souhaitez restaurer les données du volume. Cela permet au catalogue indexé de suivre les fichiers de sauvegarde de chaque volume. La page volumes affiche désormais l'état de l'indexation :</block>
-  <block id="cd9b31737e78e0a0a755acc12151f766" category="list-text">Indexé : les volumes ont été indexés.</block>
-  <block id="02e4eb80c967f3b9add2ba16a690eef2" category="list-text">En cours</block>
-  <block id="838534d879f74e7af515a7de57e72b71" category="list-text">Non indexé</block>
-  <block id="73d4d0de3c5f56849f3c1a290a6681f2" category="list-text">Indexation suspendue</block>
-  <block id="cb48cbf342305a9ae53e02e21fcb644c" category="list-text">Non activé</block>
+  <block id="542b4404b0cd2b4cf01b81a3a97b2c20" category="inline-link">Informations exploitables sur l'infrastructure de données et Cloud Secure</block>
+  <block id="5212f7d39ed0f1c16c365beda23afc75" category="paragraph">Cette fonction n'assure pas la protection de vos volumes source, uniquement pour les sauvegardes de ces volumes source. Utilisez NetApp<block ref="17959d7def942fae173290691e2a40ae" category="inline-link-rx"></block> ou une partie du<block ref="086d55e347fe71de47923b356a73187b" category="inline-link-rx"></block> pour protéger vos volumes source.</block>
 </blocks>
