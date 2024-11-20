@@ -122,9 +122,3 @@ La fonctionnalité Browse & Restore pour la restauration de fichiers uniques et 
 * Restaurez les fichiers ou dossiers à partir d'une sauvegarde dans le cloud à l'aide de la fonction Rechercher et restaurer.
 * Restaurez le volume à partir d'une sauvegarde dans le cloud à l'aide de Parcourir et Restaurer, puis accédez aux fichiers ou dossiers dont vous avez besoin.
 
-
-
-
-==== L'analyse anti-ransomware de vos sauvegardes dans le cloud n'est pas prise en charge
-
-L'analyse des sauvegardes cloud pour détecter les ransomwares n'est pas prise en charge lors de l'utilisation du moteur Podman. Si vous utilisez la fonctionnalité DataLock & ransomware pour vos sauvegardes cloud, vous devez désactiver les analyses de ransomware. link:task-manage-backup-settings-ontap.html#enable-or-disable-ransomware-scans["Découvrez comment désactiver l'analyse anti-ransomware"].
