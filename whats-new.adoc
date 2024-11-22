@@ -18,7 +18,37 @@ Découvrez les nouveautés de la sauvegarde et de la restauration BlueXP.
 
 
 
+== 22 novembre 2024
+
+Cette version de sauvegarde et de restauration BlueXP  comprend les mises à jour suivantes.
+
+
+
+=== Modes de protection SnapLock Compliance et SnapLock Enterprise
+
+La sauvegarde et la restauration BlueXP  peuvent désormais sauvegarder des volumes FlexVol et FlexGroup sur site configurés en mode de protection SnapLock Compliance ou SnapLock Enterprise. Pour cette prise en charge, vos clusters doivent exécuter ONTAP 9.14 ou une version ultérieure. La sauvegarde de volumes FlexVol à l'aide de SnapLock Enterprise mode est prise en charge depuis ONTAP version 9.11.1. Les versions antérieures de ONTAP ne prennent pas en charge la sauvegarde des volumes de protection SnapLock.
+
+Consultez la liste complète des volumes pris en charge dans le https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-ontap-backup-to-cloud.html["Découvrez la sauvegarde et la restauration BlueXP"].
+
+
+
+=== Indexation pour le processus de recherche et de restauration sur la page volumes
+
+Avant de pouvoir utiliser la fonction de recherche et de restauration, vous devez activer « indexation » sur chaque environnement de travail source à partir duquel vous souhaitez restaurer les données du volume. Cela permet au catalogue indexé de suivre les fichiers de sauvegarde de chaque volume. La page volumes affiche désormais l'état de l'indexation :
+
+* Indexé : les volumes ont été indexés.
+* En cours
+* Non indexé
+* Indexation suspendue
+* Erreur
+* Non activé
+
+
+
+
 == 27 septembre 2024
+
+Cette version de sauvegarde et de restauration BlueXP  comprend les mises à jour suivantes.
 
 
 

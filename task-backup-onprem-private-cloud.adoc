@@ -231,6 +231,8 @@ Comme vous pouvez répliquer sur des systèmes Cloud Volumes ONTAP ou sur site, 
 
 StorageGRID doit remplir les conditions suivantes. Voir la https://docs.netapp.com/us-en/storagegrid-117/["Documentation StorageGRID"^] pour en savoir plus.
 
+Pour plus d'informations sur les exigences de verrouillage de données et de protection contre les ransomware pour StorageGRID, reportez-vous à link:concept-cloud-backup-policies.html["Options de règle de sauvegarde sur objet"].
+
 Versions de StorageGRID prises en charge:: StorageGRID 10.3 et versions ultérieures sont prises en charge.
 +
 --
