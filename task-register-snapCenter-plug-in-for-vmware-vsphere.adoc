@@ -16,9 +16,6 @@ summary: 'Enregistrez le plug-in SnapCenter pour l"hôte VMware vSphere dans Blu
 [role="lead"]
 Vous devez enregistrer le plug-in SnapCenter pour l'hôte VMware vSphere dans BlueXP pour afficher les datastores et les machines virtuelles. Seul un utilisateur disposant d'un accès administrateur peut enregistrer le plug-in SnapCenter pour l'hôte VMware vSphere.
 
-
-NOTE: Vous pouvez enregistrer plusieurs plug-in SnapCenter pour les hôtes VMware vSphere dans BlueXP. Cependant, une fois enregistré, vous ne pouvez pas supprimer le plug-in SnapCenter pour l'hôte VMware vSphere.
-
 .Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *machines virtuelles*.
 . Dans la liste déroulante *Paramètres*, cliquez sur *Plug-in SnapCenter pour VMware vSphere*.

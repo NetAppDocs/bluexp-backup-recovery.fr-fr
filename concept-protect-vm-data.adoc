@@ -38,6 +38,7 @@ Lisez les conditions suivantes pour vous assurer que votre configuration est pri
 * Assurez-vous que le datastore de destination sur lequel la machine virtuelle sera restaurée dispose d'un espace suffisant pour prendre en charge une copie de tous les fichiers des machines virtuelles tels que VMDK, VMX, VMSD, etc.
 * Assurez-vous que le datastore de destination ne contient pas de fichiers de machine virtuelle obsolètes au format restore_xxx_xxxxxx_filename des échecs précédents de l'opération de restauration. Vous devez supprimer les fichiers obsolètes avant de lancer une opération de restauration.
 * Pour déployer un connecteur avec proxy configuré, assurez-vous que tous les appels de connecteur sortants sont acheminés via le serveur proxy.
+* Si un volume qui sauvegarde un datastore est déjà protégé depuis l'onglet volumes (sauvegarde et restauration BlueXP  -> volumes), le même datastore ne peut pas être protégé à nouveau depuis l'onglet machines virtuelles (sauvegarde et restauration BlueXP  -> machines virtuelles).
 
 
 L'image suivante montre chaque composant et les connexions que vous devez préparer entre eux :
