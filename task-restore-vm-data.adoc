@@ -109,3 +109,5 @@ Pour Amazon Web Services, la priorité de restauration d'archivage est élevée,
 
 
 |===
+
+NOTE: Si l'opération de restauration ne se termine pas, ne tentez pas de nouveau le processus de restauration tant que le moniteur de tâches n'indique pas que l'opération de restauration a échoué. Si vous essayez à nouveau le processus de restauration avant que le moniteur de tâches indique que l'opération de restauration a échoué, l'opération de restauration échouera à nouveau. Lorsque l'état du moniteur de tâches est « échec », vous pouvez réessayer le processus de restauration.

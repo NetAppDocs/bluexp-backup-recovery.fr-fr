@@ -39,3 +39,6 @@ Si vous sélectionnez *Modifier l'emplacement de stockage*, vous pouvez ajouter 
 
 
 Cette opération n'effectue que l'exportation du stockage de la sauvegarde sélectionnée sur l'hôte donné. Vous devez monter manuellement le système de fichiers et faire apparaître la base de données. Après avoir utilisé le volume, l'administrateur du stockage peut le supprimer du cluster ONTAP.
+
+
+NOTE: Si l'opération de restauration ne se termine pas, ne tentez pas de nouveau le processus de restauration tant que le moniteur de tâches n'indique pas que l'opération de restauration a échoué. Si vous essayez à nouveau le processus de restauration avant que le moniteur de tâches indique que l'opération de restauration a échoué, l'opération de restauration échouera à nouveau. Lorsque l'état du moniteur de tâches est « échec », vous pouvez réessayer le processus de restauration.

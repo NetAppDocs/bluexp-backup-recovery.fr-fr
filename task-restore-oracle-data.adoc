@@ -142,8 +142,12 @@ Si vous sélectionnez *Modifier l'emplacement de stockage*, vous pouvez ajouter 
 . Vérifiez les détails et cliquez sur *Restaurer*.
 
 
+.Résultats
 L'option *Restaurer à un autre emplacement* monte la sauvegarde sélectionnée sur l'hôte donné. Vous devez ouvrir manuellement la base de données.
 
 Après avoir monté la sauvegarde, vous ne pouvez pas la monter à nouveau tant qu'elle n'est pas démontée. Vous pouvez utiliser l'option *Unmount* de l'interface utilisateur pour démonter la sauvegarde.
 
 Pour plus d'informations sur l'affichage de la base de données Oracle, reportez-vous à la section https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Manager/How_to_bring_up_Oracle_Database_in_another_NFS_host_after_mounting_storage_from_backup_in_Cloud_Backup_for_Applications["Article de la base de connaissances"].
+
+
+NOTE: Si l'opération de restauration ne se termine pas, ne tentez pas de nouveau le processus de restauration tant que le moniteur de tâches n'indique pas que l'opération de restauration a échoué. Si vous essayez à nouveau le processus de restauration avant que le moniteur de tâches indique que l'opération de restauration a échoué, l'opération de restauration échouera à nouveau. Lorsque l'état du moniteur de tâches est « échec », vous pouvez réessayer le processus de restauration.

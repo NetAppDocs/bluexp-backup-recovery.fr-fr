@@ -31,6 +31,9 @@ En résumé, il s'agit des flux valides que vous pouvez utiliser pour restaurer 
 
 
 
+NOTE: Si l'opération de restauration ne se termine pas, ne tentez pas de nouveau le processus de restauration tant que le moniteur de tâches n'indique pas que l'opération de restauration a échoué. Si vous essayez à nouveau le processus de restauration avant que le moniteur de tâches indique que l'opération de restauration a échoué, l'opération de restauration échouera à nouveau. Lorsque l'état du moniteur de tâches est « échec », vous pouvez réessayer le processus de restauration.
+
+
 NOTE: Pour connaître les limitations liées à la restauration des données ONTAP, reportez-vous à la section link:reference-limitations.html["Limites de sauvegarde et de restauration pour les volumes ONTAP"].
 
 
