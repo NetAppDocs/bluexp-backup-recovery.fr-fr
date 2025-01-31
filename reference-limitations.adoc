@@ -89,7 +89,6 @@ Si vous utilisez une version de ONTAP antérieure à 9.11.1, la restauration de 
 
 * La restauration de répertoires/dossiers est prise en charge pour les données qui résident dans le stockage d'archives uniquement lorsque le cluster exécute ONTAP 9.13.1 ou une version ultérieure.
 * La restauration de répertoire/dossier est prise en charge pour les données protégées à l'aide de DataLock uniquement lorsque le cluster exécute ONTAP 9.13.1 ou une version ultérieure.
-* La restauration de répertoires/dossiers n'est actuellement pas prise en charge sur les sauvegardes de volume FlexGroup.
 * La restauration de répertoire/dossier n'est actuellement pas prise en charge pour les réplications et/ou les snapshots locaux.
 * La restauration des volumes FlexGroup vers des volumes FlexVol, ou des volumes FlexVol vers des volumes FlexGroup n'est pas prise en charge.
 * Le fichier en cours de restauration doit être dans la même langue que celle du volume de destination. Vous recevrez un message d'erreur si les langues ne sont pas les mêmes.
@@ -103,22 +102,4 @@ Si vous utilisez une version de ONTAP antérieure à 9.11.1, la restauration de 
 ** Les volumes SnapLock sont pris en charge uniquement si le système source à partir duquel la sauvegarde cloud a été créée exécutait ONTAP 9.11.0 ou version ultérieure.
 
 
-
-
-
-
-=== Limitations lors de l'utilisation de RHEL 8+ avec Podman
-
-
-
-==== Prise en charge de la restauration de fichiers uniques
-
-
-IMPORTANT: Depuis la version du 30 septembre 2024, cette limitation a été supprimée.
-
-La fonctionnalité Browse & Restore pour la restauration de fichiers uniques et de répertoires n'est pas prise en charge lorsque vous utilisez les connecteurs BlueXP s'exécutant dans Podman (connecteurs BlueXP créés manuellement avec RHEL 8 ou 9). Tous les autres types d'opérations de restauration sont pris en charge lors de l'utilisation de Podman. Vous pouvez donc restaurer vos données à l'aide de ces autres méthodes jusqu'à ce que ce problème soit résolu :
-
-* Restaurez les fichiers ou dossiers à partir d'un volume répliqué, s'il existe un volume répliqué.
-* Restaurez les fichiers ou dossiers à partir d'une sauvegarde dans le cloud à l'aide de la fonction Rechercher et restaurer.
-* Restaurez le volume à partir d'une sauvegarde dans le cloud à l'aide de Parcourir et Restaurer, puis accédez aux fichiers ou dossiers dont vous avez besoin.
 
