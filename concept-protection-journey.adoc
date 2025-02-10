@@ -36,7 +36,7 @@ Avant de sélectionner les fonctions que vous utiliserez, voici une brève expli
 | Type de sauvegarde | Description 
 
 
-| Snapshot | Crée une image en lecture seule et instantanée d'un volume au sein du volume source en tant que copie Snapshot. Vous pouvez utiliser la copie Snapshot pour restaurer des fichiers individuels ou pour restaurer l'intégralité du contenu d'un volume. 
+| Snapshot | Crée une image en lecture seule, à un point dans le temps d'un volume au sein du volume source en tant que copie Snapshot. Vous pouvez utiliser la copie Snapshot pour restaurer des fichiers individuels ou pour restaurer l'intégralité du contenu d'un volume. 
 
 
 | La réplication | Crée une copie secondaire des données sur un autre système de stockage ONTAP et met continuellement à jour les données secondaires. Vous disposez de données actualisées et accessibles dès que vous en avez besoin. 
@@ -44,7 +44,7 @@ Avant de sélectionner les fonctions que vous utiliserez, voici une brève expli
 
 | La sauvegarde dans le cloud | Crée des sauvegardes de vos données dans le cloud à des fins de protection et d'archivage à long terme. Si nécessaire, vous pouvez restaurer un volume, un dossier ou des fichiers individuels de la sauvegarde vers un environnement de travail identique ou différent. 
 |===
-Les snapshots constituent la base de toutes les méthodes de sauvegarde et ils sont tenus d'utiliser le service de sauvegarde et de restauration. Une copie Snapshot est une image instantanée d'un volume en lecture seule. L'image consomme un espace de stockage minimal et entraîne une surcharge minime des performances, car elle enregistre uniquement les modifications apportées aux fichiers depuis la dernière copie Snapshot. La copie Snapshot créée sur votre volume permet de maintenir la synchronisation entre le volume répliqué et le fichier de sauvegarde et les modifications apportées au volume source, comme illustré dans la figure.
+Les snapshots constituent la base de toutes les méthodes de sauvegarde et ils sont tenus d'utiliser le service de sauvegarde et de restauration. Une copie Snapshot est une image instantanée en lecture seule d'un volume. L'image consomme un espace de stockage minimal et présente un impact négligeable sur les performances, car elle n'enregistre que les modifications apportées aux fichiers depuis la dernière copie Snapshot. La copie Snapshot créée sur votre volume permet de maintenir la synchronisation du volume répliqué et du fichier de sauvegarde avec les modifications apportées au volume source, comme illustré dans la figure.
 
 image:diagram-321-overview.png["Un diagramme illustrant la façon dont les fichiers de sauvegarde existent sur le système source sous forme de copies Snapshot, de volumes répliqués sur le système de stockage secondaire et de fichiers de sauvegarde dans le stockage objet."]
 
@@ -89,7 +89,7 @@ Une architecture *Fan-Out* transfère la copie Snapshot de manière indépendant
 
 image:diagram-321-fanout-detailed.png["Diagramme illustrant comment une copie Snapshot d'un volume est utilisée pour créer et mettre à jour un volume répliqué et un fichier de sauvegarde."]
 
-Une architecture *cascade* transfère d'abord la copie Snapshot vers le système de stockage de destination, puis ce système transfère la copie vers l'objet de sauvegarde dans le cloud.
+Une architecture *cascade* transfère d'abord la copie snapshot vers le système de stockage de destination, puis ce système transfère la copie vers l'objet de sauvegarde dans le cloud.
 
 image:diagram-321-cascade-detailed.png["Diagramme illustrant comment une copie Snapshot d'un volume est utilisée pour créer et mettre à jour un volume répliqué et un fichier de sauvegarde."]
 
@@ -109,38 +109,35 @@ Ce tableau fournit une comparaison des architectures « Fan-Out » et « Cascade
 |===
 
 
-== Utiliserez-vous les règles par défaut pour les copies Snapshot, les réplications et les sauvegardes
+== Utiliserez-vous les règles par défaut pour les instantanés, les réplications et les sauvegardes
 
 Vous pouvez utiliser les règles par défaut fournies par NetApp pour créer vos sauvegardes ou créer des règles personnalisées. Lorsque vous activez le service de sauvegarde et de restauration de vos volumes à l'aide de l'assistant d'activation, vous pouvez sélectionner parmi les règles par défaut et toutes les autres règles qui existent déjà dans l'environnement de travail (Cloud Volumes ONTAP ou système ONTAP sur site). Si vous souhaitez utiliser une stratégie différente de celles existantes, vous pouvez créer la stratégie avant de démarrer ou pendant l'utilisation de l'assistant d'activation.
 
 * La règle Snapshot par défaut crée des copies Snapshot toutes les heures, tous les jours et toutes les semaines, en conservant 6 copies Snapshot toutes les heures, 2 copies quotidiennes et 2 copies Snapshot hebdomadaires.
-* La règle de réplication par défaut réplique les copies Snapshot quotidiennes et hebdomadaires, en conservant 7 copies Snapshot quotidiennes et 52 copies Snapshot hebdomadaires.
+* La règle de réplication par défaut réplique les copies snapshot quotidiennes et hebdomadaires, en conservant 7 copies Snapshot quotidiennes et 52 copies Snapshot hebdomadaires.
 * La règle de sauvegarde par défaut réplique les copies Snapshot quotidiennes et hebdomadaires, en conservant 7 copies Snapshot quotidiennes et 52 copies Snapshot hebdomadaires.
 
 
-Si vous créez des règles personnalisées pour la réplication ou la sauvegarde, les étiquettes de règles (par exemple, « quotidien » ou « hebdomadaire ») doivent correspondre aux étiquettes figurant dans vos règles Snapshot ou les volumes répliqués et les fichiers de sauvegarde ne seront pas créés.
+Si vous créez des règles personnalisées pour la réplication ou la sauvegarde, les étiquettes de règles (par exemple, « quotidien » ou « hebdomadaire ») doivent correspondre aux étiquettes figurant dans vos règles de snapshots ou les volumes répliqués et les fichiers de sauvegarde ne seront pas créés.
 
-Vous pouvez créer des règles de stockage Snapshot, de réplication et de sauvegarde vers un stockage objet dans l'interface de sauvegarde et de restauration BlueXP. Voir la section pour link:task-manage-backups-ontap.html#add-a-new-backup-to-cloud-policy["ajout d'une nouvelle politique de sauvegarde"] pour plus d'informations.
+Vous pouvez créer des règles de stockage objet pour les copies Snapshot, la réplication et la sauvegarde dans l'interface de sauvegarde et de restauration de BlueXP . Voir la section pour link:task-manage-backups-ontap.html#add-a-new-backup-to-cloud-policy["ajout d'une nouvelle politique de sauvegarde"]plus de détails.
 
-Outre l'utilisation de BlueXP Backup Recovery pour créer des règles personnalisées, vous pouvez utiliser System Manager ou l'interface de ligne de commande ONTAP.
+En plus de l'utilisation des fonctionnalités de sauvegarde et de restauration BlueXP  pour créer des règles personnalisées, vous pouvez utiliser System Manager ou l'interface de ligne de commande ONTAP :
 
-https://docs.netapp.com/us-en/ontap/task_dp_configure_snapshot.html["Créez une règle Snapshot à l'aide de System Manager"^]
-https://docs.netapp.com/us-en/ontap/data-protection/create-snapshot-policy-task.html["Créez une règle Snapshot à l'aide de l'interface de ligne de commandes de ONTAP"^]
-https://docs.netapp.com/us-en/ontap/task_dp_create_custom_data_protection_policies.html["Créez une règle de réplication à l'aide de System Manager"^]
-https://docs.netapp.com/us-en/ontap/data-protection/create-custom-replication-policy-concept.html["Créez une règle de réplication à l'aide de l'interface de ligne de commandes de ONTAP"^]
-https://docs.netapp.com/us-en/ontap/task_dp_back_up_to_cloud.html#create-a-custom-cloud-backup-policy["Créez une règle de sauvegarde à l'aide de System Manager"^]
-https://docs.netapp.com/us-en/ontap-cli-9131/snapmirror-policy-create.html#description["Créez une règle de sauvegarde à l'aide de l'interface de ligne de commandes de ONTAP"^]
+* https://docs.netapp.com/us-en/ontap/task_dp_configure_snapshot.html["Créez une règle Snapshot à l'aide de System Manager ou de l'interface de ligne de commandes de ONTAP"^]
+* https://docs.netapp.com/us-en/ontap/task_dp_create_custom_data_protection_policies.html["Créez une règle de réplication à l'aide de System Manager ou de l'interface de ligne de commandes de ONTAP"^]
+
 
 *Remarque :* lorsque vous utilisez System Manager, sélectionnez *Asynchronous* comme type de stratégie pour les stratégies de réplication, puis sélectionnez *Asynchronous* et *Sauvegarder dans le cloud* pour la sauvegarde vers les stratégies d'objet.
 
-Voici quelques exemples de commandes de l'interface de ligne de commande de ONTAP qui peuvent vous être utiles si vous créez des règles personnalisées. Notez que vous devez utiliser le _admin_ vserver (machine virtuelle de stockage) en tant que `<vserver_name>` dans ces commandes.
+Voici quelques exemples de commandes de l'interface de ligne de commande de ONTAP qui peuvent vous être utiles si vous créez des règles personnalisées. Notez que vous devez utiliser le _admin_ vserver (Storage VM) comme `<vserver_name>` dans ces commandes.
 
 [cols="30,70"]
 |===
 | Description de la politique | Commande 
 
 
-| Règles Snapshot simples | `snapshot policy create -policy WeeklySnapshotPolicy -enabled true -schedule1 weekly -count1 10 -vserver ClusterA -snapmirror-label1 weekly` 
+| Règles simples de snapshots | `snapshot policy create -policy WeeklySnapshotPolicy -enabled true -schedule1 weekly -count1 10 -vserver ClusterA -snapmirror-label1 weekly` 
 
 
 | Sauvegarde simple dans le cloud | `snapmirror policy create -policy <policy_name> -transfer-priority normal -vserver <vserver_name> -create-snapshot-on-source false -type vault`
