@@ -20,6 +20,19 @@ Les limitations connues identifient les fonctions qui ne sont pas prises en char
 
 == Limites de sauvegarde et de restauration pour les volumes ONTAP
 
+* Sauvegarde et restauration BlueXP  sauvegarde de Cloud volumes ONTAP dans un magasin d'objets dans les régions AWS Chine (y compris Pékin et Ningxia). Cependant, vous devrez peut-être modifier manuellement les règles de gestion des identités et des accès.
++
+Pour plus d'informations sur la création d'un connecteur dans AWS, reportez-vous à la section https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-aws-bluexp.html["Installation d'un connecteur dans AWS"^] .
+
++
+Pour plus de détails dans un bulletin de blog, reportez-vous à https://community.netapp.com/t5/Tech-ONTAP-Blogs/BlueXP-Backup-and-Recovery-Feature-Blog-May-23-Updates/ba-p/444052["Blog sur les fonctionnalités de sauvegarde et de restauration BlueXP , mai 2023"^].
+
+* La sauvegarde et la restauration BlueXP  ne prennent pas en charge les régions Microsoft Azure Chine.
++
+Pour plus d'informations sur la création d'un connecteur dans Azure, reportez-vous https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-azure-bluexp.html["Installation d'un connecteur dans Azure"^] à la section .
+
+
+
 
 
 === Limites de la réplication
@@ -55,6 +68,7 @@ Il n'existe aucune limitation pour les volumes FlexVol. Vous pouvez sélectionne
 +
 ** Seules les sauvegardes sont prises en charge à partir du système secondaire ONTAP.
 ** La règle Snapshot appliquée au volume doit faire partie des règles reconnues par la sauvegarde et la restauration BlueXP, y compris quotidienne, hebdomadaire, mensuelle, etc La règle par défaut « sm_created » (utilisée pour *Mirror All snapshots*) n'est pas reconnue et le volume DP ne sera pas affiché dans la liste des volumes pouvant être sauvegardés.
+** Les fonctions SVM-DR et de sauvegarde et restauration de volume fonctionnent de manière totalement indépendante lorsque la sauvegarde est effectuée à partir de la source ou de la destination. La seule restriction est que SVM-DR ne réplique pas la relation cloud SnapMirror. En cas de reprise d'activité, lorsque la SVM se connecte à l'emplacement secondaire, vous devez mettre à jour manuellement la relation cloud SnapMirror.
 
 
 
