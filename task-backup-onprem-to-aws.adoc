@@ -374,7 +374,11 @@ Si vous créez vos propres compartiments, vous devez utiliser le nom de comparti
 
 Si vous souhaitez utiliser les clés de chiffrement Amazon S3 par défaut pour chiffrer les données transférées entre votre cluster sur site et le compartiment S3, toutes sont définies, car l'installation par défaut utilise ce type de cryptage.
 
-Si vous souhaitez utiliser vos propres clés gérées par le client pour le chiffrement des données plutôt que les clés par défaut, vous devez disposer des clés gérées par le chiffrement déjà configurées avant de démarrer l'assistant de sauvegarde et de restauration BlueXP. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-setting-up-kms.html["Reportez-vous à la procédure d'utilisation de vos propres touches"^].
+Si vous souhaitez utiliser vos propres clés gérées par le client pour le chiffrement des données plutôt que les clés par défaut, vous devez disposer des clés gérées par le chiffrement déjà configurées avant de démarrer l'assistant de sauvegarde et de restauration BlueXP.
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-setting-up-kms.html["Découvrez comment utiliser vos propres clés de chiffrement Amazon avec Cloud Volumes ONTAP"^].
+
+https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-aws-bluexp.html#configure-encryption-settings["Découvrez comment utiliser vos propres clés de chiffrement Amazon avec la sauvegarde et la restauration BlueXP "^].
 
 
 

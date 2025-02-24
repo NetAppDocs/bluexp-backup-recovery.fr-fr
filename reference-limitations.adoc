@@ -55,6 +55,13 @@ Il n'existe aucune limitation pour les volumes FlexVol. Vous pouvez sélectionne
 
 === Limitations de la sauvegarde vers un objet
 
+* Les fonctions de sauvegarde et de restauration de BlueXP  ne sauvegardent pas les volumes sur le stockage objet sur lequel NetApp Volume Encryption (NVE) est activé et le chiffrement d'agrégat NetApp (NAE) est activé dans ONTAP.
++
+Pour plus d'informations sur ces types de cryptage, reportez-vous https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-encryption-concept.html["Configurer la présentation de NetApp Volume Encryption"^]à la section .
+
+
+
+* Si les snapshots de conservation à long terme sont activés sur un volume de destination SnapMirror à l'aide de la planification de la règle SnapMirror, les snapshots sont créés directement sur le volume de destination. Dans ce cas, vous ne devez pas sauvegarder ces volumes à l'aide de la sauvegarde et de la restauration BlueXP , car ces snapshots ne seront pas déplacés vers le stockage objet.
 * Lorsque vous créez ou modifiez une règle de sauvegarde lorsqu'aucun volume n'est affecté à la règle, le nombre de sauvegardes conservées peut être de 1018 au maximum. Une fois que vous avez affecté des volumes à la règle, vous pouvez la modifier pour créer jusqu'à 4000 sauvegardes.
 * Lors de la sauvegarde de volumes de protection des données (DP) :
 +
