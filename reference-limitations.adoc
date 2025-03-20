@@ -55,7 +55,7 @@ Il n'existe aucune limitation pour les volumes FlexVol. Vous pouvez sélectionne
 
 === Limitations de la sauvegarde vers un objet
 
-* Les fonctions de sauvegarde et de restauration de BlueXP  ne sauvegardent pas les volumes sur le stockage objet sur lequel NetApp Volume Encryption (NVE) est activé et le chiffrement d'agrégat NetApp (NAE) est activé dans ONTAP.
+* Lors de la sauvegarde de données, la solution de sauvegarde et de restauration BlueXP  ne gère pas le chiffrement de volume NetApp (NVE). Cela signifie que les données chiffrées du volume NVE seront déchiffrées pendant que les données sont transférées vers la destination et que le chiffrement ne sera pas conservé.
 +
 Pour plus d'informations sur ces types de cryptage, reportez-vous https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-encryption-concept.html["Configurer la présentation de NetApp Volume Encryption"^]à la section .
 

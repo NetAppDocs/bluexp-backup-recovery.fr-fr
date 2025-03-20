@@ -51,7 +51,6 @@ Si nécessaire, vous pouvez restaurer un _volume_ entier, un _dossier_ ou un ou 
 +
 ** Répliquez plusieurs volumes FlexVol simultanément sur un système secondaire.
 ** Restaurez un volume répliqué sur le système source ou sur un autre système à l'aide de l'interface utilisateur.
-** Gérer les règles de réplication
 
 
 

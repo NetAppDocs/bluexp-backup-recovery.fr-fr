@@ -1,0 +1,27 @@
+= Exploration des snapshots SMB
+:allow-uri-read: 
+
+
+
+
+=== Exploration des snapshots SMB
+
+Cette mise à jour de sauvegarde et de restauration BlueXP  a résolu un problème qui empêchait les clients de parcourir les snapshots locaux dans un environnement SMB.
+
+
+
+=== Mise à jour de l'environnement AWS GovCloud
+
+Cette mise à jour de sauvegarde et de restauration BlueXP  a résolu un problème qui empêchait l'interface utilisateur de se connecter à un environnement AWS GovCloud en raison d'erreurs de certificat TLS. Le problème a été résolu en utilisant le nom d'hôte du connecteur BlueXP  au lieu de l'adresse IP.
+
+
+
+=== Limites de conservation des règles de sauvegarde
+
+Jusqu'à présent, l'interface de sauvegarde et de restauration de BlueXP  limitait les sauvegardes à 999 copies, tandis que l'interface de ligne de commandes permettait d'en effectuer davantage. Vous pouvez désormais relier jusqu'à 4,000 volumes à une règle de sauvegarde et inclure 1,018 volumes non rattachés à une règle de sauvegarde. Cette mise à jour inclut des validations supplémentaires qui empêchent de dépasser ces limites.
+
+
+
+=== Resynchronisation du cloud SnapMirror
+
+Cette mise à jour garantit que la resynchronisation du cloud SnapMirror ne peut pas être démarrée à partir de la sauvegarde et de la restauration BlueXP  pour les versions ONTAP non prises en charge après la suppression d'une relation SnapMirror.
