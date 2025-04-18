@@ -31,6 +31,7 @@ Pour plus de détails dans un bulletin de blog, reportez-vous à https://communi
 +
 Pour plus d'informations sur la création d'un connecteur dans Azure, reportez-vous https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-azure-bluexp.html["Installation d'un connecteur dans Azure"^] à la section .
 
+* La sauvegarde et la restauration BlueXP  ne prennent pas en charge les sauvegardes de volumes FlexCache.
 
 
 

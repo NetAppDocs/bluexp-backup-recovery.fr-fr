@@ -194,6 +194,9 @@ La sauvegarde et la restauration BlueXP prennent en charge les types de volumes 
 * Volumes de destination SnapMirror avec protection des données (DP)
 
 
+
+NOTE: La sauvegarde et la restauration BlueXP  ne prennent pas en charge les sauvegardes de volumes FlexCache.
+
 Reportez-vous aux sections de la section link:reference-limitations.html#backup-to-object-limitations["Limites de la sauvegarde et de la restauration"] pour des exigences et restrictions supplémentaires.
 
 

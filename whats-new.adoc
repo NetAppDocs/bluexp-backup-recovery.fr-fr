@@ -18,6 +18,59 @@ Découvrez les nouveautés de la sauvegarde et de la restauration BlueXP.
 
 
 
+== 16 avril 2025
+
+Cette version de sauvegarde et de restauration BlueXP  comprend les mises à jour suivantes.
+
+
+
+=== Tableau de bord de volume amélioré (aperçu)
+
+Le tableau de bord de volume se charge désormais en moins de 10 secondes, offrant ainsi une interface beaucoup plus rapide et efficace. Cette version préliminaire est disponible pour certains clients, leur offrant un aperçu de ces améliorations.
+
+
+
+=== Améliorations de l'interface utilisateur
+
+Cette version améliore votre expérience en simplifiant l'interface :
+
+* La suppression de la colonne Aggregate des tables volumes, ainsi que des colonnes Snapshot Policy, Backup Policy et Replication Policy de la table Volume du tableau de bord V2, entraîne une mise en page plus rationalisée.
+* L'exclusion des environnements de travail non activés dans la liste déroulante rend l'interface moins encombrée, la navigation plus efficace et le chargement plus rapide.
+* Lorsque le tri dans la colonne balises est désactivé, vous pouvez toujours afficher les balises, en vous assurant que les informations importantes restent facilement accessibles.
+* Le retrait des étiquettes sur les icônes de protection contribue à un aspect plus propre et réduit le temps de chargement.
+* Pendant le processus d'activation de l'environnement de travail, une boîte de dialogue affiche une icône de chargement pour fournir des informations jusqu'à ce que le processus de découverte soit terminé, ce qui améliore la transparence et la confiance dans les opérations du système.
+
+
+
+
+=== Prise en charge d'un magasin d'objets Wasabi tiers (aperçu)
+
+La sauvegarde et la restauration BlueXP  étendent désormais sa prise en charge aux magasins d'objets tiers, en mettant l'accent sur Wasabi. Cette nouvelle fonctionnalité de préversion vous permet d'exploiter un magasin d'objets compatible S3 pour vos besoins de sauvegarde et de restauration.
+
+
+
+==== Mise en route de Wasabi
+
+Pour commencer à utiliser cette fonctionnalité, vous devez activer un indicateur dans l'interface utilisateur de BlueXP . Vous pouvez ensuite saisir les informations de connexion de votre magasin d'objets tiers et l'intégrer à vos workflows de sauvegarde et de restauration.
+
+
+
+==== Limites du mode d'aperçu
+
+Lorsque cette fonction est en aperçu, tenez compte des limitations suivantes :
+
+* Le modèle BYOB (Bring Your Own Bucket) n'est pas pris en charge.
+* L'activation de DataLock dans une stratégie n'est pas prise en charge.
+* L'activation du mode archivage dans une règle n'est pas prise en charge.
+* Seuls les environnements ONTAP sur site sont pris en charge.
+* MetroCluster n'est pas pris en charge.
+* Les options d'activation du chiffrement au niveau du compartiment ne sont pas prises en charge.
+
+
+Au cours de cette présentation, nous vous encourageons à explorer cette nouvelle fonctionnalité et à nous faire part de vos commentaires sur l'intégration à des magasins d'objets tiers avant le déploiement complet des fonctionnalités.
+
+
+
 == 17 mars 2025
 
 Cette version de sauvegarde et de restauration BlueXP  comprend les mises à jour suivantes.

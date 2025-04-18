@@ -3765,4 +3765,28 @@ ifdef::aws[]</block>
   <block id="23bb8a9252b3eccc5dbbed85d71a4b89" category="list-text">Lors de la sauvegarde de données, la solution de sauvegarde et de restauration BlueXP  ne gère pas le chiffrement de volume NetApp (NVE). Cela signifie que les données chiffrées du volume NVE seront déchiffrées pendant que les données sont transférées vers la destination et que le chiffrement ne sera pas conservé.</block>
   <block id="499d067ffbbd553e23809aa38aa67bfa" category="section-title">17 mars 2025</block>
   <block id="c11347a85201b35f4b0302aff21bc226" category="cell"><block ref="c9017d174080d415365a112c68422e95" prefix="" category="inline-code"></block></block>
+  <block id="46c8a90c914cf567466d573545fb57d9" category="doc">Tableau de bord de volume amélioré (aperçu)</block>
+  <block id="d4400da5c041019019538ea47e6a4d7e" category="paragraph">Le tableau de bord de volume se charge désormais en moins de 10 secondes, offrant ainsi une interface beaucoup plus rapide et efficace. Cette version préliminaire est disponible pour certains clients, leur offrant un aperçu de ces améliorations.</block>
+  <block id="a43e01afb7862afba8cef123bb022bd8" category="section-title">Améliorations de l'interface utilisateur</block>
+  <block id="d631beb153bc97ac47e69041180f2bda" category="paragraph">Cette version améliore votre expérience en simplifiant l'interface :</block>
+  <block id="7945214ab9edda2604c048e3254b6820" category="list-text">La suppression de la colonne Aggregate des tables volumes, ainsi que des colonnes Snapshot Policy, Backup Policy et Replication Policy de la table Volume du tableau de bord V2, entraîne une mise en page plus rationalisée.</block>
+  <block id="1f4ea4d0a55155c1ea9271081e2e118f" category="list-text">L'exclusion des environnements de travail non activés dans la liste déroulante rend l'interface moins encombrée, la navigation plus efficace et le chargement plus rapide.</block>
+  <block id="c42ae4d1274def078f227f6b5526ed38" category="list-text">Lorsque le tri dans la colonne balises est désactivé, vous pouvez toujours afficher les balises, en vous assurant que les informations importantes restent facilement accessibles.</block>
+  <block id="ee5a89c90c463c21f6188d8945b6a165" category="list-text">Le retrait des étiquettes sur les icônes de protection contribue à un aspect plus propre et réduit le temps de chargement.</block>
+  <block id="4deca0db77c0cb1d491b7636aff218c4" category="list-text">Pendant le processus d'activation de l'environnement de travail, une boîte de dialogue affiche une icône de chargement pour fournir des informations jusqu'à ce que le processus de découverte soit terminé, ce qui améliore la transparence et la confiance dans les opérations du système.</block>
+  <block id="e933dec5f784259760ab3c9400fb8e0b" category="section-title">Prise en charge d'un magasin d'objets Wasabi tiers (aperçu)</block>
+  <block id="57a83bf4b6d8f755d141ebf2bb282ed3" category="paragraph">La sauvegarde et la restauration BlueXP  étendent désormais sa prise en charge aux magasins d'objets tiers, en mettant l'accent sur Wasabi. Cette nouvelle fonctionnalité de préversion vous permet d'exploiter un magasin d'objets compatible S3 pour vos besoins de sauvegarde et de restauration.</block>
+  <block id="da21b58c44ce1975cb8550ec689df5b3" category="section-title">Mise en route de Wasabi</block>
+  <block id="f3afa8b48aa14a1da6a21d82ad964f5d" category="paragraph">Pour commencer à utiliser cette fonctionnalité, vous devez activer un indicateur dans l'interface utilisateur de BlueXP . Vous pouvez ensuite saisir les informations de connexion de votre magasin d'objets tiers et l'intégrer à vos workflows de sauvegarde et de restauration.</block>
+  <block id="9b6d9b582a741bc832b2557c16d31b09" category="section-title">Limites du mode d'aperçu</block>
+  <block id="fdf10a1d090d444123d00414152f7943" category="paragraph">Lorsque cette fonction est en aperçu, tenez compte des limitations suivantes :</block>
+  <block id="7ebc42140a656312f7a985f14e55f3a6" category="list-text">Le modèle BYOB (Bring Your Own Bucket) n'est pas pris en charge.</block>
+  <block id="1361fc3308297e6892c65225fef43d57" category="list-text">L'activation de DataLock dans une stratégie n'est pas prise en charge.</block>
+  <block id="250e26d77f45f9c60f2e7d28e0011265" category="list-text">L'activation du mode archivage dans une règle n'est pas prise en charge.</block>
+  <block id="b86033acef55ce16df9b8accc019fc9d" category="list-text">Seuls les environnements ONTAP sur site sont pris en charge.</block>
+  <block id="5ba05bcaf18ef618c0ef794d4ae3e855" category="list-text">MetroCluster n'est pas pris en charge.</block>
+  <block id="2a9854e98da75bbc07132378bef6de4d" category="list-text">Les options d'activation du chiffrement au niveau du compartiment ne sont pas prises en charge.</block>
+  <block id="f98d5407ffd34a829996a4bb36d6e582" category="paragraph">Au cours de cette présentation, nous vous encourageons à explorer cette nouvelle fonctionnalité et à nous faire part de vos commentaires sur l'intégration à des magasins d'objets tiers avant le déploiement complet des fonctionnalités.</block>
+  <block id="c2539a9855f013822344851d0fcb1184" category="admonition">La sauvegarde et la restauration BlueXP  ne prennent pas en charge les sauvegardes de volumes FlexCache.</block>
+  <block id="801c0fa0d304ca22d8afec06189bcf93" category="section-title">16 avril 2025</block>
 </blocks>
