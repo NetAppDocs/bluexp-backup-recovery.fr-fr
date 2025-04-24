@@ -1216,7 +1216,6 @@
   <block id="47088be6cbcb439bd7241ec72edf3a91" category="section-title">Découvrir les clusters ONTAP et les systèmes StorageGRID</block>
   <block id="8a817b57889a6e642ad7fb06e7b26c80" category="section-title">Configurer les détails de l'environnement StorageGRID</block>
   <block id="95405ad3ad814456093255e6d36ee69e" category="inline-link">API BlueXP</block>
-  <block id="ed28e31454bb8c9849e6271a030b2762" category="paragraph">Ces étapes sont nécessaires pour chaque système ONTAP qui sauvegarde des données sur StorageGRID.</block>
   <block id="3f1b9decb18d57a001f26c7273adeddc" category="list-text">Extrayez le jeton d'autorisation à l'aide de l'API oauth/token suivante.</block>
   <block id="f2b2dd8a7061a4f2836de5feda40a45e" category="paragraph">Cette API renvoie une réponse comme suit. Vous pouvez récupérer le jeton d'autorisation comme indiqué ci-dessous.</block>
   <block id="74e96d8b9d4abdf183199553dd665e53" category="list-text">Extrayez l'ID de l'environnement de travail et l'ID-agent-X à l'aide de l'API location/externe/ressource.</block>
@@ -3800,6 +3799,7 @@ ifdef::aws[]</block>
   <block id="6c9913da2722f6c96e97b9d6aa37bb46" category="paragraph">Vous devez effectuer les tâches suivantes pour remettre votre système de sauvegarde et de restauration BlueXP  en état de fonctionnement :</block>
   <block id="da2ba8762d0dcb78945a22c9a375fffa" category="inline-link">DarkSite Cloud Backup : sauvegarde et restauration de catalogues indexés et MySQL</block>
   <block id="bb10a63044b830cc42091d93b78fd668" category="paragraph">Les informations suivantes s'appliquent aux installations en mode privé à partir de BlueXP  3.9.xx. Pour les versions plus anciennes, utilisez la procédure suivante :<block ref="2da286ce66fc5078574abb0f7864085c" category="inline-link-rx"></block>.</block>
-  <block id="e29798cefe7dc354983bc30c2c9fccdf" category="paragraph">Bien que l'adresse IP, le nom d'utilisateur et les mots de passe soient des valeurs personnalisées, le nom du compte ne l'est pas. Le nom du compte est toujours "Account-DARKSITE1".</block>
   <block id="2decbd35e1c4f4abc73df06a5256970a" category="list-text">Mettez à jour la base de données de sauvegarde et de restauration BlueXP  avec les détails du système StorageGRID associé aux environnements de travail. Veillez à saisir le nom de domaine complet du StorageGRID, ainsi que la clé d'accès et la clé de stockage, comme indiqué ci-dessous :</block>
+  <block id="241380d8d42b823d8bd7c25c9fc3014f" category="paragraph">Vous devrez effectuer ces étapes pour chaque système qui sauvegarde des données sur StorageGRID.</block>
+  <block id="cd6c5272ababe8075a9145908c571172" category="paragraph">Bien que l'adresse IP, le nom d'utilisateur et les mots de passe soient des valeurs personnalisées, le nom du compte ne l'est pas. Le nom du compte est toujours "Account-DARKSITE1". De plus, le nom d'utilisateur doit utiliser un nom au format e-mail.</block>
 </blocks>
