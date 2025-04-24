@@ -76,6 +76,9 @@ endif::gcp[]
 
 
 
+NOTE: La sauvegarde et la restauration BlueXP  étendent sa prise en charge aux magasins d'objets tiers en tant qu'option de prévisualisation. Cette fonctionnalité de préversion vous permet d'exploiter n'importe quel magasin d'objets compatible S3 pour vos besoins de sauvegarde et de restauration. Pour plus d'informations sur l'activation de cette fonction d'aperçu, reportez-vous à la link:whats-new.html["Prise en charge de magasins d'objets tiers"] section.
+
+
 
 === Quand les sauvegardes sont-elles effectuées
 

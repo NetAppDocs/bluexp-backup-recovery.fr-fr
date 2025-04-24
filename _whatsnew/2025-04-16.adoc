@@ -1,12 +1,6 @@
-= Tableau de bord de volume amélioré (aperçu)
+= Améliorations de l'interface utilisateur
 :allow-uri-read: 
 
-
-
-
-=== Tableau de bord de volume amélioré (aperçu)
-
-Le tableau de bord de volume se charge désormais en moins de 10 secondes, offrant ainsi une interface beaucoup plus rapide et efficace. Cette version préliminaire est disponible pour certains clients, leur offrant un aperçu de ces améliorations.
 
 
 
@@ -23,6 +17,12 @@ Cette version améliore votre expérience en simplifiant l'interface :
 
 
 
+=== Tableau de bord de volume amélioré (aperçu)
+
+Le tableau de bord de volume se charge désormais en moins de 10 secondes, offrant ainsi une interface beaucoup plus rapide et efficace. Cette version préliminaire est disponible pour certains clients, leur offrant un aperçu de ces améliorations.
+
+
+
 === Prise en charge d'un magasin d'objets Wasabi tiers (aperçu)
 
 La sauvegarde et la restauration BlueXP  étendent désormais sa prise en charge aux magasins d'objets tiers, en mettant l'accent sur Wasabi. Cette nouvelle fonctionnalité de préversion vous permet d'exploiter un magasin d'objets compatible S3 pour vos besoins de sauvegarde et de restauration.
@@ -31,7 +31,30 @@ La sauvegarde et la restauration BlueXP  étendent désormais sa prise en charg
 
 ==== Mise en route de Wasabi
 
-Pour commencer à utiliser cette fonctionnalité, vous devez activer un indicateur dans l'interface utilisateur de BlueXP . Vous pouvez ensuite saisir les informations de connexion de votre magasin d'objets tiers et l'intégrer à vos workflows de sauvegarde et de restauration.
+Pour commencer à utiliser le stockage tiers en tant que magasin d'objets, vous devez activer un indicateur dans le connecteur BlueXP . Vous pouvez ensuite saisir les informations de connexion de votre magasin d'objets tiers et l'intégrer à vos workflows de sauvegarde et de restauration.
+
+.Étapes
+. SSH dans votre connecteur.
+. Accédez au conteneur du serveur cbs de sauvegarde et de restauration BlueXP  :
++
+[listing]
+----
+docker exec -it cloudmanager_cbs sh
+----
+. Ouvrez le `default.json` fichier dans le `config` dossier via VIM ou tout autre éditeur :
++
+[listing]
+----
+vi default.json
+----
+. Modifier `allow-s3-compatible`: FALSE à `allow-s3-compatible`: TRUE.
+. Enregistrez les modifications.
+. Sortir du conteneur.
+. Redémarrez le conteneur du serveur cbs de sauvegarde et de restauration BlueXP .
+
+
+.Résultat
+Une fois le conteneur à nouveau ALLUMÉ, ouvrez l'interface utilisateur de sauvegarde et de restauration de BlueXP . Lorsque vous lancez une sauvegarde ou modifiez une stratégie de sauvegarde, le nouveau fournisseur « compatible S3 » s'affiche, ainsi que les autres fournisseurs de sauvegarde : AWS, Microsoft Azure, Google Cloud, StorageGRID et ONTAP S3.
 
 
 
