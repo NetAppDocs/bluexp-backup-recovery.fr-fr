@@ -1,0 +1,96 @@
+---
+sidebar: sidebar 
+permalink: task-preview-enable.html 
+keywords: cloud backup, bluexp backup and recovery, backup, restore, preview, enable, object storage, third-party, MinIO, S3-compatible 
+summary: 'Vous pouvez surveiller l"état des snapshots locaux, des réplications et des tâches de sauvegarde vers le stockage objet que vous avez initiées ou qui ont été planifiées, et restaurer les tâches que vous avez initiées ou planifiées. Vous pouvez voir les travaux terminés, en cours ou en échec pour pouvoir diagnostiquer et résoudre les problèmes. Le centre de notification BlueXP vous permet d"activer l"envoi de notifications par e-mail pour vous informer de l"activité système importante, même si vous n"êtes pas connecté au système. À l"aide de la chronologie BlueXP, vous pouvez afficher les détails de toutes les actions initiées via l"interface utilisateur ou l"API.' 
+---
+= Activez les fonctionnalités de prévisualisation dans la sauvegarde et la restauration BlueXP 
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avec les fonctionnalités de sauvegarde et de restauration de BlueXP , vous disposez d'un aperçu qui vous permet de tester les nouvelles fonctionnalités avant leur sortie complète. Ces fonctionnalités sont conçues pour améliorer votre expérience de sauvegarde et de restauration, mais elles peuvent ne pas être entièrement prises en charge ou stables.
+
+
+IMPORTANT: Ces fonctionnalités sont en mode aperçu et ne doivent pas être utilisées dans les environnements de production. Ils sont destinés à des fins de test et de retour d'informations uniquement.
+
+
+
+== Activer les fonctions d'aperçu
+
+Pour activer les fonctionnalités de prévisualisation dans la sauvegarde et la restauration BlueXP , vous devez définir un indicateur sur le connecteur BlueXP . Cet indicateur vous permet d'accéder aux fonctions d'aperçu disponibles dans le service et de les tester.
+
+.Étapes
+. Connectez-vous au connecteur BlueXP .
+. Passez au superutilisateur. Lancer la commande :
++
+`sudo su`
+
+. Répertoriez les volumes Docker et identifiez le volume CBS. Lancer la commande :
++
+[listing]
+----
+podman volume ls | grep cbs
+----
++
+Sortie attendue :
+
++
+[listing]
+----
+local service-manager-2_cloudmanager_cbs_volume
+----
+. Inspectez le volume pour obtenir le point de montage. Lancer la commande :
++
+[listing]
+----
+podman volume inspect service-manager-2_cloudmanager_cbs_volume | grep Mountpoint
+----
+. Lancer la commande :
++
+[listing]
+----
+podman volume inspect service-manager-2_cloudmanager_cbs_volume | grep Mountpoint
+----
++
+Sortie attendue :
+
++
+[listing]
+----
+Mountpoint:
+/var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data
+----
+. Accédez au répertoire Docker volumes. Remplacez le répertoire par le point de montage obtenu à l'étape précédente :
++
+[listing]
+----
+cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data/cbs_config
+
+----
+. Localisez et modifiez le `production-customer.json` fichier.
+. Assurez-vous que vous êtes dans le répertoire correct et que le `production-customer.json` fichier est présent.
+. Ouvrez le `production-customer.json` fichier dans votre éditeur de texte préféré et ajoutez l'extrait JSON suivant, en vous assurant que la structure JSON est correctement maintenue :
++
+[listing]
+----
+{
+   "feature-flags":
+    {
+        "volumes-dashboard-v2": true
+     }
+}
+----
+. Enregistrez les modifications apportées au fichier.
+. Redémarrez le service BlueXP  de sauvegarde et de restauration Cloud Manager CBS. Lancer la commande :
++
+[listing]
+----
+podman restart cloudmanager_cbs
+----
+
