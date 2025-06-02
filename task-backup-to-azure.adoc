@@ -4,7 +4,7 @@ permalink: task-backup-to-azure.html
 keywords: backing up, back up, backup, backup cloud volumes ontap, back up cloud volumes ontap, cloud volumes ontap, azure, azure blob, back up volumes, cloud backup, bluexp, bluexp backup and recovery 
 summary: Procédez en quelques étapes pour commencer à sauvegarder les données de volume de vos systèmes Cloud Volumes ONTAP vers Azure Blob Storage. 
 ---
-= Sauvegarde des données Cloud Volumes ONTAP dans Azure Blob Storage
+= Sauvegardez les données Cloud Volumes ONTAP sur le stockage Azure Blob avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Procédez en quelques étapes pour commencer à sauvegarder les donnée
 
 
 [role="lead"]
-Procédez en quelques étapes pour commencer à sauvegarder les données de volume de vos systèmes Cloud Volumes ONTAP vers Azure Blob Storage.
+Effectuez quelques étapes de sauvegarde et de récupération BlueXP pour commencer à sauvegarder les données de volume de vos systèmes Cloud Volumes ONTAP vers le stockage Azure Blob.
 
 
 
@@ -77,7 +77,7 @@ Vous pouvez également vous connecter à un système ONTAP secondaire pour les v
 image:diagram_cloud_backup_cvo_azure.png["Un diagramme illustrant la façon dont BlueXP Backup and Recovery communique avec les volumes des systèmes source et le stockage de destination où se trouvent les fichiers de sauvegarde."]
 
 Versions de ONTAP prises en charge:: Minimum de ONTAP 9.8 ; ONTAP 9.8P13 et ultérieur est recommandé.
-Régions Azure prises en charge:: La sauvegarde et la restauration BlueXP sont prises en charge dans toutes les régions Azure https://cloud.netapp.com/cloud-volumes-global-regions["Dans ce cas, Cloud Volumes ONTAP est pris en charge"^]; Y compris les régions du gouvernement d'Azure.
+Régions Azure prises en charge:: La sauvegarde et la récupération BlueXP sont prises en charge dans toutes les régions Azure, y compris les régions Azure Government.
 +
 --
 Par défaut, la sauvegarde et la restauration BlueXP provisionne le conteneur Blob avec la redondance locale (LRS) pour l'optimisation des coûts. Vous pouvez définir ce paramètre sur redondance de zone (ZRS) après l'activation de la sauvegarde et de la restauration BlueXP si vous souhaitez vous assurer que vos données sont répliquées entre différentes zones. Consultez les instructions Microsoft pour https://learn.microsoft.com/en-us/azure/storage/common/redundancy-migration?tabs=portal["modification de la façon dont votre compte de stockage est répliqué"^].

@@ -4,7 +4,7 @@ permalink: task-restore-sql-data.html
 keywords: restore, Azure, Amazon Web services, Microsoft SQL Server database 
 summary: Vous pouvez restaurer la base de données SQL Server depuis le cloud vers le serveur SnapCenter sur site. 
 ---
-= Restaurez la base de données SQL Server
+= Restaurer les bases de données SQL Server avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Vous pouvez restaurer la base de données SQL Server depuis le cloud ve
 
 
 [role="lead"]
-Vous pouvez restaurer la base de données SQL Server à l'emplacement d'origine ou à l'autre emplacement.
+Vous pouvez restaurer les bases de données SQL Server avec la sauvegarde et la récupération BlueXP vers l'emplacement d'origine ou vers l'emplacement alternatif.
 
 
 NOTE: La restauration de fichiers uniques (SFR), la récupération des sauvegardes de journaux et la réamorçage des groupes de disponibilité ne sont pas pris en charge.

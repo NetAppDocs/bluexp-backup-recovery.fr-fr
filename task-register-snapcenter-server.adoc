@@ -4,7 +4,7 @@ permalink: task-register-snapcenter-server.html
 keywords: SnapCenter Server, register 
 summary: Procédez comme suit pour enregistrer le serveur SnapCenter. 
 ---
-= Enregistrez SnapCenter Server
+= Enregistrer SnapCenter Server pour la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Procédez comme suit pour enregistrer le serveur SnapCenter.
 
 
 [role="lead"]
-Seul un utilisateur doté du rôle SnapCenterAdmin peut enregistrer l'hôte sur lequel SnapCenter Server 4.6 ou version ultérieure est exécuté. Vous pouvez enregistrer plusieurs hôtes de serveur SnapCenter dans BlueXP.
+Seul un utilisateur doté du rôle SnapCenterAdmin peut enregistrer l'hôte sur lequel SnapCenter Server 4.6 ou version ultérieure est exécuté. Vous pouvez enregistrer plusieurs hôtes SnapCenter Server dans la sauvegarde et la récupération BlueXP.
 
 .Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.

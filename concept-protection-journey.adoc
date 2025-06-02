@@ -4,7 +4,7 @@ permalink: concept-protection-journey.html
 keywords: backing up, restoring, recovery, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, storage grid, back up volumes, cloud backup, restore volumes, on-premises ontap, onprem, replication, backup and recovery 
 summary: 'Le service de sauvegarde et de restauration BlueXP vous permet de créer jusqu"à trois copies de vos volumes source pour protéger vos données. Lorsque vous activez ce service sur vos volumes, vous pouvez sélectionner de nombreuses options. Vous devez donc revoir vos choix pour être prêt.' 
 ---
-= Planifiez votre parcours en matière de protection
+= Planifiez votre parcours de protection avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

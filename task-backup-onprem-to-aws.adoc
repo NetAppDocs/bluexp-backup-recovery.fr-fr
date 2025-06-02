@@ -4,7 +4,7 @@ permalink: task-backup-onprem-to-aws.html
 keywords: backing up, back up, backup, backup on-prem ontap, on-premises, back up volumes, cloud backup, aws, aws s3, amazon s3, govcloud, government 
 summary: Commencez à sauvegarder vos données de volume à partir de vos systèmes ONTAP sur site vers le stockage cloud Amazon S3 en quelques étapes. 
 ---
-= Sauvegarde des données ONTAP sur site dans Amazon S3
+= Sauvegardez les données ONTAP sur site sur Amazon S3 avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Commencez à sauvegarder vos données de volume à partir de vos systè
 
 
 [role="lead"]
-Procédez en quelques étapes pour commencer à sauvegarder des données de volume de vos systèmes ONTAP sur site vers un système de stockage secondaire et vers le stockage cloud Amazon S3.
+Effectuez quelques étapes de sauvegarde et de récupération BlueXP pour commencer à sauvegarder les données de volume de vos systèmes ONTAP sur site vers un système de stockage secondaire et vers le stockage cloud Amazon S3.
 
 
 NOTE: Les systèmes ONTAP sur site incluent les systèmes FAS, AFF et ONTAP Select.
@@ -144,7 +144,7 @@ Vous devez vérifier les exigences de licence pour AWS et BlueXP :
 
 *Régions prises en charge*
 
-Vous pouvez créer des sauvegardes à partir de systèmes sur site vers Amazon S3 dans toutes les régions https://cloud.netapp.com/cloud-volumes-global-regions["Dans ce cas, Cloud Volumes ONTAP est pris en charge"^]; Y compris les régions AWS GovCloud. Vous spécifiez la région dans laquelle les sauvegardes seront stockées lors de la configuration du service.
+Vous pouvez créer des sauvegardes à partir de systèmes locaux vers Amazon S3 dans toutes les régions, y compris les régions AWS GovCloud. Vous spécifiez la région dans laquelle les sauvegardes seront stockées lors de la configuration du service.
 
 
 

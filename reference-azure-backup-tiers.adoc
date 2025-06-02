@@ -4,7 +4,7 @@ permalink: reference-azure-backup-tiers.html
 keywords: microsoft azure, azure, cool, access tier, archive 
 summary: 'La sauvegarde et la restauration BlueXP prennent en charge un Tier d"accès à l"archivage Azure et la plupart des régions.' 
 ---
-= Niveaux d'archivage Azure et délais de récupération
+= Niveaux d'archivage Azure et temps de récupération de restauration avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

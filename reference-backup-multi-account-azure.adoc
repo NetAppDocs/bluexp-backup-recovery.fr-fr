@@ -4,7 +4,7 @@ permalink: reference-backup-multi-account-azure.html
 keywords: microsoft azure, azure, regions, blob, multiple accounts, multiple regions, backup 
 summary: 'Avec la sauvegarde et la restauration BlueXP, vous pouvez créer des fichiers de sauvegarde sur un compte Azure différent de l"emplacement de vos volumes Cloud Volumes ONTAP source, et ce qui est différent du compte sur lequel réside le connecteur BlueXP.' 
 ---
-= Configurer la sauvegarde pour l'accès à plusieurs comptes dans Azure
+= Configurer la sauvegarde pour l'accès multi-comptes dans Azure avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

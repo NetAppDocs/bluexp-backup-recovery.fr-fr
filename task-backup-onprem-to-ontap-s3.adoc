@@ -4,7 +4,7 @@ permalink: task-backup-onprem-to-ontap-s3.html
 keywords: backing up, back up, backup, backup on-prem ontap, on-prem, on-premises, back up volumes, cloud backup, ontap s3 
 summary: 'Procédez en quelques étapes pour commencer à sauvegarder des données de volume à partir de vos systèmes ONTAP primaires sur site. Vous pouvez envoyer des sauvegardes vers un système de stockage ONTAP secondaire (volume répliqué) ou vers un compartiment d"un système ONTAP configuré en tant que serveur S3 (un fichier de sauvegarde), ou les deux.' 
 ---
-= Sauvegardez les données ONTAP sur site dans ONTAP S3
+= Sauvegardez les données ONTAP sur site vers ONTAP S3 avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 'Procédez en quelques étapes pour commencer à sauvegarder des donné
 
 
 [role="lead"]
-Procédez en quelques étapes pour commencer à sauvegarder des données de volume à partir de vos systèmes ONTAP primaires sur site. Vous pouvez envoyer des sauvegardes vers un système de stockage ONTAP secondaire (volume répliqué) ou vers un compartiment d'un système ONTAP configuré en tant que serveur S3 (un fichier de sauvegarde), ou les deux.
+Effectuez quelques étapes de sauvegarde et de récupération BlueXP pour commencer à sauvegarder les données de volume de vos principaux systèmes ONTAP sur site. Vous pouvez envoyer des sauvegardes vers un système de stockage ONTAP secondaire (volume répliqué) ou vers un compartiment d'un système ONTAP configuré en tant que serveur S3 (un fichier de sauvegarde), ou les deux.
 
 Le système ONTAP sur site principal peut être un système FAS, AFF ou ONTAP Select. Le système ONTAP secondaire peut être un système ONTAP ou Cloud Volumes ONTAP sur site. Le stockage objet peut être sur un système ONTAP sur site ou un système Cloud Volumes ONTAP sur lequel vous avez activé un serveur de stockage objet simple Storage Service (S3).
 

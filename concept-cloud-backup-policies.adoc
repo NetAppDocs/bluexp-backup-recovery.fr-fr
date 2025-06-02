@@ -4,7 +4,7 @@ permalink: concept-cloud-backup-policies.html
 keywords: backing up, back up, backup, back up volumes, cloud backup, backup policies, policies, schedules 
 summary: Avec la sauvegarde et la restauration BlueXP, vous pouvez créer des règles de sauvegarde avec plusieurs paramètres de configuration pour vos systèmes ONTAP et Cloud Volumes ONTAP sur site. 
 ---
-= Options de règle de sauvegarde sur objet
+= Options de stratégie de sauvegarde sur objet dans la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -60,7 +60,7 @@ Ces deux fonctionnalités protègent vos fichiers de sauvegarde. Ainsi, vous dis
 
 https://bluexp.netapp.com/blog/cbs-blg-the-bluexp-feature-that-protects-backups-from-ransomware["Consultez le blog sur la protection contre les attaques par ransomware et les attaques par ransomware pour en savoir plus"^].
 
-Cette fonction n'assure pas la protection de vos volumes source, uniquement pour les sauvegardes de ces volumes source. Utilisez NetApp https://cloud.netapp.com/ci-sde-plp-cloud-secure-info-trial?hsCtaTracking=fefadff4-c195-4b6a-95e3-265d8ce7c0cd%7Cb696fdde-c026-4007-a39e-5e986c4d27c6["Informations exploitables sur l'infrastructure de données et Cloud Secure"^] ou une partie du https://docs.netapp.com/us-en/ontap/anti-ransomware/index.html["Protections contre les ransomwares fournies par ONTAP"^] pour protéger vos volumes source.
+Cette fonction n'assure pas la protection de vos volumes source, uniquement pour les sauvegardes de ces volumes source. Utilisez certains des  https://docs.netapp.com/us-en/ontap/anti-ransomware/index.html["Protections contre les ransomwares fournies par ONTAP"^] pour protéger vos volumes sources.
 
 [CAUTION]
 ====

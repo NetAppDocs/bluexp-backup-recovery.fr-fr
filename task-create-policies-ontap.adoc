@@ -4,7 +4,7 @@ permalink: task-create-policies-ontap.html
 keywords: backing up, back up, backup, backup on-prem ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud 
 summary: 'Vous pouvez utiliser les règles de sauvegarde par défaut fournies par NetApp pour créer vos sauvegardes ou créer des règles personnalisées. Les règles régissent le type de sauvegarde, l"architecture de sauvegarde, les systèmes de stockage et la fréquence des sauvegardes.' 
 ---
-= Gérez les règles de sauvegarde des volumes ONTAP
+= Gérez les politiques de sauvegarde pour les volumes ONTAP avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 'Vous pouvez utiliser les règles de sauvegarde par défaut fournies pa
 
 
 [role="lead"]
-Vous pouvez utiliser les règles de sauvegarde par défaut fournies par NetApp pour créer vos sauvegardes ou créer des règles personnalisées. Les stratégies régissent la fréquence des sauvegardes, l'heure à laquelle la sauvegarde est effectuée et le nombre de fichiers de sauvegarde conservés.
+Avec la sauvegarde et la récupération BlueXP, utilisez les stratégies de sauvegarde par défaut fournies par NetApp pour créer vos sauvegardes ou créez des stratégies personnalisées. Les stratégies régissent la fréquence des sauvegardes, l'heure à laquelle la sauvegarde est effectuée et le nombre de fichiers de sauvegarde conservés.
 
 Lorsque vous activez le service de sauvegarde et de restauration de vos volumes à l'aide de l'assistant d'activation, vous pouvez sélectionner parmi les règles par défaut et toutes les autres règles qui existent déjà dans l'environnement de travail (Cloud Volumes ONTAP ou système ONTAP sur site). Si vous souhaitez utiliser une stratégie différente de ces stratégies existantes, vous pouvez la créer avant ou pendant que vous utilisez l'assistant d'activation.
 

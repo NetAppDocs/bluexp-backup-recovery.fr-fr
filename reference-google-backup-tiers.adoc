@@ -4,7 +4,7 @@ permalink: reference-google-backup-tiers.html
 keywords: google, storage classes, archive 
 summary: 'La sauvegarde et la restauration BlueXP prennent en charge une classe de stockage d"archivage Google et la plupart des régions.' 
 ---
-= Classes de stockage d'archivage Google et temps de récupération
+= Classes de stockage d'archives Google et temps de récupération de restauration avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

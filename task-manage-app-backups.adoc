@@ -4,7 +4,7 @@ permalink: task-manage-app-backups.html
 keywords: manage, Azure, Amazon Web services, Oracle database, Microsoft SQL Server database, backups, policy, monitor, jobs, monitor jobs, SAP HANA database 
 summary: 'Vous pouvez afficher les stratégies et les sauvegardes. En fonction des modifications apportées à la base de données, aux stratégies ou aux groupes de ressources, vous pouvez actualiser les mises à jour à partir de l"interface utilisateur BlueXP.' 
 ---
-= Gérer la protection des applications
+= Gérez la protection des applications avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 'Vous pouvez afficher les stratégies et les sauvegardes. En fonction d
 
 
 [role="lead"]
-Vous pouvez gérer la protection des applications en visualisant les règles, en visualisant les sauvegardes, en visualisant les modifications de la disposition, des règles et du groupe de ressources de la base de données, et en surveillant toutes les opérations à partir de l'interface utilisateur BlueXP.
+Vous pouvez gérer la protection des applications dans la sauvegarde et la récupération BlueXP en affichant les politiques, en affichant les sauvegardes, en affichant les modifications apportées à la disposition de la base de données, aux politiques et au groupe de ressources, et en surveillant toutes les opérations à partir de l'interface utilisateur BlueXP.
 
 
 

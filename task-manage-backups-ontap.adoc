@@ -4,7 +4,7 @@ permalink: task-manage-backups-ontap.html
 keywords: cloud backup, cloud backup service, backup schedule, change schedule, change backup schedule, modify schedule, modify backup schedule, retention, backup retention, delete, delete backups, deleting, deleting backups, disable, disable backups, turn off backups, disable cloud backup, turn off cloud backup, bluexp 
 summary: Vous pouvez gérer les sauvegardes de vos systèmes Cloud Volumes ONTAP et ONTAP sur site en modifiant la planification de sauvegarde, en créant de nouvelles stratégies de sauvegarde, en activant/désactivant les sauvegardes de volume, en pause des sauvegardes, en supprimant les sauvegardes, etc. Cela inclut tous les types de sauvegardes, y compris les copies Snapshot, les volumes répliqués et les fichiers de sauvegarde dans le stockage objet. 
 ---
-= Gérez les sauvegardes de vos systèmes ONTAP
+= Gérez les sauvegardes de vos systèmes ONTAP avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Vous pouvez gérer les sauvegardes de vos systèmes Cloud Volumes ONTAP
 
 
 [role="lead"]
-Vous pouvez gérer les sauvegardes de vos systèmes Cloud Volumes ONTAP et ONTAP sur site en modifiant la planification des sauvegardes, en activant/désactivant les sauvegardes de volume, en interrompant les sauvegardes, en supprimant les sauvegardes, etc. Cela inclut tous les types de sauvegardes, y compris les copies Snapshot, les volumes répliqués et les fichiers de sauvegarde dans le stockage objet.
+Avec la sauvegarde et la récupération BlueXP, gérez les sauvegardes de vos systèmes Cloud Volumes ONTAP et ONTAP sur site en modifiant la planification de sauvegarde, en activant/désactivant les sauvegardes de volume, en suspendant les sauvegardes, en supprimant les sauvegardes, etc. Cela inclut tous les types de sauvegardes, y compris les copies Snapshot, les volumes répliqués et les fichiers de sauvegarde dans le stockage objet.
 
 
 CAUTION: Ne gérez pas et ne modifiez pas les fichiers de sauvegarde directement sur vos systèmes de stockage ou depuis l'environnement de votre fournisseur cloud. Cela peut corrompre les fichiers et entraîner une configuration non prise en charge.

@@ -4,7 +4,7 @@ permalink: task-backup-app-data-to-azure.html
 keywords: backing up, back up, backup, backup application data, Microsoft Azure, Azure, BlueXP backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database 
 summary: 'Réalisez quelques étapes pour sauvegarder des données d"applications d"ONTAP vers Azure.' 
 ---
-= Sauvegardez les données applicatives sur site dans Microsoft Azure
+= Sauvegardez les données des applications locales sur Microsoft Azure avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,9 +14,9 @@ summary: 'Réalisez quelques étapes pour sauvegarder des données d"application
 
 
 [role="lead"]
-Procédez en quelques étapes pour sauvegarder les données d'applications de ONTAP vers Microsoft Azure.
+Effectuez quelques étapes de sauvegarde et de récupération BlueXP pour sauvegarder les données des applications d’ONTAP vers Microsoft Azure.
 
-BlueXP prend en charge le verrouillage des données et la protection contre les ransomware. Si le cluster ONTAP s'exécute sous ONTAP 9.12.1 ou version ultérieure et si vous n'avez pas configuré de stockage d'archivage, vous pouvez protéger les sauvegardes contre le remplacement, la suppression et les menaces de ransomware.
+La sauvegarde et la récupération BlueXP prennent en charge le verrouillage des données et la protection contre les ransomwares. Si le cluster ONTAP s'exécute sous ONTAP 9.12.1 ou version ultérieure et si vous n'avez pas configuré de stockage d'archivage, vous pouvez protéger les sauvegardes contre le remplacement, la suppression et les menaces de ransomware.
 
 .Étapes
 . Dans l'interface utilisateur BlueXP, cliquez sur *protection* > *sauvegarde et récupération* > *applications*.

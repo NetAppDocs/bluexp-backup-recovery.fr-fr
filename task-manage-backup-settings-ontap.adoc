@@ -4,7 +4,7 @@ permalink: task-manage-backup-settings-ontap.html
 keywords: cloud backup, cloud backup service, storage keys, network bandwidth, auto backup, delete yearly snapshot, export snapshots, ransomware scans, scans 
 summary: 'Vous pouvez modifier de nombreux paramètres de sauvegarde à objet au niveau du cluster que vous avez définis lors de l"activation de la sauvegarde et de la restauration BlueXP pour chaque système ONTAP. Vous pouvez également modifier certains paramètres appliqués comme paramètres de sauvegarde par défaut. Cela vous permet notamment de modifier les clés de stockage, le taux de transfert des sauvegardes vers le stockage objet ou non, l"exportation des copies Snapshot historiques sous forme de fichiers de sauvegarde, etc. Vous pouvez également activer ou désactiver les analyses anti-ransomware pour votre environnement de travail.' 
 ---
-= Gérez les options de stockage de sauvegarde sur objet dans la page Paramètres avancés
+= Gérez les options de stockage de sauvegarde vers objet dans la page Paramètres avancés de la sauvegarde et de la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

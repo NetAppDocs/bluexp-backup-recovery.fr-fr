@@ -4,7 +4,7 @@ permalink: task-backup-to-s3.html
 keywords: backing up, back up, backup, backup cloud volumes ontap, back up cloud volumes ontap, cloud volumes ontap, aws, aws s3, amazon s3, s3 bucket, back up volumes, cloud backup 
 summary: Procédez en quelques étapes pour commencer à sauvegarder des données de volume de vos systèmes Cloud Volumes ONTAP vers Amazon S3. 
 ---
-= Sauvegarde des données Cloud Volumes ONTAP dans Amazon S3
+= Sauvegardez les données Cloud Volumes ONTAP sur Amazon S3 avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Procédez en quelques étapes pour commencer à sauvegarder des donnée
 
 
 [role="lead"]
-Procédez en quelques étapes pour commencer à sauvegarder des données de volume de vos systèmes Cloud Volumes ONTAP vers Amazon S3.
+Effectuez quelques étapes de sauvegarde et de récupération BlueXP pour commencer à sauvegarder les données de volume de vos systèmes Cloud Volumes ONTAP sur Amazon S3.
 
 
 
@@ -176,7 +176,7 @@ Autorisations d'accès Cloud Volumes ONTAP AWS requises:: Lorsque votre système
 Si vous avez créé l'environnement de travail Cloud Volumes ONTAP à l'aide de BlueXP version 3.9.23 ou supérieure, ces autorisations doivent déjà faire partie du rôle IAM. Sinon, vous devrez ajouter les autorisations manquantes.
 
 --
-Régions AWS prises en charge:: La sauvegarde et la restauration BlueXP sont prises en charge dans toutes les régions AWS https://cloud.netapp.com/cloud-volumes-global-regions["Dans ce cas, Cloud Volumes ONTAP est pris en charge"^], Y compris les régions AWS GovCloud.
+Régions AWS prises en charge:: La sauvegarde et la récupération BlueXP sont prises en charge dans toutes les régions AWS, y compris les régions AWS GovCloud.
 Configuration requise pour la création des sauvegardes sur un autre compte AWS:: Par défaut, les sauvegardes sont créées à l'aide du même compte que celui utilisé pour votre système Cloud Volumes ONTAP. Si vous souhaitez utiliser un autre compte AWS pour vos sauvegardes, vous devez :
 +
 --

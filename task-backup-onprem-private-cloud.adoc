@@ -4,7 +4,7 @@ permalink: task-backup-onprem-private-cloud.html
 keywords: backing up, back up, backup, backup on-prem ontap, on-prem, on-premises, back up volumes, cloud backup, StorageGRID 
 summary: Commencez à sauvegarder vos données de volume à partir de vos systèmes ONTAP sur site vers le stockage objet de vos systèmes NetApp StorageGRID en quelques étapes. 
 ---
-= Sauvegarde des données ONTAP sur site dans StorageGRID
+= Sauvegardez les données ONTAP sur site sur StorageGRID avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Commencez à sauvegarder vos données de volume à partir de vos systè
 
 
 [role="lead"]
-Commencez à sauvegarder vos données de volume à partir de vos systèmes ONTAP principaux sur site vers un système de stockage secondaire et vers le stockage objet dans vos systèmes NetApp StorageGRID en quelques étapes.
+Effectuez quelques étapes de sauvegarde et de récupération BlueXP pour commencer à sauvegarder les données de volume de vos systèmes ONTAP principaux sur site vers un système de stockage secondaire et vers le stockage d'objets dans vos systèmes NetApp StorageGRID.
 
 
 NOTE: Les systèmes ONTAP sur site incluent les systèmes FAS, AFF et ONTAP Select.
@@ -239,6 +239,10 @@ Versions de StorageGRID prises en charge:: StorageGRID 10.3 et versions ultérie
 Pour utiliser DataLock & protection contre les attaques par ransomware pour vos sauvegardes, vos systèmes StorageGRID doivent exécuter la version 11.6.0.3 ou ultérieure.
 
 Pour effectuer le Tiering des sauvegardes plus anciennes sur un stockage d'archivage dans le cloud, vos systèmes StorageGRID doivent exécuter la version 11.3 ou une version ultérieure. En outre, vos systèmes StorageGRID doivent être découverts dans le canevas BlueXP.
+
+Pour le stockage d'archives utilisateur, un accès IP au nœud d'administration est nécessaire.
+
+L'accès IP de la passerelle est toujours nécessaire.
 
 --
 Identifiants S3:: Vous devez avoir créé un compte de locataire S3 pour contrôler l'accès à votre stockage StorageGRID. https://docs.netapp.com/us-en/storagegrid-117/admin/creating-tenant-account.html["Pour plus d'informations, consultez la documentation StorageGRID"^].

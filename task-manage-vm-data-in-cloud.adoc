@@ -4,7 +4,7 @@ permalink: task-manage-vm-data-in-cloud.html
 keywords: manage backups, virtual machines, view datastores, view virtual machines, edit 
 summary: Vous pouvez afficher les datastores et les machines virtuelles et modifier le plug-in SnapCenter pour les instances VMware vSphere. 
 ---
-= Gestion de la protection des données des datastores et des machines virtuelles
+= Gérez la protection des données des banques de données et des machines virtuelles avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Vous pouvez afficher les datastores et les machines virtuelles et modif
 
 
 [role="lead"]
-Vous pouvez afficher les règles, les datastores et les machines virtuelles avant de sauvegarder et de restaurer des données. Selon les modifications apportées à la base de données, aux règles ou aux groupes de ressources, vous pouvez afficher les mises à jour à partir de l'interface utilisateur BlueXP.
+Vous pouvez afficher les politiques, les banques de données et les machines virtuelles avant de sauvegarder et de restaurer les données avec la sauvegarde et la récupération BlueXP. Selon les modifications apportées à la base de données, aux règles ou aux groupes de ressources, vous pouvez afficher les mises à jour à partir de l'interface utilisateur BlueXP.
 
 
 

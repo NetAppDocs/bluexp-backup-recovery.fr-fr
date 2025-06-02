@@ -4,7 +4,7 @@ permalink: task-backup-vm-data-to-storagegrid.html
 keywords: back up, backup, backup datastore, storagegrid, backup datastores 
 summary: Sauvegardez vos datastores sur site ONTAP dans StorageGRID. 
 ---
-= Sauvegarde des datastores sur StorageGRID
+= Sauvegardez les banques de données sur StorageGRID avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Sauvegardez vos datastores sur site ONTAP dans StorageGRID.
 
 
 [role="lead"]
-Vous pouvez sauvegarder un ou plusieurs datastores dans StorageGRID en intégrant le plug-in SnapCenter pour l'hôte VMware vSphere avec BlueXP. Ils peuvent ainsi sauvegarder et archiver des données facilement et rapidement à des fins d'efficacité du stockage et d'accélération de la transition vers le cloud.
+Vous pouvez sauvegarder une ou plusieurs banques de données sur StorageGRID en intégrant le plug-in SnapCenter pour l'hôte VMware vSphere avec la sauvegarde et la récupération BlueXP. Ils peuvent ainsi sauvegarder et archiver des données facilement et rapidement à des fins d'efficacité du stockage et d'accélération de la transition vers le cloud.
 
 .Avant de commencer
 Assurez-vous que vous avez rempli toutes les link:concept-protect-vm-data.html["de formation"] avant de sauvegarder des datastores dans le cloud.

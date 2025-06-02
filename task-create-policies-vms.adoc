@@ -4,7 +4,7 @@ permalink: task-create-policies-vms.html
 keywords: create policy, protection policies, predefined policies, custom policies 
 summary: Créer une stratégie pour sauvegarder les datastores 
 ---
-= Créer une stratégie pour sauvegarder les datastores
+= Créez une politique de sauvegarde des banques de données avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Créer une stratégie pour sauvegarder les datastores
 
 
 [role="lead"]
-Vous pouvez créer une stratégie ou utiliser l'une des stratégies prédéfinies suivantes disponibles dans BlueXP.
+Vous pouvez créer une politique ou utiliser l’une des politiques prédéfinies suivantes disponibles dans la sauvegarde et la récupération BlueXP.
 
 .Avant de commencer
 * Vous devez créer des stratégies si vous ne souhaitez pas modifier les stratégies prédéfinies.

@@ -4,7 +4,7 @@ permalink: task-monitor-backup-jobs.html
 keywords: cloud backup, bluexp backup and recovery, backup, restore, status, monitor, alert, notification 
 summary: 'Vous pouvez surveiller l"état des snapshots locaux, des réplications et des tâches de sauvegarde vers le stockage objet que vous avez initiées ou qui ont été planifiées, et restaurer les tâches que vous avez initiées ou planifiées. Vous pouvez voir les travaux terminés, en cours ou en échec pour pouvoir diagnostiquer et résoudre les problèmes. Le centre de notification BlueXP vous permet d"activer l"envoi de notifications par e-mail pour vous informer de l"activité système importante, même si vous n"êtes pas connecté au système. À l"aide de la chronologie BlueXP, vous pouvez afficher les détails de toutes les actions initiées via l"interface utilisateur ou l"API.' 
 ---
-= Surveiller l'état des tâches de sauvegarde et de restauration
+= Surveiller l'état des tâches de sauvegarde et de restauration de BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 'Vous pouvez surveiller l"état des snapshots locaux, des réplications
 
 
 [role="lead"]
-Vous pouvez surveiller l'état des snapshots locaux, des réplications et des tâches de sauvegarde vers le stockage objet que vous avez initiées, et restaurer les tâches que vous avez initiées. Vous pouvez voir les travaux terminés, en cours ou en échec pour pouvoir diagnostiquer et résoudre les problèmes. Le centre de notification BlueXP vous permet d'activer l'envoi de notifications par e-mail pour vous informer de l'activité système importante, même si vous n'êtes pas connecté au système. À l'aide de la chronologie BlueXP, vous pouvez afficher les détails de toutes les actions initiées via l'interface utilisateur ou l'API.
+Avec la sauvegarde et la récupération BlueXP, surveillez l'état des snapshots locaux, des réplications et des tâches de sauvegarde vers le stockage d'objets que vous avez initiées, ainsi que les tâches de restauration que vous avez initiées. Vous pouvez voir les travaux terminés, en cours ou en échec pour pouvoir diagnostiquer et résoudre les problèmes. Le centre de notification BlueXP vous permet d'activer l'envoi de notifications par e-mail pour vous informer de l'activité système importante, même si vous n'êtes pas connecté au système. À l'aide de la chronologie BlueXP, vous pouvez afficher les détails de toutes les actions initiées via l'interface utilisateur ou l'API.
 
 
 

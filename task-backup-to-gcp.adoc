@@ -4,7 +4,7 @@ permalink: task-backup-to-gcp.html
 keywords: backing up, back up, backup, backup cloud volumes ontap, back up cloud volumes ontap, cloud volumes ontap, gcp, google cloud, back up volumes, cloud backup, bluexp, bluexp backup and recovery 
 summary: Procédez en quelques étapes pour commencer à sauvegarder des données de volume de vos systèmes Cloud Volumes ONTAP vers le stockage Google Cloud. 
 ---
-= Sauvegarde des données Cloud Volumes ONTAP dans Google Cloud Storage
+= Sauvegardez les données Cloud Volumes ONTAP sur Google Cloud Storage avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Procédez en quelques étapes pour commencer à sauvegarder des donnée
 
 
 [role="lead"]
-Procédez en quelques étapes pour commencer à sauvegarder des données de volume de vos systèmes Cloud Volumes ONTAP vers Google Cloud Storage.
+Effectuez quelques étapes de sauvegarde et de récupération BlueXP pour commencer à sauvegarder les données de volume de vos systèmes Cloud Volumes ONTAP vers Google Cloud Storage.
 
 
 
@@ -74,7 +74,7 @@ Vous pouvez également vous connecter à un système ONTAP secondaire pour les v
 image:diagram_cloud_backup_cvo_google.png["Un diagramme illustrant la façon dont BlueXP Backup and Recovery communique avec les volumes du système source et le stockage de destination où se trouvent les fichiers de sauvegarde."]
 
 Versions de ONTAP prises en charge:: Minimum de ONTAP 9.8 ; ONTAP 9.8P13 et ultérieur est recommandé.
-Régions GCP prises en charge:: La sauvegarde et la restauration BlueXP sont prises en charge dans toutes les régions GCP https://cloud.netapp.com/cloud-volumes-global-regions["Dans ce cas, Cloud Volumes ONTAP est pris en charge"^].
+Régions GCP prises en charge:: La sauvegarde et la récupération BlueXP sont prises en charge dans toutes les régions GCP.
 Compte de services GCP:: Vous devez disposer d'un compte de service dans votre Google Cloud Project ayant le rôle personnalisé. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-creating-gcp-service-account.html["Découvrez comment créer un compte de service"^]
 
 

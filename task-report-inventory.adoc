@@ -4,7 +4,7 @@ permalink: task-report-inventory.html
 keywords: cloud backup, backup and recovery service, backup and recovery, backup, restore, report, inventory, bluexp 
 summary: 'Grâce aux rapports de sauvegarde et de restauration BlueXP, vous pouvez vous assurer que les données stratégiques sont protégées conformément aux règles définies par votre entreprise et prendre en charge efficacement l"audit pour les processus de conformité. Le rapport d"inventaire des sauvegardes répertorie toutes vos sauvegardes pour un compte, un environnement de travail ou un SVM spécifique.' 
 ---
-= Reporting sur la couverture de la protection des données
+= Rapport sur la couverture de la protection des données avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 'Grâce aux rapports de sauvegarde et de restauration BlueXP, vous pouv
 
 
 [role="lead"]
-Les rapports BlueXP sur la sauvegarde et la restauration vous permettent de vous assurer que les données stratégiques sont protégées conformément aux politiques définies par votre entreprise et de réaliser des audits pour répondre aux besoins de conformité.
+Avec les rapports de sauvegarde et de récupération BlueXP, assurez-vous que les données critiques sont protégées conformément aux politiques définies par votre organisation et fournissez des audits pour les besoins de conformité.
 
 Les rapports de sauvegarde et de restauration BlueXP vous aident à atteindre les objectifs suivants :
 

@@ -4,7 +4,7 @@ permalink: task-backup-vm-data-to-azure.html
 keywords: back up, backup, backup datastore, Microsoft Azure, backup datastores 
 summary: Sauvegardez vos datastores ONTAP sur site dans Azure. 
 ---
-= Sauvegarde des datastores dans Microsoft Azure
+= Sauvegardez vos banques de données sur Microsoft Azure avec la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Sauvegardez vos datastores ONTAP sur site dans Azure.
 
 
 [role="lead"]
-Vous pouvez sauvegarder un ou plusieurs datastores dans Microsoft Azure en intégrant le plug-in SnapCenter pour l'hôte VMware vSphere avec BlueXP. Ils peuvent ainsi sauvegarder et archiver des données facilement et rapidement à des fins d'efficacité du stockage et d'accélération de la transition vers le cloud.
+Vous pouvez sauvegarder une ou plusieurs banques de données sur Microsoft Azure en intégrant le plug-in SnapCenter pour l’hôte VMware vSphere avec la sauvegarde et la récupération BlueXP. Ils peuvent ainsi sauvegarder et archiver des données facilement et rapidement à des fins d'efficacité du stockage et d'accélération de la transition vers le cloud.
 
 Si le datastore est associé à une stratégie d'archivage, vous aurez la possibilité de sélectionner le niveau d'archivage. Le Tier d'archivage pris en charge est le stockage Azure Archive Blob Storage.
 

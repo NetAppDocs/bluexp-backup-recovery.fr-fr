@@ -4,12 +4,12 @@ permalink: task-migrate-volumes-snapmirror-cloud-resync.html
 keywords: backing up, back up, backup, backup on-prem ontap, on-premises, back up volumes, cloud backup, cloud, snapmirror, migrate, volume migration, resync, 
 summary: Procédez en quelques étapes pour commencer à sauvegarder des données de volume de vos systèmes ONTAP sur site vers un système de stockage secondaire et vers Google Cloud Storage. 
 ---
-= Migration de volumes à l'aide de SnapMirror pour la resynchronisation cloud
+= Migrer des volumes à l'aide de SnapMirror vers Cloud Resync avec la sauvegarde et la récupération BlueXP
 :allow-uri-read: 
 
 
 [role="lead"]
-La fonctionnalité SnapMirror to Cloud Resync rationalise la protection et la continuité des données lors des migrations de volumes dans les environnements NetApp. Lors de la migration d'un volume à l'aide de la réplication logique SnapMirror (LRSE), d'un déploiement NetApp sur site vers un autre ou vers une solution cloud telle que Cloud Volumes ONTAP ou Cloud Volumes Service, la fonction SnapMirror to Cloud Resync permet de préserver l'intégrité et le fonctionnement des sauvegardes cloud existantes.
+La fonctionnalité SnapMirror to Cloud Resync dans la sauvegarde et la récupération BlueXP rationalise la protection et la continuité des données lors des migrations de volumes dans les environnements NetApp. Lors de la migration d'un volume à l'aide de la réplication logique SnapMirror (LRSE), d'un déploiement NetApp sur site vers un autre ou vers une solution cloud telle que Cloud Volumes ONTAP ou Cloud Volumes Service, la fonction SnapMirror to Cloud Resync permet de préserver l'intégrité et le fonctionnement des sauvegardes cloud existantes.
 
 Cette fonctionnalité élimine le besoin de redéfinir les bases de données de manière chronophage et gourmande en ressources, pour assurer la continuité des opérations de sauvegarde après la migration. Cette fonctionnalité est très utile pour les scénarios de migration de workloads, prenant en charge FlexVols et FlexGroups, et est disponible à partir de la version 9.16.1 de ONTAP.
 
