@@ -4,7 +4,7 @@ permalink: whats-new.html
 keywords: 'what"s new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes, backup, restore, bluexp, bluexp backup and recovery, protection' 
 summary: Découvrez les nouveautés de la sauvegarde et de la restauration BlueXP. 
 ---
-= Nouveautés de la sauvegarde et de la restauration BlueXP
+= Quoi de neuf dans la sauvegarde et la récupération BlueXP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -42,6 +42,8 @@ Pour plus d'informations, voir https://docs.netapp.com/us-en/bluexp-backup-recov
 === Points de terminaison de liaison privée Azure et points de terminaison de service
 
 Généralement, la sauvegarde et la restauration BlueXP établissent un point de terminaison privé avec le fournisseur de cloud pour gérer diverses tâches de protection. Cette version introduit un paramètre facultatif permettant d'activer ou de désactiver la création automatique d'un point de terminaison privé par la sauvegarde et la restauration BlueXP. Cela peut vous être utile si vous souhaitez davantage de contrôle sur le processus de création de points de terminaison privés.
+
+Vous pouvez activer ou désactiver cette option lorsque vous activez la protection ou démarrez le processus de restauration.
 
 Si vous désactivez ce paramètre, vous devrez créer manuellement le point de terminaison privé pour que la sauvegarde et la restauration BlueXP fonctionnent correctement. Sans une connectivité adéquate, vous risquez de ne pas pouvoir effectuer correctement les tâches de sauvegarde et de restauration.
 

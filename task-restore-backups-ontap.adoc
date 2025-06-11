@@ -749,29 +749,13 @@ Le catalogue indexé v2 prend en charge les éléments suivants :
 
 
 .Activation du catalogue indexé pour un environnement de travail
-Lorsque vous activez cette fonctionnalité, BlueXP Backup and Recovery active SnapDiff v3 sur le SVM pour vos volumes et il effectue les actions suivantes :
+Le service ne provisionne pas de compartiment distinct lorsque vous utilisez le catalogue indexé v2. En revanche, pour les sauvegardes stockées sur AWS, Azure, Google Cloud Platform, StorageGRID ou ONTAP S3, le service provisionne de l'espace sur le connecteur ou dans l'environnement du fournisseur cloud.
 
-ifdef::aws[]
+Si vous avez activé le catalogue indexé avant la version v2, les événements suivants se produisent dans les environnements de travail :
 
 * Pour les sauvegardes stockées dans AWS, un nouveau compartiment S3 est provisionné et le https://aws.amazon.com/athena/faqs/["Service de requête interactive Amazon Athena"^] et https://aws.amazon.com/glue/faqs/["Service d'intégration de données sans serveur AWS Glue"^].
-
-
-endif::aws[]
-
-ifdef::azure[]
-
 * Pour les sauvegardes stockées dans Azure, cet espace de travail s'provisionne un espace de travail Azure Synapse et un système de fichiers Data Lake comme conteneur qui stockera les données de l'espace de travail.
-
-
-endif::azure[]
-
-ifdef::gcp[]
-
 * Pour les sauvegardes stockées dans Google Cloud, un nouveau compartiment est provisionné, et le https://cloud.google.com/bigquery["Services Google Cloud BigQuery"^] sont provisionnées au niveau compte/projet.
-
-
-endif::gcp[]
-
 * Pour les sauvegardes stockées dans StorageGRID ou ONTAP S3, il provisionne l'espace sur le connecteur ou dans l'environnement du fournisseur cloud.
 
 
