@@ -200,9 +200,7 @@ Vous pouvez créer le compartiment à partir de BlueXP ou de votre fournisseur c
 * https://docs.netapp.com/us-en/bluexp-google-cloud-storage/task-add-gcp-bucket.html["Créez des compartiments de stockage Google Cloud à partir de BlueXP"]
 
 
-*Remarque :* pour le moment, vous ne pouvez pas utiliser vos propres compartiments S3 lors de la création de sauvegardes dans des systèmes StorageGRID ou dans ONTAP S3.
-
-Si vous prévoyez d'utiliser un préfixe de compartiment différent de « netapp-backup-xxxxxx », vous devez modifier les autorisations S3 pour le rôle IAM du connecteur. Pour en savoir plus, découvrez comment créer des sauvegardes dans AWS S3.
+Si vous prévoyez d'utiliser un préfixe de compartiment différent de « netapp-backup-xxxxxx », vous devez modifier les autorisations S3 pour le rôle IAM du connecteur.
 
 *Paramètres avancés du godet*
 
@@ -214,7 +212,7 @@ Si vous prévoyez de transférer d'anciens fichiers de sauvegarde vers le stocka
 ** Déplacez les objets avec la balise « smc_push_to_archive: True » vers _Glacier flexible Retrieval_ (anciennement S3 Glacier)
 
 
-* Data Lock et la protection contre les ransomware sont pris en charge dans le stockage AWS lorsque vous utilisez le logiciel ONTAP 9.11.1 ou une version ultérieure sur vos clusters, et le stockage Azure lorsque vous utilisez ONTAP 9.12.1 ou une version ultérieure du logiciel.
+* La protection DataLock et Ransomware est prise en charge dans le stockage AWS lors de l’utilisation du logiciel ONTAP 9.11.1 ou supérieur sur vos clusters, et dans le stockage Azure lors de l’utilisation du logiciel ONTAP 9.12.1 ou supérieur.
 +
 ** Pour AWS, vous devez activer le verrouillage objet sur le compartiment selon une période de conservation de 30 jours.
 ** Pour Azure, vous devez créer une classe de stockage avec une prise en charge des immuabilité au niveau de la version.

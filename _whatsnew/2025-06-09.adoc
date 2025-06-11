@@ -1,0 +1,40 @@
+= Mises à jour du support du catalogue indexé
+:allow-uri-read: 
+
+
+
+
+=== Mises à jour du support du catalogue indexé
+
+En février 2025, nous avons introduit la fonctionnalité d'indexation mise à jour (Catalogue indexé v2) que vous utilisez lors de la méthode de recherche et de restauration des données. La version précédente améliorait considérablement les performances d'indexation des données dans les environnements locaux. Avec cette version, le catalogue d'indexation est désormais disponible dans les environnements Amazon Web Services, Microsoft Azure et Google Cloud Platform (GCP).
+
+Si vous êtes un nouveau client, le catalogue indexé v2 est activé par défaut pour tous les nouveaux environnements. Si vous êtes déjà client, vous pouvez réindexer votre environnement pour bénéficier du catalogue indexé v2.
+
+.Comment activer l'indexation ?
+Avant de pouvoir utiliser la méthode Search & Restore de restauration des données, vous devez activer l'« indexation » sur chaque environnement de travail source à partir duquel vous prévoyez de restaurer des volumes ou des fichiers. Sélectionnez l'option *Activer l'indexation* lorsque vous effectuez une recherche et une restauration.
+
+Le catalogue indexé peut ensuite suivre chaque volume et fichier de sauvegarde, rendant vos recherches rapides et efficaces.
+
+Pour plus d'informations, voir https://docs.netapp.com/us-en/bluexp-backup-recovery/task-restore-backups-ontap.html#restore-ontap-data-using-search-restore["Comment restaurer des données ONTAP à l'aide de la fonction recherche et ampli ; Restaurer"].
+
+
+
+=== Points de terminaison de liaison privée Azure et points de terminaison de service
+
+Généralement, la sauvegarde et la restauration BlueXP établissent un point de terminaison privé avec le fournisseur de cloud pour gérer diverses tâches de protection. Cette version introduit un paramètre facultatif permettant d'activer ou de désactiver la création automatique d'un point de terminaison privé par la sauvegarde et la restauration BlueXP. Cela peut vous être utile si vous souhaitez davantage de contrôle sur le processus de création de points de terminaison privés.
+
+Si vous désactivez ce paramètre, vous devrez créer manuellement le point de terminaison privé pour que la sauvegarde et la restauration BlueXP fonctionnent correctement. Sans une connectivité adéquate, vous risquez de ne pas pouvoir effectuer correctement les tâches de sauvegarde et de restauration.
+
+
+
+=== Prise en charge de SnapMirror vers Cloud Resync sur ONTAP S3
+
+La version précédente intégrait la prise en charge de SnapMirror to Cloud Resync (SM-C Resync). Cette fonctionnalité simplifie la protection des données lors de la migration de volumes dans les environnements NetApp. Cette version prend désormais en charge SM-C Resync sur ONTAP S3, ainsi que sur d'autres fournisseurs compatibles S3 tels que Wasabi et MinIO.
+
+
+
+=== Apportez votre propre seau pour StorageGRID
+
+Lorsque vous créez des fichiers de sauvegarde dans le stockage objet pour un environnement de travail, la sauvegarde et la restauration BlueXP créent par défaut le conteneur (bucket ou compte de stockage) pour les fichiers de sauvegarde dans le compte de stockage objet que vous avez configuré. Auparavant, vous pouviez remplacer cette configuration et spécifier votre propre conteneur pour Amazon S3, Azure Blob Storage et Google Cloud Storage. Avec cette version, vous pouvez désormais utiliser votre propre conteneur de stockage objet StorageGRID.
+
+Voir https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-protection-journey.html#do-you-want-to-create-your-own-object-storage-container["Créez votre propre conteneur de stockage d'objets"].
