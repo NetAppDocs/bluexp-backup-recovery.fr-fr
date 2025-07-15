@@ -1,0 +1,468 @@
+---
+sidebar: sidebar 
+permalink: prev-ontap-backup-cvo-azure.html 
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, BlueXP backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database 
+summary: Protégez vos charges de travail VMware avec la BlueXP backup and recovery NetApp BlueXP. 
+---
+= Sauvegardez les données Cloud Volumes ONTAP sur le stockage Azure Blob avec la sauvegarde et la récupération BlueXP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Effectuez quelques étapes de sauvegarde et de récupération BlueXP pour commencer à sauvegarder les données de volume de vos systèmes Cloud Volumes ONTAP vers le stockage Azure Blob.
+
+[]
+====
+*REMARQUE* Pour basculer vers et depuis les charges de travail de BlueXP backup and recovery , reportez-vous à link:br-start-switch-ui.html["Basculer vers différentes charges de travail de BlueXP backup and recovery"] .
+
+====
+
+
+== Vérifiez la prise en charge de votre configuration
+
+Avant de commencer à sauvegarder les volumes sur le stockage Azure Blob, lisez les informations suivantes pour vous assurer que la configuration est prise en charge.
+
+L'image suivante montre chaque composant et les connexions que vous devez préparer entre eux.
+
+Vous pouvez également vous connecter à un système ONTAP secondaire pour les volumes répliqués via la connexion publique ou privée.
+
+image:diagram_cloud_backup_cvo_azure.png["Un diagramme illustrant la façon dont BlueXP Backup and Recovery communique avec les volumes des systèmes source et le stockage de destination où se trouvent les fichiers de sauvegarde."]
+
+Versions de ONTAP prises en charge:: Minimum de ONTAP 9.8 ; ONTAP 9.8P13 et ultérieur est recommandé.
+Régions Azure prises en charge:: La sauvegarde et la récupération BlueXP sont prises en charge dans toutes les régions Azure, y compris les régions Azure Government.
++
+--
+Par défaut, la sauvegarde et la restauration BlueXP provisionne le conteneur Blob avec la redondance locale (LRS) pour l'optimisation des coûts. Vous pouvez définir ce paramètre sur redondance de zone (ZRS) après l'activation de la sauvegarde et de la restauration BlueXP si vous souhaitez vous assurer que vos données sont répliquées entre différentes zones. Consultez les instructions Microsoft pour https://learn.microsoft.com/en-us/azure/storage/common/redundancy-migration?tabs=portal["modification de la façon dont votre compte de stockage est répliqué"^].
+
+--
+Configuration requise pour la création de sauvegardes dans un autre abonnement Azure:: Par défaut, les sauvegardes sont créées avec le même abonnement que celui utilisé pour votre système Cloud Volumes ONTAP.
+
+
+
+
+== Vérification des besoins en licence
+
+Pour la sauvegarde et la restauration BlueXP avec une licence PAYGO, un abonnement via Azure Marketplace est requis avant d'activer la sauvegarde et la restauration BlueXP. La facturation de la sauvegarde et de la restauration BlueXP s'effectue via cet abonnement. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-otc-azure.html["Vous pouvez vous abonner à la page Détails et amp ; informations d'identification de l'assistant de l'environnement de travail"^].
+
+Pour les licences BYOL de sauvegarde et de restauration BlueXP, vous devez disposer du numéro de série de NetApp qui vous permet d'utiliser le service pendant la durée et la capacité de la licence. link:br-start-licensing.html["Découvrez comment gérer vos licences BYOL"]. Vous devez utiliser une licence BYOL lorsque le connecteur et le système Cloud Volumes ONTAP sont déployés dans un site invisible (« mode privé »).
+
+Vous devez également disposer d'un abonnement Microsoft Azure pour l'espace de stockage où vos sauvegardes seront stockées.
+
+
+
+== Préparez votre connecteur BlueXP
+
+Le connecteur peut être installé dans une région Azure avec un accès Internet complet ou limité (mode « standard » ou « restreint »). https://docs.netapp.com/us-en/bluexp-setup-admin/concept-modes.html["Consultez les modes de déploiement BlueXP pour plus de détails"^].
+
+* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["Déployer un connecteur dans Azure en mode standard (accès complet à Internet)"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-restricted-mode.html["Installer le connecteur en mode restreint (accès sortant limité)"^]
+
+
+
+
+=== Vérifiez ou ajoutez des autorisations au connecteur
+
+Pour utiliser la fonctionnalité de recherche et de restauration de sauvegarde et de restauration BlueXP, vous devez disposer d'autorisations spécifiques dans le rôle du connecteur afin qu'il puisse accéder à Azure Synapse Workspace et au compte de stockage Data Lake. Reportez-vous aux autorisations ci-dessous et suivez les étapes si vous devez modifier la stratégie.
+
+.Avant de commencer
+* Vous devez enregistrer le fournisseur de ressources d'analyse d'Azure Synapse (appelé « Microsoft.Synapse ») auprès de votre abonnement. https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider["Découvrez comment enregistrer ce fournisseur de ressources pour votre abonnement"^]. Vous devez être l'abonnement *propriétaire* ou *Contributeur* pour enregistrer le fournisseur de ressources.
+* Le port 1433 doit être ouvert pour la communication entre le connecteur et les services SQL d'Azure Synapse.
+
+
+.Étapes
+. Identifier le rôle attribué à la machine virtuelle Connector :
++
+.. Dans le portail Azure, ouvrez le service des machines virtuelles.
+.. Sélectionnez la machine virtuelle Connector.
+.. Sous Paramètres, sélectionnez *identité*.
+.. Sélectionnez *attributions de rôles Azure*.
+.. Notez le rôle personnalisé attribué à la machine virtuelle Connector.
+
+
+. Mettre à jour le rôle personnalisé :
++
+.. Sur le portail Azure, ouvrez votre abonnement Azure.
+.. Sélectionnez *contrôle d'accès (IAM) > rôles*.
+.. Sélectionnez les points de suspension (*...*) pour le rôle personnalisé, puis sélectionnez *Modifier*.
+.. Sélectionnez *JSON* et ajoutez les autorisations suivantes :
++
+[%collapsible]
+====
+[source, json]
+----
+"Microsoft.Storage/storageAccounts/listkeys/action",
+"Microsoft.Storage/storageAccounts/read",
+"Microsoft.Storage/storageAccounts/write",
+"Microsoft.Storage/storageAccounts/blobServices/containers/read",
+"Microsoft.Storage/storageAccounts/listAccountSas/action",
+"Microsoft.KeyVault/vaults/read",
+"Microsoft.KeyVault/vaults/accessPolicies/write",
+"Microsoft.Network/networkInterfaces/read",
+"Microsoft.Resources/subscriptions/locations/read",
+"Microsoft.Network/virtualNetworks/read",
+"Microsoft.Network/virtualNetworks/subnets/read",
+"Microsoft.Resources/subscriptions/resourceGroups/read",
+"Microsoft.Resources/subscriptions/resourcegroups/resources/read",
+"Microsoft.Resources/subscriptions/resourceGroups/write",
+"Microsoft.Authorization/locks/*",
+"Microsoft.Network/privateEndpoints/write",
+"Microsoft.Network/privateEndpoints/read",
+"Microsoft.Network/privateDnsZones/virtualNetworkLinks/write",
+"Microsoft.Network/virtualNetworks/join/action",
+"Microsoft.Network/privateDnsZones/A/write",
+"Microsoft.Network/privateDnsZones/read",
+"Microsoft.Network/privateDnsZones/virtualNetworkLinks/read",
+"Microsoft.Network/networkInterfaces/delete",
+"Microsoft.Network/networkSecurityGroups/delete",
+"Microsoft.Resources/deployments/delete",
+"Microsoft.ManagedIdentity/userAssignedIdentities/assign/action",
+"Microsoft.Synapse/workspaces/write",
+"Microsoft.Synapse/workspaces/read",
+"Microsoft.Synapse/workspaces/delete",
+"Microsoft.Synapse/register/action",
+"Microsoft.Synapse/checkNameAvailability/action",
+"Microsoft.Synapse/workspaces/operationStatuses/read",
+"Microsoft.Synapse/workspaces/firewallRules/read",
+"Microsoft.Synapse/workspaces/replaceAllIpFirewallRules/action",
+"Microsoft.Synapse/workspaces/operationResults/read",
+"Microsoft.Synapse/workspaces/privateEndpointConnectionsApproval/action"
+----
+====
++
+https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["Afficher le format JSON complet de la règle"^]
+
+.. Sélectionnez *consulter + mettre à jour*, puis *mettre à jour*.
+
+
+
+
+
+
+=== Informations requises pour l'utilisation des clés gérées par le client pour le chiffrement des données
+
+Vous pouvez utiliser vos propres clés gérées par le client pour le chiffrement des données dans l'assistant d'activation au lieu d'utiliser les clés de chiffrement gérées par Microsoft par défaut. Dans ce cas, vous devez disposer de l'abonnement Azure, du nom du coffre-fort de clés et de la clé. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview["Découvrez comment utiliser vos propres touches"^].
+
+La sauvegarde et la restauration BlueXP  prennent en charge les stratégies d'accès _Azure_, le modèle d'autorisation _Azure Role-Based Access Control_ (Azure RBAC) et le modèle _Managed Hardware Security Model_ (HSM) (voir https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/overview["Qu'est-ce que le HSM géré par Azure Key Vault ?"] ).
+
+
+
+=== Créez votre compte de stockage Azure Blob
+
+Par défaut, le service crée des comptes de stockage pour vous. Si vous souhaitez utiliser vos propres comptes de stockage, vous pouvez les créer avant de démarrer l'assistant d'activation de sauvegarde, puis sélectionner ces comptes de stockage dans l'assistant.
+
+link:prev-ontap-protect-journey.html["En savoir plus sur la création de vos propres comptes de stockage"].
+
+
+
+== Vérifiez les exigences de mise en réseau ONTAP pour la réplication de volumes
+
+Si vous prévoyez de créer des volumes répliqués sur un système ONTAP secondaire à l'aide de la sauvegarde et de la restauration BlueXP, assurez-vous que les systèmes source et de destination respectent les exigences de mise en réseau suivantes.
+
+
+
+==== Exigences de mise en réseau ONTAP sur site
+
+* Si le cluster se trouve dans votre site, vous devez disposer d'une connexion entre votre réseau d'entreprise et votre réseau virtuel dans le fournisseur cloud. Il s'agit généralement d'une connexion VPN.
+* Les clusters ONTAP doivent répondre à des exigences supplémentaires en termes de sous-réseau, de port, de pare-feu et de cluster.
++
+Comme vous pouvez répliquer sur des systèmes Cloud Volumes ONTAP ou sur site, examinez les exigences de peering pour les systèmes ONTAP sur site. https://docs.netapp.com/us-en/ontap-sm-classic/peering/reference_prerequisites_for_cluster_peering.html["Afficher les conditions préalables au peering de cluster dans la documentation de ONTAP"^].
+
+
+
+
+
+==== Configuration réseau requise par Cloud Volumes ONTAP
+
+* Le groupe de sécurité de l'instance doit inclure les règles d'entrée et de sortie requises : plus précisément, les règles d'ICMP et les ports 11104 et 11105. Ces règles sont incluses dans le groupe de sécurité prédéfini.
+
+
+* Pour répliquer des données entre deux systèmes Cloud Volumes ONTAP dans différents sous-réseaux, les sous-réseaux doivent être routés ensemble (paramètre par défaut).
+
+
+
+
+== Activez la sauvegarde et la restauration BlueXP sur Cloud Volumes ONTAP
+
+L'activation de la sauvegarde et de la restauration BlueXP est simple. Les étapes diffèrent légèrement selon que vous disposez d'un système Cloud Volumes ONTAP existant ou d'un nouveau système.
+
+*Activez la sauvegarde et la restauration BlueXP sur un nouveau système*
+
+La sauvegarde et la restauration BlueXP sont activées par défaut dans l'assistant de l'environnement de travail. Assurez-vous de conserver l'option activée.
+
+Voir https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-otc-azure.html["Lancement d'Cloud Volumes ONTAP dans Azure"^] Pour connaître les conditions requises et les détails relatifs à la création du système Cloud Volumes ONTAP.
+
+
+NOTE: Si vous souhaitez choisir le nom du groupe de ressources, *disable* BlueXP Backup and Recovery lors du déploiement de Cloud Volumes ONTAP.
+
+.Étapes
+. Dans le canevas BlueXP, sélectionnez *Ajouter un environnement de travail*, choisissez le fournisseur cloud et sélectionnez *Ajouter nouveau*. Sélectionnez *Créer Cloud Volumes ONTAP*.
+. Sélectionnez *Microsoft Azure* comme fournisseur de cloud, puis choisissez un seul nœud ou un système haute disponibilité.
+. Dans la page Définir les informations d’identification Azure, saisissez le nom des informations d’identification, l’ID client, le secret client et l’ID du répertoire, puis sélectionnez *Continuer*.
+. Remplissez la page Détails et informations d’identification et assurez-vous qu’un abonnement Azure Marketplace est en place, puis sélectionnez *Continuer*.
+. Sur la page Services, laissez le service activé et sélectionnez *Continuer*.
+. Complétez les pages de l'assistant pour déployer le système.
+
+
+.Résultat
+La sauvegarde et la restauration BlueXP sont activées sur le système. Après avoir créé des volumes sur ces systèmes Cloud Volumes ONTAP , lancez la BlueXP backup and recovery et link:prev-ontap-backup-manage.html["activez la sauvegarde sur chaque volume que vous souhaitez protéger"] .
+
+*Activez la sauvegarde et la restauration BlueXP sur un système existant*
+
+Sauvegardez et restaurez BlueXP à tout moment directement depuis l'environnement de travail.
+
+.Étapes
+. Dans BlueXP Canvas, sélectionnez l'environnement de travail et sélectionnez *Activer* en regard du service de sauvegarde et de restauration dans le panneau de droite.
++
+Si la destination Azure Blob de vos sauvegardes existe en tant qu'environnement de travail dans la zone de travail, vous pouvez faire glisser le cluster dans l'environnement de travail Azure Blob pour lancer l'assistant d'installation.
+
+. Suivez les pages de l'assistant pour déployer la sauvegarde et la restauration BlueXP.
+. Pour lancer des sauvegardes, passez à la section <<Activez les sauvegardes sur vos volumes ONTAP>>.
+
+
+
+
+== Activez les sauvegardes sur vos volumes ONTAP
+
+Activez les sauvegardes à tout moment directement depuis votre environnement de travail sur site.
+
+Un assistant vous guide à travers les étapes principales suivantes :
+
+* <<Sélectionnez les volumes à sauvegarder>>
+* <<Définir la stratégie de sauvegarde>>
+* <<Vérifiez vos sélections>>
+
+
+Vous pouvez également <<Affiche les commandes API>> à l'étape de vérification, vous pouvez copier le code pour automatiser l'activation de la sauvegarde pour les futurs environnements de travail.
+
+
+
+=== Démarrez l'assistant
+
+.Étapes
+. Accédez à l'assistant Activer la sauvegarde et la récupération de l'une des manières suivantes :
++
+** Dans le canevas BlueXP, sélectionnez l'environnement de travail et sélectionnez *Activer > volumes de sauvegarde* en regard du service de sauvegarde et de restauration dans le panneau de droite.
++
+Si la destination Azure pour vos sauvegardes existe en tant qu'environnement de travail sur la zone de travail, vous pouvez faire glisser le cluster ONTAP vers le stockage objet Azure Blob.
+
+** Sélectionnez *volumes* dans la barre de sauvegarde et de récupération. Dans l'onglet volumes, sélectionnez *actions* image:icon-action.png["Icône actions"] Et sélectionnez *Activer la sauvegarde* pour un seul volume (dont la réplication ou la sauvegarde sur le stockage objet n'est pas déjà activée).
+
+
++
+La page Introduction de l'assistant affiche les options de protection, y compris les snapshots locaux, la réplication et les sauvegardes. Si vous avez effectué la deuxième option de cette étape, la page définir la stratégie de sauvegarde s'affiche avec un volume sélectionné.
+
+. Continuez avec les options suivantes :
++
+** Si vous disposez déjà d'un connecteur BlueXP, vous êtes paré. Sélectionnez *Suivant*.
+** Si vous ne disposez pas encore d'un connecteur BlueXP, l'option *Ajouter un connecteur* apparaît. Reportez-vous à la section <<Préparez votre connecteur BlueXP>>.
+
+
+
+
+
+
+=== Sélectionnez les volumes à sauvegarder
+
+Choisissez les volumes à protéger. Un volume protégé possède un ou plusieurs des éléments suivants : règle Snapshot, règle de réplication, règle de sauvegarde sur objet.
+
+Vous pouvez choisir de protéger les volumes FlexVol ou FlexGroup, mais vous ne pouvez pas sélectionner un mélange de ces volumes lors de l'activation de la sauvegarde pour un environnement de travail. Découvrez comment link:prev-ontap-backup-manage.html["activer la sauvegarde des volumes supplémentaires dans l'environnement de travail"] (FlexVol ou FlexGroup) après avoir configuré la sauvegarde pour les volumes initiaux.
+
+[NOTE]
+====
+* Vous ne pouvez activer une sauvegarde que sur un seul volume FlexGroup à la fois.
+* Les volumes sélectionnés doivent avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé.
+
+
+====
+.Étapes
+Si les volumes que vous choisissez ont déjà des stratégies de snapshot ou de réplication appliquées, les stratégies que vous sélectionnez ultérieurement remplaceront ces stratégies existantes.
+
+. Dans la page Sélectionner des volumes, sélectionnez le ou les volumes à protéger.
++
+** Vous pouvez également filtrer les lignes pour n'afficher que les volumes avec certains types de volumes, styles et autres pour faciliter la sélection.
+** Après avoir sélectionné le premier volume, vous pouvez sélectionner tous les volumes FlexVol. (Les volumes FlexGroup ne peuvent être sélectionnés qu'un par un.) Pour sauvegarder tous les volumes FlexVol existants, cochez d'abord un volume, puis cochez la case dans la ligne de titre.
+** Pour sauvegarder des volumes individuels, cochez la case correspondant à chaque volume.
+
+
+. Sélectionnez *Suivant*.
+
+
+
+
+=== Définir la stratégie de sauvegarde
+
+La définition de la stratégie de sauvegarde implique la définition des options suivantes :
+
+* Que vous souhaitiez une ou toutes les options de sauvegarde : instantanés locaux, réplication et sauvegarde sur stockage d'objets
+* Architecture
+* Politique d'instantané local
+* Cible et règle de réplication
++
+
+NOTE: Si les volumes que vous choisissez ont des stratégies de snapshot et de réplication différentes de celles que vous sélectionnez à cette étape, les stratégies existantes seront écrasées.
+
+* Sauvegarde vers des informations de stockage objet (fournisseur, chiffrement, mise en réseau, règles de sauvegarde et options d'exportation).
+
+
+.Étapes
+. Dans la page définir la stratégie de sauvegarde, choisissez une ou plusieurs des options suivantes. Les trois sont sélectionnés par défaut :
++
+** *Instantanés locaux* : si vous effectuez une réplication ou une sauvegarde sur un stockage d'objets, des instantanés locaux doivent être créés.
+** *Réplication* : crée des volumes répliqués sur un autre système de stockage ONTAP.
+** *Backup* : sauvegarde les volumes dans le stockage objet.
+
+
+. *Architecture* : si vous avez choisi la réplication et la sauvegarde, choisissez l'un des flux d'informations suivants :
++
+** *Cascading* : les informations circulent du système de stockage principal vers le stockage secondaire et du stockage secondaire vers le stockage objet.
+** *Fan Out* : les informations circulent du système de stockage primaire vers le stockage secondaire _et_ du stockage primaire vers le stockage objet.
++
+Pour plus de détails sur ces architectures, reportez-vous à link:prev-ontap-protect-journey.html["Planifiez votre parcours en matière de protection"] .
+
+
+
+. *Instantané local* : choisissez une politique d’instantané existante ou créez-en une.
++
+
+TIP: Pour créer une politique personnalisée avant d'activer l'instantané, reportez-vous à link:br-use-policies-create.html["Création d'une règle"] .
+
++
+Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
+
++
+** Entrez le nom de la règle.
+** Sélectionnez jusqu'à cinq programmes, généralement de fréquences différentes.
+** Sélectionnez *Créer*.
+
+
+. *Réplication* : définissez les options suivantes :
++
+** *Cible de réplication* : sélectionnez l'environnement de travail de destination et le SVM. Si vous le souhaitez, sélectionnez le ou les agrégats de destination, ainsi que le préfixe ou le suffixe à ajouter au nom du volume répliqué.
+** *Règle de réplication* : choisissez une règle de réplication existante ou créez-en une.
++
+
+TIP: Pour créer une politique personnalisée avant d'activer la réplication, reportez-vous à link:br-use-policies-create.html["Création d'une règle"] .
+
++
+Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
+
++
+*** Entrez le nom de la règle.
+*** Sélectionnez jusqu'à cinq programmes, généralement de fréquences différentes.
+*** Sélectionnez *Créer*.
+
+
+
+
+. *Sauvegarder dans l'objet* : si vous avez sélectionné *Sauvegarder*, définissez les options suivantes :
++
+** *Fournisseur* : sélectionnez *Microsoft Azure*.
+** *Paramètres du fournisseur* : saisissez les détails du fournisseur.
++
+Entrez la région dans laquelle les sauvegardes seront stockées. Il peut s'agir d'une région différente de celle où réside le système Cloud Volumes ONTAP.
+
++
+Créez un nouveau compte de stockage ou sélectionnez un compte existant.
+
++
+Entrez l'abonnement Azure utilisé pour stocker les sauvegardes. Cet abonnement peut être différent de celui sur lequel réside le système Cloud Volumes ONTAP.
+
++
+Créez votre propre groupe de ressources qui gère le conteneur Blob ou sélectionnez le type et le groupe de ressources.
+
++
+
+TIP: Si vous souhaitez protéger vos fichiers de sauvegarde contre toute modification ou suppression, assurez-vous que le compte de stockage a été créé avec un stockage inaltérable activé sur une période de conservation de 30 jours.
+
++
+
+TIP: Si vous souhaitez transférer d'anciens fichiers de sauvegarde vers le stockage d'archives Azure pour optimiser davantage les coûts, assurez-vous que le compte de stockage dispose de la règle de cycle de vie appropriée.
+
+** *Clé de chiffrement* : si vous avez créé un nouveau compte de stockage Azure, entrez les informations de clé de chiffrement qui vous ont été fournies par le fournisseur. Vous pouvez choisir d'utiliser les clés de chiffrement Azure par défaut ou de gérer le chiffrement de vos données en choisissant vos propres clés gérées par le client dans votre compte Azure.
++
+Si vous choisissez d'utiliser vos propres clés gérées par le client, saisissez le coffre-fort de clés et les informations sur la clé.  https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview["Apprenez à utiliser vos propres clés"^] .
+
+
+
++
+
+NOTE: Si vous avez choisi un compte de stockage Microsoft existant, les informations de chiffrement sont déjà disponibles. Vous n'avez donc pas besoin de les saisir maintenant.
+
++
+** *Mise en réseau* : choisissez l'IPspace et si vous allez utiliser un terminal privé. Le point final privé est désactivé par défaut.
++
+... L'IPspace dans le cluster ONTAP où les volumes à sauvegarder résident. Les LIF intercluster pour cet IPspace doivent avoir un accès Internet sortant.
+... Vous pouvez également choisir si vous utiliserez un point de terminaison privé Azure que vous avez précédemment configuré.  https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview["Découvrez comment utiliser un terminal privé Azure"^] .
+
+
+** *Politique de sauvegarde* : sélectionnez une stratégie de stockage existante de sauvegarde vers objet.
++
+
+TIP: Pour créer une politique personnalisée avant d'activer la sauvegarde, reportez-vous à link:br-use-policies-create.html["Création d'une règle"] .
+
++
+Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
+
++
+*** Entrez le nom de la règle.
+*** Pour les règles de sauvegarde sur objet, définissez les paramètres DataLock et de protection contre les ransomware. Pour plus de détails sur DataLock et la protection contre les ransomwares, reportez-vous à link:prev-ontap-policy-object-options.html["Paramètres de la règle de sauvegarde sur objet"] .
+*** Sélectionnez jusqu'à cinq programmes, généralement de fréquences différentes.
+*** Sélectionnez *Créer*.
+
+
+** *Exporter les copies Snapshot existantes vers le stockage d'objets en tant que copies de sauvegarde* : s'il existe des copies Snapshot locales pour les volumes de cet environnement de travail qui correspondent à l'étiquette de planification de sauvegarde que vous venez de sélectionner pour cet environnement de travail (par exemple, quotidienne, hebdomadaire, etc.), cette invite supplémentaire s'affiche. Cochez cette case pour que tous les snapshots historiques soient copiés dans le stockage objet en tant que fichiers de sauvegarde afin de garantir une protection complète de vos volumes.
+
+
+. Sélectionnez *Suivant*.
+
+
+
+
+=== Vérifiez vos sélections
+
+C'est l'occasion de revoir vos sélections et d'apporter des ajustements, si nécessaire.
+
+.Étapes
+. Dans la page révision, vérifiez vos sélections.
+. Cochez éventuellement la case *synchronisez automatiquement les étiquettes de la règle Snapshot avec les étiquettes de la règle de réplication et de sauvegarde*. Cette opération crée des snapshots avec une étiquette qui correspond aux étiquettes des règles de réplication et de sauvegarde.
+. Sélectionnez *Activer la sauvegarde*.
+
+
+.Résultat
+La sauvegarde et la restauration BlueXP commencent à effectuer les sauvegardes initiales de vos volumes. Le transfert de base du volume répliqué et du fichier de sauvegarde inclut une copie complète des données du système de stockage primaire. Les transferts suivants contiennent des copies différentielles des données de stockage primaire contenues dans les copies Snapshot.
+
+Un volume répliqué est créé dans le cluster de destination qui sera synchronisé avec le volume primaire.
+
+Un conteneur de stockage Blob est créé dans le groupe de ressources que vous avez saisi et les fichiers de sauvegarde y sont stockés.
+
+Par défaut, la sauvegarde et la restauration BlueXP provisionne le conteneur Blob avec la redondance locale (LRS) pour l'optimisation des coûts. Vous pouvez définir ce paramètre sur redondance de zone (ZRS) si vous souhaitez vous assurer que vos données sont répliquées entre différentes zones. Consultez les instructions Microsoft pour https://learn.microsoft.com/en-us/azure/storage/common/redundancy-migration?tabs=portal["modification de la façon dont votre compte de stockage est répliqué"^].
+
+Le tableau de bord de sauvegarde de volume s'affiche pour vous permettre de surveiller l'état des sauvegardes.
+
+Vous pouvez également surveiller l’état des tâches de sauvegarde et de restauration à l’aide de l’ link:br-use-monitor-tasks.html["Surveillance des travaux"] .
+
+
+
+=== Affiche les commandes API
+
+Vous pouvez afficher et éventuellement copier les commandes d'API utilisées dans l'assistant Activer la sauvegarde et la restauration. Vous pouvez utiliser cette option pour automatiser l'activation des sauvegardes dans les futurs environnements de travail.
+
+.Étapes
+. Dans l'assistant Activer la sauvegarde et la récupération, sélectionnez *Afficher la requête API*.
+. Pour copier les commandes dans le presse-papiers, sélectionnez l'icône *Copier*.
+
+
+
+
+== Et la suite ?
+
+* Vous pouvez link:prev-ontap-backup-manage.html["gérez vos fichiers de sauvegarde et vos règles de sauvegarde"]. Cela comprend le démarrage et l'arrêt des sauvegardes, la suppression des sauvegardes, l'ajout et la modification de la planification des sauvegardes, etc.
+* Vous pouvez link:prev-ontap-policy-object-advanced-settings.html["gérez les paramètres de sauvegarde au niveau du cluster"]. Il s'agit notamment de changer les clés de stockage que ONTAP utilise pour accéder au stockage cloud, de modifier la bande passante réseau disponible pour télécharger les sauvegardes vers le stockage objet, de modifier le paramètre de sauvegarde automatique pour les volumes futurs, etc.
+* Vous pouvez également link:prev-ontap-restore.html["restaurez des volumes, des dossiers ou des fichiers individuels à partir d'un fichier de sauvegarde"] vers un système Cloud Volumes ONTAP dans AWS ou vers un système ONTAP sur site.
+

@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: prev-vmware-register-snapcenter.html 
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, BlueXP backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database 
+summary: Protégez vos charges de travail VMware avec la BlueXP backup and recovery NetApp BlueXP. 
+---
+= Enregistrez le SnapCenter Plug-in for VMware vSphere à utiliser avec la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous devez enregistrer le plug-in SnapCenter pour l'hôte VMware vSphere dans la sauvegarde et la récupération BlueXP pour que les banques de données et les machines virtuelles soient affichées. Seul un utilisateur disposant d'un accès administrateur peut enregistrer le plug-in SnapCenter pour l'hôte VMware vSphere.
+
+[]
+====
+*REMARQUE* Pour basculer vers et depuis les charges de travail de BlueXP backup and recovery , reportez-vous à link:br-start-switch-ui.html["Basculer vers différentes charges de travail de BlueXP backup and recovery"] .
+
+====
+.Étapes
+. Dans l'interface utilisateur BlueXP , sélectionnez *Protection* > *Sauvegarde et récupération* > *Machines virtuelles*.
+. Dans la liste déroulante *Paramètres*, sélectionnez * SnapCenter Plug-in for VMware vSphere*.
+. Sélectionnez *Enregistrer le SnapCenter Plug-in for VMware vSphere*.
+. Spécifiez les informations suivantes :
++
+.. Dans le champ plug-in SnapCenter pour VMware vSphere, spécifiez le nom de domaine complet ou l'adresse IP du plug-in SnapCenter pour l'hôte VMware vSphere.
+.. Dans le champ Port, spécifiez le numéro de port sur lequel le plug-in SnapCenter pour l'hôte VMware vSphere est exécuté.
++
+Vous devez vous assurer que la communication est ouverte entre le plug-in SnapCenter sur site pour l'hôte VMware vSphere qui s'exécute sur le port 8144 par défaut et l'instance de connecteur BlueXP qui peut être exécutée sur n'importe quel fournisseur cloud (Amazon Web Services, Microsoft Azure, Google Cloud Platform) ou sur site.
+
+.. Dans le champ Nom d'utilisateur et Mot de passe, spécifiez les informations d'identification de l'utilisateur vCenter avec le rôle d'administrateur.
+
+
+. Sélectionnez *Enregistrer*.
+
+
+*Après la fin*
+
+Sélectionnez *Sauvegarde et récupération* > *Machines virtuelles* pour afficher toutes les banques de données et machines virtuelles protégées à l'aide du SnapCenter Plug-in for VMware vSphere .

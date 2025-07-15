@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: br-use-vmware-protect-overview.html 
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, BlueXP backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database 
+summary: Protégez vos charges de travail VMware avec la BlueXP backup and recovery NetApp BlueXP. 
+---
+= Présentation de la protection des charges de travail VMware avec la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Protégez vos charges de travail VMware avec la BlueXP backup and recovery. La BlueXP backup and recovery offrent des opérations de sauvegarde et de restauration rapides, peu encombrantes, cohérentes en cas de panne et compatibles avec les machines virtuelles (VM), les banques de données et les VMDK.
+
+Vous pouvez sauvegarder des datastores dans Amazon Web Services S3, Microsoft Azure Blob, Google Cloud Platform et StorageGRID, et restaurer des machines virtuelles dans le plug-in SnapCenter sur site pour l'hôte VMware vSphere.
+
+[]
+====
+*REMARQUE* Cette fonctionnalité utilise une version antérieure de l'interface de BlueXP backup and recovery . Pour basculer entre les versions de l'interface de BlueXP backup and recovery , consultez link:br-start-switch-ui.html["Basculer vers l'interface utilisateur de BlueXP backup and recovery précédente"] .
+
+====
+Pour obtenir des instructions sur l'utilisation de l'interface utilisateur de BlueXP backup and recovery précédente, consultez les rubriques suivantes :

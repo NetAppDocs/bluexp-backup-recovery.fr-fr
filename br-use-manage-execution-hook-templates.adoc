@@ -1,0 +1,115 @@
+---
+sidebar: sidebar 
+permalink: br-use-manage-execution-hook-templates.html 
+keywords: hooks, execution hooks, exec hooks, hook, execution, script, postscript, prescript, post, pre, run, backup, snapshot, freeze 
+summary: 'La BlueXP backup and recovery vous permettent de gérer les hooks d"exécution pour prendre des mesures avant ou après les opérations de protection des applications.' 
+---
+= Gérer les modèles de hook d'exécution de BlueXP backup and recovery pour les charges de travail Kubernetes
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Un hook d'exécution est une action personnalisée que vous pouvez configurer pour s'exécuter conjointement avec une opération de protection des données d'une application Kubernetes gérée. Par exemple, si vous disposez d'une application de base de données, vous pouvez utiliser un crochet d'exécution pour suspendre toutes les transactions de base de données avant un instantané et reprendre les transactions une fois l'instantané terminé. Les snapshots sont ainsi cohérents au niveau des applications. Lorsque vous créez un modèle de hook d'exécution, vous pouvez spécifier le type de hook, le script à exécuter et les filtres qui déterminent les conteneurs auxquels il s'applique. Vous pouvez ensuite utiliser le modèle pour associer des hooks d'exécution à vos applications.
+
+.Rôle BlueXP requis
+Administrateur d'organisation ou administrateur SnapCenter . link:reference-roles.html["En savoir plus sur les rôles d'accès à la BlueXP backup and recovery"] .  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+
+
+== Types de crochets d'exécution
+
+La BlueXP backup and recovery prennent en charge les types de hooks d'exécution suivants, en fonction du moment où ils peuvent être exécutés :
+
+* Pré-instantané
+* Post-snapshot
+* Avant sauvegarde
+* Post-sauvegarde
+* Post-restauration
+
+
+
+
+=== Ordre d'exécution
+
+Lors de l'exécution d'une opération de protection des données, les événements de hook d'exécution ont lieu dans l'ordre suivant :
+
+. Tous les crochets d'exécution de pré-opération personnalisés applicables sont exécutés sur les conteneurs appropriés. Vous pouvez créer et exécuter autant de crochets de pré-opération personnalisés que vous le souhaitez, mais l'ordre d'exécution de ces crochets avant que l'opération ne soit ni garantie ni configurable.
+. Le système de fichiers se bloque, le cas échéant.
+. L'opération de protection des données est effectuée.
+. Les systèmes de fichiers gelés ne sont pas gelés, le cas échéant.
+. Tous les crochets d'exécution de post-opération personnalisés applicables sont exécutés sur les conteneurs appropriés. Vous pouvez créer et exécuter autant de crochets post-opération personnalisés que vous le souhaitez, mais l'ordre d'exécution de ces crochets après l'opération n'est ni garanti ni configurable.
+
+
+Si vous créez plusieurs crochets d'exécution du même type (par exemple, pré-instantané), l'ordre d'exécution de ces crochets n'est pas garanti. Cependant, l'ordre d'exécution des crochets de différents types est garanti. Par exemple, voici l'ordre d'exécution d'une configuration qui a tous les types de crochets :
+
+. Crochets pré-instantanés exécutés
+. Crochets post-snapshot exécutés
+. Crochets de pré-secours exécutés
+. Crochets post-secours exécutés
+
+
+
+NOTE: L'exemple d'ordre précédent s'applique uniquement lorsque vous exécutez une sauvegarde qui n'utilise pas de snapshot existant.
+
+
+NOTE: Vous devez toujours tester vos scripts d'exécution avant de les activer dans un environnement de production. Vous pouvez utiliser la commande 'kubectl exec' pour tester aisément les scripts. Une fois que vous avez activé les crochets d'exécution dans un environnement de production, testez les snapshots et les sauvegardes obtenus pour vous assurer qu'ils sont cohérents. Pour ce faire, vous pouvez cloner l'application dans un espace de noms temporaire, restaurer le snapshot ou la sauvegarde, puis tester l'application.
+
+
+NOTE: Si un hook d'exécution pré-snapshot ajoute, modifie ou supprime des ressources Kubernetes, ces modifications sont incluses dans l'instantané ou la sauvegarde et dans toute opération de restauration ultérieure.
+
+
+
+== Remarques importantes sur les crochets d'exécution personnalisés
+
+Lors de la planification de crochets d'exécution pour vos applications, tenez compte des points suivants.
+
+* Un crochet d'exécution doit utiliser un script pour effectuer des actions. De nombreux crochets d'exécution peuvent référencer le même script.
+* Les hooks d’exécution doivent être écrits au format de scripts shell exécutables.
+* La taille du script est limitée à 96 Ko.
+* Les paramètres de hook d'exécution et tous les critères de correspondance sont utilisés pour déterminer quels hooks sont applicables à une opération de snapshot, de sauvegarde ou de restauration.
+
+
+
+NOTE: Puisque les crochets d'exécution réduisent ou désactivent complètement la fonctionnalité de l'application contre laquelle ils s'exécutent, vous devez toujours essayer de réduire le temps d'exécution de vos crochets personnalisés. Si vous démarrez une opération de sauvegarde ou d'instantané avec les crochets d'exécution associés, mais que vous l'annulez, les crochets sont toujours autorisés à s'exécuter si l'opération de sauvegarde ou d'instantané a déjà commencé. Cela signifie que la logique utilisée dans un crochet d'exécution post-sauvegarde ne peut pas présumer que la sauvegarde a été effectuée.
+
+
+
+== Filtres de crochet d'exécution
+
+Lorsque vous ajoutez ou modifiez un crochet d'exécution pour une application, vous pouvez ajouter des filtres au crochet d'exécution pour gérer les conteneurs auxquels le crochet correspond. Les filtres sont utiles pour les applications qui utilisent la même image de conteneur sur tous les conteneurs, mais ils peuvent utiliser chaque image à des fins différentes (comme Elasticsearch). Les filtres vous permettent de créer des scénarios dans lesquels des crochets d'exécution s'exécutent sur certains conteneurs, mais pas nécessairement tous identiques. Si vous créez plusieurs filtres pour un seul crochet d'exécution, ils sont combinés avec un opérateur ET logique. Vous pouvez avoir jusqu'à 10 filtres actifs par crochet d'exécution.
+
+Chaque filtre que vous ajoutez à un crochet d'exécution utilise une expression régulière pour faire correspondre les conteneurs de votre cluster. Lorsqu'un crochet correspond à un conteneur, le crochet exécute son script associé sur ce conteneur. Les expressions régulières pour les filtres utilisent la syntaxe de l'expression régulière 2 (RE2), qui ne prend pas en charge la création d'un filtre qui exclut les conteneurs de la liste des correspondances. Pour plus d'informations sur la syntaxe BlueXP backup and recovery pour les expressions régulières dans les filtres de hook d'exécution, consultez  https://github.com/google/re2/wiki/Syntax["Prise en charge de la syntaxe de l'expression régulière 2 (RE2)"^] .
+
+
+NOTE: Si vous ajoutez un filtre d'espace de noms à un crochet d'exécution qui s'exécute après une opération de restauration ou de clonage et que la source et la destination de restauration ou de clonage sont dans des espaces de noms différents, le filtre d'espace de noms est appliqué uniquement à l'espace de noms de destination.
+
+
+
+== Exemples de crochet d'exécution
+
+Visitez le https://github.com/NetApp/Verda["Projet GitHub NetApp Verda"] pour télécharger des scripts d'exécution réels pour les applications courantes telles qu'Apache Cassandra et Elasticsearch. Vous pouvez également voir des exemples et obtenir des idées pour structurer vos propres crochets d'exécution personnalisés.
+
+
+
+== Créer un modèle de hook d'exécution
+
+Vous pouvez créer un modèle de hook d’exécution personnalisé que vous pouvez utiliser pour effectuer des actions avant ou après une opération de protection des données sur une application.
+
+.Étapes
+. Dans BlueXP, accédez à *Protection* > *Sauvegarde et récupération*.
+. Sélectionnez l'onglet *Paramètres*.
+. Développez la section *Modèle de hook d'exécution*.
+. Sélectionnez *Créer un modèle de hook d'exécution*.
+. Entrez un nom pour le hook d’exécution.
+. Choisissez un type de hook. Par exemple, un hook post-restauration s'exécutera une fois l'opération de restauration terminée.
+. Dans la zone de texte *Script*, saisissez le script shell exécutable à exécuter dans le cadre du modèle de hook d'exécution. Vous pouvez également sélectionner *Télécharger le script* pour télécharger un fichier de script.
+. Sélectionnez *Créer*.
++
+Le modèle est créé et apparaît dans la liste des modèles dans la section *Modèle de hook d'exécution*.
+
+

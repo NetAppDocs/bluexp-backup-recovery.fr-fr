@@ -1,0 +1,58 @@
+---
+sidebar: sidebar 
+permalink: br-use-previous-version.html 
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, BlueXP backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database 
+summary: La version précédente de la BlueXP backup and recovery vous permet de protéger plusieurs types de charges de travail, notamment les charges de travail VMware et les charges de travail ONTAP . 
+---
+= Utiliser une version précédente de la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La version précédente de la BlueXP backup and recovery vous permet de protéger plusieurs types de charges de travail, notamment les charges de travail VMware et les charges de travail ONTAP .
+
+Vous pouvez basculer entre la nouvelle interface de sauvegarde et de BlueXP backup and recovery BlueXP backup and recovery et l'ancienne. La nouvelle interface est accessible à tous, et vous pouvez revenir à l'ancienne si vous devez sauvegarder des charges de travail qui n'y sont pas encore disponibles.
+
+*Quelles charges de travail pouvez-vous sauvegarder dans chaque interface utilisateur ?*
+
+[cols="40,30,30"]
+|===
+| Charge de travail | Nouvelle interface utilisateur | Interface utilisateur précédente 
+
+
+| Workloads Microsoft SQL Server | Disponible | Non disponible 
+
+
+| Workloads VMware | Pas encore disponible | Disponible 
+
+
+| Volumes | Pas encore disponible | Disponible 
+
+
+| Charges de travail Kubernetes | Pas encore disponible | Non disponible 
+|===
+*Comment savez-vous quelle interface utilisateur vous utilisez ?* La nouvelle interface utilisateur utilise une structure de menu différente de l'interface utilisateur précédente.
+
+La nouvelle interface utilisateur : image:screen-br-menu-unified.png["Nouvelle capture d'écran de l'interface utilisateur pour la BlueXP backup and recovery"]
+
+L'interface utilisateur précédente : image:screen-br-menu-legacy.png["Capture d'écran de l'interface utilisateur précédente pour la BlueXP backup and recovery"]
+
+
+
+== Passer à une charge de travail différente
+
+Vous pouvez passer à une charge de travail différente dans l’interface utilisateur de BlueXP backup and recovery .
+
+.Étapes
+. Dans la navigation de gauche de BlueXP , sélectionnez *Protection* > *Sauvegarde et récupération*.
+. Dans le coin supérieur droit de la page, sélectionnez la liste déroulante *Changer de charge de travail*.
+. Sélectionnez la charge de travail vers laquelle vous souhaitez basculer. image:screen-br-menu-switch-ui.png["Capture d'écran de la charge de travail du commutateur pour la BlueXP backup and recovery"]
++
+La page s'actualise et affiche la charge de travail sélectionnée dans l'interface utilisateur appropriée.
+
+

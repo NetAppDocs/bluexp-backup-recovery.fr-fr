@@ -1,0 +1,482 @@
+---
+sidebar: sidebar 
+permalink: prev-ontap-backup-manage.html 
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, BlueXP backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database 
+summary: 'Avec BlueXP backup and recovery, gérez les sauvegardes de vos systèmes Cloud Volumes ONTAP et ONTAP sur site en modifiant la planification des sauvegardes, en activant les sauvegardes de volumes, en les suspendant, en les supprimant, etc. Vous pouvez également annuler l"enregistrement de BlueXP backup and recovery.' 
+---
+= Gérez les sauvegardes de vos systèmes ONTAP avec la sauvegarde et la récupération BlueXP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avec la sauvegarde et la récupération BlueXP, gérez les sauvegardes de vos systèmes Cloud Volumes ONTAP et ONTAP sur site en modifiant la planification de sauvegarde, en activant/désactivant les sauvegardes de volume, en suspendant les sauvegardes, en supprimant les sauvegardes, etc. Cela inclut tous les types de sauvegardes, y compris les copies instantanées, les volumes répliqués et les fichiers de sauvegarde dans le stockage objet. Vous pouvez également annuler l'enregistrement de la BlueXP backup and recovery.
+
+
+CAUTION: Ne gérez pas et ne modifiez pas les fichiers de sauvegarde directement sur vos systèmes de stockage ou depuis l'environnement de votre fournisseur cloud. Cela peut corrompre les fichiers et entraîner une configuration non prise en charge.
+
+[]
+====
+*REMARQUE* Pour basculer vers et depuis les charges de travail de BlueXP backup and recovery , reportez-vous à link:br-start-switch-ui.html["Basculer vers différentes charges de travail de BlueXP backup and recovery"] .
+
+====
+
+
+== Afficher l'état des sauvegardes des volumes de vos environnements de travail
+
+Vous pouvez afficher la liste de tous les volumes en cours de sauvegarde dans le tableau de bord des volumes Backup. Cela inclut tous les types de sauvegardes, y compris les copies instantanées, les volumes répliqués et les fichiers de sauvegarde dans le stockage d'objets. Vous pouvez également afficher les volumes des environnements de travail qui ne sont pas actuellement sauvegardés.
+
+.Étapes
+. Dans le menu BlueXP, sélectionnez *protection > sauvegarde et récupération*.
+. Sélectionnez l'onglet *Volumes* pour afficher la liste des volumes sauvegardés pour vos systèmes Cloud Volumes ONTAP et ONTAP sur site.
+. Si vous recherchez des volumes spécifiques dans certains environnements de travail, vous pouvez affiner la liste en fonction de l'environnement de travail et du volume. Vous pouvez également utiliser le filtre de recherche ou trier les colonnes en fonction du style de volume (FlexVol ou FlexGroup), du type de volume, etc.
++
+Pour afficher des colonnes supplémentaires (agrégats, style de sécurité (Windows ou UNIX), politique de snapshot, politique de réplication et politique de sauvegarde), sélectionnez le signe plus.
+
+. Consultez l'état des options de protection dans la colonne « protection existante ». Les 3 icônes représentent « Copies de snapshots locaux », « Volumes répliqués » et « Sauvegardes dans le stockage d'objets ».
++
+image:screenshot_backup_protection_status.png["Une capture d'écran montrant l'état des trois types de protection : instantanés, réplications et sauvegardes."]
+
++
+Chaque icône est bleue lorsque ce type de sauvegarde est activé et grise lorsque le type de sauvegarde est inactif. Vous pouvez placer le curseur de la souris sur chaque icône pour afficher la stratégie de sauvegarde utilisée, ainsi que d'autres informations pertinentes pour chaque type de sauvegarde.
+
+
+
+
+
+== Activer la sauvegarde sur des volumes supplémentaires dans un environnement de travail
+
+Si vous avez activé la sauvegarde uniquement sur certains volumes d'un environnement de travail lorsque vous avez activé la sauvegarde et la restauration BlueXP pour la première fois, vous pouvez activer les sauvegardes sur d'autres volumes ultérieurement.
+
+.Étapes
+. Dans l'onglet *volumes*, identifiez le volume sur lequel vous souhaitez activer les sauvegardes, sélectionnez le menu actions image:icon-action.png["Icône actions"] À la fin de la ligne, et sélectionnez *Activer la sauvegarde*.
++
+image:screenshot_backup_additional_volume.png["Capture d'écran montrant comment activer la sauvegarde sur des volumes supplémentaires dans un environnement de travail."]
+
+. Dans la page _Define backup Strategy_, sélectionnez l'architecture de sauvegarde, puis définissez les règles et autres détails pour les copies Snapshot locales, les volumes répliqués et les fichiers de sauvegarde. Voir les détails des options de sauvegarde des volumes initiaux que vous avez activés dans cet environnement de travail. Sélectionnez ensuite *Suivant*.
+. Vérifiez les paramètres de sauvegarde de ce volume, puis sélectionnez *Activer la sauvegarde*.
+
+
+
+
+== Modifier les paramètres de sauvegarde attribués aux volumes existants
+
+Vous pouvez modifier les règles de sauvegarde attribuées à vos volumes existants auxquels des règles ont été attribuées. Vous pouvez modifier les politiques de vos copies instantanées locales, de vos volumes répliqués et de vos fichiers de sauvegarde. Toute nouvelle politique d'instantané, de réplication ou de sauvegarde que vous souhaitez appliquer aux volumes doit déjà exister.
+
+
+
+=== Modifiez les paramètres de sauvegarde sur un seul volume
+
+.Étapes
+. Dans l'onglet *volumes*, identifiez le volume que vous souhaitez modifier, puis sélectionnez le menu actions image:icon-action.png["Icône actions"] À la fin de la ligne, et sélectionnez *Modifier la stratégie de sauvegarde*.
++
+image:screenshot_edit_backup_strategy.png["Capture d'écran affichant le bouton Modifier la stratégie de sauvegarde disponible après la sélection d'un volume."]
+
+. Dans la page _Modifier la stratégie de sauvegarde_, apportez des modifications aux stratégies de sauvegarde existantes pour les copies d'instantanés locaux, les volumes répliqués et les fichiers de sauvegarde, puis sélectionnez *Suivant*.
++
+Si vous avez activé _DataLock et protection contre les ransomware_ pour les sauvegardes cloud dans la stratégie de sauvegarde initiale lors de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster, vous ne verrez que les autres stratégies configurées avec DataLock. Et si vous n'avez pas activé _DataLock et protection contre les ransomware_ lors de l'activation de la sauvegarde et de la restauration BlueXP, vous ne verrez que les autres stratégies de sauvegarde dans le cloud qui n'ont pas configuré DataLock.
+
+. Vérifiez les paramètres de sauvegarde de ce volume, puis sélectionnez *Activer la sauvegarde*.
+
+
+
+
+=== Modifier les paramètres de sauvegarde sur plusieurs volumes
+
+Si vous souhaitez utiliser les mêmes paramètres de sauvegarde sur plusieurs volumes, vous pouvez activer ou modifier simultanément les paramètres de sauvegarde sur plusieurs volumes. Vous pouvez sélectionner des volumes qui n'ont pas de paramètres de sauvegarde, uniquement des paramètres de snapshot, uniquement des paramètres de sauvegarde dans le cloud, etc., et effectuer des modifications en masse sur tous ces volumes avec divers paramètres de sauvegarde.
+
+Lorsque vous travaillez avec plusieurs volumes, tous les volumes doivent avoir les caractéristiques communes suivantes :
+
+* même environnement de travail
+* Même style (volume FlexVol ou FlexGroup)
+* Même type (lecture-écriture ou volume protection des données)
+
+
+Lorsque plus de cinq volumes sont activés pour la sauvegarde, la sauvegarde et la restauration BlueXP  initialise seulement cinq volumes à la fois. Une fois ces opérations terminées, il crée le lot suivant de cinq sous-travaux pour démarrer le jeu suivant et continue jusqu'à ce que tous les volumes soient initialisés.
+
+.Étapes
+. Dans l'onglet *volumes*, filtrez en fonction de l'environnement de travail sur lequel résident les volumes.
+. Sélectionnez tous les volumes sur lesquels vous souhaitez gérer les paramètres de sauvegarde.
+. Selon le type d'action de sauvegarde que vous souhaitez configurer, cliquez sur le bouton dans le menu actions groupées :
++
+[cols="50,30"]
+|===
+| Action de sauvegarde... | Sélectionnez ce bouton... 
+
+
+| Gérer les paramètres de sauvegarde des instantanés | *Gérer les instantanés locaux* 
+
+
+| Gérer les paramètres de sauvegarde de réplication | *Gérer la réplication* 
+
+
+| Gérer les paramètres de sauvegarde dans le cloud | *Gérer la sauvegarde* 
+
+
+| Gérer plusieurs types de paramètres de sauvegarde. Cette option vous permet également de modifier l'architecture de sauvegarde. | *Gérer la sauvegarde et la récupération* 
+|===
+. Dans la page de sauvegarde qui s'affiche, modifiez les stratégies de sauvegarde existantes pour les copies d'instantanés locaux, les volumes répliqués ou les fichiers de sauvegarde et sélectionnez *Enregistrer*.
++
+Si vous avez activé _DataLock et protection contre les ransomware_ pour les sauvegardes cloud dans la stratégie de sauvegarde initiale lors de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster, vous ne verrez que les autres stratégies configurées avec DataLock. Et si vous n'avez pas activé _DataLock et protection contre les ransomware_ lors de l'activation de la sauvegarde et de la restauration BlueXP, vous ne verrez que les autres stratégies de sauvegarde dans le cloud qui n'ont pas configuré DataLock.
+
+
+
+
+
+== Créez une sauvegarde de volume manuelle à tout moment
+
+Vous pouvez créer une sauvegarde à la demande à tout moment pour capturer l'état actuel du volume. Cela peut être utile si des modifications importantes ont été apportées à un volume et que vous ne voulez pas attendre la prochaine sauvegarde planifiée pour protéger ces données. Vous pouvez également utiliser cette fonctionnalité pour créer une sauvegarde pour un volume qui n'est pas en cours de sauvegarde et pour capturer son état actuel.
+
+Vous pouvez créer une copie instantanée ad hoc ou une sauvegarde sur un objet d'un volume. Vous ne pouvez pas créer de volume répliqué ad hoc.
+
+Le nom de la sauvegarde inclut l'horodatage afin que vous puissiez identifier votre sauvegarde à la demande à partir d'autres sauvegardes planifiées.
+
+Si vous avez activé _DataLock et protection contre les ransomware_ lors de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster, la sauvegarde à la demande sera également configurée avec DataLock et la période de conservation sera de 30 jours. Les analyses par ransomware ne sont pas prises en charge pour les sauvegardes ad hoc. link:prev-ontap-policy-object-options.html["En savoir plus sur le verrouillage des données et la protection contre les attaques par ransomware"^].
+
+Lors d'une sauvegarde ad hoc, un instantané est créé sur le volume source. Cet instantané ne faisant pas partie d'une planification d'instantanés standard, il ne sera pas supprimé. Vous pouvez supprimer manuellement cet instantané du volume source une fois la sauvegarde terminée. Cela permettra de libérer les blocs associés à cet instantané. Le nom de l'instantané commencera par  `cbs-snapshot-adhoc-` .  https://docs.netapp.com/us-en/ontap/san-admin/delete-all-existing-snapshot-copies-volume-task.html["Reportez-vous à la section mode de suppression d'une copie Snapshot à l'aide ONTAP de l'interface de ligne de commandes de"^] .
+
+
+NOTE: La sauvegarde de volumes à la demande n'est pas prise en charge sur les volumes de protection des données.
+
+.Étapes
+. Dans l'onglet *Volumes*, sélectionnez image:icon-actions-horizontal.gif["Icône actions"] pour le volume et sélectionnez *Sauvegarde* > *Créer une sauvegarde ad hoc*.
+
+
+La colonne État de la sauvegarde de ce volume affiche « en cours » jusqu'à ce que la sauvegarde soit créée.
+
+
+
+== Afficher la liste des sauvegardes pour chaque volume
+
+Vous pouvez afficher la liste de tous les fichiers de sauvegarde existants pour chaque volume. Cette page affiche des informations détaillées sur le volume source, l'emplacement de destination et les détails de la sauvegarde, tels que la dernière sauvegarde effectuée, la stratégie de sauvegarde actuelle, la taille du fichier de sauvegarde, etc.
+
+.Étapes
+. Dans l'onglet *Volumes*, sélectionnez image:icon-actions-horizontal.gif["Icône actions"] pour le volume source et sélectionnez *Afficher les détails du volume*.
++
+image:screenshot_backup_view_backups_button.png["Capture d'écran affichant le bouton Afficher les détails du volume disponible pour un seul volume."]
+
++
+Les détails du volume et la liste des copies instantanées sont affichés.
+
+. Sélectionnez *instantané*, *réplication* ou *sauvegarde* pour afficher la liste de tous les fichiers de sauvegarde pour chaque type de sauvegarde.
+
+
+
+
+== Exécutez une analyse anti-ransomware sur une sauvegarde de volume dans le stockage objet
+
+La BlueXP backup and recovery analysent vos fichiers de sauvegarde à la recherche de preuves d'une attaque par rançongiciel lors de la création d'une sauvegarde vers un fichier objet et lors de la restauration des données d'un fichier de sauvegarde. Vous pouvez également exécuter une analyse à la demande à tout moment pour vérifier l'utilisabilité d'un fichier de sauvegarde spécifique dans le stockage objet. Ceci peut être utile si vous avez eu un problème de ransomware sur un volume en particulier et que vous souhaitez vérifier que les sauvegardes de ce volume ne sont pas affectées.
+
+Cette fonctionnalité est disponible uniquement si la sauvegarde du volume a été créée à partir d'un système avec ONTAP 9.11.1 ou une version ultérieure, et si vous avez activé _DataLock et Ransomware Protection_ dans la stratégie de sauvegarde vers objet.
+
+.Étapes
+. Dans l'onglet *Volumes*, sélectionnez image:icon-actions-horizontal.gif["Icône actions"] pour le volume source et sélectionnez *Afficher les détails du volume*.
++
+image:screenshot_backup_view_backups_button.png["Capture d'écran affichant le bouton Afficher les détails du volume disponible pour un seul volume."]
+
++
+Les détails du volume s'affichent.
+
+. Sélectionnez *Backup* pour afficher la liste des fichiers de sauvegarde dans le stockage objet.
+. Sélectionner image:icon-actions-horizontal.gif["Icône actions"] pour le fichier de sauvegarde de volume que vous souhaitez analyser pour détecter les ransomwares et cliquez sur *Rechercher les ransomwares*.
++
+image:screenshot_scan_one_backup.png["Capture d'écran montrant comment exécuter une analyse par ransomware sur un seul fichier de sauvegarde."]
+
++
+La colonne Protection contre les ransomwares indique que l’analyse est en cours.
+
+
+
+
+
+== Gérer la relation de réplication avec le volume source
+
+Après avoir configuré la réplication des données entre deux systèmes, vous pouvez gérer la relation de réplication des données.
+
+.Étapes
+. Dans l'onglet *Volumes*, sélectionnez image:icon-actions-horizontal.gif["Icône actions"] pour le volume source et sélectionnez l'option *Réplication*. Vous pouvez voir toutes les options disponibles.
+. Sélectionnez l'action de réplication à effectuer.
++
+image:screenshot_replication_managing.png["Capture d'écran affichant la liste des actions disponibles dans le menu action de réplication."]
+
++
+Le tableau suivant décrit les actions disponibles :
+
++
+[cols="15,85"]
+|===
+| Action | Description 
+
+
+| Afficher la réplication | Affiche des informations détaillées sur la relation de volume : informations de transfert, informations relatives au dernier transfert, informations détaillées sur le volume et informations sur la stratégie de protection attribuée à la relation. 
+
+
+| Mettre à jour la réplication | Lance un transfert incrémentiel pour mettre à jour le volume de destination à synchroniser avec le volume source. 
+
+
+| Interrompre la réplication | Mettez en pause le transfert incrémentiel de copies Snapshot pour mettre à jour le volume de destination. Vous pouvez reprendre ultérieurement si vous souhaitez redémarrer les mises à jour incrémentielles. 
+
+
+| Interrompre la réplication | Rompt la relation entre les volumes source et de destination et active le volume de destination pour l'accès aux données, en faisant des opérations de lecture-écriture.
+
+Cette option est généralement utilisée lorsque le volume source ne peut pas servir de données en raison d'événements tels que la corruption des données, la suppression accidentelle ou un état hors ligne.
+
+https://docs.netapp.com/us-en/ontap-sm-classic/volume-disaster-recovery/index.html["Découvrez comment configurer un volume de destination pour l'accès aux données et réactiver un volume source dans la documentation ONTAP"^] 
+
+
+| Abandonner la réplication | Désactive les sauvegardes de ce volume sur le système de destination et désactive également la restauration d'un volume. Les sauvegardes existantes ne seront pas supprimées. Cela ne supprime pas la relation de protection des données entre les volumes source et destination. 
+
+
+| Resynchronisation inverse | Inverse les rôles des volumes source et de destination. Le contenu du volume source d'origine est remplacé par le contenu du volume de destination. Ceci est utile lorsque vous souhaitez réactiver un volume source hors ligne.
+
+Toutes les données écrites sur le volume source d'origine entre la dernière réplication de données et l'heure à laquelle le volume source a été désactivé ne sont pas conservées. 
+
+
+| Supprimer la relation | Supprime la relation de protection des données entre les volumes source et de destination, ce qui signifie que la réplication des données n'a plus lieu entre les volumes. Cette action n'active pas le volume de destination pour l'accès aux données, ce qui signifie qu'il ne le fait pas en lecture-écriture. Cette action supprime également la relation entre pairs de cluster et la relation entre la machine virtuelle de stockage (SVM), en l'absence d'autres relations de protection des données entre les systèmes. 
+|===
+
+
+.Résultat
+Après avoir sélectionné une action, BlueXP met à jour la relation.
+
+
+
+== Modifier une stratégie de sauvegarde dans le cloud existante
+
+Vous pouvez modifier les attributs d'une stratégie de sauvegarde actuellement appliquée aux volumes d'un environnement de travail. La modification de la stratégie de sauvegarde affecte tous les volumes existants utilisant la règle.
+
+[NOTE]
+====
+* Si vous avez activé _DataLock et protection contre les ransomware_ dans la stratégie initiale lors de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster, toutes les stratégies que vous modifiez doivent être configurées avec le même paramètre DataLock (gouvernance ou conformité). Et si vous n'avez pas activé _DataLock et protection contre les ransomware_ lors de l'activation de la sauvegarde et de la restauration BlueXP, vous ne pouvez pas activer DataLock maintenant.
+* Lorsque vous créez des sauvegardes sur AWS, si vous avez choisi _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans votre première stratégie de sauvegarde lors de l'activation de la sauvegarde et de la restauration BlueXP, ce Tier sera le seul Tier d'archivage disponible lors de l'édition de stratégies de sauvegarde. Si vous avez sélectionné aucun niveau d'archivage dans votre première stratégie de sauvegarde, alors _S3 Glacier_ sera votre seule option d'archivage lors de la modification d'une stratégie.
+
+
+====
+.Étapes
+. Dans l'onglet *volumes*, sélectionnez *Paramètres de sauvegarde*.
++
+image:screenshot_backup_settings_button.png["Capture d'écran affichant le bouton Backup Settings de l'onglet volumes."]
+
+. Depuis la page _Paramètres de sauvegarde_, sélectionnez image:icon-actions-horizontal.gif["Icône actions"] pour l'environnement de travail dans lequel vous souhaitez modifier les paramètres de stratégie, puis sélectionnez *Gérer les stratégies*.
+. Depuis la page _Gérer les politiques_, sélectionnez *Modifier* pour la politique de sauvegarde que vous souhaitez modifier dans cet environnement de travail.
+. Depuis la page _Modifier la politique_, sélectionnez la flèche vers le bas pour développer la section _Étiquettes et rétention_ afin de modifier la planification et/ou la rétention de sauvegarde, puis sélectionnez *Enregistrer*.
++
+image:screenshot_backup_edit_policy.png["Capture d'écran présentant les paramètres de stratégie de sauvegarde dans lesquels vous pouvez modifier la planification de sauvegarde et les paramètres de conservation de sauvegarde."]
+
++
+Si votre cluster exécute ONTAP 9.10.1 ou version supérieure, vous pouvez également activer ou désactiver le Tiering des sauvegardes dans le stockage d'archivage après un certain nombre de jours.
+
++
+ifdef::aws[]
+
+
+
+link:prev-reference-aws-archive-storage-tiers.html["En savoir plus sur l'utilisation du stockage d'archives AWS"].
+
+endif::aws[]
+
+ifdef::azure[]
+
+link:prev-reference-azure-archive-storage-tiers.html["En savoir plus sur l'utilisation du stockage d'archives Azure"].
+
+endif::azure[]
+
+ifdef::gcp[]
+
+link:prev-reference-gcp-archive-storage-tiers.html["En savoir plus sur l'utilisation du stockage d'archives Google"]. (Nécessite ONTAP 9.12.1.)
+
+endif::gcp[]
+
++ Notez que tous les fichiers de sauvegarde qui ont été hiérarchisés vers le stockage d'archivage sont conservés dans ce niveau si vous arrêtez le Tiering des sauvegardes vers l'archivage - ils ne sont pas automatiquement déplacés vers le niveau standard. Seules les sauvegardes de volume nouveaux résident dans le niveau standard.
+
+
+
+== Ajoutez une nouvelle stratégie de sauvegarde dans le cloud
+
+Lorsque vous activez la sauvegarde et la restauration BlueXP pour un environnement de travail, tous les volumes que vous sélectionnez initialement sont sauvegardés à l'aide de la règle de sauvegarde par défaut que vous avez définie. Si vous souhaitez attribuer différentes stratégies de sauvegarde à certains volumes ayant des objectifs de point de récupération différents, vous pouvez créer des règles supplémentaires pour ce cluster et les affecter à d'autres volumes.
+
+Si vous souhaitez appliquer une nouvelle stratégie de sauvegarde à certains volumes d'un environnement de travail, vous devez d'abord ajouter la stratégie de sauvegarde à l'environnement de travail. C'est alors possible <<Modifier les paramètres de sauvegarde attribués aux volumes existants,appliquer la policy aux volumes de cet environnement de travail>>.
+
+[NOTE]
+====
+* Si vous avez activé _DataLock et protection contre les ransomware_ dans la stratégie initiale lors de l'activation de la sauvegarde et de la restauration BlueXP pour ce cluster, toutes les stratégies supplémentaires que vous créez doivent être configurées avec le même paramètre DataLock (gouvernance ou conformité). Et si vous n'avez pas activé _DataLock et protection contre les ransomware_ lors de l'activation de la sauvegarde et de la restauration BlueXP, vous ne pouvez pas créer de nouvelles stratégies utilisant DataLock.
+* Lorsque vous créez des sauvegardes sur AWS, si vous avez choisi _S3 Glacier_ ou _S3 Glacier Deep Archive_ dans votre première stratégie de sauvegarde lors de l'activation de la sauvegarde et de la restauration BlueXP, ce niveau sera le seul Tier d'archivage disponible pour les futures politiques de sauvegarde de ce cluster. Si vous avez sélectionné aucun niveau d'archivage dans votre première stratégie de sauvegarde, alors _S3 Glacier_ sera votre seule option d'archivage pour les stratégies futures.
+
+
+====
+.Étapes
+. Dans l'onglet *volumes*, sélectionnez *Paramètres de sauvegarde*.
++
+image:screenshot_backup_settings_button.png["Capture d'écran affichant le bouton Backup Settings de l'onglet volumes."]
+
+. Depuis la page _Paramètres de sauvegarde_, sélectionnez image:icon-actions-horizontal.gif["Icône actions"] pour l'environnement de travail dans lequel vous souhaitez ajouter la nouvelle politique, puis sélectionnez *Gérer les politiques*.
++
+image:screenshot_backup_modify_policy.png["Capture d'écran présentant l'option gérer les stratégies de la page Paramètres de sauvegarde."]
+
+. Depuis la page _Gérer les politiques_, sélectionnez *Ajouter une nouvelle politique*.
+. Depuis la page _Ajouter une nouvelle politique_, sélectionnez la flèche vers le bas pour développer la section _Étiquettes et rétention_ afin de définir la planification et la rétention des sauvegardes, puis sélectionnez *Enregistrer*.
++
+image:screenshot_backup_add_new_policy.png["Capture d'écran présentant les paramètres de stratégie de sauvegarde dans lesquels vous pouvez ajouter la planification de sauvegarde et les paramètres de conservation de sauvegarde."]
+
++
+Si votre cluster exécute ONTAP 9.10.1 ou version supérieure, vous pouvez également activer ou désactiver le Tiering des sauvegardes dans le stockage d'archivage après un certain nombre de jours.
+
++
+ifdef::aws[]
+
+
+
+link:prev-reference-aws-archive-storage-tiers.html["En savoir plus sur l'utilisation du stockage d'archives AWS"].
+
+endif::aws[]
+
+ifdef::azure[]
+
+link:prev-reference-azure-archive-storage-tiers.html["En savoir plus sur l'utilisation du stockage d'archives Azure"].
+
+endif::azure[]
+
+ifdef::gcp[]
+
+link:prev-reference-gcp-archive-storage-tiers.html["En savoir plus sur l'utilisation du stockage d'archives Google"]. (Nécessite ONTAP 9.12.1.)
+
+endif::gcp[]
+
+
+
+== Supprimer les sauvegardes
+
+La sauvegarde et la restauration BlueXP vous permettent de supprimer un seul fichier de sauvegarde, de supprimer toutes les sauvegardes d'un volume ou de supprimer toutes les sauvegardes de tous les volumes d'un environnement de travail. Vous pouvez supprimer toutes les sauvegardes si vous n'avez plus besoin des sauvegardes, ou si vous avez supprimé le volume source et que vous souhaitez supprimer toutes les sauvegardes.
+
+Vous ne pouvez pas supprimer les fichiers de sauvegarde verrouillés avec DataLock et la protection contre les rançongiciels. L'option « Supprimer » ne sera pas disponible dans l'interface utilisateur si vous avez sélectionné un ou plusieurs fichiers de sauvegarde verrouillés.
+
+
+CAUTION: Si vous prévoyez de supprimer un environnement ou un cluster de travail qui dispose de sauvegardes, vous devez supprimer les sauvegardes *avant* de supprimer le système. La sauvegarde et la restauration BlueXP ne suppriment pas automatiquement les sauvegardes lorsque vous supprimez un système et il n'existe pas de prise en charge à jour dans l'interface utilisateur pour supprimer les sauvegardes une fois le système supprimé. Vous continuerez d'être facturé pour les coûts de stockage objet pour les sauvegardes restantes.
+
+
+
+=== Supprimez tous les fichiers de sauvegarde d'un environnement de travail
+
+La suppression de toutes les sauvegardes du stockage objet pour un environnement de travail ne désactive pas les sauvegardes futures des volumes de cet environnement de travail. Si vous souhaitez arrêter la création de sauvegardes de tous les volumes d'un environnement de travail, vous pouvez désactiver les sauvegardes <<Désactivez la sauvegarde et la restauration BlueXP dans un environnement de travail,comme décrit ici>>.
+
+Notez que cette action n'a aucun impact sur les copies Snapshot ou les volumes répliqués. Ces types de fichiers de sauvegarde ne sont pas supprimés.
+
+.Étapes
+. Dans l'onglet *volumes*, sélectionnez *Paramètres de sauvegarde*.
++
+image:screenshot_backup_settings_button.png["Capture d'écran affichant le bouton Paramètres de sauvegarde disponible après la sélection d'un environnement de travail."]
+
+. Sélectionner image:icon-actions-horizontal.gif["Icône actions"] pour l'environnement de travail dans lequel vous souhaitez supprimer toutes les sauvegardes et sélectionnez *Supprimer toutes les sauvegardes*.
+. Dans la boîte de dialogue de confirmation, entrez le nom de l'environnement de travail et sélectionnez *Supprimer*.
+
+
+
+
+=== Supprimer tous les fichiers de sauvegarde d'un volume
+
+La suppression de toutes les sauvegardes d'un volume désactive également les futures sauvegardes de ce volume.
+
+.Étapes
+. Dans l'onglet *Volumes*, cliquez sur image:icon-actions-horizontal.gif["Plus d'icône"] pour le volume source et sélectionnez *Détails et liste de sauvegarde*.
++
+image:screenshot_backup_view_backups_button.png["Une capture d'écran qui montre le bouton Détails et liste de sauvegarde qui est disponible pour un seul volume."]
+
++
+La liste de tous les fichiers de sauvegarde s'affiche.
+
+. Sélectionnez *Actions* > *Supprimer toutes les sauvegardes*.
++
+image:screenshot_backup_delete_all_backups.png["Une capture d'écran qui montre l'option Supprimer toutes les sauvegardes"]
+
+. Saisissez le nom du volume et indiquez si vous souhaitez ou non forcer la suppression de toutes les sauvegardes.
+. Sélectionnez *Supprimer*.
+
+
+
+
+=== Supprimez un seul fichier de sauvegarde pour un volume
+
+Vous pouvez supprimer un seul fichier de sauvegarde si vous n'en avez plus besoin. Cela inclut la suppression d'une sauvegarde unique d'une copie Snapshot de volume ou d'une sauvegarde dans le stockage objet.
+
+Vous ne pouvez pas supprimer de volumes répliqués (volumes de protection des données).
+
+.Étapes
+. Dans l'onglet *Volumes*, sélectionnez image:icon-actions-horizontal.gif["Plus d'icône"] pour le volume source et sélectionnez *Afficher les détails du volume*.
++
+image:screenshot_backup_view_backups_button.png["Capture d'écran affichant le bouton Afficher les détails du volume disponible pour un seul volume."]
+
++
+Les détails du volume sont affichés et vous pouvez sélectionner *Snapshot*, *Replication* ou *Backup* pour afficher la liste de tous les fichiers de sauvegarde du volume. Par défaut, les copies instantanées disponibles sont affichées.
+
+. Sélectionnez *instantané* ou *sauvegarde* pour voir le type de fichiers de sauvegarde que vous souhaitez supprimer.
+. Sélectionner image:icon-actions-horizontal.gif["Icône actions"] pour le fichier de sauvegarde de volume que vous souhaitez supprimer et sélectionnez *Supprimer*.
+. Dans la boîte de dialogue de confirmation, sélectionnez *Supprimer*.
+
+
+
+
+== Supprimez les relations de sauvegarde de volume
+
+La suppression de la relation de sauvegarde d'un volume vous fournit un mécanisme d'archivage si vous souhaitez arrêter la création de nouveaux fichiers de sauvegarde et supprimer le volume source, mais conserver tous les fichiers de sauvegarde existants. Cela vous permet de restaurer ultérieurement le volume à partir du fichier de sauvegarde, si nécessaire, tout en libérant de l'espace du système de stockage source.
+
+Vous n'avez pas nécessairement besoin de supprimer le volume source. Vous pouvez supprimer la relation de sauvegarde d'un volume et conserver le volume source. Dans ce cas, vous pouvez activer la sauvegarde sur le volume ultérieurement. La copie de sauvegarde de base d'origine continue d'être utilisée dans ce cas. Une nouvelle copie de sauvegarde de base n'est pas créée et exportée vers le cloud. Notez que si vous réactivez une relation de sauvegarde, la stratégie de sauvegarde par défaut est attribuée au volume.
+
+Cette fonction n'est disponible que si votre système exécute ONTAP 9.12.1 ou une version ultérieure.
+
+Vous ne pouvez pas supprimer le volume source de l'interface utilisateur de sauvegarde et de restauration BlueXP. Cependant, vous pouvez ouvrir la page Détails du volume sur la toile, et https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes["supprimez le volume de ce site"].
+
+
+NOTE: Une fois la relation supprimée, vous ne pouvez pas supprimer des fichiers de sauvegarde de volume individuels. Vous pouvez cependant supprimer toutes les sauvegardes du volume.
+
+.Étapes
+. Dans l'onglet *Volumes*, sélectionnez image:icon-actions-horizontal.gif["Icône actions"] pour le volume source et sélectionnez *Sauvegarde* > *Supprimer la relation*.
+
+
+
+
+== Désactivez la sauvegarde et la restauration BlueXP dans un environnement de travail
+
+La désactivation de la sauvegarde et de la restauration BlueXP pour un environnement de travail désactive les sauvegardes de chaque volume du système, et désactive également la restauration d'un volume. Les sauvegardes existantes ne seront pas supprimées. Cela ne désinscrit pas le service de sauvegarde de cet environnement de travail, car il vous permet de suspendre l'ensemble de l'activité de sauvegarde et de restauration pendant une période donnée.
+
+Notez que vous continuerez d'être facturé par votre fournisseur cloud pour les coûts de stockage objet correspondant à la capacité que vos sauvegardes utilisent, sauf si vous <<Supprimer les sauvegardes,supprimez les sauvegardes>>.
+
+.Étapes
+. Dans l'onglet *volumes*, sélectionnez *Paramètres de sauvegarde*.
++
+image:screenshot_backup_settings_button.png["Capture d'écran affichant le bouton Paramètres de sauvegarde disponible après la sélection d'un environnement de travail."]
+
+. Depuis la page _Paramètres de sauvegarde_, sélectionnez image:icon-actions-horizontal.gif["Icône actions"] pour l'environnement de travail dans lequel vous souhaitez désactiver les sauvegardes et sélectionnez *Désactiver la sauvegarde*.
+. Dans la boîte de dialogue de confirmation, sélectionnez *Désactiver*.
+
+
+
+NOTE: Un bouton *Activer la sauvegarde* apparaît pour cet environnement de travail alors que la sauvegarde est désactivée. Vous pouvez sélectionner ce bouton lorsque vous souhaitez réactiver la fonctionnalité de sauvegarde pour cet environnement de travail.
+
+
+
+== Annulez l'enregistrement de la sauvegarde et de la restauration BlueXP dans un environnement de travail
+
+Vous pouvez annuler l'enregistrement des sauvegardes BlueXP dans un environnement de travail si vous ne souhaitez plus utiliser les fonctionnalités de sauvegarde et si vous souhaitez arrêter de payer les sauvegardes de cet environnement de travail. Cette fonction est généralement utilisée lorsque vous prévoyez de supprimer un environnement de travail et que vous souhaitez annuler le service de sauvegarde.
+
+Vous pouvez également utiliser cette fonction si vous souhaitez modifier le magasin d'objets de destination dans lequel vos sauvegardes de cluster sont stockées. Une fois que vous avez désenregistré la sauvegarde et la restauration BlueXP pour l'environnement de travail, vous pouvez activer la sauvegarde et la restauration BlueXP pour ce cluster en utilisant les nouvelles informations de votre fournisseur cloud.
+
+Avant de pouvoir annuler l'enregistrement de la sauvegarde et de la restauration BlueXP, vous devez effectuer les étapes suivantes, dans l'ordre suivant :
+
+* Désactivez la sauvegarde et la restauration BlueXP pour l'environnement de travail
+* Supprimer toutes les sauvegardes de cet environnement de travail
+
+
+L'option de désenregistrer n'est pas disponible tant que ces deux actions ne sont pas terminées.
+
+.Étapes
+. Dans l'onglet *volumes*, sélectionnez *Paramètres de sauvegarde*.
++
+image:screenshot_backup_settings_button.png["Capture d'écran affichant le bouton Paramètres de sauvegarde disponible après la sélection d'un environnement de travail."]
+
+. Depuis la page _Paramètres de sauvegarde_, sélectionnez image:icon-actions-horizontal.gif["Icône actions"] pour l'environnement de travail dans lequel vous souhaitez désinscrire le service de sauvegarde et sélectionnez *Désinscrire*.
+. Dans la boîte de dialogue de confirmation, sélectionnez *Désinscrire*.
+

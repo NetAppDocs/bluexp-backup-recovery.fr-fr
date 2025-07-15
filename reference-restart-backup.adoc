@@ -16,7 +16,7 @@ summary: Dans certains cas, vous devrez peut-être redémarrer le service de sau
 [role="lead"]
 Dans certains cas, vous devrez peut-être redémarrer le service de sauvegarde et de restauration BlueXP.
 
-La fonctionnalité de sauvegarde et de restauration BlueXP est intégrée au connecteur BlueXP. Vous devrez suivre différentes étapes initiales pour redémarrer le service selon que vous avez déployé le connecteur dans le cloud ou si vous avez installé le connecteur manuellement sur un système Linux.
+La fonctionnalité de sauvegarde et de restauration BlueXP est intégrée au connecteur BlueXP.
 
 .Étapes
 . Connectez-vous au système Linux sur lequel le connecteur s'exécute.

@@ -1,0 +1,118 @@
+---
+sidebar: sidebar 
+permalink: prev-vmware-restore.html 
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, BlueXP backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database 
+summary: Protégez vos charges de travail VMware avec la BlueXP backup and recovery NetApp BlueXP. 
+---
+= Restaurer les données des machines virtuelles avec la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous pouvez restaurer les données des machines virtuelles depuis le cloud vers le vCenter local avec la sauvegarde et la récupération BlueXP. Vous pouvez restaurer la machine virtuelle au même emplacement à partir duquel la sauvegarde a été effectuée ou dans un autre emplacement. Si la machine virtuelle a été sauvegardée à l'aide de la stratégie d'archivage, vous pouvez définir la priorité de restauration d'archivage.
+
+
+NOTE: Vous ne pouvez pas restaurer des machines virtuelles qui s'étendent sur plusieurs datastores.
+
+[]
+====
+*REMARQUE* Pour basculer vers et depuis les charges de travail de BlueXP backup and recovery , reportez-vous à link:br-start-switch-ui.html["Basculer vers différentes charges de travail de BlueXP backup and recovery"] .
+
+====
+.Avant de commencer
+* Assurez-vous d'avoir respecté toutes les link:prev-vmware-prereqs.html["exigences de protection des machines virtuelles"] avant de sauvegarder les banques de données dans le cloud.
+* Si vous effectuez une restauration vers un autre emplacement :
++
+** Assurez-vous que les vCenters source et de destination sont en mode lié.
+** Vérifiez que les informations sur les clusters source et cible sont ajoutées dans BlueXP Canvas et dans les vCenters en mode lié dans le plug-in SnapCenter pour l'hôte VMware vSphere.
+** Assurez-vous que l'environnement de travail (WE) est ajouté correspondant à l'autre emplacement dans BlueXP Canvas.
+
+
+
+
+.Étapes
+. Dans l'interface utilisateur BlueXP , sélectionnez *Protection* > *Sauvegarde et récupération* > *Machines virtuelles* > * SnapCenter Plug-in for VMware vSphere* et sélectionnez l'hôte SnapCenter Plug-in for VMware vSphere .
+
+
+
+NOTE: Si la machine virtuelle source est déplacée vers un autre emplacement (vMotion) et si l'utilisateur déclenche une restauration de cette machine virtuelle à partir de BlueXP, la machine virtuelle est restaurée vers l'emplacement source à partir duquel la sauvegarde a été effectuée.
+
+. Vous pouvez restaurer la machine virtuelle à son emplacement d'origine ou à un autre emplacement à partir du datastore ou des machines virtuelles :
+
+
+|===
+| Si vous souhaitez restaurer la machine virtuelle... | Procédez comme ça... 
+
+
+ a| 
+à l'emplacement d'origine à partir du datastore
+ a| 
+. Sélectionnez l'icône Actions image:icon-action.png["action"] correspondant au magasin de données que vous souhaitez restaurer et cliquez sur *Afficher les détails*.
+. Sélectionnez *Restaurer* correspondant à la sauvegarde que vous souhaitez restaurer.
+. Sélectionnez la machine virtuelle que vous souhaitez restaurer à partir de la sauvegarde et sélectionnez *Suivant*.
+. Assurez-vous que *Original* est sélectionné et sélectionnez *Continuer*.
+. Si la machine virtuelle est protégée à l'aide d'une politique dans laquelle les paramètres d'archivage sont configurés, sélectionnez *Priorité de restauration d'archivage* et sélectionnez *Suivant*.
++
+Pour Amazon Web Services, la priorité de restauration d'archivage est élevée, standard ou faible. Pour Microsoft Azure, la priorité de restauration d'archivage est élevée et standard.
+
+. Vérifiez les détails et sélectionnez *Restaurer*.
+
+
+
+
+ a| 
+dans un autre emplacement à partir du datastore
+ a| 
+. Sélectionnez l'icône Actions image:icon-action.png["action"] correspondant au magasin de données que vous souhaitez restaurer et sélectionnez *Afficher les détails*.
+. Sélectionnez *Restaurer* correspondant à la sauvegarde que vous souhaitez restaurer.
+. Sélectionnez la machine virtuelle que vous souhaitez restaurer à partir de la sauvegarde et sélectionnez *Suivant*.
+. Sélectionnez *alternatif*.
+. Sélectionnez le serveur vCenter, l'hôte ESXi, le datastore et le réseau de remplacement.
+. Donnez un nom à la machine virtuelle après la restauration et sélectionnez *Continuer*.
+. Si la machine virtuelle est protégée à l'aide d'une politique dans laquelle les paramètres d'archivage sont configurés, sélectionnez *Priorité de restauration d'archivage* et sélectionnez *Suivant*.
++
+Pour Amazon Web Services, la priorité de restauration d'archivage est élevée, standard ou faible. Pour Microsoft Azure, la priorité de restauration d'archivage est élevée et standard.
+
+. Vérifiez les détails et sélectionnez *Restaurer*.
+
+
+
+
+ a| 
+à l'emplacement d'origine à partir des machines virtuelles
+ a| 
+. Sélectionnez l'icône Actions image:icon-action.png["action"] correspondant à la machine virtuelle que vous souhaitez restaurer et sélectionnez *Restaurer*.
+. Sélectionnez la sauvegarde par laquelle vous souhaitez restaurer la machine virtuelle.
+. Assurez-vous que *Original* est sélectionné et sélectionnez *Continuer*.
+. Si la machine virtuelle est protégée à l'aide d'une politique dans laquelle les paramètres d'archivage sont configurés, sélectionnez *Priorité de restauration d'archivage* et sélectionnez *Suivant*.
++
+Pour Amazon Web Services, la priorité de restauration d'archivage est élevée, standard ou faible. Pour Microsoft Azure, la priorité de restauration d'archivage est élevée et standard.
+
+. Vérifiez les détails et sélectionnez *Restaurer*.
+
+
+
+
+ a| 
+à un autre emplacement que les machines virtuelles
+ a| 
+. Sélectionnez l'icône Actions image:icon-action.png["action"] correspondant à la machine virtuelle que vous souhaitez restaurer et sélectionnez *Restaurer*.
+. Sélectionnez la sauvegarde par laquelle vous souhaitez restaurer la machine virtuelle.
+. Sélectionnez *alternatif*.
+. Sélectionnez le serveur vCenter, l'hôte ESXi, le datastore et le réseau de remplacement.
+. Donnez un nom à la machine virtuelle après la restauration et sélectionnez *Continuer*.
+. Si la machine virtuelle est protégée à l'aide d'une politique dans laquelle les paramètres d'archivage sont configurés, sélectionnez *Priorité de restauration d'archivage* et sélectionnez *Suivant*.
++
+Pour Amazon Web Services, la priorité de restauration d'archivage est élevée, standard ou faible. Pour Microsoft Azure, la priorité de restauration d'archivage est élevée et standard.
+
+. Vérifiez les détails et sélectionnez *Restaurer*.
+
+
+|===
+
+NOTE: Si l'opération de restauration ne se termine pas, ne tentez pas de nouveau le processus de restauration tant que le moniteur de tâches n'indique pas que l'opération de restauration a échoué. Si vous essayez à nouveau le processus de restauration avant que le moniteur de tâches indique que l'opération de restauration a échoué, l'opération de restauration échouera à nouveau. Lorsque l'état du moniteur de tâches est « échec », vous pouvez réessayer le processus de restauration.

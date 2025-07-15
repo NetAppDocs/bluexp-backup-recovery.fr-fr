@@ -1,0 +1,41 @@
+---
+sidebar: sidebar 
+permalink: br-use-reports.html 
+keywords: backing up, back up, backup, backup on-prem ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud 
+summary: 'Dans BlueXP backup and recovery, créez des rapports pour visualiser l"état de vos sauvegardes, notamment le nombre de sauvegardes effectuées, le nombre de sauvegardes réussies et le nombre de sauvegardes ayant échoué. Vous pouvez également consulter les détails de chaque sauvegarde, notamment le type, le système de stockage utilisé et l"heure de la sauvegarde.' 
+---
+= Créer des rapports pour les charges de travail Microsoft SQL Server dans la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+Dans BlueXP backup and recovery, créez des rapports pour les charges de travail Microsoft SQL Server afin de visualiser l'état de vos sauvegardes, notamment le nombre de sauvegardes, le nombre de sauvegardes réussies et le nombre de sauvegardes ayant échoué. Vous pouvez également consulter les détails de chaque sauvegarde, notamment le type de sauvegarde, le système de stockage utilisé et l'heure de la sauvegarde.
+
+
+
+== Créer un rapport
+
+*Rôle BlueXP requis* Administrateur d'organisation, Administrateur de dossier ou de projet, Super administrateur de sauvegarde et de récupération, Administrateur de sauvegarde et de récupération, Administrateur de restauration et de récupération, Administrateur de clonage de sauvegarde et de récupération. En savoir plus link:reference-roles.html["Rôles et privilèges de sauvegarde et de récupération"] .  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+. Dans le menu de BlueXP backup and recovery , sélectionnez l’onglet *Rapports*.
+. Sélectionnez *Créer un rapport*.
++
+image:../media/screen-br-reports.png["Créer une nouvelle capture d'écran de rapport"]
+
+. Saisissez les détails de la portée du rapport :
++
+** *Nom du rapport* : saisissez un nom unique pour le rapport.
+** *Type de rapport* : Choisissez si vous souhaitez un rapport par compte ou par charge de travail (Microsoft SQL Server).
+** *Sélectionner l'hôte* : si vous avez sélectionné par charge de travail, sélectionnez l'hôte pour lequel vous souhaitez générer le rapport.
+** *Sélectionner le contenu* : Choisissez si vous souhaitez que le rapport inclue un résumé de toutes les sauvegardes ou les détails de chaque sauvegarde. (Si vous avez choisi « Par compte »)
+
+
+. Saisissez la plage de rapport : choisissez si vous souhaitez que le rapport inclue les données du dernier jour, des 7 derniers jours, des 30 derniers jours, du dernier trimestre ou de l'année dernière.
+. Saisissez les détails de livraison du rapport : si vous souhaitez que le rapport soit envoyé par e-mail, cochez la case « Envoyer le rapport par e-mail ». Saisissez l'adresse e-mail à laquelle vous souhaitez que le rapport soit envoyé.
++
+Configurez les notifications par e-mail dans les Paramètres. link:br-use-settings-advanced.html["Configurer les paramètres"] .
+
+

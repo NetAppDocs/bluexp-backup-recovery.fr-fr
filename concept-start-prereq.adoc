@@ -1,0 +1,145 @@
+---
+sidebar: sidebar 
+permalink: concept-start-prereq.html 
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, backup and recovery 
+summary: 'Commencez à utiliser la BlueXP backup and recovery en vérifiant la disponibilité de votre environnement opérationnel, de votre connecteur BlueXP et de votre compte BlueXP . Pour utiliser la BlueXP backup and recovery, vous devez remplir les conditions suivantes :' 
+---
+= Conditions préalables à la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Commencez à utiliser la BlueXP backup and recovery en vérifiant la disponibilité de votre environnement opérationnel, de votre connecteur BlueXP et de votre compte BlueXP . Pour utiliser la BlueXP backup and recovery, vous devez remplir les conditions suivantes :
+
+
+
+== Pour ONTAP 9.8 et versions ultérieures
+
+Une licence ONTAP One doit être activée sur l’instance ONTAP locale.
+
+
+
+== Pour les sauvegardes sur le stockage d'objets
+
+Pour utiliser le stockage d'objets comme cibles de sauvegarde, vous avez besoin d'un compte avec AWS S3, Microsoft Azure Blob, StorageGRID ou ONTAP et des autorisations d'accès appropriées configurées.
+
+* link:prev-ontap-protect-overview.html["Protégez les données de vos volumes ONTAP"]
+* link:br-use-mssql-protect-overview.html["Protégez vos bases de données Microsoft SQL Server"]
+* link:prev-vmware-protect-overview.html["Protégez les charges de travail de vos machines virtuelles"]
+
+
+
+
+== Dans BlueXP
+
+* Un utilisateur BlueXP doit disposer du rôle et des privilèges requis pour effectuer des opérations sur les charges de travail Microsoft SQL Server. Pour découvrir les ressources, vous devez disposer du rôle de super-administrateur BlueXP backup and recovery . Voir link:reference-roles.html["Accès aux fonctionnalités de BlueXP backup and recovery basé sur les rôles"] pour plus de détails sur les rôles et les autorisations requis pour effectuer des opérations dans la BlueXP backup and recovery.
+* Une organisation BlueXP avec au moins un connecteur BlueXP actif se connectant à des clusters ONTAP locaux ou à Cloud Volumes ONTAP. Consultez le processus de configuration de l'aperçu initial ci-dessous.
+* Au moins un environnement de travail BlueXP avec un cluster NetApp sur site ONTAP ou Cloud Volumes ONTAP .
+* Un connecteur BlueXP
++
+Reportez-vous à https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["Apprenez à configurer un connecteur BlueXP"] et https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html["Exigences standard de BlueXP"^].
+
++
+** La version Preview nécessite le système d'exploitation Ubuntu 22.04 LTS pour le connecteur.
+
+
+
+
+
+
+=== Configurez BlueXP
+
+L’étape suivante consiste à configurer BlueXP et le service de BlueXP backup and recovery .
+
+Révision https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html["Exigences standard de BlueXP"^].
+
+
+
+=== Créer un connecteur BlueXP
+
+Vous devez contacter votre équipe produit NetApp pour essayer ce service. Ensuite, lorsque vous utilisez le connecteur BlueXP, il inclut les fonctionnalités appropriées pour le service.
+
+Pour créer un connecteur dans BlueXP  avant d'utiliser le service, reportez-vous à la documentation BlueXP  qui décrit https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["Comment créer un connecteur BlueXP"^].
+
+.Où installer le connecteur BlueXP
+Pour terminer une opération de restauration, le connecteur peut être installé aux emplacements suivants :
+
+ifdef::aws[]
+
+* Pour Amazon S3, le connecteur peut être déployé dans vos locaux.
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+* Pour Azure Blob, le connecteur peut être déployé sur vos locaux.
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+endif::gcp[]
+
+* Pour StorageGRID, le connecteur doit être déployé dans vos locaux ; avec ou sans accès Internet.
+* Pour ONTAP S3, le connecteur peut être déployé dans vos locaux (avec ou sans accès à Internet) ou dans un environnement de fournisseur cloud
+
+
+
+NOTE: Les références aux « systèmes ONTAP sur site » incluent les systèmes FAS et AFF .
+
+
+
+== Configuration requise pour l'hôte Microsoft SQL Server
+
+Pour utiliser la BlueXP backup and recovery pour les charges de travail SQL Server, vous avez besoin des prérequis suivants en matière de système hôte, d’espace et de dimensionnement.
+
+[cols="33,66a"]
+|===
+| Élément | De formation 
+
+
+| Systèmes d'exploitation  a| 
+Microsoft Windows Pour obtenir les dernières informations sur les versions prises en charge, consultez le  https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome["Matrice d'interopérabilité NetApp"^] .
+
+
+
+| Versions de Microsoft SQL Server  a| 
+Les versions 2012 et ultérieures sont prises en charge pour VMware Virtual Machine File System (VMFS) et VMware Virtual Machine Disk (VMDK) NFS.
+
+
+
+| Version du serveur SnapCenter  a| 
+SnapCenter Server version 5.0 ou supérieure est requise si vous souhaitez importer vos données existantes de SnapCenter dans la BlueXP backup and recovery.
+
+
+NOTE: Si vous disposez déjà de SnapCenter, vérifiez d'abord que vous avez rempli les conditions préalables avant d'importer depuis SnapCenter. Voir link:concept-start-prereq-snapcenter-import.html["Conditions préalables à l'importation de ressources depuis SnapCenter"].
+
+
+
+| RAM minimale pour le plug-in sur l'hôte SQL Server  a| 
+1 GO
+
+
+
+| Espace minimum d'installation et de journalisation pour le plug-in sur l'hôte SQL Server  a| 
+5 GO
+
+Allouez suffisamment d'espace disque et surveillez la consommation de stockage du dossier des journaux. L'espace requis pour les journaux varie en fonction du nombre de sauvegardes effectuées et de la fréquence des opérations de protection des données. En cas d'espace insuffisant, les journaux ne seront pas créés pour les opérations.
+
+
+
+| Packs logiciels requis  a| 
+* Pack d'hébergement ASP.NET Core Runtime 8.0.12 (et tous les correctifs 8.0.x ultérieurs)
+* PowerShell Core 7.4.2
+
+
+Pour obtenir les dernières informations sur les versions prises en charge, consultez le https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome["Matrice d'interopérabilité NetApp"^].
+
+|===

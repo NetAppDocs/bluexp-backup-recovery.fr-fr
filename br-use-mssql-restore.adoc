@@ -1,0 +1,269 @@
+---
+sidebar: sidebar 
+permalink: br-use-mssql-restore.html 
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery 
+summary: 'Restaurez les charges de travail de la base de données à partir d"une copie instantanée, d"une sauvegarde de charge de travail répliquée sur un stockage secondaire ou à partir de sauvegardes stockées dans le stockage d"objets.' 
+---
+= Restaurez les charges de travail Microsoft SQL Server avec la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Restaurez les charges de travail Microsoft SQL Server à partir de copies instantanées, d'une sauvegarde de charge de travail répliquée sur un stockage secondaire ou de sauvegardes stockées dans un stockage objet à l'aide de la BlueXP backup and recovery. Vous pouvez restaurer une charge de travail vers son environnement de travail d'origine, vers un autre environnement de travail utilisant le même compte cloud ou vers un système ONTAP local.
+
+.Restaurer à partir de ces emplacements
+Vous pouvez restaurer des charges de travail à partir de différents emplacements de départ :
+
+* Restaurer à partir d'un emplacement principal
+* Restaurer à partir d'une ressource répliquée
+* Restaurer à partir d'une sauvegarde de magasin d'objets
+
+
+.Restaurer ces points
+Vous pouvez restaurer les données vers le dernier instantané ou vers ces points :
+
+* Restaurer à partir d'instantanés
+* Restaurer à un instant précis. Ceci est utile si vous connaissez le nom et l'emplacement du fichier, ainsi que la date à laquelle il a été conservé en bon état pour la dernière fois.
+* Restaurer la dernière sauvegarde
+
+
+.Considérations relatives à la restauration à partir du stockage d'objets
+Si vous sélectionnez un fichier de sauvegarde dans le stockage d'objets et que la protection contre les rançongiciels est activée pour cette sauvegarde (si vous avez activé DataLock et la protection contre les rançongiciels dans la stratégie de sauvegarde), vous serez invité à effectuer une vérification d'intégrité supplémentaire sur le fichier de sauvegarde avant de restaurer les données. Nous vous recommandons d'effectuer cette analyse.
+
+
+TIP: Des frais de sortie supplémentaires seront facturés par votre fournisseur de cloud pour accéder au contenu du fichier de sauvegarde.
+
+
+
+== Comment fonctionne la restauration des charges de travail
+
+Lorsque vous restaurez des charges de travail, les événements suivants se produisent :
+
+* Lorsque vous restaurez une charge de travail à partir d'un fichier de sauvegarde, la BlueXP backup and recovery créent une _nouvelle_ ressource à l'aide des données de la sauvegarde.
+* Lorsque vous effectuez une restauration à partir d’une charge de travail répliquée, vous pouvez restaurer la charge de travail dans l’environnement de travail d’origine ou dans un système ONTAP local.
++
+image:diagram_browse_restore_volume-unified.png["Un diagramme qui montre le flux pour restaurer une ressource"]
+
+* Lorsque vous restaurez une sauvegarde à partir du stockage d’objets, vous pouvez restaurer les données dans l’environnement de travail d’origine ou sur un système ONTAP local.
+
+
+
+
+== Méthodes de restauration
+
+Vous pouvez restaurer des charges de travail en utilisant l'une des méthodes suivantes. En règle générale, choisissez l'une des méthodes suivantes en fonction de vos besoins de restauration :
+
+* *Depuis la page Restaurer* : utilisez cette option lorsque vous devez restaurer une ressource, mais que vous ne vous souvenez plus de son nom exact, de son emplacement ou de la date de son dernier état. Vous pouvez rechercher l'instantané à l'aide de filtres.
+* *Depuis la page Inventaire* : Utilisez cette option lorsque vous devez restaurer une ressource spécifique de la semaine ou du mois précédent, et que vous connaissez son nom, son emplacement et la date de sa dernière utilisation. Parcourez la liste des ressources pour trouver celle que vous souhaitez restaurer.
+
+
+*Rôle BlueXP requis* Administrateur d'organisation, Administrateur de dossier ou de projet, Super administrateur de sauvegarde et de récupération, Rôle d'administrateur de restauration de sauvegarde et de récupération.  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+
+
+== Restaurer les données de charge de travail à partir de l'option Restaurer
+
+Restaurez les charges de travail de la base de données à l’aide de l’option Restaurer.
+
+.Étapes
+. Dans le menu de sauvegarde et de restauration BlueXP , sélectionnez *Restaurer*.
++
+image:screen-br-restore.png["Une capture d’écran montrant la page Restaurer."]
+
+. Sélectionnez la base de données à restaurer. Utilisez les filtres pour effectuer votre recherche.
+. Sélectionnez l'option de restauration :
++
+** Restaurer à partir d'instantanés
+** Restaurer à un instant précis. Ceci est utile si vous connaissez le nom et l'emplacement du fichier, ainsi que la date à laquelle il a été conservé en bon état pour la dernière fois.
+** Restaurer la dernière sauvegarde
++
+image:screen-br-restore-options2.png["Une capture d’écran montrant les options de restauration."]
+
+
+
+
+
+
+
+=== Restaurer les charges de travail à partir d'instantanés
+
+. En continuant à partir de la page Options de restauration, sélectionnez *Restaurer à partir d'instantanés*.
++
+Une liste d’instantanés apparaît.
+
++
+image:screen-br-restore-snapshots-snapshotlist.png["Une capture d'écran montrant la liste des instantanés à restaurer"]
+
+. Sélectionnez l'instantané à restaurer.
+. Sélectionnez *Suivant*.
++
+Vous verrez ensuite les options de destination.
+
++
+image:screen-br-restore-destination-original-location.png["Une capture d’écran montrant la page des détails de la destination de restauration."]
+
+. Dans la page Détails de la destination, saisissez les informations suivantes :
++
+** *Paramètres de destination* : Choisissez si vous souhaitez restaurer les données à leur emplacement d'origine ou vers un autre emplacement. Pour un autre emplacement, sélectionnez le nom d'hôte et l'instance, saisissez le nom de la base de données et indiquez le chemin de destination où vous souhaitez restaurer l'instantané.
+** *Options de pré-restauration*:
++
+*** *Écraser la base de données avec le même nom lors de la restauration* : Lors de la restauration, le nom de la base de données d'origine est conservé.
+*** *Conserver les paramètres de réplication de la base de données SQL* : conserve les paramètres de réplication de la base de données SQL après l'opération de restauration.
+*** *Créer une sauvegarde du journal des transactions avant la restauration* : Crée une sauvegarde du journal des transactions avant l'opération de restauration.*** *Quitter la restauration si la sauvegarde du journal des transactions avant la restauration échoue* : Arrête l'opération de restauration si la sauvegarde du journal des transactions échoue.
+*** *Prescript* : saisissez le chemin complet d'un script qui doit être exécuté avant l'opération de restauration, tous les arguments que le script prend et le temps d'attente pour que le script se termine.
+
+
+** *Options post-restauration*:
++
+*** *Opérationnel*, mais indisponible pour la restauration de journaux de transactions supplémentaires. Cela remet la base de données en ligne après l'application des sauvegardes des journaux de transactions.
+*** *Non opérationnel*, mais disponible pour restaurer des journaux de transactions supplémentaires. Maintient la base de données dans un état non opérationnel après la restauration, tout en restaurant les sauvegardes des journaux de transactions. Cette option est utile pour restaurer des journaux de transactions supplémentaires.
+*** *Mode lecture seule* et possibilité de restaurer des journaux de transactions supplémentaires. Restaure la base de données en lecture seule et applique les sauvegardes des journaux de transactions.
+*** *Post-scriptum* : Saisissez le chemin complet d'un script qui doit être exécuté après l'opération de restauration et tous les arguments que le script prend.
+
+
+
+
+. Sélectionnez *Restaurer*.
+
+
+
+
+=== Restaurer à un moment précis
+
+La BlueXP backup and recovery utilisent les journaux et les instantanés les plus récents pour créer une restauration ponctuelle de vos données.
+
+. En continuant à partir de la page Options de restauration, sélectionnez *Restaurer à un moment précis*.
+. Sélectionnez *Suivant*.
++
+image:screen-br-restore-point-in-time.png["Une capture d'écran montrant la page Restaurer à un moment précis"]
+
+. Dans la page Restaurer à un moment précis, saisissez les informations suivantes :
++
+** *Date et heure de restauration des données* : saisissez la date et l'heure exactes des données à restaurer. Ces données proviennent de l'hôte de la base de données Microsoft SQL Server.
+
+
+. Sélectionnez *Rechercher*.
+. Sélectionnez l’instantané que vous souhaitez restaurer.
+. Sélectionnez *Suivant*.
+. Dans la page Détails de la destination, saisissez les informations suivantes :
++
+** *Paramètres de destination* : Choisissez si vous souhaitez restaurer les données à leur emplacement d'origine ou vers un autre emplacement. Pour un autre emplacement, sélectionnez le nom d'hôte et l'instance, saisissez le nom de la base de données et le chemin de destination.
+** *Options de pré-restauration*:
++
+*** *Conserver le nom de la base de données d'origine* : Lors de la restauration, le nom de la base de données d'origine est conservé.
+*** *Conserver les paramètres de réplication de la base de données SQL* : conserve les paramètres de réplication de la base de données SQL après l'opération de restauration.
+*** *Prescript* : saisissez le chemin complet d'un script qui doit être exécuté avant l'opération de restauration, tous les arguments que le script prend et le temps d'attente pour que le script se termine.
+
+
+** *Options post-restauration*:
++
+*** *Opérationnel*, mais indisponible pour la restauration de journaux de transactions supplémentaires. Cela remet la base de données en ligne après l'application des sauvegardes des journaux de transactions.
+*** *Non opérationnel*, mais disponible pour restaurer des journaux de transactions supplémentaires. Maintient la base de données dans un état non opérationnel après la restauration, tout en restaurant les sauvegardes des journaux de transactions. Cette option est utile pour restaurer des journaux de transactions supplémentaires.
+*** *Mode lecture seule* et possibilité de restaurer des journaux de transactions supplémentaires. Restaure la base de données en lecture seule et applique les sauvegardes des journaux de transactions.
+*** *Post-scriptum* : Saisissez le chemin complet d'un script qui doit être exécuté après l'opération de restauration et tous les arguments que le script prend.
+
+
+
+
+. Sélectionnez *Restaurer*.
+
+
+
+
+=== Restaurer la dernière sauvegarde
+
+Cette option utilise les dernières sauvegardes complètes et de journaux pour restaurer vos données à leur état initial. Le système analyse les journaux depuis le dernier instantané jusqu'à présent. Le processus suit les modifications et les activités afin de restaurer la version la plus récente et la plus précise de vos données.
+
+. En continuant à partir de la page Options de restauration, sélectionnez *Restaurer vers la dernière sauvegarde*.
++
+La BlueXP backup and recovery vous montrent les instantanés disponibles pour l'opération de restauration.
+
++
+image:screen-br-restore-to-latest-state.png["Une capture d'écran montrant la page Restaurer l'état le plus récent"]
+
+. Dans la page Restaurer vers l’état le plus récent, sélectionnez l’emplacement de l’instantané du stockage local, secondaire ou d’objets.
+. Sélectionnez *Suivant*.
+. Dans la page Détails de la destination, saisissez les informations suivantes :
++
+** *Paramètres de destination* : Choisissez si vous souhaitez restaurer les données à leur emplacement d'origine ou vers un autre emplacement. Pour un autre emplacement, sélectionnez le nom d'hôte et l'instance, saisissez le nom de la base de données et le chemin de destination.
+** *Options de pré-restauration*:
++
+*** *Écraser la base de données avec le même nom lors de la restauration* : Lors de la restauration, le nom de la base de données d'origine est conservé.
+*** *Conserver les paramètres de réplication de la base de données SQL* : conserve les paramètres de réplication de la base de données SQL après l'opération de restauration.
+*** *Créer une sauvegarde du journal des transactions avant la restauration* : crée une sauvegarde du journal des transactions avant l'opération de restauration.
+*** *Quitter la restauration si la sauvegarde du journal des transactions avant la restauration échoue* : arrête l'opération de restauration si la sauvegarde du journal des transactions échoue.
+*** *Prescript* : saisissez le chemin complet d'un script qui doit être exécuté avant l'opération de restauration, tous les arguments que le script prend et le temps d'attente pour que le script se termine.
+
+
+** *Options post-restauration*:
++
+*** *Opérationnel*, mais indisponible pour la restauration de journaux de transactions supplémentaires. Cela remet la base de données en ligne après l'application des sauvegardes des journaux de transactions.
+*** *Non opérationnel*, mais disponible pour restaurer des journaux de transactions supplémentaires. Maintient la base de données dans un état non opérationnel après la restauration, tout en restaurant les sauvegardes des journaux de transactions. Cette option est utile pour restaurer des journaux de transactions supplémentaires.
+*** *Mode lecture seule* et possibilité de restaurer des journaux de transactions supplémentaires. Restaure la base de données en lecture seule et applique les sauvegardes des journaux de transactions.
+*** *Post-scriptum* : Saisissez le chemin complet d'un script qui doit être exécuté après l'opération de restauration et tous les arguments que le script prend.
+
+
+
+
+. Sélectionnez *Restaurer*.
+
+
+
+
+== Restaurer les données de charge de travail à partir de l'option Inventaire
+
+Restaurez les charges de travail des bases de données depuis la page Inventaire. Cette option vous permet de restaurer uniquement les bases de données, et non les instances.
+
+.Étapes
+. Dans le menu de sauvegarde et de restauration BlueXP , sélectionnez *Inventaire*.
+. Choisissez l’hôte sur lequel se trouve la ressource que vous souhaitez restaurer.
+. Sélectionnez les *Actions* image:icon-action.png["Icône actions"] icône et sélectionnez *Afficher les détails*.
+. Sur la page Microsoft SQL Server, sélectionnez l’onglet *Bases de données*.
+. Dans l’onglet Bases de données, sélectionnez la base de données qui affiche un statut « Protégé » indiquant qu’il existe une sauvegarde que vous pouvez restaurer.
++
+image:screen-br-restore-inventory-databases-tab.png["Une capture d'écran montrant la page Inventaire et l'onglet Bases de données"]
+
+. Sélectionnez les *Actions* image:icon-action.png["Icône actions"] icône et sélectionnez *Restaurer*.
++
+Les trois mêmes options s'affichent lorsque vous restaurez à partir de la page Restaurer :
+
++
+** Restaurer à partir d'instantanés
+** Restaurer à un moment précis dans le temps
+** Restaurer la dernière sauvegarde
+
+
+. Continuez avec les mêmes étapes pour l'option de restauration à partir de la page Restaurer
++
+image:screen-br-restore-options2.png["Une capture d’écran montrant les options de restauration."]
+
+
+
+ifdef::aws[]
+
+endif::aws[]
+
+ifdef::azure[]
+
+endif::azure[]
+
+ifdef::gcp[]
+
+endif::gcp[]
+
+ifdef::aws[]
+
+endif::aws[]
+
+ifdef::azure[]
+
+endif::azure[]
+
+ifdef::gcp[]
+
+endif::gcp[]

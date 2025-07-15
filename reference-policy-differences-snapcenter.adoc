@@ -1,0 +1,96 @@
+---
+sidebar: sidebar 
+permalink: reference-policy-differences-snapcenter.html 
+keywords: backup policy, backup policies, snapcenter, migration 
+summary: Il existe certaines différences entre les politiques utilisées dans la BlueXP backup and recovery et celles utilisées dans SnapCenter. 
+---
+= Stratégies de SnapCenter comparées à celles de la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+Il existe certaines différences entre les stratégies utilisées dans SnapCenter et celles utilisées dans la BlueXP backup and recovery qui peuvent avoir un impact sur ce que vous voyez après l'importation de ressources et de stratégies depuis SnapCenter.
+
+La sauvegarde et la récupération de SnapCenter et BlueXP backup and recovery utilisent des calendriers de stratégie légèrement différents.
+
+SnapCenter utilise les niveaux de planification suivants :
+
+* *Horaire* : Plusieurs heures et minutes avec n'importe quelle heure (0-23) et n'importe quelle minute (0-60).
+* *Quotidien* : Inclut une option permettant de répéter tous les quelques jours, par exemple, tous les 3 jours.
+* *Hebdomadaire* : du dimanche au lundi, avec la possibilité d'effectuer un instantané le jour 1 de la semaine ou sur plusieurs jours de la semaine.
+* *Mensuel* : Mois de janvier à décembre, avec une option pour jouer à des jours spécifiques du mois, par exemple, le 7 de chaque mois et même sur plusieurs jours du mois.
+
+
+La BlueXP backup and recovery utilisent les niveaux de planification suivants, qui sont légèrement différents :
+
+* *Toutes les heures* : effectue des instantanés uniquement à des intervalles de 15 minutes, par exemple, des intervalles d'une heure ou de 15 minutes inférieurs à 60.
+* *Quotidien* : Heures de la journée (0-23) avec heure de début par exemple à 10h00 avec une option pour effectuer toutes les heures.
+* *Hebdomadaire* : Jour de la semaine (du dimanche au lundi) avec possibilité d'effectuer l'opération sur un ou plusieurs jours. Identique à SnapCenter.
+* *Mensuel* : Dates du mois (0-30) avec une heure de début à plusieurs dates du mois.
+* *Annuel* : Mensuel. Correspond au mensuel de SnapCenter.
+
+
+
+
+== Plusieurs politiques dans SnapCenter avec le même niveau de planification
+
+Vous pouvez affecter plusieurs stratégies avec le même niveau de planification à une ressource dans SnapCenter. Cependant, la BlueXP backup and recovery ne prennent pas en charge plusieurs stratégies sur une ressource utilisant le même niveau de planification.
+
+*Exemple* : Si vous utilisez trois politiques (pour les données, le journal et le journal des snapshots) dans SnapCenter, après la migration depuis SnapCenter, la BlueXP backup and recovery utilisent une seule politique au lieu des trois.
+
+
+
+== Horaires quotidiens SnapCenter importés
+
+La BlueXP backup and recovery ajustent les planifications SnapCenter comme suit :
+
+* Si la planification de SnapCenter est définie sur une durée inférieure ou égale à 7 jours, la BlueXP backup and recovery la définissent sur une base hebdomadaire. Certains snapshots seront ignorés pendant la semaine.
++
+*Exemple* : Si vous avez une politique quotidienne SnapCenter avec un intervalle de répétition tous les 3 jours à partir du lundi, la BlueXP backup and recovery définissent la planification sur une base hebdomadaire, le lundi, le jeudi et le dimanche. Certains jours seront ignorés, car la fréquence n'est pas exactement de 3 jours.
+
+* Si la planification de SnapCenter est définie sur plus de 7 jours, la BlueXP backup and recovery la définissent sur une base mensuelle. Certains snapshots seront ignorés au cours du mois.
++
+*Exemple* : Si vous avez une politique quotidienne SnapCenter avec un intervalle de répétition de 10 jours à partir du 2 du mois, la BlueXP backup and recovery (après migration) définissent la planification sur une base mensuelle, les 2, 12 et 22 du mois. Certains jours seront ignorés le mois suivant.
+
+
+
+
+
+== Horaires horaires SnapCenter importés
+
+Les politiques horaires SnapCenter avec des intervalles répétitifs supérieurs à une heure sont converties en politique quotidienne dans la BlueXP backup and recovery.
+
+Toute politique horaire avec des intervalles répétitifs qui ne sont pas un facteur de 24 (par exemple 5, 7, etc.) ignorera certains instantanés dans une journée.
+
+*Exemple* : Si vous avez une politique horaire SnapCenter avec un intervalle de répétition toutes les 5 heures à partir de 1 h 00, la BlueXP backup and recovery (après la migration) définiront la planification sur une planification quotidienne avec des intervalles de 5 heures à 1 h 00, 6 h 00, 11 h 00, 16 h 00 et 21 h 00. Certaines heures seront ignorées ; après 21 h 00, la répétition devrait être à 2 h 00 toutes les 5 heures, mais elle sera toujours à 1 h 00.
+
+
+
+== Conservation des journaux à partir des politiques SnapCenter
+
+Si vous disposez d'une ressource dans SnapCenter avec plusieurs stratégies, la BlueXP backup and recovery utilisent l'ordre de priorité suivant pour attribuer la valeur de conservation des journaux :
+
+* Pour les politiques « Sauvegarde complète avec sauvegarde du journal » et « Journal uniquement » dans SnapCenter, la BlueXP backup and recovery utilisent la valeur de rétention de la politique Journal uniquement.
+* Pour les politiques « Sauvegarde complète avec journal uniquement » et « Complète et journal » dans SnapCenter, la BlueXP backup and recovery utilisent la valeur de rétention du journal uniquement.
+* Pour « Sauvegarde complète et journal » plus « Sauvegarde complète » dans SnapCenter, la BlueXP backup and recovery utilisent la valeur de rétention « Sauvegarde complète et journal ».
+* Si vous n'avez qu'une sauvegarde complète dans SnapCenter, la BlueXP backup and recovery n'activent pas la sauvegarde du journal.
+
+
+
+
+== Nombre de rétentions à partir des politiques SnapCenter
+
+Si vous disposez d'une ressource avec une protection secondaire activée dans SnapCenter avec plusieurs volumes sources, plusieurs volumes de destination et plusieurs relations SnapMirror , la BlueXP backup and recovery utilisent uniquement le nombre de rétention de la première stratégie.
+
+*Exemple* : Si vous avez une politique SnapCenter avec un nombre de rétention de 5 et une autre politique avec un nombre de rétention de 10, la BlueXP backup and recovery utilisent le nombre de rétention de 5.
+
+
+
+== Étiquettes SnapMirror à partir des politiques SnapCenter
+
+Les étiquettes SnapMirror pour chaque stratégie dans SnapCenter restent intactes après la migration, même si le niveau est modifié.
+
+*Exemple* : Une politique horaire de SnapCenter peut être modifiée en quotidienne dans la BlueXP backup and recovery. Cependant, les libellés SnapMirror restent inchangés après la migration.

@@ -1,0 +1,20 @@
+= Version préliminaire de la BlueXP backup and recovery
+:allow-uri-read: 
+
+
+
+
+=== Version préliminaire de la BlueXP backup and recovery
+
+Cette version préliminaire de la BlueXP backup and recovery propose une interface utilisateur mise à jour qui vous permet de gérer les charges de travail Microsoft SQL Server grâce à une stratégie de protection 3-2-1, familière au service de BlueXP backup and recovery . Avec cette nouvelle version, vous pouvez sauvegarder ces charges de travail sur le stockage principal, les répliquer sur le stockage secondaire et les sauvegarder sur le stockage objet cloud.
+
+
+NOTE: CETTE DOCUMENTATION EST FOURNIE SOUS FORME D'APERÇU TECHNOLOGIQUE. Avec cette offre de présentation, NetApp se réserve le droit de modifier les détails, le contenu et le calendrier de l'offre avant la disponibilité générale.
+
+Cette version de BlueXP backup and recovery Preview 2025 inclut les mises à jour suivantes.
+
+* Une interface utilisateur repensée qui offre une expérience plus intuitive pour la gestion de vos tâches de sauvegarde et de récupération.
+* La version Preview vous permet de sauvegarder et de restaurer des bases de données Microsoft SQL Server. (La prise en charge d'autres charges de travail sera ajoutée dans les prochaines versions.)
+* Cette version intègre les fonctionnalités de SnapCenter , vous permettant de gérer et de protéger vos ressources SnapCenter avec une stratégie de protection des données 3-2-1 à partir de l'interface utilisateur de BlueXP backup and recovery .
+* Cette version vous permet d'importer des charges de travail SnapCenter dans la BlueXP backup and recovery.
+

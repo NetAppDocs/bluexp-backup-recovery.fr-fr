@@ -1,0 +1,193 @@
+---
+sidebar: sidebar 
+permalink: br-use-monitor-tasks.html 
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, jobs 
+summary: 'Avec la sauvegarde et la récupération BlueXP, surveillez l"état des snapshots locaux, des réplications et des tâches de sauvegarde vers le stockage d"objets que vous avez initiées, ainsi que les tâches de restauration que vous avez initiées.' 
+---
+= Surveiller les tâches de BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Avec la BlueXP backup and recovery, surveillez l'état des snapshots locaux, des réplications et des tâches de sauvegarde vers le stockage d'objets que vous avez initiées, ainsi que les tâches de restauration que vous avez initiées. Vous pouvez voir les travaux terminés, en cours ou en échec pour pouvoir diagnostiquer et résoudre les problèmes. Le centre de notification BlueXP vous permet d'activer l'envoi de notifications par e-mail pour vous informer de l'activité système importante, même si vous n'êtes pas connecté au système. À l'aide de la chronologie BlueXP, vous pouvez afficher les détails de toutes les actions initiées via l'interface utilisateur ou l'API.
+
+*Rôle BlueXP requis* Administrateur d'organisation, Administrateur de dossier ou de projet, Super administrateur de sauvegarde et de récupération, Administrateur de sauvegarde et de récupération, Administrateur de restauration de sauvegarde et de récupération, Administrateur de clone de sauvegarde et de récupération ou Rôle de visualiseur de sauvegarde et de récupération. En savoir plus link:reference-roles.html["Rôles et privilèges de sauvegarde et de récupération"] .  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+
+
+== Afficher l'état des travaux sur le moniteur des travaux
+
+Vous pouvez afficher une liste de toutes les opérations de snapshot, de réplication, de sauvegarde vers le stockage d'objets et de restauration ainsi que leur état actuel dans l'onglet *Surveillance des tâches*. Cela inclut des opérations à partir de votre Cloud Volumes ONTAP, de votre ONTAP sur site, de vos applications et de vos machines virtuelles. Chaque opération, ou tâche, a un ID et un état uniques.
+
+Le statut peut être :
+
+* Réussite
+* En cours
+* En file d'attente
+* Avertissement
+* Échec
+
+
+Les instantanés, les réplications, les sauvegardes sur le stockage d'objets et les opérations de restauration que vous avez lancées à partir de l'interface utilisateur et de l'API de BlueXP backup and recovery sont disponibles dans l'onglet Surveillance des tâches.
+
+
+NOTE: Si vous avez mis à niveau vos systèmes ONTAP vers la version 9.13.x et que vous ne voyez pas les opérations de sauvegarde planifiées en cours dans le moniteur de tâches, vous devez redémarrer le service de sauvegarde et de restauration BlueXP. link:reference-restart-backup.html["Découvrez comment redémarrer la sauvegarde et la restauration BlueXP"].
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez l'onglet *Surveillance*.
+. Pour afficher des colonnes supplémentaires (environnement de travail, SVM, nom d'utilisateur, charge de travail, nom de la politique, étiquette d'instantané), sélectionnez le signe plus.
+
+
+
+
+=== Rechercher et filtrer la liste des travaux
+
+Vous pouvez filtrer les opérations sur la page Surveillance des tâches à l'aide de plusieurs filtres, tels que la stratégie, l'étiquette d'instantané, le type d'opération (protection, restauration, rétention ou autre) et le type de protection (instantané local, réplication ou sauvegarde dans le cloud).
+
+Par défaut, la page surveillance des tâches affiche les tâches de protection et de restauration des dernières 24 heures. Vous pouvez modifier la période à l'aide du filtre de période.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez l'onglet *Surveillance*.
+. Pour trier les résultats différemment, sélectionnez chaque en-tête de colonne pour trier par état, heure de début, Nom de la ressource, etc.
+. Si vous recherchez des emplois spécifiques, sélectionnez la zone *recherche avancée et filtrage* pour ouvrir le panneau recherche.
++
+Utilisez ce panneau pour entrer une recherche en texte libre pour n'importe quelle ressource, par exemple "volume 1" ou "application 3". Vous pouvez également filtrer la liste des travaux en fonction des éléments des menus déroulants.
+
++
+La plupart des filtres sont explicites. Le filtre de « charge de travail » vous permet d'afficher les travaux dans les catégories suivantes :
+
++
+** Volumes ONTAP (Cloud Volumes ONTAP et volumes ONTAP sur site)
+** Microsoft SQL Server
+** Ordinateurs virtuels
+** Kubernetes
+
+
++
+[TIP]
+====
+** Vous pouvez rechercher des données au sein d'un « SVM » spécifique uniquement si vous avez d'abord sélectionné un environnement de travail.
+** Vous pouvez effectuer une recherche à l'aide du filtre « Type de protection » uniquement lorsque vous avez sélectionné le « Type » de « protection ».
+
+
+====
+. Pour mettre à jour la page immédiatement, sélectionnez le image:button_refresh.png["Actualisez"] bouton. Sinon, cette page s'actualise toutes les 15 minutes pour que vous puissiez toujours voir les résultats les plus récents de l'état des travaux.
+
+
+
+
+=== Afficher les détails du travail
+
+Vous pouvez afficher les détails correspondant à un travail terminé spécifique. Vous pouvez exporter les détails d'un travail particulier au format JSON.
+
+Vous pouvez afficher des informations détaillées telles que le type de tâche (planifié ou à la demande), les heures de début et de fin (initiales ou périodiques), la durée, la quantité de données transférées de l'environnement de travail vers le stockage objet, le taux de transfert moyen, le nom de la règle, le verrouillage de conservation activé, l'analyse par ransomware effectuée détails de la source de protection et détails de la cible de protection.
+
+Les tâches de restauration affichent des détails tels que le fournisseur cible de sauvegarde (Amazon Web Services, Microsoft Azure, Google Cloud, sur site), le nom du bucket S3, le nom de la SVM, le nom du volume source, le volume de destination, l'étiquette de l'instantané, le nombre d'objets récupérés, les noms de fichiers, les tailles de fichiers, la date de dernière modification et le chemin d'accès complet au fichier.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez l'onglet *Surveillance*.
+. Sélectionnez le nom du travail.
+. Sélectionnez le menu actions image:icon-action.png["Icône actions"] Et sélectionnez *Afficher les détails*.
+. Développez chaque section pour voir les détails.
+
+
+
+
+=== Téléchargez les résultats de la surveillance des travaux sous forme de rapport
+
+Vous pouvez télécharger le contenu de la page principale de surveillance des travaux sous forme de rapport après l'avoir affiné. La sauvegarde et la restauration BlueXP génèrent et télécharge un fichier .CSV que vous pouvez consulter et envoyer à d'autres groupes si nécessaire. Le fichier .CSV contient jusqu'à 10,000 lignes de données.
+
+À partir des informations Détails de la surveillance des travaux, vous pouvez télécharger un fichier JSON contenant les détails d'un travail unique.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez l'onglet *Surveillance*.
+. Pour télécharger un fichier CSV pour tous les travaux, sélectionnez le bouton Télécharger et recherchez le fichier dans votre répertoire de téléchargement.
+. Pour télécharger un fichier JSON pour un seul travail, sélectionnez le menu actions image:icon-action.png["Icône actions"] Pour le travail, sélectionnez *Télécharger le fichier JSON* et localisez le fichier dans votre répertoire de téléchargement.
+
+
+
+
+== Examinez les tâches de conservation (cycle de vie des sauvegardes)
+
+La surveillance des flux de conservation (ou _cycle de vie de sauvegarde_) vous aide à assurer l'exhaustivité des audits, la responsabilité et la sécurité des sauvegardes. Pour vous aider à suivre le cycle de vie des sauvegardes, il peut être utile d'identifier l'expiration de toutes les copies de sauvegarde.
+
+Une tâche de cycle de vie de sauvegarde effectue le suivi de toutes les copies Snapshot supprimées ou placées dans la file d'attente à supprimer. À partir de ONTAP 9.13, vous pouvez consulter tous les types de travail appelés « conservation » sur la page surveillance des travaux.
+
+Le type de tâche « conservation » capture toutes les tâches de suppression de Snapshot initiées sur un volume protégé par la sauvegarde et la restauration BlueXP.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez l'onglet *Surveillance*.
+. Sélectionnez la zone *recherche avancée et filtrage* pour ouvrir le panneau recherche.
+. Sélectionnez « conservation » comme type de travail.
+
+
+
+
+== Examinez les alertes de sauvegarde et de restauration dans le centre de notification BlueXP
+
+Le centre de notification BlueXP assure le suivi de la progression des tâches de sauvegarde et de restauration que vous avez lancées afin de vérifier que l'opération a réussi ou non.
+
+Outre l'affichage des alertes dans le Centre de notification, vous pouvez configurer BlueXP pour envoyer certains types de notifications par e-mail en tant qu'alertes afin que vous puissiez être informé de l'activité système importante, même si vous n'êtes pas connecté au système. https://docs.netapp.com/us-en/bluexp-setup-admin/task-monitor-cm-operations.html["En savoir plus sur le Centre de notification et sur la manière d'envoyer des e-mails d'alerte pour les tâches de sauvegarde et de restauration"^].
+
+Le Centre de notification affiche de nombreux événements Snapshot, de réplication, de sauvegarde dans le cloud et de restauration, mais seuls certains événements déclenchent des alertes par e-mail :
+
+[cols="1,2,1,1"]
+|===
+| Type d'opération | Événement | Niveau d'alerte | E-mail envoyé 
+
+
+| Activation | Échec de l'activation de la sauvegarde et de la restauration pour l'environnement de travail | Erreur | Oui. 
+
+
+| Activation | Échec de la modification de la sauvegarde et de la restauration pour l'environnement de travail | Erreur | Oui. 
+
+
+| Instantané local | Échec de la tâche de création d'instantanés ad hoc de BlueXP backup and recovery | Erreur | Oui. 
+
+
+| La réplication | Échec de la tâche de réplication ad hoc pour la sauvegarde et la restauration BlueXP | Erreur | Oui. 
+
+
+| La réplication | Échec des tâches de pause de la réplication de sauvegarde et de restauration BlueXP | Erreur | Non 
+
+
+| La réplication | Échec de la réplication de sauvegarde et de restauration BlueXP  | Erreur | Non 
+
+
+| La réplication | Échec de la tâche de resynchronisation de la réplication de sauvegarde et de restauration BlueXP | Erreur | Non 
+
+
+| La réplication | La réplication de sauvegarde et de restauration BlueXP n'interrompt pas les opérations | Erreur | Non 
+
+
+| La réplication | Échec de la tâche de resynchronisation inverse de la réplication de sauvegarde et de restauration BlueXP | Erreur | Oui. 
+
+
+| La réplication | Échec de la tâche de suppression de la réplication de sauvegarde et de restauration BlueXP | Erreur | Oui. 
+|===
+
+NOTE: Depuis ONTAP 9.13.0, toutes les alertes apparaissent pour les systèmes Cloud Volumes ONTAP et ONTAP sur site. Pour les systèmes avec Cloud Volumes ONTAP 9.13.0 et ONTAP sur site, seule l'alerte liée à « tâche de restauration terminée, mais avec avertissements » s'affiche.
+
+Par défaut, les administrateurs de compte et d'organisation BlueXP  reçoivent des e-mails pour toutes les alertes « critiques » et « recommandations ». Par défaut, tous les autres utilisateurs et destinataires sont configurés pour ne pas recevoir d'e-mails de notification. Il est possible d'envoyer des e-mails aux utilisateurs BlueXP qui font partie de votre compte Cloud NetApp, ou à tous les destinataires qui doivent avoir connaissance des activités de sauvegarde et de restauration.
+
+Pour recevoir les alertes par e-mail de sauvegarde et de restauration BlueXP, vous devez sélectionner les types de sévérité des notifications « critique », « Avertissement » et « erreur » dans la page Paramètres des alertes et des notifications.
+
+https://docs.netapp.com/us-en/bluexp-setup-admin/task-monitor-cm-operations.html["Découvrez comment envoyer des e-mails d'alerte pour les tâches de sauvegarde et de restauration"^].
+
+.Étapes
+. Dans la barre de menus BlueXP, sélectionnez le (image:icon_bell.png["signal sonore de notification"]).
+. Consultez les notifications.
+
+
+
+
+== Examinez l'activité des opérations dans la chronologie BlueXP
+
+Vous pouvez afficher le détail des opérations de sauvegarde et de restauration pour une investigation plus approfondie dans la chronologie BlueXP. La chronologie BlueXP fournit des détails sur chaque événement, qu'il soit initié par l'utilisateur ou par le système, et affiche les actions initiées dans l'interface utilisateur ou via l'API.
+
+https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-monitor-cm-operations.html["Découvrez les différences entre la chronologie et le Centre de notification"^].

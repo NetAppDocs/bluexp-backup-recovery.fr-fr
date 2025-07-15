@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: br-use-manage-kubernetes-clusters.html 
+keywords: discover, backup and recovery, snapcenter, kubernetes, k8s, clusters, applications, inventory 
+summary: La BlueXP backup and recovery vous permettent de découvrir et de gérer vos clusters Kubernetes afin de protéger les ressources hébergées par les clusters. 
+---
+= Gérez les clusters Kubernetes
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La BlueXP backup and recovery vous permettent de découvrir et de gérer vos clusters Kubernetes afin de protéger les ressources hébergées par les clusters.
+
+.Rôle BlueXP requis
+Administrateur d'organisation ou administrateur SnapCenter . link:reference-roles.html["En savoir plus sur les rôles d'accès à la BlueXP backup and recovery"] .  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+
+
+== Modifier les informations du cluster Kubernetes
+
+Vous pouvez modifier un cluster si vous devez changer son nom.
+
+.Étapes
+. Dans la BlueXP backup and recovery, sélectionnez *Inventaire* > *Clusters*.
+. Dans la liste des clusters, choisissez un cluster que vous souhaitez modifier et sélectionnez le menu Actions associé.
+. Sélectionnez *Modifier le cluster*.
+. Apportez les modifications nécessaires au nom du cluster.
+. Sélectionnez *Done*.
+
+
+
+
+== Supprimer un cluster Kubernetes
+
+Si vous n'avez plus besoin de protéger les ressources hébergées par un cluster Kubernetes, vous pouvez le supprimer de la BlueXP backup and recovery. La suppression d'un cluster ne supprime ni le cluster ni ses ressources ; elle le supprime uniquement de l'inventaire BlueXP . Avant de pouvoir supprimer un cluster, vous devez désactiver la protection et supprimer les applications associées de la BlueXP backup and recovery.
+
+.Étapes
+. Dans la BlueXP backup and recovery, sélectionnez *Inventaire* > *Clusters*.
+. Dans la liste des clusters, choisissez un cluster que vous souhaitez modifier et sélectionnez le menu Actions associé.
+. Sélectionnez *Supprimer le cluster*.
+. Vérifiez les informations dans la boîte de dialogue de confirmation et sélectionnez *Supprimer*.
+

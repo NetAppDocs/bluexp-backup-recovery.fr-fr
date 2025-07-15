@@ -1,0 +1,107 @@
+---
+sidebar: sidebar 
+permalink: br-limitations.html 
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, BlueXP backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database 
+summary: 'Le service de BlueXP backup and recovery doit d"abord détecter les données pour que vous puissiez l"utiliser. Lors de cette détection, BlueXP backup and recovery analyse tous les volumes et fichiers des environnements de travail de votre organisation.' 
+---
+= Limitations connues de la BlueXP backup and recovery pour les charges de travail Microsoft SQL Server
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Les limitations connues identifient les plateformes, les périphériques ou les fonctions qui ne sont pas pris en charge par cette version du produit, ou qui ne fonctionnent pas correctement avec elle. Examinez attentivement ces limites.
+
+
+
+== Mode de déploiement standard uniquement
+
+La version de BlueXP backup and recovery fonctionne uniquement en mode de déploiement standard, pas en mode restreint ou privé.
+
+
+
+== Restriction du nom du cluster Windows
+
+Le nom du cluster Windows ne peut pas contenir de caractère de soulignement (_).
+
+
+
+== Problèmes de migration de SnapCenter
+
+La migration des ressources de SnapCenter vers la BlueXP backup and recovery présente les limitations suivantes.
+
+Pour plus de détails sur la façon dont les politiques SnapCenter migrent vers les politiques de BlueXP backup and recovery , consultez link:reference-policy-differences-snapcenter.html["Stratégies de SnapCenter comparées à celles de la BlueXP backup and recovery"] .
+
+
+
+=== Limitations du groupe de ressources
+
+Si toutes les ressources d’un groupe de ressources sont protégées et que l’une de ces ressources est également protégée en dehors du groupe de ressources, la migration depuis SnapCenter est bloquée.
+
+*Solution de contournement* : Protégez la ressource soit dans un groupe de ressources, soit seule, mais pas dans les deux.
+
+
+
+=== Les ressources avec plusieurs politiques utilisant le même niveau de planification ne sont pas prises en charge
+
+Vous ne pouvez pas affecter plusieurs stratégies utilisant le même niveau de planification (par exemple, horaire, quotidien, hebdomadaire, etc.) à une ressource. La BlueXP backup and recovery n'importeront pas ces ressources depuis SnapCenter.
+
+*Solution de contournement* : associez une seule stratégie utilisant le même niveau de planification à une ressource.
+
+
+
+=== Les politiques horaires doivent commencer au début de l'heure
+
+Si vous disposez d'une stratégie SnapCenter qui se répète toutes les heures, mais que les heures ne sont pas programmées au début de l'heure, la BlueXP backup and recovery n'importeront pas la ressource. Par exemple, les stratégies planifiées à 1h30, 14h30, 15h30, etc. ne sont pas prises en charge, tandis que celles planifiées à 1h00, 14h00, 15h00, etc. le sont.
+
+*Solution de contournement* : utilisez une stratégie qui se répète par intervalles d’une heure en commençant au début de l’heure.
+
+
+
+=== Les politiques quotidiennes et mensuelles attachées à une ressource ne sont pas prises en charge
+
+Si une politique SnapCenter se répète à la fois à des intervalles de jour et de mois, la BlueXP backup and recovery n'importeront pas la politique.
+
+Par exemple, vous ne pouvez pas attacher une politique quotidienne (avec une durée inférieure ou égale à 7 jours ou supérieure à 7 jours) à une ressource et également attacher une politique mensuelle à la même ressource.
+
+*Solution de contournement* : utilisez une stratégie qui utilise un intervalle quotidien ou mensuel, mais pas les deux.
+
+
+
+=== Politiques de sauvegarde à la demande non migrées
+
+La BlueXP backup and recovery n'importent pas les politiques de sauvegarde à la demande depuis SnapCenter.
+
+
+
+=== Les politiques de sauvegarde des journaux uniquement n'ont pas été migrées
+
+La BlueXP backup and recovery n'importent pas les stratégies de sauvegarde de journaux uniquement depuis SnapCenter. Si une stratégie SnapCenter inclut des sauvegardes de journaux uniquement, la BlueXP backup and recovery n'importeront pas la ressource.
+
+*Solution de contournement* : utilisez une stratégie dans SnapCenter qui utilise plus que de simples sauvegardes de journaux uniquement.
+
+
+
+=== Mappage d'hôtes
+
+SnapCenter ne mappe pas de clusters de stockage ni de SVM pour les ressources vers les hôtes, contrairement à BlueXP backup and recovery . Le cluster ONTAP ou la SVM locale ne sera pas mappé à un hôte dans la version Preview de BlueXP backup and recovery . De plus, BlueXP ne prend pas en charge les SVM.
+
+*Solution de contournement* : Avant d'importer des ressources depuis SnapCenter, créez un environnement de travail dans BlueXP backup and recovery pour tous les systèmes de stockage ONTAP locaux enregistrés dans SnapCenter. Importez ensuite les ressources de ce cluster depuis SnapCenter vers BlueXP backup and recovery.
+
+
+
+=== Horaires non à intervalles de 15 minutes
+
+Si vous disposez d'une planification de stratégie SnapCenter qui démarre à une certaine heure et se répète toutes les quelques minutes, mais que les minutes ne sont pas à intervalles de 15 minutes, la BlueXP backup and recovery n'importeront pas la planification.
+
+*Solution de contournement* : utilisez SnapCenter pour ajuster la stratégie afin qu’elle se répète à des intervalles de 15 minutes.
+
+
+
+=== Conservation des sauvegardes des journaux
+
+Avec SnapCenter, vous pouvez définir plusieurs valeurs de rétention pour plusieurs stratégies associées à une ressource. Cependant, la version Preview de BlueXP backup and recovery ne prend en charge qu'une seule valeur de rétention pour toutes les stratégies associées à une ressource.

@@ -1,0 +1,455 @@
+---
+sidebar: sidebar 
+permalink: prev-ontap-backup-cvo-aws.html 
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, BlueXP backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database 
+summary: Protégez vos charges de travail VMware avec la BlueXP backup and recovery NetApp BlueXP. 
+---
+= Sauvegardez les données Cloud Volumes ONTAP sur Amazon S3 avec la sauvegarde et la récupération BlueXP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Effectuez quelques étapes de sauvegarde et de récupération BlueXP pour commencer à sauvegarder les données de volume de vos systèmes Cloud Volumes ONTAP sur Amazon S3.
+
+[]
+====
+*REMARQUE* Pour basculer vers et depuis les charges de travail de BlueXP backup and recovery , reportez-vous à link:br-start-switch-ui.html["Basculer vers différentes charges de travail de BlueXP backup and recovery"] .
+
+====
+
+
+== Vérifiez la prise en charge de votre configuration
+
+Avant de commencer à sauvegarder des volumes sur S3, lisez les informations suivantes pour vous assurer que votre configuration est prise en charge.
+
+L'image suivante montre chaque composant et les connexions que vous devez préparer entre eux.
+
+Vous pouvez également vous connecter à un système ONTAP secondaire pour les volumes répliqués via la connexion publique ou privée.
+
+image:diagram_cloud_backup_cvo_aws.png["Un diagramme illustrant la façon dont BlueXP Backup and Recovery communique avec les volumes des systèmes source et le stockage de destination où se trouvent les fichiers de sauvegarde."]
+
+Le terminal de passerelle VPC doit déjà exister dans votre VPC. https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html["En savoir plus sur les terminaux de passerelle"^].
+
+Versions de ONTAP prises en charge:: Minimum de ONTAP 9.8 ; ONTAP 9.8P13 et ultérieur est recommandé.
+Informations requises pour l'utilisation des clés gérées par le client pour le chiffrement des données:: Vous pouvez choisir vos propres clés gérées par le client pour le chiffrement des données dans l'assistant d'activation au lieu d'utiliser les clés de chiffrement Amazon S3 par défaut. Dans ce cas, vous devrez déjà configurer les clés de cryptage gérées. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-setting-up-kms.html["Découvrez comment utiliser vos propres touches"^].
+
+
+
+
+== Vérification des besoins en licence
+
+Pour la sauvegarde et la restauration BlueXP, une licence PAYGO est disponible dans AWS Marketplace et permet de déployer des solutions de sauvegarde et de restauration Cloud Volumes ONTAP et BlueXP. Vous devez le faire https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa["Abonnez-vous à cet abonnement BlueXP"^] Avant d'activer la sauvegarde et la restauration BlueXP. La facturation de la sauvegarde et de la restauration BlueXP s'effectue via cet abonnement.
+
+Pour bénéficier d'un contrat annuel qui vous permet de sauvegarder à la fois les données Cloud Volumes ONTAP et les données ONTAP sur site, vous devez vous abonner à la https://aws.amazon.com/marketplace/pp/prodview-q7dg6zwszplri["Page AWS Marketplace"^] puis https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html["Associez l'abonnement à vos identifiants AWS"^].
+
+Dans le cadre d'un contrat annuel permettant de regrouper les solutions de sauvegarde et de restauration Cloud Volumes ONTAP et BlueXP, vous devez configurer le contrat annuel lorsque vous créez un environnement de travail Cloud Volumes ONTAP. Avec cette option, vous ne pouvez pas sauvegarder les données sur site.
+
+Pour les licences BYOL de sauvegarde et de restauration BlueXP, vous devez disposer du numéro de série de NetApp qui vous permet d'utiliser le service pendant la durée et la capacité de la licence. link:br-start-licensing.html["Découvrez comment gérer vos licences BYOL"]. Vous devez utiliser une licence BYOL lorsque le connecteur et le système Cloud Volumes ONTAP sont déployés dans un site invisible.
+
+Vous devez également disposer d'un compte AWS pour l'espace de stockage où vos sauvegardes seront stockées.
+
+
+
+== Préparez votre connecteur BlueXP
+
+Le connecteur doit être installé dans une région AWS avec un accès Internet complet ou limité (mode « standard » ou « restreint »). https://docs.netapp.com/us-en/bluexp-setup-admin/concept-modes.html["Consultez les modes de déploiement BlueXP pour plus de détails"^].
+
+* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["Déployez un connecteur dans AWS en mode standard (accès Internet complet)"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-restricted-mode.html["Installer le connecteur en mode restreint (accès sortant limité)"^]
+
+
+
+
+=== Vérifiez ou ajoutez des autorisations au connecteur
+
+Le rôle IAM qui fournit des autorisations à BlueXP doit inclure les autorisations S3 de la dernière version  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-aws.html["Politique BlueXP"^] . Si la politique ne contient pas toutes ces autorisations, consultez le  https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html["Documentation AWS : modification des règles IAM"^] .
+
+Voici les autorisations spécifiques de la stratégie :
+
+[%collapsible]
+====
+[source, json]
+----
+{
+            "Sid": "backupPolicy",
+            "Effect": "Allow",
+            "Action": [
+                "s3:DeleteBucket",
+                "s3:GetLifecycleConfiguration",
+                "s3:PutLifecycleConfiguration",
+                "s3:PutBucketTagging",
+                "s3:ListBucketVersions",
+                "s3:GetObject",
+                "s3:DeleteObject",
+                "s3:PutObject",
+                "s3:ListBucket",
+                "s3:ListAllMyBuckets",
+                "s3:GetBucketTagging",
+                "s3:GetBucketLocation",
+                "s3:GetBucketPolicyStatus",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetBucketAcl",
+                "s3:GetBucketPolicy",
+                "s3:PutBucketPolicy",
+                "s3:PutBucketOwnershipControls"
+                "s3:PutBucketPublicAccessBlock",
+                "s3:PutEncryptionConfiguration",
+                "s3:GetObjectVersionTagging",
+                "s3:GetBucketObjectLockConfiguration",
+                "s3:GetObjectVersionAcl",
+                "s3:PutObjectTagging",
+                "s3:DeleteObjectTagging",
+                "s3:GetObjectRetention",
+                "s3:DeleteObjectVersionTagging",
+                "s3:PutBucketObjectLockConfiguration",
+                "s3:DeleteObjectVersion",
+                "s3:GetObjectTagging",
+                "s3:PutBucketVersioning",
+                "s3:PutObjectVersionTagging",
+                "s3:GetBucketVersioning",
+                "s3:BypassGovernanceRetention",
+                "s3:PutObjectRetention",
+                "s3:GetObjectVersion",
+                "athena:StartQueryExecution",
+                "athena:GetQueryResults",
+                "athena:GetQueryExecution",
+                "glue:GetDatabase",
+                "glue:GetTable",
+                "glue:CreateTable",
+                "glue:CreateDatabase",
+                "glue:GetPartitions",
+                "glue:BatchCreatePartition",
+                "glue:BatchDeletePartition"
+            ],
+            "Resource": [
+                "arn:aws:s3:::netapp-backup-*"
+            ]
+        },
+----
+====
+
+NOTE: Lorsque vous créez des sauvegardes dans des régions AWS Chine, vous devez modifier le nom de ressource AWS « arn » sous toutes les sections _Resource_ des stratégies IAM de « aws » à « aws-cn », par exemple `arn:aws-cn:s3:::netapp-backup-*`.
+
+Autorisations d'accès Cloud Volumes ONTAP AWS requises:: Lorsque votre système Cloud Volumes ONTAP exécute ONTAP 9.12.1 ou une version ultérieure, le rôle IAM qui fournit cet environnement de travail avec autorisations doit inclure un nouvel ensemble d'autorisations S3 spécifiquement pour la sauvegarde et la restauration BlueXP depuis les dernières versions https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-set-up-iam-roles.html["Politique de Cloud Volumes ONTAP"^].
++
+--
+Si vous avez créé l'environnement de travail Cloud Volumes ONTAP à l'aide de BlueXP version 3.9.23 ou supérieure, ces autorisations doivent déjà faire partie du rôle IAM. Sinon, vous devrez ajouter les autorisations manquantes.
+
+--
+Régions AWS prises en charge:: La sauvegarde et la récupération BlueXP sont prises en charge dans toutes les régions AWS, y compris les régions AWS GovCloud.
+Configuration requise pour la création des sauvegardes sur un autre compte AWS:: Par défaut, les sauvegardes sont créées à l'aide du même compte que celui utilisé pour votre système Cloud Volumes ONTAP. Si vous souhaitez utiliser un autre compte AWS pour vos sauvegardes, vous devez :
++
+--
+* Vérifiez que les autorisations « s3:PutBuckePolicy » et « s3:PutBuckeOwnershipControls » font partie du rôle IAM qui fournit le connecteur BlueXP avec les autorisations.
+* Ajoutez les informations d'identification du compte AWS de destination dans BlueXP. https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html#add-additional-credentials-to-a-connector["Découvrez comment faire"^].
+* Ajoutez les autorisations suivantes dans les informations d'identification de l'utilisateur dans le second compte :
++
+....
+"athena:StartQueryExecution",
+"athena:GetQueryResults",
+"athena:GetQueryExecution",
+"glue:GetDatabase",
+"glue:GetTable",
+"glue:CreateTable",
+"glue:CreateDatabase",
+"glue:GetPartitions",
+"glue:BatchCreatePartition",
+"glue:BatchDeletePartition"
+....
+
+
+--
+Créez vos propres compartiments:: Par défaut, le service crée des compartiments pour vous. Si vous souhaitez utiliser vos propres compartiments, vous pouvez les créer avant de démarrer l'assistant d'activation de sauvegarde, puis les sélectionner dans l'assistant.
++
+--
+link:prev-ontap-protect-journey.html["En savoir plus sur la création de vos propres compartiments"^].
+
+--
+
+
+
+
+== Vérifiez les exigences de mise en réseau ONTAP pour la réplication de volumes
+
+Si vous prévoyez de créer des volumes répliqués sur un système ONTAP secondaire à l'aide de la sauvegarde et de la restauration BlueXP, assurez-vous que les systèmes source et de destination respectent les exigences de mise en réseau suivantes.
+
+
+
+==== Exigences de mise en réseau ONTAP sur site
+
+* Si le cluster se trouve dans votre site, vous devez disposer d'une connexion entre votre réseau d'entreprise et votre réseau virtuel dans le fournisseur cloud. Il s'agit généralement d'une connexion VPN.
+* Les clusters ONTAP doivent répondre à des exigences supplémentaires en termes de sous-réseau, de port, de pare-feu et de cluster.
++
+Comme vous pouvez répliquer sur des systèmes Cloud Volumes ONTAP ou sur site, examinez les exigences de peering pour les systèmes ONTAP sur site. https://docs.netapp.com/us-en/ontap-sm-classic/peering/reference_prerequisites_for_cluster_peering.html["Afficher les conditions préalables au peering de cluster dans la documentation de ONTAP"^].
+
+
+
+
+
+==== Configuration réseau requise par Cloud Volumes ONTAP
+
+* Le groupe de sécurité de l'instance doit inclure les règles d'entrée et de sortie requises : plus précisément, les règles d'ICMP et les ports 11104 et 11105. Ces règles sont incluses dans le groupe de sécurité prédéfini.
+
+
+* Pour répliquer des données entre deux systèmes Cloud Volumes ONTAP dans différents sous-réseaux, les sous-réseaux doivent être routés ensemble (paramètre par défaut).
+
+
+
+
+== Activez la sauvegarde et la restauration BlueXP sur Cloud Volumes ONTAP
+
+L'activation de la sauvegarde et de la restauration BlueXP est simple. Les étapes diffèrent légèrement selon que vous disposez d'un système Cloud Volumes ONTAP existant ou d'un nouveau système.
+
+*Activez la sauvegarde et la restauration BlueXP sur un nouveau système*
+
+La sauvegarde et la restauration BlueXP sont activées par défaut dans l'assistant de l'environnement de travail. Assurez-vous de conserver l'option activée.
+
+Voir https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-otc-aws.html["Lancement d'Cloud Volumes ONTAP dans AWS"^] Pour connaître les conditions requises et les détails relatifs à la création du système Cloud Volumes ONTAP.
+
+.Étapes
+. Dans le canevas BlueXP, sélectionnez *Ajouter un environnement de travail*, choisissez le fournisseur cloud et sélectionnez *Ajouter nouveau*. Sélectionnez *Créer Cloud Volumes ONTAP*.
+. Sélectionnez *Amazon Web Services* comme fournisseur de cloud, puis choisissez un seul nœud ou un système haute disponibilité.
+. Remplissez la page Détails et références.
+. Sur la page Services, laissez le service activé et sélectionnez *Continuer*.
+. Complétez les pages de l'assistant pour déployer le système.
+
+
+.Résultat
+La sauvegarde et la restauration BlueXP sont activées sur le système. Après avoir créé des volumes sur ces systèmes Cloud Volumes ONTAP , lancez la BlueXP backup and recovery et link:prev-ontap-backup-manage.html["activez la sauvegarde sur chaque volume que vous souhaitez protéger"] .
+
+*Activez la sauvegarde et la restauration BlueXP sur un système existant*
+
+Activez la sauvegarde et la restauration BlueXP sur un système existant à tout moment, directement depuis l'environnement de travail.
+
+.Étapes
+. Dans BlueXP Canvas, sélectionnez l'environnement de travail et sélectionnez *Activer* en regard du service de sauvegarde et de restauration dans le panneau de droite.
++
+Si la destination Amazon S3 pour vos sauvegardes existe en tant qu'environnement de travail sur la fenêtre Canvas, vous pouvez faire glisser le cluster vers l'environnement de travail Amazon S3 pour lancer l'assistant d'installation.
+
+
+
+
+
+== Activez les sauvegardes sur vos volumes ONTAP
+
+Activez les sauvegardes à tout moment directement depuis votre environnement de travail sur site.
+
+Un assistant vous guide à travers les étapes principales suivantes :
+
+* <<Sélectionnez les volumes à sauvegarder>>
+* <<Définir la stratégie de sauvegarde>>
+* <<Vérifiez vos sélections>>
+
+
+Vous pouvez également <<Affiche les commandes API>> à l'étape de vérification, vous pouvez copier le code pour automatiser l'activation de la sauvegarde pour les futurs environnements de travail.
+
+
+
+=== Démarrez l'assistant
+
+.Étapes
+. Accédez à l'assistant Activer la sauvegarde et la récupération de l'une des manières suivantes :
++
+** Dans le canevas BlueXP, sélectionnez l'environnement de travail et sélectionnez *Activer > volumes de sauvegarde* en regard du service de sauvegarde et de restauration dans le panneau de droite.
++
+image:screenshot_backup_onprem_enable.png["Capture d'écran affichant le bouton d'activation de la sauvegarde et de la restauration disponible après la sélection d'un environnement de travail."]
+
++
+Si la destination AWS pour vos sauvegardes existe en tant qu'environnement de travail sur la zone de travail, vous pouvez faire glisser le cluster ONTAP vers le stockage objet AWS.
+
+** Sélectionnez *volumes* dans la barre de sauvegarde et de récupération. Dans l'onglet volumes, sélectionnez *actions* image:icon-action.png["Icône actions"] Et sélectionnez *Activer la sauvegarde* pour un seul volume (la réplication ou la sauvegarde sur le stockage objet n'est pas déjà activée).
+
+
++
+La page Introduction de l'assistant affiche les options de protection, y compris les snapshots locaux, la réplication et les sauvegardes. Si vous avez effectué la deuxième option de cette étape, la page définir la stratégie de sauvegarde s'affiche avec un volume sélectionné.
+
+. Continuez avec les options suivantes :
++
+** Si vous disposez déjà d'un connecteur BlueXP, vous êtes paré. Sélectionnez *Suivant*.
+** Si vous ne disposez pas encore d'un connecteur BlueXP, l'option *Ajouter un connecteur* apparaît. Reportez-vous à la section <<Préparez votre connecteur BlueXP>>.
+
+
+
+
+
+
+=== Sélectionnez les volumes à sauvegarder
+
+Choisissez les volumes à protéger. Un volume protégé possède un ou plusieurs des éléments suivants : règle Snapshot, règle de réplication, règle de sauvegarde sur objet.
+
+Vous pouvez choisir de protéger les volumes FlexVol ou FlexGroup, mais vous ne pouvez pas sélectionner un mélange de ces volumes lors de l'activation de la sauvegarde pour un environnement de travail. Découvrez comment link:prev-ontap-backup-manage.html["activer la sauvegarde des volumes supplémentaires dans l'environnement de travail"] (FlexVol ou FlexGroup) après avoir configuré la sauvegarde pour les volumes initiaux.
+
+[NOTE]
+====
+* Vous ne pouvez activer une sauvegarde que sur un seul volume FlexGroup à la fois.
+* Les volumes sélectionnés doivent avoir le même paramètre SnapLock. SnapLock Enterprise doit être activé sur tous les volumes ou SnapLock doit être désactivé.
+
+
+====
+.Étapes
+Si les volumes que vous choisissez ont déjà des stratégies de snapshot ou de réplication appliquées, les stratégies que vous sélectionnez ultérieurement remplaceront ces stratégies existantes.
+
+. Dans la page Sélectionner des volumes, sélectionnez le ou les volumes à protéger.
++
+** Vous pouvez également filtrer les lignes pour n'afficher que les volumes avec certains types de volumes, styles et autres pour faciliter la sélection.
+** Après avoir sélectionné le premier volume, vous pouvez sélectionner tous les volumes FlexVol (les volumes FlexGroup ne peuvent être sélectionnés qu'un par un). Pour sauvegarder tous les volumes FlexVol existants, cochez d'abord un volume, puis cochez la case dans la ligne de titre.
+** Pour sauvegarder des volumes individuels, cochez la case correspondant à chaque volume.
+
+
+. Sélectionnez *Suivant*.
+
+
+
+
+=== Définir la stratégie de sauvegarde
+
+La définition de la stratégie de sauvegarde implique la définition des options suivantes :
+
+* Que vous souhaitiez une ou plusieurs options de sauvegarde : snapshots locaux, réplication et sauvegarde vers le stockage objet
+* Architecture
+* Politique d'instantané local
+* Cible et règle de réplication
++
+
+NOTE: Si les volumes que vous choisissez ont des stratégies de snapshot et de réplication différentes de celles que vous sélectionnez à cette étape, les stratégies existantes seront écrasées.
+
+* Sauvegarde vers des informations de stockage objet (fournisseur, chiffrement, mise en réseau, règles de sauvegarde et options d'exportation).
+
+
+.Étapes
+. Dans la page définir la stratégie de sauvegarde, choisissez une ou plusieurs des options suivantes. Les trois sont sélectionnés par défaut :
++
+** *Instantanés locaux* : si vous effectuez une réplication ou une sauvegarde sur un stockage d'objets, des instantanés locaux doivent être créés.
+** *Réplication* : crée des volumes répliqués sur un autre système de stockage ONTAP.
+** *Backup* : sauvegarde les volumes dans le stockage objet.
+
+
+. *Architecture* : si vous avez choisi la réplication et la sauvegarde, choisissez l'un des flux d'informations suivants :
++
+** *Cascading* : les informations circulent du système de stockage principal vers le stockage secondaire et du stockage secondaire vers le stockage objet.
+** *Fan Out* : les informations circulent du système de stockage primaire vers le stockage secondaire _et_ du stockage primaire vers le stockage objet.
++
+Pour plus de détails sur ces architectures, reportez-vous à link:prev-ontap-protect-journey.html["Planifiez votre parcours en matière de protection"] .
+
+
+
+. *Instantané local* : choisissez une politique d'instantané existante ou créez-en une nouvelle.
++
+
+TIP: Pour créer une politique personnalisée avant d'activer l'instantané, reportez-vous à link:br-use-policies-create.html["Création d'une règle"] .
+
++
+Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
+
++
+** Entrez le nom de la règle.
+** Sélectionnez jusqu'à cinq programmes, généralement de fréquences différentes.
+** Sélectionnez *Créer*.
+
+
+. *Réplication* : définissez les options suivantes :
++
+** *Cible de réplication* : sélectionnez l'environnement de travail de destination et le SVM. Si vous le souhaitez, sélectionnez le ou les agrégats de destination, ainsi que le préfixe ou le suffixe à ajouter au nom du volume répliqué.
+** *Règle de réplication* : choisissez une règle de réplication existante ou créez-en une.
++
+
+TIP: Pour créer une politique personnalisée, reportez-vous à link:br-use-policies-create.html["Création d'une règle"] .
+
++
+Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
+
++
+*** Entrez le nom de la règle.
+*** Sélectionnez jusqu'à cinq programmes, généralement de fréquences différentes.
+*** Sélectionnez *Créer*.
+
+
+
+
+. *Sauvegarder dans l'objet* : si vous avez sélectionné *Sauvegarder*, définissez les options suivantes :
++
+** *Fournisseur* : sélectionnez *Amazon Web Services*.
+** *Paramètres du fournisseur* : saisissez les détails du fournisseur et la région dans laquelle les sauvegardes seront stockées.
++
+Entrez le compte AWS utilisé pour stocker les sauvegardes. Il peut s'agir d'un compte différent de celui sur lequel réside le système Cloud Volumes ONTAP.
+
++
+Si vous souhaitez utiliser un autre compte AWS pour vos sauvegardes, vous devez ajouter les identifiants de compte AWS de destination dans BlueXP, et ajouter les autorisations « s3:PutBuckePolicy » et « s3:PutBuckeOwnershipControls » au rôle IAM qui fournit des autorisations BlueXP.
+
++
+Sélectionnez la région dans laquelle les sauvegardes seront stockées. Il peut s'agir d'une région différente de celle où réside le système Cloud Volumes ONTAP.
+
++
+Créez un nouveau compartiment ou sélectionnez un compartiment existant.
+
+** *Clé de chiffrement* : si vous avez créé un nouveau compartiment, entrez les informations de clé de chiffrement qui vous ont été fournies par le fournisseur. Vous pouvez choisir d'utiliser les clés de chiffrement AWS par défaut ou de gérer le chiffrement de vos données à partir de votre compte AWS. (https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-setting-up-kms.html["Découvrez comment utiliser vos propres clés de chiffrement"^] ).
++
+Si vous choisissez d'utiliser vos propres clés gérées par le client, entrez le coffre-fort de clés et les informations de clés.
+
+
+
++
+
+NOTE: Si vous avez choisi un compartiment existant, les informations de chiffrement sont déjà disponibles. Vous n'avez donc pas besoin de le saisir maintenant.
+
++
+** *Politique de sauvegarde* : sélectionnez une stratégie de stockage de sauvegarde vers objet existante ou créez-en une.
++
+
+TIP: Pour créer une politique personnalisée avant d'activer la sauvegarde, reportez-vous à link:br-use-policies-create.html["Création d'une règle"] .
+
++
+Pour créer une stratégie, sélectionnez *Créer une nouvelle stratégie* et procédez comme suit :
+
++
+*** Entrez le nom de la règle.
+*** Sélectionnez jusqu'à cinq programmes, généralement de fréquences différentes.
+*** Pour les règles de sauvegarde sur objet, définissez les paramètres DataLock et de protection contre les ransomware. Pour plus de détails sur DataLock et la protection contre les ransomwares, reportez-vous à link:prev-ontap-policy-object-options.html["Paramètres de la règle de sauvegarde sur objet"] .
+*** Sélectionnez *Créer*.
+
+
+** *Exporter les copies Snapshot existantes vers le stockage objet en tant que copies de sauvegarde* : s'il existe des copies Snapshot locales pour les volumes de cet environnement de travail qui correspondent au libellé du programme de sauvegarde que vous venez de sélectionner pour cet environnement de travail (par exemple, tous les jours, toutes les semaines, etc.), cette invite supplémentaire s'affiche. Cochez cette case pour que tous les snapshots historiques soient copiés dans le stockage objet en tant que fichiers de sauvegarde afin de garantir une protection complète de vos volumes.
+
+
+. Sélectionnez *Suivant*.
+
+
+
+
+=== Vérifiez vos sélections
+
+C'est l'occasion de revoir vos sélections et d'apporter des ajustements, si nécessaire.
+
+.Étapes
+. Dans la page révision, vérifiez vos sélections.
+. Cochez éventuellement la case *synchronisez automatiquement les étiquettes de la règle Snapshot avec les étiquettes de la règle de réplication et de sauvegarde*. Cela crée des instantanés avec une étiquette qui correspond aux étiquettes des politiques de réplication et de sauvegarde.
+. Sélectionnez *Activer la sauvegarde*.
+
+
+.Résultat
+La sauvegarde et la restauration BlueXP commencent à effectuer les sauvegardes initiales de vos volumes. Le transfert de base du volume répliqué et du fichier de sauvegarde inclut une copie complète des données du système de stockage primaire. Les transferts suivants contiennent des copies différentielles des données du système de stockage principal contenues dans les copies Snapshot.
+
+Un volume répliqué est créé dans le cluster de destination qui sera synchronisé avec le volume de stockage primaire.
+
+Un compartiment S3 est créé dans le compte de service indiqué par la clé d'accès S3 et la clé secrète que vous avez saisies, et les fichiers de sauvegarde y sont stockés.
+
+Le tableau de bord de sauvegarde de volume s'affiche pour vous permettre de surveiller l'état des sauvegardes.
+
+Vous pouvez également surveiller l’état des tâches de sauvegarde et de restauration à l’aide de l’ link:br-use-monitor-tasks.html["Surveillance des travaux"] .
+
+
+
+=== Affiche les commandes API
+
+Vous pouvez afficher et éventuellement copier les commandes d'API utilisées dans l'assistant Activer la sauvegarde et la restauration. Vous pouvez utiliser cette option pour automatiser l'activation des sauvegardes dans les futurs environnements de travail.
+
+.Étapes
+. Dans l'assistant Activer la sauvegarde et la récupération, sélectionnez *Afficher la requête API*.
+. Pour copier les commandes dans le presse-papiers, sélectionnez l'icône *Copier*.
+

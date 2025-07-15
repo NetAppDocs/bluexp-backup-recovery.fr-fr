@@ -1,0 +1,249 @@
+---
+sidebar: sidebar 
+permalink: br-start-configure.html 
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, BlueXP backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database 
+summary: Suivez quelques étapes pour configurer la BlueXP backup and recovery. 
+---
+= Configurer les paramètres de BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Après avoir installé BlueXP, configurez les paramètres de sauvegarde et de restauration, notamment l'ajout d'identifiants pour les ressources hôtes, l'importation de ressources SnapCenter , la configuration des répertoires de journaux et la configuration des paramètres VMware vCenter. Effectuez ces opérations avant de commencer activement la sauvegarde et la restauration de vos données.
+
+* <<Ajouter des informations d'identification pour les ressources de l'hôte>> Pour les hôtes Windows et SQL Server importés depuis SnapCenter , ajoutez les informations d'identification. (Charges de travail Microsoft SQL Server uniquement)
+* <<Maintenir les paramètres VMware vCenter>>.
+* <<Importer et gérer les ressources de l'hôte SnapCenter>>. (Charges de travail Microsoft SQL Server uniquement)
+* <<Configurer les répertoires de journaux dans les instantanés pour les hôtes Windows>>.
+
+
+*Rôle BlueXP requis* Super administrateur de sauvegarde et de récupération, administrateur de sauvegarde et de récupération, administrateur de restauration de sauvegarde et de récupération. En savoir plus link:reference-roles.html["Rôles et privilèges de sauvegarde et de récupération"] .  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+
+
+== Ajouter des informations d'identification pour les ressources de l'hôte
+
+Ajoutez les informations d'identification des ressources hôtes à importer depuis SnapCenter. Ces informations permettent de détecter de nouvelles charges de travail et d'appliquer des stratégies de sauvegarde.
+
+Si vous ne disposez pas encore d'identifiants, vous pouvez en créer. Ces identifiants doivent disposer des autorisations nécessaires pour accéder aux charges de travail de l'hôte et les gérer.
+
+Vous devez configurer les types d’informations d’identification suivants :
+
+* Informations d'identification Microsoft SQL Server
+* Informations d'identification de l'hôte Windows SnapCenter
+
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Paramètres*.
++
+image:../media/screen-br-settings-all.png["Option Paramètres affichant les options"]
+
+. Sélectionnez la flèche vers le bas pour *Informations d'identification*.
++
+image:../media/screen-br-settings-credentials.png["Option Paramètres"]
+
+. Sélectionnez *Ajouter de nouvelles informations d'identification*.
++
+image:../media/screen-br-settings-credentials-add.png["Option de paramètres pour ajouter de nouvelles informations d'identification"]
+
+. Saisissez les informations d'identification. Différents champs s'affichent selon le mode d'authentification sélectionné. Sélectionnez « Informations » pour plus d'informations sur les champs.
++
+** *Nom des informations d'identification* : saisissez un nom pour les informations d'identification.
+** *Mode d'authentification* : Sélectionnez *Windows* ou *Microsoft SQL*.
++
+
+TIP: Vous devez saisir les informations d’identification pour Windows et Microsoft SQL Server. Vous devrez donc ajouter deux ensembles d’informations d’identification.
+
+
+
+. Si vous avez sélectionné *Windows* :
++
+** *Connecteur* : saisissez l'adresse IP du connecteur BlueXP .
+** *Domaine et nom d'utilisateur* : saisissez le nom de domaine complet NetBIOS ou de domaine et le nom d'utilisateur pour les informations d'identification.
+** *Mot de passe* : Saisissez le mot de passe pour les informations d'identification.
+
+
+. Si vous avez sélectionné *Microsoft SQL* :
++
+** *Hôte* : sélectionnez une adresse d’hôte SQL Server découverte.
+** *Instance SQL Server* : sélectionnez une instance SQL Server découverte.
+
+
+. Sélectionnez *Ajouter*.
+
+
+
+
+=== Modifier les informations d'identification pour les ressources de l'hôte
+
+Vous pouvez ultérieurement modifier le mot de passe des ressources hôtes que vous avez importées depuis SnapCenter.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Paramètres*.
+. Sélectionnez la flèche vers le bas pour développer la section *Informations d'identification*.
++
+image:../media/screen-br-settings-credentials-edit.png["Option Paramètres"]
+
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Modifier les informations d'identification*.
++
+** *Mot de passe* : Saisissez le mot de passe pour les informations d'identification.
+
+
+. Sélectionnez *Enregistrer*.
+
+
+
+
+== Maintenir les paramètres VMware vCenter
+
+Fournissez les informations d'identification VMware vCenter pour identifier les charges de travail VMware vCenter Server à sauvegarder. Si vous ne disposez pas d'informations d'identification existantes, vous pouvez les créer avec les autorisations nécessaires pour accéder aux charges de travail VMware vCenter Server et les gérer.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Paramètres*.
++
+image:../media/screen-br-settings-all.png["Option Paramètres affichant les options"]
+
+. Sélectionnez la flèche vers le bas pour développer la section *VMware vCenter*.
++
+image:../media/screen-br-settings-vmware-open.png["Option Paramètres affichant les paramètres VMware vCenter"]
+
+. Sélectionnez *Ajouter vCenter*.
+. Saisissez les informations du serveur VMware vCenter.
++
+** *Nom de domaine complet ou adresse IP vCenter* : saisissez un nom de domaine complet ou l’adresse IP du serveur VMware vCenter.
+** *Nom d'utilisateur* et *Mot de passe* : saisissez le nom d'utilisateur et le mot de passe du serveur VMware vCenter.
+** *Port* : saisissez le numéro de port du serveur VMware vCenter.
+** *Protocole* : Sélectionnez *HTTP* ou *HTTPS*.
+
+
+. Sélectionnez *Ajouter*.
+
+
+
+
+== Importer et gérer les ressources de l'hôte SnapCenter
+
+Si vous avez déjà utilisé SnapCenter pour sauvegarder vos ressources, vous pouvez les importer et les gérer dans BlueXP backup and recovery. Cette option vous permet d'importer les informations du serveur SnapCenter pour enregistrer plusieurs serveurs SnapCenter et découvrir les charges de travail de la base de données.
+
+Il s’agit d’un processus en deux parties :
+
+* Importer l'application SnapCenter Server et les ressources de l'hôte
+* Gérer les ressources hôtes SnapCenter sélectionnées
+
+
+
+
+=== Importer l'application SnapCenter Server et les ressources de l'hôte
+
+Cette première étape importe les ressources de l'hôte depuis SnapCenter et les affiche dans la page d'inventaire de BlueXP backup and recovery . À ce stade, les ressources ne sont pas encore gérées par BlueXP backup and recovery.
+
+
+TIP: Après avoir importé les ressources de l'hôte SnapCenter , la BlueXP backup and recovery ne prennent pas en charge la gestion de la protection. Pour ce faire, vous devez explicitement choisir de gérer ces ressources dans la BlueXP backup and recovery.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Paramètres*.
++
+image:../media/screen-br-settings-all.png["Option Paramètres affichant les options"]
+
+. Sélectionnez la flèche vers le bas pour développer la section *Importer depuis SnapCenter*.
++
+image:../media/screen-br-settings-import-snapcenter.png["Option de paramètres pour importer les ressources du serveur SnapCenter"]
+
+. Sélectionnez *Importer depuis SnapCenter* pour importer les ressources SnapCenter .
++
+image:../media/screen-br-settings-import-snapcenter-details.png["Option de paramètres pour importer les ressources du serveur SnapCenter"]
+
+. Saisissez * les informations d'identification de l'application SnapCenter * :
++
+.. * Nom de domaine complet ou adresse IP de SnapCenter * : saisissez le nom de domaine complet ou l'adresse IP de l'application SnapCenter elle-même.
+.. *Port* : saisissez le numéro de port du serveur SnapCenter .
+.. *Nom d'utilisateur* et *Mot de passe* : saisissez le nom d'utilisateur et le mot de passe du serveur SnapCenter .
+.. *Connecteur* : Sélectionnez le connecteur BlueXP pour SnapCenter.
+
+
+. Saisissez * les informations d'identification de l'hôte du serveur SnapCenter * :
++
+.. *Informations d'identification existantes* : si vous sélectionnez cette option, vous pouvez utiliser les informations d'identification existantes que vous avez déjà ajoutées. Saisissez le nom des informations d'identification.
+.. *Ajouter de nouvelles informations d'identification* : si vous ne disposez pas d'informations d'identification d'hôte SnapCenter , vous pouvez en ajouter de nouvelles. Saisissez le nom de l'identifiant, le mode d'authentification, le nom d'utilisateur et le mot de passe.
+
+
+. Sélectionnez *Importer* pour valider vos entrées et enregistrer le serveur SnapCenter .
++
+
+NOTE: Si le serveur SnapCenter est déjà enregistré, vous pouvez mettre à jour les détails d'enregistrement existants.
+
+
+
+.Résultat
+La page Inventaire affiche les ressources SnapCenter importées.
+
+image:../media/screen-br-inventory-manage-option.png["Page d'inventaire affichant les ressources SnapCenter importées et l'option Gérer"]
+
+
+
+=== Gérer les ressources de l'hôte SnapCenter
+
+Après avoir importé les ressources SnapCenter , gérez-les dans la BlueXP backup and recovery. Une fois ces ressources importées gérées, la BlueXP backup and recovery peuvent sauvegarder et restaurer les ressources importées depuis SnapCenter. Vous n'avez plus besoin de gérer ces ressources dans SnapCenter Server.
+
+.Étapes
+. Après avoir importé les ressources SnapCenter , sur la page Inventaire qui s'affiche, sélectionnez les ressources SnapCenter que vous avez importées et que vous souhaitez que BlueXP backup and recovery .
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Gérer* pour gérer les ressources.
++
+image:../media/screen-br-inventory-manage-host.png["Page d'inventaire affichant les ressources SnapCenter importées et l'option Gérer"]
+
+. Sélectionnez *Gérer dans BlueXP*.
++
+La page Inventaire affiche *Géré* sous le nom d'hôte pour indiquer que les ressources d'hôte sélectionnées sont désormais gérées par BlueXP backup and recovery.
+
+
+
+
+
+=== Modifier les ressources SnapCenter importées
+
+Vous pouvez ensuite réimporter les ressources SnapCenter ou modifier les ressources SnapCenter importées pour mettre à jour les détails d'enregistrement.
+
+Vous ne pouvez modifier que les détails du port et du mot de passe pour le serveur SnapCenter .
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Paramètres*.
+. Sélectionnez la flèche vers le bas pour *Importer depuis SnapCenter*.
++
+La page Importer depuis SnapCenter affiche toutes les importations précédentes.
+
++
+image:../media/screen-br-settings-import-snapcenter-edit.png["Option de paramètres pour importer les ressources SnapCenter Server affichant les ressources précédemment importées"]
+
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Modifier* pour mettre à jour les ressources.
+. Mettez à jour le mot de passe et les détails du port SnapCenter , si nécessaire.
+. Sélectionnez *Importer*.
+
+
+
+
+== Configurer les répertoires de journaux dans les instantanés pour les hôtes Windows
+
+Avant de créer des stratégies pour les hôtes Windows, vous devez configurer les répertoires de journaux dans les instantanés des hôtes Windows. Ces répertoires servent à stocker les journaux générés lors du processus de sauvegarde.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Inventaire*.
++
+image:../media/screen-br-inventory-viewdetails-option.png["Page d'inventaire affichant les charges de travail et l'option Afficher les détails"]
+
+. Depuis la page Inventaire, sélectionnez une charge de travail, puis sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Afficher les détails* pour afficher les détails de la charge de travail.
+. Dans la page Détails de l’inventaire affichant Microsoft SQL Server, sélectionnez l’onglet Hôtes.
++
+image:../media/screen-br-inventory-hosts-actionmenu.png["Page de détails de l'inventaire affichant l'onglet Hôtes Microsoft SQL Server et le menu Actions"]
+
+. Depuis la page Détails de l'inventaire, sélectionnez un hôte et sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Configurer le répertoire des journaux*.
++
+image:../media/screen-br-inventory-configure-log.png["Configurer l'écran du journal"]
+
+. Parcourez ou entrez le chemin d'accès au répertoire du journal.
+. Sélectionnez *Enregistrer*.
+

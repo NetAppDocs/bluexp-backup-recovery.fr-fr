@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: br-start-trial.html 
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, BlueXP backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database 
+summary: 'Démarrez ou terminez un essai gratuit de la BlueXP backup and recovery. Cet essai gratuit est disponible pendant 30 jours après la souscription d"un abonnement prépayé à NetApp Intelligent Services sur la marketplace de votre fournisseur cloud.' 
+---
+= Démarrez un essai gratuit de la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Une version d'essai gratuite de 30 jours pour la sauvegarde et la restauration BlueXP  est disponible si vous souscrivez un abonnement payant sur le marché de votre fournisseur de services clouds à *NetApp Intelligent Services*. L'essai gratuit commence au moment où vous vous abonnez à la liste Marketplace. Notez que si vous payez l'abonnement Marketplace lors du déploiement d'un système Cloud Volumes ONTAP, puis que vous démarrez votre essai gratuit de sauvegarde et de restauration BlueXP 10 jours plus tard, vous disposez de 20 jours pour utiliser l'essai gratuit.
+
+À la fin de l'essai gratuit, vous serez automatiquement basculé vers l'abonnement PAYGO sans interruption. Si vous décidez de ne pas continuer à utiliser la BlueXP backup and recovery, mettez simplement fin à l'essai gratuit.
+
+Vous pouvez démarrer l'essai gratuit de la BlueXP backup and recovery après vous être connecté à BlueXP.
+
+.Étapes
+. Dans la navigation de gauche de BlueXP , sélectionnez *Protection* > *Sauvegarde et récupération*.
+. Si c'est la première fois que vous vous connectez à ce service, que vous disposez déjà d'un environnement de travail dans BlueXP, mais que vous n'avez pas démarré l'essai gratuit, la page d'accueil « Bienvenue dans la nouvelle BlueXP backup and recovery» apparaît et affiche une option pour *Démarrer l'essai gratuit*.
++
+image:screen-br-landing-unified-start-trial.png["Capture d'écran de la page de destination pour la sauvegarde et la récupération BlueXP BlueXP sans essai gratuit"]
+
+
+
+
+
+== Et la suite ?
+
+Après avoir démarré l’essai gratuit, vous pouvez découvrir des charges de travail et créer des politiques pour sauvegarder vos charges de travail.
+
+Si c'est la première fois que vous vous connectez à ce service, que vous disposez déjà d'un environnement de travail dans BlueXP et que vous avez démarré l'essai gratuit, mais que vous n'avez découvert aucune ressource, la page d'accueil « Bienvenue dans la nouvelle BlueXP backup and recovery» apparaît et affiche une option pour *Découvrir les ressources*.
+
+Pour plus de détails sur la découverte des charges de travail, voir link:br-start-discover.html["Découvrir les workloads"] .
+
+image:screen-br-landing-unified.png["Capture d'écran de la page de destination pour la sauvegarde et la récupération BlueXP blueXP"]
+
+
+
+== Terminez l'essai gratuit
+
+Vous pouvez mettre fin à l'essai gratuit à tout moment. Si vous y mettez fin, le service ne vous sera pas facturé.
+
+.Étapes
+. Dans la navigation de gauche de BlueXP , sélectionnez *Protection* > *Sauvegarde et récupération*.
++
+image:screen-br-landing-unified.png["Capture d'écran de la page de destination pour la sauvegarde et la récupération BlueXP blueXP"]
+
+. Depuis la page d'accueil « Bienvenue sur la nouvelle BlueXP backup and recovery», sélectionnez *Afficher les détails - essai gratuit* ou dans le coin supérieur droit de la page, sélectionnez *Essai gratuit*.
++
+image:screen-br-landing-unified-end-trial.png["Capture d'écran de la page de destination pour l'essai gratuit de sauvegarde et de récupération BlueXP"]
+
+. Sélectionnez *Terminer l'essai gratuit*.
+. Dans la boîte de dialogue de confirmation de fin d'essai gratuit, saisissez *Terminer l'essai*.
+. Sélectionnez *fin*.
+

@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: br-use-restore-kubernetes-applications.html 
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery 
+summary: La BlueXP backup and recovery vous permettent de restaurer les applications que vous avez protégées avec une politique de protection. 
+---
+= Restaurer les applications Kubernetes
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La BlueXP backup and recovery vous permettent de restaurer les applications protégées par une politique de protection. Pour restaurer une application, son état de protection doit être « Protégé » et une politique de protection doit lui être associée. La restauration d'une application s'effectue à l'aide d'un point de restauration, composé du snapshot local, du snapshot secondaire et de la sauvegarde dans le magasin d'objets. Vous pouvez restaurer une application à partir de l'archive locale, secondaire ou du magasin d'objets.
+
+.Rôle BlueXP requis
+Administrateur d'organisation ou administrateur SnapCenter . link:reference-roles.html["En savoir plus sur les rôles d'accès à la BlueXP backup and recovery"] .  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+.Étapes
+. Dans la BlueXP backup and recovery, sélectionnez *Inventaire*.
+. Choisissez une charge de travail Kubernetes et sélectionnez *Afficher* dans la colonne Hôtes pour la charge de travail.
+. Dans la liste des applications, choisissez une application que vous souhaitez restaurer et sélectionnez le menu Actions associé.
+. Sélectionnez *Afficher et restaurer*.
++
+La liste des points de restauration apparaît.
+
+. Ouvrez le menu Actions du point de restauration que vous souhaitez utiliser et sélectionnez *Restaurer*.
+
+
+[discrete]
+===== Paramètres généraux
+
+. Choisissez la source à partir de laquelle restaurer (locale, secondaire ou magasin d'objets).
+. Choisissez le cluster de destination dans la liste *Cluster*.
+. Choisissez l’espace de noms de destination de restauration (original ou nouveau).
++
+Notez que la restauration vers un cluster différent et l’espace de noms d’origine ne sont pas pris en charge.
+
+. Sélectionnez *Suivant*.
+
+
+[discrete]
+===== Sélection de la ressource
+
+. Choisissez si vous souhaitez restaurer toutes les ressources associées à l'application ou utiliser un filtre pour sélectionner des ressources spécifiques à restaurer :
+
+
+[role="tabbed-block"]
+====
+.Restaurer toutes les ressources
+--
+. Sélectionnez *Restaurer toutes les ressources*.
+. Sélectionnez *Suivant*.
+
+
+--
+.Restaurer des ressources spécifiques
+--
+. Sélectionnez *Ressources sélectives*.
+. Choisissez le comportement du filtre de ressources. Si vous choisissez « Inclure », les ressources sélectionnées sont restaurées. Si vous choisissez « Exclure », elles ne sont pas restaurées.
+. Sélectionnez *Ajouter des règles* pour ajouter des règles définissant des filtres de sélection de ressources. Vous devez avoir au moins une règle pour filtrer les ressources.
++
+Chaque règle peut filtrer selon des critères tels que l'espace de noms de la ressource, les étiquettes, le groupe, la version et le type.
+
+. Sélectionnez *Enregistrer* pour enregistrer chaque règle.
+. Lorsque vous avez ajouté toutes les règles dont vous avez besoin, sélectionnez *Rechercher* pour voir les ressources disponibles dans l'archive de sauvegarde qui correspondent à vos critères de filtre.
+. Lorsque vous êtes satisfait des résultats, sélectionnez *Suivant*.
+
+
+--
+====
+[discrete]
+===== Paramètres de destination
+
+. Choisissez de restaurer soit la classe de stockage par défaut, soit une classe de stockage différente.
+. Si vous choisissez de restaurer vers une autre classe de stockage, sélectionnez une classe de stockage de destination correspondant à chaque classe de stockage source. La classe de stockage de destination doit être disponible sur le cluster de destination.
+. Sélectionnez *Restaurer*.
+

@@ -1,0 +1,155 @@
+---
+sidebar: sidebar 
+permalink: br-start-discover-backup-targets.html 
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, BlueXP backup and recovery, Microsoft SQL Server database, 
+summary: 'Suivez quelques étapes pour identifier les cibles de sauvegarde hors site dans BlueXP backup and recovery. Ces cibles peuvent inclure Amazon Web Services (AWS) S3, Microsoft Azure Blob Storage, Google Cloud Storage et StorageGRID.' 
+---
+= Découvrez les cibles de sauvegarde hors site dans la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Suivez quelques étapes pour découvrir ou ajouter manuellement des cibles de sauvegarde hors site dans la BlueXP backup and recovery.
+
+
+
+== Découvrir une cible de sauvegarde
+
+Avant d'utiliser la BlueXP backup and recovery, vous devez configurer vos cibles de sauvegarde Amazon Web Services (AWS) S3, Microsoft Azure Blob Storage, Google Cloud Storage ou StorageGRID.
+
+Vous pouvez découvrir ces cibles automatiquement ou les ajouter manuellement.
+
+Fournissez les identifiants nécessaires pour accéder au système de comptes de stockage. Ces identifiants permettent de découvrir les charges de travail à sauvegarder.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Inventaire*.
+. Sélectionnez l’onglet *Cibles de sauvegarde hors site*.
++
+image:screen-br-inventory-offsite-backup-targets.png["Onglet Cibles de sauvegarde hors site"]
+
+. Sélectionnez *Découvrir la cible de sauvegarde*.
+. Sélectionnez l'un des types de cibles de sauvegarde : *Amazon Web Services (AWS) S3*, *Microsoft Azure Blob Storage*, * StorageGRID* ou * ONTAP S3*.
+. Saisissez les informations. Elles varient selon le type de cible de sauvegarde sélectionné.
++
+** Pour AWS :
++
+*** *Nom d'identification* : saisissez le nom d'identification AWS.
+*** *Clé d'accès* : Saisissez le secret AWS.
+*** *Clé secrète* : Saisissez la clé secrète AWS.
+
+
+** Pour Azure :
++
+*** *Nom des informations d’identification* : saisissez le nom des informations d’identification du stockage d’objets blob Azure.
+*** *Secret client* : saisissez le secret client Azure Blob Storage.
+*** *ID d’application (client)* : sélectionnez l’ID d’application Azure Blob Storage.
+*** *ID de locataire du répertoire* : saisissez l’ID de locataire Azure Blob Storage.
+
+
+** Pour StorageGRID :
++
+*** *Nom d'identification* : saisissez le nom d'identification StorageGRID .
+*** *Nom de domaine complet du nœud de passerelle* : saisissez un nom de domaine complet pour StorageGRID.
+*** *Port* : saisissez le numéro de port pour StorageGRID.
+*** *Clé d'accès* : saisissez la clé d'accès StorageGRID S3.
+*** *Clé secrète* : saisissez la clé secrète StorageGRID S3.
+
+
+** Pour ONTAP S3 :
++
+*** *Nom d'identification* : saisissez le nom d'identification ONTAP S3.
+*** *Nom de domaine complet du nœud de passerelle* : saisissez un nom de domaine complet pour ONTAP S3.
+*** *Port* : saisissez le numéro de port pour ONTAP S3.
+*** *Clé d'accès* : Saisissez la clé d'accès ONTAP S3.
+*** *Clé secrète* : Saisissez la clé secrète ONTAP S3.
+
+
+
+
+. Sélectionnez *découvrir*.
+
+
+
+
+== Ajouter un bucket pour une cible de sauvegarde
+
+Plutôt que de laisser la BlueXP backup and recovery découvrir automatiquement les buckets, vous pouvez ajouter manuellement un bucket à une cible de sauvegarde hors site.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Inventaire*.
+. Sélectionnez *Cibles de sauvegarde hors site*.
+. Sélectionnez la cible et à droite, sélectionnez les *Actions* image:icon-action.png["Icône actions"] icône et sélectionnez *Ajouter un bucket*.
+. Saisissez les informations du bucket. Ces informations varient selon le type de cible de sauvegarde sélectionné.
++
+** Pour AWS :
++
+*** *Nom du bucket* : saisissez le nom du bucket S3.
+*** *Compte AWS* : saisissez le nom du compte AWS.
+*** *Région du bucket* : saisissez la région AWS du bucket.
+*** *Activer le verrouillage des objets S3* : sélectionnez cette option pour activer le verrouillage des objets S3 pour le compartiment. Ce verrouillage empêche la suppression ou l'écrasement des objets pendant une période de conservation spécifiée, offrant ainsi une protection supplémentaire des données. Vous pouvez l'activer uniquement lors de la création d'un compartiment ; vous ne pouvez pas le désactiver ultérieurement.
++
+**** *Mode de gouvernance* : sélectionnez cette option pour activer le mode de gouvernance pour le compartiment S3 Object Lock. Ce mode permet de protéger les objets contre la suppression ou l'écrasement par la plupart des utilisateurs, mais permet à certains d'entre eux de modifier les paramètres de conservation.
+**** *Mode de conformité* : sélectionnez cette option pour activer le mode de conformité pour le bucket S3 Object Lock. Ce mode empêche tout utilisateur, y compris l'utilisateur root, de modifier les paramètres de conservation ou de supprimer des objets jusqu'à l'expiration de la période de conservation.
+
+
+*** *Versioning* : sélectionnez cette option pour activer la gestion des versions pour le bucket S3. La gestion des versions vous permet de conserver plusieurs versions des objets du bucket, ce qui peut être utile à des fins de sauvegarde et de restauration.
+*** *Tags* : sélectionnez des tags pour le bucket S3. Les tags sont des paires clé-valeur permettant d'organiser et de gérer vos ressources S3.
+*** *Chiffrement* : sélectionnez le type de chiffrement pour le compartiment S3. Vous avez le choix entre les clés gérées par AWS S3 et les clés AWS Key Management Service. Si vous sélectionnez les clés AWS Key Management Service, vous devez fournir l'ID de clé.
+
+
+** Pour Azure :
++
+*** *Abonnement* : sélectionnez le nom du conteneur Azure Blob Storage.
+*** *Groupe de ressources* : sélectionnez le nom du groupe de ressources Azure.
+*** *Détails de l'instance*:
++
+**** *Nom du compte de stockage* : saisissez le nom du conteneur de stockage d’objets blob Azure.
+**** *Région Azure* : saisissez la région Azure du conteneur.
+**** *Type de performance* : sélectionnez le type de performance standard ou premium pour le conteneur de stockage d’objets blob Azure indiquant le niveau de performance requis.
+**** *Chiffrement* : sélectionnez le type de chiffrement du conteneur Azure Blob Storage. Vous avez le choix entre des clés gérées par Microsoft ou des clés gérées par le client. Si vous sélectionnez des clés gérées par le client, vous devez fournir le nom du coffre de clés et le nom de la clé.
+
+
+
+
+** Pour StorageGRID :
++
+*** *Nom de la cible de sauvegarde* : sélectionnez le nom du bucket StorageGRID .
+*** *Nom du bucket* : saisissez le nom du bucket StorageGRID .
+*** *Région* : saisissez la région StorageGRID pour le bucket.
+*** *Activer le contrôle de version* : sélectionnez cette option pour activer le contrôle de version pour le bucket StorageGRID . Le contrôle de version vous permet de conserver plusieurs versions des objets du bucket, ce qui peut être utile à des fins de sauvegarde et de restauration.
+*** *Verrouillage d'objet* : sélectionnez cette option pour activer le verrouillage d'objet pour le bucket StorageGRID . Le verrouillage d'objet empêche la suppression ou l'écrasement des objets pendant une période de conservation spécifiée, offrant ainsi une protection supplémentaire des données. Vous pouvez activer cette option uniquement lors de la création d'un bucket ; vous ne pouvez pas la désactiver ultérieurement.
+*** *Capacité* : saisissez la capacité du bucket StorageGRID . Il s'agit de la quantité maximale de données pouvant y être stockées.
+
+
+** Pour ONTAP S3 :
++
+*** *Nom de la cible de sauvegarde* : sélectionnez le nom du bucket ONTAP S3.
+*** *Nom de la cible du bucket* : saisissez le nom du bucket ONTAP S3.
+*** *Capacité* : saisissez la capacité du bucket ONTAP S3. Il s'agit de la quantité maximale de données pouvant y être stockées.
+*** *Activer le contrôle de version* : sélectionnez cette option pour activer le contrôle de version pour le bucket ONTAP S3. Le contrôle de version vous permet de conserver plusieurs versions des objets dans le bucket, ce qui peut être utile à des fins de sauvegarde et de restauration.
+*** *Verrouillage d'objet* : sélectionnez cette option pour activer le verrouillage d'objet pour le compartiment ONTAP S3. Le verrouillage d'objet empêche la suppression ou l'écrasement des objets pendant une période de conservation spécifiée, offrant ainsi une protection supplémentaire des données. Vous pouvez activer cette option uniquement lors de la création d'un compartiment ; vous ne pouvez pas la désactiver ultérieurement.
+
+
+
+
+. Sélectionnez *Ajouter*.
+
+
+
+
+== Modifier les informations d'identification pour une cible de sauvegarde
+
+Saisissez les informations d’identification nécessaires pour accéder à la cible de sauvegarde.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Inventaire*.
+. Sélectionnez *Cibles de sauvegarde hors site*.
+. Sélectionnez la cible et à droite, sélectionnez les *Actions* image:icon-action.png["Icône actions"] icône et sélectionnez *Modifier les informations d'identification*.
+. Saisissez les nouvelles informations d'identification pour la cible de sauvegarde. Ces informations varient selon le type de cible de sauvegarde sélectionné.
+. Sélectionnez *Done*.
+

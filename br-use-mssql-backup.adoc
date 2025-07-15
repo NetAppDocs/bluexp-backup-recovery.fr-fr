@@ -1,0 +1,233 @@
+---
+sidebar: sidebar 
+permalink: br-use-mssql-backup.html 
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery 
+summary: 'Sauvegardez les données des applications Microsoft SQL Server depuis vos systèmes ONTAP locaux vers Amazon Web Services, Microsoft Azure, Google Cloud Platform et StorageGRID pour garantir leur protection. Les sauvegardes sont automatiquement générées et stockées dans un magasin d"objets de votre compte cloud public ou privé. Vous pouvez mettre en œuvre une stratégie 3-2-1 : vous disposez de trois copies de vos données sources sur deux systèmes de stockage différents, ainsi que d"une copie dans le cloud.' 
+---
+= Sauvegardez les charges de travail Microsoft SQL Server avec la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sauvegardez les données des applications Microsoft SQL Server à partir des systèmes ONTAP sur site vers Amazon Web Services, Microsoft Azure et StorageGRID pour garantir la protection de vos données. Les sauvegardes sont automatiquement générées et stockées dans un magasin d'objets de votre compte cloud public ou privé.
+
+* Pour sauvegarder des charges de travail selon une planification, créez des stratégies qui régissent les opérations de sauvegarde et de restauration. Voir link:br-use-policies-create.html["Création de règles"] pour obtenir des instructions.
+* Configurez le répertoire de journaux pour les hôtes découverts avant de lancer une sauvegarde.
+* Sauvegardez les charges de travail maintenant (créez une sauvegarde à la demande maintenant).
+
+
+
+
+== Afficher l'état de protection de la charge de travail
+
+Avant de lancer une sauvegarde, affichez l’état de protection de vos charges de travail.
+
+*Rôle BlueXP requis* Administrateur d'organisation, Administrateur de dossier ou de projet, Super administrateur de sauvegarde et de récupération, Administrateur de sauvegarde et de récupération, Administrateur de restauration de sauvegarde et de récupération, Administrateur de clone de sauvegarde et de récupération ou Rôle de visualiseur de sauvegarde et de récupération. En savoir plus link:reference-roles.html["Rôles et privilèges de sauvegarde et de récupération"] .  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Inventaire*.
++
+image:screen-br-inventory.png["Capture d'écran de l'inventaire pour la BlueXP backup and recovery"]
+
+. Sélectionnez une charge de travail pour afficher les détails de protection.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Voir les détails*.
++
+image:screen-br-inventory-sql.png["Capture d'écran de la page des détails de l'inventaire pour la BlueXP backup and recovery"]
+
+. Consultez les détails des onglets Hôtes, Groupes de protection, Groupes de disponibilité, Instances et Bases de données.
+
+
+
+
+== Gérer les hôtes
+
+Vous pouvez gérer les hôtes détectés dans votre environnement de travail, séparément ou en groupe.
+
+
+TIP: Vous ne pouvez gérer que les hôtes dont le statut est « Non géré » dans la colonne « Hôtes ». Si le statut est « Géré », cela signifie que l'hôte est déjà géré par BlueXP backup and recovery.
+
+Une fois que vous avez géré les hôtes dans la BlueXP backup and recovery, SnapCenter ne gère plus les ressources sur ces hôtes.
+
+*Rôle BlueXP requis* Administrateur d'organisation, administrateur de dossier ou de projet ou super administrateur de sauvegarde et de récupération.  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+.Étapes
+. Dans le menu, sélectionnez *Inventaire*.
++
+image:screen-br-inventory.png["Capture d'écran de l'inventaire pour la BlueXP backup and recovery"]
+
+. Sélectionnez une charge de travail pour afficher les détails de protection.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Voir les détails*.
++
+image:screen-br-inventory-sql.png["Capture d'écran de la page des détails de l'inventaire pour la BlueXP backup and recovery"]
+
+. Sélectionnez l'onglet *Hôtes*.
+. Sélectionnez un ou plusieurs hôtes. Si vous en sélectionnez plusieurs, une option « Actions groupées » apparaît, vous permettant de sélectionner « Gérer (jusqu'à 5 hôtes) ».
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Gérer*.
++
+image:screen-br-inventory-details-manage-hosts.png["Gérer la page des hôtes"]
+
+. Examinez les dépendances de l’hôte :
++
+** Si le vCenter ne s’affiche pas, sélectionnez l’icône en forme de crayon pour ajouter ou modifier les détails du vCenter.
+** Si vous ajoutez un vCenter, vous devez également enregistrer le vCenter en sélectionnant *Enregistrer vCenter*.
+
+
+. Sélectionnez *Valider les paramètres* pour tester vos paramètres.
+. Sélectionnez *Gérer* pour gérer l'hôte.
+
+
+
+
+== Configurer le répertoire de journaux pour les hôtes découverts
+
+Avant de sauvegarder vos charges de travail, définissez le chemin d'accès aux journaux d'activité des hôtes détectés. Cela vous permet de suivre l'état des opérations.
+
+*Rôle BlueXP requis* Administrateur d'organisation, administrateur de dossier ou de projet, super administrateur de sauvegarde et de récupération, administrateur de sauvegarde et de récupération ou rôle d'administrateur de restauration de sauvegarde et de récupération.  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Inventaire*.
++
+image:screen-br-inventory.png["Capture d'écran de l'inventaire pour la BlueXP backup and recovery"]
+
+. Sélectionnez une charge de travail pour afficher les détails de protection.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Voir les détails*.
+. Sélectionnez un hôte.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Configurer le répertoire des journaux*.
++
+image:screen-br-inventory-details-configurelog-option.png["Configurer l'écran du journal"]
+
+. Fournissez le chemin de l'hôte ou parcourez une liste d'hôtes ou de nœuds hôtes sur l'hôte pour localiser l'endroit où vous souhaitez que le journal de l'hôte soit stocké.
+. Sélectionnez ceux sur lesquels vous souhaitez stocker les journaux.
++
+
+NOTE: Les champs qui s'affichent diffèrent selon le modèle de déploiement sélectionné, par exemple, instance de cluster de basculement ou autonome.
+
+. Sélectionnez *Enregistrer*.
+
+
+
+
+== Créer un groupe de protection
+
+Vous pouvez créer un groupe de protection pour gérer les opérations de sauvegarde et de restauration d'un ensemble de charges de travail. Un groupe de protection est un regroupement logique de charges de travail que vous souhaitez protéger ensemble.
+
+*Rôle BlueXP requis* Administrateur d'organisation, administrateur de dossier ou de projet, super administrateur de sauvegarde et de récupération ou rôle d'administrateur de sauvegarde de sauvegarde et de récupération.  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Inventaire*.
++
+image:screen-br-inventory.png["Capture d'écran de l'inventaire pour la BlueXP backup and recovery"]
+
+. Sélectionnez une charge de travail pour afficher les détails de protection.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Voir les détails*.
+. Sélectionnez l'onglet *Groupes de protection*.
+. Sélectionnez *Créer un groupe de protection*.
+. Donnez un nom au groupe de protection.
+. Sélectionnez les instances ou les bases de données que vous souhaitez inclure dans le groupe de protection.
+. Sélectionnez *Suivant*.
+. Sélectionnez la *politique de sauvegarde* que vous souhaitez appliquer au groupe de protection.
++
+Si vous souhaitez créer une politique, sélectionnez *Créer une nouvelle politique* et suivez les instructions pour créer une politique. Voir link:br-use-policies-create.html["Création de règles"] pour plus d'informations.
+
+. Sélectionnez *Suivant*.
+. Vérifiez la configuration.
+. Sélectionnez *Créer* pour créer le groupe de protection.
+
+
+
+
+== Sauvegardez vos charges de travail maintenant avec une sauvegarde à la demande
+
+Créez immédiatement une sauvegarde à la demande. Vous pouvez effectuer une sauvegarde à la demande si vous êtes sur le point d'apporter des modifications à votre système et souhaitez vous assurer d'avoir une sauvegarde avant de commencer.
+
+*Rôle BlueXP requis* Administrateur d'organisation, administrateur de dossier ou de projet, super administrateur de sauvegarde et de récupération ou rôle d'administrateur de sauvegarde de sauvegarde et de récupération.  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+.Étapes
+. Dans le menu, sélectionnez *Inventaire*.
++
+image:screen-br-inventory.png["Capture d'écran de l'inventaire pour la BlueXP backup and recovery"]
+
+. Sélectionnez une charge de travail pour afficher les détails de protection.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Voir les détails*.
+. Sélectionnez l'onglet *Groupe de protection*, *Instances* ou *Bases de données*.
+. Sélectionnez l’instance ou la base de données que vous souhaitez sauvegarder.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Reculez maintenant*.
+. Sélectionnez la politique que vous souhaitez appliquer à la sauvegarde.
+. Sélectionnez le niveau de planification.
+. Sélectionnez *Sauvegarder maintenant*.
+
+
+
+
+== Suspendre le programme de sauvegarde
+
+Suspendre la planification empêche temporairement l'exécution de la sauvegarde à l'heure prévue. Cette option peut être utile si vous effectuez une maintenance sur le système ou si vous rencontrez des problèmes avec la sauvegarde.
+
+*Rôle BlueXP requis* Administrateur d'organisation, administrateur de dossier ou de projet, super administrateur de sauvegarde et de récupération, administrateur de sauvegarde de sauvegarde et de récupération, administrateur de restauration de sauvegarde et de récupération ou rôle d'administrateur de clone de sauvegarde et de récupération.  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Inventaire*.
++
+image:screen-br-inventory.png["Capture d'écran de l'inventaire pour la BlueXP backup and recovery"]
+
+. Sélectionnez une charge de travail pour afficher les détails de protection.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Voir les détails*.
+. Sélectionnez l'onglet *Groupe de protection*, *Instances* ou *Bases de données*.
+. Sélectionnez le groupe de protection, l’instance ou la base de données que vous souhaitez suspendre.
++
+image:../media/screen-br-inventory-sql-details-actions-menu.png["Capture d'écran du menu Actions pour la BlueXP backup and recovery"]
+
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Suspendre*.
+
+
+
+
+== Supprimer un groupe de protection
+
+Vous pouvez créer un groupe de protection pour gérer les opérations de sauvegarde et de restauration d'un ensemble de charges de travail. Un groupe de protection est un regroupement logique de charges de travail que vous souhaitez protéger ensemble.
+
+*Rôle BlueXP requis* Administrateur d'organisation, administrateur de dossier ou de projet, super administrateur de sauvegarde et de récupération ou rôle d'administrateur de sauvegarde de sauvegarde et de récupération.  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Inventaire*.
++
+image:screen-br-inventory.png["Capture d'écran de l'inventaire pour la BlueXP backup and recovery"]
+
+. Sélectionnez une charge de travail pour afficher les détails de protection.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Voir les détails*.
+. Sélectionnez l'onglet *Groupes de protection*.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Supprimer le groupe de protection*.
++
+image:../media/screen-br-inventory-sql-details-actions-menu.png["Capture d'écran du menu Actions pour la BlueXP backup and recovery"]
+
+
+
+
+
+== Supprimer la protection d'une charge de travail
+
+Vous pouvez supprimer la protection d'une charge de travail si vous ne souhaitez plus la sauvegarder ou si vous souhaitez arrêter de la gérer dans la BlueXP backup and recovery.
+
+*Rôle BlueXP requis* Administrateur d'organisation, administrateur de dossier ou de projet, super administrateur de sauvegarde et de récupération ou rôle d'administrateur de sauvegarde de sauvegarde et de récupération.  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Inventaire*.
++
+image:screen-br-inventory.png["Capture d'écran de l'inventaire pour la BlueXP backup and recovery"]
+
+. Sélectionnez une charge de travail pour afficher les détails de protection.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Voir les détails*.
+. Sélectionnez l'onglet *Groupe de protection*, *Instances* ou *Bases de données*.
+. Sélectionnez le groupe de protection, l’instance ou la base de données.
++
+image:../media/screen-br-inventory-sql-details-actions-menu.png["Capture d'écran du menu Actions pour la BlueXP backup and recovery"]
+
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Supprimer la protection*.
+. Dans la boîte de dialogue Supprimer la protection, sélectionnez si vous souhaitez conserver les sauvegardes et les métadonnées ou les supprimer.
+. Sélectionnez *Supprimer* pour confirmer l'action.
+

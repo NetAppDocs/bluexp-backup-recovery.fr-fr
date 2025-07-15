@@ -1,0 +1,92 @@
+---
+sidebar: sidebar 
+permalink: prev-reference-aws-archive-storage-tiers.html 
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, BlueXP backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database 
+summary: 'La sauvegarde et la restauration BlueXP prennent en charge deux classes de stockage d"archives S3 et la plupart des régions.' 
+---
+= Niveaux de stockage d'archives AWS pris en charge avec la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La sauvegarde et la restauration BlueXP prennent en charge deux classes de stockage d'archives S3 et la plupart des régions.
+
+[]
+====
+*REMARQUE* Pour basculer vers et depuis les versions de l'interface utilisateur de BlueXP backup and recovery , reportez-vous à link:br-start-switch-ui.html["Basculer vers l'interface utilisateur de BlueXP backup and recovery précédente"] .
+
+====
+
+
+== Classes de stockage d'archivage S3 prises en charge pour la sauvegarde et la restauration BlueXP
+
+Lorsque des fichiers de sauvegarde sont créés initialement, ils sont stockés dans le stockage S3 _Standard_. Il est optimisé pour stocker les données peu utilisées, mais vous pouvez également y accéder immédiatement. Après 30 jours, les sauvegardes passent à la classe de stockage S3 _Standard-Infrequent Access_ pour réduire les coûts.
+
+Si vos clusters source exécutent ONTAP 9.10.1 ou version ultérieure, vous pouvez choisir de classer les sauvegardes vers un stockage _S3 Glacier_ ou _S3 Glacier Deep Archive_ après un certain nombre de jours (généralement plus de 30 jours) pour optimiser les coûts. Vous pouvez régler ce paramètre sur « 0 » ou sur 1-999 jours. Si vous le définissez sur « 0 » jours, vous ne pouvez pas le modifier plus tard à 1-999 jours.
+
+Les données de ces niveaux ne sont pas accessibles immédiatement lorsque cela s'avère nécessaire. Par conséquent, les coûts de récupération sont plus élevés, vous devez déterminer la fréquence à laquelle vous devrez peut-être restaurer les données à partir de ces fichiers de sauvegarde archivés. Reportez-vous à la section de cette page sur la restauration de données à partir du stockage d'archives.
+
+* Si vous ne sélectionnez aucun Tier d'archivage dans votre première stratégie de sauvegarde lors de l'activation de la sauvegarde et de la restauration BlueXP, _S3 Glacier_ sera votre seule option d'archivage pour les futures stratégies.
+* Si vous sélectionnez _S3 Glacier_ dans votre première règle de sauvegarde, vous pouvez passer au niveau _S3 Glacier Deep Archive_ pour les futures règles de sauvegarde de ce cluster.
+* Si vous sélectionnez _S3 Glacier Deep Archive_ dans votre première règle de sauvegarde, ce niveau sera le seul Tier d'archivage disponible pour les futures règles de sauvegarde de ce cluster.
+
+
+Notez que lorsque vous configurez la sauvegarde et la restauration BlueXP avec ce type de règle de cycle de vie, vous ne devez pas configurer de règles de cycle de vie lors de la configuration du compartiment dans votre compte AWS.
+
+https://aws.amazon.com/s3/storage-classes/["Découvrez les classes de stockage S3"^].
+
+
+
+== Restaurez les données à partir du stockage d'archives
+
+Le stockage de fichiers de sauvegarde plus anciens dans un stockage d'archivage est bien moins coûteux que le stockage Standard ou Standard-IA. L'accès aux données à partir d'un fichier de sauvegarde dans un stockage d'archivage à des fins de restauration prendra plus de temps et coûtera plus d'argent.
+
+Combien coûte la restauration des données à partir d'Amazon S3 Glacier et d'Amazon S3 Glacier ?:: Il existe 3 priorités en matière de restauration pour la récupération des données depuis Amazon S3 Glacier et 2 priorités en matière de restauration lors de la récupération des données depuis Amazon S3 Glacier Deep Archive. Les frais d'archivage en profondeur S3 Glacier sont inférieurs à ceux de S3 Glacier :
++
+--
+[cols="25,25,25,25"]
+|===
+| Tier d'archivage 3+| Restaurer les priorités et les coûts 
+
+
+|  | *Haut* | *Standard* | *Faible* 
+
+
+| *Glacier S3* | Récupération plus rapide, coût le plus élevé | Récupération plus lente, coûts réduits | Récupération la plus lente, coût le plus bas 
+
+
+| *Archive en profondeur du glacier S3* |  | Récupération plus rapide, coûts supérieurs | Récupération plus lente, coûts réduits 
+|===
+Chaque méthode propose des frais de récupération différents par Go et par demande. Pour en savoir plus sur la tarification S3 Glacier par région AWS, rendez-vous sur le https://aws.amazon.com/s3/pricing/["Page tarifaire d'Amazon S3"^].
+
+--
+Combien de temps faut-il pour restaurer mes objets archivés dans Amazon S3 Glacier ?:: Deux parties composent la durée totale de restauration :
++
+--
+* *Heure de récupération* : le moment de récupérer le fichier de sauvegarde à partir de l'archive et de le placer dans le stockage standard. Ce temps est parfois appelé le temps de « réhydratation ». La durée de récupération varie en fonction de la priorité de restauration choisie.
++
+[cols="25,20,20,20"]
+|===
+| Tier d'archivage 3+| Restauration de la priorité et de l'heure de récupération 
+
+
+|  | *Haut* | *Standard* | *Faible* 
+
+
+| *Glacier S3* | 3-5 minutes | 3-5 heures | 5-12 heures 
+
+
+| *Archive en profondeur du glacier S3* |  | 12 heures | 48 heures 
+|===
+* *Temps de restauration* : temps de restauration des données à partir du fichier de sauvegarde dans le stockage standard. Ce temps n'est pas différent de l'opération de restauration standard directement depuis le stockage standard - lorsque vous n'utilisez pas de niveau d'archivage.
+
+
+Pour plus d'informations sur les options de récupération d'Amazon S3 Glacier et S3 Glacier Deep Archive, consultez https://aws.amazon.com/s3/faqs/#Amazon_S3_Glacier["Forum aux questions d'Amazon sur ces classes de stockage"^].
+
+--
+

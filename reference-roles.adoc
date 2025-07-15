@@ -1,0 +1,287 @@
+---
+sidebar: sidebar 
+permalink: reference-roles.html 
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, roles, permissions, access control, role-based access control, rbac 
+summary: 'La BlueXP backup and recovery utilisent des rôles pour gérer l"accès de chaque utilisateur à des fonctionnalités et actions spécifiques' 
+---
+= Accès aux fonctionnalités de BlueXP backup and recovery basé sur les rôles
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La BlueXP backup and recovery utilisent des rôles pour gérer l'accès de chaque utilisateur à des fonctionnalités et actions spécifiques.
+
+Le service utilise les rôles suivants qui sont spécifiques à la BlueXP backup and recovery.
+
+* *Super administrateur de sauvegarde et de récupération* : effectuez toutes les actions dans la BlueXP backup and recovery.
+* *Administrateur de sauvegarde* : effectuez des sauvegardes sur des snapshots locaux, répliquez sur un stockage secondaire et sauvegardez sur des actions de stockage d'objets dans la BlueXP backup and recovery.
+* *Restauration admin* : Restaurez les charges de travail à l'aide de la BlueXP backup and recovery.
+* *Clone admin* : Clonez des applications et des données à l'aide de la BlueXP backup and recovery.
+* *Visionneuse de sauvegarde et de récupération* : affichez les informations dans la BlueXP backup and recovery, mais n'effectuez aucune action.
+
+
+Pour plus de détails sur tous les rôles d'accès BlueXP , voir  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["Documentation d'installation et d'administration de BlueXP"^] .
+
+Le tableau suivant indique les actions que chaque rôle de BlueXP backup and recovery peut effectuer.
+
+[cols="20,20,15,15a,15a,15a"]
+|===
+| Fonction et action | Super administrateur de sauvegarde et de récupération | Administrateur des sauvegardes | Restaurer l'administrateur | Cloner l'administrateur | Visualiseur 
+
+
+| Ajouter, modifier ou supprimer des hôtes | Oui. | Non  a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+| Installer des plugins | Oui. | Non  a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+| Ajouter des informations d'identification (hôte, instance, vCenter) | Oui. | Non  a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+| Afficher le tableau de bord et tous les onglets | Oui. | Oui.  a| 
+Oui.
+ a| 
+Oui.
+ a| 
+Oui.
+
+
+
+| Essayer gratuitement | Oui. | Non  a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+| Lancez la découverte des charges de travail | Non | Oui.  a| 
+Oui.
+ a| 
+Oui.
+ a| 
+Non
+
+
+
+| Afficher les informations de licence | Oui. | Oui.  a| 
+Oui.
+ a| 
+Oui.
+ a| 
+Oui.
+
+
+
+| Activer la licence | Oui. | Non  a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+| Voir les hôtes | Oui. | Oui.  a| 
+Oui.
+ a| 
+Oui.
+ a| 
+Oui.
+
+
+
+6+| *Horaires*: 
+
+
+| Activer les horaires | Oui. | Oui.  a| 
+Oui.
+ a| 
+Oui.
+ a| 
+Non
+
+
+
+| Suspendre les horaires | Oui. | Oui.  a| 
+Oui.
+ a| 
+Oui.
+ a| 
+Non
+
+
+
+6+| *Politiques et protection*: 
+
+
+| Voir les plans de protection | Oui. | Oui.  a| 
+Oui.
+ a| 
+Oui.
+ a| 
+Oui.
+
+
+
+| Créer, modifier ou supprimer une protection | Oui. | Oui.  a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+| Restaurer les charges de travail | Oui. | Non  a| 
+Oui.
+ a| 
+Non
+ a| 
+Non
+
+
+
+| Créer un clone, diviser un clone ou supprimer un clone | Oui. | Non  a| 
+Non
+ a| 
+Oui.
+ a| 
+Non
+
+
+
+| Créer, modifier ou supprimer une politique | Oui. | Oui.  a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+6+| *Rapports*: 
+
+
+| Afficher les rapports | Oui. | Oui.  a| 
+Oui.
+ a| 
+Oui.
+ a| 
+Oui.
+
+
+
+| Créer des rapports | Oui. | Oui.  a| 
+Oui.
+ a| 
+Oui.
+ a| 
+Non
+
+
+
+| Supprimer des rapports | Oui. | Non  a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+6+| *Importer depuis SnapCenter et gérer l'hôte*: 
+
+
+| Afficher les données SnapCenter importées | Oui. | Oui.  a| 
+Oui.
+ a| 
+Oui.
+ a| 
+Oui.
+
+
+
+| Importer des données depuis SnapCenter | Oui. | Oui.  a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+| Gérer (migrer) l'hôte | Oui. | Oui.  a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+6+| *Configurer les paramètres*: 
+
+
+| Configurer le répertoire du journal | Oui. | Oui.  a| 
+Oui.
+ a| 
+Non
+ a| 
+Non
+
+
+
+| Associer ou supprimer les informations d'identification de l'instance | Oui. | Oui.  a| 
+Oui.
+ a| 
+Non
+ a| 
+Non
+
+
+
+6+| *Seaux*: 
+
+
+| Compartiments de vue | Oui. | Oui.  a| 
+Oui.
+ a| 
+Oui.
+ a| 
+Oui.
+
+
+
+| Créer, modifier ou supprimer un bucket | Oui. | Oui.  a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+|===

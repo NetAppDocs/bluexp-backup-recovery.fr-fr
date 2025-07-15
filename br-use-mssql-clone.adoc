@@ -1,0 +1,206 @@
+---
+sidebar: sidebar 
+permalink: br-use-mssql-clone.html 
+keywords: backing up, restoring, back up, backup, clone, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery 
+summary: 'Clonez les données des applications Microsoft SQL Server à des fins de développement, de test ou de protection. Vous pouvez créer des clones à partir d"instantanés instantanés ou d"instantanés existants de vos charges de travail Microsoft SQL Server.' 
+---
+= Clonez les charges de travail Microsoft SQL Server avec la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Clonez les données des applications Microsoft SQL Server sur la même machine virtuelle ou une machine virtuelle différente à des fins de développement, de test ou de protection grâce à la BlueXP backup and recovery. Vous pouvez créer des clones à partir d'instantanés instantanés ou d'instantanés existants de vos charges de travail Microsoft SQL Server.
+
+Choisissez entre les types de clones suivants :
+
+* *Instantané et clonage instantanés* : Vous pouvez créer un clone de vos charges de travail Microsoft SQL Server à partir d'un instantané. Un instantané est une copie instantanée des données sources, créée à partir d'une sauvegarde. Le clone est stocké dans un magasin d'objets de votre compte cloud public ou privé. Vous pouvez l'utiliser pour restaurer vos charges de travail en cas de perte ou de corruption de données.
+* *Cloner à partir d'un snapshot existant* : vous pouvez choisir un snapshot existant parmi ceux disponibles pour la charge de travail. Cette option est utile pour créer un clone à partir d'un instant précis. Clonez vers un stockage principal ou secondaire.
+
+
+Vous pouvez atteindre les objectifs de protection suivants :
+
+* Créer un clone
+* Actualiser un clone
+* Séparer un clone
+* Supprimer un clone
+
+
+*Rôle BlueXP requis* Administrateur d'organisation, administrateur de dossier ou de projet, super administrateur de sauvegarde et de récupération ou rôle d'administrateur de clone de sauvegarde et de récupération.  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+
+
+== Créer un clone
+
+Vous pouvez créer un clone de vos charges de travail Microsoft SQL Server. Un clone est une copie des données sources créée à partir d'une sauvegarde. Ce clone est stocké dans un magasin d'objets de votre compte cloud public ou privé. Vous pouvez l'utiliser pour restaurer vos charges de travail en cas de perte ou de corruption de données.
+
+Vous pouvez créer un clone à partir d'un snapshot existant ou d'un snapshot instantané. Un snapshot instantané est une copie instantanée des données sources créée à partir d'une sauvegarde. Vous pouvez utiliser ce clone pour restaurer vos charges de travail en cas de perte ou de corruption de données.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Cloner*.
++
+image:screen-br-sql-clone-nomenu.png["Capture d'écran de la page de clonage pour la BlueXP backup and recovery"]
+
+. Sélectionnez *Créer un nouveau clone*.
+. Sélectionnez le type de clone :
++
+** *Clonage et actualisation de la base de données à partir d'un snapshot existant* : sélectionnez le snapshot du clone et configurez ses options. Cette option est utile pour choisir le snapshot du clone et configurer ses options.
+** *Instantané et clonage instantanés* : prenez un instantané des données sources et créez un clone à partir de cet instantané. Cette option est utile pour créer un clone à partir des données les plus récentes de la charge de travail source.
+
+
+. Complétez la section *Source de la base de données* :
++
+** *Clonage unique ou clonage en masse* : sélectionnez la création d'un ou de plusieurs clones. Si vous sélectionnez *Clonage en masse*, vous pouvez créer plusieurs clones simultanément à l'aide d'un groupe de protection déjà créé. Cette option est utile si vous souhaitez créer plusieurs clones pour différentes charges de travail.
+** *Hôte, instance et nom de la base de données source* : sélectionnez l'hôte, l'instance et le nom de la base de données source pour le clone. La base de données source est celle à partir de laquelle le clone sera créé.
+
+
+. Complétez la section *Cible de la base de données* :
++
+** *Hôte, instance et nom de la base de données cible* : sélectionnez l'hôte, l'instance et le nom de la base de données cible pour le clone. La base de données cible correspond à l'emplacement où le clone sera créé.
++
+Vous pouvez également sélectionner *Suffixe* dans la liste déroulante du nom cible et ajouter un suffixe au nom de la base de données clonée. Si vous ne spécifiez pas de suffixe, le nom de la base de données clonée sera identique à celui de la base de données source.
+
+** *QoS (débit maximal)* : sélectionnez le débit maximal de qualité de service (QoS) en Mbit/s pour le clone. La QoS définit les caractéristiques de performances du clone, telles que le débit maximal et les IOPS.
+
+
+. Complétez la section *Monture* :
++
+** *Attribuer automatiquement un point de montage* : sélectionnez cette option pour attribuer automatiquement un point de montage au clone. Le point de montage correspond à l'emplacement où le clone sera monté dans le magasin d'objets.
+** *Définir le chemin du point de montage* : saisissez un point de montage pour le clone. Ce point correspond à l'emplacement où le clone sera monté dans le magasin d'objets. Sélectionnez la lettre du lecteur, saisissez le chemin du fichier de données et celui du fichier journal.
+
+
+. Sélectionnez *Suivant*.
+. Sélectionnez le point de restauration :
++
+** *Instantanés existants* : sélectionnez un instantané existant dans la liste des instantanés disponibles pour la charge de travail. Cette option est utile pour créer un clone à partir d'un instant précis.
+** *Instantané et clonage instantanés* : sélectionnez le dernier instantané parmi ceux disponibles pour la charge de travail. Cette option est utile pour créer un clone à partir des données les plus récentes de la charge de travail source.
+
+
+. Si vous choisissez de créer un *instantané instantané et de cloner*, choisissez l'emplacement de stockage du clone :
++
+** *Stockage local* : sélectionnez cette option pour créer le clone dans le stockage local du système ONTAP . Le stockage local est celui directement connecté au système ONTAP .
+** *Stockage secondaire* : sélectionnez cette option pour créer le clone dans le stockage secondaire du système ONTAP . Ce stockage est utilisé pour les charges de travail de sauvegarde et de restauration.
+
+
+. Sélectionnez l’emplacement de destination des données et des journaux.
+. Sélectionnez *Suivant*.
+. Complétez la section *Options avancées* :
++
+image:screen-br-sql-clone-create-advanced.png["Paramètres avancés pour la création d'un clone dans la BlueXP backup and recovery"]
+
+. Si vous avez choisi *Instantané et clonage instantanés*, complétez les options suivantes :
++
+image:screen-br-sql-clone-create-instantsnapshot-advanced.png["Paramètres avancés pour la création d'un instantané et d'un clone dans la BlueXP backup and recovery"]
+
++
+** *Planification et expiration de l'actualisation du clone* : Si vous avez choisi *Clonage instantané*, saisissez la date de début de l'actualisation du clone. La planification du clonage définit la date de création du clone.
++
+*** *Supprimer le clone si la planification expire* : si vous souhaitez supprimer le clone à la date d'expiration du clone.
+*** *Actualiser le clone toutes les* : sélectionnez la fréquence d'actualisation du clone. Vous pouvez choisir une actualisation horaire, quotidienne, hebdomadaire, mensuelle ou trimestrielle. Cette option est utile pour maintenir le clone à jour avec la charge de travail source.
+
+
+** *Préscripts et postscripts* : Vous pouvez également spécifier des scripts de pré- et post-clonage à exécuter avant et après la création du clone. Ces scripts peuvent être utilisés pour effectuer des tâches supplémentaires, telles que la configuration du clone ou l'envoi de notifications.
+** *Notification* : Vous pouvez également spécifier des adresses e-mail pour recevoir des notifications sur l'état de création du clone et le rapport de tâche. Vous pouvez également spécifier une URL de webhook pour recevoir des notifications sur l'état de création du clone. Vous pouvez également spécifier si vous souhaitez recevoir des notifications de réussite et d'échec, ou uniquement l'une ou l'autre.
+** *Étiquettes* : Sélectionnez une ou plusieurs étiquettes pour faciliter la recherche ultérieure du groupe de ressources, puis cliquez sur *Appliquer*. Par exemple, si vous ajoutez « RH » comme étiquette à plusieurs groupes de ressources, vous pourrez retrouver ultérieurement tous les groupes de ressources associés à l'étiquette RH.
+
+
+. Sélectionnez *Créer*.
+. Une fois le clone créé, vous pouvez le visualiser dans la page *Inventaire*. image:screen-br-inventory.png["Capture d'écran de la page d'inventaire pour la BlueXP backup and recovery"]
+
+
+
+
+== Actualiser un clone
+
+Vous pouvez actualiser un clone de vos charges de travail Microsoft SQL Server. L'actualisation d'un clone le met à jour avec les dernières données de la charge de travail source. Ceci est utile si vous souhaitez maintenir le clone à jour avec la charge de travail source.
+
+Vous avez la possibilité de modifier le nom de la base de données, d'utiliser le dernier instantané ou d'actualiser à partir d'un instantané de production existant.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Cloner*.
+. Sélectionnez le clone que vous souhaitez actualiser.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Actualiser le clone*.
++
+image:screen-br-sql-clone-refresh-options.png["Actualiser les options de clonage pour la BlueXP backup and recovery"]
+
+. Complétez la section *Paramètres avancés* :
++
+** *Étendue de la récupération* : choisissez de récupérer toutes les sauvegardes de journaux ou les sauvegardes de journaux jusqu'à un instant précis. Cette option est utile si vous souhaitez restaurer le clone jusqu'à un instant précis.
+** *Planification et expiration de l'actualisation du clone* : Si vous avez choisi *Clonage instantané*, saisissez la date de début de l'actualisation du clone. La planification du clonage définit la date de création du clone.
++
+*** *Supprimer le clone si la planification expire* : si vous souhaitez supprimer le clone à la date d'expiration du clone.
+*** *Actualiser le clone toutes les* : sélectionnez la fréquence d'actualisation du clone. Vous pouvez choisir une actualisation horaire, quotidienne, hebdomadaire, mensuelle ou trimestrielle. Cette option est utile pour maintenir le clone à jour avec la charge de travail source.
+
+
+** *Paramètres iGroup* : sélectionnez l'igroup pour le clone. L'igroup est un regroupement logique d'initiateurs permettant d'accéder au clone. Vous pouvez sélectionner un igroup existant ou en créer un nouveau. Sélectionnez l'igroup du système de stockage ONTAP principal ou secondaire.
+** *Préscripts et postscripts* : Vous pouvez également spécifier des scripts de pré- et post-clonage à exécuter avant et après la création du clone. Ces scripts peuvent être utilisés pour effectuer des tâches supplémentaires, telles que la configuration du clone ou l'envoi de notifications.
+** *Notification* : Vous pouvez également spécifier des adresses e-mail pour recevoir des notifications sur l'état de création du clone et le rapport de tâche. Vous pouvez également spécifier une URL de webhook pour recevoir des notifications sur l'état de création du clone. Vous pouvez également spécifier si vous souhaitez recevoir des notifications de réussite et d'échec, ou uniquement l'une ou l'autre.
+** *Étiquettes* : Saisissez une ou plusieurs étiquettes qui vous aideront à retrouver le groupe de ressources ultérieurement. Par exemple, si vous ajoutez « RH » comme étiquette à plusieurs groupes de ressources, vous pourrez retrouver ultérieurement tous les groupes de ressources associés à l'étiquette RH.
+
+
+. Dans la boîte de dialogue de confirmation d'actualisation, pour continuer, sélectionnez *Actualiser*.
+
+
+
+
+== Ignorer une actualisation du clone
+
+Vous pouvez ignorer l'actualisation du clone si vous ne souhaitez pas le mettre à jour avec les dernières données de la charge de travail source. Ignorer l'actualisation du clone vous permet de conserver le clone tel quel sans le mettre à jour.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Cloner*.
+. Sélectionnez le clone pour lequel vous souhaitez ignorer l’actualisation.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Ignorer l'actualisation*.
+. Dans la boîte de dialogue de confirmation d'actualisation, procédez comme suit :
++
+.. Pour ignorer uniquement le prochain programme d'actualisation, sélectionnez *Ignorer uniquement le prochain programme d'actualisation*.
+.. Pour continuer, sélectionnez *Ignorer*.
+
+
+
+
+
+
+== Séparer un clone
+
+Vous pouvez fractionner un clone de vos charges de travail Microsoft SQL Server. Cette opération crée une nouvelle sauvegarde à partir du clone. Cette nouvelle sauvegarde peut être utilisée pour restaurer les charges de travail.
+
+Vous pouvez choisir de diviser un clone en clones indépendants ou à long terme. Un assistant affiche la liste des agrégats composant la SVM, leur taille et l'emplacement du volume cloné. La BlueXP backup and recovery indiquent également si l'espace disponible est suffisant pour diviser le clone. Une fois divisé, le clone devient une base de données indépendante à des fins de protection.
+
+Le travail de clonage ne doit pas être supprimé et peut être réutilisé pour d'autres clones.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Cloner*.
+. Sélectionnez un clone.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Clone divisé*.
++
+image:screen-br-sql-clone-split.png["Page de clonage divisée pour la BlueXP backup and recovery"]
+
+. Vérifiez les détails du clone divisé et sélectionnez *Diviser*.
+. Une fois le clone divisé créé, vous pouvez le visualiser dans la page *Inventaire*. image:screen-br-inventory.png["Capture d'écran de la page d'inventaire pour la BlueXP backup and recovery"]
+
+
+
+
+== Supprimer un clone
+
+Vous pouvez supprimer un clone de vos charges de travail Microsoft SQL Server. La suppression d'un clone supprime le clone du magasin d'objets et libère de l'espace de stockage.
+
+Si le clone est protégé par une politique, le clone est supprimé, y compris le travail.
+
+.Étapes
+. Dans le menu de BlueXP backup and recovery , sélectionnez *Cloner*.
+. Sélectionnez un clone.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Supprimer le clone*.
+. Dans la boîte de dialogue de confirmation de suppression du clone, vérifiez les détails de la suppression.
++
+.. Pour supprimer les ressources clonées de SnapCenter même si les clones ou leur stockage ne sont pas accessibles, sélectionnez *Forcer la suppression*.
+.. Sélectionnez *Supprimer*.
+
+
+. Lorsque le clone est supprimé, il est supprimé de la page *Inventaire*.
+

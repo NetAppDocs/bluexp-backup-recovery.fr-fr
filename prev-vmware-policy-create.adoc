@@ -1,0 +1,84 @@
+---
+sidebar: sidebar 
+permalink: prev-vmware-policy-create.html 
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, BlueXP backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database 
+summary: Protégez vos charges de travail VMware avec la BlueXP backup and recovery NetApp BlueXP. 
+---
+= Créer une politique de sauvegarde des banques de données dans la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous pouvez créer une politique ou utiliser l’une des politiques prédéfinies suivantes disponibles dans la sauvegarde et la récupération BlueXP.
+
+[]
+====
+*REMARQUE* Pour basculer vers et depuis les charges de travail de BlueXP backup and recovery , reportez-vous à link:br-start-switch-ui.html["Basculer vers différentes charges de travail de BlueXP backup and recovery"] .
+
+====
+.Avant de commencer
+* Vous devez créer des stratégies si vous ne souhaitez pas modifier les stratégies prédéfinies.
+* Pour transférer les sauvegardes du magasin d'objets vers le stockage d'archives, vous devez exécuter ONTAP 9.10.1 ou une version ultérieure et Amazon Web Services ou Microsoft Azure doit être le fournisseur cloud.
+* Vous devez configurer le niveau d'accès d'archivage pour chaque fournisseur de cloud.
+
+
+.Description de la tâche
+BlueXP dispose de règles prédéfinies suivantes :
+
+|===
+| Nom de la règle | Étiquette | Valeur de conservation 
+
+
+ a| 
+LTR quotidien de 1 an (conservation à long terme)
+ a| 
+Tous les jours
+ a| 
+366
+
+
+
+ a| 
+5 ans de LTR quotidien
+ a| 
+Tous les jours
+ a| 
+1830
+
+
+
+ a| 
+LTR hebdomadaire de 7 ans
+ a| 
+Hebdomadaire
+ a| 
+370
+
+
+
+ a| 
+10 ans de LTR mensuel
+ a| 
+Tous les mois
+ a| 
+120
+
+|===
+.Étapes
+. Sur la page machines virtuelles, dans la liste déroulante Paramètres, sélectionnez *stratégies*.
+. Sélectionnez *Créer une stratégie*.
+. Dans la section Détails de la stratégie, spécifiez le nom de la stratégie.
+. Dans la section Retention, sélectionnez l'un des types de rétention et indiquez le nombre de sauvegardes à conserver.
+. Sélectionnez primaire ou secondaire comme source de stockage de sauvegarde.
+. (Facultatif) si vous souhaitez transférer des sauvegardes du magasin d'objets vers le stockage d'archives après un certain nombre de jours pour l'optimisation des coûts, cochez la case *Tier backups to Archival* et entrez le nombre de jours après lequel la sauvegarde doit être archivée.
+. Sélectionnez *Créer*.
++
+
+NOTE: Vous ne pouvez ni modifier ni supprimer une règle associée à un datastore.
+
+
