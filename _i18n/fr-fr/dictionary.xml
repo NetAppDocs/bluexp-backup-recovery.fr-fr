@@ -4228,17 +4228,8 @@ ifdef::aws[]</block>
   <block id="b06c9fd76246f4cfb339125284b25aa5" category="list-text">Si vous choisissez l'étiquette *Mensuel* avec le nombre de rétention 3, la période de rétention des instantanés est de 90 jours.</block>
   <block id="efdf2d46dfa5c7a9f73d28bb893f836f" category="list-text">Si vous choisissez l'étiquette *Annuel* avec le nombre de rétention 1, la période de rétention des instantanés est de 365 jours.</block>
   <block id="a60142749401298f0a788c8439772777" category="section-title">Qu'est-ce que la date de conservation jusqu'à (RUD) et comment est-elle calculée ?</block>
-  <block id="eeada300415ab437a13601d2e69f066a" category="paragraph">La date de conservation jusqu'à (RUD) est déterminée en fonction de la période de conservation des instantanés.</block>
-  <block id="6984bab6fc7fe177ce259ff499fada58" category="list-text">La date de conservation jusqu'à est calculée en additionnant la période de conservation des instantanés et une mémoire tampon.</block>
-  <block id="95ff93ddc0c74a02cf692e476561a39d" category="list-text">Le tampon correspond au tampon pour le temps de transfert (6 jours) + au tampon pour l'optimisation des coûts (8 jours), ce qui représente un total de 14 jours.</block>
-  <block id="ac3a820fa3f3116f54715975be367471" category="list-text">La date de conservation minimale est de 30 jours + 14 jours.</block>
   <block id="c0dc453646abf19770644c4988b76265" category="paragraph">Voici quelques exemples :</block>
-  <block id="19606e2b227c881953690cfcbb2621ad" category="list-text">Si vous créez une planification de sauvegarde mensuelle avec 12 rétentions, vos sauvegardes sont verrouillées pendant 12 mois (plus 14 jours) avant d'être supprimées (remplacées par le fichier de sauvegarde suivant).</block>
   <block id="19703e6040b3a90f1ca1c6525c9432f8" category="list-text">Si vous créez une politique de sauvegarde qui crée 30 sauvegardes quotidiennes, 7 sauvegardes hebdomadaires et 12 sauvegardes mensuelles, il existe trois périodes de conservation verrouillées :</block>
-  <block id="32e9736765675e582a92ea22621346f6" category="list-text">Les sauvegardes « 30 quotidiennes » sont conservées pendant 44 jours (30 jours plus 14 jours de tampon),</block>
-  <block id="08725775ceb79bf9dd25c482670a47a4" category="list-text">Les sauvegardes « 7 semaines » sont conservées pendant 9 semaines (7 semaines plus 14 jours), et</block>
-  <block id="f0d1e71c852348fd449a59d2b4456479" category="list-text">Les sauvegardes « 12 mensuelles » sont conservées pendant 12 mois (plus 14 jours).</block>
-  <block id="bf7c437191fdcde55e7d7e2fc049c230" category="list-text">Si vous créez un programme de sauvegarde horaire avec 24 rétentions, vous pensez peut-être que les sauvegardes sont verrouillées pendant 24 heures. Cependant, étant donné qu'elle est inférieure au minimum de 30 jours, chaque sauvegarde est verrouillée et conservée pendant 44 jours (30 jours plus 14 jours de mémoire tampon).</block>
   <block id="16ec215ee395a25e960a53b7cdcdc794" category="admonition">Les anciennes sauvegardes sont supprimées après l'expiration de la période de conservation de DataLock, et non après la période de conservation de la politique de sauvegarde.</block>
   <block id="b31b5b22923a2871f33f5a4b77d6be83" category="paragraph">Le paramètre de conservation DataLock remplace le paramètre de conservation de la politique de votre politique de sauvegarde. Cela peut affecter vos coûts de stockage car vos fichiers de sauvegarde seront enregistrés dans le magasin d'objets pendant une période plus longue.</block>
   <block id="010f0e105bcb6f73ab6c815fef84dd1c" category="section-title">Activer DataLock et la protection contre les ransomwares</block>
@@ -4532,11 +4523,19 @@ ifdef::aws[]</block>
   <block id="79cf38f604ea494dd925df57b6a906b6" category="sidebar">Protéger les charges de travail des machines virtuelles</block>
   <block id="7706cc052aa7120ddac8475709793258" category="sidebar">Présentation de la protection des charges de travail des machines virtuelles</block>
   <block id="9ce88727019b612743000c7bcc2bfd23" category="sidebar">Conditions préalables à la protection des charges de travail des machines virtuelles</block>
-  <block id="6a1574cd5135a4d659f7c25fd4102feb" category="sidebar">Créer une politique de sauvegarde des banques de données VMware</block>
-  <block id="6cc90c7021ed31cf57b48ce2a8946fd6" category="sidebar">Restaurer les banques de données VMware</block>
   <block id="4639d0e2e2909a747265c2f704128bca" category="sidebar">Surveiller les tâches</block>
   <block id="3e8569bed0b50d0e3ac8dd96195c94f1" category="sidebar">Stratégies dans SnapCenter comparées à la BlueXP backup and recovery</block>
   <block id="f1518f15324a3922da2c43bf2d8a6950" category="sidebar">Rôles et privilèges de BlueXP backup and recovery</block>
   <block id="62967cdcfc7912e3c1a9b3870580fe3f" category="sidebar">Niveaux de stockage d'archives Azure pris en charge</block>
   <block id="6af2225d62ab9c4b0de4dfa7f9e852f5" category="sidebar">Niveaux de stockage d'archives Google Cloud pris en charge</block>
+  <block id="33f34f378ec48f478eda58fa96594aa4" category="paragraph">La date de conservation jusqu'à (RUD) est déterminée en fonction de la période de conservation des instantanés. La date de conservation jusqu'à est calculée en additionnant la période de conservation des instantanés et une mémoire tampon.</block>
+  <block id="0b918c8e643ab519717fd0eec681371c" category="list-text">Le tampon correspond au tampon pour le temps de transfert (3 jours) + au tampon pour l'optimisation des coûts (28 jours), ce qui représente un total de 31 jours.</block>
+  <block id="10040237b3e7b790c7f0c1983647279e" category="list-text">La date de conservation minimale est de 30 jours + 31 jours de tampon = 61 jours.</block>
+  <block id="f84724515a26602458b4cabf395689b0" category="list-text">Si vous créez une planification de sauvegarde mensuelle avec 12 rétentions, vos sauvegardes sont verrouillées pendant 12 mois (plus 31 jours) avant d'être supprimées (remplacées par le fichier de sauvegarde suivant).</block>
+  <block id="dc1987905977bd763b00c2a0741b977b" category="list-text">Les sauvegardes « 30 quotidiennes » sont conservées pendant 61 jours (30 jours plus 31 jours de tampon),</block>
+  <block id="dda5e0548944d946d7ab9e81fdd1296f" category="list-text">Les sauvegardes « 7 semaines » sont conservées pendant 11 semaines (7 semaines plus 31 jours), et</block>
+  <block id="b8400c37ab80692ef1ca26e1fa71d6f7" category="list-text">Les sauvegardes « 12 mensuelles » sont conservées pendant 12 mois (plus 31 jours).</block>
+  <block id="52d355afb10d30259b33c1f1c1cd46c8" category="list-text">Si vous créez un programme de sauvegarde horaire avec 24 rétentions, vous pensez peut-être que les sauvegardes sont verrouillées pendant 24 heures. Cependant, étant donné qu'elle est inférieure au minimum de 30 jours, chaque sauvegarde est verrouillée et conservée pendant 61 jours (30 jours plus 31 jours de mémoire tampon).</block>
+  <block id="776ec5ed6f61de56be98c037c8ca01c9" category="sidebar">Créer une politique de sauvegarde des données de la machine virtuelle</block>
+  <block id="9234f5bc35aa09673eacbf8fece508db" category="sidebar">Restaurer les données et les banques de données des machines virtuelles</block>
 </blocks>

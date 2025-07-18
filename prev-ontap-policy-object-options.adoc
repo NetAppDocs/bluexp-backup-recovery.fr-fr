@@ -96,24 +96,23 @@ La période minimale de conservation des instantanés est de 30 jours. Voyons qu
 
 === Qu'est-ce que la date de conservation jusqu'à (RUD) et comment est-elle calculée ?
 
-La date de conservation jusqu'à (RUD) est déterminée en fonction de la période de conservation des instantanés.
+La date de conservation jusqu'à (RUD) est déterminée en fonction de la période de conservation des instantanés. La date de conservation jusqu'à est calculée en additionnant la période de conservation des instantanés et une mémoire tampon.
 
-* La date de conservation jusqu'à est calculée en additionnant la période de conservation des instantanés et une mémoire tampon.
-* Le tampon correspond au tampon pour le temps de transfert (6 jours) + au tampon pour l'optimisation des coûts (8 jours), ce qui représente un total de 14 jours.
-* La date de conservation minimale est de 30 jours + 14 jours.
+* Le tampon correspond au tampon pour le temps de transfert (3 jours) + au tampon pour l'optimisation des coûts (28 jours), ce qui représente un total de 31 jours.
+* La date de conservation minimale est de 30 jours + 31 jours de tampon = 61 jours.
 
 
 Voici quelques exemples :
 
-* Si vous créez une planification de sauvegarde mensuelle avec 12 rétentions, vos sauvegardes sont verrouillées pendant 12 mois (plus 14 jours) avant d'être supprimées (remplacées par le fichier de sauvegarde suivant).
+* Si vous créez une planification de sauvegarde mensuelle avec 12 rétentions, vos sauvegardes sont verrouillées pendant 12 mois (plus 31 jours) avant d'être supprimées (remplacées par le fichier de sauvegarde suivant).
 * Si vous créez une politique de sauvegarde qui crée 30 sauvegardes quotidiennes, 7 sauvegardes hebdomadaires et 12 sauvegardes mensuelles, il existe trois périodes de conservation verrouillées :
 +
-** Les sauvegardes « 30 quotidiennes » sont conservées pendant 44 jours (30 jours plus 14 jours de tampon),
-** Les sauvegardes « 7 semaines » sont conservées pendant 9 semaines (7 semaines plus 14 jours), et
-** Les sauvegardes « 12 mensuelles » sont conservées pendant 12 mois (plus 14 jours).
+** Les sauvegardes « 30 quotidiennes » sont conservées pendant 61 jours (30 jours plus 31 jours de tampon),
+** Les sauvegardes « 7 semaines » sont conservées pendant 11 semaines (7 semaines plus 31 jours), et
+** Les sauvegardes « 12 mensuelles » sont conservées pendant 12 mois (plus 31 jours).
 
 
-* Si vous créez un programme de sauvegarde horaire avec 24 rétentions, vous pensez peut-être que les sauvegardes sont verrouillées pendant 24 heures. Cependant, étant donné qu'elle est inférieure au minimum de 30 jours, chaque sauvegarde est verrouillée et conservée pendant 44 jours (30 jours plus 14 jours de mémoire tampon).
+* Si vous créez un programme de sauvegarde horaire avec 24 rétentions, vous pensez peut-être que les sauvegardes sont verrouillées pendant 24 heures. Cependant, étant donné qu'elle est inférieure au minimum de 30 jours, chaque sauvegarde est verrouillée et conservée pendant 61 jours (30 jours plus 31 jours de mémoire tampon).
 
 
 
