@@ -15,13 +15,13 @@ Avant de pouvoir utiliser la méthode Search & Restore de restauration des donn�
 
 Le catalogue indexé peut ensuite suivre chaque volume et fichier de sauvegarde, rendant vos recherches rapides et efficaces.
 
-Pour plus d'informations, voir https://docs.netapp.com/us-en/bluexp-backup-recovery/task-restore-backups-ontap.html#restore-ontap-data-using-search-restore["Comment restaurer des données ONTAP à l'aide de la fonction recherche et ampli ; Restaurer"].
+Pour plus d'informations, reportez-vous https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-restore.html["Activer l'indexation pour la recherche et la restauration"]à .
 
 
 
 === Points de terminaison de liaison privée Azure et points de terminaison de service
 
-Généralement, la sauvegarde et la restauration BlueXP établissent un point de terminaison privé avec le fournisseur de cloud pour gérer diverses tâches de protection. Cette version introduit un paramètre facultatif permettant d'activer ou de désactiver la création automatique d'un point de terminaison privé par la sauvegarde et la restauration BlueXP. Cela peut vous être utile si vous souhaitez davantage de contrôle sur le processus de création de points de terminaison privés.
+En règle générale, la BlueXP backup and recovery établissent un point de terminaison privé avec le fournisseur de cloud pour gérer les tâches de protection. Cette version introduit un paramètre facultatif permettant d'activer ou de désactiver la création automatique d'un point de terminaison privé par la sauvegarde et la restauration BlueXP. Cela peut vous être utile si vous souhaitez davantage de contrôle sur le processus de création de points de terminaison privés.
 
 Vous pouvez activer ou désactiver cette option lorsque vous activez la protection ou démarrez le processus de restauration.
 
@@ -39,4 +39,4 @@ La version précédente intégrait la prise en charge de SnapMirror to Cloud Res
 
 Lorsque vous créez des fichiers de sauvegarde dans le stockage objet pour un environnement de travail, la sauvegarde et la restauration BlueXP créent par défaut le conteneur (bucket ou compte de stockage) pour les fichiers de sauvegarde dans le compte de stockage objet que vous avez configuré. Auparavant, vous pouviez remplacer cette configuration et spécifier votre propre conteneur pour Amazon S3, Azure Blob Storage et Google Cloud Storage. Avec cette version, vous pouvez désormais utiliser votre propre conteneur de stockage objet StorageGRID.
 
-Voir https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-protection-journey.html#do-you-want-to-create-your-own-object-storage-container["Créez votre propre conteneur de stockage d'objets"].
+Voir https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-protect-journey.html["Créez votre propre conteneur de stockage d'objets"].

@@ -249,11 +249,11 @@ endif::gcp[]
 
 
 
-=== Les copies de sauvegarde sont associées à votre compte NetApp
+=== Les copies de sauvegarde sont associées à votre organisation BlueXP
 
-Les copies de sauvegarde sont associées à la  https://docs.netapp.com/us-en/bluexp-setup-admin/concept-netapp-accounts.html["Compte BlueXP"^] dans lequel réside le connecteur BlueXP .
+Les copies de sauvegarde sont associées à l’organisation BlueXP dans laquelle réside le connecteur BlueXP .  https://docs.netapp.com/us-en/bluexp-setup-admin/concept-identity-and-access-management.html["En savoir plus sur la gestion des identités et des accès BlueXP"^] .
 
-Si vous avez plusieurs connecteurs dans le même compte BlueXP , chaque connecteur affiche la même liste de sauvegardes.
+Si vous avez plusieurs connecteurs dans la même organisation BlueXP , chaque connecteur affiche la même liste de sauvegardes.
 
 
 

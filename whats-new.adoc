@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: whats-new.html 
-keywords: 'what"s new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes, backup, restore, bluexp, bluexp backup and recovery, protection' 
+keywords: 'what"s new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes, backup, restore, bluexp, bluexp backup and recovery, protection, sql server, workloads, volumes, snapshots' 
 summary: Découvrez les nouveautés de la sauvegarde et de la restauration BlueXP. 
 ---
 = Quoi de neuf dans la sauvegarde et la récupération BlueXP
@@ -78,13 +78,13 @@ Avant de pouvoir utiliser la méthode Search & Restore de restauration des donn�
 
 Le catalogue indexé peut ensuite suivre chaque volume et fichier de sauvegarde, rendant vos recherches rapides et efficaces.
 
-Pour plus d'informations, voir https://docs.netapp.com/us-en/bluexp-backup-recovery/task-restore-backups-ontap.html#restore-ontap-data-using-search-restore["Comment restaurer des données ONTAP à l'aide de la fonction recherche et ampli ; Restaurer"].
+Pour plus d'informations, reportez-vous https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-restore.html["Activer l'indexation pour la recherche et la restauration"]à .
 
 
 
 === Points de terminaison de liaison privée Azure et points de terminaison de service
 
-Généralement, la sauvegarde et la restauration BlueXP établissent un point de terminaison privé avec le fournisseur de cloud pour gérer diverses tâches de protection. Cette version introduit un paramètre facultatif permettant d'activer ou de désactiver la création automatique d'un point de terminaison privé par la sauvegarde et la restauration BlueXP. Cela peut vous être utile si vous souhaitez davantage de contrôle sur le processus de création de points de terminaison privés.
+En règle générale, la BlueXP backup and recovery établissent un point de terminaison privé avec le fournisseur de cloud pour gérer les tâches de protection. Cette version introduit un paramètre facultatif permettant d'activer ou de désactiver la création automatique d'un point de terminaison privé par la sauvegarde et la restauration BlueXP. Cela peut vous être utile si vous souhaitez davantage de contrôle sur le processus de création de points de terminaison privés.
 
 Vous pouvez activer ou désactiver cette option lorsque vous activez la protection ou démarrez le processus de restauration.
 
@@ -102,7 +102,7 @@ La version précédente intégrait la prise en charge de SnapMirror to Cloud Res
 
 Lorsque vous créez des fichiers de sauvegarde dans le stockage objet pour un environnement de travail, la sauvegarde et la restauration BlueXP créent par défaut le conteneur (bucket ou compte de stockage) pour les fichiers de sauvegarde dans le compte de stockage objet que vous avez configuré. Auparavant, vous pouviez remplacer cette configuration et spécifier votre propre conteneur pour Amazon S3, Azure Blob Storage et Google Cloud Storage. Avec cette version, vous pouvez désormais utiliser votre propre conteneur de stockage objet StorageGRID.
 
-Voir https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-protection-journey.html#do-you-want-to-create-your-own-object-storage-container["Créez votre propre conteneur de stockage d'objets"].
+Voir https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-protect-journey.html["Créez votre propre conteneur de stockage d'objets"].
 
 
 
@@ -120,7 +120,7 @@ Cette fonctionnalité élimine le besoin de redéfinir les bases de données de 
 
 En maintenant la continuité des sauvegardes dans l'ensemble des environnements, la resynchronisation de la SnapMirror vers le cloud améliore l'efficacité opérationnelle et réduit la complexité de la gestion des données dans les environnements hybrides et multicloud.
 
-Pour plus de détails sur la façon d'effectuer l'opération de resynchronisation, reportez-vousà la section https://docs.netapp.com/us-en/bluexp-backup-recovery/task-migrate-volumes-snapmirror-cloud-resync.html["Migration de volumes à l'aide de SnapMirror pour la resynchronisation cloud"].
+Pour plus de détails sur la façon d'effectuer l'opération de resynchronisation, reportez-vousà la section https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-migrate-resync.html["Migration de volumes à l'aide de SnapMirror pour la resynchronisation cloud"].
 
 
 
@@ -148,8 +148,6 @@ Lorsque cette fonction est en aperçu, il existe certaines limitations :
 *Mise en route*
 
 Pour commencer à utiliser cette fonction d'aperçu, vous devez activer un indicateur sur le connecteur BlueXP . Vous pouvez ensuite entrer les détails de connexion de votre magasin d'objets tiers MiniO dans le flux de travail de protection en choisissant le magasin d'objets *compatible* tiers dans la section de sauvegarde.
-
-Pour obtenir des instructions sur l'activation des fonctions d'aperçu, reportez-vous à la section https://docs.netapp.com/us-en/bluexp-backup-recovery/task-preview-enable.html["Activez les fonctionnalités de prévisualisation dans la sauvegarde et la restauration BlueXP "].
 
 
 
@@ -287,7 +285,7 @@ Avant de pouvoir utiliser la méthode Search & Restore de restauration des donn�
 
 Activez l'indexation sur l'environnement de travail source en sélectionnant l'option « Activer l'indexation » lorsque vous effectuez une recherche et une restauration.
 
-Pour plus d'informations, reportez-vous à la documentation https://docs.netapp.com/us-en/bluexp-backup-recovery/task-restore-backups-ontap.html#restore-ontap-data-using-search-restore["Comment restaurer des données ONTAP à l'aide de la fonction recherche et ampli ; Restaurer"].
+Pour plus d'informations, reportez-vous à la documentation https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-restore.html["Comment restaurer des données ONTAP à l'aide de la fonction recherche et ampli ; Restaurer"].
 
 .Échelle prise en charge
 La nouvelle fonction d'indexation prend en charge les éléments suivants :
@@ -346,7 +344,7 @@ Cette version de sauvegarde et de restauration BlueXP  comprend les mises à jo
 
 La sauvegarde et la restauration BlueXP  peuvent désormais sauvegarder des volumes FlexVol et FlexGroup sur site configurés en mode de protection SnapLock Compliance ou SnapLock Enterprise. Pour cette prise en charge, vos clusters doivent exécuter ONTAP 9.14 ou une version ultérieure. La sauvegarde de volumes FlexVol à l'aide de SnapLock Enterprise mode est prise en charge depuis ONTAP version 9.11.1. Les versions antérieures de ONTAP ne prennent pas en charge la sauvegarde des volumes de protection SnapLock.
 
-Consultez la liste complète des volumes pris en charge dans le https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-ontap-backup-to-cloud.html["Découvrez la sauvegarde et la restauration BlueXP"].
+Consultez la liste complète des volumes pris en charge dans le https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["Découvrez la sauvegarde et la restauration BlueXP"].
 
 
 
@@ -376,7 +374,7 @@ La sauvegarde et la restauration BlueXP  prennent désormais en charge les rest
 
 BlueXP  Connector version 3.9.40 prend en charge certaines versions de Red Hat Enterprise Linux versions 8 et 9 pour toute installation manuelle du logiciel Connector sur un hôte RHEL 8 ou 9, quel que soit l'emplacement en plus des systèmes d'exploitation mentionnés dans le https://docs.netapp.com/us-en/bluexp-setup-admin/task-prepare-private-mode.html#step-3-review-host-requirements["configuration requise pour l'hôte"^]. Ces nouvelles versions de RHEL nécessitent le moteur Podman au lieu du moteur Docker. Auparavant, la sauvegarde et la restauration BlueXP  présentaient deux limitations lors de l'utilisation du moteur Podman. Ces limitations ont été supprimées.
 
-https://docs.netapp.com/us-en/bluexp-backup-recovery/task-restore-backups-ontap.html["En savoir plus sur la restauration des données ONTAP à partir de fichiers de sauvegarde"].
+https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-restore.html["En savoir plus sur la restauration des données ONTAP à partir de fichiers de sauvegarde"].
 
 
 
@@ -384,4 +382,4 @@ https://docs.netapp.com/us-en/bluexp-backup-recovery/task-restore-backups-ontap.
 
 Cette version inclut un index de catalogue amélioré qui termine l'indexation de base beaucoup plus rapidement. L'indexation plus rapide vous permet d'utiliser la fonction de recherche et de restauration plus rapidement.
 
-https://docs.netapp.com/us-en/bluexp-backup-recovery/task-restore-backups-ontap.html["En savoir plus sur la restauration des données ONTAP à partir de fichiers de sauvegarde"].
+https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-restore.html["En savoir plus sur la restauration des données ONTAP à partir de fichiers de sauvegarde"].

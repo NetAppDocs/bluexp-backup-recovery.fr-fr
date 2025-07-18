@@ -8,7 +8,7 @@
 
 La sauvegarde et la restauration BlueXP  peuvent désormais sauvegarder des volumes FlexVol et FlexGroup sur site configurés en mode de protection SnapLock Compliance ou SnapLock Enterprise. Pour cette prise en charge, vos clusters doivent exécuter ONTAP 9.14 ou une version ultérieure. La sauvegarde de volumes FlexVol à l'aide de SnapLock Enterprise mode est prise en charge depuis ONTAP version 9.11.1. Les versions antérieures de ONTAP ne prennent pas en charge la sauvegarde des volumes de protection SnapLock.
 
-Consultez la liste complète des volumes pris en charge dans le https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-ontap-backup-to-cloud.html["Découvrez la sauvegarde et la restauration BlueXP"].
+Consultez la liste complète des volumes pris en charge dans le https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["Découvrez la sauvegarde et la restauration BlueXP"].
 
 
 

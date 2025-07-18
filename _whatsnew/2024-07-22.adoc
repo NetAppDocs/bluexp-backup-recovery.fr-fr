@@ -14,7 +14,7 @@ Avec cette version, vous pouvez désormais restaurer des volumes créés dans ON
 
 La fonction DataLock protège vos fichiers de sauvegarde contre toute modification ou suppression pendant une période de temps spécifiée. Ceci est utile pour protéger vos fichiers contre les attaques par ransomware.
 
-Pour plus de détails sur DataLock et des conseils sur la manière de réduire les coûts associés, reportez-vous https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-cloud-backup-policies.html["Paramètres de la règle de sauvegarde sur objet"] à la section .
+Pour plus de détails sur DataLock et des conseils sur la manière de réduire les coûts associés, reportez-vous https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-policy-object-options.html["Paramètres de la règle de sauvegarde sur objet"] à la section .
 
 
 
@@ -26,7 +26,7 @@ Avec cette version, la prise en charge du service AWS IAM Roles Anywhere est un 
 
 ifdef::aws[]
 
-Ceci s'applique à link:task-backup-to-s3.html["Sauvegarde de Cloud Volumes ONTAP dans AWS"]. Ceci s'applique à link:task-backup-onprem-to-aws.html["Sauvegarde des données ONTAP sur site dans AWS"].
+Ceci s'applique à link:prev-ontap-backup-cvo-aws.html["Sauvegarde de Cloud Volumes ONTAP dans AWS"].
 
 endif::aws[]
 
@@ -40,6 +40,6 @@ Auparavant, les volumes FlexVol pouvaient être restaurés, mais vous ne pouviez
 
 Avec cette version, la prise en charge de la restauration de dossiers FlexGroup est un aperçu technologique.
 
-Pour plus de détails, reportez-vous à https://docs.netapp.com/us-en/bluexp-backup-recovery/task-restore-backups-ontap.html#restore-ontap-data-using-browse-restore["Restaurez les dossiers et les fichiers à l'aide de Browse  Restore"] .
+Pour plus de détails, reportez-vous à https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-restore.html["Restaurez les dossiers et les fichiers à l'aide de Browse  Restore"] .
 
 Pour plus de détails sur l'activation manuelle, reportez-vous https://community.netapp.com/t5/Tech-ONTAP-Blogs/BlueXP-Backup-and-Recovery-July-2024-Release/ba-p/453993["Sauvegarde et restauration BlueXP, blog sur la version de juillet 2024"]à la section .
