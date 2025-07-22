@@ -23,7 +23,7 @@ Cette version de BlueXP backup and recovery propose une interface utilisateur mi
 Vous pouvez vous inscrire à l'aperçu en remplissant ce formulaire  https://forms.office.com/pages/responsepage.aspx?id=oBEJS5uSFUeUS8A3RRZbOojtBW63mDRDv3ZK50MaTlJUNjdENllaVTRTVFJGSDQ2MFJIREcxN0EwQi4u&route=shorturl["Aperçu du formulaire d'inscription"^] .
 
 
-NOTE: CETTE DOCUMENTATION SUR LA PROTECTION DES CHARGES DE TRAVAIL MICROSOFT SQL SERVER EST FOURNIE À TITRE D'APERÇU TECHNOLOGIQUE. Avec cette offre de présentation, NetApp se réserve le droit de modifier les détails, le contenu et le calendrier de l'offre avant la disponibilité générale.
+NOTE: Cette documentation sur la protection des charges de travail Microsoft SQL Server est fournie en avant-première technologique. NetApp se réserve le droit de modifier les détails, le contenu et le calendrier de cette offre avant sa disponibilité générale.
 
 Cette version de BlueXP backup and recovery inclut les mises à jour suivantes :
 

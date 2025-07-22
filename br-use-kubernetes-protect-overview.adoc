@@ -17,6 +17,6 @@ summary: 'Vous pouvez protéger les applications Kubernetes et les données d"ap
 La gestion des charges de travail Kubernetes dans BlueXP backup and recovery vous permet de gérer et de protéger vos clusters et applications Kubernetes depuis un seul et même endroit. Vous pouvez gérer les ressources et les applications hébergées par vos clusters Kubernetes. Vous pouvez également gérer les paramètres de protection de vos charges de travail Kubernetes.
 
 
-NOTE: CETTE DOCUMENTATION EST FOURNIE SOUS FORME D'APERÇU TECHNOLOGIQUE. Pendant la version préliminaire, la fonctionnalité Kubernetes n'est pas recommandée pour les charges de travail de production. Avec cette offre de présentation, NetApp se réserve le droit de modifier les détails, le contenu et le calendrier de l'offre avant la disponibilité générale.
+NOTE: Cette documentation est fournie à titre d'aperçu technologique. Pendant la version préliminaire, la fonctionnalité Kubernetes n'est pas recommandée pour les charges de travail de production. Avec cette offre de présentation, NetApp se réserve le droit de modifier les détails, le contenu et le calendrier de l'offre avant la disponibilité générale.
 
 Vous pouvez effectuer les tâches suivantes liées à la gestion des charges de travail Kubernetes :
