@@ -16,15 +16,18 @@ summary: La fonctionnalité SnapMirror to Cloud Resync dans la sauvegarde et la 
 [role="lead"]
 La fonctionnalité SnapMirror to Cloud Resync dans la sauvegarde et la récupération BlueXP rationalise la protection et la continuité des données lors des migrations de volumes dans les environnements NetApp. Lors de la migration d'un volume à l'aide de la réplication logique SnapMirror (LRSE), d'un déploiement NetApp sur site vers un autre ou vers une solution cloud telle que Cloud Volumes ONTAP ou Cloud Volumes Service, la fonction SnapMirror to Cloud Resync permet de préserver l'intégrité et le fonctionnement des sauvegardes cloud existantes.
 
+Cette fonctionnalité élimine le besoin de redéfinir les bases de données de manière chronophage et gourmande en ressources, pour assurer la continuité des opérations de sauvegarde après la migration. Cette fonctionnalité est très utile pour les scénarios de migration de workloads, prenant en charge FlexVols et FlexGroups, et est disponible à partir de la version 9.16.1 de ONTAP.
+
+
+NOTE: Cette fonctionnalité est disponible à partir de la version 4.0.3 de BlueXP backup and recovery publiée en mai 2025.
+
+En maintenant la continuité des sauvegardes dans l'ensemble des environnements, la resynchronisation de la SnapMirror vers le cloud améliore l'efficacité opérationnelle et réduit la complexité de la gestion des données dans les environnements hybrides et multicloud.
+
 []
 ====
 *REMARQUE* Pour basculer vers et depuis les charges de travail de BlueXP backup and recovery , reportez-vous à link:br-start-switch-ui.html["Basculer vers différentes charges de travail de BlueXP backup and recovery"] .
 
 ====
-Cette fonctionnalité élimine le besoin de redéfinir les bases de données de manière chronophage et gourmande en ressources, pour assurer la continuité des opérations de sauvegarde après la migration. Cette fonctionnalité est très utile pour les scénarios de migration de workloads, prenant en charge FlexVols et FlexGroups, et est disponible à partir de la version 9.16.1 de ONTAP.
-
-En maintenant la continuité des sauvegardes dans l'ensemble des environnements, la resynchronisation de la SnapMirror vers le cloud améliore l'efficacité opérationnelle et réduit la complexité de la gestion des données dans les environnements hybrides et multicloud.
-
 
 
 == Comment fonctionne la BlueXP backup and recovery SnapMirror vers Cloud Resync
