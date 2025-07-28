@@ -24,7 +24,7 @@ Cette version de sauvegarde et de restauration BlueXP  comprend les mises à jo
 
 
 
-=== Prise en charge des charges de travail Kubernetes en tant qu'aperçu technologique public
+=== Prise en charge des charges de travail Kubernetes en tant qu'aperçu
 
 Cette version de la BlueXP backup and recovery introduit la prise en charge de la découverte et de la gestion des charges de travail Kubernetes :
 
@@ -36,6 +36,8 @@ Cette version de la BlueXP backup and recovery introduit la prise en charge de l
 * Travaillez avec des conteneurs et des machines virtuelles exécutés sur Kubernetes.
 * Créez des sauvegardes cohérentes avec les applications à l’aide de hooks d’exécution et de modèles.
 
+
+Pour plus de détails sur la protection des charges de travail Kubernetes, reportez-vous à  https://docs.netapp.com/us-en/bluexp-backup-recovery/br-use-kubernetes-protect-overview.html["Présentation de la protection des charges de travail Kubernetes"] .
 
 
 
