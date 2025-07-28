@@ -14,9 +14,27 @@ summary: 'Vous pouvez protéger les applications Kubernetes et les données d"ap
 
 
 [role="lead"]
-La gestion des charges de travail Kubernetes dans BlueXP backup and recovery vous permet de gérer et de protéger vos clusters et applications Kubernetes depuis un seul et même endroit. Vous pouvez gérer les ressources et les applications hébergées par vos clusters Kubernetes. Vous pouvez également gérer les paramètres de protection de vos charges de travail Kubernetes.
+La gestion des charges de travail Kubernetes dans BlueXP backup and recovery vous permet de découvrir, gérer et protéger vos clusters et applications Kubernetes depuis un seul et même endroit. Vous pouvez gérer les ressources et les applications hébergées sur vos clusters Kubernetes. Vous pouvez également créer et associer des politiques de protection à vos charges de travail Kubernetes, le tout depuis une interface unique.
+
+Le diagramme suivant montre les composants et l'architecture de base de la sauvegarde et de la restauration des charges de travail Kubernetes et comment différentes copies de vos données peuvent être stockées à différents emplacements :
+
+image:../media/backup-recovery-architecture-diagram.png["Diagramme d'architecture de sauvegarde et de restauration pour les charges de travail Kubernetes"]
+
+La BlueXP backup and recovery offrent les avantages suivants pour la gestion des charges de travail Kubernetes :
+
+* Un plan de contrôle unique pour protéger les applications exécutées sur plusieurs clusters Kubernetes. Ces applications peuvent inclure des conteneurs ou des machines virtuelles exécutés sur vos clusters Kubernetes.
+* Intégration native avec NetApp SnapMirror, permettant des capacités de déchargement du stockage pour tous les flux de travail de sauvegarde et de récupération.
+* Sauvegardes incrémentielles permanentes pour les applications Kubernetes, se traduisant par des objectifs de point de récupération (RPO) et des objectifs de temps de récupération (RTO) inférieurs.
+
 
 
 NOTE: Cette documentation est fournie à titre d'aperçu technologique. Pendant la version préliminaire, la fonctionnalité Kubernetes n'est pas recommandée pour les charges de travail de production. Avec cette offre de présentation, NetApp se réserve le droit de modifier les détails, le contenu et le calendrier de l'offre avant la disponibilité générale.
 
 Vous pouvez effectuer les tâches suivantes liées à la gestion des charges de travail Kubernetes :
+
+* link:br-start-discover.html#discover-kubernetes-workloads["Découvrez les charges de travail Kubernetes"] .
+* link:br-use-manage-kubernetes-clusters.html["Gérez les clusters Kubernetes"].
+* link:br-use-protect-kubernetes-applications.html["Ajouter et protéger les applications Kubernetes"] .
+* link:br-use-manage-kubernetes-applications.html["Gérer les applications Kubernetes"].
+* link:br-use-restore-kubernetes-applications.html["Restaurer les applications Kubernetes"] .
+

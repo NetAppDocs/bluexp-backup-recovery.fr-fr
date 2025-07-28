@@ -34,7 +34,9 @@ image:screen-br-inventory-offsite-backup-targets.png["Onglet Cibles de sauvegard
 
 . Sélectionnez *Découvrir la cible de sauvegarde*.
 . Sélectionnez l'un des types de cibles de sauvegarde : *Amazon Web Services (AWS) S3*, *Microsoft Azure Blob Storage*, * StorageGRID* ou * ONTAP S3*.
-. Saisissez les informations. Elles varient selon le type de cible de sauvegarde sélectionné.
+. Dans la section *Choisir l'emplacement des informations d'identification*, choisissez l'emplacement où résident les informations d'identification, puis choisissez comment associer les informations d'identification.
+. Sélectionnez *Suivant*.
+. Saisissez les informations d'identification. Elles varient selon le type de cible de sauvegarde sélectionné et l'emplacement des informations d'identification choisi.
 +
 ** Pour AWS :
 +

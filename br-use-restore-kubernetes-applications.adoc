@@ -14,14 +14,15 @@ summary: La BlueXP backup and recovery vous permettent de restaurer les applicat
 
 
 [role="lead"]
-La BlueXP backup and recovery vous permettent de restaurer les applications protégées par une politique de protection. Pour restaurer une application, son état de protection doit être « Protégé » et une politique de protection doit lui être associée. La restauration d'une application s'effectue à l'aide d'un point de restauration, composé du snapshot local, du snapshot secondaire et de la sauvegarde dans le magasin d'objets. Vous pouvez restaurer une application à partir de l'archive locale, secondaire ou du magasin d'objets.
+La BlueXP backup and recovery vous permettent de restaurer les applications protégées par une politique de protection. Pour restaurer une application, celle-ci doit disposer d'au moins un point de restauration. Un point de restauration est constitué soit de l'instantané local, soit de la sauvegarde dans le magasin d'objets (ou des deux). Vous pouvez restaurer une application à partir de l'archive locale, secondaire ou du magasin d'objets.
 
 .Rôle BlueXP requis
 Administrateur d'organisation ou administrateur SnapCenter . link:reference-roles.html["En savoir plus sur les rôles d'accès à la BlueXP backup and recovery"] .  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
 
 .Étapes
 . Dans la BlueXP backup and recovery, sélectionnez *Inventaire*.
-. Choisissez une charge de travail Kubernetes et sélectionnez *Afficher* dans la colonne Hôtes pour la charge de travail.
+. Choisissez une instance Kubernetes et sélectionnez *Afficher* pour afficher les ressources associées à cette instance.
+. Sélectionnez l'onglet *Applications*.
 . Dans la liste des applications, choisissez une application que vous souhaitez restaurer et sélectionnez le menu Actions associé.
 . Sélectionnez *Afficher et restaurer*.
 +
@@ -33,11 +34,11 @@ La liste des points de restauration apparaît.
 [discrete]
 ===== Paramètres généraux
 
-. Choisissez la source à partir de laquelle restaurer (locale, secondaire ou magasin d'objets).
+. Choisissez la source à partir de laquelle restaurer (local ou magasin d'objets).
 . Choisissez le cluster de destination dans la liste *Cluster*.
-. Choisissez l’espace de noms de destination de restauration (original ou nouveau).
+. Choisissez l’espace de noms de destination de restauration.
 +
-Notez que la restauration vers un cluster différent et l’espace de noms d’origine ne sont pas pris en charge.
+Vous pouvez restaurer l’espace de noms d’origine ou restaurer un nouvel espace de noms.
 
 . Sélectionnez *Suivant*.
 
@@ -67,6 +68,10 @@ Chaque règle peut filtrer selon des critères tels que l'espace de noms de la r
 
 . Sélectionnez *Enregistrer* pour enregistrer chaque règle.
 . Lorsque vous avez ajouté toutes les règles dont vous avez besoin, sélectionnez *Rechercher* pour voir les ressources disponibles dans l'archive de sauvegarde qui correspondent à vos critères de filtre.
++
+
+NOTE: Les ressources affichées sont les ressources qui existent actuellement sur le cluster.
+
 . Lorsque vous êtes satisfait des résultats, sélectionnez *Suivant*.
 
 
@@ -76,6 +81,6 @@ Chaque règle peut filtrer selon des critères tels que l'espace de noms de la r
 ===== Paramètres de destination
 
 . Choisissez de restaurer soit la classe de stockage par défaut, soit une classe de stockage différente.
-. Si vous choisissez de restaurer vers une autre classe de stockage, sélectionnez une classe de stockage de destination correspondant à chaque classe de stockage source. La classe de stockage de destination doit être disponible sur le cluster de destination.
+. Si vous choisissez de restaurer vers une classe de stockage différente, sélectionnez une classe de stockage de destination correspondant à chaque classe de stockage source.
 . Sélectionnez *Restaurer*.
 

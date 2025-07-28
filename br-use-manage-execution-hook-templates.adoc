@@ -54,9 +54,6 @@ Si vous créez plusieurs crochets d'exécution du même type (par exemple, pré-
 
 
 
-NOTE: L'exemple d'ordre précédent s'applique uniquement lorsque vous exécutez une sauvegarde qui n'utilise pas de snapshot existant.
-
-
 NOTE: Vous devez toujours tester vos scripts d'exécution avant de les activer dans un environnement de production. Vous pouvez utiliser la commande 'kubectl exec' pour tester aisément les scripts. Une fois que vous avez activé les crochets d'exécution dans un environnement de production, testez les snapshots et les sauvegardes obtenus pour vous assurer qu'ils sont cohérents. Pour ce faire, vous pouvez cloner l'application dans un espace de noms temporaire, restaurer le snapshot ou la sauvegarde, puis tester l'application.
 
 
@@ -106,7 +103,7 @@ Vous pouvez créer un modèle de hook d’exécution personnalisé que vous pouv
 . Développez la section *Modèle de hook d'exécution*.
 . Sélectionnez *Créer un modèle de hook d'exécution*.
 . Entrez un nom pour le hook d’exécution.
-. Choisissez un type de hook. Par exemple, un hook post-restauration s'exécutera une fois l'opération de restauration terminée.
+. Vous pouvez également choisir un type de hook. Par exemple, un hook post-restauration est exécuté une fois l'opération de restauration terminée.
 . Dans la zone de texte *Script*, saisissez le script shell exécutable à exécuter dans le cadre du modèle de hook d'exécution. Vous pouvez également sélectionner *Télécharger le script* pour télécharger un fichier de script.
 . Sélectionnez *Créer*.
 +

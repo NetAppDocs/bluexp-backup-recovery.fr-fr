@@ -1,0 +1,65 @@
+---
+sidebar: sidebar 
+permalink: br-start-discover-kubernetes.html 
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, BlueXP backup and recovery, Kubernetes 
+summary: Le service de BlueXP backup and recovery doit d’abord découvrir les charges de travail pour que vous puissiez utiliser le service. 
+---
+= Découvrez les charges de travail Kubernetes dans la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Le service de BlueXP backup and recovery doit d’abord découvrir les charges de travail Kubernetes pour que vous puissiez utiliser le service.
+
+*Rôle BlueXP requis* Super administrateur de sauvegarde et de récupération. En savoir plus link:reference-roles.html["Rôles et privilèges de sauvegarde et de récupération"] .  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+
+
+== Découvrez les charges de travail Kubernetes
+
+Dans l'inventaire de sauvegarde et de restauration, vous pouvez découvrir les charges de travail Kubernetes exécutées dans votre environnement. La découverte d'une charge de travail ajoute un cluster Kubernetes à la BlueXP backup and recovery, ce qui vous permet d'ajouter des applications au cluster et de protéger les ressources qu'il héberge.
+
+.Étapes
+. Effectuez l'une des opérations suivantes :
++
+** Si vous découvrez des charges de travail Kubernetes pour la première fois, dans la BlueXP backup and recovery, sélectionnez *Découvrir et gérer* sous le type de charge de travail Kubernetes.
+** Si vous avez déjà découvert des charges de travail Kubernetes, dans la BlueXP backup and recovery, sélectionnez *Inventaire* > *Charges de travail*, puis sélectionnez *Découvrir les ressources*.
+
+
+. Sélectionnez le type de charge de travail *Kubernetes*.
+. Saisissez un nom de cluster et choisissez un connecteur à utiliser avec le cluster.
+. Suivez les instructions de la ligne de commande qui s’affichent :
++
+** Créer un espace de noms de protection Trident
+** Créer un secret Kubernetes
+** Ajouter un dépôt Helm
+** Installer Trident Protect et le connecteur Trident Protect
++
+Ces étapes garantissent que la BlueXP backup and recovery peuvent interagir avec le cluster.
+
+
+
+. Une fois les étapes terminées, sélectionnez *Découvrir*.
++
+Le cluster est ajouté à l'inventaire.
+
+. Sélectionnez *Afficher* dans la charge de travail Kubernetes associée pour voir la liste des applications, des clusters et des espaces de noms pour cette charge de travail.
+
+
+
+
+== Continuer vers le tableau de bord de BlueXP backup and recovery
+
+Pour afficher le tableau de bord de BlueXP backup and recovery , suivez ces étapes.
+
+. Dans le menu supérieur, sélectionnez *Tableau de bord*.
+. Vérifiez l'état de la protection des données. Le nombre de charges de travail à risque ou protégées augmente en fonction des charges de travail nouvellement découvertes, protégées et sauvegardées.
++
+link:br-use-dashboard.html["Découvrez ce que le tableau de bord vous montre"].
+
+

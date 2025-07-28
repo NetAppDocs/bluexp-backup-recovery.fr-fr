@@ -37,7 +37,7 @@ Pour utiliser le stockage d'objets comme cibles de sauvegarde, vous avez besoin 
 
 == Dans BlueXP
 
-* Un utilisateur BlueXP doit disposer du rôle et des privilèges requis pour effectuer des opérations sur les charges de travail Microsoft SQL Server. Pour découvrir les ressources, vous devez disposer du rôle de super-administrateur BlueXP backup and recovery . Voir link:reference-roles.html["Accès aux fonctionnalités de BlueXP backup and recovery basé sur les rôles"] pour plus de détails sur les rôles et les autorisations requis pour effectuer des opérations dans la BlueXP backup and recovery.
+* Un utilisateur BlueXP doit disposer du rôle et des privilèges requis pour effectuer des opérations sur les charges de travail Microsoft SQL Server et Kubernetes. Pour découvrir les ressources, vous devez disposer du rôle de super-administrateur BlueXP backup and recovery . Voir link:reference-roles.html["Accès aux fonctionnalités de BlueXP backup and recovery basé sur les rôles"] pour plus de détails sur les rôles et les autorisations requis pour effectuer des opérations dans la BlueXP backup and recovery.
 * Une organisation BlueXP avec au moins un connecteur BlueXP actif se connectant à des clusters ONTAP locaux ou à Cloud Volumes ONTAP. Consultez le processus de configuration de l'aperçu initial ci-dessous.
 * Au moins un environnement de travail BlueXP avec un cluster NetApp sur site ONTAP ou Cloud Volumes ONTAP .
 * Un connecteur BlueXP
@@ -143,3 +143,28 @@ Allouez suffisamment d'espace disque et surveillez la consommation de stockage d
 Pour obtenir les dernières informations sur les versions prises en charge, consultez le https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome["Matrice d'interopérabilité NetApp"^].
 
 |===
+
+
+== Pour protéger les applications Kubernetes
+
+Vous avez besoin d’exigences spécifiques pour découvrir les ressources Kubernetes et protéger vos applications Kubernetes.
+
+Pour connaître les exigences de BlueXP , reportez-vous à <<Dans BlueXP>> .
+
+* Un système ONTAP principal (ONTAP 9.16.1 ou version ultérieure)
+* Un cluster Kubernetes - Les distributions et versions Kubernetes prises en charge incluent :
++
+** Anthos On-Prem (VMware) et Anthos sur bare metal 1.16
+** Kubernetes 1.27 - 1.33
+** OpenShift 4.10 - 4.18
+** Rancher Kubernetes Engine 2 (RKE2) v1.26.7+rke2r1, v1.28.5+rke2r1
+
+
+* NetApp Trident 24.10 ou version ultérieure
+* NetApp Trident Protect 25.07 ou version ultérieure (installé lors de la découverte de la charge de travail Kubernetes)
+* NetApp Trident Protect Connector 25.07 ou version ultérieure (installé lors de la découverte de la charge de travail Kubernetes)
++
+** Assurez-vous que le port TCP 443 n'est pas filtré dans le sens sortant entre le cluster Kubernetes, le connecteur Trident Protect et le proxy Trident Protect.
+
+
+

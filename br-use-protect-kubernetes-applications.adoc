@@ -14,7 +14,7 @@ summary: La BlueXP backup and recovery vous permettent de gérer les information
 
 
 [role="lead"]
-La BlueXP backup and recovery vous permettent de gérer les informations de vos hôtes de charge de travail, de vos bases de données et de vos instances. Vous pouvez consulter, modifier et supprimer les paramètres de protection de votre inventaire.
+La BlueXP backup and recovery vous permettent de découvrir facilement vos clusters Kubernetes, sans générer ni télécharger de fichiers kubeconfig. Vous pouvez connecter des clusters Kubernetes et installer les logiciels requis à l'aide de commandes simples copiées depuis l'interface utilisateur BlueXP .
 
 .Rôle BlueXP requis
 Administrateur d'organisation ou administrateur SnapCenter . link:reference-roles.html["En savoir plus sur les rôles d'accès à la BlueXP backup and recovery"] .  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
@@ -25,11 +25,16 @@ Administrateur d'organisation ou administrateur SnapCenter . link:reference-role
 
 La première étape pour protéger les applications Kubernetes consiste à créer une application dans la BlueXP backup and recovery. Lorsque vous créez une application, vous indiquez à BlueXP qu'elle est en cours d'exécution sur le cluster Kubernetes.
 
+.Avant de commencer
+Avant de pouvoir ajouter et protéger une application Kubernetes, vous devez link:br-start-discover.html["découvrir les charges de travail Kubernetes"] .
+
 .Étapes
-. Dans la BlueXP backup and recovery, sélectionnez *Inventaire* > *Applications*.
+. Dans la BlueXP backup and recovery, sélectionnez *Inventaire*.
+. Choisissez une instance Kubernetes et sélectionnez *Afficher* pour afficher les ressources associées à cette instance.
+. Sélectionnez l'onglet *Applications*.
 . Sélectionnez *Créer une application*.
 . Entrez un nom pour l'application.
-. Choisissez l’un des champs suivants pour rechercher les ressources que vous souhaitez protéger :
+. Vous pouvez également choisir l’un des champs suivants pour rechercher les ressources que vous souhaitez protéger :
 +
 ** Cluster associé
 ** Espaces de noms associés
@@ -37,11 +42,15 @@ La première étape pour protéger les applications Kubernetes consiste à crée
 ** Sélecteurs d'étiquettes
 
 
-. Vous pouvez également sélectionner « Ressources de portée cluster » pour sélectionner les ressources de portée cluster non incluses dans l'application. Si vous les incluez, elles seront ajoutées à l'application lors de sa création.
-. Sélectionnez *Rechercher* pour trouver les ressources en fonction de vos critères de recherche.
+. Vous pouvez également sélectionner « Ressources à portée de cluster » pour choisir les ressources à portée de cluster. Si vous les incluez, elles seront ajoutées à l'application lors de sa création.
+. Vous pouvez également sélectionner *Rechercher* pour trouver les ressources en fonction de vos critères de recherche.
++
+
+NOTE: BlueXP ne stocke pas les paramètres ou les résultats de recherche ; les paramètres sont utilisés pour rechercher dans le cluster Kubernetes sélectionné des ressources pouvant être incluses dans l'application.
+
 . BlueXP affiche une liste de ressources correspondant à vos critères de recherche.
 . Si la liste contient les ressources que vous souhaitez protéger, sélectionnez *Suivant*.
-. Dans la zone *Politique*, choisissez une politique de protection existante pour protéger l'application ou créez une nouvelle politique.
+. Vous pouvez également, dans la zone *Politique*, choisir une politique de protection existante pour protéger l'application ou en créer une nouvelle. Si vous ne sélectionnez pas de politique, l'application est créée sans politique de protection. Vous pourrez en ajouter une ultérieurement.
 . Dans la section *Préscripts et postscripts*, activez et configurez les hooks d'exécution de préscripts ou de postscripts que vous souhaitez exécuter avant ou après les opérations de sauvegarde. Pour activer les préscripts ou les postscripts, vous devez en avoir déjà créé au moins un. link:br-use-manage-execution-hook-templates.html["modèle de crochet d'exécution"] .
 . Sélectionnez *Créer*.
 
@@ -56,7 +65,9 @@ L'application est créée et apparaît dans la liste des applications de l'ongle
 Activez une politique de protection sur une application Kubernetes que vous avez déjà ajoutée.
 
 .Étapes
-. Dans la BlueXP backup and recovery, sélectionnez *Inventaire* > *Applications*.
+. Dans la BlueXP backup and recovery, sélectionnez *Inventaire*.
+. Choisissez une instance Kubernetes et sélectionnez *Afficher* pour afficher les ressources associées à cette instance.
+. Sélectionnez l'onglet *Applications*.
 . Dans la liste des applications, choisissez une application que vous souhaitez protéger et sélectionnez le menu Actions associé.
 . Sélectionnez *protéger*.
 . Dans la zone *Politique*, choisissez une politique de protection existante pour protéger l'application ou créez une nouvelle politique.
@@ -65,7 +76,7 @@ Activez une politique de protection sur une application Kubernetes que vous avez
 
 
 .Résultat
-BlueXP active la protection de l'application en fonction de vos paramètres et vous pouvez surveiller la progression dans la zone *Surveillance* de la sauvegarde et de la récupération.
+BlueXP active la protection de l'application selon vos paramètres, et vous pouvez suivre sa progression dans la section *Surveillance* de la sauvegarde et de la restauration. Dès que vous activez la protection d'une application, BlueXP crée une sauvegarde complète de celle-ci. Les sauvegardes incrémentielles ultérieures sont créées selon la planification définie dans la politique de protection associée à l'application.
 
 
 
@@ -74,10 +85,14 @@ BlueXP active la protection de l'application en fonction de vos paramètres et v
 Créez manuellement une sauvegarde d'une application Kubernetes pour établir une base de référence pour les futures sauvegardes et instantanés, ou pour garantir la protection des données les plus récentes.
 
 .Étapes
-. Dans la BlueXP backup and recovery, sélectionnez *Inventaire* > *Applications*.
+. Dans la BlueXP backup and recovery, sélectionnez *Inventaire*.
+. Choisissez une instance Kubernetes et sélectionnez *Afficher* pour afficher les ressources associées à cette instance.
+. Sélectionnez l'onglet *Applications*.
 . Dans la liste des applications, choisissez une application que vous souhaitez sauvegarder et sélectionnez le menu Actions associé.
 . Sélectionnez *Sauvegarder maintenant*.
 . Assurez-vous que le nom d’application correct est sélectionné.
-. Sélectionnez une politique de protection dans la liste des politiques.
 . Sélectionnez *Sauvegarder*.
 
+
+.Résultat
+BlueXP crée une sauvegarde de l'application et affiche la progression dans la zone *Surveillance* de la sauvegarde et de la restauration. La sauvegarde est créée en fonction de la politique de protection associée à l'application.
