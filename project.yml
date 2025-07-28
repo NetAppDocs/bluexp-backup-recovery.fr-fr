@@ -145,7 +145,7 @@ sidebar:
       - title: Présentation de la protection des charges de travail Kubernetes
         url: "/br-use-kubernetes-protect-overview.html"
       - title: Découvrez les charges de travail Kubernetes
-        url: br-start-discover-kubernetes.html
+        url: "/br-start-discover-kubernetes.html"
       - title: Ajouter et protéger les applications Kubernetes
         url: "/br-use-protect-kubernetes-applications.html"
       - title: Restaurer les applications Kubernetes
