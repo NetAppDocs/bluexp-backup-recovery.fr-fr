@@ -4591,4 +4591,5 @@ ifdef::aws[]</block>
   <block id="5d8fc779baf0d068c296ee5013b2224f" category="doc">Prise en charge des charges de travail Kubernetes en tant qu'aperçu</block>
   <block id="f4270282e09abd3774ba339dc49af208" category="paragraph">Pour plus de détails sur la protection des charges de travail Kubernetes, reportez-vous à <block ref="44b634c6507d9116150094fb69849fd2" category="inline-link-rx"></block> .</block>
   <block id="d30235bcb420e82027cadb3cffab450f" category="list-text"><block ref="bdf340f843cf54500673f62df22d5070" category="inline-link-macro-rx"></block> .</block>
+  <block id="339f6d69f0298e3d4bbd943ba3211c6c" category="list-text">Charges de travail Kubernetes (Aperçu)</block>
 </blocks>
