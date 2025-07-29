@@ -32,7 +32,7 @@ NOTE: Cette documentation est fournie à titre d'aperçu technologique. Pendant 
 
 Vous pouvez effectuer les tâches suivantes liées à la gestion des charges de travail Kubernetes :
 
-* link:br-start-discover.html#discover-kubernetes-workloads["Découvrez les charges de travail Kubernetes"] .
+* link:br-start-discover-kubernetes.html["Découvrez les charges de travail Kubernetes"] .
 * link:br-use-manage-kubernetes-clusters.html["Gérez les clusters Kubernetes"].
 * link:br-use-protect-kubernetes-applications.html["Ajouter et protéger les applications Kubernetes"] .
 * link:br-use-manage-kubernetes-applications.html["Gérer les applications Kubernetes"].
