@@ -32,11 +32,20 @@ Il existe dix catégories de terminaux définis dans la sauvegarde et la restaur
 
 
 
+== Référence API
+
+La documentation de chaque API de BlueXP backup and recovery est disponible à partir de https://docs.netapp.com/us-en/bluexp-automation/cbs/overview.html["Automatisation BlueXP pour la BlueXP backup and recovery"^] .
+
+
+
 == Pour commencer
 
 Pour commencer à utiliser les API de sauvegarde et de restauration BlueXP, vous devez obtenir un jeton utilisateur, votre ID de compte BlueXP et l'identifiant du connecteur BlueXP.
 
 Lorsque vous passez des appels API, vous ajoutez le jeton utilisateur dans l'en-tête autorisation et l'ID connecteur BlueXP dans l'en-tête x-agent-ID. Vous devez utiliser l'ID de compte BlueXP dans les API.
+
+
+NOTE: Si vous utilisez un compte de service, vous devez utiliser le jeton d’accès au service au lieu d’un jeton utilisateur.  La valeur de « client_id » (« Mu0V1ywgYteI6w1MbD15fKfVIUrNXGWC ») est une valeur fixe et ne peut pas être modifiée.  Dans ce cas, suivez les instructions ici : https://docs.netapp.com/us-en/bluexp-automation/platform/create_service_token.html["Créer un jeton d'accès au service"^] .
 
 .Étapes
 . Procurez-vous un jeton utilisateur sur le site Web NetApp BlueXP.
@@ -180,8 +189,3 @@ curl --location --request GET 'https://api.bluexp.netapp.com/account/account-DpT
     ]
 }
 ----
-
-
-== Référence API
-
-La documentation de chaque API de sauvegarde et de restauration BlueXP  est disponible sur https://docs.netapp.com/us-en/bluexp-automation/cbs/overview.html["Automatisation BlueXP "^].
