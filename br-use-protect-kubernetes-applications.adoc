@@ -50,7 +50,7 @@ NOTE: BlueXP ne stocke pas les paramètres ou les résultats de recherche ; les
 
 . BlueXP affiche une liste de ressources correspondant à vos critères de recherche.
 . Si la liste contient les ressources que vous souhaitez protéger, sélectionnez *Suivant*.
-. Vous pouvez également, dans la zone *Politique*, choisir une politique de protection existante pour protéger l'application ou en créer une nouvelle. Si vous ne sélectionnez pas de politique, l'application est créée sans politique de protection. Vous pourrez en ajouter une ultérieurement.
+. Vous pouvez également, dans la zone *Politique*, choisir une politique de protection existante pour protéger l'application ou en créer une nouvelle. Si vous ne sélectionnez pas de politique, l'application est créée sans politique de protection. Tu peuxlink:br-use-policies-create.html#create-a-policy["ajouter une politique de protection"] plus tard.
 . Dans la section *Préscripts et postscripts*, activez et configurez les hooks d'exécution de préscripts ou de postscripts que vous souhaitez exécuter avant ou après les opérations de sauvegarde. Pour activer les préscripts ou les postscripts, vous devez en avoir déjà créé au moins un. link:br-use-manage-execution-hook-templates.html["modèle de crochet d'exécution"] .
 . Sélectionnez *Créer*.
 
@@ -70,7 +70,7 @@ Activez une politique de protection sur une application Kubernetes que vous avez
 . Sélectionnez l'onglet *Applications*.
 . Dans la liste des applications, choisissez une application que vous souhaitez protéger et sélectionnez le menu Actions associé.
 . Sélectionnez *protéger*.
-. Dans la zone *Politique*, choisissez une politique de protection existante pour protéger l'application ou créez une nouvelle politique.
+. Dans la zone *Politique*, choisissez une politique de protection existante pour protéger l'application ou créez une nouvelle politique.  Se référer àlink:br-use-policies-create.html#create-a-policy["Création d'une règle"] pour plus d'informations sur la création de politiques de protection.
 . Dans la zone *Préscripts et postscripts*, activez et configurez les hooks d'exécution de préscripts ou de postscripts à exécuter avant ou après les opérations de sauvegarde. Vous pouvez configurer le type de hook d'exécution, le modèle utilisé, les arguments et les sélecteurs d'étiquettes.
 . Sélectionnez *Done*.
 
