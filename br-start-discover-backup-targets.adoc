@@ -26,6 +26,9 @@ Vous pouvez découvrir ces cibles automatiquement ou les ajouter manuellement.
 
 Fournissez les identifiants nécessaires pour accéder au système de comptes de stockage. Ces identifiants permettent de découvrir les charges de travail à sauvegarder.
 
+.Avant de commencer
+Pour ajouter une cible de sauvegarde hors site, au moins une charge de travail doit être découverte.
+
 .Étapes
 . Dans le menu de BlueXP backup and recovery , sélectionnez *Inventaire*.
 . Sélectionnez l’onglet *Cibles de sauvegarde hors site*.
@@ -90,7 +93,7 @@ Plutôt que de laisser la BlueXP backup and recovery découvrir automatiquement 
 +
 ** Pour AWS :
 +
-*** *Nom du bucket* : saisissez le nom du bucket S3.
+*** *Nom du bucket* : saisissez le nom du bucket S3.  Le préfixe « netapp-backup » est un préfixe obligatoire et est automatiquement ajouté au nom que vous fournissez.
 *** *Compte AWS* : saisissez le nom du compte AWS.
 *** *Région du bucket* : saisissez la région AWS du bucket.
 *** *Activer le verrouillage des objets S3* : sélectionnez cette option pour activer le verrouillage des objets S3 pour le compartiment. Ce verrouillage empêche la suppression ou l'écrasement des objets pendant une période de conservation spécifiée, offrant ainsi une protection supplémentaire des données. Vous pouvez l'activer uniquement lors de la création d'un compartiment ; vous ne pouvez pas le désactiver ultérieurement.

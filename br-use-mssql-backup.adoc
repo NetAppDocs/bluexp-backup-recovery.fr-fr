@@ -44,45 +44,6 @@ image:screen-br-inventory-sql.png["Capture d'écran de la page des détails de l
 
 
 
-== Gérer les hôtes
-
-Vous pouvez gérer les hôtes détectés dans votre environnement de travail, séparément ou en groupe.
-
-
-TIP: Vous ne pouvez gérer que les hôtes dont le statut est « Non géré » dans la colonne « Hôtes ». Si le statut est « Géré », cela signifie que l'hôte est déjà géré par BlueXP backup and recovery.
-
-Une fois que vous avez géré les hôtes dans la BlueXP backup and recovery, SnapCenter ne gère plus les ressources sur ces hôtes.
-
-*Rôle BlueXP requis* Administrateur d'organisation, administrateur de dossier ou de projet ou super administrateur de sauvegarde et de récupération.  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
-
-.Étapes
-. Dans le menu, sélectionnez *Inventaire*.
-+
-image:screen-br-inventory.png["Capture d'écran de l'inventaire pour la BlueXP backup and recovery"]
-
-. Sélectionnez une charge de travail pour afficher les détails de protection.
-. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Voir les détails*.
-+
-image:screen-br-inventory-sql.png["Capture d'écran de la page des détails de l'inventaire pour la BlueXP backup and recovery"]
-
-. Sélectionnez l'onglet *Hôtes*.
-. Sélectionnez un ou plusieurs hôtes. Si vous en sélectionnez plusieurs, une option « Actions groupées » apparaît, vous permettant de sélectionner « Gérer (jusqu'à 5 hôtes) ».
-. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Gérer*.
-+
-image:screen-br-inventory-details-manage-hosts.png["Gérer la page des hôtes"]
-
-. Examinez les dépendances de l’hôte :
-+
-** Si le vCenter ne s’affiche pas, sélectionnez l’icône en forme de crayon pour ajouter ou modifier les détails du vCenter.
-** Si vous ajoutez un vCenter, vous devez également enregistrer le vCenter en sélectionnant *Enregistrer vCenter*.
-
-
-. Sélectionnez *Valider les paramètres* pour tester vos paramètres.
-. Sélectionnez *Gérer* pour gérer l'hôte.
-
-
-
-
 == Configurer le répertoire de journaux pour les hôtes découverts
 
 Avant de sauvegarder vos charges de travail, définissez le chemin d'accès aux journaux d'activité des hôtes détectés. Cela vous permet de suivre l'état des opérations.

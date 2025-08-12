@@ -21,7 +21,7 @@ Surveiller l'état de vos charges de travail vous permet d'identifier les probl�
 .Étapes
 . Dans le menu de BlueXP backup and recovery , sélectionnez *Tableau de bord*.
 +
-image:screen-br-dashboard2.png["Tableau de bord de BlueXP backup and recovery"]
+image:screen-br-dashboard3.png["Tableau de bord de BlueXP backup and recovery"]
 
 
 

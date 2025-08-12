@@ -96,7 +96,7 @@ sidebar:
         url: "/prev-ontap-backup-manage.html"
       - title: Restaurez vos données à partir de sauvegardes ONTAP
         url: "/prev-ontap-restore.html"
-    - title: Protéger les charges de travail Microsoft SQL Server (Aperçu)
+    - title: Protégez les charges de travail Microsoft SQL Server
       entries:
       - title: Présentation de la protection des charges de travail Microsoft SQL
           Server

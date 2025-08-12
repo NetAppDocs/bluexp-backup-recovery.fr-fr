@@ -24,13 +24,85 @@ Une licence ONTAP One doit être activée sur l’instance ONTAP locale.
 
 
 
-== Pour les sauvegardes sur le stockage d'objets
+== Conditions préalables pour les sauvegardes sur le stockage d'objets
 
 Pour utiliser le stockage d'objets comme cibles de sauvegarde, vous avez besoin d'un compte avec AWS S3, Microsoft Azure Blob, StorageGRID ou ONTAP et des autorisations d'accès appropriées configurées.
 
-* link:prev-ontap-protect-overview.html["Protégez les données de vos volumes ONTAP"]
-* link:br-use-mssql-protect-overview.html["Protégez vos bases de données Microsoft SQL Server"]
-* link:prev-vmware-protect-overview.html["Protégez les charges de travail de vos machines virtuelles"]
+Voirlink:br-start-setup.html["Configurez les destinations de sauvegarde avant d'utiliser la BlueXP backup and recovery"] pour plus de détails sur la façon de configurer les destinations de sauvegarde.
+
+
+
+== Exigences de charge de travail de Microsoft SQL Server
+
+Pour utiliser la BlueXP backup and recovery pour les charges de travail SQL Server, vous avez besoin des prérequis suivants en matière de système hôte, d’espace et de dimensionnement.
+
+[cols="33,66a"]
+|===
+| Élément | De formation 
+
+
+| Systèmes d'exploitation  a| 
+Microsoft Windows Pour obtenir les dernières informations sur les versions prises en charge, consultez le  https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome["Matrice d'interopérabilité NetApp"^] .
+
+
+
+| Versions de Microsoft SQL Server  a| 
+Les versions 2012 et ultérieures sont prises en charge pour VMware Virtual Machine File System (VMFS) et VMware Virtual Machine Disk (VMDK) NFS.
+
+
+
+| Version du serveur SnapCenter  a| 
+SnapCenter Server version 5.0 ou supérieure est requise si vous souhaitez importer vos données existantes de SnapCenter dans la BlueXP backup and recovery.
+
+
+NOTE: Si vous disposez déjà de SnapCenter, vérifiez d'abord que vous avez rempli les conditions préalables avant d'importer depuis SnapCenter. Voir link:concept-start-prereq-snapcenter-import.html["Conditions préalables à l'importation de ressources depuis SnapCenter"].
+
+
+
+| RAM minimale pour le plug-in sur l'hôte SQL Server  a| 
+1 GO
+
+
+
+| Espace minimum d'installation et de journalisation pour le plug-in sur l'hôte SQL Server  a| 
+5 GO
+
+Allouez suffisamment d'espace disque et surveillez la consommation de stockage du dossier des journaux. L'espace requis pour les journaux varie en fonction du nombre de sauvegardes effectuées et de la fréquence des opérations de protection des données. En cas d'espace insuffisant, les journaux ne seront pas créés pour les opérations.
+
+
+
+| Packs logiciels requis  a| 
+* Pack d'hébergement ASP.NET Core Runtime 8.0.12 (et tous les correctifs 8.0.x ultérieurs)
+* PowerShell Core 7.4.2
+
+
+Pour obtenir les dernières informations sur les versions prises en charge, consultez le https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome["Matrice d'interopérabilité NetApp"^].
+
+|===
+
+
+== Exigences de charge de travail Kubernetes
+
+Vous avez besoin d’exigences spécifiques pour découvrir les ressources Kubernetes et protéger vos applications Kubernetes.
+
+Pour connaître les exigences de BlueXP , reportez-vous à <<Dans BlueXP>> .
+
+* Un système ONTAP principal (ONTAP 9.16.1 ou version ultérieure)
+* Un cluster Kubernetes - Les distributions et versions Kubernetes prises en charge incluent :
++
+** Anthos On-Prem (VMware) et Anthos sur bare metal 1.16
+** Kubernetes 1.27 - 1.33
+** OpenShift 4.10 - 4.18
+** Rancher Kubernetes Engine 2 (RKE2) v1.26.7+rke2r1, v1.28.5+rke2r1
+
+
+* NetApp Trident 24.10 ou version ultérieure
+* NetApp Trident Protect 25.07 ou version ultérieure (installé lors de la découverte de la charge de travail Kubernetes)
+* NetApp Trident Protect Connector 25.07 ou version ultérieure (installé lors de la découverte de la charge de travail Kubernetes)
++
+** Assurez-vous que le port TCP 443 n'est pas filtré dans le sens sortant entre le cluster Kubernetes, le connecteur Trident Protect et le proxy Trident Protect.
+
+
 
 
 
@@ -93,78 +165,3 @@ endif::gcp[]
 
 
 NOTE: Les références aux « systèmes ONTAP sur site » incluent les systèmes FAS et AFF .
-
-
-
-== Configuration requise pour l'hôte Microsoft SQL Server
-
-Pour utiliser la BlueXP backup and recovery pour les charges de travail SQL Server, vous avez besoin des prérequis suivants en matière de système hôte, d’espace et de dimensionnement.
-
-[cols="33,66a"]
-|===
-| Élément | De formation 
-
-
-| Systèmes d'exploitation  a| 
-Microsoft Windows Pour obtenir les dernières informations sur les versions prises en charge, consultez le  https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome["Matrice d'interopérabilité NetApp"^] .
-
-
-
-| Versions de Microsoft SQL Server  a| 
-Les versions 2012 et ultérieures sont prises en charge pour VMware Virtual Machine File System (VMFS) et VMware Virtual Machine Disk (VMDK) NFS.
-
-
-
-| Version du serveur SnapCenter  a| 
-SnapCenter Server version 5.0 ou supérieure est requise si vous souhaitez importer vos données existantes de SnapCenter dans la BlueXP backup and recovery.
-
-
-NOTE: Si vous disposez déjà de SnapCenter, vérifiez d'abord que vous avez rempli les conditions préalables avant d'importer depuis SnapCenter. Voir link:concept-start-prereq-snapcenter-import.html["Conditions préalables à l'importation de ressources depuis SnapCenter"].
-
-
-
-| RAM minimale pour le plug-in sur l'hôte SQL Server  a| 
-1 GO
-
-
-
-| Espace minimum d'installation et de journalisation pour le plug-in sur l'hôte SQL Server  a| 
-5 GO
-
-Allouez suffisamment d'espace disque et surveillez la consommation de stockage du dossier des journaux. L'espace requis pour les journaux varie en fonction du nombre de sauvegardes effectuées et de la fréquence des opérations de protection des données. En cas d'espace insuffisant, les journaux ne seront pas créés pour les opérations.
-
-
-
-| Packs logiciels requis  a| 
-* Pack d'hébergement ASP.NET Core Runtime 8.0.12 (et tous les correctifs 8.0.x ultérieurs)
-* PowerShell Core 7.4.2
-
-
-Pour obtenir les dernières informations sur les versions prises en charge, consultez le https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome["Matrice d'interopérabilité NetApp"^].
-
-|===
-
-
-== Pour protéger les applications Kubernetes
-
-Vous avez besoin d’exigences spécifiques pour découvrir les ressources Kubernetes et protéger vos applications Kubernetes.
-
-Pour connaître les exigences de BlueXP , reportez-vous à <<Dans BlueXP>> .
-
-* Un système ONTAP principal (ONTAP 9.16.1 ou version ultérieure)
-* Un cluster Kubernetes - Les distributions et versions Kubernetes prises en charge incluent :
-+
-** Anthos On-Prem (VMware) et Anthos sur bare metal 1.16
-** Kubernetes 1.27 - 1.33
-** OpenShift 4.10 - 4.18
-** Rancher Kubernetes Engine 2 (RKE2) v1.26.7+rke2r1, v1.28.5+rke2r1
-
-
-* NetApp Trident 24.10 ou version ultérieure
-* NetApp Trident Protect 25.07 ou version ultérieure (installé lors de la découverte de la charge de travail Kubernetes)
-* NetApp Trident Protect Connector 25.07 ou version ultérieure (installé lors de la découverte de la charge de travail Kubernetes)
-+
-** Assurez-vous que le port TCP 443 n'est pas filtré dans le sens sortant entre le cluster Kubernetes, le connecteur Trident Protect et le proxy Trident Protect.
-
-
-

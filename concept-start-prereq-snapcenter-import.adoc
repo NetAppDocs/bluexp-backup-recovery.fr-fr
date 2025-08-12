@@ -4,7 +4,7 @@ permalink: concept-start-prereq-snapcenter-import.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, backup and recovery, snapcenter, import, migration, migrate 
 summary: 'Commencez à utiliser la BlueXP backup and recovery en vérifiant la disponibilité de votre environnement opérationnel, de votre connecteur BlueXP et de votre compte BlueXP . Pour utiliser la BlueXP backup and recovery, vous devez remplir les conditions suivantes :' 
 ---
-= Configurer des éléments supplémentaires lors de l'importation depuis SnapCenter vers la BlueXP backup and recovery
+= Conditions préalables à l'importation du service Plug-in dans la BlueXP backup and recovery
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,13 +14,19 @@ summary: 'Commencez à utiliser la BlueXP backup and recovery en vérifiant la d
 
 
 [role="lead"]
-Si vous souhaitez importer des ressources de SnapCenter dans la BlueXP backup and recovery, vous devrez configurer quelques éléments supplémentaires.
+Si vous souhaitez importer des ressources du service de plug-in SnapCenter pour Microsoft SQL Server dans la BlueXP backup and recovery, vous devrez configurer quelques éléments supplémentaires.
+
+
+
+== Créez d'abord des environnements de travail dans BlueXP Canvas
+
+Si vous souhaitez importer des ressources depuis SnapCenter, vous devez d'abord créer des environnements de travail dans BlueXP Canvas pour tous les stockages de cluster SnapCenter sur site avant de procéder à l' importation. Cela garantit la détection et l'importation correctes des ressources hôtes.
 
 
 
 == Assurez-vous que les exigences de l'hôte sont respectées pour installer le plug-in SnapCenter
 
-Pour importer des ressources depuis SnapCenter, assurez-vous que les exigences de l'hôte pour installer le plug-in SnapCenter pour Microsoft SQL Server sont respectées.
+Pour importer des ressources à partir du plug-in SnapCenter pour Microsoft SQL Server, assurez-vous que les exigences de l'hôte pour installer le plug-in SnapCenter pour Microsoft SQL Server sont respectées.
 
 Vérifiez spécifiquement les exigences de SnapCenter dans link:concept-start-prereq.html["Conditions préalables à la BlueXP backup and recovery"] .
 
@@ -163,8 +169,3 @@ Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 LocalAccountTokenFilterPolicy : 1
 ----
-
-
-== Créez d'abord des environnements de travail dans BlueXP Canvas
-
-Si vous souhaitez importer des ressources depuis SnapCenter, vous devez d'abord créer des environnements de travail dans BlueXP Canvas pour tous les stockages de cluster SnapCenter sur site avant de procéder à l' importation. Cela garantit la détection et l'importation correctes des ressources hôtes.

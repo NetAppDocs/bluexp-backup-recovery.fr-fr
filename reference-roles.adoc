@@ -4,7 +4,7 @@ permalink: reference-roles.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, roles, permissions, access control, role-based access control, rbac 
 summary: 'La BlueXP backup and recovery utilisent des rôles pour gérer l"accès de chaque utilisateur à des fonctionnalités et actions spécifiques' 
 ---
-= Accès aux fonctionnalités de BlueXP backup and recovery basé sur les rôles
+= Gestion des identités et des accès aux fonctionnalités de BlueXP backup and recovery
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 'La BlueXP backup and recovery utilisent des rôles pour gérer l"accè
 
 
 [role="lead"]
-La BlueXP backup and recovery utilisent des rôles pour gérer l'accès de chaque utilisateur à des fonctionnalités et actions spécifiques.
+La BlueXP backup and recovery utilisent la gestion des identités et des accès (IAM) pour régir l'accès de chaque utilisateur à des fonctionnalités et actions spécifiques.
 
 Le service utilise les rôles suivants qui sont spécifiques à la BlueXP backup and recovery.
 

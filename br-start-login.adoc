@@ -22,6 +22,10 @@ Pour plus de détails sur les actions que chaque rôle peut exécuter, reportez-
 
 Pour vous connecter à BlueXP , vous pouvez utiliser vos identifiants du site du support NetApp ou vous inscrire à un identifiant cloud NetApp par e-mail et par mot de passe. https://docs.netapp.com/us-en/bluexp-setup-admin/task-logging-in.html["En savoir plus sur la connexion"^].
 
+*Rôle BlueXP requis* Administrateur d'organisation, Administrateur de dossier ou de projet, Super administrateur de sauvegarde et de récupération, Rôle d'administrateur de restauration de sauvegarde et de récupération.  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+S'il s'agit de votre première fois que vous accédez à la BlueXP backup and recovery et que vous souhaitez ajouter un connecteur, vous devez disposer du rôle d'administrateur d'organisation ou de super administrateur de sauvegarde et de récupération.
+
 .Étapes
 . Ouvrez un navigateur Web et accédez à https://console.bluexp.netapp.com/["Console BlueXP"^].
 +
@@ -34,10 +38,11 @@ La page de connexion NetApp BlueXP s'affiche.
 +
 image:screen-br-landing-no-we.png["Capture d'écran de la page de destination pour la sauvegarde et la récupération BlueXP BlueXP sans environnement de travail"]
 
-** Si c'est la première fois que vous vous connectez à ce service et que vous disposez déjà d'un environnement de travail dans BlueXP, mais que vous n'avez découvert aucune ressource, la page d'accueil « Bienvenue dans la nouvelle BlueXP backup and recovery» apparaît et affiche une option pour * Découvrir les ressources *.
+** Si c'est la première fois que vous vous connectez à ce service, que vous disposez déjà d'un environnement de travail dans BlueXP, mais que vous n'avez pas démarré l'essai gratuit, la page d'accueil « Bienvenue dans la nouvelle BlueXP backup and recovery» apparaît et affiche une option pour *Afficher l'essai gratuit*.
 +
-image:screen-br-landing-unified.png["Capture d'écran de la page de destination pour la sauvegarde et la récupération BlueXP blueXP"]
+image:screen-br-landing-unified-trial.png["Capture d'écran de la page de destination pour la sauvegarde et la récupération BlueXP BlueXP sans essai gratuit"]
 
+** Si c'est la première fois que vous vous connectez à ce service et que vous disposez déjà d'un environnement de travail dans BlueXP, mais que vous n'avez découvert aucune ressource, la page d'accueil « Bienvenue dans la nouvelle BlueXP backup and recovery» apparaît et affiche une option pour *Découvrir et gérer*.
 
 
 . Si vous ne l’avez pas déjà fait, sélectionnez l’option *Découvrir et gérer*.

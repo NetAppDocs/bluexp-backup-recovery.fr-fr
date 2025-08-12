@@ -50,15 +50,18 @@ La BlueXP backup and recovery vous permettent de sauvegarder les instances et le
 
 
 | Cloud Volumes ONTAP dans AWS | Cloud Volumes ONTAP dans AWS
-Système ONTAP sur site | Amazon S3 
+Système ONTAP sur site | Amazon S3 ONTAP S3 
 
 
 | Cloud Volumes ONTAP dans Azure | Cloud Volumes ONTAP dans Azure
-Système ONTAP sur site | Blob d'Azure 
+Système ONTAP sur site | Azure Blob ONTAP S3 
 
 
 | Système ONTAP sur site | Cloud Volumes ONTAP
-Système ONTAP sur site | Amazon S3 Azure Blob NetApp StorageGRID ifdef::gcp[] endif::gcp[] ifdef::gcp[] endif::gcp[] 
+Système ONTAP sur site | Amazon S3 Azure Blob NetApp StorageGRID ONTAP S3 
+
+
+| Amazon FSX pour NetApp ONTAP | Amazon FSX pour NetApp ONTAP | NA ifdef::gcp[] endif::gcp[] ifdef::gcp[] endif::gcp[] 
 |===
 .Destinations de restauration prises en charge
 Vous pouvez restaurer des instances et des bases de données Microsoft SQL Server à partir d'une sauvegarde qui réside dans le stockage principal ou dans un environnement de travail secondaire (un volume répliqué) ou dans le stockage d'objets (un fichier de sauvegarde) vers les environnements de travail suivants. Les copies Snapshot résident dans l'environnement de travail source et ne peuvent être restaurées que sur le même système.
@@ -72,15 +75,18 @@ Vous pouvez restaurer des instances et des bases de données Microsoft SQL Serve
 
 
 | Amazon S3 | Cloud Volumes ONTAP dans AWS
-Système ONTAP sur site | Volumes cloud dans le système AWS On-premises ONTAP 
+Système ONTAP sur site | Volumes cloud dans le système ONTAP sur site AWS ONTAP S3 
 
 
 | Blob d'Azure | Cloud Volumes ONTAP dans Azure
-Système ONTAP sur site | Cloud Volumes ONTAP dans le système ONTAP sur site Azure ifdef::gcp[] endif::gcp[] 
+Système ONTAP sur site | Cloud Volumes ONTAP dans Azure Système ONTAP sur site ONTAP S3 ifdef::gcp[] endif::gcp[] 
 
 
 | StorageGRID | Cloud Volumes ONTAP
-Système ONTAP sur site | Système ONTAP sur site 
+Système ONTAP sur site | Système ONTAP sur site ONTAP S3 
+
+
+| Amazon FSX pour NetApp ONTAP | Amazon FSX pour NetApp ONTAP | N / A 
 |===
 
 NOTE: Les références aux « systèmes ONTAP sur site » incluent les systèmes FAS et AFF .

@@ -153,7 +153,9 @@ image:../media/screen-br-inventory.png["Page d'inventaire"]
 
 === Si vous n’avez pas installé SnapCenter , ajoutez un vCenter et découvrez les ressources
 
-Si SnapCenter n'est pas encore installé, ajoutez les informations vCenter et laissez BlueXP backup and recovery les charges de travail. Dans chaque connecteur BlueXP , sélectionnez les environnements de travail dans lesquels vous souhaitez découvrir les charges de travail.
+Si SnapCenter n'est pas déjà installé, vous pouvez ajouter des informations vCenter et demander à BlueXP backup and recovery les charges de travail.  Dans chaque connecteur BlueXP , sélectionnez les environnements de travail dans lesquels vous souhaitez découvrir les charges de travail.
+
+Ceci est facultatif si vous disposez d'un environnement VMware.
 
 .Étapes
 . Dans la navigation de gauche de BlueXP , sélectionnez *Protection* > *Sauvegarde et récupération*.

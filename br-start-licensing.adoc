@@ -36,6 +36,25 @@ Une version d'essai gratuite de 30 jours pour la sauvegarde et la restauration B
 
 
 
+=== Terminez l'essai gratuit
+
+Si vous souhaitez continuer à utiliser la BlueXP backup and recovery après la fin de l'essai gratuit, vous devez configurer un abonnement payant.  Vous pouvez le faire à partir de l’interface BlueXP en accédant à la section de facturation et en sélectionnant un plan d’abonnement adapté à vos besoins.  Si vous ne souhaitez pas continuer à utiliser la BlueXP backup and recovery, vous pouvez mettre fin à l'essai gratuit.
+
+Lorsque vous mettez fin à l'essai gratuit sans souscrire à un forfait payant, vos données sont automatiquement supprimées 60 jours après la fin de l'essai gratuit.  Vous pouvez éventuellement demander au système de supprimer immédiatement vos données.
+
+.Étapes
+. Depuis la page d'accueil de BlueXP backup and recovery , sélectionnez *Afficher l'essai gratuit*.
++
+*QUESTION AUX RÉVISEURS* : Comment les utilisateurs accèdent-ils à la page de destination s'ils se trouvent sur d'autres pages BR ?
+
+. Sélectionnez *Terminer l'essai gratuit*.
+. Sélectionnez *Supprimer les données immédiatement après la fin de mon essai gratuit* pour supprimer vos données immédiatement.
+. Tapez *fin de l'essai* dans la case.
+. Sélectionnez *Fin* pour confirmer.
+
+
+
+
 == Utilisez un abonnement PAYGO pour la sauvegarde et la restauration de BlueXP
 
 Avec le paiement à l'utilisation, vous payez le coût du stockage objet pour votre fournisseur cloud et les coûts des licences de sauvegarde NetApp à l'heure sur un seul abonnement. Vous devez vous abonner à *NetApp Intelligent Services* sur Marketplace, même si vous disposez d'un essai gratuit ou si vous apportez votre propre licence (BYOL) :

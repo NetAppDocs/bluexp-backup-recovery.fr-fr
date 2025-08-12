@@ -18,7 +18,7 @@ Vous pouvez basculer entre les différentes charges de travail de BlueXP backup 
 
 *Comment savez-vous quelle interface utilisateur vous utilisez ?*
 
-La barre des tâches pour les charges de travail Microsoft SQL Server ressemble à ceci : image:screen-br-menu-unified.png["Nouvelle capture d'écran de l'interface utilisateur pour la BlueXP backup and recovery"]
+La barre des tâches pour les charges de travail Microsoft SQL Server et Kubernetes (Preview) ressemble à ceci :image:screen-br-menu-unified.png["Nouvelle capture d'écran de l'interface utilisateur pour la BlueXP backup and recovery"]
 
 La barre de menus pour les volumes ONTAP et les charges de travail VMware ressemble à ceci : image:screen-br-menu-legacy.png["Capture d'écran de l'interface utilisateur précédente pour la BlueXP backup and recovery"]
 

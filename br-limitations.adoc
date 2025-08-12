@@ -18,6 +18,16 @@ Les limitations connues identifient les plateformes, les périphériques ou les 
 
 
 
+== Prise en charge du cycle de vie des clones
+
+* Le clonage à partir du stockage d'objets n'est pas pris en charge.
+* Les opérations de clonage en masse ne sont pas prises en charge pour les clones à la demande.
+* Le choix des groupes I n'est pas pris en charge.
+* Le choix des options QOS (débit maximal) n'est pas pris en charge.
+
+
+
+
 == Mode de déploiement standard uniquement
 
 La version de BlueXP backup and recovery fonctionne uniquement en mode de déploiement standard, pas en mode restreint ou privé.
