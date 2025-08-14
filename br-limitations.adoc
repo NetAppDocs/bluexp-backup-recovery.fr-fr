@@ -109,9 +109,3 @@ SnapCenter ne mappe pas de clusters de stockage ni de SVM pour les ressources ve
 Si vous disposez d'une planification de stratégie SnapCenter qui démarre à une certaine heure et se répète toutes les quelques minutes, mais que les minutes ne sont pas à intervalles de 15 minutes, la BlueXP backup and recovery n'importeront pas la planification.
 
 *Solution de contournement* : utilisez SnapCenter pour ajuster la stratégie afin qu’elle se répète à des intervalles de 15 minutes.
-
-
-
-=== Conservation des sauvegardes des journaux
-
-Avec SnapCenter, vous pouvez définir plusieurs valeurs de rétention pour plusieurs stratégies associées à une ressource. Cependant, la version Preview de BlueXP backup and recovery ne prend en charge qu'une seule valeur de rétention pour toutes les stratégies associées à une ressource.

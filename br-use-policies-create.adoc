@@ -114,7 +114,7 @@ Fournir des informations pour l'instantané local.
 * *Conservation des instantanés* : saisissez le nombre d'instantanés à conserver.
 * *Activer la sauvegarde des journaux* : (Non disponible pour les charges de travail Kubernetes) Cochez l'option de sauvegarde des journaux et définissez la fréquence et la durée de conservation des sauvegardes. Pour ce faire, vous devez avoir préalablement configuré une sauvegarde des journaux. Voir link:br-start-configure.html["Configurer les répertoires de journaux"].
 * *Fournisseur* : (charges de travail Kubernetes uniquement) Sélectionnez le fournisseur de stockage qui héberge les ressources de l’application Kubernetes.
-* *Cible de sauvegarde* : (charges de travail Kubernetes uniquement) Sélectionnez le bucket de stockage qui héberge les ressources de l’application Kubernetes.  Les instantanés seront stockés dans ce bucket.  Assurez-vous que le bucket est accessible dans votre environnement de sauvegarde.
+* *Cible de sauvegarde* : (charges de travail Kubernetes uniquement) Sélectionnez le bucket de stockage qui héberge les ressources de l’application Kubernetes. Les définitions des ressources d’application au moment de l’instantané sont stockées dans ce compartiment. Assurez-vous que le bucket est accessible dans votre environnement de sauvegarde.
 * Vous pouvez également sélectionner *Avancé* à droite de la planification pour définir l'étiquette SnapMirror et activer le verrouillage des snapshots (non disponible pour les charges de travail Kubernetes).
 +
 ** * Étiquette SnapMirror * : L'étiquette sert de marqueur pour le transfert d'un snapshot spécifié selon les règles de conservation de la relation. L'ajout d'une étiquette à un snapshot le marque comme cible pour la réplication SnapMirror .

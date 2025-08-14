@@ -14,7 +14,7 @@ summary: 'Avec BlueXP backup and recovery, gérez les sauvegardes de vos systèm
 
 
 [role="lead"]
-Avec la sauvegarde et la récupération BlueXP, gérez les sauvegardes de vos systèmes Cloud Volumes ONTAP et ONTAP sur site en modifiant la planification de sauvegarde, en activant/désactivant les sauvegardes de volume, en suspendant les sauvegardes, en supprimant les sauvegardes, etc. Cela inclut tous les types de sauvegardes, y compris les copies instantanées, les volumes répliqués et les fichiers de sauvegarde dans le stockage objet. Vous pouvez également annuler l'enregistrement de la BlueXP backup and recovery.
+Avec la BlueXP backup and recovery, gérez les sauvegardes de vos systèmes Cloud Volumes ONTAP et ONTAP sur site en modifiant la planification de sauvegarde, en activant/désactivant les sauvegardes de volume, en suspendant les sauvegardes, en supprimant les sauvegardes, en forçant la suppression des sauvegardes, etc.  Cela inclut tous les types de sauvegardes, y compris les copies instantanées, les volumes répliqués et les fichiers de sauvegarde dans le stockage d'objets.  Vous pouvez également désenregistrer la BlueXP backup and recovery.
 
 
 CAUTION: Ne gérez pas et ne modifiez pas les fichiers de sauvegarde directement sur vos systèmes de stockage ou depuis l'environnement de votre fournisseur cloud. Cela peut corrompre les fichiers et entraîner une configuration non prise en charge.
@@ -371,7 +371,20 @@ Notez que cette action n'a aucun impact sur les copies Snapshot ou les volumes r
 image:screenshot_backup_settings_button.png["Capture d'écran affichant le bouton Paramètres de sauvegarde disponible après la sélection d'un environnement de travail."]
 
 . Sélectionner image:icon-actions-horizontal.gif["Icône actions"] pour l'environnement de travail dans lequel vous souhaitez supprimer toutes les sauvegardes et sélectionnez *Supprimer toutes les sauvegardes*.
-. Dans la boîte de dialogue de confirmation, entrez le nom de l'environnement de travail et sélectionnez *Supprimer*.
++
+image:screenshot_backup_delete_all_backups-working-env.png["Une capture d'écran qui montre l'option Supprimer toutes les sauvegardes"]
+
+. Dans la boîte de dialogue de confirmation, entrez le nom de l'environnement de travail.
+. Sélectionnez *Paramètres avancés*.
+. *Forcer la suppression des sauvegardes* : Indiquez si vous souhaitez ou non forcer la suppression de toutes les sauvegardes.
++
+Dans certains cas extrêmes, vous souhaiterez peut-être que la BlueXP backup and recovery n'aient plus accès aux sauvegardes. Cela peut se produire par exemple si le service n'a plus accès au bucket de sauvegarde ou si les sauvegardes sont protégées par DataLock mais que vous n'en voulez plus. Auparavant, vous ne pouviez pas les supprimer vous-même et deviez appeler le support NetApp . Avec cette version, vous pouvez utiliser l'option permettant de forcer la suppression des sauvegardes (au niveau du volume et de l'environnement de travail).
+
++
+
+CAUTION: Utilisez cette option avec précaution et uniquement en cas de besoins de nettoyage extrêmes.  La BlueXP backup and recovery n'auront plus accès à ces sauvegardes même si elles ne sont pas supprimées dans le stockage d'objets.  Vous devrez vous rendre chez votre fournisseur de cloud et supprimer manuellement les sauvegardes.
+
+. Sélectionnez *Supprimer*.
 
 
 
@@ -392,7 +405,16 @@ La liste de tous les fichiers de sauvegarde s'affiche.
 +
 image:screenshot_backup_delete_all_backups.png["Une capture d'écran qui montre l'option Supprimer toutes les sauvegardes"]
 
-. Saisissez le nom du volume et indiquez si vous souhaitez ou non forcer la suppression de toutes les sauvegardes.
+. Entrez le nom du volume.
+. Sélectionnez *Paramètres avancés*.
+. *Forcer la suppression des sauvegardes* : Indiquez si vous souhaitez ou non forcer la suppression de toutes les sauvegardes.
++
+Dans certains cas extrêmes, vous souhaiterez peut-être que la BlueXP backup and recovery n'aient plus accès aux sauvegardes.  Cela peut se produire par exemple si le service n'a plus accès au bucket de sauvegarde ou si les sauvegardes sont protégées par DataLock mais que vous n'en voulez plus. Auparavant, vous ne pouviez pas les supprimer vous-même et deviez appeler le support NetApp . Avec cette version, vous pouvez utiliser l'option permettant de forcer la suppression des sauvegardes (au niveau du volume et de l'environnement de travail).
+
++
+
+CAUTION: Utilisez cette option avec précaution et uniquement en cas de besoins de nettoyage extrêmes.  La BlueXP backup and recovery n'auront plus accès à ces sauvegardes même si elles ne sont pas supprimées dans le stockage d'objets.  Vous devrez vous rendre chez votre fournisseur de cloud et supprimer manuellement les sauvegardes.
+
 . Sélectionnez *Supprimer*.
 
 

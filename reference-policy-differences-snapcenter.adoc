@@ -14,7 +14,9 @@ summary: Il existe certaines différences entre les politiques utilisées dans l
 [role="lead"]
 Il existe certaines différences entre les stratégies utilisées dans SnapCenter et celles utilisées dans la BlueXP backup and recovery qui peuvent avoir un impact sur ce que vous voyez après l'importation de ressources et de stratégies depuis SnapCenter.
 
-La sauvegarde et la récupération de SnapCenter et BlueXP backup and recovery utilisent des calendriers de stratégie légèrement différents.
+
+
+== Niveaux de planification
 
 SnapCenter utilise les niveaux de planification suivants :
 
@@ -78,6 +80,12 @@ Si vous disposez d'une ressource dans SnapCenter avec plusieurs stratégies, la 
 * Pour « Sauvegarde complète et journal » plus « Sauvegarde complète » dans SnapCenter, la BlueXP backup and recovery utilisent la valeur de rétention « Sauvegarde complète et journal ».
 * Si vous n'avez qu'une sauvegarde complète dans SnapCenter, la BlueXP backup and recovery n'activent pas la sauvegarde du journal.
 
+
+
+
+== Conservation des sauvegardes des journaux
+
+Avec SnapCenter, vous pouvez avoir plusieurs valeurs de rétention dans plusieurs stratégies attachées à une ressource.  Cependant, la BlueXP backup and recovery ne prennent en charge qu’une seule valeur de rétention pour toutes les stratégies attachées à une ressource.
 
 
 
