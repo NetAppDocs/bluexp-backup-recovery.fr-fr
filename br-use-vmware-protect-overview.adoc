@@ -14,13 +14,27 @@ summary: Protégez vos charges de travail VMware avec la BlueXP backup and recov
 
 
 [role="lead"]
-Protégez vos charges de travail VMware avec la BlueXP backup and recovery. La BlueXP backup and recovery offrent des opérations de sauvegarde et de restauration rapides, peu encombrantes, cohérentes en cas de panne et compatibles avec les machines virtuelles (VM), les banques de données et les VMDK.
+Protégez vos machines virtuelles et banques de données VMware avec la BlueXP backup and recovery.  La BlueXP backup and recovery fournissent des opérations de sauvegarde et de restauration rapides, peu encombrantes, cohérentes en cas de panne et cohérentes avec les machines virtuelles.  Vous pouvez sauvegarder les charges de travail VMware sur Amazon Web Services S3 ou StorageGRID et restaurer les charges de travail VMware sur un hôte VMware local.
 
-Vous pouvez sauvegarder des datastores dans Amazon Web Services S3, Microsoft Azure Blob, Google Cloud Platform et StorageGRID, et restaurer des machines virtuelles dans le plug-in SnapCenter sur site pour l'hôte VMware vSphere.
+
+NOTE: Cette version de BlueXP backup and recovery prend uniquement en charge VMware vCenter et ne détecte pas les vVols ou les machines virtuelles sur les vVols.
+
+Utilisez la BlueXP backup and recovery pour mettre en œuvre une stratégie 3-2-1, où vous disposez de 3 copies de vos données sources sur 2 systèmes de stockage différents ainsi que d'une copie dans le cloud.  Les avantages de l’approche 3-2-1 incluent :
+
+* Les copies de données multiples fournissent une protection multicouche contre les menaces de cybersécurité internes (internes) et externes.
+* Plusieurs types de supports assurent la viabilité du basculement en cas de défaillance physique ou logique d'un type de support.
+* La copie sur site facilite les restaurations rapides, les copies hors site étant disponibles au cas où la copie sur site serait compromise.
+
 
 []
 ====
-*REMARQUE* Cette fonctionnalité utilise une version antérieure de l'interface de BlueXP backup and recovery . Pour basculer entre les versions de l'interface de BlueXP backup and recovery , consultez link:br-start-switch-ui.html["Basculer vers l'interface utilisateur de BlueXP backup and recovery précédente"] .
+*REMARQUE* Pour basculer vers et depuis les versions de l'interface utilisateur de BlueXP backup and recovery , reportez-vous à link:br-start-switch-ui.html["Basculer vers l'interface utilisateur de BlueXP backup and recovery précédente"] .
 
 ====
-Pour obtenir des instructions sur l'utilisation de l'interface utilisateur de BlueXP backup and recovery précédente, consultez les rubriques suivantes :
+Vous pouvez utiliser la BlueXP backup and recovery pour effectuer les tâches suivantes liées aux charges de travail VMware :
+
+* link:br-use-vmware-discovery.html["Découvrez les charges de travail VMware"]
+* link:br-use-vmware-protection-groups.html["Créer et gérer des groupes de protection pour les charges de travail VMware"]
+* link:br-use-vmware-backup.html["Sauvegarder les charges de travail VMware"]
+* link:br-use-vmware-restore.html["Restaurer les charges de travail VMware"]
+

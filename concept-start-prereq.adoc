@@ -28,13 +28,14 @@ Une licence ONTAP One doit être activée sur l’instance ONTAP locale.
 
 Pour utiliser le stockage d'objets comme cibles de sauvegarde, vous avez besoin d'un compte avec AWS S3, Microsoft Azure Blob, StorageGRID ou ONTAP et des autorisations d'accès appropriées configurées.
 
-Voirlink:br-start-setup.html["Configurez les destinations de sauvegarde avant d'utiliser la BlueXP backup and recovery"] pour plus de détails sur la façon de configurer les destinations de sauvegarde.
+* link:prev-ontap-protect-overview.html["Protégez vos données de volume ONTAP"]
 
 
 
-== Exigences de charge de travail de Microsoft SQL Server
 
-Pour utiliser la BlueXP backup and recovery pour les charges de travail SQL Server, vous avez besoin des prérequis suivants en matière de système hôte, d’espace et de dimensionnement.
+== Exigences pour la protection des charges de travail Microsoft SQL Server
+
+Pour utiliser la BlueXP backup and recovery pour les charges de travail Microsoft SQL Server, vous avez besoin des prérequis suivants en matière de système hôte, d’espace et de dimensionnement.
 
 [cols="33,66a"]
 |===
@@ -81,7 +82,50 @@ Pour obtenir les dernières informations sur les versions prises en charge, cons
 |===
 
 
-== Exigences de charge de travail Kubernetes
+== Exigences pour la protection des charges de travail VMware
+
+Vous avez besoin d’exigences spécifiques pour découvrir et protéger vos charges de travail VMware.
+
+*Support logiciel*
+
+* Les datastores NFS et VMFS sont pris en charge. Les vVols ne sont pas pris en charge.
+* Versions NFS prises en charge : NFS 3 et NFS 4.1
+* Versions de VMware ESXi Server prises en charge : 7.0U1 et versions ultérieures
+* Versions VMware vCenter vSphere prises en charge : 7.0U1 et supérieures
+* Adresses IP : IPv4 et IPv6
+* VMware TLS : 1.2, 1.3
+
+
+*Exigences de connexion et de port pour la protection des charges de travail VMware*
+
+[cols="33,66a"]
+|===
+| Type de port | Port préconfiguré 
+
+
+| Port du serveur VMware ESXi  a| 
+443 (HTTPS), bidirectionnel.  La fonction de restauration de fichiers invités utilise ce port.
+
+
+
+| Port du serveur VMware vSphere vCenter  a| 
+Si vous protégez des machines virtuelles vVol, vous devez utiliser le port 443.
+
+
+
+| Cluster de stockage ou port de VM de stockage  a| 
+443 (HTTPS), bidirectionnel.  80 (HTTP), bidirectionnel.  Ce port est utilisé pour la communication entre l'appliance virtuelle et la machine virtuelle de stockage ou le cluster contenant la machine virtuelle de stockage.
+
+|===
+*Exigences de contrôle d'accès basé sur les rôles (RBAC) pour la protection des charges de travail VMware*
+
+Le compte administrateur vCenter doit disposer des privilèges vCenter requis.
+
+Pour une liste des privilèges vCenter nécessaires, voir https://docs.netapp.com/us-en/sc-plugin-vmware-vsphere/scpivs44_deployment_planning_and_requirements.html#rbac-privileges-required["SnapCenter Plug-in for VMware vSphere privilèges vCenter requis"^] .
+
+
+
+== Exigences pour la protection des applications Kubernetes
 
 Vous avez besoin d’exigences spécifiques pour découvrir les ressources Kubernetes et protéger vos applications Kubernetes.
 

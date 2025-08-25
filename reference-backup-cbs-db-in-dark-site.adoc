@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: reference-backup-cbs-db-in-dark-site.html 
 keywords: backup database, recover database, dark site, private mode, restore database, backup and recovery, BlueXP Connector 
-summary: Lorsque vous utilisez la BlueXP backup and recovery sur un site sans accès Internet, appelé « mode privé », les données de configuration de BlueXP backup and recovery sont sauvegardées dans le compartiment StorageGRID ou ONTAP S3 où vos sauvegardes sont stockées.  Si vous rencontrez un problème avec le système hôte du connecteur BlueXP à l’avenir, vous pouvez déployer un nouveau connecteur et restaurer les données critiques de BlueXP backup and recovery . 
+summary: Lorsque vous utilisez la BlueXP backup and recovery sur un site sans accès Internet, appelé « mode privé », les données de configuration de BlueXP backup and recovery sont sauvegardées dans le compartiment StorageGRID ou ONTAP S3 où vos sauvegardes sont stockées. Si vous rencontrez un problème avec le système hôte du connecteur BlueXP à l’avenir, vous pouvez déployer un nouveau connecteur et restaurer les données critiques de BlueXP backup and recovery . 
 ---
 = Restaurer les données de configuration de BlueXP backup and recovery dans un site sombre
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Lorsque vous utilisez la BlueXP backup and recovery sur un site sans ac
 
 
 [role="lead"]
-Lorsque vous utilisez la BlueXP backup and recovery sur un site sans accès Internet, appelé _mode privé_, les données de configuration de BlueXP backup and recovery sont sauvegardées dans le compartiment StorageGRID ou ONTAP S3 où vos sauvegardes sont stockées.  Si vous rencontrez un problème avec le système hôte du connecteur BlueXP , vous pouvez déployer un nouveau connecteur et restaurer les données critiques de BlueXP backup and recovery .
+Lorsque vous utilisez la BlueXP backup and recovery sur un site sans accès Internet, appelé _mode privé_, les données de configuration de BlueXP backup and recovery sont sauvegardées dans le compartiment StorageGRID ou ONTAP S3 où vos sauvegardes sont stockées. Si vous rencontrez un problème avec le système hôte du connecteur BlueXP , vous pouvez déployer un nouveau connecteur et restaurer les données critiques de BlueXP backup and recovery .
 
 
 NOTE: Cette procédure s'applique uniquement aux données de volume ONTAP .

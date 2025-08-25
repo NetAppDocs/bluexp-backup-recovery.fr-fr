@@ -44,7 +44,7 @@ Le résumé du système fournit les informations suivantes :
 
 Consultez les informations suivantes dans le résumé de la protection :
 
-* Le nombre total de bases de données protégées et non protégées.
+* Le nombre total de bases de données, de machines virtuelles et de magasins de données protégés et non protégés.
 +
 
 TIP: Une base de données protégée est une base de données à laquelle une politique de sauvegarde est attribuée. Une base de données non protégée est une base de données à laquelle aucune politique de sauvegarde n'est attribuée.

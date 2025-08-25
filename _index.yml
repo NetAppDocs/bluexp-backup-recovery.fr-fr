@@ -49,15 +49,19 @@ indexpage:
       url: br-use-mssql-restore.html
     - title: Cloner les charges de travail Microsoft SQL Server
       url: br-use-mssql-clone.html
-  - title: Protéger les charges de travail des machines virtuelles
+  - title: Protéger les charges de travail VMware (Aperçu)
     links:
-    - title: Présentation des charges de travail de protection des machines virtuelles
-      url: prev-vmware-protect-overview.html
-    - title: Créer une politique pour sauvegarder les charges de travail des machines
-        virtuelles
-      url: prev-vmware-policy-create.html
-    - title: Restaurer les charges de travail des machines virtuelles
-      url: prev-vmware-restore.html
+    - title: Présentation de la protection des charges de travail VMware
+      url: br-use-vmware-protect-overview.html
+    - title: Découvrez les charges de travail VMware
+      url: br-use-vmware-discovery.html
+    - title: Créer et gérer des groupes de protection pour les charges de travail
+        VMware
+      url: br-use-vmware-protection-groups.html
+    - title: Sauvegarder les charges de travail VMware
+      url: br-use-vmware-backup.html
+    - title: Restaurer les charges de travail VMware
+      url: br-use-vmware-restore.html
   - title: Protéger les charges de travail Kubernetes (Aperçu)
     links:
     - title: Présentation de la protection des charges de travail Kubernetes

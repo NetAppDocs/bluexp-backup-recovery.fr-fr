@@ -1,0 +1,54 @@
+---
+sidebar: sidebar 
+permalink: br-use-vmware-backup.html 
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, BlueXP backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database 
+summary: Protégez vos charges de travail VMware avec la BlueXP backup and recovery NetApp BlueXP. 
+---
+= Sauvegardez les charges de travail VMware avec la BlueXP backup and recovery
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sauvegardez les machines virtuelles VMware et les banques de données des systèmes ONTAP sur site vers Amazon Web Services ou StorageGRID pour garantir la protection de vos données.  Les sauvegardes sont automatiquement générées et stockées dans un magasin d’objets sur votre compte cloud public ou privé.
+
+* Pour sauvegarder des charges de travail selon une planification, créez des stratégies qui régissent les opérations de sauvegarde et de restauration. Voir link:br-use-policies-create.html["Création de règles"] pour obtenir des instructions.
+* Créez des groupes de protection pour gérer les opérations de sauvegarde et de restauration d’un ensemble de ressources. Voir link:br-use-vmware-protection-groups.html["Créez et gérez des groupes de protection pour les charges de travail VMware avec la BlueXP backup and recovery"] pour plus d'informations.
+* Sauvegardez les charges de travail maintenant (créez une sauvegarde à la demande maintenant).
+
+
+
+
+== Sauvegardez vos charges de travail maintenant avec une sauvegarde à la demande
+
+Créez immédiatement une sauvegarde à la demande. Vous pouvez effectuer une sauvegarde à la demande si vous êtes sur le point d'apporter des modifications à votre système et souhaitez vous assurer d'avoir une sauvegarde avant de commencer.
+
+*Rôle BlueXP requis* Administrateur d'organisation, administrateur de dossier ou de projet, super administrateur de sauvegarde et de récupération ou rôle d'administrateur de sauvegarde de sauvegarde et de récupération.  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
+
+.Étapes
+. Dans le menu, sélectionnez *Inventaire*.
++
+image:screen-vm-inventory-managed.png["Capture d'écran de l'inventaire pour la BlueXP backup and recovery"]
+
+. Sélectionnez une charge de travail pour afficher les détails de protection.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Voir les détails*.
+. Sélectionnez l'onglet *Groupes de protection*, *Magasins de données* ou *Machines virtuelles*.
++
+image:screen-vm-inventory-protection-groups.png["Capture d'écran de l'onglet Groupes de protection pour la BlueXP backup and recovery"]
+
+. Sélectionnez le groupe de protection, les banques de données ou les machines virtuelles que vous souhaitez sauvegarder.
+. Sélectionnez l'icône Actions image:../media/icon-action.png["Option Actions"] > *Reculez maintenant*.
++
+image:screen-vm-inventory-backup-now.png["Capture d'écran de la BlueXP backup and recovery"]
+
++
+
+NOTE: La politique appliquée à la sauvegarde est la même politique que celle attribuée au groupe de protection, à la banque de données ou à la machine virtuelle.
+
+. Sélectionnez le niveau de planification.
+. Sélectionnez *Sauvegarder maintenant*.
+
