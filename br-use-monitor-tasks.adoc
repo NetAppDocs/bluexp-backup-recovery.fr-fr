@@ -16,6 +16,8 @@ summary: 'Avec la sauvegarde et la récupération BlueXP, surveillez l"état des
 [role="lead"]
 Avec la BlueXP backup and recovery, surveillez l'état des snapshots locaux, des réplications et des tâches de sauvegarde vers le stockage d'objets que vous avez initiées, ainsi que les tâches de restauration que vous avez initiées. Vous pouvez voir les travaux terminés, en cours ou en échec pour pouvoir diagnostiquer et résoudre les problèmes. Le centre de notification BlueXP vous permet d'activer l'envoi de notifications par e-mail pour vous informer de l'activité système importante, même si vous n'êtes pas connecté au système. À l'aide de la chronologie BlueXP, vous pouvez afficher les détails de toutes les actions initiées via l'interface utilisateur ou l'API.
 
+La BlueXP backup and recovery conservent les informations de travail pendant 15 jours, après quoi elles sont purgées et ne sont plus visibles dans le moniteur de travail.
+
 *Rôle BlueXP requis* Administrateur d'organisation, Administrateur de dossier ou de projet, Super administrateur de sauvegarde et de récupération, Administrateur de sauvegarde et de récupération, Administrateur de restauration de sauvegarde et de récupération, Administrateur de clone de sauvegarde et de récupération ou Rôle de visualiseur de sauvegarde et de récupération. En savoir plus link:reference-roles.html["Rôles et privilèges de sauvegarde et de récupération"] .  https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["En savoir plus sur les rôles d'accès BlueXP pour tous les services"^] .
 
 
